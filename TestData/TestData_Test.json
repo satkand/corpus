@@ -1,0 +1,114 @@
+{
+	"appPackage" : {
+       "packageName" : "au.com.suncorp.mobile"
+    },
+    "pinEntries" :{
+		"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
+		"validPINEntry1" : "7634",
+		"validPINEntry2" : "2580"
+	},
+	"loginCredentials" :{
+		"validLoginCredentials" : {
+			"login1":{
+				"login": "a@a.com",
+				"pwd": "1234567"
+			}
+		},
+		"invalidLoginCredentials_appSideValidations" :[ 
+			{
+				"login": "",
+				"pwd": "",
+				"loginError": "This field is required",
+				"pwdError": "This field is required",
+				"loginButton": false
+			},
+			{
+				"login": "a",
+				"pwd": "p",
+				"loginError": "Please enter a valid email address",
+				"pwdError": "Must be at least 7 characters",
+				"loginButton": false
+			},
+			{
+				"login": "a@",
+				"pwd": "p1",
+				"loginError": "Please enter a valid email address",
+				"pwdError": "Must be at least 7 characters",
+				"loginButton": false
+			},
+			{
+				"login": "a@.",
+				"pwd": "$%",
+				"loginError": "Please enter a valid email address",
+				"pwdError": "Must be at least 7 characters",
+				"loginButton": false
+			},
+			{
+				"login": "a@.",
+				"pwd": "pqr@",
+				"loginError": "Please enter a valid email address",
+				"pwdError": "Must be at least 7 characters",
+				"loginButton": false
+			},
+			{
+				"login": "a@.c",
+				"pwd": "1234567",
+				"loginError": "Please enter a valid email address",
+				"pwdError": null,
+				"loginButton": false
+			},
+			{
+				"login": "a@a.c",
+				"pwd": "123456",
+				"loginError": null,
+				"pwdError": "Must be at least 7 characters",
+				"loginButton": false
+			},
+			{
+				"login": "a@a.c",
+				"pwd": "1234567",
+				"loginError": null,
+				"pwdError": null,
+				"loginButton": true
+			}],
+
+			"invalidLoginCredentials_ServerSideValidations" :[ 
+			{
+				"login": "a@a.c",
+				"pwd": "1234567",
+				"loginError": null,
+				"pwdError": null,
+			},
+			{
+				"login": "a@a.c",
+				"pwd": "1234567",
+				"loginError": null,
+				"pwdError": null,
+			},
+			{
+				"login": "a@a.c",
+				"pwd": "1234567",
+				"loginError": null,
+				"pwdError": null,
+			}]
+	},
+
+
+	"copy" : {
+		"loginPage": {
+			"loginPageTitle": "Log in"
+		},
+		"pinSetupPage": {
+			"enterPINLabel": "Enter a new 4-digit PIN",
+			"reEnterPINLabel": "Re-enter your new 4-digit PIN",
+			"invalidPINAlertMessage": "This PIN might be easily guessed. Please use a combination without repeated or consecutive numbers.",
+			"pinsDonotMatchErrorMessage": "PINs don’t match. Please try again.",
+			"pinSuccessfullySetMessage": "PIN set up"
+		},		
+		"pinReAuthPasswordPage" : {
+			"forgottenPINPageTitle": "Forgotten password?",
+			"pinReAuthPasswordLabel": "Please enter your password to reset your PIN",
+			"passwordRequiredError" : "Field is required"
+		}
+	}
+}
