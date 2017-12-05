@@ -1,0 +1,16 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+*.class
+*.html
+test-output/
+Screenshots/
+.DS_Store
+.classpath
+.project
+.settings
+/target/
+/bin
+/resources/
+testng.xml
+src/main/java/auto/common/InitAppium.java
+/src/main/java/auto/common/InitAppium.java
+src/main/assembly/zip.xml
