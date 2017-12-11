@@ -35,13 +35,14 @@ public class WelcomeTest extends App {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 	}
 	
-	@Test (groups = {"DMPM-76", "DMPM-324", "marketplace", "Guest user", "priority-minor"})
+	@Test (groups = {"DMPM-77", "DMPM-303", "marketplace", "Guest user", "priority-minor"})
 	public void testNavigatingToGuestAccessScreen(){
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 		welcomePage.tapGuestAccessButton();
+		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Guest Landing Page - menu icon not shown");
+		Assert.assertNotNull(landingPage.checkGuestAccessPageTitle(), "Guest Landing page - Page Title not shown");
 		// TODO, Once the final guest screen is implemented, this needs to be updated
-		Assert.assertNotNull(guestAccessPage.checkGuestAccessPageTitle(), "Guest Access page - 'Guest Access' Title not shown");
-		guestAccessPage.tapBackButton();
+		landingPage.tapBackButton();
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 	}
 }

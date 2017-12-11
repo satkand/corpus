@@ -51,8 +51,9 @@ public class BaseTest {
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("appPackage", "au.com.suncorp.marketplace");
 		capabilities.setCapability("appWaitActivity", "*");
-		//capabilities.setCapability("fullReset", false);
-		//capabilities.setCapability("noReset", true);
+		capabilities.setCapability("fullReset", false);
+		capabilities.setCapability("noReset", true);
+		capabilities.setCapability("newCommandTimeout", 300);
 		capabilities.setCapability("clearSystemFiles", true);
 		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 	}
@@ -116,7 +117,7 @@ public class BaseTest {
 
 	@AfterSuite(alwaysRun = true)
 	private void teardown() throws IOException {
-		//driver.removeApp("com.outware.suncorp");
+		driver.removeApp("au.com.suncorp.marketplace");
 		//au.com.suncorp.suncorpgroup.marketplace
 		driver.quit();
 		//stopAppiumServer();
