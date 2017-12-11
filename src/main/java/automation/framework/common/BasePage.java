@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -122,7 +123,91 @@ public class BasePage {
 	}
 	
 	protected void putAppInBackground() {
-		driver.runAppInBackground(10);
+		Duration duration = Duration.ofMillis((long) 10);
+		driver.runAppInBackground(duration);
+	}
+	
+	protected void swipeHorizontally(By startElementLocator, By destElementLocator) {
+		WebElement startElement = find(startElementLocator);
+		WebElement destElement = find(destElementLocator);
+
+		int startX = startElement.getLocation().getX();
+		int y = startElement.getLocation().getY();
+		int endX = destElement.getLocation().getX();
+		swipeAction(startX, y, endX, y);
+	}
+	
+	protected void swipeHorizontallyToRight() {
+		int screenHeight = driver.manage().window().getSize().getHeight();
+		int screenWidth = driver.manage().window().getSize().getWidth();
+		swipeAction((int)(screenWidth*.02), (int)(screenHeight*.15), (int)(screenWidth*.9), (int)(screenHeight*.01));
+		//swipeAction(19, 259, 995, 15);
+
+	}
+	
+	protected void swipeHorizontallyToLeft() {
+		int screenHeight = driver.manage().window().getSize().getHeight();
+		int screenWidth = driver.manage().window().getSize().getWidth();
+		swipeAction((int)(screenWidth*.9), (int)(screenHeight*.15), (int)(screenWidth*.02), (int)(screenHeight*.01));
+		//swipeAction(995, 259, 15, 15);
+	}
+	
+	private void swipeAction(int startX, int startY, int endX, int endY) {
+		TouchAction ta = new TouchAction(driver);
+		ta.press(startX,startY).waitAction(Duration.ofMillis(4000)).moveTo(endX,endY).release().perform();
+	}
+	
+//	protected void swipeDown(){
+//		int screenHeight = driver.manage().window().getSize().getHeight();
+//		int screenWidth = driver.manage().window().getSize().getWidth();
+//		swipeAction((int)(screenWidth*.9), (int)(screenHeight*.9), (int)(screenWidth*.5), (int)(screenHeight*.01));
+//	}
+	
+	/**
+	 * Method to simulate swipe action on the screen in desired direction
+	 * 
+	 * @param direction
+	 */
+	protected void swipeScreen(String direction) {
+
+		int y = driver.manage().window().getSize().getHeight();
+		int x = driver.manage().window().getSize().getWidth();
+
+		try {
+			switch (direction.toUpperCase()) {
+			case "UP":
+				// when navigating up, its opening the notifications bar. so
+				// changing the startY value from 10 to 300
+				swipeAction(x - 50, y - 250, x - 50, y - 80);
+				break;
+			case "DOWN":
+				swipeAction(50, y - 80, 50, y - 250);
+				break;
+			case "LEFT":
+				swipeAction(50, y / 2, x - 10, y / 2);
+				break;
+			case "RIGHT":
+				swipeAction(x - 50, y / 2, 10, y - 10);
+				break;
+
+			default:
+				throw new IllegalArgumentException();
+			}
+		} catch (IllegalArgumentException ix) {
+			System.out.println("Invalid directioN: Valid parameters- UP/DOWN/LEFT/RIGHT");
+		}
+
+	}
+	
+	protected void closeNavigationMenuByTappingOut() {
+		int screenHeight = driver.manage().window().getSize().getHeight();
+		int screenWidth = driver.manage().window().getSize().getWidth();
+		tapByCoordinates((int)(screenWidth*.9), (int)(screenHeight*.9));
+	}
+	
+	private void tapByCoordinates(int x, int y) {
+		(new TouchAction(driver)).tap(x, y).perform();
+		//995, 1684
 	}
 	
 	//############## iOS #########//
@@ -146,6 +231,11 @@ public class BasePage {
 		return find(locator).getText();
 	}
 	
+	protected boolean isSelected(By locator) {
+		String text = find(locator).getAttribute("selected");
+		return Boolean.parseBoolean(text);
+	}
+	
 	/**
 	 * This method is used to hide the keyboard
 	 * 
@@ -165,7 +255,9 @@ public class BasePage {
 		}
 	}
 	
-
+	protected boolean isToggleEnabled(By locator) {
+		 return Boolean.parseBoolean(find(locator).getAttribute("checked"));
+	}
 
 	
 //	/**

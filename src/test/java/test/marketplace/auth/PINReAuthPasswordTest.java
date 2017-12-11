@@ -83,9 +83,9 @@ public class PINReAuthPasswordTest extends App {
 	
 	private void navigateToPINReAuthPasswordPage() {
 		welcomePage.tapLoginButton();
-		loginToApp();
-		navigationDrawPage.tapSplitMenuIcon();
-		navigationDrawPage.tapLockMenuOption();
+		loginToApp(utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "pwd"));
+		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.tapLockMenuOption();
 		dummy.tapLoginAsButton();
 		pinAuthPage.tapForgottenPINButton();
 	}

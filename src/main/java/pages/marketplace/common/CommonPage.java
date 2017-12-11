@@ -26,4 +26,10 @@ public class CommonPage extends BasePage {
 	public void moveAppToBackground() {
 		 putAppInBackground();
 	}
+	
+	/* TODO
+	public void scrollDown() {
+		swipeScreen("Down");
+	}
+	*/
 }

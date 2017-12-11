@@ -10,8 +10,16 @@
 	"loginCredentials" :{
 		"validLoginCredentials" : {
 			"login1":{
-				"login": "a@a.com",
-				"pwd": "1234567"
+				"login": "flash@dc.com",
+				"pwd": "Password1"
+			},
+			"noSuncorpBankAccounts" :{
+				"login": "flash@dc.com",
+				"pwd": "Password1"
+			},
+			"hasSuncorpBankAccounts" :{
+				"login": "flash@dc.com",
+				"pwd": "Password1"
 			}
 		},
 		"invalidLoginCredentials_appSideValidations" :[ 
