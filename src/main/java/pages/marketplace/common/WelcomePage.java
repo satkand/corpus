@@ -46,6 +46,7 @@ public class WelcomePage extends BasePage {
 	}
 	
 	public void tapGuestAccessButton(){
+		find(guestAccessButton, 30);
 		tapElement(guestAccessButton);
 	}
 	
