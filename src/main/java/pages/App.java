@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import automation.framework.common.BaseTest;
 import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
-import pages.marketplace.GuestAccessPage;
 import pages.marketplace.auth.LoginPage;
 import pages.marketplace.auth.PINAuthPage;
 import pages.marketplace.auth.PINCustomKeypad;
@@ -18,15 +17,19 @@ import pages.marketplace.auth.RegistrationPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
-import pages.marketplace.common.NavigationDrawPage;
+import pages.marketplace.common.LandingPage;
+import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.WelcomePage;
+import pages.marketplace.home.HomeJourneyPage;
+import pages.marketplace.home.HomePropertyPage;
+import pages.marketplace.wealth.FinancePage;
+import pages.marketplace.wealth.SpendingsPage;
 
 public class App extends BaseTest {
 	
 	public WelcomePage welcomePage = null;
 	public LoginPage loginPage = null;
 	public RegistrationPage registrationPage = null;
-	public GuestAccessPage guestAccessPage = null;
 	public PINSetupPage pinSetupPage = null;
 	public FluentAssert fluentAssert = null;
 	public AutoUtilities utils = null;
@@ -36,7 +39,12 @@ public class App extends BaseTest {
 	public ConfigPage configPage = null;
 	public PINCustomKeypad pinCustomKeypad = null;
 	public CommonPage common = null;
-	public NavigationDrawPage navigationDrawPage = null;
+	public NavigationMenuPage navigationMenu = null;
+	public LandingPage landingPage = null;
+	public HomePropertyPage homePropertyPage = null;
+	public HomeJourneyPage homeJourneyPage = null;
+	public FinancePage financePage = null;
+	public SpendingsPage spendingsPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -53,7 +61,6 @@ public class App extends BaseTest {
 		welcomePage = new WelcomePage(driver);
 		loginPage = new LoginPage(driver);
 		registrationPage = new RegistrationPage(driver);
-		guestAccessPage = new GuestAccessPage(driver);
 		pinSetupPage = new PINSetupPage(driver);
 		dummy = new DummyPageWithLinks(driver);
 		pinAuthPage = new PINAuthPage(driver);
@@ -62,7 +69,12 @@ public class App extends BaseTest {
 		configPage = new ConfigPage(driver);
 		pinCustomKeypad = new PINCustomKeypad(driver);
 		common = new CommonPage(driver);
-		navigationDrawPage = new NavigationDrawPage(driver);
+		navigationMenu = new NavigationMenuPage(driver);
+		landingPage = new LandingPage(driver);
+		homePropertyPage = new HomePropertyPage(driver);
+		homeJourneyPage = new HomeJourneyPage(driver);
+		financePage = new FinancePage(driver);
+		spendingsPage = new SpendingsPage(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)
@@ -76,8 +88,8 @@ public class App extends BaseTest {
 		welcomePage.closeApp();
 	}
 	
-	public void loginToApp() {
-		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "pwd"));
+	public void loginToApp(String login, String pwd) {
+		loginPage.enterLoginCredentials(login, pwd);
 		loginPage.tapLoginButton();
 	}
 	
