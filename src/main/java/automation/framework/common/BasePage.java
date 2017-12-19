@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 //import java.util.function.Function;
 
@@ -19,6 +19,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -37,6 +38,7 @@ import org.testng.annotations.BeforeTest;
 import com.google.common.base.Function;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
@@ -97,6 +99,28 @@ public class BasePage {
 			// e.printStackTrace();
 			return null;
 		}
+	}
+	
+	protected List<WebElement> finds(final By locator, int... args) {
+
+		int timeout = (args.length > 0 ? args[0] : 15);
+		List<WebElement> webelements = null;
+
+		try {
+			FluentWait<AppiumDriver> wait = new FluentWait<AppiumDriver>(driver).withTimeout(timeout, TimeUnit.SECONDS)
+					.pollingEvery(200, TimeUnit.MILLISECONDS).ignoring(Exception.class)
+					.ignoring(NoSuchElementException.class);
+
+			webelements = wait.until(new Function<AppiumDriver, List<WebElement>>() {
+				public List<WebElement> apply(AppiumDriver driver) {
+					return (List) driver.findElements(locator);
+				}
+			});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+		}
+		return webelements;
 	}
 
 	/**
@@ -181,7 +205,7 @@ public class BasePage {
 				swipeAction(x - 50, y - 250, x - 50, y - 80);
 				break;
 			case "DOWN":
-				swipeAction(50, y - 80, 50, y - 250);
+				swipeAction(50, y - 80, 50, y - 700);
 				break;
 			case "LEFT":
 				swipeAction(50, y / 2, x - 10, y / 2);
@@ -227,8 +251,47 @@ public class BasePage {
 	}
 	
 	//####### Android #########//
+
+	protected void selectElementFromDropdownBasedOnText(String textValue) {
+		WebElement dropdownElement = null;
+		try
+		{
+			dropdownElement = driver.findElement(
+					MobileBy.AndroidUIAutomator(
+							"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+ textValue +"\").instance(0))"
+							)
+					);
+		}
+		catch (NoSuchElementException e) {
+			//Added because sometimes Android doesn't scroll all the way
+			WebElement frame = driver.findElement(By.className("android.widget.ScrollView"));
+			int startx = frame.getLocation().getX() + (frame.getSize().getWidth() / 2);
+			int starty = frame.getLocation().getY() + ((int)((frame.getSize().getHeight()) *.8) - 5);
+			int endx = startx;
+			int endy = frame.getLocation().getY() + 100;
+			for(int i=0; i< 5; i++) {
+				swipeAction(startx, starty, endx, endy);
+				By elementLocator = By.xpath("//android.widget.TextView[@text='"+textValue +"']");
+				dropdownElement = find(elementLocator);
+				if(dropdownElement != null) {
+					break;
+				}
+			}		 
+		}
+		dropdownElement.click();
+	}
+	
 	protected String getText(By locator) {
 		return find(locator).getText();
+	}
+	
+	protected List<String> getTextList(By locator) {
+		List<WebElement> elements = finds(locator);
+		List<String> textList = new ArrayList();
+		for (WebElement element : elements) {
+			textList.add(element.getText());
+		}
+		return textList;
 	}
 	
 	protected boolean isSelected(By locator) {

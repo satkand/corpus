@@ -48,6 +48,7 @@ public class LoginPage extends BasePage{
 	}
 	
 	public void enterEmail(String emailValue) {
+		find(emailField,30);
 		typeValue(emailValue, emailField);
 	}
 	
