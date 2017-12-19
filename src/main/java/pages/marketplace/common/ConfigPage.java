@@ -12,6 +12,7 @@ public class ConfigPage extends BasePage {
 	
 	//FAPI Settings page
 	private By hasBankAccountsToggle = By.id("au.com.suncorp.marketplace:id/hasAccountsToggle");
+	private By someTransactions = By.id("au.com.suncorp.marketplace:id/spendingManyTransactions");
 	
 	public ConfigPage(AppiumDriver driver) {
 		super(driver);
@@ -19,9 +20,15 @@ public class ConfigPage extends BasePage {
 	}
 	
 	public void dismissConfigPage() {
-		if(find(configPageTitle,20) != null) {
-			dismissKeyboard();
-			for(int i=0; i<=15; i++) {
+		if(find(configPageTitle,30) != null) {
+			// Added this just to add some delay before checking for keyboard
+			find(continueButton,10);
+			if(isKeyboardPresent() == true) {
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$keyboard enabled");
+			} else {
+				System.out.println("##################################################################################keyboard not enabled");
+			}
+			for(int i=0; i<=2; i++) {
 				swipeScreen("down");
 			}
 			if(find(continueButton, 30) != null) {
@@ -40,6 +47,10 @@ public class ConfigPage extends BasePage {
 		if (isToggleEnabled(hasBankAccountsToggle)) {
 			tapElement(hasBankAccountsToggle);
 		}
+	}
+	
+	public void tapSomeTransactions() {
+		tapElement(someTransactions);
 	}
 
 }

@@ -38,6 +38,7 @@ public class WelcomePage extends BasePage {
 	}
 	
 	public void tapLoginButton(){
+		find(loginButton,30);
 		tapElement(loginButton);
 	}
 	

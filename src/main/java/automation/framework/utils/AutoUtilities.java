@@ -64,7 +64,7 @@ public class AutoUtilities extends BaseTest{
         }
     }
     
-    public List readTestDataList(String... args) {
+    public List<Object> readTestDataList(String... args) {
         JSONObject temp = obj;
         if (args.length == 1) {
             return (List) obj.get(args[0]);
@@ -72,7 +72,7 @@ public class AutoUtilities extends BaseTest{
             for (int i = 0; i < args.length - 1; i++) {
                 temp = (JSONObject) temp.get(args[i]);
             }
-            return (List) temp.get(args[args.length - 1]);
+            return (List<Object>) temp.get(args[args.length - 1]);
         }
     }
 
