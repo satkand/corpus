@@ -9,14 +9,25 @@ import pages.App;
 
 public class FinanceTest extends App {
 	
-	//@Test (groups = {"DMPM-", "DMPM-", "marketplace", "ey", "priority-"})
-	public void testFinancePageElements() {
-		// TODO ..........
+	// 486 - Scenario 1
+	// 786 - Scenario 1, Scenario 2
+	// 1032 - Scenario 1, Scenario 2
+	@Test (groups = {"DMPM-486", "DMPM-895", "DMPM-786", "DMPM-1032", "DMPM-1302", "DMPM-1311", "marketplace", "FFI", "priority-minor"})
+	public void testElementsOnFinancePageWithBankAccounts() {
+		// SpendingThisMonth button and net worth amount, should  be shown if user has suncorp bank accounts 
+		navigateToWealthTabWithBankAccounts();
+		Assert.assertEquals(financePage.getNetWorthLabel(), utils.readTestData("copy", "financePage", "netWorthLabel"), "Wealth tab - net worth label copy is not valid");
+		Assert.assertNotNull(financePage.checkNetWorthAmount(), "Wealth tab - Net worth amount not shown");
+		// Comparing the net worth amount with the expected value
+		Assert.assertEquals(financePage.getNetWorthAmountValue(), utils.readTestData("hasSuncorpBankAccounts", "netWorthAmount"), "Wealth tab - Net worth amount shown is not correct");
+		Assert.assertNotNull(financePage.checkViewSpendingThisMonthButton(), "Wealth tab - view spendings this month button not shown");
+		Assert.assertEquals(financePage.getNetWorthDisclaimerMessage(), utils.readTestData("copy", "financePage", "netWorthDisclaimerMessage"), "Wealth tab - Net worth disclaimer message copy is not valid");
 	}
 	
-	//Scenario 1 and Scenario 2
+	// 91 - Scenario 1 and Scenario 2
+	// 94 - Scenario 2
 	// navigating to spendings screen and again navigating back to wealth tab
-	@Test (groups = {"DMPM-91", "DMPM-535", "DMPM-536", "marketplace", "Financial Fitness Indicator", "priority-minor"})
+	@Test (groups = {"DMPM-91", "DMPM-535", "DMPM-536", "DMPM-94", "DMPM-576", "marketplace", "FFI", "priority-minor"})
 	public void testNavigatingToSpendingsScreen() {
 		// SpendingThisMonth option should  be shown if user has suncorp bank accounts 
 		navigateToWealthTabWithBankAccounts();
@@ -28,18 +39,29 @@ public class FinanceTest extends App {
 		Assert.assertTrue(landingPage.isWealthTabSelected(), "Wealth tab is not selected on landing page");
 	}
 	
-	//Scenario 3
+	// 486 - Scenario 2
+	// 91 - Scenario 3
 	// Spending option should not be shown if user does not have suncorp bank accounts
-	@Test (groups = {"DMPM-91", "DMPM-537", "marketplace", "Financial Fitness Indicator", "priority-minor"})
-	public void testSpendingOptionNotShownWithNoBankAccounts() {
-		// SpendingThisMonth option should not be shown if user has no suncorp bank accounts 
+	@Test (groups = {"DMPM-91", "DMPM-537", "DMPM-486", "DMPM-896", "marketplace", "FFI", "priority-minor"})
+	public void testElementsOnFinancePageWithOutBankAccounts() {
+		// SpendingThisMonth button and net worth amount, should not be shown if user has no suncorp bank accounts 
 		navigateToWealthTabWithOutBankAccounts();
+		Assert.assertNull(financePage.checkNetWorthAmount(), "Wealth tab - Net worth amount shown");
+		Assert.assertNull(financePage.checkViewSpendingThisMonthButton(), "Wealth tab - view spendings this month button shown");
+	}
+	
+	// 409 - Scenario 1
+	@Test (groups = {"DMPM-409", "DMPM-1248", "marketplace", "FFI", "priority-minor"})
+	public void testElementsOnFinancePageAsGuestUser() {
+		// SpendingThisMonth button and net worth amount, should not be shown if user has logged in as a Guest User
+		navigateToWealthTabAsGuestUser();
+		Assert.assertNull(financePage.checkNetWorthAmount(), "Wealth tab - Net worth amount shown");
 		Assert.assertNull(financePage.checkViewSpendingThisMonthButton(), "Wealth tab - view spendings this month button shown");
 	}
 	
 	private void navigateToWealthTabWithBankAccounts() {
 		welcomePage.tapLoginButton();
-		loginToApp(utils.readTestData("loginCredentials", "validLoginCredentials", "hasSuncorpBankAccounts", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "hasSuncorpBankAccounts", "pwd"));
+		loginToApp(utils.readTestData("hasSuncorpBankAccounts", "login"), utils.readTestData("hasSuncorpBankAccounts", "pwd"));
 		if(landingPage.checkWealthTab() == null) {
 			landingPage.swipeToHealthTab();
 		}
@@ -50,6 +72,7 @@ public class FinanceTest extends App {
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapFAPISettingsMenuItem();
 		configPage.enableHasBankAccountsToggle();
+		configPage.tapSomeTransactions();
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
 		landingPage.tapWealthTab();
@@ -57,7 +80,7 @@ public class FinanceTest extends App {
 	
 	private void navigateToWealthTabWithOutBankAccounts() {
 		welcomePage.tapLoginButton();
-		loginToApp(utils.readTestData("loginCredentials", "validLoginCredentials", "noSuncorpBankAccounts", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "noSuncorpBankAccounts", "pwd"));
+		loginToApp(utils.readTestData("noSuncorpBankAccounts", "login"), utils.readTestData("noSuncorpBankAccounts", "pwd"));
 		if(landingPage.checkWealthTab() == null) {
 			landingPage.swipeToHealthTab();
 		}
@@ -72,4 +95,12 @@ public class FinanceTest extends App {
 		navigationMenu.tapSuncorpMenuItem();
 		landingPage.tapWealthTab();
 	}
+	
+	// Navigating into the app as a Guest User
+	private void navigateToWealthTabAsGuestUser() {
+		welcomePage.tapGuestAccessButton();
+		landingPage.tapWealthTab();
+		Assert.assertTrue(landingPage.isWealthTabSelected(), "Wealth tab is not selected on landing page");		
+	}
+	
 }

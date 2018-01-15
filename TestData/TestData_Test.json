@@ -14,7 +14,7 @@
 	"hasSuncorpBankAccounts" :{
 		"login": "flash@dc.com",
 		"pwd": "Password1",
-		"netWorthAmount": "-$2,915.66",
+		"netWorthAmount": "-$893,818.75",
 		"bankAccounts": "",
 		"spendingsAmountPerMonth": [
 			{
@@ -359,15 +359,41 @@
 			"May 2017",
 			"April 2017",
 			"March 2017",
-			"Febraury 2017"
+			"February 2017"
 			"January 2017"
 		],
 		"emptyVendorMonths": [
 			"May 2017",
 			"April 2017",
 			"March 2017",
-			"Febraury 2017"
+			"February 2017"
 			"January 2017"
+		]
+	},
+	"hasVehicles" :{
+		"login": "wonderwoman@gmail.com",
+		"pwd": "Password1",
+		"vehiclesList": [
+			{
+				"imageType": "car",
+				"description": "2000 Honda Civic 2.0",
+				"RegNo": "ABC123"
+			},
+			{
+				"imageType": "van",
+				"description": "2000 Jayco Eagle Outback",
+				"RegNo": "ABC555"
+			},
+			{
+				"imageType": "ship",
+				"description": "2000 Honda Civic 2.0",
+				"RegNo": "ABC123"
+			},
+			{
+				"imageType": "bicycle",
+				"description": "2000 Honda Civic 2.0",
+				"RegNo": "ABC123"
+			}
 		]
 	},
 	"loginCredentials" :{
@@ -477,9 +503,38 @@
 			"pinReAuthPasswordLabel": "Please enter your password to reset your PIN",
 			"passwordRequiredError" : "Field is required"
 		},
+		"financePage":{
+			"netWorthLabel": "Your net worth",
+			"netWorthDisclaimerMessage": "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days."
+		},
 		"spendingsPage": {
 			"emptyTransactionsMessage": "Sorry, you don't have any transactions yet",
 			"emptyTransactionsHintMessage": "Please note: Transactions will take up to 24 hours to appear."
+		},
+		"homePropertyPage": {
+			"homeJourneyBannerHeading": "Hunting for a property?",
+			"homeJourneyBannerDescription": "Our Home Journey has helpful tips & ideas to guide you through each stage of the process."
+		},
+		"homeJourneyPage": {
+			"journeyTitleText": "Our guide to\nbuying a home",
+			"journeySubtitleText": "Buying a home can feel overwhelming.",
+			"journeyDescriptionText": "We've put together some helpful tips & ideas to guide you through each stage of the process - from the decision to buy a home to picking up the keys.",
+			
+			"planningTitleText": "Planning",
+			"planningDescriptionText": "The decision to buy a home is one of the biggest you're likely to ever make. Getting your planning right from the start, can help to save you more than just money in the end.",
+			"planningReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/planning.html",
+
+			"houseHuntingTitleText": "House hunting",
+			"houseHuntingDescriptionText": "It's easy to get lost in the excitement of searching for your dream home when it comes to the house hunting stage. These steps will help to keep you focused on the things that matter…",
+			"houseHuntingReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/house-hunting.html",
+
+			"gettingReadyTitleText": "Getting ready to buy",
+			"gettingReadyDescriptionText": "You're almost at the finish line, you've found the home and your offer was accepted, but there's still a lot left to do before you can get those keys. Knowing the steps for getting ready to buy your…",
+			"gettingReadyReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/ready-to-buy.html",
+
+			"movingInTitleText": "Moving in",
+			"movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything…",
+			"movingInReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/moving-into-your-home.html"
 		}
 	}
 }
