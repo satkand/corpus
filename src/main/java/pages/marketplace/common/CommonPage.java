@@ -32,4 +32,8 @@ public class CommonPage extends BasePage {
 		swipeScreen("Down");
 	}
 	*/
+	
+	public void swipeLeft() {
+		swipeHorizontallyToLeft();
+	}
 }
