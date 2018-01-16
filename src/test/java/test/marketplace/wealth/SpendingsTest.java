@@ -26,9 +26,10 @@ public class SpendingsTest extends App {
 		Assert.assertNotNull(spendingsPage.checkInfoIcon(), "Spendings Page - Spendings amount info not shown");
 	}
 	
-	// 361 Scenario 2, Scenario 3
+	// 361 - Scenario 2, Scenario 3
+	// 94 - Scenario 1
 	// Select each month from the month picker and verify the spendings shown for each month against the test data
-	@Test (groups = {"DMPM-361", "DMPM-1018", "DMPM-1019", "marketplace", "FFI", "priority-minor"})
+	@Test (groups = {"DMPM-361", "DMPM-1018", "DMPM-1019", "DMPM-94", "DMPM-575", "marketplace", "FFI", "priority-minor"})
 	public void testSpendingsAmountForEachMonth() {
 		navigateToSpendingsScreen();
 		// Loading expected data
@@ -72,8 +73,10 @@ public class SpendingsTest extends App {
 	// 361 - Scenario 3
 	// 388 - Scenario 1
 	// 830 - Scenario 1
+	// 1034 - Scenario 1, Scenario 2
+	// 788 - Scenario 1, Scenario 2
 	// Navigate through each month in month picker and verify the list of transactions shown for each month
-	@Test (groups = {"DMPM-361", "DMPM-1019", "DMPM-388", "DMPM-777", "DMPM-830", "DMPM-1004", "marketplace", "FFI", "priority-minor"})
+	@Test (groups = {"DMPM-361", "DMPM-1019", "DMPM-388", "DMPM-777", "DMPM-830", "DMPM-1004", "DMPM-1034", "DMPM-1478", "DMPM-1487", "DMPM-788", "DMPM-1309", "DMPM-1319", "marketplace", "FFI", "priority-minor"})
 	public void testSpendingsOnCategoriesTab() {
 		navigateToSpendingsScreen();
 		// Load the expected transactions to be shown for each month from test data sheet
@@ -93,8 +96,10 @@ public class SpendingsTest extends App {
 	// 388 - Scenario 3
 	// 830 - Scenario 1
 	// 92 - Scenario 1, Scenario 2, Scenario 3, Scenario 4
+	// 1034 - Scenario 1, Scenario 2
+	// 788 - Scenario 1, Scenario 2
 	// Navigate through each month in month picker and verify the list of transactions shown for each month on vendor tab
-	@Test (groups = {"DMPM-361", "DMPM-1019", "DMPM-388", "DMPM-779", "DMPM-830", "DMPM-1004", "DMPM-92", "DMPM-758", "DMPM-759", "DMPM-762", "DMPM-765",  "marketplace", "FFI", "priority-minor"})
+	@Test (groups = {"DMPM-361", "DMPM-1019", "DMPM-388", "DMPM-779", "DMPM-830", "DMPM-1004", "DMPM-92", "DMPM-758", "DMPM-759", "DMPM-762", "DMPM-765",  "DMPM-1034", "DMPM-1478", "DMPM-1487", "DMPM-788", "DMPM-1309", "DMPM-1319", "marketplace", "FFI", "priority-minor"})
 	public void testSpendingsOnVendorTab() {
 		navigateToSpendingsScreen();
 		// Load the expected transactions to be shown for each month from test data sheet
@@ -115,7 +120,7 @@ public class SpendingsTest extends App {
 	// verify the empty transactions message shown on categories tab
 	// 388 - Scenario 2
 	@Test (groups = {"DMPM-388", "DMPM-778", "marketplace", "FFI", "priority-minor"})
-	public void testNoTransactionsOnCategoryTabForMonthSelected() {
+	public void testEmptyTransactionsOnCategoryTabForMonthSelected() {
 		navigateToSpendingsScreen();
 		List months = utils.readTestDataList("hasSuncorpBankAccounts", "emptyCategoryMonths");
 		verifyEmptyTransactionsMessage(months);
@@ -124,7 +129,7 @@ public class SpendingsTest extends App {
 	// 92 -> Scenario 5
 	// verify the empty transactions message shown on vendors tab
 	@Test (groups = {"DMPM-92", "DMPM-767", "marketplace", "FFI", "priority-minor"})
-	public void testNoTransactionsOnVendorsTabForMonthSelected() {
+	public void testEmptyTransactionsOnVendorsTabForMonthSelected() {
 		navigateToSpendingsScreen();
 		List months = utils.readTestDataList("hasSuncorpBankAccounts", "emptyVendorMonths");
 		verifyEmptyTransactionsMessage(months);
