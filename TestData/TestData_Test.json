@@ -375,24 +375,12 @@
 		"pwd": "Password1",
 		"vehiclesList": [
 			{
-				"imageType": "car",
 				"description": "2000 Honda Civic 2.0",
 				"RegNo": "ABC123"
 			},
 			{
-				"imageType": "van",
 				"description": "2000 Jayco Eagle Outback",
 				"RegNo": "ABC555"
-			},
-			{
-				"imageType": "ship",
-				"description": "2000 Honda Civic 2.0",
-				"RegNo": "ABC123"
-			},
-			{
-				"imageType": "bicycle",
-				"description": "2000 Honda Civic 2.0",
-				"RegNo": "ABC123"
 			}
 		]
 	},
