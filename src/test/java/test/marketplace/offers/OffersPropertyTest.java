@@ -27,9 +27,9 @@ public class OffersPropertyTest extends App {
 				&& offersPage.checkBackgroundImage().isDisplayed())) {
 			Assert.assertNotNull(landingPage.checkHealthTab(), " Offers flow - Navigation to different tab failed");
 			landingPage.tapHealthTab();
-			Assert.assertNotNull(landingPage.checkPropertyTab(),
+			Assert.assertNotNull(landingPage.checkHomeTab(),
 					" Offers flow - Navigation back to Property tab failed");
-			landingPage.tapPropertyTab();
+			landingPage.tapHomeTab();
 		}
 		Assert.assertNotNull(offersPage.checkOfferImage(), "Property Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkActionButton(), "Property Page Offers - No Action Button");
@@ -41,17 +41,17 @@ public class OffersPropertyTest extends App {
 		navigateToPropertyScreen();
 		Assert.assertNotNull(offersPage.checkActionButton(), "Property Page Offers - No offer banner");
 		offersPage.tapCallToActionButton();
-		Assert.assertNotNull(offersPage.checkRegistrationPage(), "Property Page Offers - No Registration Page");
-		Assert.assertNotNull(offersPage.checkCancelButtonRegistrationPage(), "Registration Page Cancel - No cancel button");
-		offersPage.tapCancelButtonRegistrationPage();
+		Assert.assertNotNull(registrationPage.checkRegistrationPage(), "Property Page Offers - No Registration Page");
+		Assert.assertNotNull(registrationPage.checkCancelButtonRegistrationPage(), "Registration Page Cancel - No cancel button");
+		registrationPage.tapCancelButtonRegistrationPage();
 		Assert.assertNotNull(offersPage.checkActionButton(), "Property Page Offers - No Offer banner after Cancellation");
 	
 	}
 
 	private void navigateToPropertyScreen() {
 		welcomePage.tapGuestAccessButton();
-		Assert.assertNotNull(landingPage.checkPropertyTab(), " Offers flow - Property tab not shown");
-		landingPage.tapPropertyTab();
+		Assert.assertNotNull(landingPage.checkHomeTab(), " Offers flow - Property tab not shown");
+		landingPage.tapHomeTab();
 		offersPage.scrollDown();
 
 	}

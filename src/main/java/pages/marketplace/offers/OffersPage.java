@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 
 public class OffersPage extends BasePage {
 
@@ -19,8 +18,7 @@ public class OffersPage extends BasePage {
 	private By offerDescription = By.id("au.com.suncorp.marketplace:id/offerDescription");
 	private By callToActionButton = By.id("au.com.suncorp.marketplace:id/offerActionButton");
 	private By backgroundImage = By.id("au.com.suncorp.marketplace:id/offerBackgroundImage");
-	private By firstNameRegistrationPage = By.id("au.com.suncorp.marketplace:id/firstNameField");
-	private By cancelRegistrationPage = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	
 
 	public WebElement checkOfferImage() {
 		return find(offerIcon, 30);
@@ -53,18 +51,6 @@ public class OffersPage extends BasePage {
 	public void scrollDown() {
 		swipeHorizontallyToLeft();
 		swipeScreen("down");
-	}
-
-	public WebElement checkRegistrationPage() {
-		return find(firstNameRegistrationPage, 30);
-	}
-
-	public WebElement checkCancelButtonRegistrationPage() {
-		return find(cancelRegistrationPage, 30);
-	}
-
-	public void tapCancelButtonRegistrationPage() {
-		tapElement(cancelRegistrationPage);
 	}
 	
 	public String getOffersPageTitle(){

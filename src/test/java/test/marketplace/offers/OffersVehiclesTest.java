@@ -28,8 +28,8 @@ public class OffersVehiclesTest extends App {
 		navigateToVehicleScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkActionButton().isDisplayed()
 				&& offersPage.checkBackgroundImage().isDisplayed())) {
-			Assert.assertNotNull(landingPage.checkPropertyTab(), " Offers flow - Navigation to different tab failed");
-			landingPage.tapPropertyTab();
+			Assert.assertNotNull(landingPage.checkHomeTab(), " Offers flow - Navigation to different tab failed");
+			landingPage.tapHomeTab();
 			Assert.assertNotNull(landingPage.checkVehiclesTab(),
 					" Offers flow - Navigation back to Vehicles tab failed");
 			landingPage.tapVehiclesTab();

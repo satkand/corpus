@@ -28,8 +28,8 @@ public class OffersWealthTest extends App {
 		navigateToWealthScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkActionButton().isDisplayed()
 				&& offersPage.checkBackgroundImage().isDisplayed())) {
-			Assert.assertNotNull(landingPage.checkPropertyTab(), " Offers flow - Navigation to different tab failed");
-			landingPage.tapPropertyTab();
+			Assert.assertNotNull(landingPage.checkHomeTab(), " Offers flow - Navigation to different tab failed");
+			landingPage.tapHomeTab();
 			Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Navigation back to Vehicles tab failed");
 			landingPage.tapWealthTab();
 		}
