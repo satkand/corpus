@@ -29,7 +29,7 @@ public class RegistrationPage extends BasePage {
 		return find(firstName, 30);
 	}
 
-	public WebElement checkCancelButtonRegistrationPage() {
+	public WebElement checkCancelButton() {
 		return find(cancelButton, 30);
 	}
 
