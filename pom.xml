@@ -65,7 +65,7 @@
                     <properties>
                   	  	<property>
               				<name>listener</name>
- 			            	<value>auto.common.utils.TestListner</value>
+ 			            	<value>automation.framework.utils.TestListner</value>
             			</property>
             		</properties>
                 </configuration>
