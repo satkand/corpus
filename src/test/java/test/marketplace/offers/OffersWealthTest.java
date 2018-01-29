@@ -12,7 +12,7 @@ public class OffersWealthTest extends App {
 		navigateToWealthScreen();
 		Assert.assertNotNull(offersPage.checkOfferImage(), "Wealth Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Wealth tab Offers - No offer Title");
-		Assert.assertNotNull(offersPage.checkActionButton(), "Wealth tab Offers - No Action Button");
+		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Wealth tab Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "wealthTab", "offerDescription"),
@@ -26,7 +26,7 @@ public class OffersWealthTest extends App {
 	@Test(groups = { "DMPM-816", "DMPM-931", "marketplace", "Offers journey-Wealth", "priority-minor" })
 	public void testRetryContentRetrievalWealthTab() {
 		navigateToWealthScreen();
-		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkActionButton().isDisplayed()
+		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()
 				&& offersPage.checkBackgroundImage().isDisplayed())) {
 			Assert.assertNotNull(landingPage.checkHomeTab(), " Offers flow - Navigation to different tab failed");
 			landingPage.tapHomeTab();
@@ -35,7 +35,7 @@ public class OffersWealthTest extends App {
 		}
 		Assert.assertNotNull(offersPage.checkOfferImage(), "Wealth Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Wealth tab Offers - No offer Title");
-		Assert.assertNotNull(offersPage.checkActionButton(), "Wealth tab Offers - No Action Button");
+		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Wealth tab Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
 	}
 

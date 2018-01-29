@@ -28,7 +28,7 @@ public class OffersPage extends BasePage {
 		return find(offerTitle);
 	}
 
-	public WebElement checkActionButton() {
+	public WebElement checkCallToActionButton() {
 		return find(callToActionButton,20);
 	}
 

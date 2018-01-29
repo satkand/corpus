@@ -25,7 +25,7 @@ public class RegistrationPage extends BasePage {
 		tapElement(cancelButton);
 	}
 	
-	public WebElement checkRegistrationPage() {
+	public WebElement checkFirstName() {
 		return find(firstName, 30);
 	}
 

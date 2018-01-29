@@ -12,7 +12,7 @@ public class OffersOverviewTab extends App {
 		navigateToOverviewScreen();
 		Assert.assertNotNull(offersPage.checkOfferImage(), "Overview Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Overview Page Offers - No offer Title");
-		Assert.assertNotNull(offersPage.checkActionButton(), "Overview Page Offers - No Action Button");
+		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Overview Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "overviewTab", "offerDescription"),
@@ -27,7 +27,7 @@ public class OffersOverviewTab extends App {
 	@Test(groups = { "DMPM-97", "DMPM-925", "marketplace", "Offers journey-Overview", "priority-minor" })
 	public void testRetryContentRetrievalOverviewTab() {
 		navigateToOverviewScreen();
-		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkActionButton().isDisplayed()
+		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()
 				&& offersPage.checkBackgroundImage().isDisplayed())) {
 			Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Navigation to different tab failed");
 			landingPage.tapWealthTab();
@@ -37,7 +37,7 @@ public class OffersOverviewTab extends App {
 		}
 		Assert.assertNotNull(offersPage.checkOfferImage(), "Overview Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Overview Page Offers - No offer Title");
-		Assert.assertNotNull(offersPage.checkActionButton(), "Overview Page Offers - No Action Button");
+		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Overview Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
 	}
 
@@ -45,13 +45,13 @@ public class OffersOverviewTab extends App {
 			"priority-minor" })
 	public void testLinkToRegistrationPage() {
 		navigateToOverviewScreen();
-		Assert.assertNotNull(offersPage.checkActionButton(), "Suncorp Page Offers - No offer banner");
+		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Suncorp Page Offers - No offer banner");
 		offersPage.tapCallToActionButton();
-		Assert.assertNotNull(registrationPage.checkRegistrationPage(), "Suncorp Page Offers - No Registration Page");
+		Assert.assertNotNull(registrationPage.checkFirstName(), "Suncorp Page Offers - No Registration Page");
 		Assert.assertNotNull(registrationPage.checkCancelButton(),
 				"Registration Page Cancel - No cancel button");
 		registrationPage.tapCancelButton();
-		Assert.assertNotNull(offersPage.checkActionButton(),
+		Assert.assertNotNull(offersPage.checkCallToActionButton(),
 				"Suncorp Page Offers - No Offer banner after Cancellation");
 
 	}
