@@ -370,6 +370,35 @@
 			"January 2017"
 		]
 	},
+	"registration" : {
+		"success":{
+			"firstName" : "Abc",
+			"surname" : "xyz",
+			"date" : "12/02/2002",
+			"postcode" : "3010",
+			"email" : "abc",
+			"mobile" : "0428737283",
+			"password" : "Password1",
+		},
+		"failure" : {
+			"1letterSurname" : "a",
+			"longSurname" : "ahshsfhoseohfosehowoweowegegohnsfgsohosei",
+			"longFirstName" : "niguftjohfyhmljolmklojmeklojkii",
+			"30charFirstname" : "niguftjohfyhmljolmklojmeklojki",
+			"specialCharFirstname" : "Don!@#' Trum**-",
+			"noSpecialCharName" : "Don' Trum-",
+			"specialCharSurname" : "Don!@#' Trum**-",
+			"longPostCode" : "979797989",
+			"emailLong" : "giehrgireghewhgowhgowgowehgaesvnoroie",
+			"mobileLong" : "453592486085082350",
+			"mobileInvalid" : "9897494549",
+			"shortPassword" : "4tger",
+			"firstNameInPassword" : "Abc123",
+			"lastNameInPassword" : "2xyz",
+			"onlyCharPassword" : "football",
+			"onlyCharUpperCasePassword" : "FOOTBALL",
+		}
+	},
 	"loginCredentials" :{
 		"validLoginCredentials" : {
 			"login1":{
@@ -480,6 +509,26 @@
 		"spendingsPage": {
 			"emptyTransactionsMessage": "Sorry, you don't have any transactions yet",
 			"emptyTransactionsHintMessage": "Please note: Transactions will take up to 24 hours to appear."
+		},
+		"registrationPage" : {
+			"shortSurnameErrorMsg" : "Must be between 2 and 40 characters",
+			"accountCreatingMsg" : "Registering details",
+			"fieldErrorMsg" : "Field is required",
+			"registerPage1Title" : "Step 1 of 3",
+			"registerPage2Title" : "Step 2 of 3",
+			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
+			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
+			"longPostcodeErrorMsg" : "Must be 4 digits",
+			"firstNameUserTip" : "Middle name not required",
+			"mobileNumberUserTip" : "Use 04XX XXX XXX format",
+			"invalidEmailErrorMsg" : "Please enter a valid email address",
+			"invalidMobileErrorMsg" : "Must use 04XX XXX XXX format",
+			"shortPasswordErrorMsg" : "Must be at least 7 characters long",
+			"firstNamePasswordErrorMsg" : "Must not contain your first name",
+			"lastNamePasswordErrorMsg" : "Must not contain your last name",
+			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\\n\\nMust contain at least one number",
+			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lower case letter\\nMust contain at least one number",
+			"passwordNotMatch" : "Password do not match",
 		}
 	}
 }

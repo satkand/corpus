@@ -318,6 +318,10 @@ public class BasePage {
 		}
 	}
 	
+	protected void navigateBack() {
+		driver.navigate().back();
+	}
+	
 	protected boolean isToggleEnabled(By locator) {
 		 return Boolean.parseBoolean(find(locator).getAttribute("checked"));
 	}
