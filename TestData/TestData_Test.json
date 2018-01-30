@@ -64,7 +64,7 @@
 			{
 				"month": "December 2017",
 				"amount": "-$600.00"
-			},
+			}
 		],
 		"spendingsByVendor": [
 			{	
@@ -139,7 +139,7 @@
 						"transactionsText": "1",
 						"Name": "Cold Rock",
 						"Amount": "-$100.00"
-					}
+					},
 					{
 						"transactionsText": "1",
 						"Name": "Costco",
@@ -359,14 +359,14 @@
 			"May 2017",
 			"April 2017",
 			"March 2017",
-			"February 2017"
+			"February 2017",
 			"January 2017"
 		],
 		"emptyVendorMonths": [
 			"May 2017",
 			"April 2017",
 			"March 2017",
-			"February 2017"
+			"February 2017",
 			"January 2017"
 		]
 	},
@@ -480,19 +480,19 @@
 				"login": "a@a.c",
 				"pwd": "1234567",
 				"loginError": null,
-				"pwdError": null,
+				"pwdError": null
 			},
 			{
 				"login": "a@a.c",
 				"pwd": "1234567",
 				"loginError": null,
-				"pwdError": null,
+				"pwdError": null
 			},
 			{
 				"login": "a@a.c",
 				"pwd": "1234567",
 				"loginError": null,
-				"pwdError": null,
+				"pwdError": null
 			}]
 	},
 
@@ -548,6 +548,28 @@
 		},
 		"chatbot": {
 			"phoneLabel": "CALL NOW"
+		},
+		"offersPage": {
+			"healthTab": {
+				"offerTitle": "Health Insurance",
+				"offerDescription": "We're bringing our trusted reputation to health insurance. Cover for you & those that matter most."
+			},
+			"wealthTab": {
+				"offerTitle": "Open a bank account",
+				"offerDescription": "More than 840,000 Australians have a bank account with Suncorp Bank. Stick with the brand you know you can trust."
+			},
+			"propertyTab": {
+				"offerTitle": "Building Insurance",
+				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
+			},
+			"vehiclesTab": {
+				"offerTitle": "CTP Insurance",
+				"offerDescription": "Take out a new CTP policy with Suncorp Insurance & get a $50 gift card. T&Cs apply."
+			},
+			"overviewTab": {
+				"offerTitle": "Building Insurance",
+				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
+			}
 		}
 	}
 }

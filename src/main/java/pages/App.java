@@ -25,15 +25,13 @@ import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
+import pages.marketplace.offers.OffersPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
-	public FluentAssert fluentAssert = null;
-
-
-	
+	public FluentAssert fluentAssert = null;	
 	public WelcomePage welcomePage = null;
 	public LoginPage loginPage = null;
 	public RegistrationPage registrationPage = null;
@@ -53,7 +51,8 @@ public class App extends BaseTest {
 	public VehiclesPage vehiclesPage = null;
 	public VehicleDetailsPage vehicleDetailsPage = null;
 	public ChatbotPage chatbotPage = null;
-	
+	protected OffersPage offersPage = null;
+
 	@BeforeClass
 	public void initializeApp() {
 		
@@ -87,7 +86,7 @@ public class App extends BaseTest {
 		vehiclesPage = new VehiclesPage(driver);
 		vehicleDetailsPage = new VehicleDetailsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
-		
+		offersPage = new OffersPage(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)
