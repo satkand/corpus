@@ -17,7 +17,8 @@ public class NavigationMenuPage extends BasePage {
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 	private By fapiSettingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='FAPI Settings']");
-
+	private By digiVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
+	
 	public NavigationMenuPage(AppiumDriver driver) {
 		super(driver);
 	}
@@ -84,5 +85,14 @@ public class NavigationMenuPage extends BasePage {
 
 	public void closeNavigationMenu(){
 		closeNavigationMenuByTappingOut();
+	}
+	
+	public WebElement checkDigiVaultMenuIcon() {
+		 return find(digiVaultMenuItem,30);
+	}
+	
+	public void tapDigiVaultMenuIcon() {
+		 find(digiVaultMenuItem,30);
+		 tapElement(digiVaultMenuItem);
 	}
 }
