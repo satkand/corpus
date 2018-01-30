@@ -12,7 +12,22 @@ public class HomePropertyPage extends BasePage {
 		super(driver);
 	}
 
+	private By homeJourneyBannerImage = By.id("au.com.suncorp.marketplace:id/homeJourneyBannerImage");
+	private By homeJourneyBannerHeading = By.id("au.com.suncorp.marketplace:id/journeyHeadingText");
+	private By homeJourneyBannerDescription = By.id("au.com.suncorp.marketplace:id/journeyDescriptionText");
 	private By startYourJourneyButton = By.id("au.com.suncorp.marketplace:id/startHomeJourneyButton");
+	
+	public WebElement checkHomeJourneyBannerImage() {
+		return find(homeJourneyBannerImage);
+	}
+	
+	public String getHomeJourneyBannerHeading() {
+		return getText(homeJourneyBannerHeading);
+	}
+	
+	public String getHomeJourneyBannerDescription() {
+		return getText(homeJourneyBannerDescription);
+	}
 	
 	public WebElement checkStartYourJourneyButton() {
 		return find(startYourJourneyButton);

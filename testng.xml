@@ -5,20 +5,60 @@
 	
 <classes>
 
+			<class name="test.marketplace.common.WelcomeTest"></class>
 
-	<class name="test.marketplace.PINReAuthPasswordTest"></class>
+			
+
+
+
+
+
 
 
 
 <!-- 
 
+			<class name="test.marketplace.vehicles.VehiclesTest"></class>
 
-	<class name="test.marketplace.PINReAuthPasswordTest"></class>
+					<class name="test.marketplace.common.WelcomeTest"></class>
+					<class name="test.marketplace.home.HomeJourneyTest"/>
+					<class name="test.marketplace.home.HomePropertyTest"></class>
+
+
+			<class name="test.marketplace.vehicles.VehiclesTest">
+
+			</class>
+			
+			
+
 		<class name="test.marketplace.LoginTest"></class>
-		
-		
 			<class name="test.marketplace.WelcomeTest"></class>
 	<class name="test.marketplace.PINSetupTest"></class>
+		<class name="test.marketplace.PINReAuthPasswordTest"></class>
+		<class name="test.marketplace.common.LandingTest"></class>
+		<class name="test.marketplace.home.HomePropertyTest"></class>
+			<class name="test.marketplace.wealth.FinanceTest"></class>
+			<class name="test.marketplace.common.NavigationMenuTest"></class>
+			<class name="test.marketplace.wealth.SpendingsTest">
+				<methods>
+					<include name="testEmptyTransactionsOnCategoryTabForMonthSelected"/>
+				</methods>
+			</class>
+					<class name="test.marketplace.home.HomePropertyTest"></class>
+						<class name="test.marketplace.common.NavigationMenuTest">
+					<methods>
+		<include name="testDismissingNavigationMenu"/>
+		</methods>
+			</class>
+			
+		<class name="test.marketplace.home.HomeJourneyTest">
+		<methods>
+		<include name="testNavigatingToHomeBuyingGuideLinks"/>
+		<include name="testHomeJourneyPageElements"/>
+		</methods>
+		</class>
+		
+	
 		
 	 -->
 </classes>

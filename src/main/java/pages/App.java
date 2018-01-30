@@ -22,6 +22,8 @@ import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.WelcomePage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
+import pages.marketplace.vehicles.VehicleDetailsPage;
+import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 
@@ -45,6 +47,8 @@ public class App extends BaseTest {
 	public HomeJourneyPage homeJourneyPage = null;
 	public FinancePage financePage = null;
 	public SpendingsPage spendingsPage = null;
+	public VehiclesPage vehiclesPage = null;
+	public VehicleDetailsPage vehicleDetailsPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -75,6 +79,8 @@ public class App extends BaseTest {
 		homeJourneyPage = new HomeJourneyPage(driver);
 		financePage = new FinancePage(driver);
 		spendingsPage = new SpendingsPage(driver);
+		vehiclesPage = new VehiclesPage(driver);
+		vehicleDetailsPage = new VehicleDetailsPage(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)
