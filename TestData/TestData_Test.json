@@ -384,6 +384,28 @@
 			}
 		]
 	},
+	"chatbot" :{
+		"externalUrl": {
+			"input" : "suncorp",
+			"websiteText" : "Suncorp Group website",
+			"websiteURL" : "https://www.suncorp.com.au/"
+		},
+		"phNo": {
+			"input" : "suncorp",
+			"phone" : "13 11 55"
+		},
+		"paragraph": {
+			"input": "suncorp",
+			"responses": [
+				"With a history dating back to 1916, Suncorp is one of Australia's most trusted financial services organisations.",
+				"Visit the Suncorp Group website or call us 13 11 55."
+			]
+		},
+		"singleResponseFromChatbot": {
+			"input": "test",
+			"responses": "Sorry, I don’t understand. Could you please reword your question."
+		}
+	},
 	"loginCredentials" :{
 		"validLoginCredentials" : {
 			"login1":{
@@ -523,6 +545,9 @@
 			"movingInTitleText": "Moving in",
 			"movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything…",
 			"movingInReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/moving-into-your-home.html"
+		},
+		"chatbot": {
+			"phoneLabel": "CALL NOW"
 		}
 	}
 }
