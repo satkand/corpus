@@ -7,7 +7,7 @@ import pages.App;
 
 public class OffersVehiclesTest extends App {
 	// scenario 1
-	@Test(groups = { "DMPM-814", "DMPM-926", "marketplace", "Offers journey-Vehicles", "priority-minor" })
+	@Test(groups = { "DMPM-814", "DMPM-926", "marketplace", "Offers", "priority-minor" })
 	public void testVehicleJourneyOffers() {
 		navigateToVehicleScreen();
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Vehicles Page Offers - No offer Image");
@@ -23,7 +23,7 @@ public class OffersVehiclesTest extends App {
 	}
 
 	// scenario 2
-	@Test(groups = { "DMPM-814", "DMPM-927", "marketplace", "Offers journey-Vehicles", "priority-minor" })
+	@Test(groups = { "DMPM-814", "DMPM-927", "marketplace", "Offers", "priority-minor" })
 	public void testRetryContentRetrievalVehiclesTab() {
 		navigateToVehicleScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()

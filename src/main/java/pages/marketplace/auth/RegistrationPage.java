@@ -26,11 +26,11 @@ public class RegistrationPage extends BasePage {
 	}
 	
 	public WebElement checkFirstName() {
-		return find(firstName, 30);
+		return find(firstName,10);
 	}
 
 	public WebElement checkCancelButton() {
-		return find(cancelButton, 30);
+		return find(cancelButton);
 	}
 
 

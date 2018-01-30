@@ -7,7 +7,7 @@ import pages.App;
 
 public class OffersWealthTest extends App {
 	// scenario 1
-	@Test(groups = { "DMPM-816", "DMPM-930", "marketplace", "Offers journey-Wealth", "priority-minor" })
+	@Test(groups = { "DMPM-816", "DMPM-930", "marketplace", "Offers", "priority-minor" })
 	public void testWealthJourneyOffers() {
 		navigateToWealthScreen();
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Wealth Page Offers - No offer Image");
@@ -23,7 +23,7 @@ public class OffersWealthTest extends App {
 	}
 
 	// scenario 2
-	@Test(groups = { "DMPM-816", "DMPM-931", "marketplace", "Offers journey-Wealth", "priority-minor" })
+	@Test(groups = { "DMPM-816", "DMPM-931", "marketplace", "Offers", "priority-minor" })
 	public void testRetryContentRetrievalWealthTab() {
 		navigateToWealthScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()

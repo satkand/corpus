@@ -7,7 +7,7 @@ import pages.App;
 
 public class OffersOverviewTab extends App {
 	// scenario 1
-	@Test(groups = { "DMPM-97", "DMPM-924", "marketplace", "Offers journey-Overview", "priority-minor" })
+	@Test(groups = { "DMPM-97", "DMPM-924", "marketplace", "Offers", "priority-minor" })
 	public void testOverviewTabOffers() {
 		navigateToOverviewScreen();
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Overview Page Offers - No offer Image");
@@ -24,7 +24,7 @@ public class OffersOverviewTab extends App {
 	}
 
 	// scenario 2
-	@Test(groups = { "DMPM-97", "DMPM-925", "marketplace", "Offers journey-Overview", "priority-minor" })
+	@Test(groups = { "DMPM-97", "DMPM-925", "marketplace", "Offers", "priority-minor" })
 	public void testRetryContentRetrievalOverviewTab() {
 		navigateToOverviewScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()
@@ -41,7 +41,7 @@ public class OffersOverviewTab extends App {
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
 	}
 
-	@Test(groups = { "DMPM-500", "DMPM-934", "DMPM-935", "marketplace", "Offers journey-Registration Page",
+	@Test(groups = { "DMPM-500", "DMPM-934", "DMPM-935", "marketplace", "Offers",
 			"priority-minor" })
 	public void testLinkToRegistrationPage() {
 		navigateToOverviewScreen();

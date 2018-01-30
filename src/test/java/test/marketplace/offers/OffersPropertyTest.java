@@ -7,7 +7,7 @@ import pages.App;
 
 public class OffersPropertyTest extends App {
 	// scenario 1
-	@Test(groups = { "DMPM-815", "DMPM-928", "marketplace", "Offers journey-Property", "priority-minor" })
+	@Test(groups = { "DMPM-815", "DMPM-928", "marketplace", "Offers", "priority-minor" })
 	public void testPropertyJourneyOffers() {
 		navigateToPropertyScreen();
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Property Page Offers - No offer Image");
@@ -20,7 +20,7 @@ public class OffersPropertyTest extends App {
 		}
 
 	// scenario 2
-	@Test(groups = { "DMPM-815", "DMPM-929", "marketplace", "Offers journey-Property", "priority-minor" })
+	@Test(groups = { "DMPM-815", "DMPM-929", "marketplace", "Offers", "priority-minor" })
 	public void testRetryContentRetrievalPropertyTab() {
 		navigateToPropertyScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()
@@ -36,7 +36,7 @@ public class OffersPropertyTest extends App {
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
 	}
 	
-	@Test(groups = { "DMPM-500", "DMPM-934","DMPM-935", "marketplace", "Offers journey-Registration Page", "priority-minor" })
+	@Test(groups = { "DMPM-500", "DMPM-934","DMPM-935", "marketplace", "Offers", "priority-minor" })
 	public void testLinkToRegistrationPage() {
 		navigateToPropertyScreen();
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No offer banner");

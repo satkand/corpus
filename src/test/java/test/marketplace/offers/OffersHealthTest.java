@@ -7,7 +7,7 @@ import pages.App;
 
 public class OffersHealthTest extends App {
 	// scenario 1
-	@Test(groups = { "DMPM-817", "DMPM-932", "marketplace", "Offers journey-Health", "priority-minor" })
+	@Test(groups = { "DMPM-817", "DMPM-932", "marketplace", "Offers", "priority-minor" })
 	public void testHealthJourneyOffers() {
 		navigateToHealthScreen();
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Health Page Offers - No offer Title");
@@ -23,7 +23,7 @@ public class OffersHealthTest extends App {
 	}
 
 	// scenario 2
-	@Test(groups = { "DMPM-817", "DMPM-933", "marketplace", "Offers journey-Health", "priority-minor" })
+	@Test(groups = { "DMPM-817", "DMPM-933", "marketplace", "Offers", "priority-minor" })
 	public void testRetryContentRetrievalHealthTab() {
 		navigateToHealthScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()
