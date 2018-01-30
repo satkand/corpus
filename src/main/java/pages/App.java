@@ -21,6 +21,7 @@ import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.LandingPage;
 import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.WelcomePage;
+import pages.marketplace.digitalVault.DigitalVaultPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
@@ -52,6 +53,7 @@ public class App extends BaseTest {
 	public VehicleDetailsPage vehicleDetailsPage = null;
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
+	protected DigitalVaultPage digitalVaultPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -87,6 +89,7 @@ public class App extends BaseTest {
 		vehicleDetailsPage = new VehicleDetailsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
+		digitalVaultPage = new DigitalVaultPage(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)
