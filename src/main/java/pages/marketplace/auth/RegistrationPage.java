@@ -21,6 +21,7 @@ public class RegistrationPage extends BasePage {
 	private By surnameField = By.id("au.com.suncorp.marketplace:id/surnameField");
 	private By dateField = By.id("au.com.suncorp.marketplace:id/dateOfBirthField");
 	private By postcodeField = By.id("au.com.suncorp.marketplace:id/postcodeField");
+	private By yearPicker = By.id("android:id/date_picker_year_picker");
 	private By okButton = By.id("android:id/button1");
 	private By nextButton = By.id("au.com.suncorp.marketplace:id/nextButton");
 	
@@ -250,12 +251,14 @@ public class RegistrationPage extends BasePage {
 	}
 	
 	public boolean checkPasswordRequirements(String errorMsg) {
-		System.out.println(getText(passwordErrorMsg));
-		System.out.println(errorMsg);
 		if(getText(passwordErrorMsg).contains(errorMsg)) {
 			return true;
 		}else
 			return false;
+	}
+	
+	public WebElement checkPasswordErrorMsg() {
+		return find(passwordErrorMsg);
 	}
 	
 	public boolean checkPasswordCharRequirements() {
@@ -363,10 +366,19 @@ public class RegistrationPage extends BasePage {
 	
 	public void enterPassword(String password) {
 		typeValue(password, passwordField);
+		dismissKeyboard();
 	}
 	
 	public void tapPasswordField() {
 		tapElement(passwordField);
+	}
+	
+	public void tapDateField() {
+		tapElement(dateField);
+	}
+	
+	public WebElement checkYearPicker() {
+		return find(yearPicker);
 	}
 	
 	public void tapConfirmPasswordField() {
@@ -375,6 +387,7 @@ public class RegistrationPage extends BasePage {
 	
 	public void enterConfirmPassword(String password) {
 		typeValue(password, confirmPasswordField);
+		dismissKeyboard();
 	}
 	
 	public String getPasswordErrorMsg() {
@@ -383,6 +396,10 @@ public class RegistrationPage extends BasePage {
 	
 	public String getConfirmPasswordErrorMsg() {
 		return getText(confirmPasswordErrorMsg);
+	}
+	
+	public WebElement checkConfirmPasswordErrorMsg() {
+		return find(confirmPasswordErrorMsg);
 	}
 	
 	public boolean checkWrongTicks() {

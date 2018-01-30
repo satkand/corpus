@@ -393,8 +393,8 @@
 			"mobileLong" : "453592486085082350",
 			"mobileInvalid" : "9897494549",
 			"shortPassword" : "4tger",
-			"firstNameInPassword" : "Abc123",
-			"lastNameInPassword" : "2xyz",
+			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
+			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
 			"onlyCharPassword" : "football",
 			"onlyCharUpperCasePassword" : "FOOTBALL",
 		}
@@ -526,8 +526,8 @@
 			"shortPasswordErrorMsg" : "Must be at least 7 characters long",
 			"firstNamePasswordErrorMsg" : "Must not contain your first name",
 			"lastNamePasswordErrorMsg" : "Must not contain your last name",
-			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\\n\\nMust contain at least one number",
-			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lower case letter\\nMust contain at least one number",
+			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
+			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
 			"passwordNotMatch" : "Password do not match",
 		}
 	}

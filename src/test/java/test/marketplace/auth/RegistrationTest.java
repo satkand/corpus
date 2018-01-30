@@ -1,5 +1,7 @@
 package test.marketplace.auth;
 
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -273,7 +275,7 @@ public class RegistrationTest extends App{
 		
 	}
 	
-	@Test(groups = {"DMPM-39", "DMPM-532", "marketplace", "Registration", "priority-major"})
+	@Test(groups = {"DMPM-39", "DMPM-532", "DMPM-572", "marketplace", "Registration", "priority-major"})
 	public void passwordFieldValidation() {
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
@@ -288,17 +290,37 @@ public class RegistrationTest extends App{
 		registrationPage.tapConfirmPasswordField();
 		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "shortPasswordErrorMsg")),
 				"Error msg not displayed");
-		
-//		utils.readTestDataList(args)
-		registrationPage.enterPassword(utils.readTestData("registration", "failure", "firstNameInPassword"));
-		registrationPage.tapConfirmPasswordField();
-		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "firstNamePasswordErrorMsg")),
+		registrationPage.tapPasswordField();
+		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "shortPasswordErrorMsg")),
 				"Error msg not displayed");
 		
-		registrationPage.enterPassword(utils.readTestData("registration", "failure", "lastNameInPassword"));
-		registrationPage.tapConfirmPasswordField();
-		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
+		Assert.assertNull(registrationPage.checkPasswordErrorMsg(), "Error msg still seen");
+		
+		List<Object> firstNameInPasswordList = (List<Object>)utils.readTestDataList("registration", "failure", "firstNameInPassword");
+		for(Object firstNameInPassword : (List<Object>)firstNameInPasswordList) {		
+			registrationPage.enterPassword(firstNameInPassword.toString());
+			registrationPage.tapConfirmPasswordField();
+			Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "firstNamePasswordErrorMsg")),
+					"Error msg not displayed");
+		}	
+
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
+		Assert.assertNull(registrationPage.checkPasswordErrorMsg(), "Error msg still seen");
+		
+		List<Object> lastNameInPasswordList = (List<Object>)utils.readTestDataList("registration", "failure", "lastNameInPassword");
+		for(Object lastNameInPassword : (List<Object>)lastNameInPasswordList) {		
+			registrationPage.enterPassword(lastNameInPassword.toString());
+			registrationPage.tapConfirmPasswordField();
+			Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
+					"Error msg not displayed");
+		}	
+		
+		registrationPage.tapPasswordField();
+		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "shortPasswordErrorMsg")),
 				"Error msg not displayed");
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
+		Assert.assertNull(registrationPage.checkPasswordErrorMsg(), "Error msg still seen");
 		
 		registrationPage.enterPassword(utils.readTestData("registration", "failure", "onlyCharPassword"));
 		registrationPage.tapConfirmPasswordField();
@@ -307,7 +329,6 @@ public class RegistrationTest extends App{
 		
 		registrationPage.enterPassword(utils.readTestData("registration", "failure", "onlyCharUpperCasePassword"));
 		registrationPage.tapConfirmPasswordField();
-		System.out.println(utils.readTestData("copy", "registrationPage", "onlyCharUpperCasePasswordErrorMsg"));
 		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "onlyCharUpperCasePasswordErrorMsg")),
 				"Error msg not displayed");
 		
@@ -318,8 +339,86 @@ public class RegistrationTest extends App{
 		registrationPage.enterConfirmPassword(utils.readTestData("registration", "failure", "shortPassword"));
 		registrationPage.tapRegisterButton();
 		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "passwordNotMatch"));
-		
+		registrationPage.tapConfirmPasswordField();
+		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "passwordNotMatch"));
+		registrationPage.enterConfirmPassword(utils.readTestData("registration", "success", "password"));
+		Assert.assertNull(registrationPage.checkConfirmPasswordErrorMsg(), "Error msg still seen");
 	}	
+	
+	@Test(groups = {"DMPM-39", "DMPM-573", "marketplace", "Registration", "priority-major"})
+	public void passwordFieldValidationOnSubmit() {
+		
+		navigateToRegistrationPage();
+		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
+				utils.readTestData("registration", "success", "surname"),
+				utils.readTestData("registration", "success", "date"),
+				utils.readTestData("registration", "success", "postcode"));
+		registrationPage.tapNextButton();
+		registrationPage.fill2ndPageFields(utils.readTestData("registration", "success", "email"),
+				utils.readTestData("registration", "success", "mobile"));
+		registrationPage.tapNextButton();
+		registrationPage.enterPassword(utils.readTestData("registration", "failure", "shortPassword"));
+		registrationPage.tapRegisterButton();
+		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "shortPasswordErrorMsg")),
+				"Error msg not displayed");
+		registrationPage.tapPasswordField();
+		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "shortPasswordErrorMsg")),
+				"Error msg not displayed");
+		
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
+		Assert.assertNull(registrationPage.checkPasswordErrorMsg(), "Error msg still seen");
+		
+		List<Object> firstNameInPasswordList = (List<Object>)utils.readTestDataList("registration", "failure", "firstNameInPassword");
+		for(Object firstNameInPassword : (List<Object>)firstNameInPasswordList) {		
+			registrationPage.enterPassword(firstNameInPassword.toString());
+			registrationPage.tapRegisterButton();
+			Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "firstNamePasswordErrorMsg")),
+					"Error msg not displayed");
+		}	
+
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
+		Assert.assertNull(registrationPage.checkPasswordErrorMsg(), "Error msg still seen");
+		
+		List<Object> lastNameInPasswordList = (List<Object>)utils.readTestDataList("registration", "failure", "lastNameInPassword");
+		for(Object lastNameInPassword : (List<Object>)lastNameInPasswordList) {		
+			registrationPage.enterPassword(lastNameInPassword.toString());
+			registrationPage.tapRegisterButton();
+			Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
+					"Error msg not displayed");
+		}	
+		
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
+		Assert.assertNull(registrationPage.checkPasswordErrorMsg(), "Error msg still seen");
+		
+		registrationPage.enterPassword(utils.readTestData("registration", "failure", "onlyCharPassword"));
+		registrationPage.tapRegisterButton();
+		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "onlycharPasswordErrorMsg")),
+				"Error msg not displayed");
+		
+		registrationPage.enterPassword(utils.readTestData("registration", "failure", "onlyCharUpperCasePassword"));
+		registrationPage.tapRegisterButton();
+		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "onlyCharUpperCasePasswordErrorMsg")),
+				"Error msg not displayed");
+		
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
+		registrationPage.tapRegisterButton();
+		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		
+		registrationPage.enterConfirmPassword(utils.readTestData("registration", "failure", "shortPassword"));
+		registrationPage.tapRegisterButton();
+		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "passwordNotMatch"));
+		registrationPage.tapRegisterButton();
+		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "passwordNotMatch"));
+		registrationPage.enterConfirmPassword(utils.readTestData("registration", "success", "password"));
+		Assert.assertNull(registrationPage.checkConfirmPasswordErrorMsg(), "Error msg still seen");
+	}	
+	
+	@Test(groups = {"DMPM-1624", "DMPM-2068", "marketplace", "Registration", "priority-minor"})
+	public void updatedDatePicker() {
+		navigateToRegistrationPage();
+		registrationPage.tapDateField();
+		Assert.assertNotNull(registrationPage.checkYearPicker(), "Year picker not seen");
+	}
 	
 	private void navigateToRegistrationPage() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
