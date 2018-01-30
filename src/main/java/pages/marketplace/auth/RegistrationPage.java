@@ -15,6 +15,7 @@ public class RegistrationPage extends BasePage {
 	//TODO -> id needs to be added
 	private By registrationPageTitle = By.xpath("//android.widget.TextView[@text='Register for the app']");
 	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	private By firstName = By.id("au.com.suncorp.marketplace:id/firstNameField");
 	
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
@@ -23,5 +24,15 @@ public class RegistrationPage extends BasePage {
 	public void tapCancelButton(){
 		tapElement(cancelButton);
 	}
+	
+	public WebElement checkFirstName() {
+		return find(firstName,10);
+	}
+
+	public WebElement checkCancelButton() {
+		return find(cancelButton);
+	}
+
+
 	
 }
