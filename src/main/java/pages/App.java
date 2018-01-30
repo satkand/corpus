@@ -19,6 +19,7 @@ import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.LandingPage;
 import pages.marketplace.common.NavigationMenuPage;
+import pages.marketplace.common.SettingsPage;
 import pages.marketplace.common.WelcomePage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
@@ -49,6 +50,8 @@ public class App extends BaseTest {
 	public SpendingsPage spendingsPage = null;
 	public VehiclesPage vehiclesPage = null;
 	public VehicleDetailsPage vehicleDetailsPage = null;
+	public SettingsPage settingsPage = null;
+
 
 	@BeforeClass
 	public void initializeApp() {
@@ -81,6 +84,8 @@ public class App extends BaseTest {
 		spendingsPage = new SpendingsPage(driver);
 		vehiclesPage = new VehiclesPage(driver);
 		vehicleDetailsPage = new VehicleDetailsPage(driver);
+		settingsPage = new SettingsPage(driver);
+
 	}
 	
 	@BeforeMethod(alwaysRun = true)

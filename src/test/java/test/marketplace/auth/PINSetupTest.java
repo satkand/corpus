@@ -82,6 +82,17 @@ public class PINSetupTest extends App {
 		Assert.assertNotNull(dummy.checkPinSetupOption(), "Cancel didnt close Reenetr PIN Setup page");	
 	}
 	
+	@Test (groups = {"DMPM-52", "DMPM-1143", "marketplace", "pin", "priority-minor"})
+	public void navigateToSettingsScreen() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapLoginButton();
+		loginToApp(utils.readTestData("hasNoProducts", "login"), 
+				utils.readTestData("hasNoProducts", "pwd"));
+		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.tapSettingsMenuItem();
+		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "Settings title not seen");
+	}
+	
 	private void enterPIN(String pin) {
 		for(char pinDigit : pin.toCharArray()) {
 			pinCustomKeypad.tapPINEntry(pinDigit);
@@ -93,4 +104,5 @@ public class PINSetupTest extends App {
 		welcomePage.tapGuestAccessButton();
 		dummy.tapPinSetupOption();
 	}
+	
 }

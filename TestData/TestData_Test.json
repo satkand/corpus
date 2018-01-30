@@ -473,6 +473,10 @@
 				"pwdError": null,
 			}]
 	},
+	"hasNoProducts" : {
+		"login": "wonderwoman@gmail.com",
+		"pwd": "Password2"
+	},
 
 
 	"copy" : {

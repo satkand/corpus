@@ -4,16 +4,12 @@
 	<test name="Test">
 	
 <classes>
-
-			<class name="test.marketplace.common.WelcomeTest"></class>
-
 			
 
-
-
-
-
-
+	<class name="test.marketplace.auth.PINSetupTest">
+		<include name="navigateToSettingsScreen" />
+	</class>
+		
 
 
 <!-- 
