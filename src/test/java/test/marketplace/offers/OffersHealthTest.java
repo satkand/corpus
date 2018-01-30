@@ -10,7 +10,6 @@ public class OffersHealthTest extends App {
 	@Test(groups = { "DMPM-817", "DMPM-932", "marketplace", "Offers journey-Health", "priority-minor" })
 	public void testHealthJourneyOffers() {
 		navigateToHealthScreen();
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Health Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Health Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Health Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Health Page Offers - No Background Image");
@@ -34,7 +33,7 @@ public class OffersHealthTest extends App {
 			Assert.assertNotNull(landingPage.checkHealthTab(), " Offers flow - Navigation back to Health tab failed");
 			landingPage.tapHealthTab();
 		}
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Health Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Health Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Health Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Health Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Health Page Offers - No Background Image");

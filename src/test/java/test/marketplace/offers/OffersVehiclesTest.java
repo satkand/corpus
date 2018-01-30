@@ -10,7 +10,7 @@ public class OffersVehiclesTest extends App {
 	@Test(groups = { "DMPM-814", "DMPM-926", "marketplace", "Offers journey-Vehicles", "priority-minor" })
 	public void testVehicleJourneyOffers() {
 		navigateToVehicleScreen();
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Vehicles Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Vehicles Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Vehicle tab Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Vehicle tab Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Vehicle tab Offers - No Background Image");
@@ -34,7 +34,7 @@ public class OffersVehiclesTest extends App {
 					" Offers flow - Navigation back to Vehicles tab failed");
 			landingPage.tapVehiclesTab();
 		}
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Vehicles Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Vehicles Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Vehicle tab Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Vehicle tab Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Vehicle tab Offers - No Background Image");

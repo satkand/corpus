@@ -10,7 +10,7 @@ public class OffersPropertyTest extends App {
 	@Test(groups = { "DMPM-815", "DMPM-928", "marketplace", "Offers journey-Property", "priority-minor" })
 	public void testPropertyJourneyOffers() {
 		navigateToPropertyScreen();
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Property Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Property Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),utils.readTestData("copy", "offersPage", "propertyTab", "offerDescription"),"offer description for property tab is not shown as expected");
@@ -31,7 +31,7 @@ public class OffersPropertyTest extends App {
 					" Offers flow - Navigation back to Property tab failed");
 			landingPage.tapHomeTab();
 		}
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Property Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Property Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
 	}

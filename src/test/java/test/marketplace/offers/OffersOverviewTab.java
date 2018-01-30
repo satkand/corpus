@@ -10,7 +10,7 @@ public class OffersOverviewTab extends App {
 	@Test(groups = { "DMPM-97", "DMPM-924", "marketplace", "Offers journey-Overview", "priority-minor" })
 	public void testOverviewTabOffers() {
 		navigateToOverviewScreen();
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Overview Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Overview Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Overview Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Overview Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
@@ -35,7 +35,7 @@ public class OffersOverviewTab extends App {
 					" Offers flow - Navigation back to Overview tab failed");
 			landingPage.tapSuncorpTab();
 		}
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Overview Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Overview Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Overview Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Overview Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");

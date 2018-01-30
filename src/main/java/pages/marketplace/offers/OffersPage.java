@@ -20,7 +20,7 @@ public class OffersPage extends BasePage {
 	private By backgroundImage = By.id("au.com.suncorp.marketplace:id/offerBackgroundImage");
 	
 
-	public WebElement checkOfferImage() {
+	public WebElement checkOfferIcon() {
 		return find(offerIcon, 30);
 	}
 

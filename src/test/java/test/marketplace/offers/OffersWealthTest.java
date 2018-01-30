@@ -10,7 +10,7 @@ public class OffersWealthTest extends App {
 	@Test(groups = { "DMPM-816", "DMPM-930", "marketplace", "Offers journey-Wealth", "priority-minor" })
 	public void testWealthJourneyOffers() {
 		navigateToWealthScreen();
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Wealth Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Wealth Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Wealth tab Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Wealth tab Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
@@ -33,7 +33,7 @@ public class OffersWealthTest extends App {
 			Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Navigation back to Vehicles tab failed");
 			landingPage.tapWealthTab();
 		}
-		Assert.assertNotNull(offersPage.checkOfferImage(), "Wealth Page Offers - No offer Image");
+		Assert.assertNotNull(offersPage.checkOfferIcon(), "Wealth Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Wealth tab Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Wealth tab Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
