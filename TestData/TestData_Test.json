@@ -406,6 +406,9 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
+	"digitalVault" :{
+			"imageName" : "TestName"
+	},
 	"loginCredentials" :{
 		"validLoginCredentials" : {
 			"login1":{

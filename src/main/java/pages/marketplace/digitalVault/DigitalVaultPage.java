@@ -94,11 +94,11 @@ public class DigitalVaultPage extends BasePage {
 		return find(renameImageButton);
 	}
 	
-	public void tapbackToGalleryButton() {
+	public void tapBackToGalleryButton() {
 		tapElement(backToGalleryButton);
 	}
 	
-	public WebElement checkbackToGalleryButton() {
+	public WebElement checkBackToGalleryButton() {
 		return find(backToGalleryButton);
 	}
 	
@@ -108,6 +108,14 @@ public class DigitalVaultPage extends BasePage {
 	
 	public void tapSaveEditedTitleButton() {
 		tapElement(saveEditedTitleButton);
+	}
+	
+	public WebElement checkSaveEditedTitleButton() {
+		return find(saveEditedTitleButton);
+	}
+	
+	public void renameImage(String renameImage) {
+		typeValue(renameImage, editPhotoTitleText);
 	}
 }
 
