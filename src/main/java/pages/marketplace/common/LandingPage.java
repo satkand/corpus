@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class LandingPage extends BasePage {
 
@@ -13,15 +14,15 @@ public class LandingPage extends BasePage {
 	}
 
 	private By guestAccessPageTitle = By.xpath("//android.widget.TextView[@text='One Suncorp']");
-	//TODO
-	private By backButton = By.id("TODO");
+	private By chatbotOption = By.id("au.com.suncorp.marketplace:id/chatbotOption");
+	// TODO:
+	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='ONE SUNCORP']");
 	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLES']");
 	private By wealthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='WEALTH']");
 	private By healthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='HEALTH']");
-	
 	/*
 	private By suncorpTab = By.xpath("//android.widget.TextView[@text='ONE SUNCORP']");
 	private By homeTab = By.xpath("//android.widget.TextView[@text='HOME']");
@@ -29,8 +30,17 @@ public class LandingPage extends BasePage {
 	private By wealthTab = By.xpath("//android.widget.TextView[@text='WEALTH']");
 	private By healthTab = By.xpath("//android.widget.TextView[@text='HEALTH']");
 	*/
+	
 	public WebElement checkGuestAccessPageTitle() {
 		return find(guestAccessPageTitle, 20);
+	}
+	
+	public WebElement checkChatbotOption() {
+		return find(chatbotOption, 20);
+	}
+	
+	public void tapChatbotOption(){
+		tapElement(chatbotOption);
 	}
 	
 	public void tapBackButton(){

@@ -83,7 +83,8 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	
+
+
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
 	}
@@ -402,11 +403,19 @@ public class RegistrationPage extends BasePage {
 		return find(confirmPasswordErrorMsg);
 	}
 	
+	public WebElement checkFirstNameField() {
+		return find(firstNameField);
+	}
+	
 	public boolean checkWrongTicks() {
 		if(find(pwdLengthTickWrong) != null  && find(pwdCharTickWrong) != null && find(pwdNameTickWrong) != null)
 			return true;
 		else
 			return false;
+	}
+
+	public WebElement checkCancelButton() {
+		return find(cancelButton);
 	}
 
 }

@@ -23,10 +23,8 @@ public class ConfigPage extends BasePage {
 		if(find(configPageTitle,30) != null) {
 			// Added this just to add some delay before checking for keyboard
 			find(continueButton,10);
-			if(isKeyboardPresent() == true) {
-				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$keyboard enabled");
-			} else {
-				System.out.println("##################################################################################keyboard not enabled");
+			if(!(isKeyboardPresent() == true)) {
+				isKeyboardPresent();
 			}
 			for(int i=0; i<=2; i++) {
 				swipeScreen("down");
