@@ -41,32 +41,38 @@ public class DigitalVaultTest extends App {
 		Assert.assertNotNull(digitalVaultPage.checkAddPhotosButton(), "Add photo button is not displayed");
 		digitalVaultPage.tapAddPhotoButton();
 		digitalVaultPage.tapAllowCameraButton();
-		Assert.assertNotNull(digitalVaultPage.checkCameraButton(), "Camera is not displayed");
+		Assert.assertNotNull(digitalVaultPage.checkCameraButton(),"Camera is not displayed");
 		digitalVaultPage.tapCameraButton();
 		Assert.assertNotNull(digitalVaultPage.checkOkButton(), "Photo is not captured");
 		digitalVaultPage.tapOkButton();
-		Assert.assertNotNull(digitalVaultPage.checkRenameImageButton(), "Rename button is not displayed");
+		Assert.assertNotNull(digitalVaultPage.checkRenameImageButton(),"Rename button is not displayed");
 		digitalVaultPage.tapRenameImageButton();
 		digitalVaultPage.renameImage("TestName");
 		Assert.assertNotNull(digitalVaultPage.checkSaveEditedTitleButton(), "Saving button after editing Image name is not displayed");	
 		digitalVaultPage.tapSaveEditedTitleButton();
 		Assert.assertNotNull(digitalVaultPage.checkSaveImageButton(), "Save Image button is not displayed");	
 		digitalVaultPage.tapSaveImageButton();	
-		Assert.assertNotNull(digitalVaultPage.checkTakePhotoButton(), "navigation back to Gallery is not successful");	
-		}
+		Assert.assertNotNull(digitalVaultPage.checkTakePhotoButton(), "navigation back to Gallery is not successful");
+}
 	private void navigateToDigiVaultPage() {
-		// welcomePage.tapLoginButton();
-		// loginToApp(utils.readTestData("hasImages", "login"),
-		// utils.readTestData("hasImages", "pwd"));
+		//welcomePage.tapLoginButton();
+		//loginToApp(utils.readTestData("hasImages", "login"), utils.readTestData("hasImages", "pwd"));
 		welcomePage.tapGuestAccessButton();
-		// if (pinAuthPage.checkPinPromptDismissButton().isDisplayed());
-		// {
-		// pinAuthPage.tapPinPromptDismissButton();
-		// }
+//		if (pinAuthPage.checkPinPromptDismissButton().isDisplayed());
+//			{
+//			pinAuthPage.tapPinPromptDismissButton();
+//			}
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkDigiVaultMenuIcon(), "DigiVault Menu button is not displayed");
 		navigationMenu.tapDigiVaultMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Hamburger menu or navigation menu is not dispalyed");
 		Assert.assertNotNull(digitalVaultPage.checkTakePhotoButton(), "DigiVault Menu is not dispalyed");
+//		digitalVaultPage.tapTakePhotoButton();
+//		digitalVaultPage.tapAddPhotoButton();
+//		//digitalVaultPage.tapAllowCameraButton();
+//        digitalVaultPage.tapCameraButton();
+//        digitalVaultPage.tapOkButton();
+//        digitalVaultPage.tapSaveImageButton();
+
 	}
 }

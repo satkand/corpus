@@ -94,11 +94,16 @@ public class DigitalVaultPage extends BasePage {
 		return find(renameImageButton);
 	}
 	
+
 	public void tapBackToGalleryButton() {
 		tapElement(backToGalleryButton);
 	}
 	
-	public WebElement checkBackToGalleryButton() {
+	public void tapbackToGalleryButton() {
+		tapElement(backToGalleryButton);
+	}
+	
+	public WebElement checkbackToGalleryButton() {
 		return find(backToGalleryButton);
 	}
 	
