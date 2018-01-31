@@ -72,9 +72,6 @@ public class RegistrationPage extends BasePage {
 	private By passwordCharRequirements2Field = By.id("au.com.suncorp.marketplace:id/atLeastOneUppercase");
 	private By passwordCharRequirements3Field = By.id("au.com.suncorp.marketplace:id/atLeastOneNumber");
 	private By passwordNameRequirementsField = By.id("au.com.suncorp.marketplace:id/containsNameStatusLabel");
-	private By pwdLengthTickWrong = By.xpath("(//XCUIElementTypeImage[@name=\"ic_tick_wrong\"])[1]");
-	private By pwdCharTickWrong = By.xpath("(//XCUIElementTypeImage[@name=\"ic_tick_wrong\"])[2]");
-	private By pwdNameTickWrong = By.xpath("(//XCUIElementTypeImage[@name=\"ic_tick_wrong\"])[3]");
 	private By passwordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/passwordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
@@ -382,13 +379,6 @@ public class RegistrationPage extends BasePage {
 	
 	public WebElement checkFirstNameField() {
 		return find(firstNameField);
-	}
-	
-	public boolean checkWrongTicks() {
-		if(find(pwdLengthTickWrong) != null  && find(pwdCharTickWrong) != null && find(pwdNameTickWrong) != null)
-			return true;
-		else
-			return false;
 	}
 
 	public WebElement checkCancelButton() {
