@@ -22,7 +22,7 @@ public class RegistrationTest extends App{
 					utils.readTestData("registration", "success", "mobile"));
 			registrationPage.tapNextButton();
 			registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
-			Assert.assertNotNull(registrationPage.checkPinSetupScreenDisplayed(),"Logging in message is not displayed");	
+			Assert.assertNotNull(pinSetupPage.checkEnterPINLabel(),"Pin setup screen is not displayed");	
 	}
 	
 	@Test(groups = {"DMPM-185", "DMPM-375", "marketplace", "Registration", "priority-major"})
@@ -41,7 +41,7 @@ public class RegistrationTest extends App{
 	}
 		
 	@Test(groups = {"DMPM-185", "DMPM-413", "marketplace", "Registration", "priority-major"})
-	public void validationOnSubmit() {
+	public void testValidationOnSubmit() {
 		navigateToRegistrationPage();
 		registrationPage.tapNextButton();
 		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
@@ -58,15 +58,14 @@ public class RegistrationTest extends App{
 		Assert.assertNotNull(registrationPage.getPostcodeErrorMsg());
 		registrationPage.enterPostcode(utils.readTestData("registration", "success", "postcode"));
 		registrationPage.tapNextButton();
-		Assert.assertNotNull(registrationPage.checkRegisterPage2Title());
-		
-		registrationPage.goBack();
+		Assert.assertNotNull(registrationPage.checkRegisterPage2Title());	
+		common.goBack();
 		Assert.assertNotNull(registrationPage.checkRegisterPage1Title());
 		
 	}
 	
 	@Test(groups = {"DMPM-189", "DMPM-492", "marketplace", "Registration", "priority-minor"})
-	public void validationOnSubmitEmailScreen() {
+	public void testValidationOnSubmitEmailScreen() {
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
@@ -103,7 +102,7 @@ public class RegistrationTest extends App{
 	}
 */
 	@Test(groups = {"DMPM-185", "DMPM-377","marketplace", "Registration", "priority-major"})
-	public void inlineErrorValidations() {
+	public void testInlineErrorValidations() {
 		navigateToRegistrationPage();
 		registrationPage.tapFirstNameField();
 
@@ -126,7 +125,7 @@ public class RegistrationTest extends App{
 	}
 	
 	@Test(groups = {"DMPM-45", "DMPM-460", "marketplace", "Registration", "priority-minor"})
-	public void displayUserTips() {
+	public void testDisplayUserTips() {
 		navigateToRegistrationPage();
 		registrationPage.tapFirstNameField();
 		Assert.assertEquals(registrationPage.getFirstNameUserTip(),utils.readTestData("copy", "registrationPage", "firstNameUserTip"));
@@ -144,7 +143,7 @@ public class RegistrationTest extends App{
 	}
 
 	@Test(groups = {"DMPM-189", "DMPM-487", "DMPM-488", "marketplace", "Registration", "priority-minor"})
-	public void inlineError2ndPage() {
+	public void testInlineError2ndPage() {
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
@@ -160,7 +159,7 @@ public class RegistrationTest extends App{
 	}
 	
 	@Test(groups = {"DMPM-189", "DMPM-489" ,"DMPM-490", "marketplace", "Registration", "priority-minor"})
-	public void inlineError2ndPageOnTapOut() {
+	public void testInlineError2ndPageOnTapOut() {
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
@@ -195,7 +194,7 @@ public class RegistrationTest extends App{
 	}
 	*/
 	@Test(groups = {"DMPM-189", "DMPM-491", "marketplace", "Registration", "priority-minor"})
-	public void correctingInvalidData() {
+	public void testCorrectingInvalidData() {
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
@@ -214,7 +213,7 @@ public class RegistrationTest extends App{
 	}
 
 	@Test(groups = {"DMPM-189", "DMPM-494", "marketplace", "Registration", "priority-minor"})
-	public void cancelRegistration() {
+	public void testCancelRegistration() {
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
@@ -228,7 +227,7 @@ public class RegistrationTest extends App{
 	}
 	
 	@Test(groups = {"DMPM-39", "DMPM-530", "marketplace", "Registration", "priority-major"})
-	public void passwordSetupScreen() {
+	public void testPasswordSetupScreen() {
 		
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
@@ -256,7 +255,7 @@ public class RegistrationTest extends App{
 	
 	
 	@Test(groups = {"DMPM-39", "DMPM-531", "marketplace", "Registration", "priority-major"})
-	public void passwordScreenInlineErrors() {
+	public void testPasswordScreenInlineErrors() {
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
@@ -276,7 +275,7 @@ public class RegistrationTest extends App{
 	}
 	
 	@Test(groups = {"DMPM-39", "DMPM-532", "DMPM-572", "marketplace", "Registration", "priority-major"})
-	public void passwordFieldValidation() {
+	public void testPasswordFieldValidation() {
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
@@ -346,7 +345,7 @@ public class RegistrationTest extends App{
 	}	
 	
 	@Test(groups = {"DMPM-39", "DMPM-573", "marketplace", "Registration", "priority-major"})
-	public void passwordFieldValidationOnSubmit() {
+	public void testPasswordFieldValidationOnSubmit() {
 		
 		navigateToRegistrationPage();
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
@@ -414,7 +413,7 @@ public class RegistrationTest extends App{
 	}	
 	
 	@Test(groups = {"DMPM-1624", "DMPM-2068", "marketplace", "Registration", "priority-minor"})
-	public void updatedDatePicker() {
+	public void testUpdatedDatePicker() {
 		navigateToRegistrationPage();
 		registrationPage.tapDateField();
 		Assert.assertNotNull(registrationPage.checkYearPicker(), "Year picker not seen");

@@ -36,19 +36,15 @@ public class RegistrationPage extends BasePage {
 	
 	private By firstNameErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/firstNameInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	private By surnameErrorMsg = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
-			+ "TextInputLayout[2]/android.widget.LinearLayout/android.widget.TextView");
+	private By surnameErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/surnameInputLayout']"
+			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By dobErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/dateOfBirthInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By postcodeErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/postcodeInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
-	private By emailErrorMsg = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
-			+ "TextInputLayout[1]/android.widget.LinearLayout/android.widget.TextView");
 	private By invalidEmailErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/emailAddressInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	private By mobileErrorMsg = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
-			+ "TextInputLayout[2]/android.widget.LinearLayout/android.widget.TextView");
 	private By invalidMobileErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/mobileInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
@@ -129,7 +125,7 @@ public class RegistrationPage extends BasePage {
 	public void fill1stPageFields(String firstName, String surname, String date, String postcode) {
 		typeValue(firstName, firstNameField);
 		typeValue(surname, surnameField);
-		//datepicker to be implemented
+		//TODO datepicker to be implemented
 		tapElement(dateField);
 
 		tapElement(okButton);
@@ -140,15 +136,12 @@ public class RegistrationPage extends BasePage {
 	public void fill1stPageFieldsWithoutPostcode(String firstName, String surname, String date) {
 		typeValue(firstName, firstNameField);
 		typeValue(surname, surnameField);
-		//datepicker to be implemented
+		//TODO datepicker to be implemented
 		tapElement(dateField);
 		tapElement(okButton);
 		dismissKeyboard();
 	}
 	
-	public void tapDismissKeyboard() {
-		dismissKeyboard();
-	}
 	public void enterPostcode(String postcode) {
 		typeValue(postcode,postcodeField);
 		dismissKeyboard();
@@ -223,20 +216,16 @@ public class RegistrationPage extends BasePage {
 		return getText(mobileNumberUserTip);
 	}
 	
-	public void goBack() {
-		navigateBack();
-	}
-	
 	public WebElement checkMobileNumberUserTip() {
 		return find(mobileNumberUserTip);
 	}
 	
 	public WebElement checkEmailErrorMsg() {
-		return find(emailErrorMsg);
+		return find(invalidEmailErrorMsg);
 	}
 	
 	public WebElement checkMobileErrorMsg() {
-		return find(mobileErrorMsg);
+		return find(invalidMobileErrorMsg);
 	}
 	
 	public WebElement checkPasswordField() {
@@ -309,10 +298,6 @@ public class RegistrationPage extends BasePage {
 		return getText(postcodeErrorMsg);
 	}
 	
-	public String getEmailErrorMsg() {
-		return getText(emailErrorMsg);
-	}
-	
 	public String getInvalidEmailErrorMsg() {
 		return getText(invalidEmailErrorMsg);
 	}
@@ -349,20 +334,12 @@ public class RegistrationPage extends BasePage {
 		return getText(invalidTextErrorMsg);
 	}
 	
-	public String getMobileErrorMsg() {
-		return getText(mobileErrorMsg);
-	}
-	
 	public WebElement checkRegisterPage2Title() {
 		return find(registerPage2Title);
 	}
 	
 	public WebElement checkRegisterPage1Title() {
 		return find(registerPage1Title);
-	}
-	
-	public WebElement checkPinSetupScreenDisplayed() {
-		return find(pinSetupScreenTitle);
 	}	
 	
 	public void enterPassword(String password) {
