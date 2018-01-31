@@ -108,6 +108,9 @@ public class App extends BaseTest {
 	public void loginToApp(String login, String pwd) {
 		loginPage.enterLoginCredentials(login, pwd);
 		loginPage.tapLoginButton();
+		if(loginPage.checkEnablePinButton() != null) {
+			loginPage.tapMaybeLater();
+		}
 	}
 	
 	/*

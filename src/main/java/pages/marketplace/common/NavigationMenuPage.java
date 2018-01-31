@@ -75,6 +75,10 @@ public class NavigationMenuPage extends BasePage {
 		 tapElement(fapiSettingsMenuItem);
 	}
 	
+	public WebElement checkSettingsMenuItem() {
+		return find(settingsMenuItem);
+	}
+	
 	public void tapSettingsMenuItem() {
 		tapElement(settingsMenuItem);
 	}
