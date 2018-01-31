@@ -14,6 +14,7 @@ import pages.marketplace.auth.PINCustomKeypad;
 import pages.marketplace.auth.PINReAuthPasswordPage;
 import pages.marketplace.auth.PINSetupPage;
 import pages.marketplace.auth.RegistrationPage;
+import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
@@ -29,13 +30,12 @@ import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 
 public class App extends BaseTest {
-	
+	public AutoUtilities utils = null;
+	public FluentAssert fluentAssert = null;	
 	public WelcomePage welcomePage = null;
 	public LoginPage loginPage = null;
 	public RegistrationPage registrationPage = null;
 	public PINSetupPage pinSetupPage = null;
-	public FluentAssert fluentAssert = null;
-	public AutoUtilities utils = null;
 	public DummyPageWithLinks dummy = null;
 	public PINAuthPage pinAuthPage = null;
 	public PINReAuthPasswordPage pinReAuthPasswordPage = null;
@@ -50,6 +50,7 @@ public class App extends BaseTest {
 	public SpendingsPage spendingsPage = null;
 	public VehiclesPage vehiclesPage = null;
 	public VehicleDetailsPage vehicleDetailsPage = null;
+	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
 
 	@BeforeClass
@@ -63,6 +64,7 @@ public class App extends BaseTest {
 		// Initializing the fleuntAssert object for global use.
 		fluentAssert = new FluentAssert();
 
+		
 		// Initializing the various pages of the app for use across all tests
 		welcomePage = new WelcomePage(driver);
 		loginPage = new LoginPage(driver);
@@ -83,6 +85,7 @@ public class App extends BaseTest {
 		spendingsPage = new SpendingsPage(driver);
 		vehiclesPage = new VehiclesPage(driver);
 		vehicleDetailsPage = new VehicleDetailsPage(driver);
+		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
 	}
 	
