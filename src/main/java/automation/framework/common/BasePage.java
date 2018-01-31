@@ -43,7 +43,6 @@ import io.appium.java_client.MobileElement;
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
@@ -146,9 +145,38 @@ public class BasePage {
 		find(locator).sendKeys(inputValue);
 	}
 	
+	protected void clearValue(By locator) {
+		find(locator).clear();
+	}
+	
 	protected void putAppInBackground() {
 		Duration duration = Duration.ofMillis((long) 10);
 		driver.runAppInBackground(duration);
+	}
+	
+	protected void longPressOnAnElement(By locator) {
+
+		TouchAction ta = new TouchAction(driver);
+		ta.longPress(find(locator)).release().perform();
+		
+		/* [OR]
+		TouchAction ta = new TouchAction(driver);
+		int startX = find(locator).getLocation().getX();
+		int startY = find(locator).getLocation().getY();
+		int endX = startX + find(locator).getSize().getWidth();
+		int endY = startY + find(locator).getSize().getHeight();
+		ta.press(startX,startY).waitAction(Duration.ofMillis(10000)).moveTo(endX,endY).release().perform();	
+		 */
+	}
+	
+	protected void tapByOffsetFromStart(By locator, int offsetX, int offsetY) {
+		TouchAction ta = new TouchAction(driver);
+		ta.press(find(locator).getLocation().getX() + offsetX, find(locator).getLocation().getY() + offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
+	}
+	
+	protected void tapByOffsetFromEnd(By locator, int offsetX, int offsetY) {
+		TouchAction ta = new TouchAction(driver);
+		ta.press(find(locator).getLocation().getX() + find(locator).getSize().getWidth() + offsetX, find(locator).getLocation().getY() + offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 	
 	protected void swipeHorizontally(By startElementLocator, By destElementLocator) {
@@ -316,6 +344,10 @@ public class BasePage {
 		} catch(WebDriverException e) {
 			return false;
 		}
+	}
+	
+	protected void navigateBack() {
+		driver.navigate().back();
 	}
 	
 	protected boolean isToggleEnabled(By locator) {
