@@ -87,6 +87,10 @@ public class LoginPage extends BasePage{
 		return find(enablePinButton);
 	}
 	
+	public WebElement checkMaybeLaterButton(){
+		return find(maybeLaterButton);
+	}
+	
 	public void tapEnablePinButton(){
 		tapElement(enablePinButton);
 	}

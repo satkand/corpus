@@ -102,7 +102,7 @@ public class PINSetupTest extends App {
 		}
 	}
 	
-	@Test (groups = {"DMPM-52", "DMPM-1154", "marketplace", "pin", "priority-minor"})
+	@Test (groups = {"DMPM-52", "DMPM-1154", "DMPM-2581", "DMPM-2582", "marketplace", "pin", "priority-minor"})
 	public void testPinCancel() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
@@ -121,6 +121,7 @@ public class PINSetupTest extends App {
 		registrationPage.tapNextButton();
 		registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
 		Assert.assertNotNull(loginPage.checkEnablePinButton(),"Pin setup button is not displayed");
+		Assert.assertNotNull(loginPage.checkMaybeLaterButton(),"Maybe later button is not displayed");
 		loginPage.tapEnablePinButton();
 		Assert.assertNotNull(pinSetupPage.checkEnterPINLabel(),"Pin setup screen is not displayed");
 		pinSetupPage.tapCancelButton();
@@ -137,6 +138,29 @@ public class PINSetupTest extends App {
 		Assert.assertFalse(settingsPage.isToggleEnabled(), "Toggle button did not get disabled");
 	}
 	
+	@Test (groups = {"DMPM-439", "DMPM-2583", "marketplace", "pin", "priority-minor"})
+	public void testPinMaybeLaterOptions() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
+		welcomePage.tapRegisterButton();
+		if(registrationPage.checkSetupNewAccountButton() != null) {
+			registrationPage.tapSetupNewAccount();
+		}
+		Assert.assertNotNull(registrationPage.checkRegistrationPageTitle(), "Registration page not loaded");
+		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
+				utils.readTestData("registration", "success", "surname"),
+				utils.readTestData("registration", "success", "date"),
+				utils.readTestData("registration", "success", "postcode"));
+		registrationPage.tapNextButton();
+		registrationPage.fill2ndPageFields(utils.readTestData("registration", "success", "email"),
+				utils.readTestData("registration", "success", "mobile"));
+		registrationPage.tapNextButton();
+		registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
+		Assert.assertNotNull(loginPage.checkEnablePinButton(),"Pin setup button is not displayed");
+		Assert.assertNotNull(loginPage.checkMaybeLaterButton(),"Maybe later button is not displayed");
+		loginPage.tapMaybeLater();
+		Assert.assertNotNull(landingPage.checkVehiclesTab(),"Landing page not loaded");
+	}
 	
 	private void enterPIN(String pin) {
 		for(char pinDigit : pin.toCharArray()) {
