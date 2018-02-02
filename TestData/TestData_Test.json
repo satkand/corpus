@@ -531,7 +531,11 @@
 		"login": "fer@fer.com",
 		"pwd": "Password1"
 	},
-
+	"hasPin" : {
+		"login": "b@b.com",
+		"pwd": "Password1",
+		"pin": "2580"
+	},
 
 	"copy" : {
 		"loginPage": {

@@ -9,6 +9,7 @@ import automation.framework.common.BaseTest;
 import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
 import pages.marketplace.auth.LoginPage;
+import pages.marketplace.auth.LoginReauthPage;
 import pages.marketplace.auth.PINAuthPage;
 import pages.marketplace.auth.PINCustomKeypad;
 import pages.marketplace.auth.PINReAuthPasswordPage;
@@ -54,6 +55,7 @@ public class App extends BaseTest {
 	public SettingsPage settingsPage = null;
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
+	public LoginReauthPage loginReauthPage = null;
 
 
 	@BeforeClass
@@ -91,6 +93,7 @@ public class App extends BaseTest {
 		settingsPage = new SettingsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
+		loginReauthPage = new LoginReauthPage(driver);
 
 	}
 	

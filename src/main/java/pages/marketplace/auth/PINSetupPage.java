@@ -15,7 +15,7 @@ public class PINSetupPage extends BasePage {
 
 	private By enterPINLabel = By.id("au.com.suncorp.marketplace:id/enterPinMessage");
 	private By reEnterPINLabel = By.id("au.com.suncorp.marketplace:id/reenterPinMessage");
-	private By cancelButton = By.id("au.com.suncorp.marketplace:id/pinSetupCancelButton");
+	private By cancelButton = By.id("au.com.suncorp.marketplace:id/reauthCancelButton");
 	
 	private By invalidPINAlertMessage = By.id("android:id/message");
 	private By invalidPINAlertOKButton = By.id("android:id/button1");
@@ -24,6 +24,8 @@ public class PINSetupPage extends BasePage {
 	
 	private By pinSuccessfullySetNotification = By.id("au.com.suncorp.marketplace:id/successAlertDialog");
 	private By pinSuccessfullySetMessage = By.id("au.com.suncorp.marketplace:id/dialogMessage");
+	
+	private By pinField = By.id("au.com.suncorp.marketplace:id/pinImage1");
 	
 	public WebElement checkEnterPINLabel() {
 		return find(enterPINLabel);
@@ -36,6 +38,10 @@ public class PINSetupPage extends BasePage {
 	public WebElement checkReEnterPINLabel() {
 		return find(reEnterPINLabel);
 	}	
+	
+	public WebElement checkPinField() {
+		return find(pinField);
+	}
 	
 	public String getReEnterPINLabel() {
 		return getText(reEnterPINLabel);
