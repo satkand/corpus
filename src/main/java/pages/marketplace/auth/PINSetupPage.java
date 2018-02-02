@@ -15,7 +15,7 @@ public class PINSetupPage extends BasePage {
 
 	private By enterPINLabel = By.id("au.com.suncorp.marketplace:id/enterPinMessage");
 	private By reEnterPINLabel = By.id("au.com.suncorp.marketplace:id/reenterPinMessage");
-	private By cancelButton = By.id("au.com.suncorp.marketplace:id/reauthCancelButton");
+	private By cancelButton = By.id("au.com.suncorp.marketplace:id/pinSetupCancelButton");
 	
 	private By invalidPINAlertMessage = By.id("android:id/message");
 	private By invalidPINAlertOKButton = By.id("android:id/button1");

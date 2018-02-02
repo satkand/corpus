@@ -11,7 +11,7 @@ public class SettingsPage  extends BasePage {
 	private By settingsTitle = By.xpath("//android.view.ViewGroup/android.widget.TextView[@text='Settings']");
 	private By pinSettingsTitle = By.id("au.com.suncorp.marketplace:id/pinSettingsTitle");
 	private By enablePinToggle = By.id("au.com.suncorp.marketplace:id/enablePinToggle");
-	private By changePinLink =  By.id("au.com.suncorp.marketplace:id/changePin");
+	private By changePin =  By.id("au.com.suncorp.marketplace:id/changePin");
 	
 	public SettingsPage(@SuppressWarnings("rawtypes") AppiumDriver driver) {
 		super(driver);
@@ -27,6 +27,10 @@ public class SettingsPage  extends BasePage {
 	
 	public void tapEnablePinToggle() {
 		tapElement(enablePinToggle);
+	}
+	
+	public void tapChangePin() {
+		tapElement(changePin);
 	}
 	
 	public boolean isToggleEnabled() {

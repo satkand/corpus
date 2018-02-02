@@ -17,9 +17,13 @@ public class PINAuthPage extends BasePage {
 	}
 
 	private By forgottenPINButton = By.id("au.com.suncorp.marketplace:id/customKeypadForgotPinButton");
+	private By cancelButton = By.id("au.com.suncorp.marketplace:id/reauthCancelButton");
 	
 	public void tapForgottenPINButton() {
 		tapElement(forgottenPINButton);
 	}
 
+	public WebElement checkCancelButton() {
+		return find(cancelButton);
+	}
 }

@@ -178,9 +178,42 @@ public class PINSetupTest extends App {
 		navigateToReauthScreen();
 		Assert.assertNotNull(loginReauthPage.checkReloginButton(),"Login button not present");
 		loginReauthPage.tapReloginButton();
-		Assert.assertNotNull(pinSetupPage.checkCancelButton(), "Pin field - is not shown");
+		Assert.assertNotNull(pinAuthPage.checkCancelButton(), "Pin field - is not shown");
 		pinSetupPage.tapCancelButton();
 		Assert.assertNotNull(loginReauthPage.checkReloginButton(),"Did not navigate back to reauth page");
+	}
+	
+	@Test (groups = {"DMPM-1993", "DMPM-2622", "marketplace", "pin", "priority-minor"})
+	public void cancelPinSetupFromPasswordReauthentication() {
+		navigateToReauthScreen();
+		loginReauthPage.tapReloginButton();
+		pinAuthPage.tapForgottenPINButton();
+		pinReAuthPasswordPage.enterPassword(utils.readTestData("hasPin", "pwd"));
+		pinReAuthPasswordPage.tapNextButton();
+		Assert.assertNotNull(pinSetupPage.checkCancelButton(), "Pin field - is not shown");
+		pinSetupPage.tapCancelButton();
+		Assert.assertNotNull(landingPage.checkVehiclesTab(), "Landing page - is not shown");
+		
+		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkSettingsMenuItem(), "Settings menu item is not shown");
+		navigationMenu.tapSettingsMenuItem();
+		if(!settingsPage.isToggleEnabled()) {
+			settingsPage.tapEnablePinToggle();
+		}
+		pinAuthPage.tapForgottenPINButton();
+		pinReAuthPasswordPage.enterPassword(utils.readTestData("hasPin", "pwd"));
+		pinReAuthPasswordPage.tapNextButton();
+		Assert.assertNotNull(pinSetupPage.checkCancelButton(), "Pin field - is not shown");
+		pinSetupPage.tapCancelButton();
+		Assert.assertNotNull(settingsPage.checkEnablePinToggle(), "Settings page not loaded");
+		
+		settingsPage.tapChangePin();
+		pinAuthPage.tapForgottenPINButton();
+		pinReAuthPasswordPage.enterPassword(utils.readTestData("hasPin", "pwd"));
+		pinReAuthPasswordPage.tapNextButton();
+		Assert.assertNotNull(pinSetupPage.checkCancelButton(), "Pin field - is not shown");
+		pinSetupPage.tapCancelButton();
+		Assert.assertNotNull(settingsPage.checkEnablePinToggle(), "Settings page not loaded");
 	}
 	
 	private void navigateToReauthScreen() {
