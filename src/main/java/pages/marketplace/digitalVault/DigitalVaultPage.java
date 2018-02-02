@@ -26,10 +26,38 @@ public class DigitalVaultPage extends BasePage {
     private By editPhotoTitleText = By.id("au.com.suncorp.marketplace:id/renameEditText");
     private By saveEditedTitleButton = By.id("au.com.suncorp.marketplace:id/saveDocumentButton");
     
+    private By sortingButtonIcon = By.id("au.com.suncorp.marketplace:id/sortingButtonIcon");
+    private By sortByDate = By.id("au.com.suncorp.marketplace:id/headerTitle");
+    private By sortByName = By.id("au.com.suncorp.marketplace:id/documentTitle");
 
 	public void tapAllowCameraButton() {
 		tapElement(allowCameraButton);
 	}
+	
+	public WebElement checkSortingButtonIcon() {
+		return find(sortingButtonIcon);
+	}
+	
+	public WebElement checkSortByDate() {
+		return find(sortByDate);
+	}
+	
+	public void tapSortByDate() {
+		tapElement(sortByDate);
+	}
+	
+	public void tapSortByName() {
+		tapElement(sortByName);
+	}
+	
+	public WebElement checkSortByName() {
+		return find(sortByName);
+	}
+	
+	public void tapSortingButtonIcon() {
+		tapElement(sortingButtonIcon);
+	}
+	
 	public WebElement checkAddFromPhotoLibraryButton() {
 		return find(addFromPhotoLibraryNutton);
 	}
