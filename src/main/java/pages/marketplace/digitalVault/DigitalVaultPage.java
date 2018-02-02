@@ -13,12 +13,12 @@ public class DigitalVaultPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private By addPhotosButton = By.id("au.com.suncorp.marketplace:id/capturePhotoButton");
 	private By addFromPhotoLibraryNutton = By.id("Add from Photo Library");
 	private By takePhotoButton = By.id("au.com.suncorp.marketplace:id/addDocumentFab");
 	private By cancelButton = By.id("Cancel");
 	private By allowCameraButton = By.id("com.android.packageinstaller:id/permission_allow_button");
-    private By cameraButton = By.xpath("(//GLButton[@content-desc=\"NONE\"])[3]");
+    private By cameraButtonGalaxy = By.xpath("(//GLButton[@content-desc=\"NONE\"])[3]");
+    private By cameraButtonPixel = By.id("com.google.android.GoogleCamera:id/shutter_button");
     private By okButton = By.id("com.sec.android.app.camera:id/okay");
     private By saveImageButton = By.id("au.com.suncorp.marketplace:id/saveDocumentOption");
     private By renameImageButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
@@ -26,14 +26,6 @@ public class DigitalVaultPage extends BasePage {
     private By editPhotoTitleText = By.id("au.com.suncorp.marketplace:id/renameEditText");
     private By saveEditedTitleButton = By.id("au.com.suncorp.marketplace:id/saveDocumentButton");
     
-	public WebElement checkAddPhotosButton() {
-		return find(addPhotosButton);
-	}
-
-	public void tapAddPhotoButton() {
-		find(addPhotosButton);
-		tapElement(addPhotosButton);
-	}
 
 	public void tapAllowCameraButton() {
 		tapElement(allowCameraButton);
@@ -62,12 +54,20 @@ public class DigitalVaultPage extends BasePage {
 		tapElement(cancelButton);
 	}
 	
-	public void tapCameraButton() {
-		tapElement(cameraButton);
+	public void tapCameraButtonGalaxy() {
+		tapElement(cameraButtonGalaxy);
 	}
 	
-	public WebElement checkCameraButton() {
-		return find(cameraButton);
+	public WebElement checkCameraButtonGalaxy() {
+		return find(cameraButtonGalaxy);
+	}
+	
+	public void tapCameraButtonPixel() {
+		tapElement(cameraButtonPixel);
+	}
+	
+	public WebElement checkCameraButtonPixel() {
+		return find(cameraButtonPixel);
 	}
 	
 	public void tapOkButton() {
@@ -95,11 +95,11 @@ public class DigitalVaultPage extends BasePage {
 	}
 	
 
-	public void tapBackToGalleryButton() {
-		tapElement(backToGalleryButton);
+	public WebElement checkBackToGalleryButton() {
+		return find(backToGalleryButton);
 	}
 	
-	public void tapbackToGalleryButton() {
+	public void tapBackToGalleryButton() {
 		tapElement(backToGalleryButton);
 	}
 	
