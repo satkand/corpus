@@ -9,7 +9,7 @@ public class SortItemsTest extends App {
 	// DMPM-1109 : Scenario: 1-Display enabled sort items option
 	// DMPM-1109 : Scenario: 2-Display sort options
 	// DMPM-1109 : Scenario: 3 Select currently applied sorting
-	@Test(groups = { "DMPM-1109", "DMPM-2003","DMPM-2004","marketplace", "Document Storage","priority-minor" })
+	@Test(groups = { "DMPM-1109", "DMPM-2003","DMPM-2004","DMPM-2005","marketplace", "Document Storage","priority-minor" })
 	public void testEnabledSortItemsOption() {
 		navigateToDigiVaultPage();
 		Boolean photosAddedSuccessfully = addingPhotosToGallery();
@@ -22,6 +22,10 @@ public class SortItemsTest extends App {
 			digitalVaultPage.tapSortByDate();
 			digitalVaultPage.tapSortingButtonIcon();
 			digitalVaultPage.tapSortByName();
+		}
+		else {
+			Assert.assertNull(digitalVaultPage.checkSortingButtonIcon().isEnabled(), "Sorting Button Icon is enabled");
+			
 		}
 	}
 
@@ -62,8 +66,6 @@ public class SortItemsTest extends App {
 		}
 		else {
 			return false;
-		}
-			
-		
+		}	
 	}
 }
