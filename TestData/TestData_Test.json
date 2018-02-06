@@ -437,7 +437,6 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
-
 	"digitalVault" :{
 			"imageName" : ["aName","bName","cName"]
 	},
@@ -601,8 +600,8 @@
 			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
 			"passwordNotMatch" : "Password do not match"
-},
-"chatbot": {
+		},
+		"chatbot": {
 			"phoneLabel": "CALL NOW"
 		},
 		"offersPage": {
@@ -628,4 +627,4 @@
 			}
 		}
 	}
-	}
+}

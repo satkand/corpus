@@ -47,7 +47,7 @@ public class OffersOverviewTab extends App {
 		navigateToOverviewScreen();
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Suncorp Page Offers - No offer banner");
 		offersPage.tapCallToActionButton();
-		Assert.assertNotNull(registrationPage.checkFirstName(), "Suncorp Page Offers - No Registration Page");
+		Assert.assertNotNull(registrationPage.checkFirstNameField(), "Suncorp Page Offers - No Registration Page");
 		Assert.assertNotNull(registrationPage.checkCancelButton(),
 				"Registration Page Cancel - No cancel button");
 		registrationPage.tapCancelButton();

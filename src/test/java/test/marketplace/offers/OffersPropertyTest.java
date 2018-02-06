@@ -41,7 +41,7 @@ public class OffersPropertyTest extends App {
 		navigateToPropertyScreen();
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No offer banner");
 		offersPage.tapCallToActionButton();
-		Assert.assertNotNull(registrationPage.checkFirstName(), "Property Page Offers - No Registration Page");
+		Assert.assertNotNull(registrationPage.checkFirstNameField(), "Property Page Offers - No Registration Page");
 		Assert.assertNotNull(registrationPage.checkCancelButton(), "Registration Page Cancel - No cancel button");
 		registrationPage.tapCancelButton();
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No Offer banner after Cancellation");
