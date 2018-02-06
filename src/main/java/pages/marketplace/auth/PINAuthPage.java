@@ -21,5 +21,5 @@ public class PINAuthPage extends BasePage {
 	public void tapForgottenPINButton() {
 		tapElement(forgottenPINButton);
 	}
-	
+
 }
