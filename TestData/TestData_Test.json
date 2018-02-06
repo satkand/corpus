@@ -383,6 +383,37 @@
 				"RegNo": "ABC555"
 			}
 		]
+
+	},
+
+	"registration" : {
+		"success":{
+			"firstName" : "Abc",
+			"surname" : "xyz",
+			"date" : "12/02/2002",
+			"postcode" : "3010",
+			"email" : "abc",
+			"mobile" : "0428737283",
+			"password" : "Password1"
+		},
+		"failure" : {
+			"1letterSurname" : "a",
+			"longSurname" : "ahshsfhoseohfosehowoweowegegohnsfgsohosei",
+			"longFirstName" : "niguftjohfyhmljolmklojmeklojkii",
+			"30charFirstname" : "niguftjohfyhmljolmklojmeklojki",
+			"specialCharFirstname" : "Don!@#' Trum**-",
+			"noSpecialCharName" : "Don' Trum-",
+			"specialCharSurname" : "Don!@#' Trum**-",
+			"longPostCode" : "979797989",
+			"emailLong" : "giehrgireghewhgowhgowgowehgaesvnoroie",
+			"mobileLong" : "453592486085082350",
+			"mobileInvalid" : "9897494549",
+			"shortPassword" : "4tger",
+			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
+			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
+			"onlyCharPassword" : "football",
+			"onlyCharUpperCasePassword" : "FOOTBALL"
+		}
 	},
 	"chatbot" :{
 		"externalUrl": {
@@ -406,6 +437,7 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
+
 	"digitalVault" :{
 			"imageName" : ["aName","bName","cName"]
 	},
@@ -549,7 +581,28 @@
 			"movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything…",
 			"movingInReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/moving-into-your-home.html"
 		},
-		"chatbot": {
+
+		"registrationPage" : {
+			"shortSurnameErrorMsg" : "Must be between 2 and 40 characters",
+			"accountCreatingMsg" : "Registering details",
+			"fieldErrorMsg" : "Field is required",
+			"registerPage1Title" : "Step 1 of 3",
+			"registerPage2Title" : "Step 2 of 3",
+			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
+			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
+			"longPostcodeErrorMsg" : "Must be 4 digits",
+			"firstNameUserTip" : "Middle name not required",
+			"mobileNumberUserTip" : "Use 04XX XXX XXX format",
+			"invalidEmailErrorMsg" : "Please enter a valid email address",
+			"invalidMobileErrorMsg" : "Must use 04XX XXX XXX format",
+			"shortPasswordErrorMsg" : "Must be at least 7 characters long",
+			"firstNamePasswordErrorMsg" : "Must not contain your first name",
+			"lastNamePasswordErrorMsg" : "Must not contain your last name",
+			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
+			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
+			"passwordNotMatch" : "Password do not match"
+},
+"chatbot": {
 			"phoneLabel": "CALL NOW"
 		},
 		"offersPage": {
@@ -575,4 +628,4 @@
 			}
 		}
 	}
-}
+	}
