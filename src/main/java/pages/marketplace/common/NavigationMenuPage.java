@@ -49,6 +49,10 @@ public class NavigationMenuPage extends BasePage {
 		 return find(homeJourneyMenuItem);
 	}
 	
+	public void tapHomeJourneyMenuItem() {
+		 tapElement(homeJourneyMenuItem);
+	}
+	
 	public WebElement checkBackToStartMenuItem() {
 		 return find(backToStartMenuItem);
 	}
