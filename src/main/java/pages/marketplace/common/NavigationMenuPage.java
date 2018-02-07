@@ -17,6 +17,7 @@ public class NavigationMenuPage extends BasePage {
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 	private By fapiSettingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='FAPI Settings']");
+	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
 
 	public NavigationMenuPage(AppiumDriver driver) {
 		super(driver);
@@ -44,6 +45,10 @@ public class NavigationMenuPage extends BasePage {
 		 return find(productsMenuItem);
 	}
 	
+	public WebElement checkDigitalVaultMenuItem() {
+		 return find(digitalVaultMenuItem);
+	}
+	
 	public WebElement checkHomeJourneyMenuItem() {
 		 return find(homeJourneyMenuItem);
 	}
@@ -63,6 +68,10 @@ public class NavigationMenuPage extends BasePage {
 	
 	public void tapLockMenuOption() {
 		 tapElement(lockMenuOption);
+	}
+	
+	public void tapDigitalVaultMenuItem() {
+		 tapElement(digitalVaultMenuItem);
 	}
 	
 	public WebElement checkFAPISettingsMenuItem() {

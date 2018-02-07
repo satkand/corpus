@@ -385,6 +385,14 @@
 		]
 
 	},
+	"digivault" : {
+		"hasItems" : {
+			"login" : "b@b.com",
+			"pwd" : "Password1",
+			"newname" : "NewName",
+			"folderName" : "ab"
+		},
+	},
 
 	"registration" : {
 		"success":{
@@ -625,3 +633,4 @@
 			}
 		}
 	}
+}

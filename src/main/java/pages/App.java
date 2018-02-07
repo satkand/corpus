@@ -15,12 +15,16 @@ import pages.marketplace.auth.PINReAuthPasswordPage;
 import pages.marketplace.auth.PINSetupPage;
 import pages.marketplace.auth.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
+import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.LandingPage;
 import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.WelcomePage;
+import pages.marketplace.digitalVault.DigitalVaultPage;
+import pages.marketplace.digitalVault.FolderViewPage;
+import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
@@ -52,6 +56,11 @@ public class App extends BaseTest {
 	public VehicleDetailsPage vehicleDetailsPage = null;
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
+	public DigitalVaultPage digitalVaultPage = null;
+	public FolderViewPage folderViewPage = null;
+	public ImageViewPage imageViewPage = null;
+	public CameraPage cameraPage = null;
+			
 
 	@BeforeClass
 	public void initializeApp() {
@@ -87,6 +96,10 @@ public class App extends BaseTest {
 		vehicleDetailsPage = new VehicleDetailsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
+		digitalVaultPage = new DigitalVaultPage(driver);
+		folderViewPage = new FolderViewPage(driver);
+		imageViewPage = new ImageViewPage(driver);
+		cameraPage = new CameraPage(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)

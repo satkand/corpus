@@ -327,6 +327,10 @@ public class BasePage {
 		return Boolean.parseBoolean(text);
 	}
 	
+	protected boolean isClickable(By locator) {
+		String text = find(locator).getAttribute("clickable");
+		return Boolean.parseBoolean(text);
+	}
 	/**
 	 * This method is used to hide the keyboard
 	 * 
