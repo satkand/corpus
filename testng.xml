@@ -7,7 +7,10 @@
 			
 
 	<class name="test.marketplace.auth.PINSetupTest">
+	<methods>
 		<include name="navigateToSettingsScreen" />
+	</methods>
+		
 	</class>
 		
 

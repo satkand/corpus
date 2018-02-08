@@ -419,7 +419,7 @@ public class RegistrationTest extends App{
 		Assert.assertNotNull(registrationPage.checkYearPicker(), "Year picker not seen");
 	}
 	
-	public void navigateToRegistrationPage() {
+	private void navigateToRegistrationPage() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
 		welcomePage.tapRegisterButton();

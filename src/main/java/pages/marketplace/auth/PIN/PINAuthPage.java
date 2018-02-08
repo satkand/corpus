@@ -1,4 +1,4 @@
-package pages.marketplace.auth;
+package pages.marketplace.auth.PIN;
 
 import java.util.List;
 

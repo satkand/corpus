@@ -1,4 +1,4 @@
-package test.marketplace.auth;
+package test.marketplace.auth.pin;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -10,11 +10,12 @@ import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
 import pages.marketplace.auth.LoginPage;
 import pages.marketplace.auth.LoginReauthPage;
-import pages.marketplace.auth.PINAuthPage;
-import pages.marketplace.auth.PINCustomKeypad;
-import pages.marketplace.auth.PINReAuthPasswordPage;
-import pages.marketplace.auth.PINSetupPage;
 import pages.marketplace.auth.RegistrationPage;
+import pages.marketplace.auth.PIN.PINAuthPage;
+import pages.marketplace.auth.PIN.PINCustomKeypad;
+import pages.marketplace.auth.PIN.PINOptionsPage;
+import pages.marketplace.auth.PIN.PINReAuthPasswordPage;
+import pages.marketplace.auth.PIN.PINSetupPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
@@ -56,6 +57,8 @@ public class App extends BaseTest {
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
 	public LoginReauthPage loginReauthPage = null;
+	public PINOptionsPage pinOptionsPage = null;
+	
 
 
 	@BeforeClass
@@ -94,6 +97,7 @@ public class App extends BaseTest {
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
 		loginReauthPage = new LoginReauthPage(driver);
+		pinOptionsPage = new PINOptionsPage(driver);
 
 	}
 	
@@ -111,8 +115,8 @@ public class App extends BaseTest {
 	public void loginToApp(String login, String pwd) {
 		loginPage.enterLoginCredentials(login, pwd);
 		loginPage.tapLoginButton();
-		if(loginPage.checkEnablePinButton() != null) {
-			loginPage.tapMaybeLater();
+		if(pinOptionsPage.checkEnablePinButton() != null) {
+			pinOptionsPage.tapMaybeLater();
 		}
 	}
 	
