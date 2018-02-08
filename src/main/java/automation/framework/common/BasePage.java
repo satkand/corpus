@@ -269,13 +269,29 @@ public class BasePage {
 	 * @param locator
 	 */
 	protected String readValue(By locator) {
-		String text = find(locator).getAttribute("value");
+		String text = "";
+		if(hasAttribute(find(locator), "value")) {
+			text  = find(locator).getAttribute("value");
+		}else {
+			text  = find(locator).getAttribute("text");
+		}
 		return text;
 	}
 	
 	protected boolean isEnabled(By locator) {
 		String text = find(locator).getAttribute("enabled");
 		return Boolean.parseBoolean(text);
+	}
+	
+	protected boolean hasAttribute(WebElement element, String attribute) {
+		Boolean result = false;
+		try {
+			String value = element.getAttribute(attribute);
+			if(value != null) {
+				result = true;
+			}
+		}catch(Exception e) {}
+		return result;
 	}
 	
 	//####### Android #########//

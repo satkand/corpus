@@ -34,4 +34,8 @@ public class FolderViewPage extends BasePage {
 	public WebElement checkMoveToFolderButton() {
 		return find(moveToFolderButton);
 	}
+	
+	public String getTitle() {
+		return readValue(folderTitle);
+	}
 }
