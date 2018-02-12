@@ -19,6 +19,7 @@ import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
+import pages.marketplace.common.GalleryPage;
 import pages.marketplace.common.LandingPage;
 import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.WelcomePage;
@@ -60,7 +61,7 @@ public class App extends BaseTest {
 	public FolderViewPage folderViewPage = null;
 	public ImageViewPage imageViewPage = null;
 	public CameraPage cameraPage = null;
-			
+	public GalleryPage galleryPage = null;		
 
 	@BeforeClass
 	public void initializeApp() {
@@ -100,7 +101,9 @@ public class App extends BaseTest {
 		folderViewPage = new FolderViewPage(driver);
 		imageViewPage = new ImageViewPage(driver);
 		cameraPage = new CameraPage(driver);
+		galleryPage = new GalleryPage(driver);
 	}
+	
 	
 	@BeforeMethod(alwaysRun = true)
 	public void beforeEachTest() throws Exception {

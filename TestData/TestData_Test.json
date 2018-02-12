@@ -390,7 +390,8 @@
 			"login" : "b@b.com",
 			"pwd" : "Password1",
 			"newname" : "NewName",
-			"folderName" : "ab"
+			"folderName" : "ab",
+			"fileName" : "dggrgeg"
 		},
 	},
 

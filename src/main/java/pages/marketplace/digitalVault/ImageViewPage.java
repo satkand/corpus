@@ -22,7 +22,10 @@ public class ImageViewPage extends BasePage {
 	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
 	private By renameButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
 	private By renameCancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
-	
+	private By imageNameField = By.id("au.com.suncorp.marketplace:id/documentTitleDisplay");
+	private By renameDocumentButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
+	private By renameSaveButton = By.id("au.com.suncorp.marketplace:id/saveDocumentButton");
+	private By editTextField = By.id("au.com.suncorp.marketplace:id/renameEditText");
 	
 	public ImageViewPage(AppiumDriver driver) {
 		super(driver);
@@ -31,6 +34,10 @@ public class ImageViewPage extends BasePage {
 
 	public WebElement checkImageViewTitle() {
 		return find(imageViewTitle);
+	}
+	
+	public WebElement checkSaveButton() {
+		return find(saveButton);
 	}
 	
 	public boolean isEditClickable() {
@@ -92,4 +99,32 @@ public class ImageViewPage extends BasePage {
 		return find(renameDialogTitle);
 	}
 	
+	public WebElement checkImageNameField() {
+		return find(imageNameField);
+	}
+	
+	public void tapImageNameField() {
+		tapElement(imageNameField);
+	}
+	
+	public void tapRenameSaveButton() {
+		tapElement(renameSaveButton);
+	}
+	
+	public WebElement checkRenameSaveButton() {
+		return find(renameSaveButton);
+	}
+	
+	public void setName(String name) {
+		typeValue(name, editTextField);
+		tapRenameSaveButton();
+	}
+	
+	public WebElement checkRenameDocumentButton() {
+		return find(renameDocumentButton);
+	}
+	
+/*	public WebElement checkRetakeButton() {
+		return find(retakeButton);
+	}*/
 }
