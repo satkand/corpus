@@ -53,7 +53,6 @@ public class DigitalVaultTest extends App {
 			Assert.assertNotNull(digitalVaultPage.checkSortByName(), "Sort by Name is not displayed");
 			digitalVaultPage.tapSortByName();
 			List<String> vehicleImageTypeList = digitalVaultPage.fetchImageTitleList();
-			// Load the expected vehicles list to be shown for each month from test data sheet
 			List<Object> imagesList = utils.readTestDataList("digitalVault", "imageName");
 			int numberOfImages = imagesList.size();
 			// Scenario: 5 Sort by name
