@@ -2,6 +2,7 @@ package pages.marketplace.digitalVault;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
@@ -22,11 +23,11 @@ public class DigitalVaultPage extends BasePage {
 	private By addButton = By.id("au.com.suncorp.marketplace:id/addDocumentFab");
 	private By sortByButton = By.id("au.com.suncorp.marketplace:id/sortByButton");
 	private By editButton = By.id("au.com.suncorp.marketplace:id/editButton");
-	private By folderItem = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/folderForeground']");
-	private By folderMoreButton = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/folderMoreButton']");
-	private By documentItem = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/documentForeground']");
-	private By documentMoreButton = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/documentMoreButton']");
-	private By deleteItemButton = By.id("au.com.suncorp.marketplace:id/deleteItemButton");
+	private By folderItem = By.id("au.com.suncorp.marketplace:id/folderForeground");
+	private By folderMoreButton = By.id("au.com.suncorp.marketplace:id/folderMoreButton");
+	private By documentItem = By.id("au.com.suncorp.marketplace:id/documentForeground");
+	private By documentMoreButton = By.id("au.com.suncorp.marketplace:id/documentMoreButton");
+	private By deleteItemButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
 	private By moveToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
 	private By cameraPermissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
 	private By imageItem = By.id("DigitalVaultFileCell0FileThumbnailImageView");
@@ -36,6 +37,17 @@ public class DigitalVaultPage extends BasePage {
 	private By positiveButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
 	private By folderNameField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
 	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	
+	
+	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
+	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
+	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
+	private By renameButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
+	private By renameCancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	private By moveToFolderItemButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
+	private By binBox = By.id("au.com.suncorp.marketplace:id/deleteDocumentOption");
+	private By okButton = By.id("android:id/button1");
+	private By androidCancelButton = By.id("android:id/button2");
 	
 	public WebElement checkDigiVaultTitle() {
 		return find(digiVaultTitle);
@@ -96,22 +108,6 @@ public class DigitalVaultPage extends BasePage {
 	
 	public boolean isEditClickable() {
 		return isClickable(editButton);
-	}
-	
-	public void tapEditButton() {
-		tapElement(editButton);
-	}
-	
-	public WebElement checkDeleteButton() {
-		return find(deleteItemButton);
-	}
-	
-	public WebElement checkMoveToFolderButton() {
-		return find(moveToFolderButton);
-	}
-	
-	public WebElement checkAddFolderButton() {
-		return find(positiveButton);
 	}
 	
 	public WebElement checkFolderNameField() {
@@ -196,6 +192,107 @@ public class DigitalVaultPage extends BasePage {
 	
 	public void tapCreateFolderCard() {
 		tapElement(createFolderCard);
+	}
+	
+	public WebElement checkFolderMoreOption() {
+		return find(folderMoreButton);
+	}
+	
+	public WebElement checkDocumentMoreOption() {
+		return find(documentMoreButton);
+	}
+	
+	public boolean isRenameEnabled() {
+		return isEnabled(renameButton);
+	}
+	
+	public WebElement checkDeleteButton() {
+		return find(deleteItemButton);
+	}
+	
+	public WebElement checkRenameButton() {
+		return find(renameButton);
+	}
+	
+	public WebElement checkRenameItem() {
+		return find(renameItemButton);
+	}
+	
+	public WebElement checkMoveToFolderButton() {
+		return find(moveToFolderButton);
+	}
+	
+	public void tapEditButton() {
+		tapElement(editButton);
+	}
+	
+	public WebElement checkDeleteItem() {
+		return find(deleteItemButton);
+	}
+	
+	public void tapRenameItem() {
+		tapElement(renameItemButton);
+	}
+	
+	public void tapRenameButton() {
+		tapElement(renameButton);
+	}
+	
+	public WebElement checkRenameCancelButton() {
+		return find(renameCancelButton);
+	}
+	
+	public void tapRenameCancelButton() {
+		tapElement(renameCancelButton);
+	}
+	
+	public void enterName(String name) {
+		typeValue(name, renameEditField);
+	}
+	
+	public void tapDocumentMoreOption() {
+		tapElement(documentMoreButton);
+	}
+	
+	public String findDocumentInPage(String fileName) {
+		String file =  driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", fileName )).getText();
+		return file;
+	}
+	
+	public WebElement checkRenameDialogTitle() {
+		return find(renameDialogTitle);
+	}
+	
+	public void swipeToDelete() {
+		 swipeHorizontally(documentMoreButton, documentItem);
+	}
+	
+	public void tapDeleteItem() {
+		tapElement(deleteItemButton);
+	}
+	
+	public WebElement checkBinBox() {
+		return find(binBox);
+	}
+	
+	public void tapBinBox() {
+		tapElement(binBox);
+	}
+	
+	public WebElement checkAndroidCancelButton() {
+		return find(androidCancelButton);
+	}
+
+	public void tapAndroidCancelButton() {
+		tapElement(androidCancelButton);
+	}
+	
+	public WebElement checkOkButton() {
+		return find(okButton);
+	}
+
+	public void tapOkButton() {
+		tapElement(okButton);
 	}
 	
 }

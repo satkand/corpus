@@ -48,7 +48,7 @@ public class ImageViewPage extends BasePage {
 		return isEnabled(renameButton);
 	}
 	
-	public WebElement checkDeleteButton() {
+	public WebElement checkDeleteItemButton() {
 		return find(deleteItemButton);
 	}
 	
@@ -124,7 +124,4 @@ public class ImageViewPage extends BasePage {
 		return find(renameDocumentButton);
 	}
 	
-/*	public WebElement checkRetakeButton() {
-		return find(retakeButton);
-	}*/
 }

@@ -68,7 +68,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertNotNull(imageViewPage.checkImageViewTitle(), "Image full screen is not displayed");
 		Assert.assertTrue(imageViewPage.isEditClickable(), "Edit button is not enabled");
 		imageViewPage.tapEditButton();
-		Assert.assertNotNull(imageViewPage.checkDeleteButton(), "Delete item is not displayed");
+		Assert.assertNotNull(imageViewPage.checkDeleteItemButton(), "Delete item is not displayed");
 		Assert.assertNotNull(imageViewPage.checkRenameItem(), "Rename item is not displayed");
 		Assert.assertNotNull(imageViewPage.checkMoveToFolderButton(), "Move to folder item is not displayed");
 		
@@ -201,8 +201,6 @@ public class DigitalVaultTest extends App {
 		folderViewPage.tapEmptyDigitalVaultImage();
 		folderViewPage.addDocumentThroughCamera();
 		cameraPage.capturePhoto();
-		//To be verified with BA
-		//	Assert.assertNotNull(imageViewPage.checkRetakeButton(), "Retake button is not present");
 		Assert.assertNotNull(imageViewPage.checkSaveButton(), "Save button is not present");
 		Assert.assertNotNull(imageViewPage.checkImageNameField(), "Title field is not present");
 		Assert.assertNotNull(imageViewPage.checkRenameDocumentButton(), "Rename button is not present");
@@ -241,9 +239,112 @@ public class DigitalVaultTest extends App {
 		imageViewPage.setName(utils.readTestData("digivault", "hasItems", "fileName"));
 		imageViewPage.tapSaveButton();
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder page not loaded");
-		folderViewPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "fileName"));
+		Assert.assertNotNull(folderViewPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "fileName")), "Document not found in the folder");
 	}
 		
+	@Test(groups = { "DMPM-1607", "DMPM-2539", "DMPM-2540", "DMPM-2541", "DMPM-2542", "DMPM-2543","marketplace", "Document Storage", "priority-minor" })
+	public void testItemActionMenu() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapLoginButton();
+		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
+		navigateToDigiVaultPage();
+		if(digitalVaultPage.checkDigiVaultEmptyImage() != null) {
+			createDummyData();
+		}
+		Assert.assertNotNull(digitalVaultPage.checkFolderMoreOption(), "Folder Item action menu is not shown");
+		Assert.assertNotNull(digitalVaultPage.checkDocumentMoreOption(), "Item action menu is not shown");
+		digitalVaultPage.tapDocumentMoreOption();		
+		Assert.assertNotNull(digitalVaultPage.checkRenameItem(), "Rename item is not shown");
+		digitalVaultPage.tapRenameItem();
+		Assert.assertNotNull(common.isKeyboardShown(), "Keyboard is not shown");
+		Assert.assertNotNull(digitalVaultPage.checkRenameButton(), "Rename button is not shown");
+		Assert.assertFalse(digitalVaultPage.isRenameEnabled(), "Rename button is not disabled");
+		Assert.assertNotNull(digitalVaultPage.checkRenameCancelButton(), "Rename cancel button is not shown");
+		digitalVaultPage.enterName(utils.readTestData("digivault", "hasItems", "newname"));
+		Assert.assertTrue(digitalVaultPage.isRenameEnabled(), "Rename button is not enabled");
+		digitalVaultPage.tapRenameButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digital vault view is not loaded");
+		Assert.assertNotNull(digitalVaultPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "newname")), "Document not found in the folder");
+		digitalVaultPage.tapRenameItem();
+		Assert.assertNotNull(digitalVaultPage.checkRenameCancelButton(), "Rename cancel button is not shown");
+		digitalVaultPage.tapRenameCancelButton();
+		Assert.assertNotNull(digitalVaultPage.checkRenameDialogTitle(), "Rename dialog title is not shown");
+		
+		digitalVaultPage.tapFolderItem();
+		Assert.assertNotNull(folderViewPage.checkDocumentMoreOption(), "Item action menu is not shown in the folder view");
+		folderViewPage.tapDocumentMoreOption();
+		Assert.assertNotNull(folderViewPage.checkRenameItem(), "Rename item is not shown");
+		folderViewPage.tapRenameItem();
+		Assert.assertNotNull(common.isKeyboardShown(), "Keyboard is not shown");
+		Assert.assertNotNull(folderViewPage.checkRenameButton(), "Rename button is not shown");
+		Assert.assertFalse(folderViewPage.isRenameEnabled(), "Rename button is not disabled");
+		Assert.assertNotNull(folderViewPage.checkRenameCancelButton(), "Rename cancel button is not shown");
+		folderViewPage.enterName(utils.readTestData("digivault", "hasItems", "newname"));
+		Assert.assertTrue(folderViewPage.isRenameEnabled(), "Rename button is not enabled");
+		digitalVaultPage.tapRenameButton();
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder view is not loaded");
+		Assert.assertNotNull(folderViewPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "newname")), "Document not found in the folder");
+		digitalVaultPage.tapRenameItem();
+		Assert.assertNotNull(folderViewPage.checkRenameCancelButton(), "Rename cancel button is not shown");
+		digitalVaultPage.tapRenameCancelButton();
+		Assert.assertNotNull(folderViewPage.checkRenameDialogTitle(), "Rename dialog title is not shown");
+	}
+	
+	@Test(groups = { "DMPM-1607", "DMPM-2545","DMPM-2546","DMPM-2547","marketplace", "Document Storage", "priority-minor" })
+	public void testItemActionMenuDelete() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapLoginButton();
+		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
+		navigateToDigiVaultPage();
+		if(digitalVaultPage.checkDigiVaultEmptyImage() != null) {
+			createDummyData();
+		}
+		Assert.assertNotNull(digitalVaultPage.checkDocumentMoreOption(), "Item action menu is not shown");
+		digitalVaultPage.tapDocumentMoreOption();
+		Assert.assertNotNull(digitalVaultPage.checkDeleteItem(), "Delete item is not shown");
+		digitalVaultPage.tapDeleteItem();
+		Assert.assertNotNull(digitalVaultPage.checkOkButton(), "Delete button is not shown");
+		Assert.assertNotNull(digitalVaultPage.checkAndroidCancelButton(), "Delete cancel button is not shown");
+		digitalVaultPage.tapAndroidCancelButton();
+		digitalVaultPage.swipeToDelete();
+		Assert.assertNotNull(digitalVaultPage.checkBinBox(), "Bin box is not shown");
+		digitalVaultPage.tapBinBox();
+		Assert.assertNotNull(digitalVaultPage.checkAndroidCancelButton(), "Delete cancel button not shown");
+		Assert.assertNotNull(digitalVaultPage.checkOkButton(), "Delete ok button not shown");
+		digitalVaultPage.tapAndroidCancelButton();
+		Assert.assertNull(digitalVaultPage.checkOkButton(), "Delete ok button is shown");
+		digitalVaultPage.swipeToDelete();
+		Assert.assertNotNull(digitalVaultPage.checkBinBox(), "Bin box is not shown");
+		digitalVaultPage.tapBinBox();
+		Assert.assertNotNull(digitalVaultPage.checkOkButton(), "Delete ok button not shown");
+		digitalVaultPage.tapOkButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digi vault main screen is not shown");
+		Assert.assertNull(digitalVaultPage.checkDocumentMoreOption(), "Item not deleted");
+		
+		digitalVaultPage.tapFolderItem();
+		Assert.assertNotNull(folderViewPage.checkDocumentMoreOption(), "Item action menu is not shown");
+		folderViewPage.tapDocumentMoreOption();
+		Assert.assertNotNull(folderViewPage.checkDeleteItem(), "Delete item is not shown");
+		folderViewPage.tapDeleteItem();
+		Assert.assertNotNull(folderViewPage.checkOkButton(), "Delete button is not shown");
+		Assert.assertNotNull(folderViewPage.checkAndroidCancelButton(), "Delete cancel button is not shown");
+		digitalVaultPage.tapAndroidCancelButton();
+		Assert.assertNotNull(digitalVaultPage.checkDocumentMoreOption(), "Item action menu is not shown");
+		folderViewPage.swipeToDelete();
+		Assert.assertNotNull(folderViewPage.checkBinBox(), "Bin box is not shown");
+		folderViewPage.tapBinBox();
+		Assert.assertNotNull(folderViewPage.checkAndroidCancelButton(), "Delete cancel button not shown");
+		Assert.assertNotNull(folderViewPage.checkOkButton(), "Delete ok button not shown");
+		folderViewPage.tapAndroidCancelButton();
+		Assert.assertNull(folderViewPage.checkOkButton(), "Delete ok button is shown");
+		folderViewPage.swipeToDelete();
+		Assert.assertNotNull(folderViewPage.checkBinBox(), "Bin box is not shown");
+		folderViewPage.tapBinBox();
+		Assert.assertNotNull(folderViewPage.checkOkButton(), "Delete ok button not shown");
+		folderViewPage.tapOkButton();
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder title is not shown");
+		Assert.assertNull(folderViewPage.checkDocumentMoreOption(), "Item not deleted");
+	}
 	
 	// DMPM-799 : Scenario 2 - Navigating to the digital Vault screen
 	private void navigateToDigiVaultPage() {
