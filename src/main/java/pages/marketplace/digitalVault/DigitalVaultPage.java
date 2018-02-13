@@ -25,7 +25,6 @@ public class DigitalVaultPage extends BasePage {
     private By saveImageButton = By.id("au.com.suncorp.marketplace:id/saveDocumentOption");
     private By renameImageButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
     private By sortByName = By.id("au.com.suncorp.marketplace:id/documentTitle");
-    private By backToGalleryButton = By.xpath("//android.widget.ImageButton[@content-desc=\"Navigate up\"]");
     private By editPhotoTitleText = By.id("au.com.suncorp.marketplace:id/renameEditText");
     private By saveEditedTitleButton = By.id("au.com.suncorp.marketplace:id/saveDocumentButton");
     
@@ -72,7 +71,15 @@ public class DigitalVaultPage extends BasePage {
 	public WebElement checkTakePhotoButton() {
 		return find(takePhotoButton);
 	}
+	
+	public WebElement checkAddPhotoButton() {
+		return find(takePhotoButton);
+	}
 
+	public void tapAddPhotoButton() {
+		tapElement(takePhotoButton);
+	}
+	
 	public void tapTakePhotoButton() {
 		tapElement(takePhotoButton);
 	}
@@ -123,14 +130,6 @@ public class DigitalVaultPage extends BasePage {
 
 	public WebElement checkRenameImageButton() {
 		return find(renameImageButton);
-	}
-	
-	public WebElement checkBackToGalleryButton() {
-		return find(backToGalleryButton);
-	}
-	
-	public void tapBackToGalleryButton() {
-		tapElement(backToGalleryButton);
 	}
 	
 	public void tapEditPhotoTitleText() {

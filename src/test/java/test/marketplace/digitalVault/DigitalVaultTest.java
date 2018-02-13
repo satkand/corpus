@@ -111,8 +111,8 @@ public class DigitalVaultTest extends App {
 		for (int i = 0; i < size; i++) {
 			Assert.assertNotNull(digitalVaultPage.checkTakePhotoButton(), "Take photo button is not displayed");
 			digitalVaultPage.tapTakePhotoButton();
-			Assert.assertNotNull(digitalVaultPage.checkTakePhotoButton(), "Add photo button is not displayed");
-			digitalVaultPage.tapTakePhotoButton();
+			Assert.assertNotNull(digitalVaultPage.checkAddPhotoButton(), "Add photo button is not displayed");
+			digitalVaultPage.tapAddPhotoButton();
 			if (digitalVaultPage.checkAllowCameraButton() != null) {
 				digitalVaultPage.tapAllowCameraButton();
 			}
