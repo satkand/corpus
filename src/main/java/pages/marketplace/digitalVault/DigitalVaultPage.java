@@ -125,17 +125,12 @@ public class DigitalVaultPage extends BasePage {
 		return find(renameImageButton);
 	}
 	
-
 	public WebElement checkBackToGalleryButton() {
 		return find(backToGalleryButton);
 	}
 	
 	public void tapBackToGalleryButton() {
 		tapElement(backToGalleryButton);
-	}
-	
-	public WebElement checkbackToGalleryButton() {
-		return find(backToGalleryButton);
 	}
 	
 	public void tapEditPhotoTitleText() {
