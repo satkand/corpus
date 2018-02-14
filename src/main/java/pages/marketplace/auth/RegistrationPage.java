@@ -2,6 +2,7 @@ package pages.marketplace.auth;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
@@ -139,6 +140,19 @@ public class RegistrationPage extends BasePage {
 		tapElement(dateField);
 		tapElement(okButton);
 		dismissKeyboard();
+	}
+	
+	public void fillRegistrationScreens(String firstName, String surname, String date,
+			String postcode, String email, String mobile, String password) {
+		if(checkSetupNewAccountButton() != null) {
+			tapSetupNewAccount();
+		}
+		checkRegistrationPageTitle();
+		fill1stPageFields(firstName, surname, date, postcode);
+		tapNextButton();
+		fill2ndPageFields(email, mobile);
+		tapNextButton();
+		fill3rdPageFields(password);
 	}
 	
 	public void enterPostcode(String postcode) {

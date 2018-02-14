@@ -531,11 +531,18 @@
 		"login": "fer@fer.com",
 		"pwd": "Password1"
 	},
-	"hasPin" : {
-		"login": "b@b.com",
-		"pwd": "Password1",
-		"pin": "2580"
+	"PIN" :{
+		"loginWithExistingPin" : {
+			"login": "b@b.com",
+			"pwd": "Password1",
+			"pin": "2580"
+		},
+		"loginWithoutExistingPin" : {
+			"login": "c@b.com",
+			"pwd": "Password1",
+		},
 	},
+	
 
 	"copy" : {
 		"loginPage": {

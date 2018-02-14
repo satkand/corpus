@@ -8,8 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import automation.framework.common.BaseTest;
 import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
+import pages.marketplace.auth.LoginAuthPage;
 import pages.marketplace.auth.LoginPage;
-import pages.marketplace.auth.LoginReauthPage;
 import pages.marketplace.auth.RegistrationPage;
 import pages.marketplace.auth.PIN.PINAuthPage;
 import pages.marketplace.auth.PIN.PINCustomKeypad;
@@ -56,7 +56,7 @@ public class App extends BaseTest {
 	public SettingsPage settingsPage = null;
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
-	public LoginReauthPage loginReauthPage = null;
+	public LoginAuthPage loginAuthPage = null;
 	public PINOptionsPage pinOptionsPage = null;
 	
 
@@ -96,7 +96,7 @@ public class App extends BaseTest {
 		settingsPage = new SettingsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
-		loginReauthPage = new LoginReauthPage(driver);
+		loginAuthPage = new LoginAuthPage(driver);
 		pinOptionsPage = new PINOptionsPage(driver);
 
 	}
@@ -120,6 +120,10 @@ public class App extends BaseTest {
 		}
 	}
 	
+	public void loginWithPinOptions(String login, String pwd) {
+		loginPage.enterLoginCredentials(login, pwd);
+		loginPage.tapLoginButton();
+	}
 	/*
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() throws Exception {

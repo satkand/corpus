@@ -6,12 +6,12 @@ import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
-public class LoginReauthPage extends BasePage{
+public class LoginAuthPage extends BasePage{
 
 	
 	private By reloginButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	
-	public LoginReauthPage(AppiumDriver driver) {
+	public LoginAuthPage(AppiumDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}

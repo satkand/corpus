@@ -50,11 +50,4 @@ public class PINOptionsPage extends BasePage{
 		tapElement(maybeLaterButton);
 	}
 	
-	public void checkAllElements() {
-		Assert.assertNotNull(checkEnablePinButton(),"Pin setup button is not displayed");
-		Assert.assertNotNull(checkMaybeLaterButton(),"Maybe later button is not displayed");
-		Assert.assertNotNull(checkPinPromptImage(),"Maybe later button is not displayed");
-		Assert.assertNotNull(checkPinPromptUserWelcome(),"Maybe later button is not displayed");
-		Assert.assertNotNull(checkPinPromptDescription(),"Maybe later button is not displayed");
-	}
 }
