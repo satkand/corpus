@@ -527,7 +527,22 @@
 				"pwdError": null
 			}]
 	},
-
+	"hasNoProducts" : {
+		"login": "fer@fer.com",
+		"pwd": "Password1"
+	},
+	"PIN" :{
+		"loginWithExistingPin" : {
+			"login": "b@b.com",
+			"pwd": "Password1",
+			"pin": "2580"
+		},
+		"loginWithoutExistingPin" : {
+			"login": "c@b.com",
+			"pwd": "Password1",
+		},
+	},
+	
 
 	"copy" : {
 		"loginPage": {
@@ -623,5 +638,6 @@
 				"offerTitle": "Building Insurance",
 				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
 			}
-		}
+		},
 	}
+}

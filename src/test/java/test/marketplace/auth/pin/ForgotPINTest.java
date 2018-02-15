@@ -1,11 +1,11 @@
-package test.marketplace.auth;
+package test.marketplace.auth.pin;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pages.App;
 
-public class PINReAuthPasswordTest extends App {
+public class ForgotPINTest extends App {
 
 	//Scenario 1
 	@Test (groups = {"DMPM-67", "DMPM-504", "marketplace", "pin", "priority-major"})

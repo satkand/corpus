@@ -1,4 +1,4 @@
-package pages.marketplace.auth;
+package pages.marketplace.auth.PIN;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
-public class PINReAuthPasswordPage extends BasePage {
+public class ForgotPINPage extends BasePage {
 	
-	public PINReAuthPasswordPage(AppiumDriver driver) {
+	public ForgotPINPage(AppiumDriver driver) {
 		super(driver);
 	}
 	

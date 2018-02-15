@@ -1,4 +1,4 @@
-package pages.marketplace.auth;
+package pages.marketplace.auth.PIN;
 
 import java.util.List;
 
@@ -16,7 +16,26 @@ public class PINAuthPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
+	private By userName = By.id("au.com.suncorp.marketplace:id/enterPinUserNameText");
+	private By backButton = By.id("au.com.suncorp.marketplace:id/reauthCancelButton");
 	private By forgottenPINButton = By.id("au.com.suncorp.marketplace:id/customKeypadForgotPinButton");
+	private By pinField = By.id("au.com.suncorp.marketplace:id/pinImage1");
+	
+	public WebElement checkUserName() {
+		return find(userName);
+	}
+	
+	public WebElement checkPinField() {
+		return find(pinField);
+	}
+	
+	public WebElement checkBackButton() {
+		return find(backButton);
+	}
+	
+	public void tapBackButton() {
+		tapElement(backButton);
+	}
 	
 	public void tapForgottenPINButton() {
 		tapElement(forgottenPINButton);
