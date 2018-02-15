@@ -8,12 +8,14 @@ import org.testng.annotations.BeforeMethod;
 import automation.framework.common.BaseTest;
 import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
+import pages.marketplace.auth.LoginAuthPage;
 import pages.marketplace.auth.LoginPage;
-import pages.marketplace.auth.PINAuthPage;
-import pages.marketplace.auth.PINCustomKeypad;
-import pages.marketplace.auth.PINReAuthPasswordPage;
-import pages.marketplace.auth.PINSetupPage;
 import pages.marketplace.auth.RegistrationPage;
+import pages.marketplace.auth.PIN.PINAuthPage;
+import pages.marketplace.auth.PIN.PINCustomKeypad;
+import pages.marketplace.auth.PIN.PINOptionsPage;
+import pages.marketplace.auth.PIN.ForgotPINPage;
+import pages.marketplace.auth.PIN.PINSetupPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
@@ -22,6 +24,7 @@ import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.GalleryPage;
 import pages.marketplace.common.LandingPage;
 import pages.marketplace.common.NavigationMenuPage;
+import pages.marketplace.common.SettingsPage;
 import pages.marketplace.common.WelcomePage;
 import pages.marketplace.digitalVault.DigitalVaultPage;
 import pages.marketplace.digitalVault.FolderViewPage;
@@ -43,7 +46,7 @@ public class App extends BaseTest {
 	public PINSetupPage pinSetupPage = null;
 	public DummyPageWithLinks dummy = null;
 	public PINAuthPage pinAuthPage = null;
-	public PINReAuthPasswordPage pinReAuthPasswordPage = null;
+	public ForgotPINPage pinReAuthPasswordPage = null;
 	public ConfigPage configPage = null;
 	public PINCustomKeypad pinCustomKeypad = null;
 	public CommonPage common = null;
@@ -55,6 +58,7 @@ public class App extends BaseTest {
 	public SpendingsPage spendingsPage = null;
 	public VehiclesPage vehiclesPage = null;
 	public VehicleDetailsPage vehicleDetailsPage = null;
+	public SettingsPage settingsPage = null;
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
 	public DigitalVaultPage digitalVaultPage = null;
@@ -62,6 +66,10 @@ public class App extends BaseTest {
 	public ImageViewPage imageViewPage = null;
 	public CameraPage cameraPage = null;
 	public GalleryPage galleryPage = null;		
+	public LoginAuthPage loginAuthPage = null;
+	public PINOptionsPage pinOptionsPage = null;
+	
+
 
 	@BeforeClass
 	public void initializeApp() {
@@ -82,7 +90,7 @@ public class App extends BaseTest {
 		pinSetupPage = new PINSetupPage(driver);
 		dummy = new DummyPageWithLinks(driver);
 		pinAuthPage = new PINAuthPage(driver);
-		pinReAuthPasswordPage = new PINReAuthPasswordPage(driver);
+		pinReAuthPasswordPage = new ForgotPINPage(driver);
 		welcomePage = new WelcomePage(driver);
 		configPage = new ConfigPage(driver);
 		pinCustomKeypad = new PINCustomKeypad(driver);
@@ -95,6 +103,7 @@ public class App extends BaseTest {
 		spendingsPage = new SpendingsPage(driver);
 		vehiclesPage = new VehiclesPage(driver);
 		vehicleDetailsPage = new VehicleDetailsPage(driver);
+		settingsPage = new SettingsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
 		digitalVaultPage = new DigitalVaultPage(driver);
@@ -102,6 +111,9 @@ public class App extends BaseTest {
 		imageViewPage = new ImageViewPage(driver);
 		cameraPage = new CameraPage(driver);
 		galleryPage = new GalleryPage(driver);
+		loginAuthPage = new LoginAuthPage(driver);
+		pinOptionsPage = new PINOptionsPage(driver);
+
 	}
 	
 	
@@ -119,8 +131,15 @@ public class App extends BaseTest {
 	public void loginToApp(String login, String pwd) {
 		loginPage.enterLoginCredentials(login, pwd);
 		loginPage.tapLoginButton();
+		if(pinOptionsPage.checkEnablePinButton() != null) {
+			pinOptionsPage.tapMaybeLater();
+		}
 	}
 	
+	public void loginWithPinOptions(String login, String pwd) {
+		loginPage.enterLoginCredentials(login, pwd);
+		loginPage.tapLoginButton();
+	}
 	/*
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() throws Exception {

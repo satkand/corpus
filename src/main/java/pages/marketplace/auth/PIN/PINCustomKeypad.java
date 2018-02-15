@@ -1,4 +1,4 @@
-package pages.marketplace.auth;
+package pages.marketplace.auth.PIN;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
