@@ -76,8 +76,8 @@ public class PINSetupTest extends App {
 	private void navigateToPINSetupPage() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		welcomePage.tapLoginButton();
-		loginToApp(utils.readTestData("hasNoProducts", "login"), 
-				utils.readTestData("hasNoProducts", "pwd"));
+		loginToApp(utils.readTestData("PIN", "loginWithoutExistingPin", "login"), 
+				utils.readTestData("PIN", "loginWithoutExistingPin", "pwd"));
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkSettingsMenuItem(), "Settings title not seen");
 		navigationMenu.tapSettingsMenuItem();

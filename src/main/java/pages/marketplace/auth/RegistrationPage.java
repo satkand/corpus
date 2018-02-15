@@ -2,7 +2,6 @@ package pages.marketplace.auth;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;

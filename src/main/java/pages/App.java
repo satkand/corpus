@@ -14,7 +14,7 @@ import pages.marketplace.auth.RegistrationPage;
 import pages.marketplace.auth.PIN.PINAuthPage;
 import pages.marketplace.auth.PIN.PINCustomKeypad;
 import pages.marketplace.auth.PIN.PINOptionsPage;
-import pages.marketplace.auth.PIN.PINReAuthPasswordPage;
+import pages.marketplace.auth.PIN.ForgotPINTest;
 import pages.marketplace.auth.PIN.PINSetupPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CommonPage;
@@ -41,7 +41,7 @@ public class App extends BaseTest {
 	public PINSetupPage pinSetupPage = null;
 	public DummyPageWithLinks dummy = null;
 	public PINAuthPage pinAuthPage = null;
-	public PINReAuthPasswordPage pinReAuthPasswordPage = null;
+	public ForgotPINTest pinReAuthPasswordPage = null;
 	public ConfigPage configPage = null;
 	public PINCustomKeypad pinCustomKeypad = null;
 	public CommonPage common = null;
@@ -80,7 +80,7 @@ public class App extends BaseTest {
 		pinSetupPage = new PINSetupPage(driver);
 		dummy = new DummyPageWithLinks(driver);
 		pinAuthPage = new PINAuthPage(driver);
-		pinReAuthPasswordPage = new PINReAuthPasswordPage(driver);
+		pinReAuthPasswordPage = new ForgotPINTest(driver);
 		welcomePage = new WelcomePage(driver);
 		configPage = new ConfigPage(driver);
 		pinCustomKeypad = new PINCustomKeypad(driver);

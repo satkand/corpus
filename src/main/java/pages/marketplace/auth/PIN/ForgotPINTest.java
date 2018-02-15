@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
-public class PINReAuthPasswordPage extends BasePage {
+public class ForgotPINTest extends BasePage {
 	
-	public PINReAuthPasswordPage(AppiumDriver driver) {
+	public ForgotPINTest(AppiumDriver driver) {
 		super(driver);
 	}
 	
