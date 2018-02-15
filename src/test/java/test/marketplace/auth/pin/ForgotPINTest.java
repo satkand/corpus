@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import pages.App;
 
-public class PINReAuthPasswordTest extends App {
+public class ForgotPINTest extends App {
 
 	//Scenario 1
 	@Test (groups = {"DMPM-67", "DMPM-504", "marketplace", "pin", "priority-major"})
