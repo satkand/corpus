@@ -21,7 +21,8 @@ public class SpendingsPage extends BasePage {
 
 	private By spendingPageTitle = By.xpath("//android.widget.TextView[@text='Spending']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
-	
+	private By loadingIndicator = By.id("loadingIndicator");
+
 	private By monthPicker = By.id("au.com.suncorp.marketplace:id/monthSelector");
 	private By monthSelected = By.id("au.com.suncorp.marketplace:id/monthLabel");
 	private By updateMonthButton = By.id("au.com.suncorp.marketplace:id/changeMonth");
@@ -45,9 +46,12 @@ public class SpendingsPage extends BasePage {
 									        put("december",  new String[] {"August", "July", "June", "May", "April", "March", "February", "January"});
 									    }
 									};
-
+									
 	private By spendingsTotalAmount = By.id("au.com.suncorp.marketplace:id/totalSpentAmount");
 	private By infoIcon = By.id("au.com.suncorp.marketplace:id/infoButton");
+	//TODO -> This is present on iOS not on Android. Check later, if still not present, remove this
+	private By updatedInfoText = By.id("Total updated once per day.");
+
 	
 	private By categoriesTab = By.xpath("//android.widget.TextView[@text='CATEGORIES']");
 	private By vendorTab = By.xpath("//android.widget.TextView[@text='VENDOR']");
@@ -64,11 +68,10 @@ public class SpendingsPage extends BasePage {
 	private By vendorName = By.id("au.com.suncorp.marketplace:id/nameText");
 	private By vendorSpendingAmount = By.id("au.com.suncorp.marketplace:id/amountText");
 	
-	// TODO
-	//No transactions on category/vendor tab
-	//image
-	private By emptyTransactionsMessage = By.xpath("//android.widget.TextView[@text='Sorry, you don't have any transactions yet']");
-	private By emptyTransactionsHintMessage = By.xpath("//android.widget.TextView[@text='Please note: Transactions will take up to 24 hours to appear.']");
+	// TODO Raised a defect for id of empty transacations image 
+	private By emptyTransactionsImage = By.id("EmptySpendingImage");
+	private By emptyTransactionsMessage = By.id("au.com.suncorp.marketplace:id/missingTransactionsHeading");
+	private By emptyTransactionsHintMessage = By.id("au.com.suncorp.marketplace:id/missingTransactionsBodyText");
 	
 	public WebElement checkSpendingPageTitle() {
 		return find(spendingPageTitle,30);
@@ -91,11 +94,6 @@ public class SpendingsPage extends BasePage {
 		return find(monthsOptionInPicker);
 	}
 	
-	public String[] fetchPastMonthsInPicker(String currentMonth){
-		String[] pastMonths = monthsMp.get(currentMonth.toLowerCase());
-		return pastMonths;
-	}
-	
 	public WebElement checkMonthSelected() {
 		return find(monthSelected);
 	}
@@ -109,12 +107,18 @@ public class SpendingsPage extends BasePage {
 	}
 	
 	public void selectMonth(String month) {
+		System.out.println("month:::"+month);
 		tapMonthPicker();
 		selectElementFromDropdownBasedOnText(month);
 		if(checkUpdateMonthButton() != null) {
 			tapElement(updateMonthButton);
 		}
-		
+		int index = 0;
+		// After a month is selected, Loading indicator is shown before the data is getting refreshed on the page.
+		// So waiting for the loading indicator to disappear before verifying for the data on the screen.
+		while (find(loadingIndicator)!= null && index<=12) {
+			index++;
+		}
 		/*
 		switch(month) {
 		case "January":
@@ -156,6 +160,12 @@ public class SpendingsPage extends BasePage {
 		}*/
 	}
 	
+	// Returns the months prior to the last 3 months of the current months. These months shouldn't show the transactions count in the categories and vendors list
+	public List<String> fetchPastMonthsPriorToLast3Months(String currentMonth){
+		List<String> pastMonths = List.of(monthsMp.get(currentMonth.toLowerCase()));
+		return pastMonths;
+	}
+	
 	
 	public WebElement checkSpendingsTotalAmount() {
 		return find(spendingsTotalAmount);
@@ -169,6 +179,10 @@ public class SpendingsPage extends BasePage {
 		return find(infoIcon);
 	}
 	
+	//TODO -> This is present on iOS not on Android. Check later, if still not present, remove this
+	public WebElement checkUpdatedInfoText() {
+		return find(updatedInfoText);
+	}
 	
 	public WebElement checkCategoriesTab() {
 		return find(categoriesTab);
@@ -190,6 +204,10 @@ public class SpendingsPage extends BasePage {
 		tapElement(vendorTab);
 	}
 	
+	public WebElement checkCategoriesTransactionsText() {
+		return find(categoriesTransactionsText);
+	}
+	
 	public List<String> fetchCategoriesTransactionsTextList() {
 		return getTextList(categoriesTransactionsText);
 	}
@@ -203,6 +221,9 @@ public class SpendingsPage extends BasePage {
 		return getTextList(categoriesSpendingAmount);
 	}
 	
+	public WebElement checkVendorsTransactionsText() {
+		return find(vendorTransactionsText);
+	}
 	
 	public List<String> fetchVendorsTransactionsTextList() {
 		return getTextList(vendorTransactionsText);
@@ -227,9 +248,9 @@ public class SpendingsPage extends BasePage {
 		}
 	}
 	
-	public void scrollDown() {
-		swipeScreen("down");
-		//swipeScreen("down");
+	//TODO -> Defect raised for the id
+	public WebElement checkEmptyTransactionsImage() {
+		return find(emptyTransactionsImage);
 	}
 	
 	public WebElement checkEmptyTransactionsMessage() {

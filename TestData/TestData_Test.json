@@ -12,6 +12,335 @@
 		"pwd": "Password1"
 	},
 	"hasSuncorpBankAccounts" :{
+		"login": "a@b.c",
+		"pwd": "Password1",
+		"netWorthAmount": "$7,550.35",
+		"bankAccounts": "",
+		"currentMonth": "February 2018",
+		"spendingsAmountPerMonth": [
+			{
+				"month": "January 2018",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "February 2018",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "March 2017",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "April 2017",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "May 2017",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "June 2017",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "July 2017",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "August 2017",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "September 2017",
+				"amount": "-$37,223.35"
+			},
+			{
+				"month": "October 2017",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "November 2017",
+				"amount": "-$23.54"
+			},
+			{
+				"month": "December 2017",
+				"amount": "-$3,789.32"
+			}
+		],
+		"spendingsByCategories": [
+			{
+				"month": "February 2018",
+				"categoriesList": [
+					{
+					"name": "Food & drink",
+					"amount": "-$23.54",
+					"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "January 2018",
+				"categoriesList": [
+					{
+					"name": "Food & drink",
+					"amount": "-$23.54",
+					"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "December 2017",
+				"categoriesList": [
+					{
+					"id": 7,
+					"name": "Health & fitness",
+					"amount": "-$1,999.99",
+					"currency": "AUD",
+					"transactionCount": 2
+					},
+					{
+					"id": 0,
+					"name": "Bills & utilities",
+					"amount": "-$1,987.00",
+					"currency": "AUD",
+					"transactionCount": 1
+					},
+					{
+					"id": 3,
+					"name": "Entertainment",
+					"amount": "-$98.21",
+					"currency": "AUD",
+					"transactionCount": 5
+					},
+					{
+					"id": 2,
+					"name": "Education & family",
+					"amount": "-$38.22",
+					"currency": "AUD",
+					"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "October 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "-$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "September 2017",
+				"categoriesList": [
+				{
+					"id": 13,
+					"name": "Transport",
+					"amount": "-$17,584.25",
+					"currency": "AUD",
+					"transactionCount": 25
+				},
+				{
+					"id": 4,
+					"name": "Financial",
+					"amount": "-$5,533.20",
+					"currency": "AUD",
+					"transactionCount": 55
+				},
+				{
+					"id": 6,
+					"name": "Groceries",
+					"amount": "-$4,961.55",
+					"currency": "AUD",
+					"transactionCount": 85
+				},
+				{
+					"id": 12,
+					"name": "Shopping",
+					"amount": "-$2,304.25",
+					"currency": "AUD",
+					"transactionCount": 35
+				}
+				]
+			},
+			{
+				"month": "August 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "-$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "June 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "-$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "May 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "-$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "March 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "-$23.54",
+						"transactionCount": 3
+					}
+				]
+			}
+		],
+		"spendingsByVendor": [
+			{
+				"month": "February 2018",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "-$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "December 2017",
+				"vendorsList": [
+					{
+					"name": "Suncorp Home Loan",
+					"amount": "-$2,789.65",
+					"transactionCount": 3
+					},
+					{
+					"name": "Clinton's Cafe",
+					"amount": "-$198.65",
+					"transactionCount": 3
+					},
+					{
+					"name": "Jimmy Bloggs Barber",
+					"amount": "-$128.43",
+					"transactionCount": 1
+					},
+					{
+					"name": "Phil's diner",
+					"amount": "-$38.21",
+					"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "November 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "-$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "September 2017",
+				"vendorsList": [
+					{
+					"name": "Other",
+					"amount": "-$24,262.30",
+					"transactionCount": 90
+					},
+					{
+					"name": "Coles",
+					"amount": "-$2,265.45",
+					"transactionCount": 25
+					},
+					{
+					"name": "Woolworths",
+					"amount": "-$1,787.40",
+					"transactionCount": 35
+					},
+					{
+					"name": "BUPA",
+					"amount": "-$1,599.50",
+					"transactionCount": 5
+					}
+				]
+			},
+			{
+				"month": "August 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "-$23.54",
+			            "transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "July 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "-$23.54",
+			            "transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "June 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "-$23.54",
+			            "transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "April 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "-$23.54",
+			            "transactionCount": 3
+
+					}
+				]
+			},
+			{
+				"month": "March 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "-$23.54",
+			            "transactionCount": 3
+
+					}
+				]
+			}
+		],
+		"emptyCategoryMonths": [
+			"November 2017",
+			"July 2017",
+			"April 2017"
+		],
+		"emptyVendorMonths": [
+			"January 2018",
+			"October 2017",
+			"May 2017"
+		]
+	},
+	"hasSuncorpBankAccounts_old" :{
 		"login": "flash@dc.com",
 		"pwd": "Password1",
 		"netWorthAmount": "-$893,818.75",
