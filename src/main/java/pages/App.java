@@ -28,6 +28,7 @@ import pages.marketplace.common.SettingsPage;
 import pages.marketplace.common.WelcomePage;
 import pages.marketplace.digitalVault.DigitalVaultPage;
 import pages.marketplace.digitalVault.FolderViewPage;
+import pages.marketplace.digitalVault.ImagePreviewPage;
 import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
@@ -63,12 +64,12 @@ public class App extends BaseTest {
 	protected OffersPage offersPage = null;
 	public DigitalVaultPage digitalVaultPage = null;
 	public FolderViewPage folderViewPage = null;
-	public ImageViewPage imageViewPage = null;
+	public ImagePreviewPage imagePreviewPage = null;
 	public CameraPage cameraPage = null;
 	public GalleryPage galleryPage = null;		
 	public LoginAuthPage loginAuthPage = null;
 	public PINOptionsPage pinOptionsPage = null;
-	
+	public ImageViewPage imageViewPage = null;
 
 
 	@BeforeClass
@@ -108,12 +109,12 @@ public class App extends BaseTest {
 		offersPage = new OffersPage(driver);
 		digitalVaultPage = new DigitalVaultPage(driver);
 		folderViewPage = new FolderViewPage(driver);
-		imageViewPage = new ImageViewPage(driver);
+		imagePreviewPage = new ImagePreviewPage(driver);
 		cameraPage = new CameraPage(driver);
 		galleryPage = new GalleryPage(driver);
 		loginAuthPage = new LoginAuthPage(driver);
 		pinOptionsPage = new PINOptionsPage(driver);
-
+		imageViewPage = new ImageViewPage(driver);
 	}
 	
 	

@@ -28,8 +28,9 @@ public class DigitalVaultPage extends BasePage {
 	private By documentItem = By.id("au.com.suncorp.marketplace:id/documentForeground");
 	private By documentMoreButton = By.id("au.com.suncorp.marketplace:id/documentMoreButton");
 	private By deleteItemButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
+	private By deleteContentsButton = By.id("au.com.suncorp.marketplace:id/deleteContentsButton");
 	private By moveToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
-	private By cameraPermissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
+	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
 	private By imageItem = By.id("DigitalVaultFileCell0FileThumbnailImageView");
 	private By takePhotoCard = By.id("au.com.suncorp.marketplace:id/takePhotoCard");
 	private By createFolderCard = By.id("au.com.suncorp.marketplace:id/createFolderCard");
@@ -42,8 +43,6 @@ public class DigitalVaultPage extends BasePage {
 	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
 	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
 	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
-	private By renameButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
-	private By renameCancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
 	private By moveToFolderItemButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
 	private By binBox = By.id("au.com.suncorp.marketplace:id/deleteDocumentOption");
 	private By okButton = By.id("android:id/button1");
@@ -150,8 +149,8 @@ public class DigitalVaultPage extends BasePage {
 	public void createAnEntry() {
 		tapAddButton();
 		tapTakePhotoCard();
-		if(find(cameraPermissionOkButton) != null) {
-			tapcameraPermissionOkButton();
+		if(find(permissionOkButton) != null) {
+			tapPermissionOkButton();
 		}
 	}
 
@@ -170,8 +169,8 @@ public class DigitalVaultPage extends BasePage {
 		return find(positiveButton);
 	}
 	
-	public void tapcameraPermissionOkButton() {
-		tapElement(cameraPermissionOkButton);
+	public void tapPermissionOkButton() {
+		tapElement(permissionOkButton);
 	}
 	
 	public WebElement checkAddButton() {
@@ -202,16 +201,12 @@ public class DigitalVaultPage extends BasePage {
 		return find(documentMoreButton);
 	}
 	
-	public boolean isRenameEnabled() {
-		return isEnabled(renameButton);
-	}
-	
 	public WebElement checkDeleteButton() {
 		return find(deleteItemButton);
 	}
 	
-	public WebElement checkRenameButton() {
-		return find(renameButton);
+	public WebElement checkDeleteContentsButton() {
+		return find(deleteContentsButton);
 	}
 	
 	public WebElement checkRenameItem() {
@@ -232,18 +227,6 @@ public class DigitalVaultPage extends BasePage {
 	
 	public void tapRenameItem() {
 		tapElement(renameItemButton);
-	}
-	
-	public void tapRenameButton() {
-		tapElement(renameButton);
-	}
-	
-	public WebElement checkRenameCancelButton() {
-		return find(renameCancelButton);
-	}
-	
-	public void tapRenameCancelButton() {
-		tapElement(renameCancelButton);
 	}
 	
 	public void enterName(String name) {
@@ -293,6 +276,32 @@ public class DigitalVaultPage extends BasePage {
 
 	public void tapOkButton() {
 		tapElement(okButton);
+	}
+	
+	public void addAPhotoThroughCamera() {
+		tapAddButton();
+		tapTakePhotoCard();
+		if(find(permissionOkButton) != null) {
+			tapPermissionOkButton();
+		}		
+	}
+	
+	public void addAPhotoThroughGallery() {
+		checkAddButton();
+		tapAddButton();
+		checkUploadPhotoCard();
+		tapUploadPhotoCard();
+		if(find(permissionOkButton) != null) {
+			tapPermissionOkButton();
+		}	
+	}
+	
+	public WebElement checkUploadPhotoCard() {
+		return find(uploadPhotoCard);
+	}
+
+	public void tapUploadPhotoCard() {
+		tapElement(uploadPhotoCard);
 	}
 	
 }

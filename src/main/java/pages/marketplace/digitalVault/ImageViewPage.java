@@ -8,85 +8,71 @@ import io.appium.java_client.AppiumDriver;
 
 public class ImageViewPage extends BasePage {
 
-	
-	private By imageViewTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/action_bar']"
-			+ "/android.widget.TextView");
-	private By editButton = By.id("au.com.suncorp.marketplace:id/editDocumentOption");
-	private By deleteItemButton = By.id("au.com.suncorp.marketplace:id/deleteItemButton");
-	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameItemButton");
-	private By moveToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
-	private By backButton = By.id("Navigate up");
-	private By saveButton = By.id("au.com.suncorp.marketplace:id/saveDocumentOption");
-	
-	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
-	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
-	private By renameButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
-	private By renameCancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
-	private By imageNameField = By.id("au.com.suncorp.marketplace:id/documentTitleDisplay");
-	private By renameDocumentButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
-	private By renameSaveButton = By.id("au.com.suncorp.marketplace:id/saveDocumentButton");
-	private By editTextField = By.id("au.com.suncorp.marketplace:id/renameEditText");
-	
 	public ImageViewPage(AppiumDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
-	public WebElement checkImageViewTitle() {
-		return find(imageViewTitle);
-	}
+	private By editButton = By.id("au.com.suncorp.marketplace:id/editDocumentOption");
+	private By deleteItemButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
+	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
+	private By moveItemToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
+	private By moveContentsToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
+	private By deleteContentsButton = By.id("au.com.suncorp.marketplace:id/deleteContentsButton");
+	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
+	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
+	private By positiveButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
+	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	private By imageViewTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/action_bar']"
+			+ "/android.widget.TextView");
 	
-	public WebElement checkSaveButton() {
-		return find(saveButton);
-	}
+	private By okButton = By.id("android:id/button1");
+	private By androidCancelButton = By.id("android:id/button2");
 	
 	public boolean isEditClickable() {
 		return isClickable(editButton);
-	}
-	
-	public boolean isRenameEnabled() {
-		return isEnabled(renameButton);
 	}
 	
 	public WebElement checkDeleteItemButton() {
 		return find(deleteItemButton);
 	}
 	
-	public WebElement checkRenameButton() {
-		return find(renameButton);
-	}
-	
-	public WebElement checkRenameItem() {
+	public WebElement checkRenameItemButton() {
 		return find(renameItemButton);
 	}
 	
-	public WebElement checkMoveToFolderButton() {
-		return find(moveToFolderButton);
+	public WebElement checkMoveItemToFolderButton() {
+		return find(moveItemToFolderButton);
 	}
 	
 	public void tapEditButton() {
 		tapElement(editButton);
 	}
 	
-	public void tapRenameItem() {
+	public void tapRenameItemButton() {
 		tapElement(renameItemButton);
 	}
 	
-	public void tapRenameButton() {
-		tapElement(renameButton);
+	public boolean isPositiveButtonEnabled() {
+		return isEnabled(positiveButton);
+	}
+
+	public WebElement checkPositiveButton() {
+		return find(positiveButton);
 	}
 	
-	public void tapSaveButton() {
-		tapElement(saveButton);
+	public void tapPositiveButton() {
+		tapElement(positiveButton);
 	}
 	
-	public WebElement checkRenameCancelButton() {
-		return find(renameCancelButton);
+	public WebElement checkCancelButton() {
+		return find(cancelButton);
 	}
 	
-	public void tapRenameCancelButton() {
-		tapElement(renameCancelButton);
+	public void tapCancelButton() {
+		tapElement(cancelButton);
 	}
+	
 	public void enterName(String name) {
 		typeValue(name, renameEditField);
 	}
@@ -95,33 +81,11 @@ public class ImageViewPage extends BasePage {
 		return readValue(imageViewTitle);
 	}
 	
+	public WebElement checkImageViewTitle() {
+		return find(imageViewTitle);
+	}
+	
 	public WebElement checkRenameDialogTitle() {
 		return find(renameDialogTitle);
 	}
-	
-	public WebElement checkImageNameField() {
-		return find(imageNameField);
-	}
-	
-	public void tapImageNameField() {
-		tapElement(imageNameField);
-	}
-	
-	public void tapRenameSaveButton() {
-		tapElement(renameSaveButton);
-	}
-	
-	public WebElement checkRenameSaveButton() {
-		return find(renameSaveButton);
-	}
-	
-	public void setName(String name) {
-		typeValue(name, editTextField);
-		tapRenameSaveButton();
-	}
-	
-	public WebElement checkRenameDocumentButton() {
-		return find(renameDocumentButton);
-	}
-	
 }

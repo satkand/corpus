@@ -9,27 +9,27 @@ import io.appium.java_client.AppiumDriver;
 public class FolderViewPage extends BasePage {
 
 	
-	private By editButton = By.id("au.com.suncorp.marketplace:id/editButton");
-	private By deleteItemButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
-	private By moveToFolderItemButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
 	private By folderTitle  = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']/android.widget.TextView");
-	private By documentMoreButton = By.id("au.com.suncorp.marketplace:id/documentMoreButton");
-	private By documentItem = By.id("au.com.suncorp.marketplace:id/documentForeground");
-	private By folderMoreButton = By.id("au.com.suncorp.marketplace:id/folderMoreButton");
-	private By uploadPhotoCard = By.id("au.com.suncorp.marketplace:id/uploadPhotoCard");
-	private By takePhotoCard = By.id("au.com.suncorp.marketplace:id/takePhotoCard");
-	private By addFromVaultCard = By.id("au.com.suncorp.marketplace:id/addFromVaultCard");
+	private By deleteFolderButton = By.id("au.com.suncorp.marketplace:id/deleteFolderButton");
+	private By renameFolderButton = By.id("au.com.suncorp.marketplace:id/renameFolderButton");
+	private By deleteDocumentsButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentsButton");
+	private By moveToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
 	private By deleteDocumentButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
 	private By renameDocumentButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
 	private By moveDocumentToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
+	private By documentMoreButton = By.id("au.com.suncorp.marketplace:id/documentMoreButton");
+	private By editButton = By.id("au.com.suncorp.marketplace:id/editButton");
+	private By documentItem = By.id("au.com.suncorp.marketplace:id/documentForeground");
+	private By uploadPhotoCard = By.id("au.com.suncorp.marketplace:id/uploadPhotoCard");
+	private By takePhotoCard = By.id("au.com.suncorp.marketplace:id/takePhotoCard");
+	private By addFromVaultCard = By.id("au.com.suncorp.marketplace:id/addFromVaultCard");
 	private By addButton = By.id("au.com.suncorp.marketplace:id/addDocumentFab");
 	private By emptyVaultImage = By.id("au.com.suncorp.marketplace:id/emptyDigitalVaultImage");
 	
-	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
 	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
 	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
-	private By renameButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
-	private By renameCancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	private By positiveButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
+	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
 	private By binBox = By.id("au.com.suncorp.marketplace:id/deleteDocumentOption");
 	
 	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
@@ -51,12 +51,12 @@ public class FolderViewPage extends BasePage {
 		return find(folderTitle);
 	}
 	
-	public WebElement checkDeleteButton() {
-		return find(deleteItemButton);
+	public WebElement checkDeleteDocumentButton() {
+		return find(deleteDocumentButton);
 	}
 	
-	public WebElement checkMoveToFolderButton() {
-		return find(moveToFolderItemButton);
+	public WebElement checkMoveDocumentToFolderButton() {
+		return find(moveDocumentToFolderButton);
 	}
 	
 	public String getTitle() {
@@ -64,11 +64,11 @@ public class FolderViewPage extends BasePage {
 	}
 	
 	public WebElement checkPositiveButton() {
-		return find(okButton);
+		return find(positiveButton);
 	}
 	
 	public void tapPositiveButton() {
-		tapElement(okButton);
+		tapElement(positiveButton);
 	}
 	
 	public WebElement checkAddButton() {
@@ -136,44 +136,28 @@ public class FolderViewPage extends BasePage {
 		return file;
 	}
 	
-	public boolean isRenameEnabled() {
-		return isEnabled(renameButton);
-	}
-	
-	public WebElement checkRenameButton() {
-		return find(renameButton);
-	}
-	
-	public WebElement checkRenameItem() {
-		return find(renameItemButton);
+	public WebElement checkRenameDocumentButton() {
+		return find(renameDocumentButton);
 	}
 	
 	public void tapEditButton() {
 		tapElement(editButton);
 	}
 	
-	public void tapRenameItem() {
-		tapElement(renameItemButton);
-	}
-	
-	public void tapRenameButton() {
-		tapElement(renameButton);
-	}
-	
-	public WebElement checkRenameCancelButton() {
-		return find(renameCancelButton);
-	}
-	
-	public void tapRenameCancelButton() {
-		tapElement(renameCancelButton);
+	public void tapRenameDocumentButton() {
+		tapElement(renameDocumentButton);
 	}
 	
 	public void enterName(String name) {
 		typeValue(name, renameEditField);
 	}
 	
-	public WebElement checkDeleteItem() {
-		return find(deleteItemButton);
+	public WebElement checkDeleteFolderButton() {
+		return find(deleteFolderButton);
+	}
+	
+	public WebElement checkMoveToFolderButton() {
+		return find(moveToFolderButton);
 	}
 	
 	public void tapDocumentMoreOption() {
@@ -188,10 +172,9 @@ public class FolderViewPage extends BasePage {
 		swipeHorizontally(documentMoreButton, documentItem);
 	}
 	
-	public void tapDeleteItem() {
-		tapElement(deleteItemButton);
+	public WebElement checkCancelButton() {
+		return find(cancelButton);
 	}
-	
 	public WebElement checkBinBox() {
 		return find(binBox);
 	}
@@ -214,6 +197,10 @@ public class FolderViewPage extends BasePage {
 
 	public void tapOkButton() {
 		tapElement(okButton);
+	}
+	
+	public boolean isPositiveButtonEnabled() {
+		return isEnabled(positiveButton);
 	}
 	
 }

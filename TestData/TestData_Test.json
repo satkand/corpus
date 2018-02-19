@@ -720,7 +720,8 @@
 			"pwd" : "Password1",
 			"newname" : "NewName",
 			"folderName" : "ab",
-			"fileName" : "dggrgeg"
+			"file1" : "dggrgeg",
+			"file2" : "abcgeg",
 		},
 	},
 
@@ -976,8 +977,7 @@
 				"offerTitle": "Building Insurance",
 				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
 			}
-		}
-
 		},
+
 	}
 }
