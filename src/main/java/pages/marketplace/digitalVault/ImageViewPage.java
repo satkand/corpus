@@ -14,9 +14,9 @@ public class ImageViewPage extends BasePage {
 	}
 
 	private By editButton = By.id("au.com.suncorp.marketplace:id/editDocumentOption");
-	private By deleteItemButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
-	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
-	private By moveItemToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
+	private By deleteDocumentButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
+	private By renameDocumentButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
+	private By moveDocumentToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
 	private By moveContentsToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
 	private By deleteContentsButton = By.id("au.com.suncorp.marketplace:id/deleteContentsButton");
 	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
@@ -26,31 +26,35 @@ public class ImageViewPage extends BasePage {
 	private By imageViewTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/action_bar']"
 			+ "/android.widget.TextView");
 	
-	private By okButton = By.id("android:id/button1");
+	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	
 	public boolean isEditClickable() {
 		return isClickable(editButton);
 	}
 	
-	public WebElement checkDeleteItemButton() {
-		return find(deleteItemButton);
+	public WebElement checkDeleteDocumentButton() {
+		return find(deleteDocumentButton);
 	}
 	
-	public WebElement checkRenameItemButton() {
-		return find(renameItemButton);
+	public WebElement checkRenameDocumentButton() {
+		return find(renameDocumentButton);
 	}
 	
-	public WebElement checkMoveItemToFolderButton() {
-		return find(moveItemToFolderButton);
+	public WebElement checkMoveDocumentToFolderButton() {
+		return find(moveDocumentToFolderButton);
 	}
 	
 	public void tapEditButton() {
 		tapElement(editButton);
 	}
 	
-	public void tapRenameItemButton() {
-		tapElement(renameItemButton);
+	public void tapRenameDocumentButton() {
+		tapElement(renameDocumentButton);
+	}
+	
+	public void tapDeleteDocumentButton() {
+		tapElement(deleteDocumentButton);
 	}
 	
 	public boolean isPositiveButtonEnabled() {
@@ -87,5 +91,21 @@ public class ImageViewPage extends BasePage {
 	
 	public WebElement checkRenameDialogTitle() {
 		return find(renameDialogTitle);
+	}
+	
+	public WebElement checkAndroidCancelButton() {
+		return find(androidCancelButton);
+	}
+
+	public void tapAndroidCancelButton() {
+		tapElement(androidCancelButton);
+	}
+	
+	public WebElement checkAndroidOkButton() {
+		return find(androidOkButton);
+	}
+
+	public void tapAndroidOkButton() {
+		tapElement(androidOkButton);
 	}
 }

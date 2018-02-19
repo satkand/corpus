@@ -35,7 +35,7 @@ public class FolderViewPage extends BasePage {
 	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
 	
 	//TODO: This id will be changed
-	private By okButton = By.id("android:id/button1");
+	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	
 	public FolderViewPage(AppiumDriver driver) {
@@ -191,12 +191,12 @@ public class FolderViewPage extends BasePage {
 		tapElement(androidCancelButton);
 	}
 	
-	public WebElement checkOkButton() {
-		return find(okButton);
+	public WebElement checkAndroidOkButton() {
+		return find(androidOkButton);
 	}
 
-	public void tapOkButton() {
-		tapElement(okButton);
+	public void tapAndroidOkButton() {
+		tapElement(androidOkButton);
 	}
 	
 	public boolean isPositiveButtonEnabled() {
