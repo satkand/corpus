@@ -38,7 +38,8 @@ public class DigitalVaultPage extends BasePage {
 	private By positiveButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
 	private By folderNameField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
 	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
-	
+	private By renameFolderButton = By.id("au.com.suncorp.marketplace:id/renameFolderButton");
+	private By deleteFolderButton = By.id("au.com.suncorp.marketplace:id/deleteFolderButton");
 	
 	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
 	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
@@ -237,7 +238,19 @@ public class DigitalVaultPage extends BasePage {
 		tapElement(documentMoreButton);
 	}
 	
-	public String findDocumentInPage(String fileName) {
+	public void tapFolderMoreOption() {
+		tapElement(folderMoreButton);
+	}
+	
+	public WebElement checkRenameFolderButton() {
+		return find(renameFolderButton);
+	}
+	
+	public void tapRenameFolderButton() {
+		tapElement(renameFolderButton);
+	}
+	
+	public String findElementInPage(String fileName) {
 		String file =  driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", fileName )).getText();
 		return file;
 	}
@@ -276,6 +289,10 @@ public class DigitalVaultPage extends BasePage {
 
 	public void tapOkButton() {
 		tapElement(okButton);
+	}
+	
+	public void clearEditField() {
+		clearValue(renameEditField);
 	}
 	
 	public void addAPhotoThroughCamera() {

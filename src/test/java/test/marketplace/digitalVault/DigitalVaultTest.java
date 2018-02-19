@@ -340,7 +340,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertTrue(imagePreviewPage.isPositiveButtonEnabled(), "Save button is disabled");
 		imagePreviewPage.tapPositiveButton();
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
-		Assert.assertNotNull(digitalVaultPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "file1")), "Document not found in the folder");
+		Assert.assertNotNull(digitalVaultPage.findElementInPage(utils.readTestData("digivault", "hasItems", "file1")), "Document not found in the folder");
 		
 		
 		//From gallery
@@ -359,7 +359,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertTrue(imagePreviewPage.isPositiveButtonEnabled(), "Save button is disabled");
 		imagePreviewPage.tapPositiveButton();
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
-		Assert.assertNotNull(digitalVaultPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "file2")), "Document not found in the folder");
+		Assert.assertNotNull(digitalVaultPage.findElementInPage(utils.readTestData("digivault", "hasItems", "file2")), "Document not found in the folder");
 	}
 	
 	@Test(groups = { "DMPM-2363", "DMPM-2927","marketplace", "Document Storage", "priority-minor" })
@@ -375,6 +375,38 @@ public class DigitalVaultTest extends App {
 		imagePreviewPage.tapCancelButton();
 		Assert.assertNull(imagePreviewPage.checkEditField(), "Save button not present");
 	}
+	
+
+	@Test(groups = { "DMPM-1605", "DMPM-2769", "DMPM-2770", "DMPM-2771", "DMPM-2772", "DMPM-2773","marketplace", "Document Storage", "priority-minor" })
+	public void testRenameFolderFromRootDirectory() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapLoginButton();
+		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
+		navigateToDigiVaultPage();
+		if(digitalVaultPage.checkDigiVaultEmptyImage() != null) {
+			createDummyData();
+		}
+		digitalVaultPage.tapFolderMoreOption();
+		Assert.assertNotNull(digitalVaultPage.checkRenameFolderButton(), "Rename folder button is not shown");
+		digitalVaultPage.tapRenameFolderButton();	
+		Assert.assertNotNull(digitalVaultPage.checkCancelButton(), "Rename button is not shown");
+		Assert.assertTrue(common.isKeyboardShown(),"Keyboard not seen");
+		digitalVaultPage.tapCancelButton();
+		Assert.assertNull(digitalVaultPage.checkCancelButton(), "Rename button is not shown");
+		
+		digitalVaultPage.tapFolderMoreOption();
+		Assert.assertNotNull(digitalVaultPage.checkRenameFolderButton(), "Rename folder button is not shown");
+		digitalVaultPage.tapRenameFolderButton();
+		Assert.assertNotNull(digitalVaultPage.checkPositiveButton(), "Rename button is not shown");
+		digitalVaultPage.clearEditField();
+		Assert.assertFalse(digitalVaultPage.isPositiveButtonEnabled(), "Save button is enabled");
+		digitalVaultPage.enterName(utils.readTestData("digivault", "hasItems", "folder1"));	
+		Assert.assertTrue(digitalVaultPage.isPositiveButtonEnabled(), "Save button is disabled");
+		digitalVaultPage.tapPositiveButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+		Assert.assertNotNull(digitalVaultPage.findElementInPage(utils.readTestData("digivault", "hasItems", "folder1")), "Folder was not renamed");	
+	}
+	
 	
 	// DMPM-799 : Scenario 2 - Navigating to the digital Vault screen
 	private void navigateToDigiVaultPage() {
