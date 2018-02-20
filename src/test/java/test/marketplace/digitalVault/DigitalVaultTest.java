@@ -264,7 +264,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertNull(folderViewPage.checkRenameDialogTitle(), "Rename dialog title is not shown");
 	}
 	
-	@Test(groups = { "DMPM-1607", "DMPM-2545","DMPM-2546","DMPM-2547","marketplace", "Document Storage", "priority-minor" })
+	@Test(groups = { "DMPM-1607", "DMPM-2545","DMPM-2546","DMPM-2547", "marketplace", "Document Storage", "priority-minor" })
 	public void testItemActionMenuDelete() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		welcomePage.tapLoginButton();
@@ -277,21 +277,21 @@ public class DigitalVaultTest extends App {
 		digitalVaultPage.tapDocumentMoreOption();
 		Assert.assertNotNull(digitalVaultPage.checkDeleteItem(), "Delete item is not shown");
 		digitalVaultPage.tapDeleteItem();
-		Assert.assertNotNull(digitalVaultPage.checkOkButton(), "Delete button is not shown");
+		Assert.assertNotNull(digitalVaultPage.checkAndroidOkButton(), "Delete button is not shown");
 		Assert.assertNotNull(digitalVaultPage.checkAndroidCancelButton(), "Delete cancel button is not shown");
 		digitalVaultPage.tapAndroidCancelButton();
 		digitalVaultPage.swipeToDelete();
 		Assert.assertNotNull(digitalVaultPage.checkBinBox(), "Bin box is not shown");
 		digitalVaultPage.tapBinBox();
 		Assert.assertNotNull(digitalVaultPage.checkAndroidCancelButton(), "Delete cancel button not shown");
-		Assert.assertNotNull(digitalVaultPage.checkOkButton(), "Delete ok button not shown");
+		Assert.assertNotNull(digitalVaultPage.checkAndroidOkButton(), "Delete ok button not shown");
 		digitalVaultPage.tapAndroidCancelButton();
-		Assert.assertNull(digitalVaultPage.checkOkButton(), "Delete ok button is shown");
+		Assert.assertNull(digitalVaultPage.checkAndroidOkButton(), "Delete ok button is shown");
 		digitalVaultPage.swipeToDelete();
 		Assert.assertNotNull(digitalVaultPage.checkBinBox(), "Bin box is not shown");
 		digitalVaultPage.tapBinBox();
-		Assert.assertNotNull(digitalVaultPage.checkOkButton(), "Delete ok button not shown");
-		digitalVaultPage.tapOkButton();
+		Assert.assertNotNull(digitalVaultPage.checkAndroidOkButton(), "Delete ok button not shown");
+		digitalVaultPage.tapAndroidOkButton();
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digi vault main screen is not shown");
 		Assert.assertNull(digitalVaultPage.checkDocumentMoreOption(), "Item not deleted");
 		
@@ -434,6 +434,51 @@ public class DigitalVaultTest extends App {
 		imageViewPage.tapAndroidOkButton();
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
 		Assert.assertNull(digitalVaultPage.checkDocumentMoreOption(), "Item not deleted");	
+	}
+	
+	@Test(groups = { "DMPM-1115", "DMPM-2942", "DMPM-2943", "DMPM-2944", "marketplace", "Document Storage", "priority-minor" })
+	public void testDeleteFolderFromRoot() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapLoginButton();
+		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
+		navigateToDigiVaultPage();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digital vault home page is not displayed");
+		digitalVaultPage.createFolder(utils.readTestData("digivault", "hasItems", "folderName"));
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder page is not displayed");
+		common.goBack();
+		digitalVaultPage.checkDigiVaultTitle();
+		digitalVaultPage.tapFolderMoreOption();
+		Assert.assertNotNull(digitalVaultPage.checkDeleteFolderButton(), "Hamburger menu or navigation menu is not dispalyed");
+		digitalVaultPage.tapDeleteFolderButton();
+		Assert.assertNotNull(digitalVaultPage.checkAndroidCancelButton(), "Cancel button not present");
+		digitalVaultPage.tapAndroidCancelButton();
+		Assert.assertNull(digitalVaultPage.checkAndroidCancelButton(), "Ok button not present");
+		digitalVaultPage.tapFolderMoreOption();
+		Assert.assertNotNull(digitalVaultPage.checkDeleteFolderButton(), "Delete Item button not present");
+		digitalVaultPage.tapDeleteFolderButton();
+		Assert.assertNotNull(digitalVaultPage.checkAndroidOkButton(), "Ok button not present");
+		digitalVaultPage.tapAndroidOkButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+		Assert.assertNull(digitalVaultPage.checkFolderMoreOption(), "Item not deleted");
+		
+		
+		digitalVaultPage.createFolder(utils.readTestData("digivault", "hasItems", "folderName"));
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder page is not displayed");
+		common.goBack();
+		digitalVaultPage.checkDigiVaultTitle();
+		digitalVaultPage.swipeToDeleteFolder();
+		Assert.assertNotNull(digitalVaultPage.checkBinBoxForFolder(), "Bin box is not shown");
+		digitalVaultPage.tapBinBoxForFolder();
+		Assert.assertNotNull(digitalVaultPage.checkAndroidCancelButton(), "Cancel button not present");
+		digitalVaultPage.tapAndroidCancelButton();
+		Assert.assertNull(digitalVaultPage.checkAndroidCancelButton(), "Ok button not present");
+		digitalVaultPage.swipeToDeleteFolder();
+		Assert.assertNotNull(digitalVaultPage.checkBinBoxForFolder(), "Bin box is not shown");
+		digitalVaultPage.tapBinBoxForFolder();
+		Assert.assertNotNull(digitalVaultPage.checkAndroidOkButton(), "Ok button not present");
+		digitalVaultPage.tapAndroidOkButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+		Assert.assertNull(digitalVaultPage.checkFolderMoreOption(), "Item not deleted");
 	}
 	
 	// DMPM-799 : Scenario 2 - Navigating to the digital Vault screen

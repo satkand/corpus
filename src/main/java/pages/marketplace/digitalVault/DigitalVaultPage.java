@@ -46,7 +46,8 @@ public class DigitalVaultPage extends BasePage {
 	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
 	private By moveToFolderItemButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
 	private By binBox = By.id("au.com.suncorp.marketplace:id/deleteDocumentOption");
-	private By okButton = By.id("android:id/button1");
+	private By binBoxForFolder = By.id("au.com.suncorp.marketplace:id/deleteFolderOption");
+	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	
 	public WebElement checkDigiVaultTitle() {
@@ -263,6 +264,10 @@ public class DigitalVaultPage extends BasePage {
 		 swipeHorizontally(documentMoreButton, documentItem);
 	}
 	
+	public void swipeToDeleteFolder() {
+		 swipeHorizontally(folderMoreButton, folderItem);
+	}
+	
 	public void tapDeleteItem() {
 		tapElement(deleteItemButton);
 	}
@@ -271,8 +276,16 @@ public class DigitalVaultPage extends BasePage {
 		return find(binBox);
 	}
 	
+	public WebElement checkBinBoxForFolder() {
+		return find(binBoxForFolder);
+	}
+	
 	public void tapBinBox() {
 		tapElement(binBox);
+	}
+	
+	public void tapBinBoxForFolder() {
+		tapElement(binBoxForFolder);
 	}
 	
 	public WebElement checkAndroidCancelButton() {
@@ -283,12 +296,20 @@ public class DigitalVaultPage extends BasePage {
 		tapElement(androidCancelButton);
 	}
 	
-	public WebElement checkOkButton() {
-		return find(okButton);
+	public WebElement checkAndroidOkButton() {
+		return find(androidOkButton);
 	}
 
-	public void tapOkButton() {
-		tapElement(okButton);
+	public void tapAndroidOkButton() {
+		tapElement(androidOkButton);
+	}
+	
+	public WebElement checkDeleteFolderButton() {
+		return find(deleteFolderButton);
+	}
+	
+	public void tapDeleteFolderButton() {
+		tapElement(deleteFolderButton);
 	}
 	
 	public void clearEditField() {
