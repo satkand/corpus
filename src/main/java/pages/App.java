@@ -24,6 +24,8 @@ import pages.marketplace.common.WelcomePage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.money.MoneyPage;
+import pages.marketplace.money.AccountDetails;
+import pages.marketplace.money.AccountInfo;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
@@ -54,6 +56,8 @@ public class App extends BaseTest {
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
 	protected MoneyPage moneyPage = null;
+	protected AccountDetails AccountDetailsPage = null;
+	protected AccountInfo AccountInfoPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -90,6 +94,8 @@ public class App extends BaseTest {
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
 		moneyPage = new MoneyPage(driver);
+		AccountDetailsPage=new AccountDetails(driver);
+		AccountInfoPage=new AccountInfo(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)

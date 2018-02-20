@@ -128,4 +128,9 @@ public class LandingPage extends BasePage {
 	public void tapMoneyTab() {
 		tapElement(moneyTab);
 	}
+	
+	public boolean isMoneyTabSelected() {
+		return isSelected(moneyTab);
+	}
+	
 }
