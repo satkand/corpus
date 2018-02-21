@@ -67,7 +67,7 @@ public class DigitalVaultPage extends BasePage {
 	
 	public String getDigiVaultEmptyImageTitle()
 	{
-		return readValue(digiVaultEmptyImageTitle);
+		return getText(digiVaultEmptyImageTitle);
 	}
 
 	public WebElement checkDigiVaultEmptyImageDescription() {
@@ -76,7 +76,7 @@ public class DigitalVaultPage extends BasePage {
 	
 	public String getdigiVaultEmptyImageDescription()
 	{
-		return readValue(digiVaultEmptyImageDescription);
+		return getText(digiVaultEmptyImageDescription);
 	}
 
 	public WebElement checkAddFromPhotoLibraryButton() {
@@ -238,8 +238,7 @@ public class DigitalVaultPage extends BasePage {
 	}
 	
 	public String findDocumentInPage(String fileName) {
-		String file =  driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", fileName )).getText();
-		return file;
+		return  findElementInPage( String.format( "//*[@text=\"%s\"]", fileName ));
 	}
 	
 	public WebElement checkRenameDialogTitle() {

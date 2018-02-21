@@ -78,7 +78,7 @@ public class ImageViewPage extends BasePage {
 	}
 	
 	public String readTitleValue() {
-		return readValue(imageViewTitle);
+		return getText(imageViewTitle);
 	}
 	
 	public WebElement checkImageViewTitle() {
