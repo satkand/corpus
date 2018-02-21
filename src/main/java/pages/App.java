@@ -28,6 +28,7 @@ import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
+import pages.marketplace.banking.*;
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -52,6 +53,7 @@ public class App extends BaseTest {
 	public VehicleDetailsPage vehicleDetailsPage = null;
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
+	public AccountDetailsPage accountsPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -87,6 +89,7 @@ public class App extends BaseTest {
 		vehicleDetailsPage = new VehicleDetailsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
+		accountsPage = new AccountDetailsPage(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)
