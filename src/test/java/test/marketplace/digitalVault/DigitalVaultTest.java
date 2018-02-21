@@ -1,5 +1,8 @@
 package test.marketplace.digitalVault;
 
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -347,7 +350,7 @@ public class DigitalVaultTest extends App {
 		digitalVaultPage.addAPhotoThroughGallery();
 		Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
 		galleryPage.choosePicture();
-		imagePreviewPage.tapNextButton();
+		imagePreviewPage.finishSavingImageByChoosingFolder();
 		Assert.assertNotNull(imagePreviewPage.checkEditField(), "Edit field not present");
 		Assert.assertNotNull(imagePreviewPage.checkCancelButton(), "Cancel button not present");
 		Assert.assertNotNull(imagePreviewPage.checkPositiveButton(), "Save button not present");
@@ -415,9 +418,7 @@ public class DigitalVaultTest extends App {
 		navigateToDigiVaultPage();
 		digitalVaultPage.addAPhotoThroughCamera();
 		cameraPage.capturePhoto();
-		imagePreviewPage.tapNextButton();
-		Assert.assertNotNull(imagePreviewPage.checkPositiveButton(), "Save button not present");
-		imagePreviewPage.tapPositiveButton();
+		imagePreviewPage.finishSavingImageByChoosingFolder();
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
 		
 		digitalVaultPage.tapDocumentItem();
@@ -481,6 +482,30 @@ public class DigitalVaultTest extends App {
 		Assert.assertNull(digitalVaultPage.checkFolderMoreOption(), "Item not deleted");
 	}
 	
+	
+	@Test(groups = { "DMPM-2710", "DMPM-2947", "DMPM-2948", "marketplace", "Document Storage", "priority-minor" })
+	public void testSelectFoldersForDeletion() {
+		//TODO: Can be replaced later by a user which already has existing images.
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapLoginButton();
+		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
+		navigateToDigiVaultPage();
+		digitalVaultPage.addAPhotoThroughCamera();
+		cameraPage.capturePhoto();
+		imagePreviewPage.finishSavingImageByChoosingFolder();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+		digitalVaultPage.addAPhotoThroughCamera();
+		cameraPage.capturePhoto();
+		imagePreviewPage.finishSavingImageByChoosingFolder();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+		
+		digitalVaultPage.tapEditButton();
+		Assert.assertNotNull(digitalVaultPage.checkDeleteContentsButton(), "Delete contents button not present");
+		digitalVaultPage.tapDeleteContentsButton();
+		Assert.assertTrue(selectItemsPage.selectAllItems(), "All items not selected");
+
+	}
+	
 	// DMPM-799 : Scenario 2 - Navigating to the digital Vault screen
 	private void navigateToDigiVaultPage() {
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Split Menu button is not displayed");
@@ -493,17 +518,15 @@ public class DigitalVaultTest extends App {
 	
 	private void createDummyData() {
 		Assert.assertNotNull(digitalVaultPage.checkAddButton(), "Add button not present");
-		digitalVaultPage.createAnEntry();
+		digitalVaultPage.addAPhotoThroughCamera();
 		cameraPage.capturePhoto();
-		imagePreviewPage.tapNextButton();
-		imagePreviewPage.tapPositiveButton();
+		imagePreviewPage.finishSavingImageByChoosingFolder();
 		
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digital vault home page is not displayed");
 		digitalVaultPage.createFolder(utils.readTestData("digivault", "hasItems", "folderName"));
-		digitalVaultPage.createAnEntry();
+		digitalVaultPage.addAPhotoThroughCamera();
 		cameraPage.capturePhoto();
-		imagePreviewPage.tapNextButton();
-		imagePreviewPage.tapPositiveButton();
+		imagePreviewPage.finishSavingImage();
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder view page not loaded");
 		Assert.assertNotNull(folderViewPage.checkAddButton(), "Folder view page not loaded");
 		common.goBack();

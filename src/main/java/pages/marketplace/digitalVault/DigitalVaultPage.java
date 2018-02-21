@@ -342,4 +342,8 @@ public class DigitalVaultPage extends BasePage {
 		tapElement(uploadPhotoCard);
 	}
 	
+	public void tapDeleteContentsButton() {
+		tapElement(deleteContentsButton);
+	}
+	
 }
