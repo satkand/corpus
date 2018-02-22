@@ -18,10 +18,10 @@ public class AccountDetailsTest extends App {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Guest Landing Page - menu icon not shown");
 		Assert.assertNotNull(landingPage.checkGuestAccessPageTitle(), "Guest Landing page - Page Title not shown");
-		accountsPage.tapNavMenu();
-		Assert.assertNotNull(accountsPage.checkBankingHomeButton(), "Banking Home button not shown in the menu");
-		accountsPage.tapBankingHomeButton();
-		Assert.assertNotNull(accountsPage.checkBankingHomeTitle(), "Banking Home page - Page Title not shown");
+		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkBankingHomeButton(), "Banking Home button not shown in the menu");
+		navigationMenu.tapBankingHomeButton();
+		Assert.assertNotNull(bankingHomePage.checkBankingHomeTitle(), "Banking Home page - Banking Home Screen not reached");
 	}
 
 	//TODO: New Ids and Xpaths to be added to the screen
@@ -31,10 +31,10 @@ public class AccountDetailsTest extends App {
 		
 		navigatingToBankingHome();
 
-		Assert.assertNotNull(accountsPage.checkPaysomeoneButton(), "Banking Home page did not load");
+		Assert.assertNotNull(bankingHomePage.checkPaysomeoneButton(), "Banking Home page did not load");
 		//Assert.assertNotNull(accountsPage.checkHomeLoanAccounts(), "Loan accounts not shown");
 		
-		accountsPage.tapMyLineOfCreditAccount();
+		bankingHomePage.tapMyLineOfCreditAccount();
 		
 		// Scenario-3 - Account Nickname
 		
@@ -153,152 +153,151 @@ public class AccountDetailsTest extends App {
 		
 		/** DMPM-908 **/
 		
-//		@Test (groups = {"DMPM-908", "marketplace", "FFI", "priority-minor"})
-//		public void testVariableFixedRateAccount() {
-//			
-//			navigatingToBankingHome();
-//
-//			Assert.assertNotNull(accountsPage.checkPaysomeoneButton(), "Banking Home page did not load");
-//			//Assert.assertNotNull(accountsPage.checkHomeLoanAccounts(), "Loan accounts not shown");
-//			
-//			accountsPage.tapVariableFixedRateAccount();
-//			
-//			// Scenario-2 - Account Nickname
-//			
-//			Assert.assertNotNull(accountsPage.checkLineAccountHeader(), "Variable and Fixed Rate Account display header not shown");
-//			
-//			// Scenario 1 - Select a Loan account to view
-//			
-//			Assert.assertNotNull(accountsPage.checkAccountDetailsPageBackButton(), "Variable and Fixed Rate Account - Back button not displayed");
-//			Assert.assertNotNull(accountsPage.checkAccountDetailsPageTitle(), "Variable and Fixed Rate Account - Accounts Details page title is not correct");
-//			Assert.assertNotNull(accountsPage.checkVariableFixedRateAccountHeader(), "Variable and Fixed Rate Account - Variable and Fixed Rate Account display header not shown");
-//			Assert.assertNotNull(accountsPage.checkBsbNumberHeader(), "Variable and Fixed Rate Account - BSB number header not displayed");
-//			Assert.assertNotNull(accountsPage.checkAccountNumberHeader(), "Variable and Fixed Rate Account - Account number header not displayed");
-//			Assert.assertNotNull(accountsPage.checkAccountTitle(), "Variable and Fixed Rate Account - Account title not displayed");
-//			Assert.assertNotNull(accountsPage.checkAvailableBalanceHeader(), "Variable and Fixed Rate Account - Available Balance not dispalyed");
-//			Assert.assertNotNull(accountsPage.checkCurrentBalanceHeader(), "Variable and Fixed Rate Account - Current Balance Header not displayed");
-//			Assert.assertNotNull(accountsPage.checkPayTrasferButton(), "Variable and Fixed Rate Account - Pay/Transfer button not displayed");
-//			Assert.assertNotNull(accountsPage.checkMoreOptionsButton(), "Variable and Fixed Rate Account - More options button not displayed");
-//			
-//			
-//			Assert.assertEquals(accountsPage.getBsbNumberValue(), utils.readTestData("bankingHome", "lineOfCreditAccounts", "BSB") , "Line of Credit Account - BSB does not match");
-//			Assert.assertEquals(accountsPage.getAccountNumberValue(), utils.readTestData("bankingHome", "lineOfCreditAccounts", "ACC"), "Line of Credit Account - Account number does not match");
-//			Assert.assertEquals(accountsPage.getAccountProductType(), utils.readTestData("bankingHome", "lineOfCreditAccounts", "Account Product Type"), "Line of Credit Account - Account Product type not displayed");
-//			Assert.assertEquals(accountsPage.getAvailableBalanceValue(), utils.readTestData("bankingHome", "lineOfCreditAccounts", "Available Balance"), "Line of Credit Account - Account Available Balance value not displayed");
-//			Assert.assertEquals(accountsPage.getCurrentBalanceValue(), utils.readTestData("bankingHome", "lineOfCreditAccounts", "Current Balance"), "Line of Credit Account - Account Current Balance value not displayed");
-//
-//			/* Credit Limit section */
-//			Assert.assertNotNull(accountsPage.checkCreditLimitHeader(), "Credit Limit header not displayed");
-//			Assert.assertNotNull(accountsPage.checkCreditLimitMinBalance(),"Minimum Balance header not displayed");
-//			String creditMinBalance = utils.readTestData("bankingHome", "loanAccountDetails", "Credit Min Value");
-//			//Assert.assertEquals(accountsPage.getCreditLimitMinBalanceValue(), creditMinBalance, "Minimum credit value not retrieved");
-//			Assert.assertNotNull(accountsPage.checkCreditLimitMaxBalance(),"Maximum Balance header not displayed");
-//			String creditMaxBalance = utils.readTestData("bankingHome", "loanAccountDetails", "Credit Max Value");
-//			//Assert.assertEquals(accountsPage.getCreditLimitMaxBalanceValue(), creditMaxBalance, "Maximum credit value not retrieved");
-//
-//
-//			/* Line of Credit Details section */
-//			
-//			Assert.assertNotNull(accountsPage.checkLineOfCredit(), "Line of Credit Account - Line of Credit header not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkDebitInterestRateHeader(),"Line of Credit Account - Debit Interest Rate header not displayed");
-//			String debitInterestRateValue = utils.readTestData("bankingHome", "lineOfCreditAccounts", "Line of Credit Account - Debit Interest Rate");
-//			//Assert.assertEquals(accountsPage.getDebitInterestRateValue(), debitInterestRateValue, "Line of Credit Account - Debit Interest Rate Value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkInterestRateTypeHeader(),"Line of Credit Account - Interest Rate Type header not displayed");
-//			String interestRateType = utils.readTestData("bankingHome", "lineOfCreditAccounts", "Line of Credit Account - Interest Rate Type");
-//			//Assert.assertEquals(accountsPage.getInterestRateTypeValue(), interestRateType, "Line of Credit Account - Interest Rate Type value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkTermLengthHeader(),"Line of Credit Account - Term length header not displayed");
-//			String termLengthValue = utils.readTestData("bankingHome", "lineOfCreditAccounts", "Line of Credit Account - Term Length");
-//			//Assert.assertEquals(accountsPage.getTermLengthValue(), termLengthValue, "Line of Credit Account - Term length value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkTermExpiryDateHeader(),"Line of Credit Account - Term expiry date header not displayed");
-//			String termExpiryDate = utils.readTestData("bankingHome", "lineOfCreditAccounts", "Line of Credit Account - Term Expiry Date");
-//			//Assert.assertEquals(accountsPage.getTermExpiryDateValue(), termExpiryDate, "Line of Credit Account - Term expiry date value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkLoanPurposeHeader(),"Line of Credit Account - Loan purpose header not displayed");
-//			String loanPurpose = utils.readTestData("bankingHome", "lineOfCreditAccounts", "Line of Credit Account - Loan Purpose");
-//			//Assert.assertEquals(accountsPage.getLoanPurposeValue(), loanPurpose, "Line of Credit Account - Loan purpose value not displayed");
-//
-//
-//			/* Interest Details section */
-//			Assert.assertNotNull(accountsPage.checkInterestDetailsHeader(), "Interest Details header not diplayed");
-//			Assert.assertNotNull(accountsPage.checkInterestRateHeader(), "Interest Rate header not displayed");
-//			String interestRateValue = utils.readTestData("bankingHome", "loanAccountDetails", "Interest Rate");
-//			//Assert.assertEquals(accountsPage.getInterestRateValue(),interestRateValue, "Interest Rate value not displayed");
-//			Assert.assertNotNull(accountsPage.checkExpiryDateHeader(), "Expiry date header not displayed");
-//			String expiryDateValue = utils.readTestData("bankingHome", "loanAccountDetails", "Expiry Dare");
-//			//Assert.assertEquals(accountsPage.getInterestRateValue(),expiryDateValue, "Interest Rate value not displayed");
-//
-//
-//			/* Loan Details section */
-//			Assert.assertNotNull(accountsPage.checkLoanDetailsHeader(), "Loan Details header not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkCashBackHeader(),"Cash Back header not displayed");
-//			String cashBackValue = utils.readTestData("bankingHome", "loanAccountDetails", "Cash Back");
-//			//Assert.assertEquals(accountsPage.getCashBackValue(), cashBackValue, "Cash Back Value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkPrinciplePaidHeader(),"Principle paid header not displayed");
-//			String principlePaidValue = utils.readTestData("bankingHome", "loanAccountDetails", "Principle Paid");
-//			//Assert.assertEquals(accountsPage.getPrinciplePaidValue(), principlePaidValue, "Principle Paid value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkTermLengthHeader(),"Term length header not displayed");
-//			String variableFixedTermLengthValue = utils.readTestData("bankingHome", "loanAccountDetails", "Term Length");
-//			//Assert.assertEquals(accountsPage.getTermLengthValue(), termLengthValue, "Term length value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkTermExpiryDateHeader(),"Term expiry date header not displayed");
-//			String variableFixedTermExpiryDate = utils.readTestData("bankingHome", "loanAccountDetails", "Term Expiry Date");
-//			//Assert.assertEquals(accountsPage.getTermExpiryDateValue(), termExpiryDate, "Term expiry date value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkLoanPurposeHeader(),"Loan purpose header not displayed");
-//			String variableFixedLoanPurpose = utils.readTestData("bankingHome", "loanAccountDetails", "Loan Purpose");
-//			//Assert.assertEquals(accountsPage.getLoanPurposeValue(), loanPurpose, "Loan purpose value not displayed");
-//
-//
-//			/* Last Statement Date section */
-//			
-//			Assert.assertNotNull(accountsPage.checkLastStatementDateHeader(), "Last Statement Date header not displayed");
-//			
-//			//Assert.assertNotNull(accountsPage.checkNextStatementDateSubHeader(), "Last Statement Date subheader not displayed");
-//			String lastStatementDate = utils.readTestData("bankingHome", "loanAccountDetails", "Last Statement Date");
-//			//Assert.assertEquals(accountsPage.getLastStatementDateValue(), lastStatementDate, "Last Statement Date value not displayed");
-//			
-//			/* Next Statement Date section */
-//			
-//			Assert.assertNotNull(accountsPage.checkLastStatementDateHeader(), "Last Statement Date header not displayed");
-//			
-//			//Assert.assertNotNull(accountsPage.checkNextStatementDateSubHeader(), "Next Statement Date subheader not displayed");
-//			String nextStatementDate = utils.readTestData("bankingHome", "loanAccountDetails", "Next Statement Date");
-//			//Assert.assertEquals(accountsPage.getNextStatementDateValue(), nextStatementDate, "Next Statement Date value not displayed");
-//			
-//			
-//			/** Scenario 3 and 4 - Overdue Payment Amount and Overdue number of days **/
-//			/* Next Payment  - Amount Overdue - Days Overdue */
-//			
-//			Assert.assertNotNull(accountsPage.checkNextPaymentHeader(), "Next Payment header not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkAmountOverdueHeader(), "Amount Overdue header not displayed");
-//			String amountOverdue = utils.readTestData("bankingHome", "loanAccountDetails", "Amount Overdue");
-//			//Assert.assertEquals(accountsPage.getAmountOverdueValue(), amountOverdue, "Amount Overdue value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkDaysOverdueHeader(), "Days Overdue header not displayed");
-//			String daysOverdue = utils.readTestData("bankingHome", "loanAccountDetails", "Days Overdue");
-//			//Assert.assertEquals(accountsPage.getAmountOverdueValue(), daysOverdue, "Amount Overdue value not displayed");
-//			
-//			
-//			/* Last Payment */
-//			
-//			Assert.assertNotNull(accountsPage.checkLastPaymentHeader(), "Last Payment header not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkLastPaymentDateHeader(), "last Payment Date header not displayed");
-//			String lastPaymentDate = utils.readTestData("bankingHome", "loanAccountDetails", "");
-//			//Assert.assertEquals(accountsPage.getLastPaymentDateValue(), lastPaymentDate, "last Payment Date value not displayed");
-//			
-//			Assert.assertNotNull(accountsPage.checkLastPaymentDateHeader(), "last Payment Amount header not displayed");
-//			String lastPaymentAmount = utils.readTestData("bankingHome", "loanAccountDetails", "");
-//			//Assert.assertEquals(accountsPage.getLastPaymentAmountValue(), lastPaymentAmount, "Last Payment Amount value not displayed");
-//			
-//	}
-	
+		@Test (groups = {"DMPM-908", "marketplace", "FFI", "priority-minor"})
+		public void testVariableFixedRateAccount() {
+			
+			navigatingToBankingHome();
+
+			Assert.assertNotNull(bankingHomePage.checkPaysomeoneButton(), "Banking Home page did not load");
+			
+			bankingHomePage.tapVariableFixedRateAccount();
+			
+			// Scenario-2 - Account Nickname
+			
+			Assert.assertNotNull(accountsPage.checkVariableFixedRateAccountHeader(), "Variable and Fixed Rate Account display header not shown");
+			
+			// Scenario 1 - Select a Loan account to view
+			
+			Assert.assertNotNull(accountsPage.checkAccountDetailsPageBackButton(), "Variable and Fixed Rate Account - Back button not displayed");
+			Assert.assertNotNull(accountsPage.checkAccountDetailsPageTitle(), "Variable and Fixed Rate Account - Accounts Details page title is not correct");
+			Assert.assertNotNull(accountsPage.checkVariableFixedRateAccountHeader(), "Variable and Fixed Rate Account - Variable and Fixed Rate Account display header not shown");
+			Assert.assertNotNull(accountsPage.checkBsbNumberHeader(), "Variable and Fixed Rate Account - BSB number header not displayed");
+			Assert.assertNotNull(accountsPage.checkAccountNumberHeader(), "Variable and Fixed Rate Account - Account number header not displayed");
+			Assert.assertNotNull(accountsPage.checkAccountTitle(), "Variable and Fixed Rate Account - Account title not displayed");
+			Assert.assertNotNull(accountsPage.checkAvailableBalanceHeader(), "Variable and Fixed Rate Account - Available Balance not dispalyed");
+			Assert.assertNotNull(accountsPage.checkCurrentBalanceHeader(), "Variable and Fixed Rate Account - Current Balance Header not displayed");
+			Assert.assertNotNull(accountsPage.checkPayTrasferButton(), "Variable and Fixed Rate Account - Pay/Transfer button not displayed");
+			Assert.assertNotNull(accountsPage.checkMoreOptionsButton(), "Variable and Fixed Rate Account - More options button not displayed");
+			
+			
+			Assert.assertEquals(accountsPage.getBsbNumberValue(), utils.readTestData("bankingHome", "variableFixedAccounts", "BSB") , "Line of Credit Account - BSB does not match");
+			Assert.assertEquals(accountsPage.getAccountNumberValue(), utils.readTestData("bankingHome", "variableFixedAccounts", "ACC"), "Line of Credit Account - Account number does not match");
+			Assert.assertEquals(accountsPage.getAccountProductType(), utils.readTestData("bankingHome", "variableFixedAccounts", "Account Product Type"), "Line of Credit Account - Account Product type not displayed");
+			Assert.assertEquals(accountsPage.getAvailableBalanceValue(), utils.readTestData("bankingHome", "variableFixedAccounts", "Available Balance"), "Line of Credit Account - Account Available Balance value not displayed");
+			Assert.assertEquals(accountsPage.getCurrentBalanceValue(), utils.readTestData("bankingHome", "variableFixedAccounts", "Current Balance"), "Line of Credit Account - Account Current Balance value not displayed");
+
+			/* Credit Limit section */
+			Assert.assertNotNull(accountsPage.checkCreditLimitHeader(), "Credit Limit header not displayed");
+			Assert.assertNotNull(accountsPage.checkCreditLimitMinBalance(),"Minimum Balance header not displayed");
+			String creditMinBalance = utils.readTestData("bankingHome", "variableFixedAccounts", "Credit Min Value");
+			//Assert.assertEquals(accountsPage.getCreditLimitMinBalanceValue(), creditMinBalance, "Minimum credit value not retrieved");
+			Assert.assertNotNull(accountsPage.checkCreditLimitMaxBalance(),"Maximum Balance header not displayed");
+			String creditMaxBalance = utils.readTestData("bankingHome", "variableFixedAccounts", "Credit Max Value");
+			//Assert.assertEquals(accountsPage.getCreditLimitMaxBalanceValue(), creditMaxBalance, "Maximum credit value not retrieved");
+
+
+			/* Line of Credit Details section */
+			
+			Assert.assertNotNull(accountsPage.checkLineOfCredit(), "Line of Credit Account - Line of Credit header not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkDebitInterestRateHeader(),"Line of Credit Account - Debit Interest Rate header not displayed");
+			String debitInterestRateValue = utils.readTestData("bankingHome", "variableFixedAccounts", "Line of Credit Account - Debit Interest Rate");
+			//Assert.assertEquals(accountsPage.getDebitInterestRateValue(), debitInterestRateValue, "Line of Credit Account - Debit Interest Rate Value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkInterestRateTypeHeader(),"Line of Credit Account - Interest Rate Type header not displayed");
+			String interestRateType = utils.readTestData("bankingHome", "variableFixedAccounts", "Line of Credit Account - Interest Rate Type");
+			//Assert.assertEquals(accountsPage.getInterestRateTypeValue(), interestRateType, "Line of Credit Account - Interest Rate Type value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkTermLengthHeader(),"Line of Credit Account - Term length header not displayed");
+			String termLengthValue = utils.readTestData("bankingHome", "variableFixedAccounts", "Line of Credit Account - Term Length");
+			//Assert.assertEquals(accountsPage.getTermLengthValue(), termLengthValue, "Line of Credit Account - Term length value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkTermExpiryDateHeader(),"Line of Credit Account - Term expiry date header not displayed");
+			String termExpiryDate = utils.readTestData("bankingHome", "variableFixedAccounts", "Line of Credit Account - Term Expiry Date");
+			//Assert.assertEquals(accountsPage.getTermExpiryDateValue(), termExpiryDate, "Line of Credit Account - Term expiry date value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkLoanPurposeHeader(),"Line of Credit Account - Loan purpose header not displayed");
+			String loanPurpose = utils.readTestData("bankingHome", "variableFixedAccounts", "Line of Credit Account - Loan Purpose");
+			//Assert.assertEquals(accountsPage.getLoanPurposeValue(), loanPurpose, "Line of Credit Account - Loan purpose value not displayed");
+
+
+			/* Interest Details section */
+			Assert.assertNotNull(accountsPage.checkInterestDetailsHeader(), "Interest Details header not diplayed");
+			Assert.assertNotNull(accountsPage.checkInterestRateHeader(), "Interest Rate header not displayed");
+			String interestRateValue = utils.readTestData("bankingHome", "variableFixedAccounts", "Interest Rate");
+			//Assert.assertEquals(accountsPage.getInterestRateValue(),interestRateValue, "Interest Rate value not displayed");
+			Assert.assertNotNull(accountsPage.checkExpiryDateHeader(), "Expiry date header not displayed");
+			String expiryDateValue = utils.readTestData("bankingHome", "variableFixedAccounts", "Expiry Dare");
+			//Assert.assertEquals(accountsPage.getInterestRateValue(),expiryDateValue, "Interest Rate value not displayed");
+
+
+			/* Loan Details section */
+			Assert.assertNotNull(accountsPage.checkLoanDetailsHeader(), "Loan Details header not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkCashBackHeader(),"Cash Back header not displayed");
+			String cashBackValue = utils.readTestData("bankingHome", "variableFixedAccounts", "Cash Back");
+			//Assert.assertEquals(accountsPage.getCashBackValue(), cashBackValue, "Cash Back Value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkPrinciplePaidHeader(),"Principle paid header not displayed");
+			String principlePaidValue = utils.readTestData("bankingHome", "variableFixedAccounts", "Principle Paid");
+			//Assert.assertEquals(accountsPage.getPrinciplePaidValue(), principlePaidValue, "Principle Paid value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkTermLengthHeader(),"Term length header not displayed");
+			String variableFixedTermLengthValue = utils.readTestData("bankingHome", "variableFixedAccounts", "Term Length");
+			//Assert.assertEquals(accountsPage.getTermLengthValue(), termLengthValue, "Term length value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkTermExpiryDateHeader(),"Term expiry date header not displayed");
+			String variableFixedTermExpiryDate = utils.readTestData("bankingHome", "variableFixedAccounts", "Term Expiry Date");
+			//Assert.assertEquals(accountsPage.getTermExpiryDateValue(), termExpiryDate, "Term expiry date value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkLoanPurposeHeader(),"Loan purpose header not displayed");
+			String variableFixedLoanPurpose = utils.readTestData("bankingHome", "variableFixedAccounts", "Loan Purpose");
+			//Assert.assertEquals(accountsPage.getLoanPurposeValue(), loanPurpose, "Loan purpose value not displayed");
+
+
+			/* Last Statement Date section */
+			
+			Assert.assertNotNull(accountsPage.checkLastStatementDateHeader(), "Last Statement Date header not displayed");
+			
+			//Assert.assertNotNull(accountsPage.checkNextStatementDateSubHeader(), "Last Statement Date subheader not displayed");
+			String lastStatementDate = utils.readTestData("bankingHome", "variableFixedAccounts", "Last Statement Date");
+			//Assert.assertEquals(accountsPage.getLastStatementDateValue(), lastStatementDate, "Last Statement Date value not displayed");
+			
+			/* Next Statement Date section */
+			
+			Assert.assertNotNull(accountsPage.checkLastStatementDateHeader(), "Last Statement Date header not displayed");
+			
+			//Assert.assertNotNull(accountsPage.checkNextStatementDateSubHeader(), "Next Statement Date subheader not displayed");
+			String nextStatementDate = utils.readTestData("bankingHome", "variableFixedAccounts", "Next Statement Date");
+			//Assert.assertEquals(accountsPage.getNextStatementDateValue(), nextStatementDate, "Next Statement Date value not displayed");
+			
+			
+			/** Scenario 3 and 4 - Overdue Payment Amount and Overdue number of days **/
+			/* Next Payment  - Amount Overdue - Days Overdue */
+			
+			Assert.assertNotNull(accountsPage.checkNextPaymentHeader(), "Next Payment header not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkAmountOverdueHeader(), "Amount Overdue header not displayed");
+			String amountOverdue = utils.readTestData("bankingHome", "variableFixedAccounts", "Amount Overdue");
+			//Assert.assertEquals(accountsPage.getAmountOverdueValue(), amountOverdue, "Amount Overdue value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkDaysOverdueHeader(), "Days Overdue header not displayed");
+			String daysOverdue = utils.readTestData("bankingHome", "variableFixedAccounts", "Days Overdue");
+			//Assert.assertEquals(accountsPage.getAmountOverdueValue(), daysOverdue, "Amount Overdue value not displayed");
+			
+			
+			/* Last Payment */
+			
+			Assert.assertNotNull(accountsPage.checkLastPaymentHeader(), "Last Payment header not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkLastPaymentDateHeader(), "last Payment Date header not displayed");
+			String lastPaymentDate = utils.readTestData("bankingHome", "variableFixedAccounts", "");
+			//Assert.assertEquals(accountsPage.getLastPaymentDateValue(), lastPaymentDate, "last Payment Date value not displayed");
+			
+			Assert.assertNotNull(accountsPage.checkLastPaymentDateHeader(), "last Payment Amount header not displayed");
+			String lastPaymentAmount = utils.readTestData("bankingHome", "variableFixedAccounts", "");
+			//Assert.assertEquals(accountsPage.getLastPaymentAmountValue(), lastPaymentAmount, "Last Payment Amount value not displayed");
+			
+	}
+		
 }

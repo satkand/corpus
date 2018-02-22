@@ -17,6 +17,7 @@ public class NavigationMenuPage extends BasePage {
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 	private By fapiSettingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='FAPI Settings']");
+	private By bankingHomeItem =      By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
 
 	public NavigationMenuPage(AppiumDriver driver) {
 		super(driver);
@@ -84,5 +85,13 @@ public class NavigationMenuPage extends BasePage {
 
 	public void closeNavigationMenu(){
 		closeNavigationMenuByTappingOut();
+	}
+	
+	public WebElement checkBankingHomeButton(){
+		return find(bankingHomeItem, 60);
+	}
+
+	public void tapBankingHomeButton(){
+		tapElement(bankingHomeItem);
 	}
 }

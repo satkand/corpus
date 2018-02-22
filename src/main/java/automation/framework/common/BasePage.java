@@ -354,6 +354,18 @@ public class BasePage {
 		 return Boolean.parseBoolean(find(locator).getAttribute("checked"));
 	}
 
+	protected void scrollToElement(By locator) {
+		int i =0;
+		while(i<=10){
+			if(find(locator) != null){
+				break;
+			}
+			swipeScreen("down");
+			i++;
+		}
+	}
+	
+	
 	
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
@@ -956,6 +968,5 @@ public class BasePage {
 //		
 //		driver.runAppInBackground(time);
 //	}
-	
 
 }

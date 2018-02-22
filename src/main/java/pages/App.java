@@ -54,6 +54,7 @@ public class App extends BaseTest {
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
 	public AccountDetailsPage accountsPage = null;
+	public BankingHomePage bankingHomePage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -90,6 +91,7 @@ public class App extends BaseTest {
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
 		accountsPage = new AccountDetailsPage(driver);
+		bankingHomePage = new BankingHomePage(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)

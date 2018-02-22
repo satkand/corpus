@@ -1,38 +1,18 @@
 package pages.marketplace.banking;
 
-import java.security.KeyStore.PrivateKeyEntry;
-
-import javax.management.loading.PrivateClassLoader;
-
-import org.apache.tools.ant.taskdefs.optional.depend.constantpool.StringCPInfo;
-import org.eclipse.jetty.client.RequestNotifier;
-import org.opencv.video.BackgroundSubtractor;
-import org.openqa.grid.common.exception.RemoteUnregisterException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+import org.openqa.selenium.interactions.Keyboard;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import net.bytebuddy.implementation.bytecode.assign.primitive.PrimitiveTypeAwareAssigner;
 
 public class AccountDetailsPage extends BasePage{
 
 	public AccountDetailsPage(AppiumDriver driver) {
 		super(driver);
 	}
-
-	private By openNavMenu = By.xpath("//android.widget.ImageButton[@content-desc='Open navigation menu']");
-	private By bankingHomeButton = By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
-	private By bankingHomeTitle = By.xpath("//android.widget.TextView[@text='Banking Home']");
-	private By paySomeoneButton = By.id("au.com.suncorp.marketplace:id/paySomeoneButton");
-	private By transferButton = By.id("au.com.suncorp.marketplace:id/transferBetweenAccountsButton");
-	private By bpayButton = By.id("au.com.suncorp.marketplace:id/payABillButton");
 	
-	private By homeLoanAccounts = By.xpath("//android.widget.TextView[@text='My Home Loan']");
-	private By lineOfCreditAccount = By.xpath("//android.widget.TextView[@text='My Line Of Credit Account']");
-	private By variableFixedRateAccount = By.xpath("//android.widget.TextView[@text='9005']");
 	
 	// Elements in the Account Details page
 	private By accountDetailsPageBackButton = By.id("au.com.suncorp.marketplace:id/accountDetailsBackButton");
@@ -210,43 +190,6 @@ public class AccountDetailsPage extends BasePage{
 	private By linkedCardValue2 = By.id("");
 	
 	
-	public void tapNavMenu(){
-		tapElement(openNavMenu);
-	}
-
-	public WebElement checkBankingHomeButton(){
-		return find(bankingHomeButton);
-	}
-
-	public void tapBankingHomeButton(){
-		tapElement(bankingHomeButton);
-	}
-
-	public WebElement checkBankingHomeTitle(){
-		return find(bankingHomeTitle,20);
-	}
-
-	public WebElement checkPaysomeoneButton(){
-		return find(paySomeoneButton, 30);
-	}
-
-	public WebElement checkTransferButton(){
-		return find(transferButton, 30);
-	}
-
-	public WebElement checkBpayButton(){
-		return find(bpayButton, 30);
-	}
-
-	public WebElement checkHomeLoanAccounts(){	
-		scrollToElement(homeLoanAccounts);
-		return find(homeLoanAccounts, 30);
-	}
-	
-	public void tapMyHomeLoan (){
-		tapElement(homeLoanAccounts);
-	}
-	
 	public WebElement checkAccountDetailsPageBackButton() {
 		return find(accountDetailsPageBackButton, 30);
 	}
@@ -368,6 +311,7 @@ public class AccountDetailsPage extends BasePage{
 	}
 	
 	public WebElement checkCashBackHeader() {
+		scrollToElement(cashBackHeader);
 		return find(cashBackHeader, 30);
 	}
 	
@@ -377,7 +321,7 @@ public class AccountDetailsPage extends BasePage{
 	}
 	
 	public WebElement checkPrinciplePaidHeader() {
-		swipeScreen("down");
+		scrollToElement(principlePaidHeader);
 		return find(principlePaidHeader, 30);
 	}
 	
@@ -808,11 +752,6 @@ public class AccountDetailsPage extends BasePage{
 	
 	/** Line of credit loan account **/
 	
-	public void tapMyLineOfCreditAccount() {
-		scrollToElement(lineOfCreditAccount);
-		tapElement(lineOfCreditAccount);
-	}
-	
 	public WebElement checkLineAccountHeader() {
 		return find(lineOfCreditAccountHeader, 30);
 	}
@@ -866,11 +805,6 @@ public class AccountDetailsPage extends BasePage{
 	}
 	
 	/** Variable and Fixed Account **/
-	
-	public void tapVariableFixedRateAccount() {
-		scrollToElement(variableFixedRateAccount);
-		tapElement(variableFixedRateAccount);
-	}
 	
 	public WebElement checkVariableFixedRateAccountHeader() {
 		return find(variabelFixedRateAccountHeader, 30);
