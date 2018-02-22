@@ -20,6 +20,7 @@ public class LoginPage extends BasePage{
 	private By loginButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By helpButton = By.id("au.com.suncorp.marketplace:id/login_help_text");
 	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+
 	
 	//TODO Both have same id -> need to differentiate them
 	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
@@ -80,6 +81,7 @@ public class LoginPage extends BasePage{
 	public boolean isLoginButtonEnabled(){
 		return isEnabled(loginButton);
 	}
+
 	
 	public WebElement checkHelpButton(){
 		return find(helpButton);

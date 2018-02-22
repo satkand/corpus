@@ -18,6 +18,7 @@ public class NavigationMenuPage extends BasePage {
 	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 	private By fapiSettingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='FAPI Settings']");
 	private By bankingHomeItem =      By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
+	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
 
 	public NavigationMenuPage(AppiumDriver driver) {
 		super(driver);
@@ -73,6 +74,14 @@ public class NavigationMenuPage extends BasePage {
 	public void tapFAPISettingsMenuItem() {
 		find(fapiSettingsMenuItem, 30);
 		 tapElement(fapiSettingsMenuItem);
+	}
+	
+	public WebElement checkSettingsMenuItem() {
+		return find(settingsMenuItem);
+	}
+	
+	public void tapSettingsMenuItem() {
+		tapElement(settingsMenuItem);
 	}
 	
 	public void slideOpenNavigationMenu() {

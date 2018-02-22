@@ -78,6 +78,8 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 
 
+	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");
+	
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
 	}
@@ -137,6 +139,19 @@ public class RegistrationPage extends BasePage {
 		tapElement(dateField);
 		tapElement(okButton);
 		dismissKeyboard();
+	}
+	
+	public void fillRegistrationScreens(String firstName, String surname, String date,
+			String postcode, String email, String mobile, String password) {
+		if(checkSetupNewAccountButton() != null) {
+			tapSetupNewAccount();
+		}
+		checkRegistrationPageTitle();
+		fill1stPageFields(firstName, surname, date, postcode);
+		tapNextButton();
+		fill2ndPageFields(email, mobile);
+		tapNextButton();
+		fill3rdPageFields(password);
 	}
 	
 	public void enterPostcode(String postcode) {
@@ -385,4 +400,12 @@ public class RegistrationPage extends BasePage {
 		return find(cancelButton);
 	}
 
+	public WebElement checkSetupNewAccountButton() {
+		return find(setupNewAccountButton);
+	}
+	
+	public void tapSetupNewAccount() {
+		tapElement(setupNewAccountButton);
+	}
+	
 }

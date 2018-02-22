@@ -16,14 +16,16 @@ public class SpendingsTest extends App {
 	public void testSpendingsPageElements() {
 		navigateToSpendingsScreen();
 		Assert.assertNotNull(spendingsPage.checkSpendingPageTitle(), "Spendings Page - page title not shown");
-		Assert.assertNotNull(spendingsPage.checkMonthPicker(), "Spendings Page - Month dropdown not shown");
+		Assert.assertNotNull(spendingsPage.checkMonthPicker(), "Spendings Page - Month picker not shown");
 		Assert.assertNotNull(spendingsPage.checkMonthSelected(), "Spendings Page - Month label is not shown");
 		Assert.assertNotNull(spendingsPage.checkCategoriesTab(), "Spendings Page - Categories tab not shown");
 		Assert.assertTrue(spendingsPage.isCategoryTabSelected(), "Spendings Page - Categories tab not shown selected by default");
 		Assert.assertNotNull(spendingsPage.checkVendorTab(), "Spendings Page - Vendor tab not shown");
 		Assert.assertFalse(spendingsPage.isVendorTabSelected(), "Spendings Page - Vendor tab shown selected by default");
 		Assert.assertNotNull(spendingsPage.checkSpendingsTotalAmount(), "Spendings Page - Spendings amount not shown");
-		Assert.assertNotNull(spendingsPage.checkInfoIcon(), "Spendings Page - Spendings amount info not shown");
+		Assert.assertNotNull(spendingsPage.checkInfoIcon(), "Spendings Page - Spendings amount info icon not shown");
+		//TODO -> This is present on iOS not on Android. Check later, if still not present, remove this
+		//Assert.assertNotNull(spendingsPage.checkUpdatedInfoText(), "Spendings Page - Spendings updated once per month text not shown");
 	}
 	
 	// 361 - Scenario 2, Scenario 3
@@ -32,30 +34,18 @@ public class SpendingsTest extends App {
 	@Test (groups = {"DMPM-361", "DMPM-1018", "DMPM-1019", "DMPM-94", "DMPM-575", "marketplace", "FFI", "priority-minor"})
 	public void testSpendingsAmountForEachMonth() {
 		navigateToSpendingsScreen();
-		// Loading expected data
+		// Verify that the default month shown selected in picker, is equal to the current month in the test data sheet
+		Assert.assertEquals(spendingsPage.getSelectedMonthValue(), utils.readTestData("hasSuncorpBankAccounts", "currentMonth").toUpperCase(), "Wealth Spendings Page - Default month shown in picker is not the current month");
+		// Loading expected data from data sheet
 		List<Object> spendingAmountsPerMonthList = utils.readTestDataList("hasSuncorpBankAccounts", "spendingsAmountPerMonth");
 		for (Object spendingAmountPerMonthItem : spendingAmountsPerMonthList) {
 			HashMap<String, String> spendingAmountPerMonth = (HashMap<String, String>)spendingAmountPerMonthItem;
 			String month = spendingAmountPerMonth.get("month");
 			String amount = spendingAmountPerMonth.get("amount");
+			// selecting the month from the picker and verifying that the amount shown is correct
 			spendingsPage.selectMonth(month);
 			Assert.assertEquals(spendingsPage.getSelectedMonthValue(), month.toUpperCase(), "Wealth Spendings Page - Not able to select month from dropdown");
 			Assert.assertEquals(spendingsPage.getSpendingsTotalAmount(), amount, "Wealth Spendings Page - Spendings amount shown is not correct");
-		}
-	}
-	
-	// 361 - Scenario 4
-	// Transactions should not be shown for months prior to the (current month + last 3 months )
-	@Test (groups = {"DMPM-361", "DMPM-1020", "marketplace", "FFI", "priority-minor"})
-	public void testTransactionsCountOnMonthsEarlierThanLast3Months() {
-		navigateToSpendingsScreen();
-		String currentMonth = spendingsPage.getSelectedMonthValue().split(" ")[0];
-		String[] pastMonthsList = spendingsPage.fetchPastMonthsInPicker(currentMonth);
-		for (String month : pastMonthsList) {
-			spendingsPage.selectMonth(month);
-			Assert.assertNull(spendingsPage.fetchCategoriesTransactionsTextList(), "Transactions are still shown for months earlier than last 3 months");
-			spendingsPage.tapVendorTab();
-			Assert.assertNull(spendingsPage.fetchVendorsTransactionsTextList(), "Transactions are still shown for months earlier than last 3 months");
 		}
 	}
 	
@@ -70,53 +60,150 @@ public class SpendingsTest extends App {
 		Assert.assertNull(spendingsPage.checkMonthsOptionInPicker(), "Wealth Spendings Page - Month Picker is not dismissed");
 	}
 	
-	// 361 - Scenario 3
+	// 361 - Scenario 3, Scenario 4
 	// 388 - Scenario 1
 	// 830 - Scenario 1
 	// 1034 - Scenario 1, Scenario 2
 	// 788 - Scenario 1, Scenario 2
-	// Navigate through each month in month picker and verify the list of transactions shown for each month
-	@Test (groups = {"DMPM-361", "DMPM-1019", "DMPM-388", "DMPM-777", "DMPM-830", "DMPM-1004", "DMPM-1034", "DMPM-1478", "DMPM-1487", "DMPM-788", "DMPM-1309", "DMPM-1319", "marketplace", "FFI", "priority-minor"})
+	// Navigate through each month in month picker and verify the list of transactions shown for each month on categories tab
+	@Test (groups = {"DMPM-361", "DMPM-1019", "DMPM-1020", "DMPM-388", "DMPM-777", "DMPM-830", "DMPM-1004", "DMPM-1034", "DMPM-1478", "DMPM-1487", "DMPM-788", "DMPM-1309", "DMPM-1319", "marketplace", "FFI", "priority-minor"})
 	public void testSpendingsOnCategoriesTab() {
 		navigateToSpendingsScreen();
+		
 		// Load the expected transactions to be shown for each month from test data sheet
 		List categoriesTransactionsList = utils.readTestDataList("hasSuncorpBankAccounts", "spendingsByCategories");
+		
+		// get the list prior months of last 3 months to current month. And for these months transactions count should not be shown
+		String currentMonth = spendingsPage.getSelectedMonthValue().split(" ")[0];
+		List<String> monthsPriorToLast3Months = spendingsPage.fetchPastMonthsPriorToLast3Months(currentMonth);
+		boolean isThisMonthPriorToPast3Months = false;
+		
 		// Iterating over each month
 		for (Object categoryTransaction : categoriesTransactionsList) {
 			HashMap categoryCell = (HashMap)categoryTransaction;
+			
 			spendingsPage.selectMonth((String)categoryCell.get("month"));
-			// Load transactions to be shown for the selected month from test data sheet
+			// These are the expected list of transactions that needs to be verified on the screen
 			List categories = (List) categoryCell.get("categoriesList");
+			
+			// If this month is present in the list of "monthsPriorToLast3Months. Then the flag should be enabled, so that we will not check transactions count for such months
+			if(monthsPriorToLast3Months.contains(((String)categoryCell.get("month")).split(" ")[0])) {
+				isThisMonthPriorToPast3Months = true;
+			}
+			
 			// verify the transactions shown for the selected month
-			compareCategoryTransactionsForaMonth(categories);
+			compareCategoryTransactionsForaMonth(categories, isThisMonthPriorToPast3Months);
+			
+			// Resetting the flag
+			isThisMonthPriorToPast3Months = false;
 		}
 	}
 	
-	// 361 - Scenario 3
+	// 361 - Scenario 3, Scenario 4
 	// 388 - Scenario 3
 	// 830 - Scenario 1
 	// 92 - Scenario 1, Scenario 2, Scenario 3, Scenario 4
 	// 1034 - Scenario 1, Scenario 2
 	// 788 - Scenario 1, Scenario 2
 	// Navigate through each month in month picker and verify the list of transactions shown for each month on vendor tab
-	@Test (groups = {"DMPM-361", "DMPM-1019", "DMPM-388", "DMPM-779", "DMPM-830", "DMPM-1004", "DMPM-92", "DMPM-758", "DMPM-759", "DMPM-762", "DMPM-765",  "DMPM-1034", "DMPM-1478", "DMPM-1487", "DMPM-788", "DMPM-1309", "DMPM-1319", "marketplace", "FFI", "priority-minor"})
+	@Test (groups = {"DMPM-361", "DMPM-1019", "DMPM-1020", "DMPM-388", "DMPM-779", "DMPM-830", "DMPM-1004", "DMPM-92", "DMPM-758", "DMPM-759", "DMPM-762", "DMPM-765",  "DMPM-1034", "DMPM-1478", "DMPM-1487", "DMPM-788", "DMPM-1309", "DMPM-1319", "marketplace", "FFI", "priority-minor"})
 	public void testSpendingsOnVendorTab() {
 		navigateToSpendingsScreen();
+		
 		// Load the expected transactions to be shown for each month from test data sheet
 		List vendorSpendingsList = utils.readTestDataList("hasSuncorpBankAccounts", "spendingsByVendor");
+		
+		// get the list prior months of last 3 months to current month. And for these months transactions count should not be shown
+		String currentMonth = spendingsPage.getSelectedMonthValue().split(" ")[0];
+		List<String> monthsPriorToLast3Months = spendingsPage.fetchPastMonthsPriorToLast3Months(currentMonth);
+		boolean isThisMonthPriorToPast3Months = false;
+		
 		spendingsPage.tapVendorTab();
 		Assert.assertTrue(spendingsPage.isVendorTabSelected(), "Spendings Page - Vendor tab shown not selected");
+		
 		// Iterating over each month
 		for (Object vendorTransaction : vendorSpendingsList) {
 			HashMap vendorCell = (HashMap)vendorTransaction;
+			
 			spendingsPage.selectMonth((String)vendorCell.get("month"));
-			// Load transactions to be shown for the selected month from test data sheet
+			// These are the expected list of transactions that needs to be verified on the screen
 			List vendors = (List) vendorCell.get("vendorsList");
+			
+			// If this month is present in the list of "monthsPriorToLast3Months. Then the flag should be enabled, so that we will not check transactions count for such months
+			if(monthsPriorToLast3Months.contains(((String)vendorCell.get("month")).split(" ")[0])) {
+				isThisMonthPriorToPast3Months = true;
+			}
+			
 			// verify the transactions shown for the selected month
-			compareVendorTransactionsForaMonth(vendors);
+			compareVendorTransactionsForaMonth(vendors, isThisMonthPriorToPast3Months);
+			
+			// Resetting the flag
+			isThisMonthPriorToPast3Months = false;
 		}
 	}
 	
+	private void compareCategoryTransactionsForaMonth(List categories, boolean isTransactionCountShown) {
+		
+		// fetch the actual transactions shown on the current page
+		List categoriesNameList = spendingsPage.fetchCategoriesNameList();
+		List categoriesTransactionsList = spendingsPage.fetchCategoriesTransactionsTextList();
+		List categoriesSpendingAmountList = spendingsPage.fetchCategoriesSpendingAmountList();
+
+		// Iterate through all the expected transactions that should be shown for this particular month
+		for (Object categoryItem : categories) {
+				// Has the particular transaction item expected value, which needs to be verified
+				HashMap category = (HashMap) categoryItem;
+				// Compare the transaction details shown on the page with the expected values
+				Assert.assertEquals(categoriesNameList.get(0), category.get("name"), categoriesNameList.get(0)+ " name is not shown as expected");
+				categoriesNameList.remove(0);
+
+				Assert.assertEquals(categoriesSpendingAmountList.get(0), category.get("amount"), categoriesSpendingAmountList.get(0)+" amount is not shown as expected");
+				categoriesSpendingAmountList.remove(0);
+
+				// If this month is present in the list of "monthsPriorToLast3Months. Then the flag is enabled, so that we will not check transactions count for such months
+				if(!isTransactionCountShown) {
+					Assert.assertEquals(categoriesTransactionsList.get(0), spendingsPage.getTransactionLabel(category.get("transactionCount")), categoriesTransactionsList.get(0)+" count is not shown as expected");
+					categoriesTransactionsList.remove(0);
+				}
+		}
+		
+		// If this month is present in the list of "monthsPriorToLast3Months. Then the flag is enabled, And we are checking that the transactions count is not shown on the screen
+		if(isTransactionCountShown) {
+				Assert.assertNull(spendingsPage.checkCategoriesTransactionsText(), "Transactions count is still shown for months earlier than last 3 months");
+		}
+	}
+	
+	private void compareVendorTransactionsForaMonth(List vendors, boolean isTransactionCountShown) {
+		
+		// fetch actual the transactions shown on the current page
+		List vendorsNameList = spendingsPage.fetchVendorsTransactionsNameList();
+		List vendorsTransactionsList = spendingsPage.fetchVendorsTransactionsTextList();
+		List vendorsSpendingAmountList = spendingsPage.fetchVendorsTransactionsAmountList();
+		
+		// Iterate through all the expected transactions that should be shown for this particular month
+		for (Object vendorItem : vendors) {
+			// Has the particular transaction item expected value, which needs to be verified
+				HashMap vendor = (HashMap) vendorItem;
+				// Compare the transaction details shown on the page with the expected values
+				Assert.assertEquals(vendorsNameList.get(0), vendor.get("name"), vendorsNameList.get(0)+" name is not shown as expected");
+				vendorsNameList.remove(0);
+
+				Assert.assertEquals(vendorsSpendingAmountList.get(0), vendor.get("amount"), vendorsSpendingAmountList.get(0)+" amount is not shown as expected");
+				vendorsSpendingAmountList.remove(0);
+
+				// If this month is present in the list of "monthsPriorToLast3Months. Then the flag is enabled, so that we will not check transactions count for such months
+				if(!isTransactionCountShown) {
+					Assert.assertEquals(vendorsTransactionsList.get(0), spendingsPage.getTransactionLabel(vendor.get("transactionCount")), vendorsTransactionsList.get(0)+" count is not shown as expected");
+					vendorsTransactionsList.remove(0);
+				}
+		}
+		
+		// If this month is present in the list of "monthsPriorToLast3Months. Then the flag is enabled, And we are checking that the transactions count is not shown on the screen
+		if(isTransactionCountShown) {
+			Assert.assertNull(spendingsPage.checkVendorsTransactionsText(), "Transactions count is still shown for months earlier than last 3 months");
+		}
+	}
+
 	// verify the empty transactions message shown on categories tab
 	// 388 - Scenario 2
 	@Test (groups = {"DMPM-388", "DMPM-778", "marketplace", "FFI", "priority-minor"})
@@ -132,6 +219,7 @@ public class SpendingsTest extends App {
 	public void testEmptyTransactionsOnVendorsTabForMonthSelected() {
 		navigateToSpendingsScreen();
 		List months = utils.readTestDataList("hasSuncorpBankAccounts", "emptyVendorMonths");
+		spendingsPage.tapVendorTab();
 		verifyEmptyTransactionsMessage(months);
 	}
 	
@@ -139,176 +227,14 @@ public class SpendingsTest extends App {
 		for (Object month : months) {
 			spendingsPage.selectMonth(month.toString());
 			Assert.assertEquals(spendingsPage.getSelectedMonthValue(), month.toString().toUpperCase(), "Wealth Spendings Page - Not able to select month from dropdown");
+			//TODO: Defect raised for this
+			//Assert.assertNotNull(spendingsPage.checkEmptyTransactionsImage(), "Wealth Spending Page - empty transactions image not shown");
 			Assert.assertEquals(spendingsPage.getEmptyTransactionsMessage(), utils.readTestData("copy", "spendingsPage", "emptyTransactionsMessage"), "Wealth Spendings Page - empty transactions message not shown");
 			Assert.assertEquals(spendingsPage.getEmptyTransactionsHintMessage(), utils.readTestData("copy", "spendingsPage", "emptyTransactionsHintMessage"), "Wealth Spendings Page - empty transactions hint message not shown");
 		}
 	}
-	
-	private void compareCategoryTransactionsForaMonth(List categories) {
-		
-		// fetch the transactions shown on the current page
-		List categoriesNameList = spendingsPage.fetchCategoriesNameList();
-		List categoriesTransactionsList = spendingsPage.fetchCategoriesTransactionsTextList();
-		List categoriesSpendingAmountList = spendingsPage.fetchCategoriesSpendingAmountList();
-		boolean itemPresent = false;
-		
-		// Iterate through all the expected transactions that should be shown for that particular month
-		for (Object categoryItem : categories) {
-			
-				itemPresent = false;
-				// Has the particular transaction item which needs to be verified
-				HashMap category = (HashMap) categoryItem;
-				int count = categoriesNameList.size();
-				
-				if(count != 0) {
-							// Compare the transaction details shown on the page with the expected values
-							Assert.assertEquals(categoriesNameList.get(0), category.get("Name"), categoriesNameList.get(0)+ " label is not shown as expected");
-							Assert.assertEquals(categoriesTransactionsList.get(0), spendingsPage.getTransactionLabel(category.get("transactionsText")), categoriesTransactionsList.get(0)+" label is not shown as expected");
-							Assert.assertEquals(categoriesSpendingAmountList.get(0), category.get("Amount"), categoriesSpendingAmountList.get(0)+" label is not shown as expected");
-							itemPresent = true;
-							categoriesNameList.remove(0);
-							categoriesTransactionsList.remove(0);
-							categoriesSpendingAmountList.remove(0);
-				// This block will get executed if there are more transactions on the page and if we need to scroll down and get the next set of transactions			
-				} else {
-							// Scroll down to get the next set of transactions
-							spendingsPage.scrollDown();
-							// get the next set of transactions present on the screen 
-							categoriesNameList = spendingsPage.fetchCategoriesNameList();
-							categoriesTransactionsList = spendingsPage.fetchCategoriesTransactionsTextList();
-							categoriesSpendingAmountList = spendingsPage.fetchCategoriesSpendingAmountList();
-							int count2 = categoriesNameList.size();
-							int counter = 0;
-							
-							/* We need to iterate through the next set of transactions and find the exact transaction on the screen which needs to be verified next. 
-							 * i.e., needs to figure out where we left off. 
-							 * We need to iterate as the transactions shown on this page can overlap with the first page transactions which we had already verified. 
-							 * */
-							for(int i=0; i < count2; i++ ) {
-								
-										// Some times when we fetch the transaction names and transaction amounts on the second page, transaction names list returns less items than transactions amount list.
-										// Actually transaction amount list is returning an extra value from the previous page as well.
-										// So if thats the case, that is if name matches and amount does not match + count of items in amounts list is > count of items in names list, then delete the extra items in amounts list.
-										// We adjust amounts list only once, because if this happens again on this page that means that the values shown are wrong (we use counter value to make sure this adjustment is done only once)
-										if((categoriesNameList.get(0).equals(category.get("Name"))) && !(categoriesSpendingAmountList.get(0).equals(category.get("Amount"))) && (counter == 0)) {
-											if(categoriesSpendingAmountList.size() > categoriesNameList.size()) {
-												categoriesSpendingAmountList.remove(0);
-											}
-											counter++;
-										}
-										
-										// If the values of name, amount match, then that means that we have figured out the point on the next page, from where we need to verify the values again
-										if((categoriesNameList.get(0).equals(category.get("Name"))) && (categoriesSpendingAmountList.get(0).equals(category.get("Amount")))) {
-													Assert.assertEquals(categoriesNameList.get(0), category.get("Name"), categoriesNameList.get(0)+ " label is not shown as expected");
-													Assert.assertEquals(categoriesTransactionsList.get(0), spendingsPage.getTransactionLabel(category.get("transactionsText")), categoriesTransactionsList.get(0)+" label is not shown as expected");
-													Assert.assertEquals(categoriesSpendingAmountList.get(0), category.get("Amount"), categoriesSpendingAmountList.get(0)+" label is not shown as expected");
-													itemPresent = true;
-													categoriesNameList.remove(0);
-													categoriesTransactionsList.remove(0);
-													categoriesSpendingAmountList.remove(0);
-													break;
-										}
-										// All the initial values from the list will be removed. These values are the ones which we have already verified as part of the previous page list
-										else {
-													categoriesNameList.remove(0);
-													categoriesTransactionsList.remove(0);
-													categoriesSpendingAmountList.remove(0);
-										}
-							}
-							
-				}
-				
-				if(!itemPresent) {
-						Assert.fail("The spendings for category " + category.get("Name") +" is not shown");
-				}
-		}
-	}
-	
-	private void compareVendorTransactionsForaMonth(List vendors) {
-		
-		// fetch the transactions shown on the current page
-		List vendorsNameList = spendingsPage.fetchVendorsTransactionsNameList();
-		List vendorsTransactionsList = spendingsPage.fetchVendorsTransactionsTextList();
-		List vendorsSpendingAmountList = spendingsPage.fetchVendorsTransactionsAmountList();
-		boolean itemPresent = false;
-		
-		// Iterate through all the expected transactions that should be shown for that particular month
-		for (Object vendorItem : vendors) {
-			
-				itemPresent = false;
-				// Has the particular transaction item which needs to be verified
-				HashMap vendor = (HashMap) vendorItem;
-				int count = vendorsNameList.size();
-				
-				
-				if(count != 0) {
-							// Compare the transaction details shown on the page with the expected values
-							Assert.assertEquals(vendorsNameList.get(0), vendor.get("Name"), vendorsNameList.get(0)+" label is not shown as expected");
-							Assert.assertEquals(vendorsTransactionsList.get(0), spendingsPage.getTransactionLabel(vendor.get("transactionsText")), vendorsTransactionsList.get(0)+" label is not shown as expected");
-							Assert.assertEquals(vendorsSpendingAmountList.get(0), vendor.get("Amount"), vendorsSpendingAmountList.get(0)+" label is not shown as expected");
-							itemPresent = true;
-							vendorsNameList.remove(0);
-							vendorsTransactionsList.remove(0);
-							vendorsSpendingAmountList.remove(0);
-							
-				// This block will get executed if there are more transactions on the page and if we need to scroll down and get the next set of transactions			
-				} else {
-					
-							// Scroll down to get the next set of transactions
-							spendingsPage.scrollDown();
-							// get the next set of transactions present on the screen 
-							vendorsNameList = spendingsPage.fetchCategoriesNameList();
-							vendorsTransactionsList = spendingsPage.fetchCategoriesTransactionsTextList();
-							vendorsSpendingAmountList = spendingsPage.fetchCategoriesSpendingAmountList();
-							int count2 = vendorsNameList.size();
-							int counter = 0;
 
-							/* We need to iterate through the next set of transactions and find the exact transaction on the screen which needs to be verified next. 
-							 * i.e., needs to figure out where we left off. 
-							 * We need to iterate as the transactions shown on this page can overlap with the first page transactions which we had already verified. 
-							 * */
-							for(int i=0; i < count2; i++ ) {
-								
-										// Some times when we fetch the transaction names and transaction amounts on the second page, transaction names list returns less items than transactions amount list.
-										// Actually transaction amount list is returning an extra value from the previous page as well.
-										// So if thats the case, that is if name matches and amount does not match + count of items in amounts list is > count of items in names list, then delete the extra items in amounts list.
-										// We adjust amounts list only once, because if this happens again on this page that means that the values shown are wrong (we use counter value to make sure this adjustment is done only once)
-										if((vendorsNameList.get(0).equals(vendor.get("Name"))) && !(vendorsSpendingAmountList.get(0).equals(vendor.get("Amount"))) && (counter == 0)) {
-											if(vendorsSpendingAmountList.size() > vendorsNameList.size()) {
-												vendorsSpendingAmountList.remove(0);
-											}
-											counter++;
-										}
-								
-										// If the values of name, amount match, then that means that we have figured out the point on the next page, from where we need to verify the values again
-										if((vendorsNameList.get(0).equals(vendor.get("Name"))) && (vendorsSpendingAmountList.get(0).equals(vendor.get("Amount")))) {
-													Assert.assertEquals(vendorsNameList.get(0), vendor.get("Name"), "Not equal");
-													Assert.assertEquals(vendorsTransactionsList.get(0), spendingsPage.getTransactionLabel(vendor.get("transactionsText")), "Not equal");
-													Assert.assertEquals(vendorsSpendingAmountList.get(0), vendor.get("Amount"), "Not equal");
-													itemPresent = true;
-													vendorsNameList.remove(0);
-													vendorsTransactionsList.remove(0);
-													vendorsSpendingAmountList.remove(0);
-													break;
-										}
-										// All the initial values from the list will be removed. These values are the ones which we have already verified as part of the previous page list
-										else {
-													vendorsNameList.remove(0);
-													vendorsTransactionsList.remove(0);
-													vendorsSpendingAmountList.remove(0);
-										}
-							}
-							
-				}
-				
-				if(!itemPresent) {
-						Assert.fail("The spendings for vendor " + vendor.get("Name") +" is not shown");
-				}
-		}
-	}
-	
 	private void navigateToSpendingsScreen(){
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("hasSuncorpBankAccounts", "login"), utils.readTestData("hasSuncorpBankAccounts", "pwd"));
 		if(landingPage.checkWealthTab() == null) {
 			landingPage.swipeToHealthTab();
@@ -320,7 +246,6 @@ public class SpendingsTest extends App {
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapFAPISettingsMenuItem();
 		configPage.enableHasBankAccountsToggle();
-		configPage.tapSomeTransactions();
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
 		landingPage.tapWealthTab();

@@ -1,20 +1,11 @@
-package test.marketplace.auth;
+package test.marketplace.auth.pin;
 
 import java.util.List;
 
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import automation.framework.utils.AutoUtilities;
 import pages.App;
-import pages.marketplace.auth.PINSetupPage;
-import pages.marketplace.common.WelcomePage;
 
 public class PINSetupTest extends App {
 	
@@ -82,15 +73,23 @@ public class PINSetupTest extends App {
 		Assert.assertNotNull(dummy.checkPinSetupOption(), "Cancel didnt close Reenetr PIN Setup page");	
 	}
 	
+	private void navigateToPINSetupPage() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapLoginButton();
+		loginToApp(utils.readTestData("PIN", "loginWithoutExistingPin", "login"), 
+				utils.readTestData("PIN", "loginWithoutExistingPin", "pwd"));
+		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkSettingsMenuItem(), "Settings title not seen");
+		navigationMenu.tapSettingsMenuItem();
+		if(!settingsPage.isPinToggleEnabled()) {
+			settingsPage.tapEnablePinToggle();
+		}
+		Assert.assertNotNull(pinSetupPage.checkEnterPINLabel(), "Did not navigate to pin setup screen");
+	}
+	
 	private void enterPIN(String pin) {
 		for(char pinDigit : pin.toCharArray()) {
 			pinCustomKeypad.tapPINEntry(pinDigit);
 		}
-	}
-	
-	private void navigateToPINSetupPage() {
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
-		welcomePage.tapGuestAccessButton();
-		dummy.tapPinSetupOption();
 	}
 }
