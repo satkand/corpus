@@ -1,4 +1,4 @@
-package test.marketplace.auth;
+package test.marketplace.auth.login;
 
 import java.util.HashMap;
 import java.util.List;

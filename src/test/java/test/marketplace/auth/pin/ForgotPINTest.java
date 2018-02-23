@@ -82,7 +82,6 @@ public class ForgotPINTest extends App {
 	}
 	
 	private void navigateToPINReAuthPasswordPage() {
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "pwd"));
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapLockMenuOption();
