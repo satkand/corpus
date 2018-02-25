@@ -1,4 +1,4 @@
-package pages.marketplace.auth;
+package pages.marketplace.auth.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -26,7 +26,7 @@ public class LoginPage extends BasePage{
 	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By passwordFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	
-	/*
+	/* TODO
 	 -> 	Log in
 	 -> I need help logging in
 	 -> This field is required

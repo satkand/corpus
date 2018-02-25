@@ -31,8 +31,6 @@ public class SettingsTest extends App{
 	}
 	
 	private void navigateToSettingsPageWithPin() {
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("PIN", "loginWithExistingPin", "login"), 
 				utils.readTestData("PIN", "loginWithExistingPin", "pwd"));
 		navigationMenu.tapSplitMenuIcon();
@@ -42,8 +40,6 @@ public class SettingsTest extends App{
 	}
 	
 	private void navigateToSettingsPageWithoutPin() {
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("PIN", "loginWithoutExistingPin", "login"), 
 				utils.readTestData("PIN", "loginWithoutExistingPin", "pwd"));
 		navigationMenu.tapSplitMenuIcon();

@@ -68,15 +68,15 @@ public class PINOptionsTest extends App{
 	private void navigationToPinOptionsPageFrom_LoginWithoutPIn() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		welcomePage.tapLoginButton();
-		loginWithPinOptions(utils.readTestData("PIN", "loginWithoutExistingPin", "login"), 
-				utils.readTestData("PIN", "loginWithoutExistingPin", "pwd"));
+		loginToApp(utils.readTestData("PIN", "loginWithoutExistingPin", "login"), 
+				utils.readTestData("PIN", "loginWithoutExistingPin", "pwd"), "DoNotTapMayBeLaterOption");
 	}
 	
 	private void navigationToPinOptionsPageFrom_LoginWithPIn() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		welcomePage.tapLoginButton();
-		loginWithPinOptions(utils.readTestData("PIN", "loginWithExistingPin", "login"), 
-				utils.readTestData("PIN", "loginWithExistingPin", "pwd"));
+		loginToApp(utils.readTestData("PIN", "loginWithExistingPin", "login"), 
+				utils.readTestData("PIN", "loginWithExistingPin", "pwd"), "DoNotTapMayBeLaterOption");
 	}
 
 }

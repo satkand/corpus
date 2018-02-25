@@ -8,18 +8,21 @@ import io.appium.java_client.AppiumDriver;
 public class ConfigPage extends BasePage {
 
 	private By configPageTitle = By.xpath("//android.widget.TextView[@text='Config']");
+	private By globalBaseURL = By.id("au.com.suncorp.marketplace:id/globalBaseUrl");
+	private By applyGlobalBaseUrlButton = By.id("au.com.suncorp.marketplace:id/globalBaseUrlButton");
 	private By continueButton = By.id("au.com.suncorp.marketplace:id/configContinueButton");
 	
 	//FAPI Settings page
 	private By hasBankAccountsToggle = By.id("au.com.suncorp.marketplace:id/hasAccountsToggle");
 	private By someTransactions = By.id("au.com.suncorp.marketplace:id/spendingManyTransactions");
-	
+		
 	public ConfigPage(AppiumDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void dismissConfigPage() {
+		//ConnectToStubSever();
 		if(find(configPageTitle,30) != null) {
 			// Added this just to add some delay before checking for keyboard
 			find(continueButton,10);
@@ -33,6 +36,12 @@ public class ConfigPage extends BasePage {
 				tapElement(continueButton);
 			}
 		}
+	}
+	
+	private void ConnectToStubSever() {
+		tapElement(globalBaseURL);
+		typeValue("192.168.213.31:4567", globalBaseURL);
+		tapElement(applyGlobalBaseUrlButton);
 	}
 	
 	public void enableHasBankAccountsToggle() {
