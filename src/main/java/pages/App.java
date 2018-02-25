@@ -74,7 +74,7 @@ public class App extends BaseTest {
 	public ImageViewPage imageViewPage = null;
 	public ChooseFolderPage chooseFolderPage = null;
 	public SelectItemsPage selectItemsPage = null;
-
+	public pages.marketplace.digitalVault.DigiVaultCommonPage digiVaultCommonPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -121,6 +121,7 @@ public class App extends BaseTest {
 		imageViewPage = new ImageViewPage(driver);
 		chooseFolderPage = new ChooseFolderPage(driver);
 		selectItemsPage = new SelectItemsPage(driver);
+		digiVaultCommonPage = new pages.marketplace.digitalVault.DigiVaultCommonPage(driver);
 	}
 	
 	
