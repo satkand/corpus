@@ -1,4 +1,4 @@
-package test.marketplace.auth;
+package test.marketplace.auth.registration;
 
 import java.util.List;
 
