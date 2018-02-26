@@ -92,6 +92,6 @@ public class NavigationMenuPage extends BasePage {
 	}
 
 	public void closeNavigationMenu(){
-		closeNavigationMenuByTappingOut();
+		tapOnBottomRightCorner();
 	}
 }

@@ -251,7 +251,8 @@ public class BasePage {
 
 	}
 	
-	protected void closeNavigationMenuByTappingOut() {
+	// TODO -> Different in iOS -> change it and test it if it works for android as well
+	protected void tapOnBottomRightCorner() {
 		int screenHeight = driver.manage().window().getSize().getHeight();
 		int screenWidth = driver.manage().window().getSize().getWidth();
 		tapByCoordinates((int)(screenWidth*.9), (int)(screenHeight*.9));
