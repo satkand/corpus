@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
+//TODO: Add appropriate ids for the elements below
+
 public class BankingHomePage extends BasePage{
 
 	public BankingHomePage(AppiumDriver driver) {
@@ -21,6 +23,8 @@ public class BankingHomePage extends BasePage{
 	private By homeLoanAccounts = By.xpath("//android.widget.TextView[@text='My Home Loan']");
 	private By lineOfCreditAccount = By.xpath("//android.widget.TextView[@text='My Line Of Credit Account']");
 	private By variableFixedRateAccount = By.xpath("//android.widget.TextView[@text='9005']");
+	private By everydayEssentialsAccount = By.xpath("//android.widget.TextView[@text='Everyday Essentials']");
+	private By variableLoanOffsettingAccount = By.xpath("//android.widget.TextView[@text='My Home Loan']");
 	
 	
 	public WebElement checkBankingHomeTitle() {
@@ -56,6 +60,16 @@ public class BankingHomePage extends BasePage{
 	public void tapVariableFixedRateAccount() {
 		scrollToElement(variableFixedRateAccount);
 		tapElement(variableFixedRateAccount);
+	}
+	
+	public void tapEverydayEssentials() {
+		scrollToElement(everydayEssentialsAccount);
+		tapElement(everydayEssentialsAccount);
+	}
+	
+	public void tapVariableLoanOffsetting() {
+		scrollToElement(variableLoanOffsettingAccount);
+		tapElement(variableLoanOffsettingAccount);
 	}
 
 }

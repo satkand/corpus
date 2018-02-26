@@ -174,7 +174,7 @@ public class AccountDetailsPage extends BasePage{
 	private By postedTransactionRunningBalanceHeader = By.xpath("//android.widget.TextView[@text='Running Balance']");
 	private By postedTransactionRunningBalanceValue = By.id("");
 	
-	/* Line of credit loan account elements*/
+	/* Line of credit loan account elements */
 	// Line of Credit section
 	
 	private By lineOfCreditHeader = By.xpath("//android.widget.TextView[@text='Line of Credit']");
@@ -188,6 +188,22 @@ public class AccountDetailsPage extends BasePage{
 	private By linkedCardValue1 = By.id("");
 	private By linkedCardHeader2 = By.xpath("//android.widget.TextView[@text='Linked Card']");
 	private By linkedCardValue2 = By.id("");
+	
+	
+	/* Everyday essentials account elements */
+	// Line of Credit section
+	
+	private By flexiRateHeader = By.xpath("//android.widget.TextView[@text='Flexi Rate']");
+	private By amountOfFlexirateHeader = By.xpath("//android.widget.TextView[@text='Amount of Flexirate']");
+	private By amountOfFlexorateValue = By.xpath("//");
+	private By interestRateFlexirateHeader = By.xpath("//android.widget.TextView[@text='Interest Rate']");
+	private By interestRateFlexirateValue = By.xpath("//");
+	private By maturityDateHeader = By.xpath("//android.widget.TextView[@text='Maturity Date']");
+	private By maturityDateValue = By.xpath("//");
+	
+	/* Variable Loan Offsetting account elements */
+	
+	private By variableLoanOffsettingHeader = By.xpath("//android.widget.TextView[@text='']");
 	
 	
 	public WebElement checkAccountDetailsPageBackButton() {
@@ -783,12 +799,12 @@ public class AccountDetailsPage extends BasePage{
 	
 	public WebElement checkLinkedCardsHeader() {
 		scrollToElement(linkedCardsHeader);
-		return find(linkedCardsHeader, 10);
+		return find(linkedCardsHeader, 30);
 	}
 	
 	public WebElement checkFirstLinkedCardHeader() {
 		scrollToElement(linkedCardHeader1);
-		return find(linkedCardHeader1, 10);
+		return find(linkedCardHeader1, 30);
 	}
 	
 	public String getFirstLinkedCardValue(){
@@ -797,7 +813,7 @@ public class AccountDetailsPage extends BasePage{
 	
 	public WebElement checkSecondLinkedCardHeader() {
 		scrollToElement(linkedCardHeader2);
-		return find(linkedCardHeader2, 10);
+		return find(linkedCardHeader2, 30);
 	}
 	
 	public String getSecondLinkedCardValue(){
@@ -809,4 +825,45 @@ public class AccountDetailsPage extends BasePage{
 	public WebElement checkVariableFixedRateAccountHeader() {
 		return find(variabelFixedRateAccountHeader, 30);
 	}
+	
+	/** Flexirates **/
+	
+	public WebElement checkFlexiRateHeader() {
+		scrollToElement(flexiRateHeader);
+		return find(flexiRateHeader, 30);
+	}
+	
+	public WebElement checkAmountOfFlexirateHeader() {
+		scrollToElement(amountOfFlexirateHeader);
+		return find(amountOfFlexirateHeader, 30);
+	}
+	
+	public String getAmountOfFlexirateValue(){
+		return getText(amountOfFlexorateValue);
+	}
+	
+	public WebElement checkInterestRateFlexirateHeader() {
+		scrollToElement(interestRateFlexirateHeader);
+		return find(interestRateFlexirateHeader, 30);
+	}
+	
+	public String getInterestRateFlexirateValue(){
+		return getText(interestRateFlexirateValue);
+	}
+	
+	public WebElement checkMaturityDateHeader() {
+		scrollToElement(maturityDateHeader);
+		return find(maturityDateHeader, 30);
+	}
+	
+	public String getMaturityDateValue(){
+		return getText(maturityDateValue);
+	}
+	
+	/** Variable loan offsetting **/
+	
+	public WebElement checkVariableLoanOffsetting() {
+		return find(variableLoanOffsettingHeader, 30);
+	}
+	
 }
