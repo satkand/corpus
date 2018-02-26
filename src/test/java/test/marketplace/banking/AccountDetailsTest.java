@@ -331,5 +331,90 @@ public class AccountDetailsTest extends App {
 			//			Assert.assertEquals(accountsPage.getMaturityDateValue(), maturityRate, "Everyday Essentials - Maturity Rate value not displayed");
 
 		}
+		
+		//TODO: New Ids and Xpaths to be added to the screen
+
+		/** DMPM-1430 **/
+
+		@Test (groups = {"DMPM-1430", "marketplace", "FFI", "priority-minor"})
+
+		public void testVariableLoanOffsetting() {
+
+			navigatingToBankingHome();
+
+			Assert.assertNotNull(bankingHomePage.checkPaysomeoneButton(), "Banking Home page did not load");
+
+			bankingHomePage.tapVariableLoanOffsetting();
+
+			// Scenario-2 - Account Nickname
+
+			Assert.assertNotNull(accountsPage.checkVariableFixedRateAccountHeader(), "Varible Loan Offsetting - Variable Loan Offsetting Account display header not shown");
+
+
+			// Scenario 3 - Offsetting Home Loan interest saved - this financial year
+			/* Current Year */
+
+			Assert.assertNotNull(accountsPage.checkCurrentYearHeader(), "Current Year header not displayed");
+
+			Assert.assertNotNull(accountsPage.checkCurrentYearInterestSavedHeader(), "Varible Loan Offsetting - Current Year Interest Saved header not displayed");
+			String currentYearInterestSaved = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getCurrentYearInterestSavedValue(), currentYearInterestSaved, "Varible Loan Offsetting - Current Year Interest Saved value not displayed");
+
+			// Scenario 4 - Offsetting Home Loan interest saved - last financial year
+			/* Last Year */
+
+			Assert.assertNotNull(accountsPage.checkLastYearHeader(), "Last Year header not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLastYearInterestSavedHeader(), "Varible Loan Offsetting - Last Year Interest Saved header not displayed");
+			String lastYearInterestSaved = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLastYearInterestSavedValue(), lastYearInterestSaved, "Varible Loan Offsetting - Last Year Interest Saved value not displayed");
+
+
+			// Scenario 1 - Offset Account Numbers
+			/* Linked Accounts */
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsHeader(), "Varible Loan Offsetting - Linked Accounts header not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount1(), "Varible Loan Offsetting - Loan Account 1 header not displayed");
+			String suncorpLoanAccount1 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount1Value(), suncorpLoanAccount1, "Varible Loan Offsetting - Loan Account 1 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount2(), "Varible Loan Offsetting - Loan Account 2 header not displayed");
+			String suncorpLoanAccount2 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount2Value(), suncorpLoanAccount2, "Varible Loan Offsetting - Loan Account 2 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount3(), "Varible Loan Offsetting - Loan Account 3 header not displayed");
+			String suncorpLoanAccount3 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount3Value(), suncorpLoanAccount3, "Varible Loan Offsetting - Loan Account 3 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount4(), "Varible Loan Offsetting - Loan Account 4 header not displayed");
+			String suncorpLoanAccount4 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount4Value(), suncorpLoanAccount4, "Varible Loan Offsetting - Loan Account 4 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount5(), "Varible Loan Offsetting - Loan Account 5 header not displayed");
+			String suncorpLoanAccount5 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount5Value(), suncorpLoanAccount5, "Varible Loan Offsetting - Loan Account 5 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount6(), "Varible Loan Offsetting - Loan Account 6 header not displayed");
+			String suncorpLoanAccount6 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount6Value(), suncorpLoanAccount6, "Varible Loan Offsetting - Loan Account 6 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount7(), "Varible Loan Offsetting - Loan Account 7 header not displayed");
+			String suncorpLoanAccount7 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount7Value(), suncorpLoanAccount7, "Varible Loan Offsetting - Loan Account 7 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount8(), "Varible Loan Offsetting - Loan Account 8 header not displayed");
+			String suncorpLoanAccount8 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount8Value(), suncorpLoanAccount8, "Varible Loan Offsetting - Loan Account 8 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount9(), "Varible Loan Offsetting - Loan Account 9 header not displayed");
+			String suncorpLoanAccount9 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount9Value(), suncorpLoanAccount9, "Varible Loan Offsetting - Loan Account 9 value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkLinkedAccountsSuncorpLoanAccount10(), "Varible Loan Offsetting - Loan Account 10 header not displayed");
+			String suncorpLoanAccount10 = utils.readTestData("bankingHome", "varibleLoanOffsettingAccount", "");
+			//Assert.assertEquals(accountsPage.getLinkedAccountsSuncorpLoanAccount10Value(), suncorpLoanAccount10, "Varible Loan Offsetting - Loan Account 10 value not displayed");
+
+		}
 
 }

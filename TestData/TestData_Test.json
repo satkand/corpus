@@ -969,5 +969,65 @@
 				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
 			}
 		}
-	}
+	},
+	"bankingHome": {
+			"varibleLoanOffsettingAccount": {
+				"BSB": "484-799",
+				"ACC": "9007",
+				"Account Product Type": "LVR",
+				"Available Balance": "$7,870.00",
+				"Current Balance": "-$475,090.40",
+				"Credit Min Value": "$5,000",
+				"Credit Max Value": "$25,000.00",
+				"Interest Rate": "15.25%",
+				"Expiry Dare": "05/04/2012",
+				"Cash Back": "$7,870.00",
+				"Principle Paid": "$94,252.24",
+				"Term Length": "29 Years",
+				"Term Expiry Date": "05/04/2012",
+				"Loan Purpose": "home",
+				"Last Statement Date": "05/04/2012",
+				"Next Statement Date": "05/08/2012",
+				"Amount Overdue": "$124.90",
+				"Days Overdue": "2",
+				"Min Repayment": "$2,628.00",
+				"Payment Due Date": "05/04/2012",
+				"Closing Balance": "-$472,462.40",
+				"Last Payment Date": "05/03/2012",
+				"lastPaymentAmount": "$2,650.00"
+			},
+			"lineOfCreditAccounts": {
+				"BSB": "484-799",
+				"ACC": "9003",
+				"Account Product Type": "LOC",
+				"Available Balance": "$5,770.00",
+				"Current Balance": "$230.00",
+				"Credit Min Value": "$5,000",
+				"Credit Max Value": "$25,000.00",
+				"Debit Interest Rate": "12.50%",
+				"Interest Rate Type": "Variable",
+				"Term Length": "29 Years",
+				"Term Expiry Date": "05/04/2012",
+				"Loan Purpose": "home"
+			},
+			"variableFixedAccounts": {
+				"BSB": "484-799",
+				"ACC": "9005",
+				"Account Product Type": "LVR",
+				"Available Balance": "$7,870.00",
+				"Current Balance": "-$475,090.40",
+				"Credit Min Value": "$5,000",
+				"Credit Max Value": "$25,000.00",
+				"Debit Interest Rate": "0.00%",
+				"Interest Rate Type": "",
+				"Term Length": "",
+				"Term Expiry Date": "",
+				"Loan Purpose": ""
+			},
+			"everydayEssentialsAccount": {
+				"Amount Of Flexirate": "",
+				"Interst Rate": "",
+				"Maturity Rate": ""
+			}
+		}
 }
