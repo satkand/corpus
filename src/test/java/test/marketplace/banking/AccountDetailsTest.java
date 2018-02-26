@@ -297,5 +297,39 @@ public class AccountDetailsTest extends App {
 		//Assert.assertEquals(accountsPage.getLastPaymentAmountValue(), lastPaymentAmount, "Last Payment Amount value not displayed");
 
 	}
+	
+	//TODO: New Ids and Xpaths to be added to the screen
+
+		/** DMPM-1064 **/
+
+		@Test (groups = {"DMPM-1064", "marketplace", "FFI", "priority-minor"})
+
+		public void testFlexirate() {
+
+			navigatingToBankingHome();
+
+			Assert.assertNotNull(bankingHomePage.checkPaysomeoneButton(), "Banking Home page did not load");
+
+			bankingHomePage.tapEverydayEssentials();
+
+			/** Scenario 1 - view flexi rates **/
+
+			// Flexi Rate section
+
+			Assert.assertNotNull(accountsPage.checkFlexiRateHeader(), "Everyday Essentials - Flexi Rate header not displayed");
+
+			Assert.assertNotNull(accountsPage.checkAmountOfFlexirateHeader(), "Everyday Essentials - Amount of Flexirate header not displayed");
+			String amountOfFlexirate = utils.readTestData("bankingHome", "everydayEssentialsAccount", "Amount Of Flexirate");
+			//			Assert.assertEquals(accountsPage.getAmountOfFlexirateValue(), amountOfFlexirate, "Everyday Essentials - Amount of Flexirate value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkInterestRateFlexirateHeader(), "Everyday Essentials - Interest Rate header not displayed");
+			String interestRate = utils.readTestData("bankingHome", "everydayEssentialsAccount", "Interst Rate");
+			//			Assert.assertEquals(accountsPage.getInterestRateFlexirateValue(), interestRate, "Everyday Essentials - Interest Rate value not displayed");
+
+			Assert.assertNotNull(accountsPage.checkMaturityDateHeader(), "Everyday Essentials - Maturity Rate header not displayed");
+			String maturityRate = utils.readTestData("bankingHome", "everydayEssentialsAccount", "Maturity Rate");
+			//			Assert.assertEquals(accountsPage.getMaturityDateValue(), maturityRate, "Everyday Essentials - Maturity Rate value not displayed");
+
+		}
 
 }
