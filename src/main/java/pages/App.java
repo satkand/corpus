@@ -30,6 +30,9 @@ import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
+import pages.marketplace.portfolio.MyProductsPage;
+import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 
@@ -59,7 +62,9 @@ public class App extends BaseTest {
 	protected OffersPage offersPage = null;
 	public LoginAuthPage loginAuthPage = null;
 	public PINOptionsPage pinOptionsPage = null;
-	
+	public MyProductsPage myProductsPage = null;
+	public AddPolicyPage addPolicyPage = null;
+	public AddBankAccountPage addBankAccountPage = null;
 
 
 	@BeforeClass
@@ -98,7 +103,9 @@ public class App extends BaseTest {
 		offersPage = new OffersPage(driver);
 		loginAuthPage = new LoginAuthPage(driver);
 		pinOptionsPage = new PINOptionsPage(driver);
-
+		myProductsPage = new MyProductsPage(driver);
+		addPolicyPage = new AddPolicyPage(driver);
+		addBankAccountPage = new AddBankAccountPage(driver);
 	}
 	
 	@BeforeMethod(alwaysRun = true)
@@ -120,6 +127,7 @@ public class App extends BaseTest {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		welcomePage.tapLoginButton();
 		loginPage.enterLoginCredentials(login, pwd);
+		
 		loginPage.tapLoginButton();
 		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();

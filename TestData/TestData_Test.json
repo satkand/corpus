@@ -12,6 +12,10 @@
 		"login": "a@b.c",
 		"pwd": "Password1"
 	},
+	"portfolio" :{
+		"login": "rest@rest.com",
+		"pwd": "Password1"
+	},
 	"hasSuncorpBankAccounts" :{
 		"login": "a@b.c",
 		"pwd": "Password1",
@@ -877,6 +881,15 @@
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in"
+		},
+		"portfolio": {
+			"myProductsLabel": "My products",
+			"emptyStateLabel": "Looks like you haven't added any products yet.",
+			"findProductButton": "FIND PRODUCT",
+			"addExistingProductButton": "Add existing product",
+			"bottomSheetLabel": "What type of product?",
+			"insurancePolicyBottomSheetButton": "Insurance policy",
+			"bankAccountBottomSheetButton": "Bank account"
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",

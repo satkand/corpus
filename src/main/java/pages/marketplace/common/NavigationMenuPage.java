@@ -45,6 +45,11 @@ public class NavigationMenuPage extends BasePage {
 		 return find(productsMenuItem);
 	}
 	
+	public void tapProductsMenuItem() {
+		find(productsMenuItem, 30);
+		 tapElement(productsMenuItem);
+	}
+	
 	public WebElement checkHomeJourneyMenuItem() {
 		 return find(homeJourneyMenuItem);
 	}
