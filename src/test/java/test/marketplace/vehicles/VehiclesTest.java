@@ -59,7 +59,6 @@ public class VehiclesTest extends App {
 	}
 	
 	private void navigateToVehiclesTab() {
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("hasVehicles", "login"), utils.readTestData("hasVehicles", "pwd"));
 		landingPage.tapVehiclesTab();
 		Assert.assertTrue(landingPage.isVehiclesTabSelected(), "Vehicles tab is not selected on landing page");

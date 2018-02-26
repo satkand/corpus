@@ -8,12 +8,11 @@ import org.testng.annotations.Test;
 import pages.App;
 
 public class FinanceTest extends App {
-	
 	// 486 - Scenario 1
 	// 786 - Scenario 1, Scenario 2
 	// 1032 - Scenario 1, Scenario 2
 	@Test (groups = {"DMPM-486", "DMPM-895", "DMPM-786", "DMPM-1032", "DMPM-1302", "DMPM-1311", "marketplace", "FFI", "priority-minor"})
-	public void testElementsOnFinancePageWithBankAccounts() {
+	public void testElementsOnFinancePageWithSuncorpBankAccounts() {
 		// SpendingThisMonth button and net worth amount, should  be shown if user has suncorp bank accounts 
 		navigateToWealthTabWithBankAccounts();
 		Assert.assertEquals(financePage.getNetWorthLabel(), utils.readTestData("copy", "financePage", "netWorthLabel"), "Wealth tab - net worth label copy is not valid");
@@ -43,9 +42,9 @@ public class FinanceTest extends App {
 	// 91 - Scenario 3
 	// Spending option should not be shown if user does not have suncorp bank accounts
 	@Test (groups = {"DMPM-91", "DMPM-537", "DMPM-486", "DMPM-896", "marketplace", "FFI", "priority-minor"})
-	public void testElementsOnFinancePageWithOutBankAccounts() {
+	public void testElementsOnFinancePageWithOutSuncorpBankAccounts() {
 		// SpendingThisMonth button and net worth amount, should not be shown if user has no suncorp bank accounts 
-		navigateToWealthTabWithOutBankAccounts();
+		navigateToWealthTabWithOutSuncorpBankAccounts();
 		Assert.assertNull(financePage.checkNetWorthAmount(), "Wealth tab - Net worth amount shown");
 		Assert.assertNull(financePage.checkViewSpendingThisMonthButton(), "Wealth tab - view spendings this month button shown");
 	}
@@ -60,7 +59,6 @@ public class FinanceTest extends App {
 	}
 	
 	private void navigateToWealthTabWithBankAccounts() {
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("hasSuncorpBankAccounts", "login"), utils.readTestData("hasSuncorpBankAccounts", "pwd"));
 		if(landingPage.checkWealthTab() == null) {
 			landingPage.swipeToHealthTab();
@@ -78,8 +76,7 @@ public class FinanceTest extends App {
 		landingPage.tapWealthTab();
 	}
 	
-	private void navigateToWealthTabWithOutBankAccounts() {
-		welcomePage.tapLoginButton();
+	private void navigateToWealthTabWithOutSuncorpBankAccounts() {
 		loginToApp(utils.readTestData("noSuncorpBankAccounts", "login"), utils.readTestData("noSuncorpBankAccounts", "pwd"));
 		if(landingPage.checkWealthTab() == null) {
 			landingPage.swipeToHealthTab();
