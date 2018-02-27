@@ -30,9 +30,53 @@ public class FolderViewTest extends App {
 		
 	}
 	
+	//DMPM-2122 - Scenario 1,2,3,4,5 
+	@Test(groups = { "DMPM-2122", "DMPM-2856","DMPM-2857","DMPM-2858","DMPM-2859","DMPM-2860", "marketplace", "Document Storage", "priority-minor" })
+	public void testRenameFolderFromInsideFolder() {
+		navigateToFolderView();
+		folderViewPage.tapEditButton();
+		Assert.assertNotNull(folderViewPage.checkRenameFolderButton(), "Rename folder button not present");
+		folderViewPage.tapRenameFolderButton();                                                                                                  
+		Assert.assertNotNull(digiVaultCommonPage.checkCancelButton(), "Cancel button not present");	
+		Assert.assertTrue(common.isKeyboardShown(),"Keyboard not seen");
+		digiVaultCommonPage.tapCancelButton();
+		Assert.assertNull(digiVaultCommonPage.checkCancelButton(), "Rename button is not shown");
+		
+		folderViewPage.tapEditButton();
+		Assert.assertNotNull(folderViewPage.checkRenameFolderButton(), "Rename folder button not present");
+		folderViewPage.tapRenameFolderButton();
+		Assert.assertNotNull(digiVaultCommonPage.checkPositiveButton(), "Rename button is not shown");
+		digiVaultCommonPage.clearEditField();
+		Assert.assertFalse(digiVaultCommonPage.isPositiveButtonEnabled(), "Save button is enabled");
+		digiVaultCommonPage.enterName(utils.readTestData("digivault", "hasItems", "folder1"));	
+		Assert.assertTrue(digiVaultCommonPage.isPositiveButtonEnabled(), "Save button is disabled");
+		digiVaultCommonPage.tapPositiveButton();
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to  folder");
+		Assert.assertEquals(folderViewPage.getTitle(), utils.readTestData("digivault", "hasItems", "folder1"));
+	}
+	
+	//DMPM-2127 - Scenario 1,2,3,4
+	@Test(groups = { "DMPM-2127", "DMPM-2897","DMPM-2898","DMPM-2899","DMPM-2900","marketplace", "Document Storage", "priority-minor" })
+	public void testDeleteFolderFromInsideFolder() {
+		navigateToFolderView();
+		folderViewPage.tapEditButton();
+		Assert.assertNotNull(folderViewPage.checkDeleteFolderButton(), "Delete folder button not present");
+		folderViewPage.tapDeleteFolderButton();
+		Assert.assertNotNull(digiVaultCommonPage.checkAndroidCancelButton(), "Cancel button not present");	
+		digiVaultCommonPage.tapAndroidCancelButton();
+		Assert.assertNull(digiVaultCommonPage.checkAndroidCancelButton(), "Rename button is not shown");
+		
+		folderViewPage.tapEditButton();
+		Assert.assertNotNull(folderViewPage.checkDeleteFolderButton(), "Delete folder button not present");
+		folderViewPage.tapDeleteFolderButton();
+		Assert.assertNotNull(digiVaultCommonPage.checkAndroidDialogMsg(), "Delete confirmation msg is not shown");
+		Assert.assertNotNull(digiVaultCommonPage.checkAndroidOkButton(), "Rename button is not shown");
+		digiVaultCommonPage.tapAndroidOkButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to root folder");
+		
+	}
+	
 	private void navigateToFolderView() {
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Split Menu button is not displayed");
 		navigationMenu.tapSplitMenuIcon();

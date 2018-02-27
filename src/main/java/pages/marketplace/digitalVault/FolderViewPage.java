@@ -13,6 +13,8 @@ public class FolderViewPage extends BasePage {
 	DigiVaultCommonPage digiVaultCommonPage = new DigiVaultCommonPage(driver);
 	private By folderTitle  = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']/android.widget.TextView");
 	private By deleteFolderButton = By.id("au.com.suncorp.marketplace:id/deleteFolderButton");
+	private By deleteItemsButton = By.id("au.com.suncorp.marketplace:id/deleteItemsButton");
+	private By renameFolderButton = By.id("au.com.suncorp.marketplace:id/renameFolderButton");
 	private By moveToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
 
 	private By moveDocumentToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
@@ -51,6 +53,10 @@ public class FolderViewPage extends BasePage {
 		return find(addFromVaultCard);
 	}
 	
+	public WebElement checkEditButton() {
+		return find(editButton,30);
+	}
+	
 	public void tapAddFileFromVaultCard() {
 		tapElement(addFromVaultCard);
 	}
@@ -77,6 +83,22 @@ public class FolderViewPage extends BasePage {
 	
 	public WebElement checkDeleteFolderButton() {
 		return find(deleteFolderButton);
+	}
+	
+	public WebElement checkDeleteItemsButton() {
+		return find(deleteItemsButton);
+	}
+	
+	public void tapDeleteFolderButton() {
+		tapElement(deleteFolderButton);
+	}
+	
+	public WebElement checkRenameFolderButton() {
+		return find(renameFolderButton);
+	}
+	
+	public void tapRenameFolderButton() {
+		tapElement(renameFolderButton);
 	}
 	
 	public WebElement checkMoveToFolderButton() {

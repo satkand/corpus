@@ -713,7 +713,6 @@
 				"RegNo": "ABC555"
 			}
 		]
-
 	},
 	"digivault" : {
 		"hasItems" : {
@@ -726,7 +725,6 @@
 			"folder1" : "folder 1"
 		},
 	},
-
 	"registration" : {
 		"success":{
 			"firstName" : "Abc",
@@ -778,7 +776,6 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
-
 	"loginCredentials" :{
 		"validLoginCredentials" : {
 			"login1":{
@@ -846,7 +843,8 @@
 				"loginError": null,
 				"pwdError": null,
 				"loginButton": true
-			}],
+			}
+		],
 
 			"invalidLoginCredentials_ServerSideValidations" :[ 
 			{
@@ -866,7 +864,8 @@
 				"pwd": "1234567",
 				"loginError": null,
 				"pwdError": null
-			}]
+			}
+		]
 	},
 	"hasNoProducts" : {
 		"login": "fer@fer.com",
@@ -881,10 +880,8 @@
 		"loginWithoutExistingPin" : {
 			"login": "c@b.com",
 			"pwd": "Password1"
-		}
+		},
 	},
-	
-
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in"
@@ -981,8 +978,5 @@
 			}
 
 		},
-
-
-		}
 	}
 }

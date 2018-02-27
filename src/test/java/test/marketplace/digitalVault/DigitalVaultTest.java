@@ -449,13 +449,54 @@ public class DigitalVaultTest extends App {
 		Assert.assertNotNull(digiVaultCommonPage.checkAndroidCancelButton(), "Android cancel button not present");
 	}
 	
-
 	
+	//DMPM-2728 - Scenario 1,2
+	//DMPM-2894 - Scenario 1,2
+	@Test(groups = { "DMPM-2728", "DMPM-3286", "DMPM-3287", "DMPM-2984", "DMPM-3407", "DMPM-3408", "marketplace", "Document Storage", "priority-minor" })
+	public void testHideOptionsWhenNoFiles() {
+		navigateToDigiVaultPageWithEmptyData();
+		digitalVaultPage.createFolder(utils.readTestData("digivault", "hasItems", "folderName"));
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Digital vault folder page is not displayed");
+		common.goBack();
+		digitalVaultPage.checkEditButton();
+		digitalVaultPage.tapEditButton();
+		Assert.assertNull(digitalVaultPage.checkMoveToFolderButton(), "Move to folder button present");
+		common.goBack();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digital vault home page is not displayed");
+		
+		digitalVaultPage.tapFolderItem();
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Digital vault folder page is not displayed");
+		digiVaultCommonPage.tapAddButton();
+		Assert.assertNull(folderViewPage.checkAddFileFromVaultCard(), "Add from Vault card present");
+		common.goBack();
+		folderViewPage.checkEditButton();
+		Assert.assertTrue(folderViewPage.isEditClickable(), "Edit button is not enabled");
+		Assert.assertNull(folderViewPage.checkDeleteItemsButton(), "Delete items button present");
+		Assert.assertNull(folderViewPage.checkMoveToFolderButton(), "Delete items button present");
+	}
+	
+	
+	//DMPM-2106 - Scenario 1
+	@Test(groups = { "DMPM-2106", "DMPM-2846", "marketplace", "Document Storage", "priority-minor" })
+	public void testViewItemsAddedByMe() {
+		navigateToDigiVaultPage();
+		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.checkLockMenuOption();
+		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(loginAuthPage.checkChangeAccountButton(), "Change account button is not shown");
+		loginAuthPage.tapChangeAccountButton();
+		Assert.assertNotNull(welcomePage.checkGuestAccessButton(), "Guest access button is not shown");
+		welcomePage.tapGuestAccessButton();
+		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Split Menu button is not displayed");
+		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.checkDigitalVaultMenuItem();
+		navigationMenu.tapDigitalVaultMenuItem();
+		Assert.assertNull(digiVaultCommonPage.checkDocumentMoreOption(), "Document still present");
+		Assert.assertNull(digitalVaultPage.checkFolderMoreOption(), "Folder still present");
+	}
 	
 	// DMPM-799 : Scenario 2 - Navigating to the digital Vault screen
 	private void navigateToDigiVaultPage() {
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Split Menu button is not displayed");
 		navigationMenu.tapSplitMenuIcon();
@@ -467,8 +508,7 @@ public class DigitalVaultTest extends App {
 	}
 	
 	private void navigateToDigiVaultPageWithEmptyData() {
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
-		welcomePage.tapLoginButton();
+
 		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Split Menu button is not displayed");
 		navigationMenu.tapSplitMenuIcon();

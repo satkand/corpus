@@ -32,6 +32,7 @@ public class DigiVaultCommonPage extends BasePage {
 	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
+	private By androidDialogMsg = By.id("android:id/message");
 	
 	public DigiVaultCommonPage(AppiumDriver driver) {
 		super(driver);
@@ -66,6 +67,9 @@ public class DigiVaultCommonPage extends BasePage {
 		tapElement(androidOkButton);
 	}
 	
+	public WebElement checkAndroidDialogMsg() {
+		return find(androidDialogMsg);
+	}
 	
 	public WebElement checkTakePhotoCard() {
 		return find(takePhotoCard);
