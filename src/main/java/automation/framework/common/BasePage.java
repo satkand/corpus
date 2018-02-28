@@ -148,16 +148,7 @@ public class BasePage {
 	protected void clearValue(By locator) {
 		find(locator).clear();
 	}
-	
-	/**
-	 * Method to find an element in the page. Takes string xpath as
-	 * parameter
-	 * 
-	 * @param filename
-	 */
-	public String findElementInPage(String fileName) {
-		return driver.findElementByXPath(fileName).getText();
-	}
+
 	
 	protected void putAppInBackground() {
 		Duration duration = Duration.ofMillis((long) 10);
@@ -261,7 +252,8 @@ public class BasePage {
 
 	}
 	
-	protected void closeNavigationMenuByTappingOut() {
+	// TODO -> Different in iOS -> change it and test it if it works for android as well
+	protected void tapOnBottomRightCorner() {
 		int screenHeight = driver.manage().window().getSize().getHeight();
 		int screenWidth = driver.manage().window().getSize().getWidth();
 		tapByCoordinates((int)(screenWidth*.9), (int)(screenHeight*.9));

@@ -238,7 +238,18 @@ public class DigitalVaultPage extends BasePage {
 	}
 	
 	public String findDocumentInPage(String fileName) {
-		return  findElementInPage( String.format( "//*[@text=\"%s\"]", fileName ));
+		WebElement doc = find(By.xpath(String.format( "//*[@text=\"%s\"]", fileName)));
+		return doc.toString();	
+	}
+	
+	/**
+	 * Method to find an element in the page. Takes string xpath as
+	 * parameter
+	 * 
+	 * @param filename
+	 */
+	public String findElementInPage(String fileName) {
+		return driver.findElementByXPath(fileName).getText();
 	}
 	
 	public WebElement checkRenameDialogTitle() {
