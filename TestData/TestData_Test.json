@@ -12,6 +12,16 @@
 		"login": "a@b.c",
 		"pwd": "Password1"
 	},
+	"portfolio" :{
+		"loginEmptyProdList":{
+				"login": "rest@rest.com",
+				"pwd": "Password1"
+			},
+		"loginProdList":{
+				"login": "best@best.com",
+				"pwd": "Password1"
+			}
+	},
 	"hasSuncorpBankAccounts" :{
 		"login": "a@b.c",
 		"pwd": "Password1",
@@ -877,6 +887,13 @@
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in"
+		},
+		"portfolio": {
+			"emptyStateLabel": "Looks like you haven't added any products yet.",
+			"bottomSheetLabel": "What type of product?",
+			"availableBalanceLable": "Available balance”,
+			"currentBalanceLabel": "Current balance”,
+			"accountDetailsLabel": "Account Details"
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
