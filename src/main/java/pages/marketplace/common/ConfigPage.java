@@ -43,7 +43,8 @@ public class ConfigPage extends BasePage {
 	}
 	
 
-	// Added on 08/02/2018 - GG
+	// Config file to connect to the Stub Server when connected to Mobile-Dev
+	
 	public void ConnectToStubSever() {
 		InetAddress IP = null;
 		try {
