@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebDriverException;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -8,14 +9,14 @@ import org.testng.annotations.BeforeMethod;
 import automation.framework.common.BaseTest;
 import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
-import pages.marketplace.auth.LoginAuthPage;
-import pages.marketplace.auth.LoginPage;
-import pages.marketplace.auth.RegistrationPage;
-import pages.marketplace.auth.PIN.PINAuthPage;
-import pages.marketplace.auth.PIN.PINCustomKeypad;
-import pages.marketplace.auth.PIN.PINOptionsPage;
-import pages.marketplace.auth.PIN.ForgotPINPage;
-import pages.marketplace.auth.PIN.PINSetupPage;
+import pages.marketplace.auth.login.LoginAuthPage;
+import pages.marketplace.auth.login.LoginPage;
+import pages.marketplace.auth.pin.ForgotPINPage;
+import pages.marketplace.auth.pin.PINAuthPage;
+import pages.marketplace.auth.pin.PINCustomKeypad;
+import pages.marketplace.auth.pin.PINOptionsPage;
+import pages.marketplace.auth.pin.PINSetupPage;
+import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
@@ -37,6 +38,9 @@ import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
+import pages.marketplace.portfolio.MyProductsPage;
+import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 
@@ -74,6 +78,9 @@ public class App extends BaseTest {
 	public ImageViewPage imageViewPage = null;
 	public ChooseFolderPage chooseFolderPage = null;
 	public SelectItemsPage selectItemsPage = null;
+	public MyProductsPage myProductsPage = null;
+	public AddPolicyPage addPolicyPage = null;
+	public AddBankAccountPage addBankAccountPage = null;
 
 
 	@BeforeClass
@@ -87,7 +94,6 @@ public class App extends BaseTest {
 		// Initializing the fleuntAssert object for global use.
 		fluentAssert = new FluentAssert();
 
-		
 		// Initializing the various pages of the app for use across all tests
 		welcomePage = new WelcomePage(driver);
 		loginPage = new LoginPage(driver);
@@ -121,6 +127,10 @@ public class App extends BaseTest {
 		imageViewPage = new ImageViewPage(driver);
 		chooseFolderPage = new ChooseFolderPage(driver);
 		selectItemsPage = new SelectItemsPage(driver);
+		myProductsPage = new MyProductsPage(driver);
+		addPolicyPage = new AddPolicyPage(driver);
+		addBankAccountPage = new AddBankAccountPage(driver);
+
 	}
 	
 	
@@ -135,14 +145,22 @@ public class App extends BaseTest {
 		welcomePage.closeApp();
 	}
 	
-	public void loginToApp(String login, String pwd) {
+	// If "MaybeLater" option should not be clicked from any of the scenarios then pass "DoNotTapMayBeLaterOption" as the third argument
+	public void loginToApp(String login, String pwd, String... args) {
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapLoginButton();
 		loginPage.enterLoginCredentials(login, pwd);
+		
 		loginPage.tapLoginButton();
-		if(pinOptionsPage.checkEnablePinButton() != null) {
+		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
 		}
 	}
 	
+	//TODO : Remove
 	public void loginWithPinOptions(String login, String pwd) {
 		loginPage.enterLoginCredentials(login, pwd);
 		loginPage.tapLoginButton();

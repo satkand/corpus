@@ -50,6 +50,12 @@ public class NavigationMenuPage extends BasePage {
 	public WebElement checkDigitalVaultMenuItem() {
 		 return find(digitalVaultMenuItem);
 	}
+
+	public void tapProductsMenuItem() {
+		find(productsMenuItem, 30);
+		 tapElement(productsMenuItem);
+
+	}
 	
 	public WebElement checkHomeJourneyMenuItem() {
 		 return find(homeJourneyMenuItem);
@@ -102,6 +108,6 @@ public class NavigationMenuPage extends BasePage {
 	}
 
 	public void closeNavigationMenu(){
-		closeNavigationMenuByTappingOut();
+		tapOnBottomRightCorner();
 	}
 }

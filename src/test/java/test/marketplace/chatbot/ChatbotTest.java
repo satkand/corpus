@@ -27,6 +27,9 @@ public class ChatbotTest extends App {
 		navigateToChatbotScreen();
 		chatbotPage.tapUserInputField();
 		Assert.assertTrue(common.isKeyboardShown(), "Chatbot page - keyboard not shown");
+		// As the keyboard is already dismissed in the above step, we need to launch the keyboard again by tapping on userInputField
+		chatbotPage.tapUserInputField();
+		// tapping outside to dismiss the keyboard
 		chatbotPage.tapChatView();
 		Assert.assertFalse(common.isKeyboardShown(), "Chatbot page - keyboard shown");
 	}

@@ -1,6 +1,7 @@
 {
 	"appPackage" : {
-       "packageName" : "au.com.suncorp.mobile"
+       "packageName" : "au.com.suncorp.mobile",
+       "platform": "aos"
     },
     "pinEntries" :{
 		"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
@@ -8,8 +9,18 @@
 		"validPINEntry2" : "2580"
 	},
 	"noSuncorpBankAccounts" :{
-		"login": "flash@dc.com",
+		"login": "a@b.c",
 		"pwd": "Password1"
+	},
+	"portfolio" :{
+		"loginEmptyProdList":{
+				"login": "rest@rest.com",
+				"pwd": "Password1"
+			},
+		"loginProdList":{
+				"login": "best@best.com",
+				"pwd": "Password1"
+			}
 	},
 	"hasSuncorpBankAccounts" :{
 		"login": "a@b.c",
@@ -723,7 +734,7 @@
 			"file1" : "dggrgeg",
 			"file2" : "abcgeg",
 			"folder1" : "folder 1"
-		},
+		}
 	},
 
 	"registration" : {
@@ -734,7 +745,7 @@
 			"postcode" : "3010",
 			"email" : "abc",
 			"mobile" : "0428737283",
-			"password" : "Password1",
+			"password" : "Password1"
 		},
 		"failure" : {
 			"1letterSurname" : "a",
@@ -752,8 +763,8 @@
 			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
 			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
 			"onlyCharPassword" : "football",
-			"onlyCharUpperCasePassword" : "FOOTBALL",
-		},
+			"onlyCharUpperCasePassword" : "FOOTBALL"
+		}
 	},
 	"chatbot" :{
 		"externalUrl": {
@@ -879,14 +890,21 @@
 		},
 		"loginWithoutExistingPin" : {
 			"login": "c@b.com",
-			"pwd": "Password1",
-		},
+			"pwd": "Password1"
+		}
 	},
 	
 
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in"
+		},
+		"portfolio": {
+			"emptyStateLabel": "Looks like you haven't added any products yet.",
+			"bottomSheetLabel": "What type of product?",
+			"availableBalanceLable": "Available balance",
+			"currentBalanceLabel": "Current balance",
+			"accountDetailsLabel": "Account Details"
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
@@ -952,7 +970,7 @@
 			"lastNamePasswordErrorMsg" : "Must not contain your last name",
 			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
-			"passwordNotMatch" : "Password do not match",
+			"passwordNotMatch" : "Password do not match"
 		},
 		"chatbot": {
 			"phoneLabel": "CALL NOW"
@@ -978,7 +996,7 @@
 				"offerTitle": "Building Insurance",
 				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
 			}
-		},
+		}
 
 	}
 }

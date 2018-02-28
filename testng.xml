@@ -4,22 +4,18 @@
 	<test name="Test">
 	
 <classes>
-			
 
-	<class name="test.marketplace.auth.PINSetupTest">
-	<methods>
-		<include name="navigateToSettingsScreen" />
-	</methods>
-		
-	</class>
+					<class name="test.marketplace.common.WelcomeTest"></class>
+
 		
 
 
 <!-- 
+			<class name="test.marketplace.chatbot.ChatbotTest"></class>
+
 
 			<class name="test.marketplace.vehicles.VehiclesTest"></class>
 
-					<class name="test.marketplace.common.WelcomeTest"></class>
 					<class name="test.marketplace.home.HomeJourneyTest"/>
 					<class name="test.marketplace.home.HomePropertyTest"></class>
 
@@ -38,7 +34,6 @@
 		<class name="test.marketplace.home.HomePropertyTest"></class>
 			<class name="test.marketplace.wealth.FinanceTest"></class>
 			<class name="test.marketplace.common.NavigationMenuTest"></class>
-			<class name="test.marketplace.wealth.SpendingsTest">
 				<methods>
 					<include name="testEmptyTransactionsOnCategoryTabForMonthSelected"/>
 				</methods>

@@ -27,10 +27,8 @@ public class PINAuthTest extends App{
 	}
 	
 	private void navigateToPinAuthScreen() {
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
-		welcomePage.tapLoginButton();
 		loginToApp(utils.readTestData("PIN", "loginWithExistingPin", "login"), 
-				utils.readTestData("PIN", "loginWithExistingPin", "pwd"));
+				utils.readTestData("PIN", "loginWithExistingPin", "pwd"), "DoNotTapMayBeLaterOption");
 		pinOptionsPage.tapEnablePinButton();
 		enterPIN(utils.readTestData("PIN", "loginWithExistingPin", "pin"));
 	
