@@ -28,6 +28,7 @@ import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.SettingsPage;
 import pages.marketplace.common.WelcomePage;
 import pages.marketplace.digitalVault.ChooseFolderPage;
+import pages.marketplace.digitalVault.DigiVaultCommonPage;
 import pages.marketplace.digitalVault.DigitalVaultPage;
 import pages.marketplace.digitalVault.FolderViewPage;
 import pages.marketplace.digitalVault.ImagePreviewPage;
@@ -78,6 +79,7 @@ public class App extends BaseTest {
 	public ImageViewPage imageViewPage = null;
 	public ChooseFolderPage chooseFolderPage = null;
 	public SelectItemsPage selectItemsPage = null;
+	public DigiVaultCommonPage digiVaultCommonPage = null;
 	public MyProductsPage myProductsPage = null;
 	public AddPolicyPage addPolicyPage = null;
 	public AddBankAccountPage addBankAccountPage = null;
@@ -127,6 +129,7 @@ public class App extends BaseTest {
 		imageViewPage = new ImageViewPage(driver);
 		chooseFolderPage = new ChooseFolderPage(driver);
 		selectItemsPage = new SelectItemsPage(driver);
+		digiVaultCommonPage = new DigiVaultCommonPage(driver);
 		myProductsPage = new MyProductsPage(driver);
 		addPolicyPage = new AddPolicyPage(driver);
 		addBankAccountPage = new AddBankAccountPage(driver);
