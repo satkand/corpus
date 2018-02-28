@@ -7,12 +7,13 @@ import pages.App;
 
 public class NavigationMenuTest extends App {
 	//Scenario 3
-	// Displaying Navigation menu
-	@Test (groups = {"DMPM-78", "DMPM-310", "marketplace", "Guest User", "priority-minor"})
+	// Displaying Navigation menu and verifying the items in the menu
+	@Test (groups = {"DMPM-78", "DMPM-310", "DMPM-1447", "marketplace", "Guest User", "priority-minor"})
 	public void testDisplayingNavigationMenu() {
 		navigateToLandingPage();
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), "Navigation Draw - Suncorp menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkProfilePicture(), "Navigation Menu - Profile Picture not displayed");
 		Assert.assertNotNull(navigationMenu.checkProductsMenuItem(), " Navigation Draw - Products menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkBackToStartMenuItem(), " Navigation Draw - Back To Start menu option not shown");
