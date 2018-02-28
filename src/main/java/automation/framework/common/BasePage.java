@@ -134,6 +134,16 @@ public class BasePage {
 	}
 	
 	/**
+	 * Method to perform the Tap action on an element. Takes the WebElement as
+	 * parameter
+	 * 
+	 * @param element
+	 */
+	protected void tapElement(WebElement element) {
+		element.click();
+	}
+	
+	/**
 	 * Type a value into an appropriate element by passing the value to be
 	 * entered and the element locator
 	 * 
@@ -679,7 +689,7 @@ public class BasePage {
 //	 *            on which tap has to be performed
 //	 * @return void
 //	 */
-//	protected void tapElement(WebElement element) {
+//	protected void (WebElement element) {
 //
 //		element.click();
 //	}

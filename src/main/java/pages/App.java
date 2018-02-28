@@ -27,10 +27,12 @@ import pages.marketplace.common.LandingPage;
 import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.SettingsPage;
 import pages.marketplace.common.WelcomePage;
+import pages.marketplace.digitalVault.ChooseFolderPage;
 import pages.marketplace.digitalVault.DigitalVaultPage;
 import pages.marketplace.digitalVault.FolderViewPage;
 import pages.marketplace.digitalVault.ImagePreviewPage;
 import pages.marketplace.digitalVault.ImageViewPage;
+import pages.marketplace.digitalVault.SelectItemsPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
@@ -74,10 +76,11 @@ public class App extends BaseTest {
 	public LoginAuthPage loginAuthPage = null;
 	public PINOptionsPage pinOptionsPage = null;
 	public ImageViewPage imageViewPage = null;
+	public ChooseFolderPage chooseFolderPage = null;
+	public SelectItemsPage selectItemsPage = null;
 	public MyProductsPage myProductsPage = null;
 	public AddPolicyPage addPolicyPage = null;
 	public AddBankAccountPage addBankAccountPage = null;
-
 
 
 	@BeforeClass
@@ -122,6 +125,8 @@ public class App extends BaseTest {
 		loginAuthPage = new LoginAuthPage(driver);
 		pinOptionsPage = new PINOptionsPage(driver);
 		imageViewPage = new ImageViewPage(driver);
+		chooseFolderPage = new ChooseFolderPage(driver);
+		selectItemsPage = new SelectItemsPage(driver);
 		myProductsPage = new MyProductsPage(driver);
 		addPolicyPage = new AddPolicyPage(driver);
 		addBankAccountPage = new AddBankAccountPage(driver);

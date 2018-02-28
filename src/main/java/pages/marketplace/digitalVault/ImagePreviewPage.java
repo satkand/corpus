@@ -15,6 +15,8 @@ public class ImagePreviewPage extends BasePage {
 
 	private By nextButton = By.id("au.com.suncorp.marketplace:id/nextDocumentOption");
 	
+	private ChooseFolderPage choosefolderPage = new ChooseFolderPage(driver);
+	
 	public ImagePreviewPage(AppiumDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -58,6 +60,20 @@ public class ImagePreviewPage extends BasePage {
 	
 	public void tapNextButton() {
 		tapElement(nextButton);
+	}
+	
+	public void finishSavingImageByChoosingFolder() {
+		tapNextButton();
+		checkPositiveButton();
+		tapPositiveButton();
+		choosefolderPage.checkSaveButton();
+		choosefolderPage.tapSaveButton();
+	}
+	
+	public void finishSavingImage() {
+		tapNextButton();
+		checkPositiveButton();
+		tapPositiveButton();
 	}
 	
 }

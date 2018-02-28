@@ -38,14 +38,16 @@ public class DigitalVaultPage extends BasePage {
 	private By positiveButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
 	private By folderNameField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
 	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
-	
+	private By renameFolderButton = By.id("au.com.suncorp.marketplace:id/renameFolderButton");
+	private By deleteFolderButton = By.id("au.com.suncorp.marketplace:id/deleteFolderButton");
 	
 	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
 	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
 	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
 	private By moveToFolderItemButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
 	private By binBox = By.id("au.com.suncorp.marketplace:id/deleteDocumentOption");
-	private By okButton = By.id("android:id/button1");
+	private By binBoxForFolder = By.id("au.com.suncorp.marketplace:id/deleteFolderOption");
+	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	
 	public WebElement checkDigiVaultTitle() {
@@ -237,19 +239,21 @@ public class DigitalVaultPage extends BasePage {
 		tapElement(documentMoreButton);
 	}
 	
+	public void tapFolderMoreOption() {
+		tapElement(folderMoreButton);
+	}
+	
+	public WebElement checkRenameFolderButton() {
+		return find(renameFolderButton);
+	}
+	
+	public void tapRenameFolderButton() {
+		tapElement(renameFolderButton);
+	}
+	
 	public String findDocumentInPage(String fileName) {
 		WebElement doc = find(By.xpath(String.format( "//*[@text=\"%s\"]", fileName)));
 		return doc.toString();	
-	}
-	
-	/**
-	 * Method to find an element in the page. Takes string xpath as
-	 * parameter
-	 * 
-	 * @param filename
-	 */
-	public String findElementInPage(String fileName) {
-		return driver.findElementByXPath(fileName).getText();
 	}
 	
 	public WebElement checkRenameDialogTitle() {
@@ -260,6 +264,10 @@ public class DigitalVaultPage extends BasePage {
 		 swipeHorizontally(documentMoreButton, documentItem);
 	}
 	
+	public void swipeToDeleteFolder() {
+		 swipeHorizontally(folderMoreButton, folderItem);
+	}
+	
 	public void tapDeleteItem() {
 		tapElement(deleteItemButton);
 	}
@@ -268,8 +276,16 @@ public class DigitalVaultPage extends BasePage {
 		return find(binBox);
 	}
 	
+	public WebElement checkBinBoxForFolder() {
+		return find(binBoxForFolder);
+	}
+	
 	public void tapBinBox() {
 		tapElement(binBox);
+	}
+	
+	public void tapBinBoxForFolder() {
+		tapElement(binBoxForFolder);
 	}
 	
 	public WebElement checkAndroidCancelButton() {
@@ -280,12 +296,24 @@ public class DigitalVaultPage extends BasePage {
 		tapElement(androidCancelButton);
 	}
 	
-	public WebElement checkOkButton() {
-		return find(okButton);
+	public WebElement checkAndroidOkButton() {
+		return find(androidOkButton);
 	}
 
-	public void tapOkButton() {
-		tapElement(okButton);
+	public void tapAndroidOkButton() {
+		tapElement(androidOkButton);
+	}
+	
+	public WebElement checkDeleteFolderButton() {
+		return find(deleteFolderButton);
+	}
+	
+	public void tapDeleteFolderButton() {
+		tapElement(deleteFolderButton);
+	}
+	
+	public void clearEditField() {
+		clearValue(renameEditField);
 	}
 	
 	public void addAPhotoThroughCamera() {
@@ -312,6 +340,10 @@ public class DigitalVaultPage extends BasePage {
 
 	public void tapUploadPhotoCard() {
 		tapElement(uploadPhotoCard);
+	}
+	
+	public void tapDeleteContentsButton() {
+		tapElement(deleteContentsButton);
 	}
 	
 }
