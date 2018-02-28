@@ -13,8 +13,14 @@
 		"pwd": "Password1"
 	},
 	"portfolio" :{
-		"login": "rest@rest.com",
-		"pwd": "Password1"
+		"loginEmptyProdList":{
+				"login": "rest@rest.com",
+				"pwd": "Password1"
+			},
+		"loginProdList":{
+				"login": "best@best.com",
+				"pwd": "Password1"
+			}
 	},
 	"hasSuncorpBankAccounts" :{
 		"login": "a@b.c",
@@ -883,13 +889,11 @@
 			"loginPageTitle": "Log in"
 		},
 		"portfolio": {
-			"myProductsLabel": "My products",
 			"emptyStateLabel": "Looks like you haven't added any products yet.",
-			"findProductButton": "FIND PRODUCT",
-			"addExistingProductButton": "Add existing product",
 			"bottomSheetLabel": "What type of product?",
-			"insurancePolicyBottomSheetButton": "Insurance policy",
-			"bankAccountBottomSheetButton": "Bank account"
+			"availableBalanceLable": "Available balance”,
+			"currentBalanceLabel": "Current balance”,
+			"accountDetailsLabel": "Account Details"
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
