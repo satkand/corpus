@@ -19,6 +19,7 @@ public class NavigationMenuPage extends BasePage {
 	private By fapiSettingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='FAPI Settings']");
 	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
 	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
+	private By profilePicture = By.id("au.com.suncorp.marketplace:id/profilePicture");
 
 
 	public NavigationMenuPage(AppiumDriver driver) {
@@ -109,5 +110,9 @@ public class NavigationMenuPage extends BasePage {
 
 	public void closeNavigationMenu(){
 		tapOnBottomRightCorner();
+	}
+	
+	public WebElement checkProfilePicture() {
+		return find(profilePicture, 30);
 	}
 }
