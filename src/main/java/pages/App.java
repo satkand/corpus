@@ -18,13 +18,19 @@ import pages.marketplace.auth.pin.PINOptionsPage;
 import pages.marketplace.auth.pin.PINSetupPage;
 import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
+import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
+import pages.marketplace.common.GalleryPage;
 import pages.marketplace.common.LandingPage;
 import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.SettingsPage;
 import pages.marketplace.common.WelcomePage;
+import pages.marketplace.digitalVault.DigitalVaultPage;
+import pages.marketplace.digitalVault.FolderViewPage;
+import pages.marketplace.digitalVault.ImagePreviewPage;
+import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
@@ -60,11 +66,18 @@ public class App extends BaseTest {
 	public SettingsPage settingsPage = null;
 	public ChatbotPage chatbotPage = null;
 	protected OffersPage offersPage = null;
+	public DigitalVaultPage digitalVaultPage = null;
+	public FolderViewPage folderViewPage = null;
+	public ImagePreviewPage imagePreviewPage = null;
+	public CameraPage cameraPage = null;
+	public GalleryPage galleryPage = null;		
 	public LoginAuthPage loginAuthPage = null;
 	public PINOptionsPage pinOptionsPage = null;
+	public ImageViewPage imageViewPage = null;
 	public MyProductsPage myProductsPage = null;
 	public AddPolicyPage addPolicyPage = null;
 	public AddBankAccountPage addBankAccountPage = null;
+
 
 
 	@BeforeClass
@@ -101,12 +114,20 @@ public class App extends BaseTest {
 		settingsPage = new SettingsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
+		digitalVaultPage = new DigitalVaultPage(driver);
+		folderViewPage = new FolderViewPage(driver);
+		imagePreviewPage = new ImagePreviewPage(driver);
+		cameraPage = new CameraPage(driver);
+		galleryPage = new GalleryPage(driver);
 		loginAuthPage = new LoginAuthPage(driver);
 		pinOptionsPage = new PINOptionsPage(driver);
+		imageViewPage = new ImageViewPage(driver);
 		myProductsPage = new MyProductsPage(driver);
 		addPolicyPage = new AddPolicyPage(driver);
 		addBankAccountPage = new AddBankAccountPage(driver);
+
 	}
+	
 	
 	@BeforeMethod(alwaysRun = true)
 	public void beforeEachTest() throws Exception {

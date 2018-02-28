@@ -1,0 +1,91 @@
+package pages.marketplace.digitalVault;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import automation.framework.common.BasePage;
+import io.appium.java_client.AppiumDriver;
+
+public class ImageViewPage extends BasePage {
+
+	public ImageViewPage(AppiumDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+	private By editButton = By.id("au.com.suncorp.marketplace:id/editDocumentOption");
+	private By deleteItemButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
+	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
+	private By moveItemToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
+	private By moveContentsToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
+	private By deleteContentsButton = By.id("au.com.suncorp.marketplace:id/deleteContentsButton");
+	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
+	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
+	private By positiveButton = By.id("au.com.suncorp.marketplace:id/positiveButton");
+	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	private By imageViewTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/action_bar']"
+			+ "/android.widget.TextView");
+	
+	private By okButton = By.id("android:id/button1");
+	private By androidCancelButton = By.id("android:id/button2");
+	
+	public boolean isEditClickable() {
+		return isClickable(editButton);
+	}
+	
+	public WebElement checkDeleteItemButton() {
+		return find(deleteItemButton);
+	}
+	
+	public WebElement checkRenameItemButton() {
+		return find(renameItemButton);
+	}
+	
+	public WebElement checkMoveItemToFolderButton() {
+		return find(moveItemToFolderButton);
+	}
+	
+	public void tapEditButton() {
+		tapElement(editButton);
+	}
+	
+	public void tapRenameItemButton() {
+		tapElement(renameItemButton);
+	}
+	
+	public boolean isPositiveButtonEnabled() {
+		return isEnabled(positiveButton);
+	}
+
+	public WebElement checkPositiveButton() {
+		return find(positiveButton);
+	}
+	
+	public void tapPositiveButton() {
+		tapElement(positiveButton);
+	}
+	
+	public WebElement checkCancelButton() {
+		return find(cancelButton);
+	}
+	
+	public void tapCancelButton() {
+		tapElement(cancelButton);
+	}
+	
+	public void enterName(String name) {
+		typeValue(name, renameEditField);
+	}
+	
+	public String readTitleValue() {
+		return getText(imageViewTitle);
+	}
+	
+	public WebElement checkImageViewTitle() {
+		return find(imageViewTitle);
+	}
+	
+	public WebElement checkRenameDialogTitle() {
+		return find(renameDialogTitle);
+	}
+}
