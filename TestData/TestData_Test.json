@@ -903,7 +903,7 @@
 			"bottomSheetLabel": "What type of product?",
 			"availableBalanceLable": "Available balance",
 			"currentBalanceLabel": "Current balance",
-			"accountDetailsLabel": "Account Details",
+			"accountDetailsLabel": "Account Details"
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
@@ -995,8 +995,7 @@
 				"offerTitle": "Building Insurance",
 				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
 			}
-
-		},
+		}
 
 	}
 }
