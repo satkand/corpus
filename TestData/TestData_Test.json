@@ -12,6 +12,16 @@
 		"login": "a@b.c",
 		"pwd": "Password1"
 	},
+	"portfolio" :{
+		"loginEmptyProdList":{
+				"login": "rest@rest.com",
+				"pwd": "Password1"
+			},
+		"loginProdList":{
+				"login": "best@best.com",
+				"pwd": "Password1"
+			}
+	},
 	"hasSuncorpBankAccounts" :{
 		"login": "a@b.c",
 		"pwd": "Password1",
@@ -724,7 +734,7 @@
 			"file1" : "dggrgeg",
 			"file2" : "abcgeg",
 			"folder1" : "folder 1"
-		},
+		}
 	},
 
 	"registration" : {
@@ -889,6 +899,13 @@
 		"loginPage": {
 			"loginPageTitle": "Log in"
 		},
+		"portfolio": {
+			"emptyStateLabel": "Looks like you haven't added any products yet.",
+			"bottomSheetLabel": "What type of product?",
+			"availableBalanceLable": "Available balance",
+			"currentBalanceLabel": "Current balance",
+			"accountDetailsLabel": "Account Details"
+		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
 			"reEnterPINLabel": "Re-enter your new 4-digit PIN",
@@ -980,9 +997,7 @@
 				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
 			}
 
-		},
-
-
 		}
+
 	}
 }
