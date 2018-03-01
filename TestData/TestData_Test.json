@@ -730,9 +730,10 @@
 			"pwd" : "Password1",
 			"newname" : "NewName",
 			"folderName" : "ab",
-			"file1" : "dggrgeg",
-			"file2" : "abcgeg",
-			"folder1" : "folder 1"
+			"file1" : "file 1",
+			"file2" : "file 2",
+			"folder1" : "folder 1",
+			"rootFolder" : "Document storage"
 		}
 	},
 	"registration" : {

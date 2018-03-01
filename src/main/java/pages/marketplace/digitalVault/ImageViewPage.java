@@ -31,6 +31,10 @@ public class ImageViewPage extends BasePage {
 		return find(moveDocumentToFolderButton);
 	}
 	
+	public WebElement checkEditButton() {
+		return find(editButton);
+	}
+	
 	public void tapEditButton() {
 		tapElement(editButton);
 	}

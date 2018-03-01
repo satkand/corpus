@@ -8,7 +8,10 @@ import io.appium.java_client.AppiumDriver;
 
 public class ChooseFolderPage extends BasePage{
 
-	private By saveButton = By.id("au.com.suncorp.marketplace:id/pickFolderOption");
+	private By pickFolderButton = By.id("au.com.suncorp.marketplace:id/pickFolderOption");
+	private By moveToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderOption");
+	private By addFolderButton = By.id("au.com.suncorp.marketplace:id/addFolderTitle");
+	private By backButton = By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']");
 	
 	public ChooseFolderPage(AppiumDriver driver) {
 		super(driver);
@@ -16,11 +19,39 @@ public class ChooseFolderPage extends BasePage{
 	}
 
 	
-	public WebElement checkSaveButton() {
-		return find(saveButton);
+	public WebElement checkPickFolderButton() {
+		return find(pickFolderButton);
 	}
 	
-	public void tapSaveButton() {
-		tapElement(saveButton);
+	public void tapPickFolderButton() {
+		tapElement(pickFolderButton);
+	}
+	
+	public WebElement checkMoveToFolderButton() {
+		return find(moveToFolderButton);
+	}
+	
+	public boolean isMoveToFolderButtonEnabled() {
+		return isEnabled(moveToFolderButton);
+	}
+	
+	public void tapMoveToFolderButton() {
+		tapElement(moveToFolderButton);
+	}
+	
+	public WebElement checkAddFolderButton() {
+		return find(addFolderButton);
+	}
+	
+	public void tapAddFolderButton() {
+		tapElement(addFolderButton);
+	}
+	
+	public WebElement checkBackButton() {
+		return find(backButton);
+	}
+	
+	public void tapBackButton() {
+		tapElement(backButton);
 	}
 }

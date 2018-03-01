@@ -15,7 +15,7 @@ public class FolderViewPage extends BasePage {
 	private By deleteFolderButton = By.id("au.com.suncorp.marketplace:id/deleteFolderButton");
 	private By deleteItemsButton = By.id("au.com.suncorp.marketplace:id/deleteItemsButton");
 	private By renameFolderButton = By.id("au.com.suncorp.marketplace:id/renameFolderButton");
-	private By moveToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
+
 
 	private By moveDocumentToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
 	private By editButton = By.id("au.com.suncorp.marketplace:id/editButton");
@@ -101,9 +101,7 @@ public class FolderViewPage extends BasePage {
 		tapElement(renameFolderButton);
 	}
 	
-	public WebElement checkMoveToFolderButton() {
-		return find(moveToFolderButton);
-	}
+
 
 	
 }
