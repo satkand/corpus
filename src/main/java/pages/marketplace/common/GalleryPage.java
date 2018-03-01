@@ -21,7 +21,7 @@ public class GalleryPage extends BasePage{
 	
 	public void choosePicture() {
 		tapPictureFolder();
-		Assert.assertNotNull(checkFirstPicture(), "No pictures present");
+		checkFirstPicture();
 		tapFirstPicture();
 	}
 	

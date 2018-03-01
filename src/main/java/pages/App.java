@@ -28,6 +28,7 @@ import pages.marketplace.common.NavigationMenuPage;
 import pages.marketplace.common.SettingsPage;
 import pages.marketplace.common.WelcomePage;
 import pages.marketplace.digitalVault.ChooseFolderPage;
+import pages.marketplace.digitalVault.DigiVaultCommonPage;
 import pages.marketplace.digitalVault.DigitalVaultPage;
 import pages.marketplace.digitalVault.FolderViewPage;
 import pages.marketplace.digitalVault.ImagePreviewPage;
@@ -38,6 +39,9 @@ import pages.marketplace.home.HomePropertyPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
+import pages.marketplace.portfolio.MyProductsPage;
+import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 
@@ -75,7 +79,11 @@ public class App extends BaseTest {
 	public ImageViewPage imageViewPage = null;
 	public ChooseFolderPage chooseFolderPage = null;
 	public SelectItemsPage selectItemsPage = null;
-	public pages.marketplace.digitalVault.DigiVaultCommonPage digiVaultCommonPage = null;
+	public DigiVaultCommonPage digiVaultCommonPage = null;
+	public MyProductsPage myProductsPage = null;
+	public AddPolicyPage addPolicyPage = null;
+	public AddBankAccountPage addBankAccountPage = null;
+
 
 	@BeforeClass
 	public void initializeApp() {
@@ -121,7 +129,11 @@ public class App extends BaseTest {
 		imageViewPage = new ImageViewPage(driver);
 		chooseFolderPage = new ChooseFolderPage(driver);
 		selectItemsPage = new SelectItemsPage(driver);
-		digiVaultCommonPage = new pages.marketplace.digitalVault.DigiVaultCommonPage(driver);
+		digiVaultCommonPage = new DigiVaultCommonPage(driver);
+		myProductsPage = new MyProductsPage(driver);
+		addPolicyPage = new AddPolicyPage(driver);
+		addBankAccountPage = new AddBankAccountPage(driver);
+
 	}
 	
 	
@@ -144,6 +156,7 @@ public class App extends BaseTest {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		welcomePage.tapLoginButton();
 		loginPage.enterLoginCredentials(login, pwd);
+		
 		loginPage.tapLoginButton();
 		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
