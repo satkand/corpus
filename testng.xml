@@ -4,11 +4,13 @@
 	<test name="Test">
 	
 <classes>
-
-					<class name="test.marketplace.common.WelcomeTest"></class>
-
-		
-
+					<class name="test.marketplace.portfolio.MyProductsTest">
+			 <methods>
+					
+					<include name="testViewBankAccountDetails"/>
+						
+				</methods>   
+</class>
 
 <!-- 
 			<class name="test.marketplace.chatbot.ChatbotTest"></class>

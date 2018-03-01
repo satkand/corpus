@@ -15,6 +15,7 @@ public class ConfigPage extends BasePage {
 	private By applyGlobalBaseUrlButton = By.id("au.com.suncorp.marketplace:id/globalBaseUrlButton");
 	private By bankingBaseUrl = By.id("au.com.suncorp.marketplace:id/bankingBaseUrlEditText");
 	private By continueButton = By.id("au.com.suncorp.marketplace:id/configContinueButton");
+	private By portfolioBaseURL = By.id("au.com.suncorp.marketplace:id/portfolioBaseUrlEditText");
 	
 	//FAPI Settings page
 	private By hasBankAccountsToggle = By.id("au.com.suncorp.marketplace:id/hasAccountsToggle");
@@ -27,7 +28,6 @@ public class ConfigPage extends BasePage {
 	public void dismissConfigPage() {
         //Uncomment the below line if Stub Server is to be connect
         //ConnectToStubSever();
-		
 		if(find(configPageTitle,30) != null) {
 			// Added this just to add some delay before checking for keyboard
 			find(continueButton,10);
@@ -42,11 +42,9 @@ public class ConfigPage extends BasePage {
 			}
 		}
 	}
-	
 
 	// Connect to the Stub Server
     // Fetch the current IP address and edit the fields appropriately
-    
 	public void ConnectToStubSever() {
 		InetAddress IP = null;
 		try {
@@ -66,7 +64,19 @@ public class ConfigPage extends BasePage {
 			clearValue(bankingBaseUrl);
 			typeValue(baseURL, bankingBaseUrl);
 		}
-		
+	}
+
+	private void ConnectToStubSever2() {
+	//	tapElement(globalBaseURL);
+	//	typeValue("192.168.213.31:4567", globalBaseURL);
+	//	tapElement(applyGlobalBaseUrlButton);
+		if(!(isKeyboardPresent() == true)) {
+			isKeyboardPresent();
+		}
+		swipeScreen("down");
+		tapElement(portfolioBaseURL);
+		typeValue("192.168.213.1:4567", portfolioBaseURL);
+		//tapElement(applyGlobalBaseUrlButton);
 	}
 	
 	public void enableHasBankAccountsToggle() {

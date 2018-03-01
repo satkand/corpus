@@ -13,9 +13,7 @@ public class AddBankAccountPage  extends BasePage  {
 		// TODO Auto-generated constructor stub
 	}
 	private By addBankAccountPageTitle = By.xpath("//android.widget.TextView[@text='Add bank account']");
-	//au.com.suncorp.marketplace:id/accountNumberField
 	private By addBankAccountPlaceHolderText = By.id("au.com.suncorp.marketplace:id/accountNumberField");
-	//
 	private By addBankAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
 	private By addBankAccountForgotDetailaButton = By.id("au.com.suncorp.marketplace:id/addAccountHintText");
 	

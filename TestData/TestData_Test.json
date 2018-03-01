@@ -19,8 +19,25 @@
 			},
 		"loginProdList":{
 				"login": "best@best.com",
-				"pwd": "Password1"
-			}
+				"pwd": "Password1",
+				"bankingProducts": [
+					{
+						"brand": "Suncorp",
+         					"bsb":"123456",
+          					"accountNumber": "111111111",
+          					"description": "Holidays Savings Accounts",
+          					"currentBalance": "$123,456.25",
+          					"availableBalance": "$12,345.00"
+					},
+					{
+						"brand": "Suncorp",
+          					"bsb":"946692",
+          					"accountNumber": "222222222",
+          					"description": "Everyday Options",
+          					"currentBalance": "-$123,456.25",
+          					"availableBalance": "-$12,345.00"
+					}]
+				}
 	},
 	"hasSuncorpBankAccounts" :{
 		"login": "a@b.c",

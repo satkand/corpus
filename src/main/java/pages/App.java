@@ -41,6 +41,7 @@ import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
@@ -83,6 +84,7 @@ public class App extends BaseTest {
 	public MyProductsPage myProductsPage = null;
 	public AddPolicyPage addPolicyPage = null;
 	public AddBankAccountPage addBankAccountPage = null;
+	public AccountDetailsPage accountDetailsPage = null;
 
 
 	@BeforeClass
@@ -133,7 +135,7 @@ public class App extends BaseTest {
 		myProductsPage = new MyProductsPage(driver);
 		addPolicyPage = new AddPolicyPage(driver);
 		addBankAccountPage = new AddBankAccountPage(driver);
-
+		accountDetailsPage = new AccountDetailsPage(driver);
 	}
 	
 	
