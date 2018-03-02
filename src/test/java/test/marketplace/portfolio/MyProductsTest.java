@@ -130,10 +130,6 @@ public class MyProductsTest extends App {
 			accountDetailsPage.tapBackButton();
 			Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
 		}
-		
-		
-	}
-		
 	}
 
 	private void navigateToMyProductsScreen(String userType){

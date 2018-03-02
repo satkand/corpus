@@ -36,7 +36,7 @@ public class NavigationMenuTest extends App {
 	@Test (groups = {"DMPM-78", "DMPM-1257", "marketplace", "Guest User", "priority-minor"})
 	public void testDismissingNavigationMenu() {
 		navigateToLandingPage();
-		Assert.assertNotNull(landingPage.checkGuestAccessPageTitle(), "Landing page - page title not shown");
+		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing page - page title not shown");
 
 		// Closing the menu by swiping
 		navigationMenu.slideOpenNavigationMenu();

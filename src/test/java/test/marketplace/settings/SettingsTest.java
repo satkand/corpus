@@ -1,4 +1,4 @@
-package test.marketplace.common;
+package test.marketplace.settings;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -76,9 +76,6 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-
-
-	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");
 	
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
@@ -143,9 +140,6 @@ public class RegistrationPage extends BasePage {
 	
 	public void fillRegistrationScreens(String firstName, String surname, String date,
 			String postcode, String email, String mobile, String password) {
-		if(checkSetupNewAccountButton() != null) {
-			tapSetupNewAccount();
-		}
 		checkRegistrationPageTitle();
 		fill1stPageFields(firstName, surname, date, postcode);
 		tapNextButton();
@@ -399,13 +393,4 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkCancelButton() {
 		return find(cancelButton);
 	}
-
-	public WebElement checkSetupNewAccountButton() {
-		return find(setupNewAccountButton);
-	}
-	
-	public void tapSetupNewAccount() {
-		tapElement(setupNewAccountButton);
-	}
-	
 }

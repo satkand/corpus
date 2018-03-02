@@ -423,8 +423,8 @@ public class RegistrationTest extends App{
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
 		welcomePage.tapRegisterButton();
-		if(registrationPage.checkSetupNewAccountButton() != null) {
-			registrationPage.tapSetupNewAccount();
+		if(getStartedPage.checkSetupNewAccountButton() != null) {
+			getStartedPage.tapSetupNewAccount();
 		}
 		Assert.assertNotNull(registrationPage.checkRegistrationPageTitle(), "Registration page not loaded");
 		

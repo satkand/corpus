@@ -16,6 +16,7 @@ public class VehiclesTest extends App {
 	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesListOnVehiclesPage() {
 		navigateToVehiclesTab();
+		vehiclesPage.waitForDataToLoad();
 				
 		int i = 0;
 		
@@ -26,7 +27,7 @@ public class VehiclesTest extends App {
 		List addPhotoButtonsList = vehiclesPage.fetchAddPhotoButtons();
 		//List checkClaimStatusButtonsList = vehiclesPage.fetchCheckClaimStatusButtons();
 		List viewDetailsButtonsList = vehiclesPage.fetchViewDetailsButtons();
-		
+				
 		// Load the expected vehicles list to be shown for each month from test data sheet
 		List vehiclesList = utils.readTestDataList("hasVehicles", "vehiclesList");
 		int numOfVehicles = vehiclesList.size();
