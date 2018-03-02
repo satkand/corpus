@@ -30,8 +30,13 @@ public class WelcomeTest extends App {
 	public void testNavigatingToRegisterScreen(){
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 		welcomePage.tapRegisterButton();
+		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started page - Title not shown");
+		Assert.assertNotNull(getStartedPage.checkSetupNewAccountButton(), "Get Started page - 'Set up new account' button not shown");
+		getStartedPage.tapSetupNewAccount();
 		Assert.assertNotNull(registrationPage.checkRegistrationPageTitle(), "Registration page - Register Title not shown");
 		registrationPage.tapCancelButton();
+		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started page - Title not shown");
+		getStartedPage.tapBackButton();
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 	}
 	
@@ -40,9 +45,6 @@ public class WelcomeTest extends App {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Guest Landing Page - menu icon not shown");
-		Assert.assertNotNull(landingPage.checkGuestAccessPageTitle(), "Guest Landing page - Page Title not shown");
-		// TODO, Once the final guest screen is implemented, this needs to be updated
-		landingPage.tapBackButton();
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
+		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Guest Landing page - Page Title not shown");
 	}
 }

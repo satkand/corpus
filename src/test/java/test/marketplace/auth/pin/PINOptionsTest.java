@@ -56,6 +56,9 @@ public class PINOptionsTest extends App{
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
 		welcomePage.tapRegisterButton();
+		if(getStartedPage.checkSetupNewAccountButton() != null) {
+			getStartedPage.tapSetupNewAccount();
+		}
 		registrationPage.fillRegistrationScreens(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
 				utils.readTestData("registration", "success", "date"),

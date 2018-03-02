@@ -193,7 +193,7 @@ public class BasePage {
 	protected void swipeHorizontally(By startElementLocator, By destElementLocator) {
 		WebElement startElement = find(startElementLocator);
 		WebElement destElement = find(destElementLocator);
-
+		
 		int startX = startElement.getLocation().getX();
 		int y = startElement.getLocation().getY();
 		int endX = destElement.getLocation().getX();
@@ -244,7 +244,7 @@ public class BasePage {
 				swipeAction(x - 50, y - 250, x - 50, y - 80);
 				break;
 			case "DOWN":
-				swipeAction(50, y - 80, 50, y - 700);
+				swipeAction(100, y - 80, 80, y - 700);
 				break;
 			case "LEFT":
 				swipeAction(50, y / 2, x - 10, y / 2);
@@ -260,6 +260,22 @@ public class BasePage {
 			System.out.println("Invalid directioN: Valid parameters- UP/DOWN/LEFT/RIGHT");
 		}
 
+	}
+	
+	protected void scrollToElement(By locator) {
+		int numOfSwipes = 0;
+		while (find(locator) == null && numOfSwipes <= 10) {
+			swipeScreen("down");
+			numOfSwipes++;
+		}
+	}
+	
+	protected void waitForLoadingIndicatorToDismiss(By locator) {
+		int numOfTries = 0;
+		while (find(locator) != null && numOfTries <= 15) {
+			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
+			numOfTries++;
+		}
 	}
 	
 	// TODO -> Different in iOS -> change it and test it if it works for android as well

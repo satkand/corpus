@@ -13,7 +13,7 @@ public class LandingTest extends App {
 	@Test (groups = {"DMPM-78", "DMPM-308", "marketplace", "Guest User", "priority-minor"})
 	public void testTabsDisplayedOnLandingScreen() {
 		navigateToLandingPage();
-		Assert.assertNotNull(landingPage.checkGuestAccessPageTitle(), "Landing page - page title not shown");
+		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing page - page title not shown");
 		Assert.assertNotNull(landingPage.checkSuncorpTab(), "Landing page - Suncorp tab not shown");
 		Assert.assertNotNull(landingPage.checkHomeTab(), "Landing page - Home tab not shown");
 		Assert.assertNotNull(landingPage.checkVehiclesTab(), "Landing page - Vehicles tab not shown");
@@ -35,7 +35,6 @@ public class LandingTest extends App {
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Landing Page - Home tab is not selected");
 		landingPage.tapVehiclesTab();
 		Assert.assertTrue(landingPage.isVehiclesTabSelected(), "Landing Page - Vehicles tab is not selected");
-		landingPage.swipeToHealthTab();
 		landingPage.tapWealthTab();
 		Assert.assertTrue(landingPage.isWealthTabSelected(), "Landing Page - Wealth tab is not selected");
 		landingPage.tapHealthTab();

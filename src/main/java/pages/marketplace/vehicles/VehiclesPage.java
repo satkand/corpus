@@ -20,6 +20,7 @@ public class VehiclesPage extends BasePage {
 	private By vehicleDescription = By.id("au.com.suncorp.marketplace:id/insuredDescriptionText");
 	private By vehicleRegistrationNumber = By.id("au.com.suncorp.marketplace:id/registrationNumberText");
 	private By viewDetailsButton = By.id("au.com.suncorp.marketplace:id/viewDetailsButton");
+	private By loadingIndicator = By.id("au.com.suncorp.marketplace:id/vehicleLoadingIndicator");
 
 	// TODO -> Cannot find this in ANdroid. But its there on iOS
 	private By checkClaimStatusButton = By.id("VehicleCell.ClaimLabel");
@@ -56,6 +57,8 @@ public class VehiclesPage extends BasePage {
 		tapElement(viewDetailsButton);
 	}
 	
-	
+	public void waitForDataToLoad() {
+		waitForLoadingIndicatorToDismiss(loadingIndicator);
+	}
 	
 }

@@ -13,7 +13,7 @@ public class OffersOverviewTab extends App {
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Overview Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Overview Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Overview Page Offers - No Action Button");
-		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
+		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "overviewTab", "offerDescription"),
 				"offer description for overview tab is not shown as expected");
@@ -27,8 +27,8 @@ public class OffersOverviewTab extends App {
 	@Test(groups = { "DMPM-97", "DMPM-925", "marketplace", "Offers", "priority-minor" })
 	public void testRetryContentRetrievalOverviewTab() {
 		navigateToOverviewScreen();
-		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()
-				&& offersPage.checkBackgroundImage().isDisplayed())) {
+		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed())) {
+				//&& offersPage.checkBackgroundImage().isDisplayed())) {
 			Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Navigation to different tab failed");
 			landingPage.tapWealthTab();
 			Assert.assertNotNull(landingPage.checkSuncorpTab(),
@@ -38,7 +38,7 @@ public class OffersOverviewTab extends App {
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Overview Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Overview Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Overview Page Offers - No Action Button");
-		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
+		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
 	}
 
 	@Test(groups = { "DMPM-500", "DMPM-934", "DMPM-935", "marketplace", "Offers",
@@ -60,5 +60,6 @@ public class OffersOverviewTab extends App {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(landingPage.isSuncorpTabSelected(),
 				" Offers flow for Overview - Suncorp tab not selected");
+		offersPage.scrollToOffersBanner();
 	}
 }
