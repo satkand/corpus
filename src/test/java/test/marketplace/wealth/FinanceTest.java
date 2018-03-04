@@ -70,7 +70,6 @@ public class FinanceTest extends App {
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapFAPISettingsMenuItem();
 		configPage.enableHasBankAccountsToggle();
-		configPage.tapSomeTransactions();
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
 		landingPage.tapWealthTab();

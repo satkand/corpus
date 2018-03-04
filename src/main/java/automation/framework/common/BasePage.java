@@ -158,6 +158,7 @@ public class BasePage {
 	protected void clearValue(By locator) {
 		find(locator).clear();
 	}
+
 	
 	protected void putAppInBackground() {
 		Duration duration = Duration.ofMillis((long) 10);
@@ -192,7 +193,7 @@ public class BasePage {
 	protected void swipeHorizontally(By startElementLocator, By destElementLocator) {
 		WebElement startElement = find(startElementLocator);
 		WebElement destElement = find(destElementLocator);
-
+		
 		int startX = startElement.getLocation().getX();
 		int y = startElement.getLocation().getY();
 		int endX = destElement.getLocation().getX();
@@ -243,7 +244,7 @@ public class BasePage {
 				swipeAction(x - 50, y - 250, x - 50, y - 80);
 				break;
 			case "DOWN":
-				swipeAction(50, y - 80, 50, y - 700);
+				swipeAction(100, y - 80, 80, y - 700);
 				break;
 			case "LEFT":
 				swipeAction(50, y / 2, x - 10, y / 2);
@@ -261,7 +262,24 @@ public class BasePage {
 
 	}
 	
-	protected void closeNavigationMenuByTappingOut() {
+	protected void scrollToElement(By locator) {
+		int numOfSwipes = 0;
+		while (find(locator) == null && numOfSwipes <= 10) {
+			swipeScreen("down");
+			numOfSwipes++;
+		}
+	}
+	
+	protected void waitForLoadingIndicatorToDismiss(By locator) {
+		int numOfTries = 0;
+		while (find(locator) != null && numOfTries <= 15) {
+			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
+			numOfTries++;
+		}
+	}
+	
+	// TODO -> Different in iOS -> change it and test it if it works for android as well
+	protected void tapOnBottomRightCorner() {
 		int screenHeight = driver.manage().window().getSize().getHeight();
 		int screenWidth = driver.manage().window().getSize().getWidth();
 		tapByCoordinates((int)(screenWidth*.9), (int)(screenHeight*.9));
@@ -279,29 +297,12 @@ public class BasePage {
 	 * @param locator
 	 */
 	protected String readValue(By locator) {
-		String text = "";
-		if(hasAttribute(find(locator), "value")) {
-			text  = find(locator).getAttribute("value");
-		}else {
-			text  = find(locator).getAttribute("text");
-		}
-		return text;
+		return  find(locator).getAttribute("value");
 	}
 	
 	protected boolean isEnabled(By locator) {
 		String text = find(locator).getAttribute("enabled");
 		return Boolean.parseBoolean(text);
-	}
-	
-	protected boolean hasAttribute(WebElement element, String attribute) {
-		Boolean result = false;
-		try {
-			String value = element.getAttribute(attribute);
-			if(value != null) {
-				result = true;
-			}
-		}catch(Exception e) {}
-		return result;
 	}
 	
 	//####### Android #########//

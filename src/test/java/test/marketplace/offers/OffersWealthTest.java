@@ -13,7 +13,7 @@ public class OffersWealthTest extends App {
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Wealth Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Wealth tab Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Wealth tab Offers - No Action Button");
-		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
+		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "wealthTab", "offerDescription"),
 				"offer description for Wealth tab is not shown as expected");
@@ -26,8 +26,8 @@ public class OffersWealthTest extends App {
 	@Test(groups = { "DMPM-816", "DMPM-931", "marketplace", "Offers", "priority-minor" })
 	public void testRetryContentRetrievalWealthTab() {
 		navigateToWealthScreen();
-		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()
-				&& offersPage.checkBackgroundImage().isDisplayed())) {
+		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed())) {
+				//&& offersPage.checkBackgroundImage().isDisplayed())) {
 			Assert.assertNotNull(landingPage.checkHomeTab(), " Offers flow - Navigation to different tab failed");
 			landingPage.tapHomeTab();
 			Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Navigation back to Vehicles tab failed");
@@ -36,13 +36,13 @@ public class OffersWealthTest extends App {
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Wealth Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Wealth tab Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Wealth tab Offers - No Action Button");
-		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
+		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
 	}
 
 	private void navigateToWealthScreen() {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Wealths tab not shown");
 		landingPage.tapWealthTab();
-
+		offersPage.scrollToOffersBanner();
 	}
 }
