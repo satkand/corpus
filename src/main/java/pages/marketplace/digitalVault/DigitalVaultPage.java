@@ -1,5 +1,7 @@
 package pages.marketplace.digitalVault;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
@@ -15,7 +17,7 @@ public class DigitalVaultPage extends BasePage {
 	DigiVaultCommonPage digiCommonPage = new DigiVaultCommonPage(driver);
 	
 	private By digiVaultTitle = By.xpath("//android.widget.TextView[@text='Digital Vault']");
-	private By chatbotButton = By.id("NavigationBarChatbotBarButtonItem");
+	private By chatbotButton = By.id("au.com.suncorp.marketplace:id/chatbotOption");
 	private By digiVaultEmptyImage = By.id("au.com.suncorp.marketplace:id/emptyDigitalVaultImage");
 	private By digiVaultEmptyImageTitle = By.id("au.com.suncorp.marketplace:id/emptyDigitalVaultTitle");
 	private By digiVaultEmptyImageDescription = By.id("au.com.suncorp.marketplace:id/emptyDigitalVaultDescription");
@@ -36,7 +38,11 @@ public class DigitalVaultPage extends BasePage {
 	private By folderItem = By.id("au.com.suncorp.marketplace:id/folderForeground");
 
 	private By binBoxForFolder = By.id("au.com.suncorp.marketplace:id/deleteFolderOption");
-	
+	private By sortingButtonIcon = By.id("au.com.suncorp.marketplace:id/sortingButtonIcon");
+    private By sortByDate = By.id("au.com.suncorp.marketplace:id/sortByDateOption");
+    private By sortByName = By.id("au.com.suncorp.marketplace:id/sortByNameOption");
+    private By imageTitle = By.id("au.com.suncorp.marketplace:id/documentTitle");
+    
 	public WebElement checkDigiVaultTitle() {
 		return find(digiVaultTitle);
 	}
@@ -179,8 +185,35 @@ public class DigitalVaultPage extends BasePage {
 		tapElement(binBoxForFolder);
 	}
 	
-
+	public WebElement Name() {
+		return find(sortByDate);
+	}
 	
+	public WebElement checkSortingButtonIcon() {
+		return find(sortingButtonIcon);
+	}
+	
+	public boolean isSortingButtonIconEnabled() {
+		return isClickable(sortingButtonIcon);
+	}
+	
+	public void tapSortingButtonIcon() {
+		tapElement(sortingButtonIcon);
+	}
+	
+	public WebElement checkSortByName() {
+		return find(sortByName);
+	}
+	
+	public void tapSortByName() {
+		tapElement(sortByName);
+	}
+	
+    public List<String> fetchImageTitleList(){
+		return getTextList(imageTitle);
+	}
+    
+    
 	public WebElement checkDeleteFolderButton() {
 		return find(deleteFolderButton);
 	}
