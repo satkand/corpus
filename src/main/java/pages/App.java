@@ -11,7 +11,6 @@ import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
 import pages.marketplace.auth.login.LoginAuthPage;
 import pages.marketplace.auth.login.LoginPage;
-
 import pages.marketplace.auth.pin.ForgotPINPage;
 import pages.marketplace.auth.pin.PINAuthPage;
 import pages.marketplace.auth.pin.PINCustomKeypad;

@@ -123,6 +123,7 @@ public class DigitalVaultPage extends BasePage {
 		digiCommonPage.tapPositiveButton();		
 	}
 
+
 	
 	public void tapPermissionOkButton() {
 		tapElement(permissionOkButton);
@@ -188,23 +189,7 @@ public class DigitalVaultPage extends BasePage {
 		tapElement(deleteFolderButton);
 	}
 	
-	public void addAPhotoThroughCamera() {
-		digiCommonPage.tapAddButton();
-		digiCommonPage.tapTakePhotoCard();
-		if(find(permissionOkButton) != null) {
-			tapPermissionOkButton();
-		}		
-	}
-	
-	public void addAPhotoThroughGallery() {
-		digiCommonPage.checkAddButton();
-		digiCommonPage.tapAddButton();
-		digiCommonPage.checkUploadPhotoCard();
-		digiCommonPage.tapUploadPhotoCard();
-		if(find(permissionOkButton) != null) {
-			tapPermissionOkButton();
-		}	
-	}
+
 	
 	
 
