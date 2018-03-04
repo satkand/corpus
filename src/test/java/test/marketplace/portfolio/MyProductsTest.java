@@ -62,7 +62,6 @@ public class MyProductsTest extends App {
 		
 	}
 		
-	}
 
 	private void navigateToMyProductsScreen(String userType){
 		if (userType.equals("emptyProdListUser")) {
