@@ -20,6 +20,8 @@ public class DigiVaultCommonPage extends BasePage {
 	private By deleteDocumentButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
 	private By renameDocumentButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
 	private By deleteContentsButton = By.id("au.com.suncorp.marketplace:id/deleteContentsButton");
+	private By moveToFolderButton = By.id("au.com.suncorp.marketplace:id/moveToFolderButton");
+	private By moveDocumentToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
 	private By addButton = By.id("au.com.suncorp.marketplace:id/addDocumentFab");
 	private By takePhotoCard = By.id("au.com.suncorp.marketplace:id/takePhotoCard");
 	private By uploadPhotoCard = By.id("au.com.suncorp.marketplace:id/uploadPhotoCard");
@@ -32,12 +34,17 @@ public class DigiVaultCommonPage extends BasePage {
 	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
+	private By androidDialogMsg = By.id("android:id/message");
 	
 	public DigiVaultCommonPage(AppiumDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
+	public void tapFolder(String folderName) {
+		tapElement(find(folderName));
+	}
+	
 	public void tapPermissionOkButton() {
 		tapElement(permissionOkButton);
 	}
@@ -66,6 +73,9 @@ public class DigiVaultCommonPage extends BasePage {
 		tapElement(androidOkButton);
 	}
 	
+	public WebElement checkAndroidDialogMsg() {
+		return find(androidDialogMsg);
+	}
 	
 	public WebElement checkTakePhotoCard() {
 		return find(takePhotoCard);
@@ -75,7 +85,22 @@ public class DigiVaultCommonPage extends BasePage {
 		tapElement(takePhotoCard);
 	}
 
+	public WebElement checkMoveToFolderButton() {
+		return find(moveToFolderButton);
+	}
 
+	public void tapMoveToFolderButton() {
+		tapElement(moveToFolderButton);
+	}
+	
+	public WebElement checkMoveDocumentToFolderButton() {
+		return find(moveDocumentToFolderButton);
+	}
+
+	public void tapMoveDocumentToFolderButton() {
+		tapElement(moveDocumentToFolderButton);
+	}
+	
 	public void tapCancelButton() {
 		tapElement(cancelButton);
 	}
@@ -208,5 +233,23 @@ public class DigiVaultCommonPage extends BasePage {
 	
 	public void enterName(String name) {
 		typeValue(name, renameEditField);
+	}
+	
+	public void addAPhotoThroughCamera() {
+		tapAddButton();
+		tapTakePhotoCard();
+		if(find(permissionOkButton) != null) {
+			tapPermissionOkButton();
+		}		
+	}
+	
+	public void addAPhotoThroughGallery() {
+		checkAddButton();
+		tapAddButton();
+		checkUploadPhotoCard();
+		tapUploadPhotoCard();
+		if(find(permissionOkButton) != null) {
+			tapPermissionOkButton();
+		}	
 	}
 }

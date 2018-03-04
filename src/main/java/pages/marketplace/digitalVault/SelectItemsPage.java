@@ -24,14 +24,30 @@ public class SelectItemsPage extends BasePage {
 	}
 
 	public void selectAllItems() {
-		List<WebElement> items = finds(foldersToBeDeleted);
+		List<WebElement> items = finds(itemsToBeDeleted);
 		for(WebElement item : items) {
 			tapElement(item);
 		}
 	}
+	
+	public void selectAllFolders() {
+		List<WebElement> folders = finds(foldersToBeDeleted);
+		for(WebElement folder : folders) {
+			tapElement(folder);
+		}
+	}
 
+	public boolean areAllFoldersSelected() {
+		List<WebElement> folders = finds(foldersToBeDeleted);
+		String numberOfFolders = Integer.toString(folders.size());
+		if(getText(itemSelectedDisplay).split(" ")[0].equalsIgnoreCase(numberOfFolders)) {
+			return true;
+		}else
+			return false;
+	}
+	
 	public boolean areAllItemsSelected() {
-		List<WebElement> items = finds(foldersToBeDeleted);
+		List<WebElement> items = finds(itemsToBeDeleted);
 		String numberOfItems = Integer.toString(items.size());
 		if(getText(itemSelectedDisplay).split(" ")[0].equalsIgnoreCase(numberOfItems)) {
 			return true;

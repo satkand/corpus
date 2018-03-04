@@ -27,13 +27,29 @@ public class ImagePreviewPage extends BasePage {
 		tapNextButton();
 		digiVaultCommonPage.checkPositiveButton();
 		digiVaultCommonPage.tapPositiveButton();
-		choosefolderPage.checkSaveButton();
-		choosefolderPage.tapSaveButton();
+		choosefolderPage.checkPickFolderButton();
+		choosefolderPage.tapPickFolderButton();
+	}
+	
+	public void finishSavingImageByChoosingFolder(String fileName) {
+		tapNextButton();
+		digiVaultCommonPage.checkPositiveButton();
+		digiVaultCommonPage.enterName(fileName);
+		digiVaultCommonPage.tapPositiveButton();
+		choosefolderPage.checkPickFolderButton();
+		choosefolderPage.tapPickFolderButton();
 	}
 	
 	public void finishSavingImage() {
 		tapNextButton();
+		digiVaultCommonPage.checkPositiveButton(); 
+		digiVaultCommonPage.tapPositiveButton();
+	}
+	
+	public void finishSavingImage(String fileName) {
+		tapNextButton();
 		digiVaultCommonPage.checkPositiveButton();
+		digiVaultCommonPage.enterName(fileName);
 		digiVaultCommonPage.tapPositiveButton();
 	}
 	
