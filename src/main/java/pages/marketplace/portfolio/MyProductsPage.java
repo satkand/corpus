@@ -2,6 +2,7 @@ package pages.marketplace.portfolio;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import java.util.List;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
@@ -25,8 +26,12 @@ public class MyProductsPage extends BasePage {
 	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='My products']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	//TO DO DMPM-3713
-	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");//
-	private By availableBalanceLable = By.xpath("au.com.suncorp.marketplace:id/availableBalanceText");//
+	//private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");//
+	//private By availableBalanceLable = By.xpath("au.com.suncorp.marketplace:id/availableBalanceText");//
+	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");
+    private By availableBalanceLable = By.xpath("//android.widget.TextView[@text='Available balance']");
+
+    private By bsbText = By.id("au.com.suncorp.marketplace:id/accountBsbText");
 	private By accountNumber = By.id("au.com.suncorp.marketplace:id/accountNumberText");
 	private By currentBalance = By.id("au.com.suncorp.marketplace:id/currentBalanceText");
 	private By availableBalance = By.id("au.com.suncorp.marketplace:id/availableBalanceText");
@@ -36,16 +41,50 @@ public class MyProductsPage extends BasePage {
 	private By productTypeImage = By.xpath(
 			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");//
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
+	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
+	
+	public List<WebElement> fetchAccountItemLayoutList() {
+		List<WebElement> elements = finds(accountItemLayout);
+		return elements;
+	}
+	
+	public List<String> fetchBsbList() {
+		find(bsbText);
+		return getTextList(bsbText);
+	}
+	
+	public void tapAccountItem(WebElement item){
+		item.click();
+	}
+	
+	public List<String> fetchProductTypeTextList() {
+		find(accountTypeLabel);
+		return getTextList(accountTypeLabel);
+	}
+	
+	public List<String> fetchAccountNumberTextList() {
+		find(accountNumber);
+		return getTextList(accountNumber);
+	}
 	
 	public WebElement checkAccountDetailsTitle(){
 		return find(accountDetailsLabel);
+	}
+	public List<String> fetchAvailableBalanceTextList() {
+		find(availableBalance);
+		return getTextList(availableBalance);
+	}
+	
+	public List<String> fetchCurrentBalanceTextList() {
+		find(currentBalance);
+		return getTextList(currentBalance);
 	}
 	
 	public String getAccountDetailsTitle() {
 		return getText(accountDetailsLabel);
 	}
 	
-	public WebElement checkProductType(){
+	public WebElement checkProductTypeImage(){
 		return find(productTypeImage);
 	}
 	

@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import automation.framework.common.BaseTest;
 import automation.framework.utils.AutoUtilities;
@@ -16,6 +17,7 @@ import pages.marketplace.auth.pin.PINAuthPage;
 import pages.marketplace.auth.pin.PINCustomKeypad;
 import pages.marketplace.auth.pin.PINOptionsPage;
 import pages.marketplace.auth.pin.PINSetupPage;
+import pages.marketplace.auth.registration.GetStartedPage;
 import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CameraPage;
@@ -41,6 +43,7 @@ import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
@@ -50,11 +53,12 @@ public class App extends BaseTest {
 	public FluentAssert fluentAssert = null;	
 	public WelcomePage welcomePage = null;
 	public LoginPage loginPage = null;
+	public GetStartedPage getStartedPage = null;
 	public RegistrationPage registrationPage = null;
 	public PINSetupPage pinSetupPage = null;
 	public DummyPageWithLinks dummy = null;
 	public PINAuthPage pinAuthPage = null;
-	public ForgotPINPage pinReAuthPasswordPage = null;
+	public ForgotPINPage forgotPINPage = null;
 	public ConfigPage configPage = null;
 	public PINCustomKeypad pinCustomKeypad = null;
 	public CommonPage common = null;
@@ -83,7 +87,7 @@ public class App extends BaseTest {
 	public MyProductsPage myProductsPage = null;
 	public AddPolicyPage addPolicyPage = null;
 	public AddBankAccountPage addBankAccountPage = null;
-
+	public AccountDetailsPage accountDetailsPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -100,10 +104,11 @@ public class App extends BaseTest {
 		welcomePage = new WelcomePage(driver);
 		loginPage = new LoginPage(driver);
 		registrationPage = new RegistrationPage(driver);
+		getStartedPage = new GetStartedPage(driver);
 		pinSetupPage = new PINSetupPage(driver);
 		dummy = new DummyPageWithLinks(driver);
 		pinAuthPage = new PINAuthPage(driver);
-		pinReAuthPasswordPage = new ForgotPINPage(driver);
+		forgotPINPage = new ForgotPINPage(driver);
 		welcomePage = new WelcomePage(driver);
 		configPage = new ConfigPage(driver);
 		pinCustomKeypad = new PINCustomKeypad(driver);
@@ -133,14 +138,14 @@ public class App extends BaseTest {
 		myProductsPage = new MyProductsPage(driver);
 		addPolicyPage = new AddPolicyPage(driver);
 		addBankAccountPage = new AddBankAccountPage(driver);
-
+		accountDetailsPage = new AccountDetailsPage(driver);
 	}
 	
-	
+	@Parameters({ "stub" })
 	@BeforeMethod(alwaysRun = true)
-	public void beforeEachTest() throws Exception {
+	public void beforeEachTest(String stub) throws Exception {
 		welcomePage.launchApp();
-		configPage.dismissConfigPage();
+		configPage.dismissConfigPage(stub);
 	}
 	
 	@AfterMethod(alwaysRun = true)

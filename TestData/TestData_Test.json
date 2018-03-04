@@ -9,7 +9,7 @@
 		"validPINEntry2" : "2580"
 	},
 	"noSuncorpBankAccounts" :{
-		"login": "a@b.c",
+		"login": "ab@ab.com",
 		"pwd": "Password1"
 	},
 	"portfolio" :{
@@ -19,63 +19,80 @@
 			},
 		"loginProdList":{
 				"login": "best@best.com",
-				"pwd": "Password1"
+				"pwd": "Password1",
+				"bankingProducts": [
+					{
+						"brand": "Suncorp",
+         					"bsb":"123-456",
+          					"accountNumber": "111111111",
+          					"description": "Holidays Savings Accounts",
+          					"currentBalance": "$123,456.25",
+          					"availableBalance": "$12,345.00"
+					},
+					{
+						"brand": "Suncorp",
+          					"bsb":"946-692",
+          					"accountNumber": "222222222",
+          					"description": "Everyday Options",
+          					"currentBalance": "-$123,456.25",
+          					"availableBalance": "-$12,345.00"
+					}]
 			}
 	},
 	"hasSuncorpBankAccounts" :{
-		"login": "a@b.c",
+		"login": "ab@ab.com",
 		"pwd": "Password1",
 		"netWorthAmount": "$7,550.35",
 		"bankAccounts": "",
-		"currentMonth": "February 2018",
+		"currentMonth": "March 2018",
 		"spendingsAmountPerMonth": [
 			{
 				"month": "January 2018",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
 				"month": "February 2018",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
-				"month": "March 2017",
-				"amount": "-$23.54"
+				"month": "March 2018",
+				"amount": "$23.54"
 			},
 			{
 				"month": "April 2017",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
 				"month": "May 2017",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
 				"month": "June 2017",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
 				"month": "July 2017",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
 				"month": "August 2017",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
 				"month": "September 2017",
-				"amount": "-$37,223.35"
+				"amount": "$37,223.35"
 			},
 			{
 				"month": "October 2017",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
 				"month": "November 2017",
-				"amount": "-$23.54"
+				"amount": "$23.54"
 			},
 			{
 				"month": "December 2017",
-				"amount": "-$3,789.32"
+				"amount": "$3,789.32"
 			}
 		],
 		"spendingsByCategories": [
@@ -84,7 +101,7 @@
 				"categoriesList": [
 					{
 					"name": "Food & drink",
-					"amount": "-$23.54",
+					"amount": "$23.54",
 					"transactionCount": 3
 					}
 				]
@@ -94,7 +111,7 @@
 				"categoriesList": [
 					{
 					"name": "Food & drink",
-					"amount": "-$23.54",
+					"amount": "$23.54",
 					"transactionCount": 3
 					}
 				]
@@ -105,28 +122,28 @@
 					{
 					"id": 7,
 					"name": "Health & fitness",
-					"amount": "-$1,999.99",
+					"amount": "$1,999.99",
 					"currency": "AUD",
 					"transactionCount": 2
 					},
 					{
 					"id": 0,
 					"name": "Bills & utilities",
-					"amount": "-$1,987.00",
+					"amount": "$1,987.00",
 					"currency": "AUD",
 					"transactionCount": 1
 					},
 					{
 					"id": 3,
 					"name": "Entertainment",
-					"amount": "-$98.21",
+					"amount": "$98.21",
 					"currency": "AUD",
 					"transactionCount": 5
 					},
 					{
 					"id": 2,
 					"name": "Education & family",
-					"amount": "-$38.22",
+					"amount": "$38.22",
 					"currency": "AUD",
 					"transactionCount": 3
 					}
@@ -137,7 +154,7 @@
 				"categoriesList": [
 					{
 						"name": "Food & drink",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 						"transactionCount": 3
 					}
 				]
@@ -148,28 +165,28 @@
 				{
 					"id": 13,
 					"name": "Transport",
-					"amount": "-$17,584.25",
+					"amount": "$17,584.25",
 					"currency": "AUD",
 					"transactionCount": 25
 				},
 				{
 					"id": 4,
 					"name": "Financial",
-					"amount": "-$5,533.20",
+					"amount": "$5,533.20",
 					"currency": "AUD",
 					"transactionCount": 55
 				},
 				{
 					"id": 6,
 					"name": "Groceries",
-					"amount": "-$4,961.55",
+					"amount": "$4,961.55",
 					"currency": "AUD",
 					"transactionCount": 85
 				},
 				{
 					"id": 12,
 					"name": "Shopping",
-					"amount": "-$2,304.25",
+					"amount": "$2,304.25",
 					"currency": "AUD",
 					"transactionCount": 35
 				}
@@ -180,7 +197,7 @@
 				"categoriesList": [
 					{
 						"name": "Food & drink",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 						"transactionCount": 3
 					}
 				]
@@ -190,7 +207,7 @@
 				"categoriesList": [
 					{
 						"name": "Food & drink",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 						"transactionCount": 3
 					}
 				]
@@ -200,17 +217,17 @@
 				"categoriesList": [
 					{
 						"name": "Food & drink",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 						"transactionCount": 3
 					}
 				]
 			},
 			{
-				"month": "March 2017",
+				"month": "March 2018",
 				"categoriesList": [
 					{
 						"name": "Food & drink",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 						"transactionCount": 3
 					}
 				]
@@ -222,7 +239,7 @@
 				"vendorsList": [
 					{
 						"name": "Phil's diner",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 						"transactionCount": 3
 					}
 				]
@@ -232,22 +249,22 @@
 				"vendorsList": [
 					{
 					"name": "Suncorp Home Loan",
-					"amount": "-$2,789.65",
+					"amount": "$2,789.65",
 					"transactionCount": 3
 					},
 					{
 					"name": "Clinton's Cafe",
-					"amount": "-$198.65",
+					"amount": "$198.65",
 					"transactionCount": 3
 					},
 					{
 					"name": "Jimmy Bloggs Barber",
-					"amount": "-$128.43",
+					"amount": "$128.43",
 					"transactionCount": 1
 					},
 					{
 					"name": "Phil's diner",
-					"amount": "-$38.21",
+					"amount": "$38.21",
 					"transactionCount": 3
 					}
 				]
@@ -257,7 +274,7 @@
 				"vendorsList": [
 					{
 						"name": "Phil's diner",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 						"transactionCount": 3
 					}
 				]
@@ -267,22 +284,22 @@
 				"vendorsList": [
 					{
 					"name": "Other",
-					"amount": "-$24,262.30",
+					"amount": "$24,262.30",
 					"transactionCount": 90
 					},
 					{
 					"name": "Coles",
-					"amount": "-$2,265.45",
+					"amount": "$2,265.45",
 					"transactionCount": 25
 					},
 					{
 					"name": "Woolworths",
-					"amount": "-$1,787.40",
+					"amount": "$1,787.40",
 					"transactionCount": 35
 					},
 					{
 					"name": "BUPA",
-					"amount": "-$1,599.50",
+					"amount": "$1,599.50",
 					"transactionCount": 5
 					}
 				]
@@ -292,7 +309,7 @@
 				"vendorsList": [
 					{
 						"name": "Phil's diner",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 			            "transactionCount": 3
 					}
 				]
@@ -302,7 +319,7 @@
 				"vendorsList": [
 					{
 						"name": "Phil's diner",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 			            "transactionCount": 3
 					}
 				]
@@ -312,7 +329,7 @@
 				"vendorsList": [
 					{
 						"name": "Phil's diner",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 			            "transactionCount": 3
 					}
 				]
@@ -322,18 +339,18 @@
 				"vendorsList": [
 					{
 						"name": "Phil's diner",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 			            "transactionCount": 3
 
 					}
 				]
 			},
 			{
-				"month": "March 2017",
+				"month": "March 2018",
 				"vendorsList": [
 					{
 						"name": "Phil's diner",
-						"amount": "-$23.54",
+						"amount": "$23.54",
 			            "transactionCount": 3
 
 					}
@@ -711,7 +728,7 @@
 		]
 	},
 	"hasVehicles" :{
-		"login": "wonderwoman@gmail.com",
+		"login": "ab@ab.com",
 		"pwd": "Password1",
 		"vehiclesList": [
 			{

@@ -13,10 +13,8 @@ public class LandingPage extends BasePage {
 		super(driver);
 	}
 
-	private By guestAccessPageTitle = By.xpath("//android.widget.TextView[@text='One Suncorp']");
+	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='One Suncorp']");
 	private By chatbotOption = By.id("au.com.suncorp.marketplace:id/chatbotOption");
-	// TODO:
-	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='ONE SUNCORP']");
 	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
@@ -31,8 +29,8 @@ public class LandingPage extends BasePage {
 	private By healthTab = By.xpath("//android.widget.TextView[@text='HEALTH']");
 	*/
 	
-	public WebElement checkGuestAccessPageTitle() {
-		return find(guestAccessPageTitle, 20);
+	public WebElement checkLandingPageTitle() {
+		return find(landingPageTitle, 20);
 	}
 	
 	public WebElement checkChatbotOption() {
@@ -41,10 +39,6 @@ public class LandingPage extends BasePage {
 	
 	public void tapChatbotOption(){
 		tapElement(chatbotOption);
-	}
-	
-	public void tapBackButton(){
-		tapElement(backButton);
 	}
 	
 	public WebElement checkSuncorpTab() {

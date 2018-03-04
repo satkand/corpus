@@ -95,6 +95,7 @@ public class HomeJourneyTest extends App {
 		welcomePage.tapGuestAccessButton();
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 	}
 }

@@ -17,6 +17,11 @@ public class HomePropertyPage extends BasePage {
 	private By homeJourneyBannerDescription = By.id("au.com.suncorp.marketplace:id/journeyDescriptionText");
 	private By startYourJourneyButton = By.id("au.com.suncorp.marketplace:id/startHomeJourneyButton");
 	
+	
+	public void scrollToJourneyBanner(){
+		scrollToElement(startYourJourneyButton);
+	}
+	
 	public WebElement checkHomeJourneyBannerImage() {
 		return find(homeJourneyBannerImage);
 	}

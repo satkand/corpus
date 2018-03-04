@@ -12,7 +12,7 @@ public class OffersPropertyTest extends App {
 		navigateToPropertyScreen();
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Property Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No Action Button");
-		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
+		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),utils.readTestData("copy", "offersPage", "propertyTab", "offerDescription"),"offer description for property tab is not shown as expected");
 		Assert.assertEquals(offersPage.getOffersPageTitle(),
 				utils.readTestData("copy", "offersPage", "propertyTab", "offerTitle"),
@@ -23,8 +23,8 @@ public class OffersPropertyTest extends App {
 	@Test(groups = { "DMPM-815", "DMPM-929", "marketplace", "Offers", "priority-minor" })
 	public void testRetryContentRetrievalPropertyTab() {
 		navigateToPropertyScreen();
-		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed()
-				&& offersPage.checkBackgroundImage().isDisplayed())) {
+		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed())) {
+				//&& offersPage.checkBackgroundImage().isDisplayed())) {
 			Assert.assertNotNull(landingPage.checkHealthTab(), " Offers flow - Navigation to different tab failed");
 			landingPage.tapHealthTab();
 			Assert.assertNotNull(landingPage.checkHomeTab(),
@@ -33,7 +33,7 @@ public class OffersPropertyTest extends App {
 		}
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Property Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No Action Button");
-		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
+		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
 	}
 	
 	@Test(groups = { "DMPM-500", "DMPM-934","DMPM-935", "marketplace", "Offers", "priority-minor" })
@@ -52,7 +52,6 @@ public class OffersPropertyTest extends App {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(landingPage.checkHomeTab(), " Offers flow - Property tab not shown");
 		landingPage.tapHomeTab();
-		offersPage.scrollDown();
-
+		offersPage.scrollToOffersBanner();
 	}
 }

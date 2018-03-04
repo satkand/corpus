@@ -48,9 +48,9 @@ public class OffersPage extends BasePage {
 		return getText(offerTitle);
 	}
 
-	public void scrollDown() {
+	public void scrollToOffersBanner() {
 		swipeHorizontallyToLeft();
-		swipeScreen("down");
+		scrollToElement(callToActionButton);;
 	}
 	
 	public String getOffersPageTitle(){
