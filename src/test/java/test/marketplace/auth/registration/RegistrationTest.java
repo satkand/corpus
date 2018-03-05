@@ -22,7 +22,7 @@ public class RegistrationTest extends App{
 					utils.readTestData("registration", "success", "mobile"));
 			registrationPage.tapNextButton();
 			registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
-			Assert.assertNotNull(pinSetupPage.checkEnterPINLabel(),"Pin setup screen is not displayed");	
+			Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(),"Pin enable screen is not displayed");	
 	}
 	
 	@Test(groups = {"DMPM-185", "DMPM-375", "marketplace", "Registration", "priority-major"})
@@ -33,10 +33,11 @@ public class RegistrationTest extends App{
 		Assert.assertTrue(common.isKeyboardShown(),"Registration - Keypad is not shown");
 		registrationPage.tapSurnameField();
 		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
-		registrationPage.tapDOBField();
-		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		common.dismissKeyboardShown();
 		registrationPage.tapPostcodeField();
+		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		registrationPage.tapFirstNameField();
+		common.dismissKeyboardShown();
 		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 	}
 		

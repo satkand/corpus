@@ -58,7 +58,7 @@ public class RegistrationPage extends BasePage {
 	
 
 	
-	private By registerPage1Title = By.id("Step 1 of 3");
+	private By registerPage1Title = By.xpath("//android.widget.TextView[@text='Step 1 of 3']");
 	private By registerPage2Title = By.id("au.com.suncorp.marketplace:id/pageDescriptionText");
 	private By backButton = By.id("BackButton");
 	
