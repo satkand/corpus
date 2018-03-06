@@ -42,7 +42,7 @@ public class DigiVaultCommonPage extends BasePage {
 	}
 
 	public void tapFolder(String folderName) {
-		tapElement(find(By.xpath(String.format( "//*[@text=\"%s\"]", folderName))));
+		tapElement(By.xpath(String.format( "//*[@text=\"%s\"]", folderName)));
 		
 	}
 	
