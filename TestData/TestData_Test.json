@@ -807,11 +807,11 @@
 	"loginCredentials" :{
 		"validLoginCredentials" : {
 			"login1":{
-				"login": "flash@dc.com",
+				"login": "ab@ab.com",
 				"pwd": "Password1"
 			},
 			"hasWealthCategoriesAndVendorsData":{
-				"login": "flash@dc.com",
+				"login": "ab@ab.com",
 				"pwd": "Password1"
 			}
 		},
@@ -819,36 +819,15 @@
 			{
 				"login": "",
 				"pwd": "",
-				"loginError": "This field is required",
-				"pwdError": "This field is required",
+				"loginError": "Field is required",
+				"pwdError": "Field is required",
 				"loginButton": false
 			},
 			{
 				"login": "a",
 				"pwd": "p",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@",
-				"pwd": "p1",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.",
-				"pwd": "$%",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.",
-				"pwd": "pqr@",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
+				"loginError": "Please enter a valid email address Must be between 2 and 100 characters",
+				"pwdError": null,
 				"loginButton": false
 			},
 			{
@@ -856,13 +835,6 @@
 				"pwd": "1234567",
 				"loginError": "Please enter a valid email address",
 				"pwdError": null,
-				"loginButton": false
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "123456",
-				"loginError": null,
-				"pwdError": "Must be at least 7 characters",
 				"loginButton": false
 			},
 			{

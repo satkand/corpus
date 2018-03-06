@@ -386,6 +386,12 @@ public class BasePage {
 	}
 
 	
+	protected void relaunchAppIn(int val) {
+		((AndroidDriver) driver).runAppInBackground(Duration.ofSeconds(val));
+		((AndroidDriver) driver).currentActivity();
+	}
+	
+	
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
 //	 * Using this sets pin very quickly.

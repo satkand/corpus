@@ -23,14 +23,13 @@ public class LoginPage extends BasePage{
 
 	
 	//TODO Both have same id -> need to differentiate them
-	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
-	private By passwordFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+//	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout[@index='1']/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+//	private By passwordFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout[@index='1']/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
-	/* TODO
-	 -> 	Log in
-	 -> I need help logging in
-	 -> This field is required
-	*/
+	//Elements in the enable PIN page
+	private By enablePinScreenTitle = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
 	
 	public WebElement checkLoginPageTitle(){
 		return find(loginPageTitle,20);
@@ -75,6 +74,7 @@ public class LoginPage extends BasePage{
 	}
 	
 	public void tapLoginButton(){
+		isKeyboardPresent();
 		tapElement(loginButton);
 	}
 	
@@ -109,5 +109,17 @@ public class LoginPage extends BasePage{
 	
 	public String getPasswordFieldErrorValue() {
 		return getText(passwordFieldError);
+	}
+	
+	public String getPasswordFieldValue() {
+		return getText(passwordField);
+	}
+	
+	public void relaunchApp(int time) {
+		relaunchAppIn(time);
+	}
+	
+	public WebElement checkEnablePinScreenTitle() {
+		return find(enablePinScreenTitle, 30);
 	}
 }

@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 import pages.App;
 
 public class LoginTest extends App {
-
-	//@Test (groups = {"DMPM-28", "DMPM-391", "marketplace", "login", "priority-?"}) //Scenario 1
-	public void testLoginPageElements(){
+	
+	//DMPM-43 - Scenario-1
+	@Test (groups = {"DMPM-43", "DMPM-207", "marketplace", "login", "priority-medium"})
+	public void testLoginPageElements() {
 		navigateToLoginScreen();
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login screen - page title is not shown");
 		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"), "Login page title is not shown as expected");
@@ -23,84 +24,36 @@ public class LoginTest extends App {
 		Assert.assertNotNull(loginPage.checkBackButton(), "Login screen - back button is not shown");
 	}
 	
-	//@Test (groups = {"DMPM-28", "DMPM-392", "DMPM-395", "marketplace", "login", "priority-?"}) //Scenario 2 4
+	//DMPM-43 - Scenario-2
+	@Test (groups = {"DMPM-43", "DMPM-208", "marketplace", "login", "priority-medium"})
 	public void testKeyboardDisplay() {
 		navigateToLoginScreen();
 		
 		// Asserting that keyboard is not shown before tapping on email field and also keyboard is shown after tapping on email field
 		Assert.assertFalse(common.isKeyboardShown(), "keyboard is shown");
 		loginPage.tapEmailField();
-		//along with asserting this is dismissing the keyboard as well
 		Assert.assertTrue(common.isKeyboardShown(), "keyboard not shown");
 		
 		// Asserting that keyboard is not shown before tapping on password field and also keyboard is shown after tapping on password field
 		Assert.assertFalse(common.isKeyboardShown(), "keyboard is shown");
 		loginPage.tapPasswordField();
-		//along with asserting this is dismissing the keyboard as well
 		Assert.assertTrue(common.isKeyboardShown(), "keyboard not shown");
 	}
 	
-	// @Test TODO - This scenario needs to be implemented
-	public void abc() {
-		navigateToLoginScreen();
-		loginPage.enterPassword("abc");
-		common.moveAppToBackground();
-	}
-	
-	/*
-	//@Test (groups = {"DMPM-28", "DMPM-396", "DMPM-397", "marketplace", "login", "priority-?"}) //scenario 5 6 7
-	public void testChevronBehaviour() {
-		navigateToLoginScreen();
-		loginPage.tapEmailField();
-		Assert.assertTrue(keypad.isNextChevronEnabled(), "Login screen - keyboard Next Chevron is disabled");
-		keypad.tapNextChevron();
-		//focus on password field
-		Assert.assertTrue(keypad.isPrevChevronEnabled(), "Login screen - keyboard Previous Chevron is disabled");
-		Assert.assertFalse(keypad.isNextChevronEnabled(), "Login screen - keyboard Next Chevron is enabled");
-		Assert.assertNull(keypad.checkKeyboardNextButton(), "Login screen - keyboard next button shown");
-		Assert.assertNotNull(keypad.checkKeyboardContinueButton(), "Login screen - keyboard continue button not shown");
-		Assert.assertNotNull(keypad.checkKeyboardDoneButton(), "Login screen - keyboard done button not shown");
-		Assert.assertNotNull(keypad.checkKeyboard(), "Login screen - keyboard not shown");
-		
-		keypad.tapPrevChevron();
-		//foucus on email field
-		Assert.assertFalse(keypad.isPrevChevronEnabled(), "Login screen - keyboard Previous Chevron is enabled");
-		Assert.assertTrue(keypad.isNextChevronEnabled(), "Login screen - keyboard Next Chevron is disabled");
-		Assert.assertNotNull(keypad.checkKeyboardNextButton(), "Login screen - keyboard next button not shown");
-		Assert.assertNull(keypad.checkKeyboardContinueButton(), "Login screen - keyboard continue button shown");
-		Assert.assertNotNull(keypad.checkKeyboardDoneButton(), "Login screen - keyboard done button not shown");
-		Assert.assertNotNull(keypad.checkKeyboard(), "Login screen - keyboard not shown");
-		
-		keypad.tapKeyboardNextButton();
-		//focus on password field
-		Assert.assertTrue(keypad.isPrevChevronEnabled(), "Login screen - keyboard Previous Chevron is disabled");
-		Assert.assertFalse(keypad.isNextChevronEnabled(), "Login screen - keyboard Next Chevron is enabled");
-		Assert.assertNull(keypad.checkKeyboardNextButton(), "Login screen - keyboard next button shown");
-		Assert.assertNotNull(keypad.checkKeyboardContinueButton(), "Login screen - keyboard continue button not shown");
-		Assert.assertNotNull(keypad.checkKeyboardDoneButton(), "Login screen - keyboard done button not shown");
-		Assert.assertNotNull(keypad.checkKeyboard(), "Login screen - keyboard not shown");
-		
-		keypad.tapKeyboardDoneButton();
-		Assert.assertNull(keypad.checkKeyboard(), "Login screen - keyboard shown");
-
-	}
-		
-	//@Test //Scenario 8
-	public void testSuccessfulLoginByTappingonKeypadContinueBtn() {
+	//DMPM-43 - Scenario-3
+	@Test (groups = {"DMPM-43", "DMPM-211", "marketplace", "login", "priority-minor"})
+	public void testClearPasswordField() {
 		navigateToLoginScreen();
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "pwd"));
-		keypad.tapKeyboardContinueButton();
-		// TODO -> Add what's shown after user logs in
-		// TODO validate success message
-		// TODO verify what screen is shown after logging in
-		Assert.assertNull(keypad.checkKeyboardContinueButton(), "Login screen - keyboard continue button shown");
-		Assert.assertNull(keypad.checkKeyboard(), "Login screen - keyboard shown");
+		//Putting the app in background indefinitely and launching it using currentActivity method
+		loginPage.relaunchApp(-1);
+		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login screen - page title is not shown");
+		Assert.assertNull(loginPage.checkPasswordFieldError());
 	}
 	
-
-	
-	//@Test //Scenario 9
-	public void testAppsideInlineErrorValidatons() {
+	//DMPM-43 - Scenario-4,5
+	@Test (groups = {"DMPM-43", "DMPM-211", "marketplace", "login", "priority-medium"})
+	public void testInlineValidation() {
 		navigateToLoginScreen();
 		List invalidCredentialsList = utils.readTestDataList("loginCredentials", "invalidLoginCredentials_appSideValidations");
 		for(Object invalidLoginCredentails : invalidCredentialsList) {
@@ -108,13 +61,17 @@ public class LoginTest extends App {
 		}
 	}
 	
+	//Enter the invalid credentials from JSON file
+	
 	private void enterRegexInvalidCredentials(Object invalidLoginCredentails) {
 		HashMap<String, String> invalidCredentails = (HashMap<String, String>)invalidLoginCredentails;
 		loginPage.enterLoginCredentials(invalidCredentails.get("login"), invalidCredentails.get("pwd"));
-		keypad.tapKeyboardDoneButton();
-		
+		loginPage.tapLoginButton(); //Move out of password field
+
 		if(!(invalidCredentails.get("loginError") == null)) {
-			Assert.assertEquals(loginPage.getEmailFieldErrorValue(), invalidCredentails.get("loginError"));
+			String errorVal = loginPage.getEmailFieldErrorValue().replace("\n\n", " ");
+					
+			Assert.assertEquals(errorVal, invalidCredentails.get("loginError"));
 		} else {
 			Assert.assertNull(loginPage.checkEmailFieldError());
 		}
@@ -123,68 +80,44 @@ public class LoginTest extends App {
 			Assert.assertEquals(loginPage.getPasswordFieldErrorValue(), invalidCredentails.get("pwdError"));
 		} else {
 			Assert.assertNull(loginPage.checkPasswordFieldError());
-		}
-		
-		Assert.assertEquals(loginPage.isLoginButtonEnabled(), invalidCredentails.get("loginButton"));
+		}		
 	}
 	
-	//@Test //Scenario 10
-	public void testServersideValidations() {
+	//DMPM-43 - Scenario-6 applies only when the inline error 'Field is required' is displayed
+	
+	@Test (groups = {"DMPM-43", "DMPM-294", "marketplace", "login", "priority-minor"})
+	public void testHideInlineErrorMsg() {
 		navigateToLoginScreen();
-		List invalidCredentialsList = utils.readTestDataList("loginCredentials", "invalidLoginCredentials_ServerSideValidations");
-		for(Object invalidLoginCredentails : invalidCredentialsList) {
-			enterServersideInvalidCredentials(invalidLoginCredentails);
-		}
-	}
-	
-	private void enterServersideInvalidCredentials(Object invalidLoginCredentails) {
-		HashMap<String, String> invalidCredentails = (HashMap<String, String>)invalidLoginCredentails;
+		HashMap<String, String> invalidCredentails = (HashMap<String, String>)(utils.readTestDataList("loginCredentials", "invalidLoginCredentials_appSideValidations").get(0));
 		loginPage.enterLoginCredentials(invalidCredentails.get("login"), invalidCredentails.get("pwd"));
 		loginPage.tapLoginButton();
-		
-		if(!(invalidCredentails.get("loginError") == null)) {
-			Assert.assertEquals(loginPage.getEmailFieldErrorValue(), invalidCredentails.get("loginError"));
-		} else {
-			Assert.assertNull(loginPage.checkEmailFieldError());
-		}
-		
-		if(!(invalidCredentails.get("pwdError") == null)) {
-			Assert.assertEquals(loginPage.getPasswordFieldErrorValue(), invalidCredentails.get("pwdError"));
-		} else {
-			Assert.assertNull(loginPage.checkPasswordFieldError());
-		}
-	}
-	*/
-	
-	@Test //Scenario 6
-	public void testHidingInilineErrorMessages() {
-		navigateToLoginScreen();
-		/*
-		TODO clear the error messages which occured during server side validations as well
-		List invalidList = new ArrayList();
-		invalidList.add(utils.readTestDataList("loginCredentials", "invalidLoginCredentials_appSideValidations").get(4));
-		invalidList.add(utils.readTestDataList("loginCredentials", "invalidLoginCredentials_ServerSideValidations").get(1));
-		 */
-		HashMap<String, String> invalidCredentails = (HashMap<String, String>)(utils.readTestDataList("loginCredentials", "invalidLoginCredentials_appSideValidations").get(2));
-		loginPage.enterLoginCredentials(invalidCredentails.get("login"), invalidCredentails.get("pwd"));
-		common.dismissKeyboardShown();
-		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), invalidCredentails.get("loginError"));
-		Assert.assertEquals(loginPage.getPasswordFieldErrorValue(), invalidCredentails.get("pwdError"));
-		loginPage.enterEmail("a");
+		String errorVal = loginPage.getEmailFieldErrorValue().replace("\n\n", " ");
+		Assert.assertEquals(errorVal, invalidCredentails.get("loginError"));
+		Assert.assertEquals(loginPage.getPasswordFieldErrorValue(),invalidCredentails.get("pwdError"));
+		loginPage.enterEmail("ab");
 		Assert.assertNull(loginPage.checkEmailFieldError());
 		loginPage.enterPassword("a");
 		Assert.assertNull(loginPage.checkPasswordFieldError());
 	}
 	
-	//@Test //scenario 7
-	public void testSuccessfulLoginByTappingonLoginBtn() {
-		navigateToLoginScreen();
-		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "pwd"));
-		common.dismissKeyboardShown();
-		loginPage.tapLoginButton();
-		// TODO -> Add what's shown after user logs in
-		// TODO validate success message
-		// TODO verify what screen is shown after logging in
+	//DMPM-43 - Scenario-7
+	@Test (groups = {"DMPM-43", "DMPM-", "marketplace", "login", "priority-minor"})
+	public void testValidCredentials() {
+		
+		if (welcomePage.checkWelcomeSuncorpImage() != null) {
+			navigateToLoginScreen();
+			loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "pwd"));
+			loginPage.tapLoginButton();
+			Assert.assertNotNull(loginPage.checkEnablePinScreenTitle(), "Login screen - Title message not displayed");
+		}
+		else {
+			Assert.assertNotNull(loginAuthPage.checkReloginButton(), "Reauth Page - Relogin button not displayed");
+			loginAuthPage.tapChangeAccountButton();
+			navigateToLoginScreen();
+			loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "login1", "pwd"));
+			loginPage.tapLoginButton();
+			Assert.assertNotNull(loginPage.checkEnablePinScreenTitle(), "Login screen - Title message not displayed");
+		}
 	}
 	
 	private void navigateToLoginScreen() {
