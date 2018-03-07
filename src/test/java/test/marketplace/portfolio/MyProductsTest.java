@@ -118,7 +118,6 @@ public class MyProductsTest extends App {
 		Assert.assertNotNull(myProductsPage.checkViewDetailsButton(), "My Products Page - View details button is not present");		
 		myProductsPage.tapViewDetails();
 		Assert.assertNotNull(accountDetailsPage.checkAccountDetailsTitle(), "Account Details page - Account details title is not present");
-		
 		accountDetailsPage.tapBackButton();
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
 

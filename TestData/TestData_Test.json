@@ -750,7 +750,8 @@
 			"file1" : "file 1",
 			"file2" : "file 2",
 			"folder1" : "folder 1",
-			"rootFolder" : "Document storage"
+			"rootFolder" : "Document storage",
+			"images" : ["File A", "File B" , "File C"]
 		}
 	},
 	"registration" : {
@@ -1011,6 +1012,10 @@
 				"offerTitle": "Building Insurance",
 				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
 			}
+		},
+		"digiVaultPage" : {
+			"digiVaultEmptyImageTitle" : "Your vault is empty",
+			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
 		}
 	}
 }

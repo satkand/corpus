@@ -18,8 +18,7 @@ public class ImageViewPage extends BasePage {
 	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
 	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
 
-	private By imageViewTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/action_bar']"
-			+ "/android.widget.TextView");
+	private By imageViewTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']/android.widget.TextView");
 	
 	
 	public boolean isEditClickable() {
