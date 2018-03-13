@@ -14,6 +14,7 @@ public class LoginPage extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 
+	private By loadingIndicator = By.id("au.com.suncorp.marketplace:id/loadingIndicator");
 	private By loginPageTitle = By.id("au.com.suncorp.marketplace:id/screenTitleText");
 	private By emailField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
 	private By passwordField = By.id("au.com.suncorp.marketplace:id/passwordField");
@@ -24,9 +25,13 @@ public class LoginPage extends BasePage{
 	
 	//TODO Both have same id -> need to differentiate them
 //	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
-	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout[@index='1']/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 //	private By passwordFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
-	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout[@index='1']/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	
+	//Error scenario
+	private By errorSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
+	private By errorSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
 	
 	//Elements in the enable PIN page
 	private By enablePinScreenTitle = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
@@ -115,11 +120,27 @@ public class LoginPage extends BasePage{
 		return getText(passwordField);
 	}
 	
-	public void relaunchApp(int time) {
-		relaunchAppIn(time);
+	public void relaunchApp(int time, String appName) {
+		selectSuncorpApp(time, appName);
 	}
 	
-	public WebElement checkEnablePinScreenTitle() {
-		return find(enablePinScreenTitle, 30);
+	public WebElement checkSnackbartText() {
+		return find(errorSnackbarText);
+	}
+	
+	public String getSnackbarTextValue () {
+		return getText(errorSnackbarText);
+	}
+	
+	public WebElement checkSnackbarButton() {
+		return find(errorSnackbarButton, 30);
+	}
+	
+	public void tapSnackbarOkButton() {
+		tapElement(errorSnackbarButton);
+	}
+	
+	public WebElement checkLoadingIndicator() {
+		return find(loadingIndicator, 30);
 	}
 }

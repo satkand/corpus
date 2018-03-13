@@ -1,5 +1,6 @@
 package automation.framework.common;
 
+import java.awt.RenderingHints.Key;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +43,10 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
+import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
@@ -386,12 +390,12 @@ public class BasePage {
 	}
 
 	
-	protected void relaunchAppIn(int val) {
-		((AndroidDriver) driver).runAppInBackground(Duration.ofSeconds(val));
-		((AndroidDriver) driver).currentActivity();
-	}
-	
-	
+//	protected void relaunchAppIn(int val) {
+//		((AndroidDriver) driver).runAppInBackground(Duration.ofSeconds(val));
+//		((AndroidDriver) driver).currentActivity();
+//	}
+//	
+//	
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
 //	 * Using this sets pin very quickly.
@@ -988,11 +992,21 @@ public class BasePage {
 //		js.executeScript("mobile: swipe", scrollObject);
 //
 //	}
-//	
-//	protected void runApplicationInBackground(int time){
-//		
-//		driver.runAppInBackground(time);
-//	}
 	
-
+	// Edited by Gitin George
+	protected void runApplicationInBackground(int time) {
+		driver.runAppInBackground(Duration.ofSeconds(time));
+		((StartsActivity) driver).currentActivity();
+	}
+	
+	// Added by Gitin George
+	// Selects the Suncorp App from the Switch apps menu
+	
+	protected void selectSuncorpApp(int time,String appName) {
+		driver.runAppInBackground(Duration.ofSeconds(time));
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_APP_SWITCH);
+		By suncorpApp = By.xpath("//android.widget.TextView[@text='Config']");
+		find(suncorpApp);
+		tapElement(suncorpApp);
+	}
 }
