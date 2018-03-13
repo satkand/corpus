@@ -40,6 +40,7 @@ import com.google.common.base.Function;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.PressesKeyCode;
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -401,6 +402,16 @@ public class BasePage {
 		}
 	}
 
+	public void tapDeviceBackButton(){
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+	}
+	
 	
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.

@@ -27,8 +27,6 @@ public class MyProductsPage extends BasePage {
 	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='My products']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	//TO DO DMPM-3713
-	//private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");//
-	//private By availableBalanceLable = By.xpath("au.com.suncorp.marketplace:id/availableBalanceText");//
 	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");
     private By availableBalanceLable = By.xpath("//android.widget.TextView[@text='Available balance']");
 
@@ -48,10 +46,6 @@ public class MyProductsPage extends BasePage {
 		List<WebElement> elements = finds(accountItemLayout);
 		return elements;
 	}
-	
-//	public By getAddExistingProductButton() {
-//		return addExistingProductButton;
-//	}
 	
 	public List<String> fetchBsbList() {
 		find(bsbText);
@@ -154,7 +148,6 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapBackButton(){
-		//find(backButton,30);
 		tapElement(backButton);
 	}
 	
@@ -167,12 +160,10 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapInsurancePolicyBottomSheetButton(){
-		//find(insurancePolicyBottomSheetButton,30);
 		tapElement(insurancePolicyBottomSheetButton);
 	}
 	
 	public void tapViewDetails(){
-		//find(viewDetailsButton,30);
 		tapElement(viewDetailsButton);
 	}
 	
@@ -185,7 +176,6 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapBankAccountBottomSheetButton(){
-		//find(bankAccountBottomSheetButton,30);
 		tapElement(bankAccountBottomSheetButton);
 	}
 	
@@ -211,7 +201,6 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapAddExistingProductButton(){
-		//find(addExistingProductButton,30);
 		tapElement(addExistingProductButton);
 	}
 	
@@ -220,21 +209,11 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapMaybeLaterButton(){
-		//find(maybeLaterButton,30);
 		tapElement(maybeLaterButton);
 	}
 	
 	public void scrollToAddExistingProductButton() {
 		scrollToElement(addExistingProductButton, "true");
 	}
-		/*
-			int numOfSwipes = 0;
-			while (find(locator) == null && numOfSwipes <= 30) {
-			swipeScreen("down");
-			numOfSwipes++;
-			
-			}
-		}
-		*/
 	
 }
