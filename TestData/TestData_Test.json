@@ -12,6 +12,29 @@
 		"login": "ab@ab.com",
 		"pwd": "Password1"
 	},
+	"propertyDimention" :{
+		"NoProperties":{
+					"login": "a@b.c",
+					"pwd": "Password1"
+		},
+		"propertyProducts":{
+			"withProducts": {
+					"login": "a@b.c",
+					"pwd": "Password1",
+					"addressLineText": "88 Smith St, Marrickville",
+         			"suburbText":"NT 2230",
+          			"productDescriptionText1": "Home and Contents protected until 10 October 2018",
+         			"productDescriptionText2": "Home loan next payment due 15 March 2018"
+			},
+			"withOutProducts": {
+					"login": "a@b.c",
+					"pwd": "Password1",
+					"addressLineText": "201/64-66 Sahi Crescent, Roxburgh Park",
+         			"suburbText":"VIC 3064",
+          			"productDescriptionText1": "Home and Contents protected until 10 October 2019",
+         			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
+			}}
+	},
 	"portfolio" :{
 		"loginEmptyProdList":{
 				"login": "a@b.c",
@@ -954,7 +977,11 @@
 		},
 		"homePropertyPage": {
 			"homeJourneyBannerHeading": "Hunting for a property?",
-			"homeJourneyBannerDescription": "Our Home Journey has helpful tips & ideas to guide you through each stage of the process."
+			"homeJourneyBannerDescription": "Our Home Journey has helpful tips & ideas to guide you through each stage of the process.",
+			"propertyInsightInfo": "Get property insights and market value",
+			"organiseDocumentsInfo": "Categorise and organise your documents to your property",
+			"accessProfessionalInfo": "Access professional services and suburb insights",
+			"addPropertyOrPolicyActionSheetTitle":"What would you like to add?"
 		},
 		"homeJourneyPage": {
 			"journeyTitleText": "Our guide to\nbuying a home",

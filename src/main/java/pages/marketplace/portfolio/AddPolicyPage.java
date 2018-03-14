@@ -1,15 +1,10 @@
 package pages.marketplace.portfolio;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidKeyCode;
+import io.appium.java_client.MobileBy;
 
 public class AddPolicyPage extends BasePage {
 
@@ -18,7 +13,7 @@ public class AddPolicyPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	private By addPolicyPageTitle = By.xpath("//android.widget.TextView[@text='Add policy']");
-	private By backButton = By.xpath("//android.widget.ImageButton[@content-desc ='Navigate up']");
+	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	private By policyNumberTextBox = By.id("au.com.suncorp.marketplace:id/policyNumberField");
 	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addPolicyButton");
 	private By forgotMyDetailsButton = By.id("au.com.suncorp.marketplace:id/forgottenDetailsTextButton");
@@ -38,12 +33,10 @@ public class AddPolicyPage extends BasePage {
 	}
 	
 	public String getPolicyNumberTextBox() {
-		find(policyNumberTextBox,30);
 		return getText(policyNumberTextBox);
 	}
 	
 	public void enterPolicyNumber(String policyNumber) {
-		find(policyNumberTextBox,30);
 		typeValue(policyNumber, policyNumberTextBox);
 	}
 	
@@ -71,7 +64,6 @@ public class AddPolicyPage extends BasePage {
 	}
 	
 	public void tapPolicyNumberTextBox(){
-		find(policyNumberTextBox);
 		tapElement(policyNumberTextBox);
 	}
 	
@@ -80,7 +72,6 @@ public class AddPolicyPage extends BasePage {
 	}
 	
 	public void tapAddAccountButton(){
-		find(addAccountButton);
 		tapElement(addAccountButton);
 	}
 	

@@ -23,6 +23,7 @@ import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
+import pages.marketplace.common.FAPISettingsPage;
 import pages.marketplace.common.GalleryPage;
 import pages.marketplace.common.LandingPage;
 import pages.marketplace.common.NavigationMenuPage;
@@ -87,6 +88,7 @@ public class App extends BaseTest {
 	public AddPolicyPage addPolicyPage = null;
 	public AddBankAccountPage addBankAccountPage = null;
 	public AccountDetailsPage accountDetailsPage = null;
+	public FAPISettingsPage fapiSettingsPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -138,6 +140,7 @@ public class App extends BaseTest {
 		addPolicyPage = new AddPolicyPage(driver);
 		addBankAccountPage = new AddBankAccountPage(driver);
 		accountDetailsPage = new AccountDetailsPage(driver);
+		fapiSettingsPage = new FAPISettingsPage(driver);
 	}
 	
 	@Parameters({ "stub" })
