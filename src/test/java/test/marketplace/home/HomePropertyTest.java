@@ -35,14 +35,17 @@ public class HomePropertyTest extends App {
 	}
 	
 	//2627 - Scenario 1 and scenario 2
+	//2620 - Scenario 2 
 	// navigating to Property tap on add a property or policy button
-	@Test (groups = {"DMPM-2627", "DMPM-3504","DMPM-3505", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2627", "DMPM-3504","DMPM-3505","DMPM-2620","DMPM-3548", "marketplace", "Home buying journey", "priority-minor"})
 	public void testAddAPropertyOrPolicy() {
 		navigateToHomePropertyTab("noProperties");
 		
+		Assert.assertNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Property Assets are displaying for guest user");
+		Assert.assertNull(homePropertyPage.checksuburbText(), "Home Property Page - Property Assets are displaying for guest user");
+		
 		Assert.assertNotNull(homePropertyPage.checkAddAPropertyOrPolicyImage(), "Home Property Page - Image is not present in add property section");
 		Assert.assertNotNull(homePropertyPage.checkAddAPropertyOrPolicyButton(), "Home Property Page - Add a Property or Policy button is not present");
-		
 		
 		Assert.assertNotNull(homePropertyPage.checkPropertyInsightInfo(), "Home Property Page - Property insigh info is not present");
 		Assert.assertEquals(homePropertyPage.getPropertyInsightInfo(), utils.readTestData("copy", "homePropertyPage", "propertyInsightInfo"), "Home Property Page - Property insight info is not shown as expected");
@@ -72,13 +75,15 @@ public class HomePropertyTest extends App {
 	}
 	
 	//2646 - Scenario 1
+	//2997 - scenario 1
+	//2620 - scenario 1
 	// navigating to Property tab and verify products
-	@Test (groups = {"DMPM-2646", "DMPM-4037", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2646", "DMPM-4037","DMPM-2997","DMPM-4014","DMPM-2620","DMPM-3541", "marketplace", "Home buying journey", "priority-minor"})
 	public void testDisplayActiveProductsAssociatedWithAPropertyAsset() {
 			
 		navigateToHomePropertyTab("withProducts");
-		enableFAPISettings();
-		
+
+		Assert.assertNotNull(homePropertyPage.checkpropertyImage(), "Home Property Page - Property Asset image is not available");
 		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Address Line is not present");
 		Assert.assertNotNull(homePropertyPage.checksuburbText(), "Home Property Page - Suburb is not present");
 		List<String> descriptionList = homePropertyPage.fetchProductDescriptionTextList();
@@ -88,29 +93,56 @@ public class HomePropertyTest extends App {
 		String description2 = utils.readTestData("propertyDimention","propertyProducts","withProducts","productDescriptionText2");
 		String suburb = utils.readTestData("propertyDimention","propertyProducts","withProducts","suburbText");
 					
-		Assert.assertEquals(homePropertyPage.getaddressLineText(), addressLine, "Home Property Page - Property address is not shown as expected");
+		Assert.assertEquals(homePropertyPage.getaddressLineText(), addressLine, "Home Property Page - Address line is not shown as expected");
 		Assert.assertEquals(homePropertyPage.getsuburbText(), suburb, "Home Property Page - Property suburb is not displayed as expected");
-		Assert.assertEquals(descriptionList.get(0), description1, "Home Property Page - Property suburb is not displayed as expected");
-		Assert.assertEquals(descriptionList.get(1), description2, "Home Property Page - Property suburb is not displayed as expected");
-					
+		Assert.assertEquals(descriptionList.get(0), description1, "Home Property Page - Property description1 is not displayed as expected");
+		Assert.assertEquals(descriptionList.get(1), description2, "Home Property Page - Property description 2 is not displayed as expected");
+				
+		Assert.assertNotNull(homePropertyPage.checkactiveClaimTitle(), "Home Property Page - Active Claim status is not displaying");
+		Assert.assertEquals(homePropertyPage.getactiveClaimTitle(),utils.readTestData("copy","homePropertyPage","activeClaim") , "Home Property Page - Active CLaim title is not displayed as expected");
 		
 	}
 		
 	//2646 - scenario 2 
+	//2997 - scenario 2
 	// navigating to Property tab and verify empty state for products
-	@Test (groups = {"DMPM-2627","DMPM-4038", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017", "marketplace", "Home buying journey", "priority-minor"})
 		public void testDisplayEmptyStateForPropertyAsset() {
 		
  		navigateToHomePropertyTab("withOutProducts");
-		enableFAPISettings();
+		//enableFAPISettings();
 		
 		homePropertyPage.scrollToEmptyStatePropertyAsset();
 		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Address Line is not present");
 		Assert.assertNotNull(homePropertyPage.checksuburbText(), "Home Property Page - Suburb is not present");
 		Assert.assertNull(homePropertyPage.checkproductDescriptionText(), "Home Property Page - Product Description is present");
+		Assert.assertNull(homePropertyPage.checkactiveClaimTitle(), "Home Property Page - Active CLaime title is present");
 		
 		
 	}
+	
+	//3799 - scenario 1 (TC-DMPM-3506)
+	//2620 - scenario 3 (TC-DMPM-3549)
+	//Add a property or policy (Guest Experience)
+	@Test (groups = {"DMPM-2799","DMPM-3506","DMPM-2620","DMPM-3549", "marketplace", "Home buying journey", "priority-minor"})
+		public void testAddPolicyGuestExperience() {
+			
+		navigateToHomePropertyTab("guest");
+		Assert.assertNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Property Assets are displaying for guest user");
+		Assert.assertNull(homePropertyPage.checksuburbText(), "Home Property Page - Property Assets are displaying for guest user");
+		
+		homePropertyPage.tapAddAPropertyOrPolicyButton();
+		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgTitle(), "Home Property Page - Feature Locked Title is not present");
+		Assert.assertEquals(homePropertyPage.getFeatureLockedMsgTitle(), utils.readTestData("copy", "homePropertyPage","featureLockedMsgTitle"), "Home Property Page - Feature Locked message title is different to the expected title");
+			
+		Assert.assertNotNull(homePropertyPage.checkFeatureLockedTextCopy(), "Home Property Page - Feature Locked message copy is not present");
+		Assert.assertEquals(homePropertyPage.getFeatureLockedTextCopy(), utils.readTestData("copy", "homePropertyPage","featureLockedTextCopy"), "Home Property Page - Feature Locked message text is different to the expected message");
+		
+		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgSignUpButton(), "Home Property Page - Sign Up button is not present");
+		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgLogInButton(), "Home Property Page - Log in button is not present");
+			
+	}
+
 	
 	private void navigateToHomePropertyTab(String loginType) {
 		if(loginType.equals("withProducts")) {
@@ -121,14 +153,13 @@ public class HomePropertyTest extends App {
 			loginToApp(utils.readTestData("propertyDimention","propertyProducts","withOutProducts", "login"), utils.readTestData("propertyDimention","propertyProducts","withOutProducts", "pwd"));
 		}else {
 			welcomePage.tapGuestAccessButton();
-			//loginToApp(utils.readTestData("propertyDimention", "login"), utils.readTestData("propertyDimention", "pwd"));
 		}
 		
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 	}
 	
-	private void enableFAPISettings() {
+/*	private void enableFAPISettings() {
 		
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapFAPISettingsMenuItem();
@@ -138,5 +169,5 @@ public class HomePropertyTest extends App {
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		
-	}
+	}*/
 }

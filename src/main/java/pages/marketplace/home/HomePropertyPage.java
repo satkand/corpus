@@ -36,9 +36,31 @@ public class HomePropertyPage extends BasePage {
 	private By productIcon = By.id("au.com.suncorp.marketplace:id/productIcon");
 	private By productDescriptionText = By.id("au.com.suncorp.marketplace:id/productDescriptionText");
 	private By brandIcon = By.id("au.com.suncorp.marketplace:id/brandIcon");
-	//au.com.suncorp.marketplace:id/propertyItemLayout
 	private By propertyItem = By.id("au.com.suncorp.marketplace:id/propertyItemLayout");
-	 private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='43 Badminton Rd, Croydon']");
+	private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='456 Sesame St, Melbourne']");
+	private By featureLockedMsgTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
+	private By featureLockedTextCopy = By.id("android:id/message");
+	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
+	private By featureLockedMsgLogInButton = By.id("android:id/button1");
+	
+	public WebElement checkFeatureLockedMsgTitle() {
+		return find(featureLockedMsgTitle);
+	}
+	public String getFeatureLockedMsgTitle() {
+		return getText(featureLockedMsgTitle);
+	}
+	public WebElement checkFeatureLockedTextCopy() {
+		return find(featureLockedTextCopy);
+	}
+	public String getFeatureLockedTextCopy() {
+		return getText(featureLockedTextCopy);
+	}
+	public WebElement checkFeatureLockedMsgSignUpButton() {
+		return find(featureLockedMsgSignUpButton);
+	}
+	public WebElement checkFeatureLockedMsgLogInButton() {
+		return find(featureLockedMsgLogInButton);
+	}
 
 
 	public List<String> fetchProductDescriptionTextList() {
@@ -90,10 +112,6 @@ public class HomePropertyPage extends BasePage {
 	
 	public WebElement checkpropertyImage() {
 		return find(propertyImage);
-	}
-	
-	public String getpropertyImage() {
-		return getText(propertyImage);
 	}
 	
 	public WebElement checkactiveClaimTitle() {
