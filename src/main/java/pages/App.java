@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import automation.framework.common.BaseTest;
@@ -145,7 +146,7 @@ public class App extends BaseTest {
 	
 	@Parameters({ "stub" })
 	@BeforeMethod(alwaysRun = true)
-	public void beforeEachTest(String stub) throws Exception {
+	public void beforeEachTest(@Optional("false") String stub) throws Exception {
 		welcomePage.launchApp();
 		configPage.dismissConfigPage(stub);
 	}
