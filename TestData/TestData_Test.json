@@ -14,12 +14,18 @@
 	},
 	"portfolio" :{
 		"loginEmptyProdList":{
-				"login": "rest@rest.com",
+				"login": "a@b.c",
 				"pwd": "Password1"
 			},
 		"loginProdList":{
-				"login": "best@best.com",
+				"login": "a@b.c",
 				"pwd": "Password1",
+				"addPolicy":{
+					"enterPolicyNumber": "12345678-aA",
+					"policyNumberExceedsMaxLimit": "ABCDEFGHIJKLMNOPQRSTUVWXYZ12-45",
+					"policyNumberInvalidChars": "#$% &",
+					"minimumChar": "1"
+				},
 				"bankingProducts": [
 					{
 						"brand": "Suncorp",
@@ -920,7 +926,11 @@
 			"bottomSheetLabel": "What type of product?",
 			"availableBalanceLable": "Available balance",
 			"currentBalanceLabel": "Current balance",
-			"accountDetailsLabel": "Account Details"
+			"accountDetailsLabel": "Account Details",
+			"policyAddedSuccessfulMsg": "Policy added",
+			"maxLimitError": "Exceeding the max limit of 30",
+			"feildValidationError": "Field is required",
+			"invalidCharactor": "Please enter a valid insurance policy number"
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
