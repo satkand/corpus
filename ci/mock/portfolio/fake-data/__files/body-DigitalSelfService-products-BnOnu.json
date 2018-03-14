@@ -1,0 +1,48 @@
+{
+  "data":
+  {
+    "id": "HPI000394201",
+    "type": "Product",
+    "attributes": {
+      "productType": "Insurance",
+      "brand": "SUNCORP"
+    },
+    "relationships": {
+      "portfolio": {
+        "links": {
+          "related": "http://portfolio-api/portfolios/2cd64793-e913-3d60-91db-0472c1e9f7ea"
+        },
+        "data": {
+          "type": "Portfolio",
+          "id": "HPI000394201"
+        }
+      },
+      "product": {
+        "links": {
+          "related": "http://portfolio-api/portfolios/{uuid}/products"
+        },
+        "data": {
+          "type": "Policy",
+          "id": "HPI000394201"
+        }
+      }
+    }
+  }
+,
+  "included": [
+    {
+      "id": "HPI000394201",
+      "type": "Policy",
+      "attributes": {
+        "productType": "Insurance",
+        "brand": "SUNCORP",
+        "productSystemCustomerId": "1234567",
+        "productSystemId": "NPR",
+        "productCategoryGroup": "HPI"
+      },
+      "links": {
+        "self": "http://policy-api/policies?policyNumber=HPI000394444"
+      }
+    }
+  ]
+}

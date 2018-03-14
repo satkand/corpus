@@ -1,0 +1,406 @@
+{
+  "data": [
+
+
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "162129388",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "44133315",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "44408683",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "44159500",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "44123638",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "44598296",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "44490207",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "162315459",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "162147882",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "44695364",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "204595831",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "162236460",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    },
+    {
+      "id": "5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "162125862",
+        "productSystemId": "HOG",
+        "productSystemCustomerId": "0005022121",
+        "brand": "SUNCORP",
+        "customerId": "155935504",
+        "status": "CONFIRMED",
+        "detail": {
+          "productType": "BANK",
+          "categories": [
+            {
+              "productCategoryGroup": "FUND",
+              "productCategoryType": "S4",
+              "productCategoryDetail": "BASIC"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://10.49.40.158/profile-api/v1/providers/IAM/identities/44f5419e-9139-49bb-bcdb-dbd982c227f1/portfolios/DigitalSelfService/products/5345394850434d2b4d4441774e5441794d6a45794d54776a506a55314e4455324d544d324f413d3d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/155935504/products/554561368"
+        }
+      }
+    }
+
+
+  ],
+  "links": {
+    "self": {
+      "href": "https://sys-api-nonprod.int.corp.sun/profile-api/v1/providers/IAM/identities/170a312c-441b-4721-b839-d527fd00d081/portfolios/DigitalSelfService/products?brand=ALL&statuses=ALL&managed=MANAGED"
+    }
+  }
+}
+
+
+

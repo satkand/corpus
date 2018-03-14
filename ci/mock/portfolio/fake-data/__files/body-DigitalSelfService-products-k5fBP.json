@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "id": "546c425350434d2b4d5445774d4441784e4463314e545138497a354e55464d774d4441314e5455304e44593d",
+      "type": "product",
+      "attributes": {
+        "productNumber": "MPS000375347",
+        "productSystemId": "NPR",
+        "productSystemCustomerId": "11000147554",
+        "brand": "SUNCORP",
+        "customerId": "149268839",
+        "status": "UNCONFIRMED",
+        "managed": true,
+        "audit": {
+          "updatedBy": "S116353",
+          "updatedDateTime": "2017-03-22T14:04:15.038+10:00",
+          "createdBy": "S116353",
+          "createdDateTime": "2017-03-22T14:04:15.038+10:00"
+        },
+        "detail": {
+          "productType": "INSURE",
+          "categories": [
+            {
+              "productCategoryGroup": "MPS",
+              "productCategoryType": "PMVTPO",
+              "productCategoryDetail": "Car Fire, Theft and Third Party Property Damage"
+            }
+          ]
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://sys-api-nonprod.int.corp.sun/profile-api/v1/providers/IAM/identities/170a312c-441b-4721-b839-d527fd00d081/portfolios/DigitalSelfService/products/546c425350434d2b4d5445774d4441784e4463314e545138497a354e55464d774d4441314e5455304e44593d"
+        },
+        "product": {
+          "href": "https://sys-api-customer-self-service.xint.xcorp.xsun/product-api/v2/brands/SUNCORP/customers/149268839/products/MPS000555446"
+        }
+      }
+    }
+
+  ],
+  "links": {
+    "self": {
+      "href": "https://sys-api-nonprod.int.corp.sun/profile-api/v1/providers/IAM/identities/170a312c-441b-4721-b839-d527fd00d081/portfolios/DigitalSelfService/products?brand=ALL&statuses=ALL&managed=MANAGED"
+    }
+  }
+}
+
+
+

@@ -41,22 +41,22 @@ public class BaseTest {
 		//startAppiumServer();
 
 		// Pick the app and Companion App
-		app = selectApp();
+//		app = selectApp();
 		
 		// Provide Capabilities for Appium session
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platformName", "Android");
-		capabilities.setCapability("deviceName", "Samsung");
-		capabilities.setCapability("automationName", "UIAutomator2");
-		capabilities.setCapability("app", app.getAbsolutePath());
-		capabilities.setCapability("appPackage", "au.com.suncorp.marketplace");
-		capabilities.setCapability("appWaitActivity", "*");
-		capabilities.setCapability("udid", "FA79X1A02210");
-		//capabilities.setCapability("fullReset", false);
-		//capabilities.setCapability("noReset", true);
-		//capabilities.setCapability("newCommandTimeout", 300);
-		capabilities.setCapability("clearSystemFiles", true);
-		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
+//		capabilities.setCapability("platformName", "Android");
+//		capabilities.setCapability("deviceName", "1aec2f45");
+//		capabilities.setCapability("automationName", "UIAutomator2");
+//		capabilities.setCapability("app", app.getAbsolutePath());
+//		capabilities.setCapability("appPackage", "au.com.suncorp.marketplace");
+//		capabilities.setCapability("appWaitActivity", "*");
+//		capabilities.setCapability("udid", "1aec2f45");
+//		capabilities.setCapability("fullReset", false);
+//		capabilities.setCapability("noReset", true);
+//		capabilities.setCapability("newCommandTimeout", 300);
+//		capabilities.setCapability("clearSystemFiles", true);
+		this.driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
 	/**

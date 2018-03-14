@@ -1,0 +1,232 @@
+import java.security.MessageDigest
+
+task clearE2eReport(type: Delete) {
+  delete fileTree('e2e-test/robot/report') {
+    include '*.html', '*.xml', '*.png'
+  }
+}
+
+task e2eTest(type: Exec) {
+  workingDir './e2e-test/robot'
+  commandLine 'python', '-m', 'robot', '--outputdir=report', '--include=e2e', 'test-cases'
+}
+
+task startBrowserstack(type: ExecWait) {
+  command "cmd /c BrowserStackLocal --key=qzYu8rSWQme8m8ZxgEzq --proxy-host=isaproxy --proxy-port=89 --proxy-user=${System.env.PROXY_USER} --proxy-pass=${System.env.PROXY_PASS} --local-proxy-host=isaproxy --local-proxy-port=89 --local-proxy-user=${System.env.PROXY_USER} --local-proxy-pass=${System.env.PROXY_PASS} --force-local --force-proxy --verbose 3"
+}
+
+task startBrowserstackBuild(type: ExecWait) {
+  command "cmd /c BrowserStackLocal.exe --key qzYu8rSWQme8m8ZxgEzq --proxy-host isaproxy --proxy-port 89 --proxy-user %PROXY_USER% --proxy-pass %PROXY_PASS% --local-proxy-host isaproxy --local-proxy-port 89 --local-proxy-user %LOCAL_PROXY_USER% --local-proxy-pass %LOCAL_PROXY_PASS% --force-proxy --force-local --verbose 3"
+}
+
+
+task browserstackTest(type: Exec) {
+  workingDir './e2e-test/robot'
+
+//  commandLine 'pabot.bat', '--pabotlibhost  http://samcarver1:qzYu8rSWQme8m8ZxgEzq@hub.browserstack.com/wd/hub', '--processes  6','--Variable  browser:chrome', '--outputdir=report', '--include=browserstack', 'test-cases'
+//commandLine 'python', '-m', 'robot', '--outputdir=report', '--include=browserstack', 'test-cases'
+commandLine 'pabot.bat', '--pabotlibhost="http://samcarver1:qzYu8rSWQme8m8ZxgEzq@hub.browserstack.com/wd/hub"', '--processes=6','--Variable="browser:chrome"', '--outputdir=report', '--include=browserstack', 'test-cases'
+
+}
+
+task compatibilityTest(type: Exec) {
+  workingDir './e2e-test/robot'
+  commandLine 'python', '-m', 'robot', '--outputdir=report', '--include=compatibility', '--exclude=ignore', 'test-cases-mock'
+}
+
+task uiTest(type: Exec) {
+  workingDir './e2e-test/robot'
+  commandLine 'python', '-m', 'robot', '--outputdir=report', '--include=regression', '--exclude=ignore', 'test-cases-mock'
+}
+
+task smokeTest(type: Exec) {
+  workingDir './e2e-test/robot'
+  commandLine 'python', '-m', 'robot', '--outputdir=report', '--include=smoke', '--exclude=ignore', '--variable=osp_ui_env:local', 'test-cases-mock'
+}
+
+task visualTest(type: Exec) {
+  workingDir './visual-test'
+  commandLine 'python', '-m', 'robot', '--outputdir=report', 'run.robot'
+}
+
+task startOspUiNoWait(type: Exec) {
+  workingDir '.'
+  commandLine 'cmd', '/c', 'npm', 'run', 'serve:test'
+}
+
+task startOspUiAndWait(type: ExecWait) {
+  command "cmd /c cd .. && npm run serve:test"
+}
+
+task editNpmRegistry(type: Exec) {
+  workingDir '..'
+  commandLine 'cmd', '/c', 'python', '..\\osp-ui-suncorp\\tools\\active-npm-registry.py'
+}
+
+task restoreNpmRegistry(type: Exec) {
+  workingDir '..'
+  commandLine 'cmd', '/c', 'python', '..\\osp-ui-suncorp\\tools\\active-npm-registry.py', 'restore'
+}
+
+task killOspUi(type: Exec) {
+  workingDir '.'
+  commandLine 'cmd', '/c', 'taskkill', '/f', '/im', 'node.exe'
+}
+
+task revertYarnLock(type: Exec) {
+  workingDir '..\\..'
+  commandLine 'cmd', '/c', 'git', 'checkout', 'yarn.lock', '.npmrc'
+}
+
+task yarnInstall(type: Exec) {
+  workingDir '..'
+  commandLine 'cmd', '/c', 'yarn', 'install'
+}
+
+task copyRobotReport {
+  def BUILD_NUMBER = System.getenv('BUILD_NUMBER')
+
+  def ipconfigCmd = 'cmd /c ipconfig'
+  def LOCAL_IP = ipconfigCmd.execute().text.split('\n')[7].split(': ')[1].split()[0]
+  def PORT = '10081'
+
+  doLast {
+    if (BUILD_NUMBER) {
+      println 'Running in Jenkins, copy Robot report ...'
+      copy {
+        from 'e2e-test\\robot\\report'
+        into 'C:\\FBIServices\\service\\robot-framework-report\\RobotReports\\OSP-SUNCORP\\B'+BUILD_NUMBER
+      }
+      println 'Latest Robot report is collected at: http://'+LOCAL_IP+':'+PORT+'/RobotReports/OSP-SUNCORP/B'+BUILD_NUMBER
+    } else {
+      println 'Not running in Jenkins, Not to copy Robot report'
+    }
+  }
+}
+
+task installCheck() {
+  doLast {
+    def npmrc = new File('..\\..\\.npmrc')
+    def yarnLock = new File('..\\..\\yarn.lock')
+    def yarnLockHash = new File('..\\..\\yarn.lock.hash')
+
+    def dependencyHost = 'digital-npm.int.corp.sun'
+    def dnsLookupCmd = 'cmd /c nslookup '+dependencyHost
+
+    def newYarnLockHashValue = MessageDigest.getInstance("MD5").digest(yarnLock.text.bytes).encodeHex().toString()
+    println 'New Yarn Lock Hash value: '+newYarnLockHashValue
+
+    def installing = {
+      yarnLockHash.text = newYarnLockHashValue
+      def dependencyIP = dnsLookupCmd.execute().text.split()[7]
+      npmrc.text = npmrc.text.replaceAll(dependencyHost, dependencyIP)
+      yarnLock.text = yarnLock.text.replaceAll(dependencyHost, dependencyIP)
+      exec {
+        workingDir '..\\..'
+        commandLine 'cmd', '/c', 'lerna', 'bootstrap'
+      }
+    }
+
+    if (yarnLockHash.isFile()) {
+      println 'Previous Yarn Lock Hash file exists: '+yarnLockHash.text
+
+      if (newYarnLockHashValue == yarnLockHash.text) {
+        println 'and has the same Hash value, NOT to install'
+      } else {
+        println 'but Hash value is different, may need to install ...'
+        installing()
+      }
+
+    } else {
+      println 'No previous Yarn Lock Hash file, create Hash file and install dependencies ...'
+      installing()
+    }
+  }
+}
+
+class ApplicationDetector {
+  public static final String applicationLog = "start_application.log"
+  public File fbiDebugLog = new File("fbi_application.log")
+
+  def detectApplicationOn(long maxWaitingTime) {
+    InputStream stream = new FileInputStream(applicationLog)
+    BufferedReader reader = new BufferedReader(new InputStreamReader(stream))
+    long startTime = System.currentTimeMillis()
+    def applicationIsOn = false
+    reader.with {
+      while (applicationIsOn == false) {
+        long waitingTime = System.currentTimeMillis() - startTime
+        boolean timeOut = waitingTime > maxWaitingTime
+
+        if (timeOut) {
+          def errorMessage = "Running application detection time out, application start might failed"
+          println errorMessage
+          throw new RuntimeException(errorMessage)
+        }
+
+        applicationIsOn = tryDetectApplicationReadyFromLog(reader)
+        if (!applicationIsOn) {
+          println 'application not ready yet, keep waiting ...'
+          Thread.sleep(1000)
+        }
+      }
+    }
+    return applicationIsOn
+  }
+
+  def deleteApplicationLog() {
+    def file = new File(applicationLog)
+    if (file.exists()) {
+      file.delete()
+    }
+  }
+
+  def tryDetectApplicationReadyFromLog(BufferedReader reader) {
+    def line
+    while ((line = reader.readLine()) != null) {
+      fbiDebugLog << "^_^: "+line+"\n"
+      println line
+
+      if (line.contains("Failed")) {
+        def errorMessage = "Application starting failed, please manually check the root cause."
+        println errorMessage
+        throw new RuntimeException(errorMessage)
+      }
+
+      if (line.contains("bundle is now VALID") || line.contains("Compiled successfully") || line.contains("Compiled with warnings.") || line.contains("Finished move config and copy assets files") || line.contains("Press Ctrl-C to exit")) {
+        println "Detected application is ready"
+        return true
+      }
+    }
+    fbiDebugLog << "T_T\n"
+    return false
+  }
+}
+
+class ExecWait extends DefaultTask {
+  String command
+  String directory = '.'
+  long maxWaitingTime = 850000
+
+  @TaskAction
+  def spawnProcess() {
+    def detector = new ApplicationDetector()
+    detector.deleteApplicationLog()
+    startApplication()
+    //wait the app to start
+    Thread.sleep(10000)
+    detector.detectApplicationOn(maxWaitingTime)
+  }
+
+  def startApplication() {
+    // for some reason the standard output can not be get in jenkins node, so we redirect it to a file and
+    // read from the file later to detect the port number
+    ProcessBuilder builder = new ProcessBuilder(command.split(' '))
+      .inheritIO()
+      .directory(new File(directory))
+      .redirectErrorStream(true)
+      .redirectOutput(new File(ApplicationDetector.applicationLog))
+
+    builder.start()
+  }
+}

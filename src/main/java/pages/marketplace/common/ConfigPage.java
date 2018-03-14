@@ -28,7 +28,7 @@ public class ConfigPage extends BasePage {
 		super(driver);
 	}
 	
-	public void dismissConfigPage(String stub) {
+	public void dismissConfigPage() {
 		if(find(configPageTitle,30) != null) {
 			// Added this just to add some delay before checking for keyboard
 			find(continueButton,10);
@@ -37,9 +37,9 @@ public class ConfigPage extends BasePage {
 			}
 			
 	        //Uncomment the below line if Stub Server is to be connect
-			if(!stub.equalsIgnoreCase("false")) {
-		        ConnectToStubSever(stub);
-			}
+//			if(!stub.equalsIgnoreCase("false")) {
+//		        ConnectToStubSever(stub);
+//			}
 			for(int i=0; i<=2; i++) {
 				swipeScreen("down");
 			}

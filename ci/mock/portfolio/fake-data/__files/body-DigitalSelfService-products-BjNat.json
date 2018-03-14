@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": "546c425350434d2b4d5445774d4441784e4463314e545138497a354e55464d774d4441314e5455304e44593d",
+      "type": "product",
+      "relationships": {
+        "data": [
+          {
+            "type": "Policy",
+            "id": "HPC000434695"
+          }
+        ]
+      },
+      "links": {
+        "related": "http://portfolio-api/portfolios/546c425350434d2b4d5445774d4441784e4463314e545138497a354e55464d774d4441314e5455304e44593d"
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "HPC000434695",
+      "type": "Policy",
+      "attributes": {
+        "productType": "Insurance",
+        "brand": "SUNCORP",
+        "productSystemCustomerId": "11000147554",
+        "productSystemId": "NPR",
+        "productCategoryGroup": "HPC",
+        "status": "CONFIRMED",
+        "customerId": "149268848",
+        "managed": true
+      },
+      "links": {
+        "self": "http://policy-api/policies?policyNumber=HPC000434695"
+      }
+    }
+  ]
+}
+
+
+
+
+
+
+
+

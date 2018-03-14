@@ -1,0 +1,103 @@
+{
+  "data": [
+    {
+      "id": "546c425350434d2b4d5445774d4441784e4463314e545138497a354e55464d774d4441314e5455304e44593d",
+      "type": "product",
+      "relationships": {
+        "data": [
+          {
+            "type": "Policy",
+            "id": "MPS000481322, HPS000510267"
+          },
+          {
+            "type": "Bank",
+            "id": "2379635"
+          },
+          {
+            "type": "Wealth",
+            "id": "4754128"
+          }
+        ]
+      },
+      "links": {
+        "related": "http://portfolio-api/portfolios/546c425350434d2b4d5445774d4441784e4463314e545138497a354e55464d774d4441314e5455304e44593d"
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "MPS000481322",
+      "type": "Policy",
+      "attributes": {
+        "productType": "Insurance",
+        "brand": "GIO123",
+        "productSystemCustomerId": "11000147554",
+        "productSystemId": "NPR123",
+        "productCategoryGroup": "ABCD",
+        "status": "CONFIRMED",
+        "customerId": "149268848",
+        "managed": true
+      },
+      "links": {
+        "self": "http://policy-api/policies?policyNumber=MPS000481322"
+      }
+    },
+    {
+      "id": "HPS000510267",
+      "type": "Policy",
+      "attributes": {
+        "productType": "Insurance",
+        "brand": "SUNCORP",
+        "productSystemCustomerId": "11000147554",
+        "productSystemId": "NPR123",
+        "productCategoryGroup": "ABCD",
+        "status": "CONFIRMED",
+        "customerId": "149268848",
+        "managed": true
+      },
+      "links": {
+        "self": "http://policy-api/policies?policyNumber=HPS000510267"
+      }
+    },
+    {
+      "id": "2379635",
+      "type": "Bank",
+      "attributes": {
+        "productType": "Bank",
+        "brand": "SUNCORP",
+        "productSystemCustomerId": "15040050958",
+        "productSystemId": "HOG",
+        "productCategoryGroup": "S4"
+      },
+      "links": {
+        "self": "https://api-nonprod.xint.xcorp.xsun/bank/dev/api/accounts/2379635"
+      }
+    },
+    {
+      "id": "4754128",
+      "type": "Wealth",
+      "attributes": {
+        "productType": "Wealth",
+        "brand": "SUNCORP",
+        "productSystemCustomerId": "40000026",
+        "productSystemId": "SNT",
+        "productCategoryGroup": "40000026"
+      },
+      "links": {
+        "self": "https://api-nonprod.xint.xcorp.xsun/wealth/dev/api/accounts/4754128"
+      }
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+

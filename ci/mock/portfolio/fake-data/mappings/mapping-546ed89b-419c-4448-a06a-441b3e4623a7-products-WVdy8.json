@@ -1,0 +1,38 @@
+{
+  "id" : "546ed89b-419c-4448-a06a-441b3e4623a7",
+  "uuid" : "546ed89b-419c-4448-a06a-441b3e4623a7",
+  "request" : {
+    "url" : "/portfolio-api/v2/portfolios/546ed89b-419c-4448-a06a-441b3e4623a7/products",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\r\n  \"data\": {\r\n    \"attributes\": {\r\n      \"productType\": \"Insurance\"\r\n    },\r\n    \"id\": \"HPI000394201\",\r\n    \"type\": \"Product\"\r\n  }\r\n}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-546ed89b-419c-4448-a06a-441b3e4623a7-products-WVdy8.json",
+    "headers" : {
+      "Allow" : "POST",
+      "Access-Control-Allow-Credentials" : "true",
+      "Access-Control-Allow-Headers" : "Allow, Cache-Control, Pragma, Origin, x-requested-with, Content-Type, Accept, Authorization",
+      "Access-Control-Allow-Methods" : "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Allow-Origin" : "chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop",
+      "Access-Control-Max-Age" : "3600",
+      "Cache-Control" : "no-cache, no-store, max-age=0, must-revalidate",
+      "Content-Type" : "application/vnd.api+json",
+      "Correlation-ID" : "1234",
+      "Date" : "Mon, 14 Feb 2018 03:20:02 GMT",
+      "Expires" : "0",
+      "Pragma" : "no-cache",
+      "Strict-Transport-Security" : "max-age=31536000 ; includeSubDomains",
+      "X-Application-Context" : "portfolio-api-v2:sys:8443",
+      "X-Content-Type-Options" : "nosniff",
+      "X-Frame-Options" : "DENY",
+      "X-XSS-Protection" : "1; mode=block",
+      "transfer-encoding" : "chunked",
+      "Connection" : "keep-alive"
+    }
+  }
+}

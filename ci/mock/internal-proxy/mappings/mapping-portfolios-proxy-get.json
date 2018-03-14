@@ -1,0 +1,15 @@
+{
+  "id" : "6b1c2f15-f23b-353f-91bb-50a8150a049e",
+  "uuid" : "6b1c2f15-f23b-353f-91bb-50a8150a049e",
+  "request" : {
+    "url" : "/onesuncorp/api/portfolios",
+    "method" : "GET"
+  },
+  "response" : {
+    "proxyBaseUrl" : "http://localhost:8001",
+    "additionalProxyRequestHeaders": {
+      "X-Test-UUID": "2cd64793-e913-3d60-91db-0472c1e9f7ef",
+      "X-Test-Brand": "SUNCORP"
+    }
+  }
+}

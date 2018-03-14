@@ -1,0 +1,44 @@
+import groovy.transform.Field
+
+@Field String DEFAULT_SERVER = 'portfolio'
+@Field String DEFAULT_MODE = 'playback'
+@Field def final CONFIG = [
+        'portfolio': [
+                port: 8080,
+                proxy: 'https://api2.test.suncorp.com.au/'
+        ]
+]
+
+task mock(type: Exec) {
+    workingDir './mock'
+    commandLine 'java', '-jar', 'wiremock-standalone-2.5.1.jar'
+
+    def server = project.hasProperty('server') ? project.property('server') : DEFAULT_SERVER
+    def mode = project.hasProperty('mode') ? project.property('mode') : DEFAULT_MODE
+
+    def info = CONFIG.get(server)
+    if(info == null) {
+        throw new RuntimeException("""
+************ ${server} not supported, -Pserver=gi-policy | portfolio | dis-account ************
+************ Try to run it with different -Pmode=record | playback | playback:fake *************
+""")
+    }
+
+    switch (mode) {
+        case 'playback':
+            args "--port=${info['port']}", "--root-dir=\"${server}/real-data\"", "--verbose"
+            break
+        case 'playback:fake':
+            args "--port=${info['port']}", "--root-dir=\"${server}/fake-data\"", "--verbose"
+            break
+        case 'record':
+            args "--port=${info['port']}", "--proxy-all=\"${info['proxy']}\"", "--record-mappings", "--root-dir=\"${server}/recording\"", "--verbose", "--match-headers=\"X-Test-UUID,X-Test-Brand\""
+            break
+        case 'proxy':
+            args "--port=${info['port']}", "--root-dir=\"${server}\"", "--verbose"
+            break
+        default:
+            // TODO: add help info or run them together
+            break
+    }
+}

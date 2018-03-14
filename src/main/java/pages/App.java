@@ -37,6 +37,7 @@ import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.digitalVault.SelectItemsPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
+import pages.marketplace.products.ProductsPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
@@ -76,7 +77,8 @@ public class App extends BaseTest {
 	public FolderViewPage folderViewPage = null;
 	public ImagePreviewPage imagePreviewPage = null;
 	public CameraPage cameraPage = null;
-	public GalleryPage galleryPage = null;		
+	public GalleryPage galleryPage = null;
+	public ProductsPage productsPage = null;
 	public LoginAuthPage loginAuthPage = null;
 	public PINOptionsPage pinOptionsPage = null;
 	public ImageViewPage imageViewPage = null;
@@ -123,6 +125,7 @@ public class App extends BaseTest {
 		settingsPage = new SettingsPage(driver);
 		chatbotPage = new ChatbotPage(driver);
 		offersPage = new OffersPage(driver);
+		productsPage = new ProductsPage(driver);
 		digitalVaultPage = new DigitalVaultPage(driver);
 		folderViewPage = new FolderViewPage(driver);
 		imagePreviewPage = new ImagePreviewPage(driver);
@@ -140,11 +143,11 @@ public class App extends BaseTest {
 		accountDetailsPage = new AccountDetailsPage(driver);
 	}
 	
-	@Parameters({ "stub" })
+//	@Parameters({ "stub" })
 	@BeforeMethod(alwaysRun = true)
-	public void beforeEachTest(String stub) throws Exception {
+	public void beforeEachTest() throws Exception {
 		welcomePage.launchApp();
-		configPage.dismissConfigPage(stub);
+		configPage.dismissConfigPage();
 	}
 	
 	@AfterMethod(alwaysRun = true)
@@ -160,7 +163,7 @@ public class App extends BaseTest {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		welcomePage.tapLoginButton();
 		loginPage.enterLoginCredentials(login, pwd);
-		
+
 		loginPage.tapLoginButton();
 		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();

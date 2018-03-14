@@ -2,7 +2,6 @@ package pages.marketplace.auth.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Keyboard;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
@@ -20,7 +19,6 @@ public class LoginPage extends BasePage{
 	private By loginButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By helpButton = By.id("au.com.suncorp.marketplace:id/login_help_text");
 	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
-
 	
 	//TODO Both have same id -> need to differentiate them
 	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
@@ -49,7 +47,8 @@ public class LoginPage extends BasePage{
 	}
 	
 	public void enterEmail(String emailValue) {
-		find(emailField,30);
+		checkEmailField();
+		tapEmailField();
 		typeValue(emailValue, emailField);
 	}
 	
@@ -62,6 +61,8 @@ public class LoginPage extends BasePage{
 	}
 	
 	public void enterPassword(String pwdValue) {
+		checkPasswordField();
+		tapPasswordField();
 		typeValue(pwdValue, passwordField);
 	}
 	
