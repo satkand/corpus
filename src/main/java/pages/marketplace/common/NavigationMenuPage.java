@@ -14,6 +14,7 @@ public class NavigationMenuPage extends BasePage {
 	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
 	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='My Products']");
 	private By homeJourneyMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Home journey']");
+	private By productsCatalogueItem = By.xpath("//android.widget.CheckedTextView[@text='Product catalogue']");
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 	private By fapiSettingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='FAPI Settings']");
@@ -46,6 +47,15 @@ public class NavigationMenuPage extends BasePage {
 	
 	public WebElement checkProductsMenuItem() {
 		 return find(productsMenuItem);
+	}
+	
+	public WebElement checkProductCatalogueItem() {
+		 return find(productsCatalogueItem);
+	}
+	
+	public void tapProductCatalogueMenuItem() {
+		 find(productsCatalogueItem, 30);
+		 tapElement(productsCatalogueItem);
 	}
 	
 	public WebElement checkDigitalVaultMenuItem() {

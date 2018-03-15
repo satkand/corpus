@@ -358,6 +358,35 @@ public class BasePage {
 		String text = find(locator).getAttribute("clickable");
 		return Boolean.parseBoolean(text);
 	}
+	
+	
+//	/**
+//	 * This method is used to find an element in a listview by scrolling to the end
+//	 * 
+//	 * @author Sushmitha
+//	 * @param elementName - element to be searched in the listview
+//	 * @param listViewName - resource id of the listview in which the element is to be searched
+//	 * @return element
+//	 */	 
+	protected WebElement findElementInAListView(String elementName, String listViewName) {
+		String firstElementOnScreen = ((WebElement)  driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
+		String topElement = "";
+		WebElement element = null;
+		swipeScreen("down");
+		 do{					
+			try {			
+				if(driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ))!= null) {
+					element = driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ));
+					break;
+				}			
+			}catch(Exception e) {				
+			}
+			swipeScreen("down");
+			topElement = ((WebElement) driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
+		}while (!firstElementOnScreen.contentEquals(topElement));	
+		return element;
+	}
+	
 	/**
 	 * This method is used to hide the keyboard
 	 * 
