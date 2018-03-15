@@ -41,6 +41,7 @@ import com.google.common.base.Function;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.PressesKeyCode;
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
@@ -250,6 +251,9 @@ public class BasePage {
 			case "DOWN":
 				swipeAction(100, y - 80, 80, y - 700);
 				break;
+			case "DEEPDOWN":
+				swipeAction(100, y - 80, 80, y - 1200);
+				break;
 			case "LEFT":
 				swipeAction(50, y / 2, x - 10, y / 2);
 				break;
@@ -266,10 +270,15 @@ public class BasePage {
 
 	}
 	
-	protected void scrollToElement(By locator) {
+	protected void scrollToElement(By locator, String... args) {
 		int numOfSwipes = 0;
-		while (find(locator) == null && numOfSwipes <= 10) {
-			swipeScreen("down");
+		while (find(locator) == null && numOfSwipes <= 15) {
+			if(args.length < 1) {
+				swipeScreen("down");
+			} else {
+				swipeScreen("deepdown");
+
+			}
 			numOfSwipes++;
 		}
 	}
@@ -388,7 +397,24 @@ public class BasePage {
 	protected boolean isToggleEnabled(By locator) {
 		 return Boolean.parseBoolean(find(locator).getAttribute("checked"));
 	}
+	
+	public void deleteCharactersOnATextField(int charsCount) {
+		for(int i=0;i<charsCount;i++) {
+			((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.KEYCODE_DEL);
+		
+		}
+	}
 
+	public void tapDeviceBackButton(){
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+	}
+	
 	
 //	protected void relaunchAppIn(int val) {
 //		((AndroidDriver) driver).runAppInBackground(Duration.ofSeconds(val));
@@ -986,7 +1012,7 @@ public class BasePage {
 //		if (args.length > 0) {
 //
 //			WebElement element = find(args[0]);
-//			scrollObject.put("element", ((RemoteWebElement) element).getId());
+//			scrollObject.put("element", ((RemoteWebElement) element).getId()
 //		}
 //
 //		js.executeScript("mobile: swipe", scrollObject);

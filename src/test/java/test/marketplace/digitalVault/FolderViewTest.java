@@ -85,7 +85,7 @@ public class FolderViewTest extends App {
 			Assert.assertNotNull(digiVaultCommonPage.checkMoveDocumentToFolderButton(), "Move to folder button not present");
 			digiVaultCommonPage.tapMoveDocumentToFolderButton();
 			Assert.assertNotNull(chooseFolderPage.checkAddFolderButton(), "Add new folder button not present");
-			Assert.assertNotNull(digitalVaultPage.findElementInPage(utils.readTestData("digivault", "hasItems", "rootFolder")), "Folder was not renamed");	
+			Assert.assertNotNull(digitalVaultPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "rootFolder")), "Folder was not renamed");	
 			chooseFolderPage.tapAddFolderButton();
 			Assert.assertNotNull(digiVaultCommonPage.checkPositiveButton(), "Positive button not present");
 			digiVaultCommonPage.enterName(utils.readTestData("digivault", "hasItems", "folder1"));
@@ -152,7 +152,7 @@ public class FolderViewTest extends App {
 			Assert.assertTrue(chooseFolderPage.isMoveToFolderButtonEnabled(), "Move button not enabled");
 			chooseFolderPage.tapMoveToFolderButton();
 			Assert.assertEquals(folderViewPage.getTitle(), utils.readTestData("digivault", "hasItems", "folder1"));
-			Assert.assertNotNull(digitalVaultPage.findElementInPage(utils.readTestData("digivault", "hasItems", "file1")), "File was not moved");
+			Assert.assertNotNull(digitalVaultPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "file1")), "File was not moved");
 		}
 		
 		
@@ -218,7 +218,7 @@ public class FolderViewTest extends App {
 			selectItemsPage.tapSelectAllButton();
 			selectItemsPage.tapMoveButton();
 			
-			Assert.assertNotNull(digitalVaultPage.findElementInPage(utils.readTestData("digivault", "hasItems", "rootFolder")), "Root folder not seen");
+			Assert.assertNotNull(digitalVaultPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "rootFolder")), "Root folder not seen");
 			digiVaultCommonPage.tapFolder(utils.readTestData("digivault", "hasItems", "rootFolder"));
 			Assert.assertNotNull(chooseFolderPage.checkMoveToFolderButton(), "Pick folder button not present");
 			chooseFolderPage.tapMoveToFolderButton();
