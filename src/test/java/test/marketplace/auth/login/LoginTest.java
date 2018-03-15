@@ -52,7 +52,8 @@ public class LoginTest extends App {
 		//Putting the app in background indefinitely and launching it using currentActivity method
 		loginPage.relaunchApp(-1, "Config");
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login screen - page title is not shown");
-		Assert.assertNull(loginPage.checkPasswordFieldError());
+		System.out.println("############"+loginPage.getPasswordFieldValue());
+		Assert.assertEquals(loginPage.getPasswordFieldValue(), "", "VLogin screen - Password field is not empty");
 	}
 	
 	//DMPM-43 - Scenario-4,5
@@ -64,56 +65,66 @@ public class LoginTest extends App {
 		String errorVal = "";
 		navigateToLoginScreen();
 	
-		//Tapping out of the Field
-		
+		/** Tapping out of the Field **/
+		//Empty Email Error
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailEmpty"));
 		loginPage.tapPasswordField();
 		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyEmailError"));
 		
+		//Email length more than 100 characters
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailExceedsMaxLength"));
 		loginPage.tapPasswordField();
 		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "longEmailError"));
 		
+		//Email length less than 2 characters
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailMinLength"));
 		loginPage.tapPasswordField();
 		errorVal = loginPage.getEmailFieldErrorValue().replace("\n\n", " ");
 		Assert.assertEquals(errorVal, utils.readTestData("copy", "loginPage", "shortEmailError"));
 		
+		//Incorrect email format 1
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat1"));
 		loginPage.tapPasswordField();
 		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "invalidEmailError"));
 		
+		//Incorrect email format 2
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat2"));
 		loginPage.tapPasswordField();
 		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "invalidEmailError"));
 		
+		//Empty password - only inline error displayed for password
 		loginPage.enterPassword(utils.readTestData("loginCredentials", "invalidCredentials","passwordEmpty"));
 		loginPage.tapEmailField();
 		Assert.assertEquals(loginPage.getPasswordFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyPasswordError"));
 		
-		//Tapping on the Login button
-		
+		/** Tapping on the Login button **/
+		//Empty Email Error
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailEmpty"));
 		loginPage.tapLoginButton();
 		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyEmailError"));
 		
+		//Email length more than 100 characters
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailExceedsMaxLength"));
 		loginPage.tapLoginButton();
 		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "longEmailError"));
 		
+		//Email length less than 2 characters
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailMinLength"));
 		loginPage.tapLoginButton();
 		errorVal = loginPage.getEmailFieldErrorValue().replace("\n\n", " ");
 		Assert.assertEquals(errorVal, utils.readTestData("copy", "loginPage", "shortEmailError"));
 		
+		//Incorrect email format 1
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat1"));
 		loginPage.tapLoginButton();
 		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "invalidEmailError"));
 		
+		//Incorrect email format 2
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat2"));
 		loginPage.tapLoginButton();
 		Assert.assertEquals(loginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "invalidEmailError"));
 		
+		//Empty password - only inline error displayed for password
 		loginPage.enterPassword(utils.readTestData("loginCredentials", "invalidCredentials","passwordEmpty"));
 		loginPage.tapLoginButton();
 		Assert.assertEquals(loginPage.getPasswordFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyPasswordError"));
@@ -137,8 +148,8 @@ public class LoginTest extends App {
 		Assert.assertEquals(errorVal, utils.readTestData("copy", "loginPage", "shortEmailError"));
 		loginPage.tapPasswordField();
 		Assert.assertEquals(loginPage.getPasswordFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyPasswordError"));
-		
-		loginPage.enterEmail("ab@ab.c");
+		//Check inline errors are removed as valid credentials are entered
+		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials", "login"));
 		Assert.assertNull(loginPage.checkEmailFieldError());
 		loginPage.enterPassword("a");
 		Assert.assertNull(loginPage.checkPasswordFieldError());
@@ -162,15 +173,15 @@ public class LoginTest extends App {
 	//DMPM-163 - Scenario-3  - incorrect credentials: 401 Bad Username or Password
 	
 	@Test (groups = {"DMPM-163", "DMPM-1137", "marketplace", "login", "priority-high"})
-	public void testErrorScenarios() {
+	public void testLoginServerSideValidations() {
 		navigateToLoginScreen();
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidPassword"));
 		loginPage.tapLoginButton();
-		Assert.assertNotNull(loginPage.checkSnackbartText(), "Login Screen -  The snackbar not displayed");
+		Assert.assertNotNull(loginPage.checkSnackbarText(), "Login Screen -  The snackbar not displayed");
 		Assert.assertNotNull(loginPage.checkSnackbarButton(), "Login Screen - The button not displayed on the snackbar");
 		Assert.assertEquals(loginPage.getSnackbarTextValue(), utils.readTestData("copy", "loginPage", "snackbarTextIncorrectLogin"));
 		loginPage.tapSnackbarOkButton();
-		Assert.assertNull(loginPage.checkSnackbartText(), "Login Screen - The snackbar still displayed");
+		Assert.assertNull(loginPage.checkSnackbarText(), "Login Screen - The snackbar still displayed");
 	}
 	
 	

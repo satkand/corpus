@@ -33,9 +33,6 @@ public class LoginPage extends BasePage{
 	private By errorSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By errorSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
 	
-	//Elements in the enable PIN page
-	private By enablePinScreenTitle = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
-	
 	public WebElement checkLoginPageTitle(){
 		return find(loginPageTitle,20);
 	}
@@ -101,7 +98,7 @@ public class LoginPage extends BasePage{
 	}
 		
 	public WebElement checkEmailFieldError(){
-		return find(emailFieldError);
+		return find(emailFieldError,30);
 	}
 	
 	public String getEmailFieldErrorValue() {
@@ -124,7 +121,7 @@ public class LoginPage extends BasePage{
 		selectSuncorpApp(time, appName);
 	}
 	
-	public WebElement checkSnackbartText() {
+	public WebElement checkSnackbarText() {
 		return find(errorSnackbarText);
 	}
 	

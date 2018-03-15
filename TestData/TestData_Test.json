@@ -836,7 +836,7 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "v@v.v",
+			"login": "sun@sun.com",
 			"pwd": "Password1"
 		},
 		"invalidCredentials": {
@@ -982,6 +982,12 @@
 		"digiVaultPage" : {
 			"digiVaultEmptyImageTitle" : "Your vault is empty",
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
+		},
+		"brandIcons": {
+			"aamiBrandIcon": "AAMI member login",
+			"apiaBrandIcon": "APIA member login",
+			"gioBrandIcon": "GIO member login",
+			"shannonsBrandIcon": "Shannons member login"
 		}
 	}
 }
