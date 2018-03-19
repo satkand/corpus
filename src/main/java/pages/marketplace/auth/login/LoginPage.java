@@ -20,6 +20,7 @@ public class LoginPage extends BasePage{
 	private By loginButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By helpButton = By.id("au.com.suncorp.marketplace:id/login_help_text");
 	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By noCredentialsButton = By.id("au.com.suncorp.marketplace:id/noCredentialsButton");
 
 	
 	//TODO Both have same id -> need to differentiate them
@@ -34,6 +35,14 @@ public class LoginPage extends BasePage{
 	
 	public WebElement checkLoginPageTitle(){
 		return find(loginPageTitle,20);
+	}
+	
+	public WebElement checkNoCredentialsButton() {
+		return find(noCredentialsButton);
+	}
+	
+	public void tapNoCredentialsButton() {
+		tapElement(noCredentialsButton);
 	}
 	
 	public String getLoginPageTitle(){

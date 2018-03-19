@@ -1,1021 +1,970 @@
 {
-	"appPackage" : {
-       "packageName" : "au.com.suncorp.mobile",
-       "platform": "aos"
+    "appPackage": {
+        "packageName": "au.com.suncorp.mobile",
+        "platform": "aos"
     },
-    "pinEntries" :{
-		"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
-		"validPINEntry1" : "7634",
-		"validPINEntry2" : "2580"
-	},
-	"noSuncorpBankAccounts" :{
-		"login": "ab@ab.com",
-		"pwd": "Password1"
-	},
-	"portfolio" :{
-		"loginEmptyProdList":{
-				"login": "rest@rest.com",
-				"pwd": "Password1"
-			},
-		"loginProdList":{
-				"login": "best@best.com",
-				"pwd": "Password1",
-				"bankingProducts": [
-					{
-						"brand": "Suncorp",
-         					"bsb":"123-456",
-          					"accountNumber": "111111111",
-          					"description": "Holidays Savings Accounts",
-          					"currentBalance": "$123,456.25",
-          					"availableBalance": "$12,345.00"
-					},
-					{
-						"brand": "Suncorp",
-          					"bsb":"946-692",
-          					"accountNumber": "222222222",
-          					"description": "Everyday Options",
-          					"currentBalance": "-$123,456.25",
-          					"availableBalance": "-$12,345.00"
-					}]
-			}
-	},
-	"hasSuncorpBankAccounts" :{
-		"login": "ab@ab.com",
-		"pwd": "Password1",
-		"netWorthAmount": "$7,550.35",
-		"bankAccounts": "",
-		"currentMonth": "March 2018",
-		"spendingsAmountPerMonth": [
-			{
-				"month": "January 2018",
-				"amount": "$23.54"
-			},
-			{
-				"month": "February 2018",
-				"amount": "$23.54"
-			},
-			{
-				"month": "March 2018",
-				"amount": "$23.54"
-			},
-			{
-				"month": "April 2017",
-				"amount": "$23.54"
-			},
-			{
-				"month": "May 2017",
-				"amount": "$23.54"
-			},
-			{
-				"month": "June 2017",
-				"amount": "$23.54"
-			},
-			{
-				"month": "July 2017",
-				"amount": "$23.54"
-			},
-			{
-				"month": "August 2017",
-				"amount": "$23.54"
-			},
-			{
-				"month": "September 2017",
-				"amount": "$37,223.35"
-			},
-			{
-				"month": "October 2017",
-				"amount": "$23.54"
-			},
-			{
-				"month": "November 2017",
-				"amount": "$23.54"
-			},
-			{
-				"month": "December 2017",
-				"amount": "$3,789.32"
-			}
-		],
-		"spendingsByCategories": [
-			{
-				"month": "February 2018",
-				"categoriesList": [
-					{
-					"name": "Food & drink",
-					"amount": "$23.54",
-					"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "January 2018",
-				"categoriesList": [
-					{
-					"name": "Food & drink",
-					"amount": "$23.54",
-					"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "December 2017",
-				"categoriesList": [
-					{
-					"id": 7,
-					"name": "Health & fitness",
-					"amount": "$1,999.99",
-					"currency": "AUD",
-					"transactionCount": 2
-					},
-					{
-					"id": 0,
-					"name": "Bills & utilities",
-					"amount": "$1,987.00",
-					"currency": "AUD",
-					"transactionCount": 1
-					},
-					{
-					"id": 3,
-					"name": "Entertainment",
-					"amount": "$98.21",
-					"currency": "AUD",
-					"transactionCount": 5
-					},
-					{
-					"id": 2,
-					"name": "Education & family",
-					"amount": "$38.22",
-					"currency": "AUD",
-					"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "October 2017",
-				"categoriesList": [
-					{
-						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "September 2017",
-				"categoriesList": [
-				{
-					"id": 13,
-					"name": "Transport",
-					"amount": "$17,584.25",
-					"currency": "AUD",
-					"transactionCount": 25
-				},
-				{
-					"id": 4,
-					"name": "Financial",
-					"amount": "$5,533.20",
-					"currency": "AUD",
-					"transactionCount": 55
-				},
-				{
-					"id": 6,
-					"name": "Groceries",
-					"amount": "$4,961.55",
-					"currency": "AUD",
-					"transactionCount": 85
-				},
-				{
-					"id": 12,
-					"name": "Shopping",
-					"amount": "$2,304.25",
-					"currency": "AUD",
-					"transactionCount": 35
-				}
-				]
-			},
-			{
-				"month": "August 2017",
-				"categoriesList": [
-					{
-						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "June 2017",
-				"categoriesList": [
-					{
-						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "May 2017",
-				"categoriesList": [
-					{
-						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "March 2018",
-				"categoriesList": [
-					{
-						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			}
-		],
-		"spendingsByVendor": [
-			{
-				"month": "February 2018",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "December 2017",
-				"vendorsList": [
-					{
-					"name": "Suncorp Home Loan",
-					"amount": "$2,789.65",
-					"transactionCount": 3
-					},
-					{
-					"name": "Clinton's Cafe",
-					"amount": "$198.65",
-					"transactionCount": 3
-					},
-					{
-					"name": "Jimmy Bloggs Barber",
-					"amount": "$128.43",
-					"transactionCount": 1
-					},
-					{
-					"name": "Phil's diner",
-					"amount": "$38.21",
-					"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "November 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "September 2017",
-				"vendorsList": [
-					{
-					"name": "Other",
-					"amount": "$24,262.30",
-					"transactionCount": 90
-					},
-					{
-					"name": "Coles",
-					"amount": "$2,265.45",
-					"transactionCount": 25
-					},
-					{
-					"name": "Woolworths",
-					"amount": "$1,787.40",
-					"transactionCount": 35
-					},
-					{
-					"name": "BUPA",
-					"amount": "$1,599.50",
-					"transactionCount": 5
-					}
-				]
-			},
-			{
-				"month": "August 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "July 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "June 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "April 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-
-					}
-				]
-			},
-			{
-				"month": "March 2018",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-
-					}
-				]
-			}
-		],
-		"emptyCategoryMonths": [
-			"November 2017",
-			"July 2017",
-			"April 2017"
-		],
-		"emptyVendorMonths": [
-			"January 2018",
-			"October 2017",
-			"May 2017"
-		]
-	},
-	"hasSuncorpBankAccounts_old" :{
-		"login": "flash@dc.com",
-		"pwd": "Password1",
-		"netWorthAmount": "-$893,818.75",
-		"bankAccounts": "",
-		"spendingsAmountPerMonth": [
-			{
-				"month": "January 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "February 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "March 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "April 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "May 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "June 2017",
-				"amount": "-$50.00"
-			},
-			{
-				"month": "July 2017",
-				"amount": "-$100.00"
-			},
-			{
-				"month": "August 2017",
-				"amount": "-$200.00"
-			},
-			{
-				"month": "September 2017",
-				"amount": "-$10,000,025,285.20"
-			},
-			{
-				"month": "October 2017",
-				"amount": "-$400.00"
-			},
-			{
-				"month": "November 2017",
-				"amount": "-$522.34"
-			},
-			{
-				"month": "December 2017",
-				"amount": "-$600.00"
-			}
-		],
-		"spendingsByVendor": [
-			{	
-				"month": "December 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "1",
-						"Name": "Coles",
-						"Amount": "-$600.00"
-					}
-				]
-			},
-			{	
-				"month": "November 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "2",
-						"Name": "Coles",
-						"Amount": "-$522.34"
-					}
-				]
-			},
-			{
-				"month": "October 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "1",
-						"Name": "Coles",
-						"Amount": "-$400.00"
-					}
-				]
-			},
-			{
-				"month": "September 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "6",
-						"Name": "Coles",
-						"Amount": "-$10,000,000,622.33"
-					}, 
-					{
-						"transactionsText": "275",
-						"Name": "Woolworths",
-						"Amount": "-$22,840.53"
-					},
-					{
-						"transactionsText": "2",
-						"Name": "Telstra",
-						"Amount": "-$122.34"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "ALDI",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Big W",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Cineplex",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Click Energy",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Cold Rock",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Costco",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Curves",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "David Jones",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Dodo",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Dominos",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "IGA",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Kmart",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Myer",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Optus",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Other",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Vaya",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Vodafone",
-						"Amount": "-$100.00"
-					}
-				]
-			},
-			{	
-				"month": "August 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "1",
-						"Name": "Coles",
-						"Amount": "-$200.00"
-					}
-				]
-			},
-			{	
-				"month": "July 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "1",
-						"Name": "Coles",
-						"Amount": "-$100.00"
-					}
-				]
-			}
-		],
-		"spendingsByCategories": [
-			{	
-				"month": "December 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "1",
-						"Name": "Transport",
-						"Amount": "-$600.00"
-					}
-				]
-			},
-			{	
-				"month": "November 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "2",
-						"Name": "Transport",
-						"Amount": "-$522.34"
-					}
-				]
-			},
-			{	
-				"month": "October 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "1",
-						"Name": "Transport",
-						"Amount": "-$400.00"
-					}
-				]
-			},
-			{	
-				"month": "September 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "9",
-						"Name": "Transport",
-						"Amount": "-$10,000,000,743.18"
-					}, 
-					{
-						"transactionsText": "113",
-						"Name": "Groceries",
-						"Amount": "-$10,920.02"
-					},
-					{
-						"transactionsText": "104",
-						"Name": "Cash & gifts",
-						"Amount": "-$10,022.68"
-					},
-					{
-						"transactionsText": "11",
-						"Name": "Shopping",
-						"Amount": "-$807.19"
-					},
-					{
-						"transactionsText": "9",
-						"Name": "Food & drink",
-						"Amount": "-$555.85"
-					},
-					{
-						"transactionsText": "10",
-						"Name": "Bills & utilities",
-						"Amount": "-$529.14"
-					},
-					{
-						"transactionsText": "7",
-						"Name": "Health & fitness",
-						"Amount": "-$356.02"
-					},
-					{
-						"transactionsText": "5",
-						"Name": "Travel",
-						"Amount": "-$345.85"
-					},
-					{
-						"transactionsText": "6",
-						"Name": "Home",
-						"Amount": "-$292.02"
-					},
-					{
-						"transactionsText": "9",
-						"Name": "Entertainment",
-						"Amount": "-$233.36"
-					},
-					{
-						"transactionsText": "8",
-						"Name": "Financial",
-						"Amount": "-$197.36"
-					},
-					{
-						"transactionsText": "2",
-						"Name": "Internal transfers & savings",
-						"Amount": "-$107.34"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Other",
-						"Amount": "-$72.17"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Other",
-						"Amount": "-$52.17"
-					},
-					{
-						"transactionsText": "5",
-						"Name": "Education & family",
-						"Amount": "-$50.85"
-					}
-				]
-			},
-			{	
-				"month": "August 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "1",
-						"Name": "Transport",
-						"Amount": "-$200.00"
-					}
-				]
-			},
-			{	
-				"month": "July 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "1",
-						"Name": "Transport",
-						"Amount": "-$100.00"
-					}
-				]
-			}
-		],
-		"emptyCategoryMonths": [
-			"May 2017",
-			"April 2017",
-			"March 2017",
-			"February 2017",
-			"January 2017"
-		],
-		"emptyVendorMonths": [
-			"May 2017",
-			"April 2017",
-			"March 2017",
-			"February 2017",
-			"January 2017"
-		]
-	},
-	"hasVehicles" :{
-		"login": "ab@ab.com",
-		"pwd": "Password1",
-		"vehiclesList": [
-			{
-				"description": "2000 Honda Civic 2.0",
-				"RegNo": "ABC123"
-			},
-			{
-				"description": "2000 Jayco Eagle Outback",
-				"RegNo": "ABC555"
-			}
-		]
-	},
-	"digivault" : {
-		"hasItems" : {
-			"login" : "b@b.com",
-			"pwd" : "Password1",
-			"newname" : "NewName",
-			"folderName" : "ab",
-			"file1" : "file 1",
-			"file2" : "file 2",
-			"folder1" : "folder 1",
-			"rootFolder" : "Document storage",
-			"images" : ["File A", "File B" , "File C"]
-		}
-	},
-	"registration" : {
-		"success":{
-			"firstName" : "Abc",
-			"surname" : "xyz",
-			"date" : "12/02/2002",
-			"postcode" : "3010",
-			"email" : "abc",
-			"mobile" : "0428737283",
-			"password" : "Password1"
-		},
-		"failure" : {
-			"1letterSurname" : "a",
-			"longSurname" : "ahshsfhoseohfosehowoweowegegohnsfgsohosei",
-			"longFirstName" : "niguftjohfyhmljolmklojmeklojkii",
-			"30charFirstname" : "niguftjohfyhmljolmklojmeklojki",
-			"specialCharFirstname" : "Don!@#' Trum**-",
-			"noSpecialCharName" : "Don' Trum-",
-			"specialCharSurname" : "Don!@#' Trum**-",
-			"longPostCode" : "979797989",
-			"emailLong" : "giehrgireghewhgowhgowgowehgaesvnoroie",
-			"mobileLong" : "453592486085082350",
-			"mobileInvalid" : "9897494549",
-			"shortPassword" : "4tger",
-			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
-			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
-			"onlyCharPassword" : "football",
-			"onlyCharUpperCasePassword" : "FOOTBALL"
-		}
-	},
-	"chatbot" :{
-		"externalUrl": {
-			"input" : "suncorp",
-			"websiteText" : "Suncorp Group website",
-			"websiteURL" : "https://www.suncorp.com.au/"
-		},
-		"phNo": {
-			"input" : "suncorp",
-			"phone" : "13 11 55"
-		},
-		"paragraph": {
-			"input": "suncorp",
-			"responses": [
-				"With a history dating back to 1916, Suncorp is one of Australia's most trusted financial services organisations.",
-				"Visit the Suncorp Group website or call us 13 11 55."
-			]
-		},
-		"singleResponseFromChatbot": {
-			"input": "test",
-			"responses": "Sorry, I don’t understand. Could you please reword your question."
-		}
-	},
-	"loginCredentials" :{
-		"validLoginCredentials" : {
-			"login1":{
-				"login": "flash@dc.com",
-				"pwd": "Password1"
-			},
-			"hasWealthCategoriesAndVendorsData":{
-				"login": "flash@dc.com",
-				"pwd": "Password1"
-			}
-		},
-		"invalidLoginCredentials_appSideValidations" :[ 
-			{
-				"login": "",
-				"pwd": "",
-				"loginError": "This field is required",
-				"pwdError": "This field is required",
-				"loginButton": false
-			},
-			{
-				"login": "a",
-				"pwd": "p",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@",
-				"pwd": "p1",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.",
-				"pwd": "$%",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.",
-				"pwd": "pqr@",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.c",
-				"pwd": "1234567",
-				"loginError": "Please enter a valid email address",
-				"pwdError": null,
-				"loginButton": false
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "123456",
-				"loginError": null,
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null,
-				"loginButton": true
-			}
-		],
-
-			"invalidLoginCredentials_ServerSideValidations" :[ 
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			}
-		]
-	},
-	"hasNoProducts" : {
-		"login": "fer@fer.com",
-		"pwd": "Password1"
-	},
-	"PIN" :{
-		"loginWithExistingPin" : {
-			"login": "b@b.com",
-			"pwd": "Password1",
-			"pin": "2580"
-		},
-		"loginWithoutExistingPin" : {
-			"login": "c@b.com",
-			"pwd": "Password1"
-		}
-	},
-	"copy" : {
-		"loginPage": {
-			"loginPageTitle": "Log in"
-		},
-		"portfolio": {
-			"emptyStateLabel": "Looks like you haven't added any products yet.",
-			"bottomSheetLabel": "What type of product?",
-			"availableBalanceLable": "Available balance",
-			"currentBalanceLabel": "Current balance",
-			"accountDetailsLabel": "Account Details"
-		},
-		"pinSetupPage": {
-			"enterPINLabel": "Enter a new 4-digit PIN",
-			"reEnterPINLabel": "Re-enter your new 4-digit PIN",
-			"invalidPINAlertMessage": "This PIN might be easily guessed. Please use a combination without repeated or consecutive numbers.",
-			"pinsDonotMatchErrorMessage": "PINs don’t match. Please try again.",
-			"pinSuccessfullySetMessage": "PIN set up"
-		},		
-		"pinReAuthPasswordPage" : {
-			"forgottenPINPageTitle": "Forgotten password?",
-			"pinReAuthPasswordLabel": "Please enter your password to reset your PIN",
-			"passwordRequiredError" : "Field is required"
-		},
-		"financePage":{
-			"netWorthLabel": "Your net worth",
-			"netWorthDisclaimerMessage": "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days."
-		},
-		"spendingsPage": {
-			"emptyTransactionsMessage": "Sorry, you don't have any transactions yet",
-			"emptyTransactionsHintMessage": "Please note: Transactions will take up to 24 hours to appear."
-		},
-		"homePropertyPage": {
-			"homeJourneyBannerHeading": "Hunting for a property?",
-			"homeJourneyBannerDescription": "Our Home Journey has helpful tips & ideas to guide you through each stage of the process."
-		},
-		"homeJourneyPage": {
-			"journeyTitleText": "Our guide to\nbuying a home",
-			"journeySubtitleText": "Buying a home can feel overwhelming.",
-			"journeyDescriptionText": "We've put together some helpful tips & ideas to guide you through each stage of the process - from the decision to buy a home to picking up the keys.",
-			
-			"planningTitleText": "Planning",
-			"planningDescriptionText": "The decision to buy a home is one of the biggest you're likely to ever make. Getting your planning right from the start, can help to save you more than just money in the end.",
-			"planningReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/planning.html",
-
-			"houseHuntingTitleText": "House hunting",
-			"houseHuntingDescriptionText": "It's easy to get lost in the excitement of searching for your dream home when it comes to the house hunting stage. These steps will help to keep you focused on the things that matter…",
-			"houseHuntingReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/house-hunting.html",
-
-			"gettingReadyTitleText": "Getting ready to buy",
-			"gettingReadyDescriptionText": "You're almost at the finish line, you've found the home and your offer was accepted, but there's still a lot left to do before you can get those keys. Knowing the steps for getting ready to buy your…",
-			"gettingReadyReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/ready-to-buy.html",
-
-			"movingInTitleText": "Moving in",
-			"movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything…",
-			"movingInReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/moving-into-your-home.html"
-		},
-
-		"registrationPage" : {
-			"shortSurnameErrorMsg" : "Must be between 2 and 40 characters",
-			"accountCreatingMsg" : "Registering details",
-			"fieldErrorMsg" : "Field is required",
-			"registerPage1Title" : "Step 1 of 3",
-			"registerPage2Title" : "Step 2 of 3",
-			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
-			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
-			"longPostcodeErrorMsg" : "Must be 4 digits",
-			"firstNameUserTip" : "Middle name not required",
-			"mobileNumberUserTip" : "Use 04XXXXXXXX format",
-			"invalidEmailErrorMsg" : "Please enter a valid email address",
-			"invalidMobileErrorMsg" : "Must use 04XXXXXXXX format",
-			"shortPasswordErrorMsg" : "Must be at least 7 characters long",
-			"firstNamePasswordErrorMsg" : "Must not contain your first name",
-			"lastNamePasswordErrorMsg" : "Must not contain your last name",
-			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
-			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
-			"passwordNotMatch" : "Password do not match"
-		},
-		"chatbot": {
-			"phoneLabel": "CALL NOW"
-		},
-		"offersPage": {
-			"healthTab": {
-				"offerTitle": "Health Insurance",
-				"offerDescription": "We're bringing our trusted reputation to health insurance. Cover for you & those that matter most."
-			},
-			"wealthTab": {
-				"offerTitle": "Open a bank account",
-				"offerDescription": "More than 840,000 Australians have a bank account with Suncorp Bank. Stick with the brand you know you can trust."
-			},
-			"propertyTab": {
-				"offerTitle": "Building Insurance",
-				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
-			},
-			"vehiclesTab": {
-				"offerTitle": "CTP Insurance",
-				"offerDescription": "Take out a new CTP policy with Suncorp Insurance & get a $50 gift card. T&Cs apply."
-			},
-			"overviewTab": {
-				"offerTitle": "Building Insurance",
-				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
-			}
-		},
-		"digiVaultPage" : {
-			"digiVaultEmptyImageTitle" : "Your vault is empty",
-			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
-		}
-	}
+    "pinEntries": {
+        "invalidPINEntries": ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
+        "validPINEntry1": "7634",
+        "validPINEntry2": "2580"
+    },
+    "noSuncorpBankAccounts": {
+        "login": "ab@ab.com",
+        "pwd": "Password1"
+    },
+    "portfolio": {
+        "loginEmptyProdList": {
+            "login": "a@b.c",
+            "pwd": "Password1"
+        },
+        "loginProdList": {
+            "login": "a@b.c",
+            "pwd": "Password1",
+            "bankingProducts": [{
+                                "brand": "Suncorp",
+                                "bsb": "123-456",
+                                "accountNumber": "111111111",
+                                "description": "Holidays Savings Accounts",
+                                "currentBalance": "$123,456.25",
+                                "availableBalance": "$12,345.00"
+                                },
+                                {
+                                "brand": "Suncorp",
+                                "bsb": "946-692",
+                                "accountNumber": "222222222",
+                                "description": "Everyday Options",
+                                "currentBalance": "-$123,456.25",
+                                "availableBalance": "-$12,345.00"
+                                }
+                                ]
+        }
+    },
+    "hasSuncorpBankAccounts": {
+        "login": "ab@ab.com",
+        "pwd": "Password1",
+        "netWorthAmount": "$7,550.35",
+        "bankAccounts": "",
+        "currentMonth": "March 2018",
+        "spendingsAmountPerMonth": [{
+                                    "month": "January 2018",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "February 2018",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "March 2018",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "April 2017",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "May 2017",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "June 2017",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "July 2017",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "August 2017",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "September 2017",
+                                    "amount": "$37,223.35"
+                                    },
+                                    {
+                                    "month": "October 2017",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "November 2017",
+                                    "amount": "$23.54"
+                                    },
+                                    {
+                                    "month": "December 2017",
+                                    "amount": "$3,789.32"
+                                    }
+                                    ],
+        "spendingsByCategories": [{
+                                  "month": "February 2018",
+                                  "categoriesList": [{
+                                                     "name": "Food & drink",
+                                                     "amount": "$23.54",
+                                                     "transactionCount": 3
+                                                     }]
+                                  },
+                                  {
+                                  "month": "January 2018",
+                                  "categoriesList": [{
+                                                     "name": "Food & drink",
+                                                     "amount": "$23.54",
+                                                     "transactionCount": 3
+                                                     }]
+                                  },
+                                  {
+                                  "month": "December 2017",
+                                  "categoriesList": [{
+                                                     "id": 7,
+                                                     "name": "Health & fitness",
+                                                     "amount": "$1,999.99",
+                                                     "currency": "AUD",
+                                                     "transactionCount": 2
+                                                     },
+                                                     {
+                                                     "id": 0,
+                                                     "name": "Bills & utilities",
+                                                     "amount": "$1,987.00",
+                                                     "currency": "AUD",
+                                                     "transactionCount": 1
+                                                     },
+                                                     {
+                                                     "id": 3,
+                                                     "name": "Entertainment",
+                                                     "amount": "$98.21",
+                                                     "currency": "AUD",
+                                                     "transactionCount": 5
+                                                     },
+                                                     {
+                                                     "id": 2,
+                                                     "name": "Education & family",
+                                                     "amount": "$38.22",
+                                                     "currency": "AUD",
+                                                     "transactionCount": 3
+                                                     }
+                                                     ]
+                                  },
+                                  {
+                                  "month": "October 2017",
+                                  "categoriesList": [{
+                                                     "name": "Food & drink",
+                                                     "amount": "$23.54",
+                                                     "transactionCount": 3
+                                                     }]
+                                  },
+                                  {
+                                  "month": "September 2017",
+                                  "categoriesList": [{
+                                                     "id": 13,
+                                                     "name": "Transport",
+                                                     "amount": "$17,584.25",
+                                                     "currency": "AUD",
+                                                     "transactionCount": 25
+                                                     },
+                                                     {
+                                                     "id": 4,
+                                                     "name": "Financial",
+                                                     "amount": "$5,533.20",
+                                                     "currency": "AUD",
+                                                     "transactionCount": 55
+                                                     },
+                                                     {
+                                                     "id": 6,
+                                                     "name": "Groceries",
+                                                     "amount": "$4,961.55",
+                                                     "currency": "AUD",
+                                                     "transactionCount": 85
+                                                     },
+                                                     {
+                                                     "id": 12,
+                                                     "name": "Shopping",
+                                                     "amount": "$2,304.25",
+                                                     "currency": "AUD",
+                                                     "transactionCount": 35
+                                                     }
+                                                     ]
+                                  },
+                                  {
+                                  "month": "August 2017",
+                                  "categoriesList": [{
+                                                     "name": "Food & drink",
+                                                     "amount": "$23.54",
+                                                     "transactionCount": 3
+                                                     }]
+                                  },
+                                  {
+                                  "month": "June 2017",
+                                  "categoriesList": [{
+                                                     "name": "Food & drink",
+                                                     "amount": "$23.54",
+                                                     "transactionCount": 3
+                                                     }]
+                                  },
+                                  {
+                                  "month": "May 2017",
+                                  "categoriesList": [{
+                                                     "name": "Food & drink",
+                                                     "amount": "$23.54",
+                                                     "transactionCount": 3
+                                                     }]
+                                  },
+                                  {
+                                  "month": "March 2018",
+                                  "categoriesList": [{
+                                                     "name": "Food & drink",
+                                                     "amount": "$23.54",
+                                                     "transactionCount": 3
+                                                     }]
+                                  }
+                                  ],
+        "spendingsByVendor": [{
+                              "month": "February 2018",
+                              "vendorsList": [{
+                                              "name": "Phil's diner",
+                                              "amount": "$23.54",
+                                              "transactionCount": 3
+                                              }]
+                              },
+                              {
+                              "month": "December 2017",
+                              "vendorsList": [{
+                                              "name": "Suncorp Home Loan",
+                                              "amount": "$2,789.65",
+                                              "transactionCount": 3
+                                              },
+                                              {
+                                              "name": "Clinton's Cafe",
+                                              "amount": "$198.65",
+                                              "transactionCount": 3
+                                              },
+                                              {
+                                              "name": "Jimmy Bloggs Barber",
+                                              "amount": "$128.43",
+                                              "transactionCount": 1
+                                              },
+                                              {
+                                              "name": "Phil's diner",
+                                              "amount": "$38.21",
+                                              "transactionCount": 3
+                                              }
+                                              ]
+                              },
+                              {
+                              "month": "November 2017",
+                              "vendorsList": [{
+                                              "name": "Phil's diner",
+                                              "amount": "$23.54",
+                                              "transactionCount": 3
+                                              }]
+                              },
+                              {
+                              "month": "September 2017",
+                              "vendorsList": [{
+                                              "name": "Other",
+                                              "amount": "$24,262.30",
+                                              "transactionCount": 90
+                                              },
+                                              {
+                                              "name": "Coles",
+                                              "amount": "$2,265.45",
+                                              "transactionCount": 25
+                                              },
+                                              {
+                                              "name": "Woolworths",
+                                              "amount": "$1,787.40",
+                                              "transactionCount": 35
+                                              },
+                                              {
+                                              "name": "BUPA",
+                                              "amount": "$1,599.50",
+                                              "transactionCount": 5
+                                              }
+                                              ]
+                              },
+                              {
+                              "month": "August 2017",
+                              "vendorsList": [{
+                                              "name": "Phil's diner",
+                                              "amount": "$23.54",
+                                              "transactionCount": 3
+                                              }]
+                              },
+                              {
+                              "month": "July 2017",
+                              "vendorsList": [{
+                                              "name": "Phil's diner",
+                                              "amount": "$23.54",
+                                              "transactionCount": 3
+                                              }]
+                              },
+                              {
+                              "month": "June 2017",
+                              "vendorsList": [{
+                                              "name": "Phil's diner",
+                                              "amount": "$23.54",
+                                              "transactionCount": 3
+                                              }]
+                              },
+                              {
+                              "month": "April 2017",
+                              "vendorsList": [{
+                                              "name": "Phil's diner",
+                                              "amount": "$23.54",
+                                              "transactionCount": 3
+                                              
+                                              }]
+                              },
+                              {
+                              "month": "March 2018",
+                              "vendorsList": [{
+                                              "name": "Phil's diner",
+                                              "amount": "$23.54",
+                                              "transactionCount": 3
+                                              
+                                              }]
+                              }
+                              ],
+        "emptyCategoryMonths": [
+                                "November 2017",
+                                "July 2017",
+                                "April 2017"
+                                ],
+        "emptyVendorMonths": [
+                              "January 2018",
+                              "October 2017",
+                              "May 2017"
+                              ]
+    },
+    "hasSuncorpBankAccounts_old": {
+        "login": "flash@dc.com",
+        "pwd": "Password1",
+        "netWorthAmount": "-$893,818.75",
+        "bankAccounts": "",
+        "spendingsAmountPerMonth": [{
+                                    "month": "January 2017",
+                                    "amount": "$0.00"
+                                    },
+                                    {
+                                    "month": "February 2017",
+                                    "amount": "$0.00"
+                                    },
+                                    {
+                                    "month": "March 2017",
+                                    "amount": "$0.00"
+                                    },
+                                    {
+                                    "month": "April 2017",
+                                    "amount": "$0.00"
+                                    },
+                                    {
+                                    "month": "May 2017",
+                                    "amount": "$0.00"
+                                    },
+                                    {
+                                    "month": "June 2017",
+                                    "amount": "-$50.00"
+                                    },
+                                    {
+                                    "month": "July 2017",
+                                    "amount": "-$100.00"
+                                    },
+                                    {
+                                    "month": "August 2017",
+                                    "amount": "-$200.00"
+                                    },
+                                    {
+                                    "month": "September 2017",
+                                    "amount": "-$10,000,025,285.20"
+                                    },
+                                    {
+                                    "month": "October 2017",
+                                    "amount": "-$400.00"
+                                    },
+                                    {
+                                    "month": "November 2017",
+                                    "amount": "-$522.34"
+                                    },
+                                    {
+                                    "month": "December 2017",
+                                    "amount": "-$600.00"
+                                    }
+                                    ],
+        "spendingsByVendor": [{
+                              "month": "December 2017",
+                              "vendorsList": [{
+                                              "transactionsText": "1",
+                                              "Name": "Coles",
+                                              "Amount": "-$600.00"
+                                              }]
+                              },
+                              {
+                              "month": "November 2017",
+                              "vendorsList": [{
+                                              "transactionsText": "2",
+                                              "Name": "Coles",
+                                              "Amount": "-$522.34"
+                                              }]
+                              },
+                              {
+                              "month": "October 2017",
+                              "vendorsList": [{
+                                              "transactionsText": "1",
+                                              "Name": "Coles",
+                                              "Amount": "-$400.00"
+                                              }]
+                              },
+                              {
+                              "month": "September 2017",
+                              "vendorsList": [{
+                                              "transactionsText": "6",
+                                              "Name": "Coles",
+                                              "Amount": "-$10,000,000,622.33"
+                                              },
+                                              {
+                                              "transactionsText": "275",
+                                              "Name": "Woolworths",
+                                              "Amount": "-$22,840.53"
+                                              },
+                                              {
+                                              "transactionsText": "2",
+                                              "Name": "Telstra",
+                                              "Amount": "-$122.34"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "ALDI",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Big W",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Cineplex",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Click Energy",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Cold Rock",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Costco",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Curves",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "David Jones",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Dodo",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Dominos",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "IGA",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Kmart",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Myer",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Optus",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Other",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Vaya",
+                                              "Amount": "-$100.00"
+                                              },
+                                              {
+                                              "transactionsText": "1",
+                                              "Name": "Vodafone",
+                                              "Amount": "-$100.00"
+                                              }
+                                              ]
+                              },
+                              {
+                              "month": "August 2017",
+                              "vendorsList": [{
+                                              "transactionsText": "1",
+                                              "Name": "Coles",
+                                              "Amount": "-$200.00"
+                                              }]
+                              },
+                              {
+                              "month": "July 2017",
+                              "vendorsList": [{
+                                              "transactionsText": "1",
+                                              "Name": "Coles",
+                                              "Amount": "-$100.00"
+                                              }]
+                              }
+                              ],
+        "spendingsByCategories": [{
+                                  "month": "December 2017",
+                                  "categoriesList": [{
+                                                     "transactionsText": "1",
+                                                     "Name": "Transport",
+                                                     "Amount": "-$600.00"
+                                                     }]
+                                  },
+                                  {
+                                  "month": "November 2017",
+                                  "categoriesList": [{
+                                                     "transactionsText": "2",
+                                                     "Name": "Transport",
+                                                     "Amount": "-$522.34"
+                                                     }]
+                                  },
+                                  {
+                                  "month": "October 2017",
+                                  "categoriesList": [{
+                                                     "transactionsText": "1",
+                                                     "Name": "Transport",
+                                                     "Amount": "-$400.00"
+                                                     }]
+                                  },
+                                  {
+                                  "month": "September 2017",
+                                  "categoriesList": [{
+                                                     "transactionsText": "9",
+                                                     "Name": "Transport",
+                                                     "Amount": "-$10,000,000,743.18"
+                                                     },
+                                                     {
+                                                     "transactionsText": "113",
+                                                     "Name": "Groceries",
+                                                     "Amount": "-$10,920.02"
+                                                     },
+                                                     {
+                                                     "transactionsText": "104",
+                                                     "Name": "Cash & gifts",
+                                                     "Amount": "-$10,022.68"
+                                                     },
+                                                     {
+                                                     "transactionsText": "11",
+                                                     "Name": "Shopping",
+                                                     "Amount": "-$807.19"
+                                                     },
+                                                     {
+                                                     "transactionsText": "9",
+                                                     "Name": "Food & drink",
+                                                     "Amount": "-$555.85"
+                                                     },
+                                                     {
+                                                     "transactionsText": "10",
+                                                     "Name": "Bills & utilities",
+                                                     "Amount": "-$529.14"
+                                                     },
+                                                     {
+                                                     "transactionsText": "7",
+                                                     "Name": "Health & fitness",
+                                                     "Amount": "-$356.02"
+                                                     },
+                                                     {
+                                                     "transactionsText": "5",
+                                                     "Name": "Travel",
+                                                     "Amount": "-$345.85"
+                                                     },
+                                                     {
+                                                     "transactionsText": "6",
+                                                     "Name": "Home",
+                                                     "Amount": "-$292.02"
+                                                     },
+                                                     {
+                                                     "transactionsText": "9",
+                                                     "Name": "Entertainment",
+                                                     "Amount": "-$233.36"
+                                                     },
+                                                     {
+                                                     "transactionsText": "8",
+                                                     "Name": "Financial",
+                                                     "Amount": "-$197.36"
+                                                     },
+                                                     {
+                                                     "transactionsText": "2",
+                                                     "Name": "Internal transfers & savings",
+                                                     "Amount": "-$107.34"
+                                                     },
+                                                     {
+                                                     "transactionsText": "1",
+                                                     "Name": "Other",
+                                                     "Amount": "-$72.17"
+                                                     },
+                                                     {
+                                                     "transactionsText": "1",
+                                                     "Name": "Other",
+                                                     "Amount": "-$52.17"
+                                                     },
+                                                     {
+                                                     "transactionsText": "5",
+                                                     "Name": "Education & family",
+                                                     "Amount": "-$50.85"
+                                                     }
+                                                     ]
+                                  },
+                                  {
+                                  "month": "August 2017",
+                                  "categoriesList": [{
+                                                     "transactionsText": "1",
+                                                     "Name": "Transport",
+                                                     "Amount": "-$200.00"
+                                                     }]
+                                  },
+                                  {
+                                  "month": "July 2017",
+                                  "categoriesList": [{
+                                                     "transactionsText": "1",
+                                                     "Name": "Transport",
+                                                     "Amount": "-$100.00"
+                                                     }]
+                                  }
+                                  ],
+        "emptyCategoryMonths": [
+                                "May 2017",
+                                "April 2017",
+                                "March 2017",
+                                "February 2017",
+                                "January 2017"
+                                ],
+        "emptyVendorMonths": [
+                              "May 2017",
+                              "April 2017",
+                              "March 2017",
+                              "February 2017",
+                              "January 2017"
+                              ]
+    },
+    "hasVehicles": {
+        "login": "ab@ab.com",
+        "pwd": "Password1",
+        "vehiclesList": [{
+                         "description": "2000 Honda Civic 2.0",
+                         "RegNo": "ABC123"
+                         },
+                         {
+                         "description": "2000 Jayco Eagle Outback",
+                         "RegNo": "ABC555"
+                         }
+                         ]
+    },
+    "digivault": {
+        "hasItems": {
+            "login": "b@b.com",
+            "pwd": "Password1",
+            "newname": "NewName",
+            "folderName": "ab",
+            "file1": "file 1",
+            "file2": "file 2",
+            "folder1": "folder 1",
+            "rootFolder": "Document storage",
+            "images": ["File A", "File B", "File C"]
+        }
+    },
+    "registration": {
+        "success": {
+            "firstName": "Abc",
+            "surname": "xyz",
+            "date": "12/02/2002",
+            "postcode": "3010",
+            "email": "abc",
+            "email1":"emd@g.com",
+            "mobile": "0428737283",
+            "password": "Password1"
+        },
+        "failure": {
+            "1letterSurname": "a",
+            "longSurname": "ahshsfhoseohfosehowoweowegegohnsfgsohosei",
+            "longFirstName": "niguftjohfyhmljolmklojmeklojkii",
+            "30charFirstname": "niguftjohfyhmljolmklojmeklojki",
+            "specialCharFirstname": "Don!@#' Trum**-",
+            "noSpecialCharName": "Don' Trum-",
+            "specialCharSurname": "Don!@#' Trum**-",
+            "longPostCode": "979797989",
+            "emailLong": "giehrgireghewhgogiehrgireghewhgokjlkjllljwhgowgowehgaesvnoroiegiehrgireghewhgowhgowgowehgaesvnoroiesfdsff@.com",
+            "mobileLong": "453592486085082350",
+            "mobileInvalid": "9897494549",
+            "shortPassword": "4tger",
+            "firstNameInPassword": ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
+            "lastNameInPassword": ["2xyz", "xyz123", "adixyzig", "xyz"],
+            "onlyCharPassword": "football",
+            "onlyCharUpperCasePassword": "FOOTBALL",
+            "invalidPostcode":"0000"
+        }
+    },
+    "chatbot": {
+        "externalUrl": {
+            "input": "suncorp",
+            "websiteText": "Suncorp Group website",
+            "websiteURL": "https://www.suncorp.com.au/"
+        },
+        "phNo": {
+            "input": "suncorp",
+            "phone": "13 11 55"
+        },
+        "paragraph": {
+            "input": "suncorp",
+            "responses": [
+                          "With a history dating back to 1916, Suncorp is one of Australia's most trusted financial services organisations.",
+                          "Visit the Suncorp Group website or call us 13 11 55."
+                          ]
+        },
+        "singleResponseFromChatbot": {
+            "input": "test",
+            "responses": "Sorry, I don’t understand. Could you please reword your question."
+        }
+    },
+    "loginCredentials": {
+        "validLoginCredentials": {
+            "login1": {
+                "login": "flash@dc.com",
+                "pwd": "Password1"
+            },
+            "hasWealthCategoriesAndVendorsData": {
+                "login": "flash@dc.com",
+                "pwd": "Password1"
+            }
+        },
+        "invalidLoginCredentials_appSideValidations": [{
+                                                       "login": "",
+                                                       "pwd": "",
+                                                       "loginError": "This field is required",
+                                                       "pwdError": "This field is required",
+                                                       "loginButton": false
+                                                       },
+                                                       {
+                                                       "login": "a",
+                                                       "pwd": "p",
+                                                       "loginError": "Please enter a valid email address",
+                                                       "pwdError": "Must be at least 7 characters",
+                                                       "loginButton": false
+                                                       },
+                                                       {
+                                                       "login": "a@",
+                                                       "pwd": "p1",
+                                                       "loginError": "Please enter a valid email address",
+                                                       "pwdError": "Must be at least 7 characters",
+                                                       "loginButton": false
+                                                       },
+                                                       {
+                                                       "login": "a@.",
+                                                       "pwd": "$%",
+                                                       "loginError": "Please enter a valid email address",
+                                                       "pwdError": "Must be at least 7 characters",
+                                                       "loginButton": false
+                                                       },
+                                                       {
+                                                       "login": "a@.",
+                                                       "pwd": "pqr@",
+                                                       "loginError": "Please enter a valid email address",
+                                                       "pwdError": "Must be at least 7 characters",
+                                                       "loginButton": false
+                                                       },
+                                                       {
+                                                       "login": "a@.c",
+                                                       "pwd": "1234567",
+                                                       "loginError": "Please enter a valid email address",
+                                                       "pwdError": null,
+                                                       "loginButton": false
+                                                       },
+                                                       {
+                                                       "login": "a@a.c",
+                                                       "pwd": "123456",
+                                                       "loginError": null,
+                                                       "pwdError": "Must be at least 7 characters",
+                                                       "loginButton": false
+                                                       },
+                                                       {
+                                                       "login": "a@a.c",
+                                                       "pwd": "1234567",
+                                                       "loginError": null,
+                                                       "pwdError": null,
+                                                       "loginButton": true
+                                                       }
+                                                       ],
+        
+        "invalidLoginCredentials_ServerSideValidations": [{
+                                                          "login": "a@a.c",
+                                                          "pwd": "1234567",
+                                                          "loginError": null,
+                                                          "pwdError": null
+                                                          },
+                                                          {
+                                                          "login": "a@a.c",
+                                                          "pwd": "1234567",
+                                                          "loginError": null,
+                                                          "pwdError": null
+                                                          },
+                                                          {
+                                                          "login": "a@a.c",
+                                                          "pwd": "1234567",
+                                                          "loginError": null,
+                                                          "pwdError": null
+                                                          }
+                                                          ]
+    },
+    "hasNoProducts": {
+        "login": "fer@fer.com",
+        "pwd": "Password1"
+    },
+    "PIN": {
+        "loginWithExistingPin": {
+            "login": "b@b.com",
+            "pwd": "Password1",
+            "pin": "2580"
+        },
+        "loginWithoutExistingPin": {
+            "login": "c@b.com",
+            "pwd": "Password1"
+        }
+    },
+    "copy": {
+        "loginPage": {
+            "loginPageTitle": "Log in"
+        },
+        "registration": {
+            "supportedGroup":["aami","apia","gio","shannons"]
+            "supportedGroupLoginTitleSuffix": " member login",
+            "invalidPostcodeMessage":"Please enter a valid australian postcode"
+        },
+        "portfolio": {
+            "emptyStateLabel": "Looks like you haven't added any products yet.",
+            "bottomSheetLabel": "What type of product?",
+            "availableBalanceLable": "Available balance",
+            "currentBalanceLabel": "Current balance",
+            "accountDetailsLabel": "Account Details"
+        },
+        "pinSetupPage": {
+            "enterPINLabel": "Enter a new 4-digit PIN",
+            "reEnterPINLabel": "Re-enter your new 4-digit PIN",
+            "invalidPINAlertMessage": "This PIN might be easily guessed. Please use a combination without repeated or consecutive numbers.",
+            "pinsDonotMatchErrorMessage": "PINs don’t match. Please try again.",
+            "pinSuccessfullySetMessage": "PIN set up"
+        },
+        "pinReAuthPasswordPage": {
+            "forgottenPINPageTitle": "Forgotten password?",
+            "pinReAuthPasswordLabel": "Please enter your password to reset your PIN",
+            "passwordRequiredError": "Field is required"
+        },
+        "financePage": {
+            "netWorthLabel": "Your net worth",
+            "netWorthDisclaimerMessage": "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days."
+        },
+        "spendingsPage": {
+            "emptyTransactionsMessage": "Sorry, you don't have any transactions yet",
+            "emptyTransactionsHintMessage": "Please note: Transactions will take up to 24 hours to appear."
+        },
+        "homePropertyPage": {
+            "homeJourneyBannerHeading": "Hunting for a property?",
+            "homeJourneyBannerDescription": "Our Home Journey has helpful tips & ideas to guide you through each stage of the process."
+        },
+        "homeJourneyPage": {
+            "journeyTitleText": "Our guide to\nbuying a home",
+            "journeySubtitleText": "Buying a home can feel overwhelming.",
+            "journeyDescriptionText": "We've put together some helpful tips & ideas to guide you through each stage of the process - from the decision to buy a home to picking up the keys.",
+            
+            "planningTitleText": "Planning",
+            "planningDescriptionText": "The decision to buy a home is one of the biggest you're likely to ever make. Getting your planning right from the start, can help to save you more than just money in the end.",
+            "planningReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/planning.html",
+            
+            "houseHuntingTitleText": "House hunting",
+            "houseHuntingDescriptionText": "It's easy to get lost in the excitement of searching for your dream home when it comes to the house hunting stage. These steps will help to keep you focused on the things that matter…",
+            "houseHuntingReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/house-hunting.html",
+            
+            "gettingReadyTitleText": "Getting ready to buy",
+            "gettingReadyDescriptionText": "You're almost at the finish line, you've found the home and your offer was accepted, but there's still a lot left to do before you can get those keys. Knowing the steps for getting ready to buy your…",
+            "gettingReadyReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/ready-to-buy.html",
+            
+            "movingInTitleText": "Moving in",
+            "movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything…",
+            "movingInReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/moving-into-your-home.html"
+        },
+        
+        "registrationPage": {
+            "shortSurnameErrorMsg": "Must be between 2 and 40 characters",
+            "accountCreatingMsg": "Registering details",
+            "fieldErrorMsg": "Field is required",
+            "registerPage1Title": "Step 1 of 3",
+            "registerPage2Title": "Step 2 of 3",
+            "specialCharErrorMsg": "Can contain only letters and the following special characters ' -",
+            "longFirstNameErrorMsg": "Must be between 1 and 30 characters",
+            "longSurnameErrorMsg":"Must be between 2 and 40 characters",
+            "longEmailErrorMsg":"Must be between 2 and 100 characters",
+            "longMobileErrorMsg":"Must be 10 digits",
+            "longPostcodeErrorMsg": "Must be 4 digits",
+            "firstNameUserTip": "Middle name not required",
+            "mobileNumberUserTip": "Use 04XXXXXXXX format",
+            "invalidEmailErrorMsg": "Please enter a valid email address",
+            "invalidMobileErrorMsg": "Must use 04XXXXXXXX format",
+            "shortPasswordErrorMsg": "Must be at least 7 characters long",
+            "firstNamePasswordErrorMsg": "Must not contain your first name",
+            "lastNamePasswordErrorMsg": "Must not contain your last name",
+            "emailPasswordErrorMsg":"Must not contain your email",
+            "onlycharPasswordErrorMsg": "Must contain at least one capital letter\n\nMust contain at least one number",
+            "onlyCharUpperCasePasswordErrorMsg": "Must contain at least one lowercase letter\n\nMust contain at least one number",
+            "passwordNotMatch": "Password do not match",
+            "passwordNameRequirement":"not contain your first name, surname or email"
+        },
+        "chatbot": {
+            "phoneLabel": "CALL NOW"
+        },
+        "offersPage": {
+            "healthTab": {
+                "offerTitle": "Health Insurance",
+                "offerDescription": "We're bringing our trusted reputation to health insurance. Cover for you & those that matter most."
+            },
+            "wealthTab": {
+                "offerTitle": "Open a bank account",
+                "offerDescription": "More than 840,000 Australians have a bank account with Suncorp Bank. Stick with the brand you know you can trust."
+            },
+            "propertyTab": {
+                "offerTitle": "Building Insurance",
+                "offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
+            },
+            "vehiclesTab": {
+                "offerTitle": "CTP Insurance",
+                "offerDescription": "Take out a new CTP policy with Suncorp Insurance & get a $50 gift card. T&Cs apply."
+            },
+            "overviewTab": {
+                "offerTitle": "Building Insurance",
+                "offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
+            }
+        },
+        "digiVaultPage": {
+            "digiVaultEmptyImageTitle": "Your vault is empty",
+            "digiVaultEmptyImageDescription": "It looks like you haven't added any photos or documents here yet."
+        }
+    }
 }
