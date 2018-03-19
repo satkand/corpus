@@ -27,7 +27,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -283,14 +285,6 @@ public class BasePage {
 		}
 	}
 	
-	protected void waitForLoadingIndicatorToDismiss(By locator) {
-		int numOfTries = 0;
-		while (find(locator) != null && numOfTries <= 15) {
-			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
-			numOfTries++;
-		}
-	}
-	
 	// TODO -> Different in iOS -> change it and test it if it works for android as well
 	protected void tapOnBottomRightCorner() {
 		int screenHeight = driver.manage().window().getSize().getHeight();
@@ -390,6 +384,12 @@ public class BasePage {
 		}
 	}
 	
+	protected boolean isKeyboardDisplayed() {
+		
+	 return ((AndroidDriver)driver).isKeyboardShown();
+	
+	}
+	
 	protected void navigateBack() {
 		driver.navigate().back();
 	}
@@ -405,6 +405,7 @@ public class BasePage {
 		}
 	}
 
+
 	public void tapDeviceBackButton(){
 		try {
 			TimeUnit.SECONDS.sleep(2);
@@ -415,7 +416,78 @@ public class BasePage {
 		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
 	}
 	
+
+	protected void scrollToElement(String locatorString, String locatorType) {
+
+		switch (locatorType) {
+		case "text":
+			((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
+							+ locatorString + "\").instance(0))");
+			break;
+		case "id":
+			((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().resourceId(\""
+							+ locatorString + "\").instance(0))");
+			break;
+		case "desc":
+			((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().description(\""
+							+ locatorString + "\").instance(0))");
+			break;
+
+		}
+
+	}
 	
+	protected WebElement findByUIAutomator(String locatorString, String locatorType) {
+		
+		WebElement webElement = null;
+		
+		switch (locatorType) {
+
+		case "text":
+			webElement = find(
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)));
+			break;
+			
+		case "id":
+			webElement = find(
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)));
+			break;
+
+		case "desc":
+			webElement = find(
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)));
+			break;
+
+		}
+		
+		return webElement;
+	}
+	
+	
+	public void waitForElementToDisappear(By locator) {
+		
+		WebElement element  = find(locator);
+		
+		if (element != null) {
+		      WebDriverWait wait = new WebDriverWait(driver, 30);
+		      wait.until(ExpectedConditions.invisibilityOfElementLocated(
+		    		  locator)
+		            );
+		}
+		
+	}	
+	
+//TODO
+//	protected void waitForLoadingIndicatorToDismiss(By locator) {
+//		int numOfTries = 0;
+//		while (find(locator) != null && numOfTries <= 15) {
+//			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
+//			numOfTries++;
+//		}
+//	}
 
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
