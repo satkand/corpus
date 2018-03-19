@@ -1,5 +1,6 @@
 package automation.framework.common;
 
+import java.awt.RenderingHints.Key;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -40,9 +41,13 @@ import com.google.common.base.Function;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.PressesKeyCode;
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
+import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
@@ -246,6 +251,9 @@ public class BasePage {
 			case "DOWN":
 				swipeAction(100, y - 80, 80, y - 700);
 				break;
+			case "DEEPDOWN":
+				swipeAction(100, y - 80, 80, y - 1200);
+				break;
 			case "LEFT":
 				swipeAction(50, y / 2, x - 10, y / 2);
 				break;
@@ -262,10 +270,15 @@ public class BasePage {
 
 	}
 	
-	protected void scrollToElement(By locator) {
+	protected void scrollToElement(By locator, String... args) {
 		int numOfSwipes = 0;
-		while (find(locator) == null && numOfSwipes <= 10) {
-			swipeScreen("down");
+		while (find(locator) == null && numOfSwipes <= 15) {
+			if(args.length < 1) {
+				swipeScreen("down");
+			} else {
+				swipeScreen("deepdown");
+
+			}
 			numOfSwipes++;
 		}
 	}
@@ -384,8 +397,26 @@ public class BasePage {
 	protected boolean isToggleEnabled(By locator) {
 		 return Boolean.parseBoolean(find(locator).getAttribute("checked"));
 	}
-
 	
+	public void deleteCharactersOnATextField(int charsCount) {
+		for(int i=0;i<charsCount;i++) {
+			((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.KEYCODE_DEL);
+		
+		}
+	}
+
+	public void tapDeviceBackButton(){
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+	}
+	
+	
+
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
 //	 * Using this sets pin very quickly.
@@ -976,17 +1007,27 @@ public class BasePage {
 //		if (args.length > 0) {
 //
 //			WebElement element = find(args[0]);
-//			scrollObject.put("element", ((RemoteWebElement) element).getId());
+//			scrollObject.put("element", ((RemoteWebElement) element).getId()
 //		}
 //
 //		js.executeScript("mobile: swipe", scrollObject);
 //
 //	}
-//	
-//	protected void runApplicationInBackground(int time){
-//		
-//		driver.runAppInBackground(time);
-//	}
 	
-
+	// Edited by Gitin George
+	protected void runApplicationInBackground(int time) {
+		driver.runAppInBackground(Duration.ofSeconds(time));
+		((StartsActivity) driver).currentActivity();
+	}
+	
+	// Added by Gitin George
+	// Selects the Suncorp App from the Switch apps menu
+	
+	protected void selectSuncorpApp(int time,String appName) {
+		driver.runAppInBackground(Duration.ofSeconds(time));
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_APP_SWITCH);
+		By suncorpApp = By.xpath("//android.widget.TextView[@text='Config']");
+		find(suncorpApp);
+		tapElement(suncorpApp);
+	}
 }
