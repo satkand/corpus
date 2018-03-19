@@ -2,11 +2,11 @@
   "id" : "cc25228c-1d4d-36c5-855b-d7a848cd5c77",
   "uuid" : "cc25228c-1d4d-36c5-855b-d7a848cd5c77",
   "request" : {
-    "url" : "/onesuncorp/api/portfolios",
+    "url" : "/marketplace/api/portfolios",
     "method" : "OPTIONS"
   },
   "response" : {
-    "proxyBaseUrl" : "http://localhost:8001",
+    "proxyBaseUrl" : "http://localhost:8000",
     "additionalProxyRequestHeaders": {
       "X-Test-UUID": "2cd64793-e913-3d60-91db-0472c1e9f7ef",
       "X-Test-Brand": "SUNCORP"

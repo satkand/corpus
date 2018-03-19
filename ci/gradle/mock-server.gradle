@@ -4,14 +4,18 @@ import groovy.transform.Field
 @Field String DEFAULT_MODE = 'playback'
 @Field def final CONFIG = [
         'portfolio': [
-                port: 8080,
+                port: 3000,
                 proxy: 'https://api2.test.suncorp.com.au/'
+        ],
+        'internal-proxy': [
+                port: 8080,
+                proxy: 'http://0.0.0.0:4723'
         ]
 ]
 
 task mock(type: Exec) {
     workingDir './mock'
-    commandLine 'java', '-jar', 'wiremock-standalone-2.5.1.jar'
+    commandLine 'java', '-jar', 'wiremock-standalone-2.14.0.jar'
 
     def server = project.hasProperty('server') ? project.property('server') : DEFAULT_SERVER
     def mode = project.hasProperty('mode') ? project.property('mode') : DEFAULT_MODE
