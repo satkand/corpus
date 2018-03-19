@@ -38,8 +38,8 @@ public class HomePropertyPage extends BasePage {
 	private By brandIcon = By.id("au.com.suncorp.marketplace:id/brandIcon");
 	//au.com.suncorp.marketplace:id/propertyItemLayout
 	private By propertyItem = By.id("au.com.suncorp.marketplace:id/propertyItemLayout");
-	 private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='43 Badminton Rd, Croydon']");
-
+	private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='43 Badminton Rd, Croydon']");
+	private String startYourJourneyButtonID = "au.com.suncorp.marketplace:id/startHomeJourneyButton";
 
 	public List<String> fetchProductDescriptionTextList() {
 		find(productDescriptionText);
@@ -178,7 +178,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public void scrollToJourneyBanner(){
-		scrollToElement(startYourJourneyButton);
+		scrollToElement(startYourJourneyButtonID,"id");
 	}
 	
 	public WebElement checkHomeJourneyBannerImage() {
@@ -203,6 +203,7 @@ public class HomePropertyPage extends BasePage {
 	
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
+		
 	}
 	
 	
