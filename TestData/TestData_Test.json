@@ -837,7 +837,8 @@
 	"loginCredentials": {
 		"validLoginCredentials": {
 			"login": "sun@sun.com",
-			"pwd": "Password1"
+			"pwd": "Password1",
+			"maskedValidPwd": "•••••••••"
 		},
 		"invalidCredentials": {
 			"emailEmpty" : "",
@@ -850,6 +851,10 @@
 		},
 		"hasNoProducts": {
 			"login": "fer@fer.com",
+			"pwd": "Password1"
+		},
+		"validMemberLogin": {
+			"login": "x@y.z",
 			"pwd": "Password1"
 		}
 	},
@@ -982,12 +987,27 @@
 		"digiVaultPage" : {
 			"digiVaultEmptyImageTitle" : "Your vault is empty",
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
-		},
-		"brandIcons": {
-			"aamiBrandIcon": "AAMI member login",
-			"apiaBrandIcon": "APIA member login",
-			"gioBrandIcon": "GIO member login",
-			"shannonsBrandIcon": "Shannons member login"
 		}
+	},
+	"brands": [
+		{
+			"button": "aamiButton",
+			"brandIcon": "AAMI member login"
+		},
+		{
+			"button": "apiaButton",
+			"brandIcon": "APIA member login"
+		},
+		{
+			"button": "gioButton",
+			"brandIcon": "GIO member login"
+		},
+		{
+			"button": "shannonsButton",
+			"brandIcon": "Shannons member login"
+		}
+	],
+	"bundleId": {
+		"value": "au.com.suncorp.marketplace:id/"
 	}
 }

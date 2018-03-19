@@ -52,8 +52,7 @@ public class LoginTest extends App {
 		//Putting the app in background indefinitely and launching it using currentActivity method
 		loginPage.relaunchApp(-1, "Config");
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login screen - page title is not shown");
-		System.out.println("############"+loginPage.getPasswordFieldValue());
-		Assert.assertEquals(loginPage.getPasswordFieldValue(), "", "VLogin screen - Password field is not empty");
+		Assert.assertEquals(loginPage.getPasswordFieldValue(), "", "Login screen - Password field is not empty");
 	}
 	
 	//DMPM-43 - Scenario-4,5
