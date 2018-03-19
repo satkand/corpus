@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class PropertyDetailsPage   extends BasePage{
 
@@ -34,10 +35,56 @@ public class PropertyDetailsPage   extends BasePage{
 	private By propertyBuiltYear = By.id("au.com.suncorp.marketplace:id/yearBuiltText");
 	private By propertyBuiltYearTitle = By.id("au.com.suncorp.marketplace:id/yearBuiltTitleText");
 	
+	private By lastSaleTitle = By.id("au.com.suncorp.marketplace:id/lastSaleTitleText");
+	private By lastSaleValue = By.id("au.com.suncorp.marketplace:id/salePriceValueText");
+	private By lastSaleDate = By.id("au.com.suncorp.marketplace:id/saleDateValueText");
+	
+	private By miniMap = By.id("au.com.suncorp.marketplace:id/mapView");
+	private By miniMapWhatsNewButton = By.id("au.com.suncorp.marketplace:id/nearbyButton");
+	private By miniMapLocationPin = By.xpath("//android.widget.FrameLayout[@resource-id='au.com.suncorp.marketplace:id/mapView']//android.widget.FrameLayout//android.view.View[@content-desc='Google Map']//android.view.View");
+	
+	private By suburbInsightImage = By.id("au.com.suncorp.marketplace:id/suburbInsightImage");
+	private By showMeInsightButton = By.id("au.com.suncorp.marketplace:id/viewSuburbInsightButton");
+	private By suburbInsightTitleText = By.id("au.com.suncorp.marketplace:id/suburbInsightTitleText");
+	private By suburbInsightDescription = By.id("au.com.suncorp.marketplace:id/suburbInsightDescriptionText");
+	
+	public String getSuburbInsightTitleText() {
+		return getText(suburbInsightTitleText);
+	}
+	public WebElement checkSuburbInsightTitleText() {
+		return find(suburbInsightTitleText);
+	}
+	public String getSuburbInsightDescription() {
+		return getText(suburbInsightDescription);
+	}
+	public WebElement checkSuburbInsightDescription() {
+		return find(suburbInsightDescription);
+	}
+	public String getSuburbInsightImage() {
+		return getText(suburbInsightImage);
+	}
+	public WebElement checkSuburbInsightImage() {
+		return find(suburbInsightImage);
+	}
+	public String getLastSaleValue() {
+		return getText(lastSaleValue);
+	}
+	public String getLastSaleDate() {
+		return getText(lastSaleDate);
+	}
+	public WebElement checkLastSaleTitle() {
+		return find(lastSaleTitle);
+	}
+	public WebElement checkLastSaleValue() {
+		return find(lastSaleValue);
+	}
+	public WebElement checkLastSaleDate() {
+		return find(lastSaleDate);
+	}
+	
 	public WebElement checkPropertyRoofType() {
 		return find(propertyRoofType);
 	}
-	
 	public String getPropertyRoofType() {
 		return getText(propertyRoofType);
 	}
@@ -47,30 +94,24 @@ public class PropertyDetailsPage   extends BasePage{
 	public String getPropertyWallMaterial() {
 		return getText(propertyWallMaterial);
 	}
-	
 	public WebElement checkPropertyBuiltYear() {
 		return find(propertyBuiltYear);
 	}
 	public String getPropertyBuiltYear() {
 		return getText(propertyBuiltYear);
 	}
-	
 	public WebElement checkPropertyRoofTypeTitle() {
 		return find(propertyRoofTypeTitle);
 	}
-	
 	public WebElement checkPropertyWallMaterialTitle() {
 		return find(propertyWallMaterialTitle);
 	}
-	
 	public WebElement checkPropertyBuiltYearTitle() {
 		return find(propertyBuiltYearTitle);
 	}
-	
 	public void tappropertyShowMoreDownArrow() {
 		tapElement(propertyShowMoreDownArrow);
 	}
-	
 	public String getPropertyAddress() {
 		return getText(propertyAddress);
 	}
@@ -130,6 +171,27 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	public void scrollToViewMoreInfo() {
 		scrollToElement(propertyShowMoreInfo, "true");
-		
 	}
+	public void tapAndroidDeviceBackButton(){
+		tapDeviceBackButton();
+	}
+	public void scrollToShowMeInsightButton() {
+		scrollToElement(showMeInsightButton, "true");
+	}
+	public void tapShowMeInsightButton(){
+		tapElement(showMeInsightButton);
+	}
+	public WebElement checkMiniMap() {
+		return find(miniMap);
+	}
+	public WebElement checkMiniMapWhatsNewButton() {
+		return find(miniMapWhatsNewButton);
+	}
+	public WebElement checkMiniMapLocationPin() {
+		return find(miniMapLocationPin);
+	}
+	public void scrollToWhatsNewButton() {
+		scrollToElement(miniMapWhatsNewButton, "true");
+	}
+	
 }

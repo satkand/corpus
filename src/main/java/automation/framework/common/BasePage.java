@@ -411,8 +411,10 @@ public class BasePage {
 		}
 		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
 	}
-	
-	
+		
+	public void tapEnterOnTheKeyboard(){
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_ENTER);
+	}
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
 //	 * Using this sets pin very quickly.

@@ -91,7 +91,7 @@ public class App extends BaseTest {
 	public AddBankAccountPage addBankAccountPage = null;
 	public AccountDetailsPage accountDetailsPage = null;
 	public FAPISettingsPage fapiSettingsPage = null;
-	public PropertyExplorerPage propertyHubPage = null;
+	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
 	
 
@@ -146,7 +146,7 @@ public class App extends BaseTest {
 		addBankAccountPage = new AddBankAccountPage(driver);
 		accountDetailsPage = new AccountDetailsPage(driver);
 		fapiSettingsPage = new FAPISettingsPage(driver);
-		propertyHubPage = new PropertyExplorerPage(driver);
+		propertyExplorerPage = new PropertyExplorerPage(driver);
 		propertyDetailsPage = new PropertyDetailsPage(driver);
 	}
 	
