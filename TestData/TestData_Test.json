@@ -13,6 +13,23 @@
 		"pwd": "Password1"
 	},
 	"propertyDimention" :{
+		"propertyDetails":{
+					"address": "1018/40 Rossana Road",
+					"stateAndSuburb": "North Heidelberg VIC 3084",
+					"bedRooms": "2",
+					"bathrooms": "1",
+					"parkingSpaces": "1",
+					"landSize": "289 m²",
+					"propertyType": "House - Duplex",
+					"roofType": "Tiled (Terra Cotta or Cement)",
+					"wallMaterial": "Brick",
+					"buildYear": "1966"
+		},
+		"propertyExplorer":{
+					"login": "a@b.c",
+					"pwd": "Password1",
+					"enterAdress":"1"
+		},
 		"NoProperties":{
 					"login": "a@b.c",
 					"pwd": "Password1"
@@ -985,6 +1002,11 @@
 			"featureLockedMsgTitle":"Feature Locked",
 			"activeClaim":"Active claim",
 			"featureLockedTextCopy":"Unfortunately this feature is only available to registered users. Please Log In or Sign Up first."
+			
+		},
+		"propertyDetailsPage": {
+			"showMoreInfoLabel": "VIEW MORE INFO",
+			"showLessInfoLabel": "VIEW LESS INFO"
 			
 		},
 		"homeJourneyPage": {

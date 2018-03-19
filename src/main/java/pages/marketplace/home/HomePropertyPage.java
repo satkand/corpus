@@ -196,7 +196,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public void scrollToJourneyBanner(){
-		scrollToElement(startYourJourneyButton);
+		scrollToElement(startYourJourneyButton, "true");
 	}
 	
 	public WebElement checkHomeJourneyBannerImage() {

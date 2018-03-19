@@ -38,6 +38,8 @@ import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.digitalVault.SelectItemsPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
+import pages.marketplace.home.PropertyDetailsPage;
+import pages.marketplace.home.PropertyExplorerPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
@@ -89,6 +91,9 @@ public class App extends BaseTest {
 	public AddBankAccountPage addBankAccountPage = null;
 	public AccountDetailsPage accountDetailsPage = null;
 	public FAPISettingsPage fapiSettingsPage = null;
+	public PropertyExplorerPage propertyHubPage = null;
+	public PropertyDetailsPage propertyDetailsPage = null;
+	
 
 	@BeforeClass
 	public void initializeApp() {
@@ -141,6 +146,8 @@ public class App extends BaseTest {
 		addBankAccountPage = new AddBankAccountPage(driver);
 		accountDetailsPage = new AccountDetailsPage(driver);
 		fapiSettingsPage = new FAPISettingsPage(driver);
+		propertyHubPage = new PropertyExplorerPage(driver);
+		propertyDetailsPage = new PropertyDetailsPage(driver);
 	}
 	
 	@Parameters({ "stub" })
