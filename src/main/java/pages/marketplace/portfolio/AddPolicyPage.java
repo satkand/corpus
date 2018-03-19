@@ -33,12 +33,10 @@ public class AddPolicyPage extends BasePage {
 	}
 	
 	public String getPolicyNumberTextBox() {
-		find(policyNumberTextBox,30);
 		return getText(policyNumberTextBox);
 	}
 	
 	public void enterPolicyNumber(String policyNumber) {
-		find(policyNumberTextBox,30);
 		typeValue(policyNumber, policyNumberTextBox);
 	}
 	
@@ -66,7 +64,6 @@ public class AddPolicyPage extends BasePage {
 	}
 	
 	public void tapPolicyNumberTextBox(){
-		find(policyNumberTextBox);
 		tapElement(policyNumberTextBox);
 	}
 	
@@ -75,7 +72,6 @@ public class AddPolicyPage extends BasePage {
 	}
 	
 	public void tapAddAccountButton(){
-		find(addAccountButton);
 		tapElement(addAccountButton);
 	}
 	

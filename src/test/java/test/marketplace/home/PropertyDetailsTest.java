@@ -50,7 +50,7 @@ public class PropertyDetailsTest extends App{
 	public void testShowMoreInfoOnPropertyDetailsScreen() {
 		
 		navigateToPropertyDetails("StartYourJourney");
-		propertyHubPage.scrollToWhatsNewButton();
+		propertyDetailsPage.scrollToWhatsNewButton();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyShowMoreInfo(), "Property Details Page -  Show more info Label is not present");
 		Assert.assertEquals(propertyDetailsPage.getPropertyShowMoreInfo(), utils.readTestData("copy","propertyDetailsPage","showMoreInfoLabel"));
 		
@@ -82,8 +82,8 @@ public class PropertyDetailsTest extends App{
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
-		propertyHubPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","enterAdress"));
-		propertyHubPage.tapSearch();
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","enterAdress"));
+		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
 	

@@ -12,15 +12,15 @@ public class PropertyExplorerTest extends App{
 	@Test (groups = {"DMPM-3110", "DMPM-3868", "marketplace", "Home buying journey", "priority-minor"})
 	public void testDisplayMiniMapOnPropertyDetailsScreen() {
 		navigateToPropertyExplorer();
-		Assert.assertNotNull(propertyHubPage.checkPropertyHubSearchbox(), "Property Hub Page - search box not present");
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyHubSearchbox(), "Property Hub Page - search box not present");
 		
-		propertyHubPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","enterAdress"));
-		propertyHubPage.tapSearch();
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","enterAdress"));
+		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
-		propertyHubPage.scrollToWhatsNewButton();
-		Assert.assertNotNull(propertyHubPage.checkMiniMap(), "Property Hub Page - Mini Map not present");
-		Assert.assertNotNull(propertyHubPage.checkMiniMapLocationPin(), "Property Hub Page - Mini Map location pin not present");
+		propertyDetailsPage.scrollToWhatsNewButton();
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Hub Page - Mini Map not present");
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMapLocationPin(), "Property Hub Page - Mini Map location pin not present");
 		
 	}
 	

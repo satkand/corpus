@@ -26,7 +26,7 @@ public class MyProductsPage extends BasePage {
 	private By bankAccountBottomSheetButton = By.id("au.com.suncorp.marketplace:id/addBankAccountButton");
 	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='My products']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
-	//TO DO DMPM-3713
+	//TODO DMPM-3713
 	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");
     private By availableBalanceLable = By.xpath("//android.widget.TextView[@text='Available balance']");
 
@@ -36,7 +36,7 @@ public class MyProductsPage extends BasePage {
 	private By availableBalance = By.id("au.com.suncorp.marketplace:id/availableBalanceText");
 	private By viewDetailsButton = By.id("au.com.suncorp.marketplace:id/viewBankAccountDetailsButton");
 	private By accountTypeLabel = By.id("au.com.suncorp.marketplace:id/accountTypeText");
-	//TO DO DMPM-3713
+	//TODO DMPM-3713
 	private By productTypeImage = By.xpath(
 			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");//
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
@@ -183,9 +183,8 @@ public class MyProductsPage extends BasePage {
 		return find(myProductsLabel);
 	}
 	
-	public By checkAddExistingProductButton(){
-		find(addExistingProductButton);
-		return addExistingProductButton;
+	public WebElement checkAddExistingProductButton(){
+		return find(addExistingProductButton);
 	}
 	
 	public WebElement checkEmptyStateImage(){
