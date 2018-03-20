@@ -877,7 +877,7 @@
 			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
 		},
 		"registration": {
-			"supportedGroup":["aami","apia","gio","shannons"]
+			"supportedGroup":["aami","apia","gio","shannons"],
 			"supportedGroupLoginTitleSuffix": " member login",
 			"invalidPostcodeMessage":"Please enter a valid australian postcode"
 		},
