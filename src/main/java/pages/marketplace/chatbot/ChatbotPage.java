@@ -27,9 +27,6 @@ public class ChatbotPage extends BasePage {
 	private By responseIndicator = By.id("au.com.suncorp.marketplace:id/responseIndicator");
 	
 	private By callNowButton = By.xpath("//android.widget.Button[@text='CALL NOW']");
-	
-	private By webViewCloseButton = By.id("com.sec.android.app.sbrowser:id/customtab_close");
-	private By webViewUrl = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
 
 	public WebElement checkChatIcon() {
 		return find(chatIcon);
@@ -135,18 +132,6 @@ public class ChatbotPage extends BasePage {
 	
 	public void tapExternalUrlButton(String externalURLText) {
 		tapElement(By.xpath(constructexternalUrlXpath(externalURLText)));
-	}
-	
-	public void tapWebViewCloseButton() {
-		tapElement(webViewCloseButton);
-	}
-	
-	public WebElement checkWebViewUrl() {
-		return find(webViewUrl);
-	}
-	
-	public String getWebViewUrl() {
-		return getText(webViewUrl);
 	}
 	
 	public void copyTextContentInUserInputQuery() {
