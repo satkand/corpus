@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 //import java.util.function.Function;
 
@@ -396,7 +397,55 @@ public class BasePage {
 		}while (!firstElementOnScreen.contentEquals(topElement));	
 		return element;
 	}
+
+//	/**
+//	 * This method is used to get the weburl in a webview
+//	 * @author Sushmitha
+//	 * @param 
+//	 * @return URL as a string
+//	 */	
 	
+	protected String getWebURL() {
+		driver.navigate().refresh();
+		return driver.getCurrentUrl();
+	}
+
+//	/**
+//	 * This method is used to switch to a web view from native view
+//	 * @author Sushmitha
+//	 * @param 
+//	 * @return 
+//	 */	
+	@SuppressWarnings("unchecked")
+	public void switchToWebView() {
+		Set<String> contextNames = driver.getContextHandles();
+	     for (String contextName : contextNames) {
+	       System.out.println(contextName);
+	       if (contextName.contains("WEBVIEW")){
+	         driver.context(contextName).switchTo();
+	         try {
+				Thread.sleep(15000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	       }
+	     }
+	}
+
+//	/**
+//	 * This method is used to switch to a native view from web view
+//	 * @author Sushmitha
+//	 * @param 
+//	 * @return 
+//	 */	
+	public void switchContextToApp() {
+		driver.context("NATIVE_APP").switchTo();
+		try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}	
 	/**
 	 * This method is used to hide the keyboard
 	 * 

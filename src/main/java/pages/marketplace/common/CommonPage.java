@@ -29,6 +29,12 @@ public class CommonPage extends BasePage {
 	
 	public void goBack() {
 		navigateBack();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/* TODO

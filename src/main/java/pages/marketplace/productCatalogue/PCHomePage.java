@@ -1,6 +1,8 @@
 package pages.marketplace.productCatalogue;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -9,10 +11,9 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class PCHomePage extends BasePage {
-
-	private ArrayList<String> brandNames;
 	
 	public PCHomePage(AppiumDriver driver) {
 		super(driver);
@@ -25,6 +26,17 @@ public class PCHomePage extends BasePage {
 	private By bingleTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/brandTabLayout']//android.widget.TextView[@text='BINGLE']");
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/brandTabLayout']//android.widget.TextView[@text='SUNCORP']");
 	private By pcHomePageTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']/android.widget.TextView[@text='Product catalogue']");
+	
+	private By productQuoteButton = By.id("au.com.suncorp.marketplace:id/productQuoteButton");
+	private By detailsButton = By.id("au.com.suncorp.marketplace:id/productDetailsButton");
+	private By webView = By.id("au.com.suncorp.marketplace:id/webview");
+	private By webViewCloseButton = MobileBy.AccessibilityId("Navigate up");
+	private By proceedButton = By.id("android:id/button1");
+	
+	private By brandInfo = By.id("au.com.suncorp.marketplace:id/brandDescription");
+	private By factsTitle = By.id("au.com.suncorp.marketplace:id/factsTitle");
+	private By disclaimer = By.id("au.com.suncorp.marketplace:id/disclaimerText");
+	
 	
 	public JSONArray getBrandList(){
 		MyJSONParser jsonParser = new MyJSONParser();
@@ -43,9 +55,46 @@ public class PCHomePage extends BasePage {
 			return categoryJSON;
 		}
 		
-		
-	public WebElement findEle(String elementName) {
+	public JSONArray getSubCategories(JSONObject categoryJSON) {
+		JSONArray subcategoryJSON = (JSONArray) categoryJSON.get("products");
+	//	getCategoryList(subcategoryJSON);
+		return subcategoryJSON;
+	}
+	
+	public boolean verifyFacts(JSONObject subCategoryJson) {
+		JSONArray facts = (JSONArray) subCategoryJson.get("facts");
+		boolean verified = true;
+		int i=0;
+		for(Object fact : facts) {
+			i++;
+			String factText = find(By.xpath(String.format("//*[@resource-id='au.com.suncorp.marketplace:id/factsContainer']/"
+					+ "android.widget.LinearLayout[%s]/android.widget.TextView",i))).getText();
+			if(!factText.contentEquals(fact.toString()))
+				verified = false;	
+		}
+		return verified;
+	}
+	
+	public void tapObject(WebElement object) {	
+		tapElement(object);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void tapObject (String objectName) {
+		tapElement(By.xpath(String.format("//*[@text='%s']",objectName)));
+	}
+	
+	public WebElement findCategory(String elementName) {
 		return findElementInAListView(elementName, "au.com.suncorp.marketplace:id/categoryList");
+	}
+	
+	public WebElement findSubCategory(String elementName) {
+		return findElementInAListView(elementName, "au.com.suncorp.marketplace:id/productListView");
 	}
 	
 	public void getCategoryList(JSONArray categoryJSON) {
@@ -61,6 +110,10 @@ public class PCHomePage extends BasePage {
 		 swipeScreen("up");
 		 i--;
 	 }
+	}
+	
+	public void scrollDown() {
+		swipeScreen("down");
 	}
 	
 	public WebElement checkPCHomePageTitle() {
@@ -152,4 +205,52 @@ public class PCHomePage extends BasePage {
 		swipeHorizontally(suncorpTab, shannonsTab);
 	}
 	
+	public WebElement checkQuoteButton() {
+		return find(productQuoteButton);
+	}
+	
+	public void tapQuoteButton() {
+		tapElement(productQuoteButton);
+	}
+	
+	public WebElement checkDetailsButton() {
+		return find(detailsButton);
+	}
+	
+	public void tapDetailsButton() {
+		tapElement(detailsButton);
+	}
+	
+	public WebElement checkDisclaimer() {
+		return find(disclaimer);
+	}
+	
+	public WebElement checkBrandInfo() {
+		return find(brandInfo);
+	}
+	
+	public WebElement checkFactsHeader() {
+		return find(factsTitle);
+	}
+	
+	public WebElement checkWebView() {
+		return find(webView);
+	}
+	
+	public String getURL() {
+		return getWebURL();
+		
+	}
+	
+	public void tapCloseWebViewButton() {
+		tapElement(webViewCloseButton);
+	}
+
+	public void tapProceedButton() {
+		tapElement(proceedButton);
+	}
+	
+	public WebElement checkProceedButton() {
+		return find(proceedButton);
+	}
 }
