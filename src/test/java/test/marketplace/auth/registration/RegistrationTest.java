@@ -742,5 +742,66 @@ public class RegistrationTest extends App {
 				"Desired password must not contain email message is not displayed.");
 
 	}
+	
+	// DMPN-2470 : Check Uniqueness of Email Address Used for Registration
+	@Test(groups = { "marketplace", "Registration", "priority-major" })
+	public void testDuplicateEmailId() {
+
+		navigateToRegistrationPage();
+		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
+				utils.readTestData("registration", "success", "surname"),
+
+				utils.readTestData("registration", "success", "date"),
+				utils.readTestData("registration", "success", "postcode"));
+
+		registrationPage.tapNextButton();
+
+		// Enter email id which already exists
+		registrationPage.enterEmail(utils.readTestData("noSuncorpBankAccounts", "login"));
+		registrationPage.enterMobile(utils.readTestData("registration", "success", "mobile"));
+
+		registrationPage.tapNextButton();
+
+		Assert.assertNotNull(registrationPage.checkDuplicateEmailPopUpTitle(),
+				"Duplicate email alert pop up is not displayed on registration.");
+
+		// Check the elements on the pop up alert
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpTitle(),
+				utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpTitle"),
+				"Duplicate email alert pop up title is not correct");
+
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpText(),
+				utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpText"),
+				"Duplicate email alert pop up title is not correct");
+
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpOkButtonLabel(),
+				utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpOkButtonText"),
+				"Duplicate email alert pop up title is not correct");
+
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpAnotherLoginButtonLabel(),
+				utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpUseAnotherEmailButtonText"),
+				"Duplicate email alert pop up title is not correct");
+
+		registrationPage.tapOkButton();
+
+		// Check pop up alert is dismissed on tapping Ok button
+		Assert.assertNotNull(registrationPage.checkRegisterPage2Title(),
+				"Registration Page 2 is not displayed on registration.");
+
+		registrationPage.tapNextButton();
+
+		Assert.assertNotNull(registrationPage.checkDuplicateEmailPopUpTitle(),
+				"Duplicate email alert pop up is not displayed on registration.");
+
+		registrationPage.tapAnotherLoginButton();
+
+		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"),
+				"Login page title is not shown as expected");
+
+		Assert.assertEquals(loginPage.getEmailFieldData(), utils.readTestData("noSuncorpBankAccounts", "login"),
+				"Login page title is not shown as expected");
+
+	}
+		
 
 }

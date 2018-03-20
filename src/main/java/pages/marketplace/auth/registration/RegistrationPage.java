@@ -77,6 +77,10 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By okButtonDuplicateEmailPopUp = By.id("android:id/button2");
+	private By anotherEmailButtonDuplicateEmailPopUp = By.id("android:id/button1");
+	private By duplicateEmailPopUpTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
+	private By duplicateEmailPopUpText = By.id("android:id/message");
 
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
@@ -423,6 +427,34 @@ public class RegistrationPage extends BasePage {
 	public void clearDesiredPassword() {
 		clearValue(passwordField);
 		dismissKeyboard();
+	}
+	
+	public WebElement checkDuplicateEmailPopUpTitle(){
+		return find(duplicateEmailPopUpTitle);
+	}
+	
+	public String getDuplicateEmailPopUpTitle() {
+		return getText(duplicateEmailPopUpTitle);
+	}
+	
+	public String getDuplicateEmailPopUpText() {
+		return getText(duplicateEmailPopUpText);
+	}
+	
+	public String getDuplicateEmailPopUpOkButtonLabel() {
+		return getText(okButtonDuplicateEmailPopUp);
+	}
+	
+	public String getDuplicateEmailPopUpAnotherLoginButtonLabel() {
+		return getText(anotherEmailButtonDuplicateEmailPopUp);
+	}
+	
+	public void tapOkButton() {
+		tapElement(okButtonDuplicateEmailPopUp);
+	}
+	
+	public void tapAnotherLoginButton() {
+		tapElement(anotherEmailButtonDuplicateEmailPopUp);
 	}
 	
 	
