@@ -46,22 +46,26 @@ public class HomePropertyPage extends BasePage {
 	public WebElement checkFeatureLockedMsgTitle() {
 		return find(featureLockedMsgTitle);
 	}
+	
 	public String getFeatureLockedMsgTitle() {
 		return getText(featureLockedMsgTitle);
 	}
+	
 	public WebElement checkFeatureLockedTextCopy() {
 		return find(featureLockedTextCopy);
 	}
+	
 	public String getFeatureLockedTextCopy() {
 		return getText(featureLockedTextCopy);
 	}
+	
 	public WebElement checkFeatureLockedMsgSignUpButton() {
 		return find(featureLockedMsgSignUpButton);
 	}
+	
 	public WebElement checkFeatureLockedMsgLogInButton() {
 		return find(featureLockedMsgLogInButton);
 	}
-
 
 	public List<String> fetchProductDescriptionTextList() {
 		find(productDescriptionText);
@@ -220,15 +224,13 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public void scrollToNextProduct() {
-	
 			for(int i=0;i<4;i++) {
 				swipeScreen("down");
 			}
-			
-		
 	}
 	
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
 	}
+	
 }

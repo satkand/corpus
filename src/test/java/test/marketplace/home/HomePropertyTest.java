@@ -88,10 +88,10 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(homePropertyPage.checksuburbText(), "Home Property Page - Suburb is not present");
 		List<String> descriptionList = homePropertyPage.fetchProductDescriptionTextList();
 		
-		String addressLine = utils.readTestData("propertyDimention","propertyProducts","withProducts","addressLineText");
-		String description1 = utils.readTestData("propertyDimention","propertyProducts","withProducts","productDescriptionText1");
-		String description2 = utils.readTestData("propertyDimention","propertyProducts","withProducts","productDescriptionText2");
-		String suburb = utils.readTestData("propertyDimention","propertyProducts","withProducts","suburbText");
+		String addressLine = utils.readTestData("propertyDimension","propertyProducts","withProducts","addressLineText");
+		String description1 = utils.readTestData("propertyDimension","propertyProducts","withProducts","productDescriptionText1");
+		String description2 = utils.readTestData("propertyDimension","propertyProducts","withProducts","productDescriptionText2");
+		String suburb = utils.readTestData("propertyDimension","propertyProducts","withProducts","suburbText");
 					
 		Assert.assertEquals(homePropertyPage.getaddressLineText(), addressLine, "Home Property Page - Address line is not shown as expected");
 		Assert.assertEquals(homePropertyPage.getsuburbText(), suburb, "Home Property Page - Property suburb is not displayed as expected");
@@ -146,11 +146,11 @@ public class HomePropertyTest extends App {
 	
 	private void navigateToHomePropertyTab(String loginType) {
 		if(loginType.equals("withProducts")) {
-			loginToApp(utils.readTestData("propertyDimention","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimention", "propertyProducts","withProducts","pwd"));
+			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
 		}else if(loginType.equals("noProperties")){
-			loginToApp(utils.readTestData("propertyDimention","NoProperties", "login"), utils.readTestData("propertyDimention","NoProperties", "pwd"));
+			loginToApp(utils.readTestData("propertyDimension","NoProperties", "login"), utils.readTestData("propertyDimension","NoProperties", "pwd"));
 		}else if(loginType.equals("withOutProducts")){
-			loginToApp(utils.readTestData("propertyDimention","propertyProducts","withOutProducts", "login"), utils.readTestData("propertyDimention","propertyProducts","withOutProducts", "pwd"));
+			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "login"), utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "pwd"));
 		}else {
 			welcomePage.tapGuestAccessButton();
 		}

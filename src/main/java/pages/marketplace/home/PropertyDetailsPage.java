@@ -10,7 +10,6 @@ public class PropertyDetailsPage   extends BasePage{
 
 	public PropertyDetailsPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 	
 	private By propertyAddress = By.id("au.com.suncorp.marketplace:id/propertyAddressLine1Text");
@@ -41,9 +40,11 @@ public class PropertyDetailsPage   extends BasePage{
 	public String getPropertyRoofType() {
 		return getText(propertyRoofType);
 	}
+	
 	public WebElement checkPropertyWallMaterial() {
 		return find(propertyWallMaterial);
 	}
+	
 	public String getPropertyWallMaterial() {
 		return getText(propertyWallMaterial);
 	}
@@ -51,6 +52,7 @@ public class PropertyDetailsPage   extends BasePage{
 	public WebElement checkPropertyBuiltYear() {
 		return find(propertyBuiltYear);
 	}
+	
 	public String getPropertyBuiltYear() {
 		return getText(propertyBuiltYear);
 	}
@@ -67,6 +69,10 @@ public class PropertyDetailsPage   extends BasePage{
 		return find(propertyBuiltYearTitle);
 	}
 	
+	public WebElement checkPropertyShowMoreDownArrow() {
+		return find(propertyShowMoreDownArrow);
+	}
+	
 	public void tappropertyShowMoreDownArrow() {
 		tapElement(propertyShowMoreDownArrow);
 	}
@@ -74,60 +80,79 @@ public class PropertyDetailsPage   extends BasePage{
 	public String getPropertyAddress() {
 		return getText(propertyAddress);
 	}
+	
 	public String getPropertyStatePostCode() {
 		return getText(propertyStatePostCode);
 	}
+	
 	public String getPropertyNumberOfBedrooms() {
 		return getText(propertyNumberOfBedrooms);
 	}
+	
 	public String getPropertyNumberOfBathrooms() {
 		return getText(propertyNumberOfBathrooms);
 	}
+	
 	public String getPropertyNumberOfParkingSpaces() {
 		return getText(propertyNumberOfParkingSpaces);
 	}
+	
 	public String getPropertyLandSize() {
 		return getText(propertyLandSize);
 	}
+	
 	public String getPropertyType() {
 		return getText(propertyType);
 	}
+	
 	public String getPropertyShowMoreInfo() {
 		return getText(propertyShowMoreInfo);
 	}	
+	
 	public WebElement checkPropertyNumberOfParkingSpacesImage() {
 		return find(propertyNumberOfParkingSpacesImage);
 	}
+	
 	public WebElement checkPropertyLandSize() {
 		return find(propertyLandSize);
 	}
+	
 	public WebElement checkPropertyType() {
 		return find(propertyType);
 	}
+	
 	public WebElement checkPropertyShowMoreInfo() {
 		return find(propertyShowMoreInfo);
 	}
+	
 	public WebElement checkPropertyNumberOfBathroomsImage() {
 		return find(propertyNumberOfBathroomsImage);
 	}
+	
 	public WebElement checkPropertyNumberOfParkingSpaces() {
 		return find(propertyNumberOfParkingSpaces);
 	}
+	
 	public WebElement checkPropertyStatePostCode() {
 		return find(propertyStatePostCode);
 	}
+	
 	public WebElement checkPropertyNumberOfBedrooms() {
 		return find(propertyNumberOfBedrooms);
 	}
+	
 	public WebElement checkPropertyNumberOfBedroomsImage() {
 		return find(propertyNumberOfBedroomsImage);
 	}
+	
 	public WebElement checkPropertyNumberOfBathrooms() {
 		return find(propertyNumberOfBathrooms);
 	}
+	
 	public WebElement checkPropertyAddress() {
 		return find(propertyAddress);
 	}
+	
 	public void scrollToViewMoreInfo() {
 		scrollToElement(propertyShowMoreInfo, "true");
 		
