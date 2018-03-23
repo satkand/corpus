@@ -3,10 +3,9 @@
 <suite name="Suite" verbose="50" configfailurepolicy="continue" >
 	<test name="Test">
 
- 		<packages>
- 			<package name="test.marketplace.auth.registration"/>
-			<package name="test.marketplace.auth.login"/>
- 		</packages>
+ 		<classes>
+			<class name="test.marketplace.landing.WelcomeTest"/>
+ 		</classes>
  <!-- 
  		<parameter name="stub" value="false"></parameter>
  		<packages>
