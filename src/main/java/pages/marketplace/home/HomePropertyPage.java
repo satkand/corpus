@@ -223,6 +223,7 @@ public class HomePropertyPage extends BasePage {
 		tapElement(startYourJourneyButton);
 	}
 	
+
 	public void scrollToNextProduct() {
 			for(int i=0;i<4;i++) {
 				swipeScreen("down");
@@ -232,5 +233,5 @@ public class HomePropertyPage extends BasePage {
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
 	}
-	
+
 }

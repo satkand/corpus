@@ -12,7 +12,7 @@ public class ChatbotTest extends App {
 	// 51 - Scenario 1, Scenario 2
 	@Test (groups = {"DMPM-51", "DMPM-477", "DMPM-478", "marketplace", "Chatbot", "priority-minor"})
 	public void testChatbotPageElements() {
-		navigateToChatbotScreen();
+		navigateToChatbotScreenAsLoggedInUser();
 		Assert.assertNotNull(chatbotPage.checkChatIcon(), "Chatbot page - chat icon not shown");
 		Assert.assertNotNull(chatbotPage.checkChatbotPageTitle(), "Chatbot page - page title not shown");
 		Assert.assertNotNull(chatbotPage.checkBackButton(), "Chatbot page - back button not shown");
@@ -24,7 +24,7 @@ public class ChatbotTest extends App {
 	// 51 - Scenario 3
 	@Test (groups = {"DMPM-51", "DMPM-479", "marketplace", "Chatbot", "priority-minor"})
 	public void testDismissingKeyboard() {
-		navigateToChatbotScreen();
+		navigateToChatbotScreenAsLoggedInUser();
 		chatbotPage.tapUserInputField();
 		Assert.assertTrue(common.isKeyboardShown(), "Chatbot page - keyboard not shown");
 		// As the keyboard is already dismissed in the above step, we need to launch the keyboard again by tapping on userInputField
@@ -37,7 +37,7 @@ public class ChatbotTest extends App {
 	// 51 - Scenario 4
 	@Test (groups = {"DMPM-51", "DMPM-480", "marketplace", "Chatbot", "priority-minor"})
 	public void testSendButtonBehaviour() {
-		navigateToChatbotScreen();
+		navigateToChatbotScreenAsLoggedInUser();
 		Assert.assertFalse(chatbotPage.isSendButtonEnabled(), "Chatbot page - Send button is Enabled");
 		chatbotPage.enterUserInput("value");
 		Assert.assertTrue(chatbotPage.isSendButtonEnabled(), "Chatbot page - Send button is Disabled");
@@ -50,7 +50,7 @@ public class ChatbotTest extends App {
 	// 297 - Scenario 1, Scenario 2
 	@Test (groups = {"DMPM-51", "DMPM-481", "DMPM-237", "DMPM-918", "DMPM-919", "DMPM-297", "DMPM-916", "DMPM-917", "marketplace", "Chatbot", "priority-minor"})
 	public void testUserInputMessageBubble() {
-		navigateToChatbotScreen();
+		navigateToChatbotScreenAsLoggedInUser();
 		chatbotPage.enterUserInput("suncorp");
 		chatbotPage.tapSendButton();
 		
@@ -68,7 +68,7 @@ public class ChatbotTest extends App {
 	// 1200 - Scenario 1
 	@Test  (groups = {"DMPM-619", "DMPM-1343", "DMPM-1200", "DMPM-1330", "marketplace", "Chatbot", "priority-minor"})
 	public void testChatbotResponseWithParagraphs() {
-		navigateToChatbotScreen();
+		navigateToChatbotScreenAsLoggedInUser();
 		String userInput = utils.readTestData("chatbot","paragraph", "input");
 		chatbotPage.enterUserInput(userInput);
 		chatbotPage.tapSendButton();
@@ -93,7 +93,7 @@ public class ChatbotTest extends App {
 	// 619 -> Scenario 2
 	@Test (groups = {"DMPM-350", "DMPM-922", "DMPM-923", "DMPM-619", "DMPM-1347", "marketplace", "Chatbot", "priority-minor"})
 	public void testChatbotResponseWithExternalUrl() {
-		navigateToChatbotScreen();
+		navigateToChatbotScreenAsLoggedInUser();
 		String userInput = utils.readTestData("chatbot","externalUrl", "input");
 		String externalUrlText = utils.readTestData("chatbot", "externalUrl", "websiteText");
 		chatbotPage.enterUserInput(userInput);
@@ -104,9 +104,9 @@ public class ChatbotTest extends App {
 		// Constructing the external url element xpath, as it has a dependancy on the test data
 		Assert.assertNotNull(chatbotPage.checkExternalUrlButton(externalUrlText), "Chatbot page - External Url option not shown");
 		chatbotPage.tapExternalUrlButton(externalUrlText);
-		Assert.assertNotNull(chatbotPage.checkWebViewUrl(), "Chatbot page - Webview - Url not shown");
-		Assert.assertEquals(chatbotPage.getWebViewUrl(), utils.readTestData("chatbot", "externalUrl", "websiteURL"), "Chatbot page - not directed to the correct Webview");
-		chatbotPage.tapWebViewCloseButton();
+		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "Chatbot page - Webview - Url not shown");
+		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("chatbot", "externalUrl", "websiteURL"), "Chatbot page - not directed to the correct Webview");
+		webviewPage.tapWebviewCloseButton();
 		Assert.assertNotNull(chatbotPage.checkChatbotPageTitle(), "Chatbot page - page title not shown");
 	}
 	
@@ -114,7 +114,7 @@ public class ChatbotTest extends App {
 	// 619 -> Scenario 2
 	@Test (groups = {"DMPM-527", "DMPM-1332", "DMPM-1333", "DMPM-619", "DMPM-1347", "marketplace", "Chatbot", "priority-minor"})
 	public void testChatbotResponseWithPhNo() {
-		navigateToChatbotScreen();
+		navigateToChatbotScreenAsLoggedInUser();
 		String userInput = utils.readTestData("chatbot","phNo", "input");
 		chatbotPage.enterUserInput(userInput);
 		chatbotPage.tapSendButton();
@@ -130,7 +130,7 @@ public class ChatbotTest extends App {
 	// 1466 - Scenario 1, Scenario 2
 	@Test (groups = {"DMPM-1466", "DMPM-1525", "DMPM-1526", "marketplace", "Chatbot", "priority-minor"})
 	public void testCopyTextContentInBubbleMessage() {
-		navigateToChatbotScreen();
+		navigateToChatbotScreenAsLoggedInUser();
 		String userInput = utils.readTestData("chatbot","singleResponseFromChatbot", "input");
 		chatbotPage.enterUserInput(userInput);
 		chatbotPage.tapSendButton();
@@ -159,7 +159,13 @@ public class ChatbotTest extends App {
 		Assert.assertEquals(chatbotPage.getUserInputQueryValueList().get(size-1), utils.readTestData("chatbot", "singleResponseFromChatbot", "responses"), "Chatbot page - Message bubble not shown");
 	}
 	
-	private void navigateToChatbotScreen() {
+	private void navigateToChatbotScreenAsLoggedInUser() {
+		loginToApp(utils.readTestData("loginCredentials","validLoginCredentials", "login"), utils.readTestData("loginCredentials","validLoginCredentials", "pwd"));
+		Assert.assertNotNull(landingPage.checkChatbotOption(), "Landing Page - Chatbot option is not shown");
+		landingPage.tapChatbotOption();
+	}
+	
+	private void navigateToChatbotScreenAsGuestUser() {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(landingPage.checkChatbotOption(), "Landing Page - Chatbot option is not shown");
 		landingPage.tapChatbotOption();

@@ -1,4 +1,4 @@
-package test.marketplace.home;
+package test.marketplace.property;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,8 +34,8 @@ public class HomePropertyTest extends App {
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 	}
 	
-	//Story 2627 - Scenario 1 (TC : DMPM-3504) and scenario 2 (TC: DMPM-3505)
-	//Story 2620 - Scenario 2 (No Assets - Display my property assets - TC-DMPM-3548)
+	//2627 - Scenario 1 and scenario 2
+	//2620 - Scenario 2 
 	// navigating to Property tap on add a property or policy button
 	@Test (groups = {"DMPM-2627", "DMPM-3504","DMPM-3505","DMPM-2620","DMPM-3548", "marketplace", "Home buying journey", "priority-minor"})
 	public void testAddAPropertyOrPolicy() {
@@ -88,10 +88,10 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(homePropertyPage.checksuburbText(), "Home Property Page - Suburb is not present");
 		List<String> descriptionList = homePropertyPage.fetchProductDescriptionTextList();
 		
-		String addressLine = utils.readTestData("propertyDimension","propertyProducts","withProducts","addressLineText");
-		String description1 = utils.readTestData("propertyDimension","propertyProducts","withProducts","productDescriptionText1");
-		String description2 = utils.readTestData("propertyDimension","propertyProducts","withProducts","productDescriptionText2");
-		String suburb = utils.readTestData("propertyDimension","propertyProducts","withProducts","suburbText");
+		String addressLine = utils.readTestData("propertyDimention","propertyProducts","withProducts","addressLineText");
+		String description1 = utils.readTestData("propertyDimention","propertyProducts","withProducts","productDescriptionText1");
+		String description2 = utils.readTestData("propertyDimention","propertyProducts","withProducts","productDescriptionText2");
+		String suburb = utils.readTestData("propertyDimention","propertyProducts","withProducts","suburbText");
 					
 		Assert.assertEquals(homePropertyPage.getaddressLineText(), addressLine, "Home Property Page - Address line is not shown as expected");
 		Assert.assertEquals(homePropertyPage.getsuburbText(), suburb, "Home Property Page - Property suburb is not displayed as expected");
@@ -146,11 +146,11 @@ public class HomePropertyTest extends App {
 	
 	private void navigateToHomePropertyTab(String loginType) {
 		if(loginType.equals("withProducts")) {
-			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
+			loginToApp(utils.readTestData("propertyDimention","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimention", "propertyProducts","withProducts","pwd"));
 		}else if(loginType.equals("noProperties")){
-			loginToApp(utils.readTestData("propertyDimension","NoProperties", "login"), utils.readTestData("propertyDimension","NoProperties", "pwd"));
+			loginToApp(utils.readTestData("propertyDimention","NoProperties", "login"), utils.readTestData("propertyDimention","NoProperties", "pwd"));
 		}else if(loginType.equals("withOutProducts")){
-			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "login"), utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "pwd"));
+			loginToApp(utils.readTestData("propertyDimention","propertyProducts","withOutProducts", "login"), utils.readTestData("propertyDimention","propertyProducts","withOutProducts", "pwd"));
 		}else {
 			welcomePage.tapGuestAccessButton();
 		}

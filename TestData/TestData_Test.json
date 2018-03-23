@@ -23,11 +23,14 @@
 					"propertyType": "House - Duplex",
 					"roofType": "Tiled (Terra Cotta or Cement)",
 					"wallMaterial": "Brick",
+					"salePrice": "$1,000,000",
+					"saleDate": "30 Feb 2018",
 					"buildYear": "1966"
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
 					"pwd": "Password1",
+					"clearSearchText":"1234567890ABCD#$%^"
 					"enterAdress":"1"
 		},
 		"NoProperties":{
@@ -851,100 +854,24 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
-	"loginCredentials" :{
-		"validLoginCredentials" : {
-			"login1":{
-				"login": "flash@dc.com",
-				"pwd": "Password1"
-			},
-			"hasWealthCategoriesAndVendorsData":{
-				"login": "flash@dc.com",
-				"pwd": "Password1"
-			}
+	"loginCredentials": {
+		"validLoginCredentials": {
+			"login": "son@son.com",
+			"pwd": "Password1"
 		},
-		"invalidLoginCredentials_appSideValidations" :[ 
-			{
-				"login": "",
-				"pwd": "",
-				"loginError": "This field is required",
-				"pwdError": "This field is required",
-				"loginButton": false
-			},
-			{
-				"login": "a",
-				"pwd": "p",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@",
-				"pwd": "p1",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.",
-				"pwd": "$%",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.",
-				"pwd": "pqr@",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.c",
-				"pwd": "1234567",
-				"loginError": "Please enter a valid email address",
-				"pwdError": null,
-				"loginButton": false
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "123456",
-				"loginError": null,
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null,
-				"loginButton": true
-			}
-		],
-
-			"invalidLoginCredentials_ServerSideValidations" :[ 
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			}
-		]
-	},
-	"hasNoProducts" : {
-		"login": "fer@fer.com",
-		"pwd": "Password1"
+		"invalidCredentials": {
+			"emailEmpty" : "",
+			"emailExceedsMaxLength": "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendb@j.c",
+			"emailMinLength": "a",
+			"emailIncorrectFormat1": "a@.com",
+			"emailIncorrectFormat2": "a@b",
+			"passwordEmpty": "",
+			"invalidPassword" : "1234567"
+		},
+		"hasNoProducts": {
+			"login": "fer@fer.com",
+			"pwd": "Password1"
+		}
 	},
 	"PIN" :{
 		"loginWithExistingPin" : {
@@ -959,7 +886,13 @@
 	},
 	"copy" : {
 		"loginPage": {
-			"loginPageTitle": "Log in"
+			"loginPageTitle": "Log in",
+			"shortEmailError" : "Please enter a valid email address Must be between 2 and 100 characters",
+			"invalidEmailError" : "Please enter a valid email address",
+			"emptyPasswordError" : "Field is required",
+			"emptyEmailError" : "Field is required",
+			"longEmailError" : "Must be between 2 and 100 characters",
+			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
 		},
 		"portfolio": {
 			"emptyStateLabel": "Looks like you haven't added any products yet.",
@@ -988,6 +921,10 @@
 			"netWorthLabel": "Your net worth",
 			"netWorthDisclaimerMessage": "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days."
 		},
+		"propertyExplorer":{
+			"propertyInsightSearchHintText": "Enter address",
+			"suburbInsightSearchHintText": "Enter suburb's name"
+		},
 		"spendingsPage": {
 			"emptyTransactionsMessage": "Sorry, you don't have any transactions yet",
 			"emptyTransactionsHintMessage": "Please note: Transactions will take up to 24 hours to appear."
@@ -1006,7 +943,8 @@
 		},
 		"propertyDetailsPage": {
 			"showMoreInfoLabel": "VIEW MORE INFO",
-			"showLessInfoLabel": "VIEW LESS INFO"
+			"showLessInfoLabel": "VIEW LESS INFO",
+			"HomeJourneyTitle": "Home journey"
 			
 		},
 		"homeJourneyPage": {
@@ -1030,7 +968,6 @@
 			"movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything…",
 			"movingInReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/moving-into-your-home.html"
 		},
-
 		"registrationPage" : {
 			"shortSurnameErrorMsg" : "Must be between 2 and 40 characters",
 			"accountCreatingMsg" : "Registering details",
@@ -1079,6 +1016,12 @@
 		"digiVaultPage" : {
 			"digiVaultEmptyImageTitle" : "Your vault is empty",
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
+		},
+		"brandIcons": {
+			"aamiBrandIcon": "AAMI member login",
+			"apiaBrandIcon": "APIA member login",
+			"gioBrandIcon": "GIO member login",
+			"shannonsBrandIcon": "Shannons member login"
 		}
 	}
 }
