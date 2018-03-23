@@ -35,7 +35,7 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public WebElement checkPinPromptUserWelcome(){
-		return find(pinPromptUserWelcome);
+		return find(pinPromptUserWelcome, 30);
 	}
 	
 	public WebElement checkPinPromptDescription(){
