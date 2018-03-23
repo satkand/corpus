@@ -1,4 +1,4 @@
-package test.marketplace.home;
+package test.marketplace.property;
 
 import java.util.HashMap;
 import java.util.List;
