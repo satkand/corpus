@@ -7,20 +7,21 @@ import pages.App;
 
 public class OffersOverviewTab extends App {
 	// scenario 1
-	@Test(groups = { "DMPM-97", "DMPM-924", "marketplace", "Offers", "priority-minor" })
+	// Story DMPM-2253 TCs "DMPM-4649","DMPM-4650"
+	@Test(groups = { "DMPM-97", "DMPM-924","DMPM-2253", "DMPM-4649","DMPM-4650", "marketplace", "Offers", "priority-minor" })
 	public void testOverviewTabOffers() {
 		navigateToOverviewScreen();
-		Assert.assertNotNull(offersPage.checkOfferIcon(), "Overview Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Overview Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Overview Page Offers - No Action Button");
-		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
+		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "overviewTab", "offerDescription"),
 				"offer description for overview tab is not shown as expected");
 		Assert.assertEquals(offersPage.getOffersPageTitle(),
 				utils.readTestData("copy", "offersPage", "overviewTab", "offerTitle"),
 				"offer title for overview tab is not shown as expected");
-
+		Assert.assertNotNull(offersPage.checkOfferLogoImage(), "Property Page Offers - No offer logo image");
+		
 	}
 
 	// scenario 2

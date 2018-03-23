@@ -7,16 +7,17 @@ import pages.App;
 
 public class OffersPropertyTest extends App {
 	// scenario 1
-	@Test(groups = { "DMPM-815", "DMPM-928", "marketplace", "Offers", "priority-minor" })
+	// Story DMPM-2253 TCs "DMPM-4649","DMPM-4650"
+	@Test(groups = { "DMPM-815", "DMPM-928","DMPM-2253", "DMPM-4649","DMPM-4650", "marketplace", "Offers", "priority-minor" })
 	public void testPropertyJourneyOffers() {
 		navigateToPropertyScreen();
-		Assert.assertNotNull(offersPage.checkOfferIcon(), "Property Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No Action Button");
-		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
+		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),utils.readTestData("copy", "offersPage", "propertyTab", "offerDescription"),"offer description for property tab is not shown as expected");
 		Assert.assertEquals(offersPage.getOffersPageTitle(),
 				utils.readTestData("copy", "offersPage", "propertyTab", "offerTitle"),
 				"offer title for property tab is not shown as expected");
+		Assert.assertNotNull(offersPage.checkOfferLogoImage(), "Property Page Offers - No offer logo image");
 		}
 
 	// scenario 2
@@ -47,7 +48,7 @@ public class OffersPropertyTest extends App {
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No Offer banner after Cancellation");
 	
 	}
-
+	
 	private void navigateToPropertyScreen() {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(landingPage.checkHomeTab(), " Offers flow - Property tab not shown");
