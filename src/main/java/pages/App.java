@@ -36,14 +36,11 @@ import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.digitalVault.SelectItemsPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
-<<<<<<< HEAD
 import pages.marketplace.home.PropertyDetailsPage;
 import pages.marketplace.home.PropertyExplorerPage;
-=======
 import pages.marketplace.landing.LandingPage;
 import pages.marketplace.landing.NavigationMenuPage;
 import pages.marketplace.landing.WelcomePage;
->>>>>>> develop
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
@@ -96,15 +93,11 @@ public class App extends BaseTest {
 	public AddBankAccountPage addBankAccountPage = null;
 	public AccountDetailsPage accountDetailsPage = null;
 	public FAPISettingsPage fapiSettingsPage = null;
-<<<<<<< HEAD
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
 	
-
-=======
 	public WebviewPage webviewPage = null;
 	
->>>>>>> develop
 	@BeforeClass
 	public void initializeApp() {
 		
@@ -156,12 +149,9 @@ public class App extends BaseTest {
 		addBankAccountPage = new AddBankAccountPage(driver);
 		accountDetailsPage = new AccountDetailsPage(driver);
 		fapiSettingsPage = new FAPISettingsPage(driver);
-<<<<<<< HEAD
 		propertyExplorerPage = new PropertyExplorerPage(driver);
 		propertyDetailsPage = new PropertyDetailsPage(driver);
-=======
 		webviewPage = new WebviewPage(driver);
->>>>>>> develop
 	}
 	
 	@Parameters({ "stub" })
