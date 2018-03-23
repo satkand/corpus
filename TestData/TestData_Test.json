@@ -836,7 +836,7 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "sun@sun.com",
+			"login": "son@son.com",
 			"pwd": "Password1"
 		},
 		"invalidCredentials": {
