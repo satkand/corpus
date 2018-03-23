@@ -4,7 +4,7 @@
 	<test name="Test">
 
  		<packages>
- 			<package name="test.marketplace.chatbot"/>
+			<package name="test.marketplace.auth.login"/>
  		</packages>
  <!-- 
  		<parameter name="stub" value="false"></parameter>
