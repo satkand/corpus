@@ -13,6 +13,7 @@ public class OffersPropertyTest extends App {
 		navigateToPropertyScreen();
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Property Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Property Page Offers - No Background Image");
+		Assert.assertNull(offersPage.checkOfferIcon(), "Property Page Offers - Offer Icon is still present");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),utils.readTestData("copy", "offersPage", "propertyTab", "offerDescription"),"offer description for property tab is not shown as expected");
 		Assert.assertEquals(offersPage.getOffersPageTitle(),
 				utils.readTestData("copy", "offersPage", "propertyTab", "offerTitle"),

@@ -14,6 +14,7 @@ public class OffersHealthTest extends App {
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Health Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Health Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Health Page Offers - No Background Image");
+		Assert.assertNull(offersPage.checkOfferIcon(), "Health Page Offers - Offer Icon is still present");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "healthTab", "offerDescription"),
 				"offer description for health tab is not shown as expected");

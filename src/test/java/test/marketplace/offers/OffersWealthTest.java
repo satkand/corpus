@@ -14,6 +14,7 @@ public class OffersWealthTest extends App {
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Wealth tab Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Wealth tab Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Wealth tab Offers - No Background Image");
+		Assert.assertNull(offersPage.checkOfferIcon(), "Wealth tab Offers - Offer Icon is still present");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "wealthTab", "offerDescription"),
 				"offer description for Wealth tab is not shown as expected");

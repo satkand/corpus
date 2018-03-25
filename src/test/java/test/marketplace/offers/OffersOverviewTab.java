@@ -14,6 +14,7 @@ public class OffersOverviewTab extends App {
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Overview Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Overview Page Offers - No Action Button");
 		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Overview Page Offers - No Background Image");
+		Assert.assertNull(offersPage.checkOfferIcon(), "Overview Page Offers - Offer Icon is still present");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "overviewTab", "offerDescription"),
 				"offer description for overview tab is not shown as expected");
