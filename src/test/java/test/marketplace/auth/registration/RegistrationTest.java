@@ -500,16 +500,16 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(),utils.readTestData("copy", "registrationPage", "longFirstNameErrorMsg"),
 				"Maximum length error message for first name is not displayed");
 
-		registrationPage.clearFirstName();
-
+		registrationPage.clearField("firstNameField");
+		
 		// check maximum length of  surname
 		registrationPage.enterSurname(utils.readTestData("registration", "failure", "longSurname"));
 		Assert.assertNotNull(registrationPage.checkSurnameErrorMsg(), "Surname inline message is not displayed.");
 		Assert.assertEquals(registrationPage.getSurnameErrorMsg(),utils.readTestData("copy", "registrationPage", "longSurnameErrorMsg"),
 				"Maximum length error message for surname is not displayed");
 
-		registrationPage.clearLastName();
-
+		registrationPage.clearField("surNameField");
+	
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
 				utils.readTestData("registration", "success", "date"),
@@ -527,7 +527,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(),utils.readTestData("copy", "registrationPage", "longMobileErrorMsg"),
 				"Maximum length error message for mobile number is not displayed");
 
-		registrationPage.clearMobileNumber();
+		registrationPage.clearField("mobileField");
 
 		// check error message is displayed for long email ID
 		registrationPage.enterEmail(utils.readTestData("registration", "failure", "emailLong"));
@@ -535,7 +535,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(),utils.readTestData("copy", "registrationPage", "longEmailErrorMsg"),
 				"Maximum length error message for email is not displayed");
 
-		registrationPage.clearEmail();
+		registrationPage.clearField("emailField");
 
 		registrationPage.fill2ndPageFields(utils.readTestData("registration", "success", "email"),
 				utils.readTestData("registration", "success", "mobile"));
@@ -579,7 +579,7 @@ public class RegistrationTest extends App{
 		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "firstNamePasswordErrorMsg")),
 				"Desired password must not contain first name message is not displayed.");
 
-		registrationPage.clearDesiredPassword();
+		registrationPage.clearField("desiredPassword");
 
 		registrationPage.enterPassword(utils.readTestData("registration", "success", "surname"));
 		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
@@ -592,8 +592,7 @@ public class RegistrationTest extends App{
 		registrationPage.tapRegisterButton();
 		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
 				"Desired password must not contain surname message is not displayed.");
-
-		registrationPage.clearDesiredPassword();
+		registrationPage.clearField("desiredPassword");
 
 		registrationPage.enterPassword(utils.readTestData("registration", "success", "email1"));
 		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "emailPasswordErrorMsg")),

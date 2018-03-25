@@ -404,31 +404,30 @@ public class RegistrationPage extends BasePage {
 		return find(cancelButton);
 	}
 
-	public void clearFirstName() {
-		clearValue(firstNameField);
+	public void clearField(String fieldname)
+	{
+		switch (fieldname)
+		{
+		case "firstNameField" :
+			clearValue(firstNameField);
+			break;
+		case "surNameField":
+			clearValue(surnameField);
+			break;
+		case "mobileField":
+			clearValue(mobileField);
+			break;
+		case "emailField":
+			clearValue(emailField);
+			break;
+		case "desiredPassword":
+			clearValue(passwordField);
+			break;
+		}
 		dismissKeyboard();
+		
 	}
-	
-	public void clearLastName() {
-		clearValue(surnameField);
-		dismissKeyboard();
-	}
-	
-	public void clearMobileNumber() {
-		clearValue(mobileField);
-		dismissKeyboard();
-	}
-	
-	public void clearEmail() {
-		clearValue(emailField);
-		dismissKeyboard();
-	}
-	
-	public void clearDesiredPassword() {
-		clearValue(passwordField);
-		dismissKeyboard();
-	}
-	
+
 	public WebElement checkDuplicateEmailPopUpTitle(){
 		return find(duplicateEmailPopUpTitle);
 	}
