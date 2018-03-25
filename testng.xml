@@ -4,8 +4,8 @@
 	<test name="Test">
 
  		<packages>
-			<package name="test.marketplace.auth.login"/>
- 		</packages>
+			<package name="test.marketplace.home"/>
+		</packages>
  <!-- 
  		<parameter name="stub" value="false"></parameter>
  		<packages>
