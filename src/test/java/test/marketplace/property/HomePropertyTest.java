@@ -1,4 +1,4 @@
-package test.marketplace.home;
+package test.marketplace.property;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,8 +34,8 @@ public class HomePropertyTest extends App {
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 	}
 	
-	//Story 2627 - Scenario 1 (TC : DMPM-3504) and scenario 2 (TC: DMPM-3505)
-	//Story 2620 - Scenario 2 (No Assets - Display my property assets - TC-DMPM-3548)
+	//2627 - Scenario 1 and scenario 2
+	//2620 - Scenario 2 
 	// navigating to Property tap on add a property or policy button
 	@Test (groups = {"DMPM-2627", "DMPM-3504","DMPM-3505","DMPM-2620","DMPM-3548", "marketplace", "Home buying journey", "priority-minor"})
 	public void testAddAPropertyOrPolicy() {
