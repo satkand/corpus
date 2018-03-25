@@ -44,21 +44,14 @@ public class PCHomePage extends BasePage {
 		return brandList;
 	}
 	
-	public JSONArray getCategories(Object brand) {
-	
-		
-			JSONObject brandJSON = (JSONObject)brand;	
-//			brandNames.add(brandJSON.get("name").toString());
-			
+	public JSONArray getCategories(Object brand) {	
+			JSONObject brandJSON = (JSONObject)brand;			
 			JSONArray categoryJSON = (JSONArray) brandJSON.get("categories");
-			getCategoryList(categoryJSON);
 			return categoryJSON;
 		}
 		
 	public JSONArray getSubCategories(JSONObject categoryJSON) {
-		JSONArray subcategoryJSON = (JSONArray) categoryJSON.get("products");
-	//	getCategoryList(subcategoryJSON);
-		return subcategoryJSON;
+		return (JSONArray) categoryJSON.get("products");
 	}
 	
 	public boolean verifyFacts(JSONObject subCategoryJson) {
@@ -95,13 +88,6 @@ public class PCHomePage extends BasePage {
 	
 	public WebElement findSubCategory(String elementName) {
 		return findElementInAListView(elementName, "au.com.suncorp.marketplace:id/productListView");
-	}
-	
-	public void getCategoryList(JSONArray categoryJSON) {
-		for(Object category : categoryJSON) {
-			
-			System.out.println(category);
-		}
 	}
 	
 	public void scrollToTop() {
