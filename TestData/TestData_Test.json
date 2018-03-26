@@ -12,7 +12,7 @@
 		"login": "ab@ab.com",
 		"pwd": "Password1"
 	},
-	"propertyDimention" :{
+	"propertyDimension" :{
 		"propertyDetails":{
 					"address": "1018/40 Rossana Road",
 					"stateAndSuburb": "North Heidelberg VIC 3084",
@@ -1010,8 +1010,8 @@
 				"offerDescription": "More than 840,000 Australians have a bank account with Suncorp Bank. Stick with the brand you know you can trust."
 			},
 			"propertyTab": {
-				"offerTitle": "Building Insurance",
-				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
+				"offerTitle": "Contents Insurance",
+				"offerDescription": "Covers loss of and damage to the contents of your home, garage and shed, caused by fire, break-ins and weather events. Includes storm, flood and bushfire"
 			},
 			"vehiclesTab": {
 				"offerTitle": "CTP Insurance",

@@ -66,7 +66,7 @@ public class HomePropertyPage extends BasePage {
 	public WebElement checkFeatureLockedMsgLogInButton() {
 		return find(featureLockedMsgLogInButton);
 	}
-	
+
 	public List<String> fetchProductDescriptionTextList() {
 		find(productDescriptionText);
 		return getTextList(productDescriptionText);
@@ -223,9 +223,15 @@ public class HomePropertyPage extends BasePage {
 		tapElement(startYourJourneyButton);
 	}
 	
+
+	public void scrollToNextProduct() {
+			for(int i=0;i<4;i++) {
+				swipeScreen("down");
+			}
+	}
+	
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
 	}
-	
-	
+
 }
