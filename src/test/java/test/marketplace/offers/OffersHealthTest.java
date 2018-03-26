@@ -7,19 +7,22 @@ import pages.App;
 
 public class OffersHealthTest extends App {
 	// scenario 1
-	@Test(groups = { "DMPM-817", "DMPM-932", "marketplace", "Offers", "priority-minor" })
+	// Story DMPM-2253 TCs "DMPM-4649","DMPM-4650"
+	@Test(groups = { "DMPM-817", "DMPM-932","DMPM-2253", "DMPM-4649","DMPM-4650", "marketplace", "Offers", "priority-minor" })
 	public void testHealthJourneyOffers() {
 		navigateToHealthScreen();
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Health Page Offers - No offer Title");
 		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Health Page Offers - No Action Button");
-		//Assert.assertNotNull(offersPage.checkBackgroundImage(), "Health Page Offers - No Background Image");
+		Assert.assertNotNull(offersPage.checkBackgroundImage(), "Health Page Offers - No Background Image");
+		Assert.assertNull(offersPage.checkOfferIcon(), "Health Page Offers - Offer Icon is still present");
 		Assert.assertEquals(offersPage.getOffersDescriptionText(),
 				utils.readTestData("copy", "offersPage", "healthTab", "offerDescription"),
 				"offer description for health tab is not shown as expected");
 		Assert.assertEquals(offersPage.getOffersPageTitle(),
 				utils.readTestData("copy", "offersPage", "healthTab", "offerTitle"),
 				"offer title for health tab is not shown as expected");
-
+		Assert.assertNotNull(offersPage.checkOfferLogoImage(), "Property Page Offers - No offer logo image");
+		
 	}
 
 	// scenario 2
