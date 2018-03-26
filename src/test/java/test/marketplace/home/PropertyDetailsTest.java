@@ -88,7 +88,7 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 
 		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
-		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","enterAdress"));
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
 		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		

@@ -23,7 +23,7 @@ public class PropertyExplorerTest extends App{
 		Assert.assertNotNull(propertyExplorerPage.checkMiniMapLocationPin(), "Property Hub Page - Mini Map location pin not present");
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyHubSearchbox(), "Property Hub Page - search box not present");
 		
-		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","enterAdress"));
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
 		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
