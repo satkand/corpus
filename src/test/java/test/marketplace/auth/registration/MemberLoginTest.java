@@ -18,7 +18,7 @@ public class MemberLoginTest extends App {
 
 	// DMPM-1493 Scenario 1
 	// DMPM-2730 Scenario 1
-	@Test(groups = {"DMPM-1493", "DMPM-2738", "marketplace", "Registration", "priority-high"})
+	@Test(groups = {"DMPM-1493", "DMPM-2738", "DMPM-2730", "DMPM-2922", "marketplace", "Registration", "priority-high"})
 	public void testMemberLoginPageElements() {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
@@ -159,8 +159,9 @@ public class MemberLoginTest extends App {
 	}
 
 	// DMPM-2098 Scenario 1, 2, 3
-	// DMPM-2730 Scenario 8
+	// DMPM-1493 Scenario 8
 	// DMPM-1545 Scenario 1, 8
+	// DMPM-2362 Scenario 1, 2, 3
 	@Test(groups = {"DMPM-2098", "DMPM-3571", "DMPM-3572", "DMPM-3573", "DMPM-2730", "DMPM-2760", "DMPM-1545", "DMPM-3552", "DMPM-3560", "marketplace", "Registration", "priority-high"})
 	public void testSuccessfulMemberLogin() {
 		navigateToWelcomeToSuncorpPage();
@@ -332,7 +333,7 @@ public class MemberLoginTest extends App {
 		Assert.assertEquals(memberLoginPage.getSnackbarText(), utils.readTestData("copy", "memberLogin", "incorrectCredentialsSnackbarText"), "Member Login - Snackbar text is not correct fot incorrect credentials");
 		memberLoginPage.tapSnackbarOkButton();
 		
-//		Assert.assertNull(memberLoginPage.checkSnackbarDisplayed(), "Member Login - Snackbar is still displayed after tapping OK");	
+		Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - Title is not correct");	
 		memberLoginPage.tapCancelButton();
 	}
 }

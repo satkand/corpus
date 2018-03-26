@@ -29,6 +29,10 @@ public class GetStartedPage extends BasePage {
 	public WebElement checkGetStartedPageTitle() {
 		return find(getStartedPageTitle);
 	}
+	
+	public String getGetStartedPageTitleValue() {
+		return getText(getStartedPageTitle);
+	}
 
 	public WebElement checkGetStartedPageSubheader() {
 		return find(getStartedPageSubheader);

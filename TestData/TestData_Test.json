@@ -1031,6 +1031,9 @@
 			"invalidMobileNumberError" : "Must use 04XXXXXXXX format",
 			"emptyMobileNumberError" : "Field is required",
 			"incorrectCredentialsSnackbarText" : "Wrong email or password. Please check and retry."
+		},
+		"getStartedPage" : {
+			"getStartedPageTitle" : "Welcome to the Suncorp family"
 		}
 	},
 	"brands": [
