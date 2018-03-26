@@ -131,6 +131,25 @@ public class MyProductsTest extends App {
 		}
 	}
 
+	/*167 - Scenario 2 - DMPM-467*/
+	@Test (groups = {"DMPM-167", "DMPM-467","marketplace", "portfolio", "priority-minor"})
+	public void testExpiryDateRenewalPolicy(){
+		
+		loginToApp(utils.readTestData("portfolio","insuranceProducts","policy1","login"), utils.readTestData("portfolio","insuranceProducts","policy1","pwd"));
+		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.tapProductsMenuItem();
+		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
+		
+		myProductsPage.scrollTo(utils.readTestData("portfolio","insuranceProducts","policy1", "risks","description1"));
+		
+		Assert.assertNotNull(myProductsPage.checkExpiryDateDesc(utils.readTestData("portfolio","insuranceProducts","policy1", "risks","description1"), "Cancellation Date"),"Cancellation Date description not displayed.");
+		System.out.println("checked date desc");
+		Assert.assertNotNull(myProductsPage.checkExpiryDate(utils.readTestData("portfolio","insuranceProducts","policy1", "risks","description1"), "10 November 2017"),"Cancellation Date not displayed.");
+		System.out.println("checked date");
+	}
+	
+	
+	
 	private void navigateToMyProductsScreen(String userType){
 		if (userType.equals("emptyProdListUser")) {
 			loginToApp(utils.readTestData("portfolio","loginEmptyProdList", "login"), utils.readTestData("portfolio","loginEmptyProdList", "pwd"));

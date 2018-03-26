@@ -42,6 +42,13 @@ public class MyProductsPage extends BasePage {
 			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");//
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
 	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
+	private By riskText = null;
+	private String riskXpathPrefix = "//android.widget.TextView[@text = \'";
+	private String riskXpathSuffix = "\']";
+	private String dateDescXpathSuffix1 = "']/following-sibling::android.widget.LinearLayout/child::android.widget.TextView[@text = \'";
+	private String dateDescXpathSuffix2 = "\']";
+	private By dateDescText = null;
+	private By endDate = null;
 	
 	public List<WebElement> fetchAccountItemLayoutList() {
 		List<WebElement> elements = finds(accountItemLayout);
@@ -216,6 +223,35 @@ public class MyProductsPage extends BasePage {
 	public void tapMaybeLaterButton(){
 		find(maybeLaterButton,30);
 		tapElement(maybeLaterButton);
+	}
+	
+	public WebElement checkRisk(String riskName) {
+		String riskXpath = riskXpathPrefix + riskName + riskXpathSuffix;
+		riskText = By.xpath(riskXpath);
+		return find(riskText);
+	}
+	
+	public void scrollTo(String riskName) {
+		String riskXpath = riskXpathPrefix + riskName + riskXpathSuffix;
+		System.out.println(riskXpath);
+		riskText = By.xpath(riskXpath);
+		scrollToElement(riskText);
+		//swipeScreen("DOWN");
+		
+	}
+	
+	public WebElement checkExpiryDateDesc(String riskName, String dateDesc) {
+		String dateDescXpath = riskXpathPrefix + riskName + dateDescXpathSuffix1 + dateDesc + dateDescXpathSuffix2;
+		dateDescText = By.xpath(dateDescXpath); 
+		return find(dateDescText);
+		
+	}
+	
+	public WebElement checkExpiryDate(String riskName,String Date) {
+		String dateXpath = riskXpathPrefix + riskName + dateDescXpathSuffix1 + Date + dateDescXpathSuffix2;
+		endDate = By.xpath(dateXpath);
+		return find(endDate);
+		
 	}
 	
 }
