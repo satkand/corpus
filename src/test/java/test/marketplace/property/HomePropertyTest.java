@@ -159,15 +159,4 @@ public class HomePropertyTest extends App {
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 	}
 	
-/*	private void enableFAPISettings() {
-		
-		navigationMenu.tapSplitMenuIcon();
-		navigationMenu.tapFAPISettingsMenuItem();
-		fapiSettingsPage.tapUserHasPropertiesToggle();
-		navigationMenu.tapSplitMenuIcon();
-		navigationMenu.tapSuncorpMenuItem();
-		landingPage.tapHomeTab();
-		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
-		
-	}*/
 }

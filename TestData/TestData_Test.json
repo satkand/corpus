@@ -894,6 +894,13 @@
 			"longEmailError" : "Must be between 2 and 100 characters",
 			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
 		},
+		"professionalServices": {
+			"homeServicesTitle": "Home services",
+			"chooseServiceLabel": "Choose a service that suits you:",
+			"urlBarText": "https://www.suncorp.com.au",
+			"professionalServicesPageTitle": "Professional Services",
+			"homeServicesDescription": "With the support of IBM and the natural language capabilities of Watson – IBM's artificial intelligence platform"
+		},
 		"portfolio": {
 			"emptyStateLabel": "Looks like you haven't added any products yet.",
 			"bottomSheetLabel": "What type of product?",
