@@ -13,9 +13,11 @@ public class PropertyExplorerPage  extends BasePage{
 
 	public PropertyExplorerPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 	
+	private By miniMap = By.id("au.com.suncorp.marketplace:id/mapView");
+	private By miniMapWhatsNearByButton = By.id("au.com.suncorp.marketplace:id/nearbyButton");
+	private By miniMapLocationPin = By.xpath("//android.widget.FrameLayout[@resource-id='au.com.suncorp.marketplace:id/mapView']//android.widget.FrameLayout//android.view.View[@content-desc='Google Map']//android.view.View");
 	private By propertyExplorerSearchbox = By.id("au.com.suncorp.marketplace:id/search_bar");
 	private By propertyExplorerSearchText = By.id("au.com.suncorp.marketplace:id/search_src_text");
 	private By propertyExplorerSearchHintText = By.id("au.com.suncorp.marketplace:id/propertySearchHintText");
@@ -24,6 +26,31 @@ public class PropertyExplorerPage  extends BasePage{
 	private By propertyInsightTab = By.id("au.com.suncorp.marketplace:id/propertySearchButton");
 	private By suburbInsightTab = By.id("au.com.suncorp.marketplace:id/suburbSearchButton");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
+	
+	public WebElement checkPropertyExplorerSearchbox() {
+		return find(propertyExplorerSearchbox);
+	}
+	
+	public WebElement checkMiniMapLocationPin() {
+		return find(miniMapLocationPin);
+	}
+	
+	public void scrollToWhatsNearButton() {
+		scrollToElement(miniMapWhatsNearByButton, "true");
+	}
+	
+	public void enterTextInPropertyExplorerSearchbox(String propertySearchText) {
+		tapElement(propertyExplorerSearchbox);
+		typeValue(propertySearchText, propertyExplorerSearchText);
+	}
+	
+	public WebElement checkMiniMap() {
+		return find(miniMap);
+	}
+	
+	public WebElement checkMiniMapWhatsNearButton() {
+		return find(miniMapWhatsNearByButton);
+	}
 	
 	public String getPropertyExplorerSearchHintText() {
 		return getText(propertyExplorerSearchHintText);
