@@ -59,7 +59,7 @@ public class MemberLoginTest extends App {
 		memberLoginPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		Assert.assertEquals(memberLoginPage.getPasswordFieldValue(), utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd"), "Member Login Page - Data is not masked");
 		memberLoginPage.relaunchApp(-1, "Config");
-		Assert.assertEquals(loginPage.getPasswordFieldValue(), "", "Login screen - Password field is not empty");
+		Assert.assertEquals(memberLoginPage.getPasswordFieldValue(), "", "Member Login Page - Password field is not empty");
 		memberLoginPage.tapCancelButton();
 	}
 
