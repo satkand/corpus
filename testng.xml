@@ -3,14 +3,32 @@
 <suite name="Suite" verbose="50" configfailurepolicy="continue" >
 	<test name="Test">
 
- 
-		<parameter name="stub" value="false"></parameter>
-		<packages>
+ 		<packages>
 			<package name="test.marketplace.home"/>
-			<package name="test.marketplace.chatbot"/>
-			<package name="test.marketplace.common"/>
-			<package name="test.marketplace.offers"/>
 		</packages>
+ <!-- 
+ 		<parameter name="stub" value="false"></parameter>
+ 		<packages>
+ 			<package name="test.marketplace.auth.registration"/>
+			<package name="test.marketplace.auth.pin"/>
+			<package name="test.marketplace.auth.login"/>
+	
+			<package name="test.marketplace.chatbot"/>
+			
+			<package name="test.marketplace.digitalVault"/>
+			
+			<package name="test.marketplace.home"/>
+			
+			<package name="test.marketplace.landing"/>
+			
+			<package name="test.marketplace.offers"/>
+			
+			<package name="test.marketplace.portfolio"/>
+			
+			<package name="test.marketplace.settings"/>
+
+		</packages>
+ 
 		<classes>
 			<class name="test.marketplace.vehicles.VehiclesTest">
 				<parameter name="stub" value="vehicles"></parameter>
@@ -31,13 +49,10 @@
 				</methods>
 			</class>
 		</classes>
-		
-
+ -->
 <!-- 
 
-	<package name="test.marketplace.auth.registration"/>
-	<package name="test.marketplace.auth.pin"/>
-	<package name="test.marketplace.auth.login"/>
+
 	<package name="test.marketplace.settings"/>
 	
 

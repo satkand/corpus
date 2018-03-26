@@ -10,7 +10,7 @@ public class TestListner implements ITestListener {
 
     public void onTestFailure(ITestResult result) {
         System.out.println("Listener is invoked YAY");
-        utils.takeScreenShot("Screen@_" + utils.timeStamp());
+       //utils.takeScreenShot("Screen@_" + utils.timeStamp());
     }
 
     @Override

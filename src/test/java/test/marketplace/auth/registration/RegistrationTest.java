@@ -608,6 +608,7 @@ public class RegistrationTest extends App{
 
 	}
 	
+
 	// DMPM-38 : Check Uniqueness of Email Address Used for Registration
 	@Test(groups = {"DMPM-38", "DMPM-2469", "DMPM-2470", "DMPM-2471", "DMPM-2474", "marketplace", "Registration",
 			"priority-major" })
@@ -661,6 +662,7 @@ public class RegistrationTest extends App{
 
 	}
 	
+
 
 	private void navigateToRegistrationPage() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");

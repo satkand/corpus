@@ -26,10 +26,7 @@ import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.FAPISettingsPage;
 import pages.marketplace.common.GalleryPage;
-import pages.marketplace.common.LandingPage;
-import pages.marketplace.common.NavigationMenuPage;
-import pages.marketplace.common.SettingsPage;
-import pages.marketplace.common.WelcomePage;
+import pages.marketplace.common.WebviewPage;
 import pages.marketplace.digitalVault.ChooseFolderPage;
 import pages.marketplace.digitalVault.DigiVaultCommonPage;
 import pages.marketplace.digitalVault.DigitalVaultPage;
@@ -39,10 +36,16 @@ import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.digitalVault.SelectItemsPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
+import pages.marketplace.home.PropertyDetailsPage;
+import pages.marketplace.home.PropertyExplorerPage;
+import pages.marketplace.landing.LandingPage;
+import pages.marketplace.landing.NavigationMenuPage;
+import pages.marketplace.landing.WelcomePage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
+import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
@@ -90,7 +93,11 @@ public class App extends BaseTest {
 	public AddBankAccountPage addBankAccountPage = null;
 	public AccountDetailsPage accountDetailsPage = null;
 	public FAPISettingsPage fapiSettingsPage = null;
-
+	public PropertyExplorerPage propertyExplorerPage = null;
+	public PropertyDetailsPage propertyDetailsPage = null;
+	
+	public WebviewPage webviewPage = null;
+	
 	@BeforeClass
 	public void initializeApp() {
 		
@@ -142,6 +149,9 @@ public class App extends BaseTest {
 		addBankAccountPage = new AddBankAccountPage(driver);
 		accountDetailsPage = new AccountDetailsPage(driver);
 		fapiSettingsPage = new FAPISettingsPage(driver);
+		propertyExplorerPage = new PropertyExplorerPage(driver);
+		propertyDetailsPage = new PropertyDetailsPage(driver);
+		webviewPage = new WebviewPage(driver);
 	}
 	
 	@Parameters({ "stub" })

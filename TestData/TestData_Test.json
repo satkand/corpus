@@ -12,7 +12,27 @@
 		"login": "ab@ab.com",
 		"pwd": "Password1"
 	},
-	"propertyDimention" :{
+	"propertyDimension" :{
+		"propertyDetails":{
+					"address": "1018/40 Rossana Road",
+					"stateAndSuburb": "North Heidelberg VIC 3084",
+					"bedRooms": "2",
+					"bathrooms": "1",
+					"parkingSpaces": "1",
+					"landSize": "289 m²",
+					"propertyType": "House - Duplex",
+					"roofType": "Tiled (Terra Cotta or Cement)",
+					"wallMaterial": "Brick",
+					"salePrice": "$1,000,000",
+					"saleDate": "30 Feb 2018",
+					"buildYear": "1966"
+		},
+		"propertyExplorer":{
+					"login": "a@b.c",
+					"pwd": "Password1",
+					"clearSearchText":"1234567890ABCD#$%^"
+					"enterAdress":"1"
+		},
 		"NoProperties":{
 					"login": "a@b.c",
 					"pwd": "Password1"
@@ -21,10 +41,10 @@
 			"withProducts": {
 					"login": "a@b.c",
 					"pwd": "Password1",
-					"addressLineText": "88 Smith St, Marrickville",
-         			"suburbText":"NT 2230",
+					"addressLineText": "123 New Street, Brighton",
+         			"suburbText":"NSW 3186",
           			"productDescriptionText1": "Home and Contents protected until 10 October 2018",
-         			"productDescriptionText2": "Home loan next payment due 15 March 2018"
+         			"productDescriptionText2": "Home loan next payment due 10 October 2018"
 			},
 			"withOutProducts": {
 					"login": "a@b.c",
@@ -838,7 +858,7 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "sun@sun.com",
+			"login": "son@son.com",
 			"pwd": "Password1"
 		},
 		"invalidCredentials": {
@@ -908,6 +928,10 @@
 			"netWorthLabel": "Your net worth",
 			"netWorthDisclaimerMessage": "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days."
 		},
+		"propertyExplorer":{
+			"propertyInsightSearchHintText": "Enter address",
+			"suburbInsightSearchHintText": "Enter suburb's name"
+		},
 		"spendingsPage": {
 			"emptyTransactionsMessage": "Sorry, you don't have any transactions yet",
 			"emptyTransactionsHintMessage": "Please note: Transactions will take up to 24 hours to appear."
@@ -918,7 +942,17 @@
 			"propertyInsightInfo": "Get property insights and market value",
 			"organiseDocumentsInfo": "Categorise and organise your documents to your property",
 			"accessProfessionalInfo": "Access professional services and suburb insights",
-			"addPropertyOrPolicyActionSheetTitle":"What would you like to add?"
+			"addPropertyOrPolicyActionSheetTitle":"What would you like to add?",
+			"featureLockedMsgTitle":"Feature Locked",
+			"activeClaim":"Active claim",
+			"featureLockedTextCopy":"Unfortunately this feature is only available to registered users. Please Log In or Sign Up first."
+			
+		},
+		"propertyDetailsPage": {
+			"showMoreInfoLabel": "VIEW MORE INFO",
+			"showLessInfoLabel": "VIEW LESS INFO",
+			"HomeJourneyTitle": "Home journey"
+			
 		},
 		"homeJourneyPage": {
 			"journeyTitleText": "Our guide to\nbuying a home",
@@ -983,8 +1017,8 @@
 				"offerDescription": "More than 840,000 Australians have a bank account with Suncorp Bank. Stick with the brand you know you can trust."
 			},
 			"propertyTab": {
-				"offerTitle": "Building Insurance",
-				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
+				"offerTitle": "Contents Insurance",
+				"offerDescription": "Covers loss of and damage to the contents of your home, garage and shed, caused by fire, break-ins and weather events. Includes storm, flood and bushfire"
 			},
 			"vehiclesTab": {
 				"offerTitle": "CTP Insurance",

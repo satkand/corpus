@@ -1,4 +1,4 @@
-package test.marketplace.home;
+package test.marketplace.property;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
