@@ -34,6 +34,7 @@ public class DigiVaultCommonPage extends BasePage {
 	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
+	private By permissionDontAllowButton = By.id("com.android.packageinstaller:id/permission_deny_button");
 	private By androidDialogMsg = By.id("android:id/message");
 	
 	public DigiVaultCommonPage(AppiumDriver driver) {
@@ -185,6 +186,10 @@ public class DigiVaultCommonPage extends BasePage {
 		}
 	}
 	
+	public void tapUploadPhotoCardWithoutPermission() {
+		tapElement(uploadPhotoCard);
+	}
+	
 	public void addDocumentThroughCamera() {
 		tapAddButton();
 		tapTakePhotoCard();
@@ -234,6 +239,18 @@ public class DigiVaultCommonPage extends BasePage {
 	
 	public void enterName(String name) {
 		typeValue(name, renameEditField);
+	}
+	
+	public WebElement checkPermissionButton() {
+		return find(permissionOkButton);
+	}
+	
+	public WebElement checkPermissionDontAllowButton() {
+		return find(permissionDontAllowButton);
+	}
+	
+	public void tapPermissionDontAllowButton() {
+		tapElement(permissionDontAllowButton);
 	}
 	
 	public void addAPhotoThroughCamera() {

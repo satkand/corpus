@@ -279,6 +279,49 @@ public class DigitalVaultTest extends App {
 		Assert.assertNull(digiVaultCommonPage.checkDocumentMoreOption(), "Item not deleted");
 	}
 	
+	@Test(groups = { "DMPM-804", "DMPM-1589", "DMPM-1590", "DMPM-1595", "DMPM-1596", "DMPM-1597", "DMPM-1598", "DMPM-1599","DMPM-1600","marketplace", "Document Storage", "priority-minor" })
+	public void testAddImageFromGallery() {
+		navigateToDigiVaultPageWithEmptyData();
+		digiVaultCommonPage.tapAddButton();
+		digiVaultCommonPage.tapUploadPhotoCardWithoutPermission();
+		Assert.assertNotNull(digiVaultCommonPage.checkPermissionButton(), "Permission button not present");
+		Assert.assertNotNull(digiVaultCommonPage.checkPermissionDontAllowButton(), "Permission button not present");
+		digiVaultCommonPage.tapPermissionOkButton();
+		Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
+		Assert.assertNotNull(galleryPage.checkGalleryCancelButton(), "Cancel button not present");
+		galleryPage.tapGalleryCancelButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+		
+		digiVaultCommonPage.tapAddButton();
+		digiVaultCommonPage.tapUploadPhotoCardWithoutPermission();
+		Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
+		galleryPage.choosePicture();
+		Assert.assertNotNull(imagePreviewPage.checkPreviousButton(), "Previous button not present");
+		imagePreviewPage.tapPreviousButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+		
+		digiVaultCommonPage.tapAddButton();
+		digiVaultCommonPage.tapUploadPhotoCardWithoutPermission();
+		Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
+		galleryPage.choosePicture();
+		imagePreviewPage.tapNextButton();
+		Assert.assertNotNull(digiVaultCommonPage.checkPositiveButton(), "Add button not present");
+		digiVaultCommonPage.tapPositiveButton();
+		Assert.assertNotNull(chooseFolderPage.checkPickFolderButton(), "Save button not present");
+		chooseFolderPage.tapPickFolderButton();
+		Assert.assertNotNull(digiVaultCommonPage.checkDocumentMoreOption(), "Document not created");
+	}
+	
+	@Test(groups = { "DMPM-804", "DMPM-1591", "marketplace", "Document Storage", "priority-minor" })
+	public void testPermissionWhileAddingImageFromGallery() {
+		navigateToDigiVaultPageWithEmptyData();
+		digiVaultCommonPage.tapAddButton();
+		digiVaultCommonPage.tapTakePhotoCard();
+		Assert.assertNotNull(digiVaultCommonPage.checkPermissionDontAllowButton(), "Permission button not present");
+		digiVaultCommonPage.tapPermissionDontAllowButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+	}
+	
 	@Test(groups = { "DMPM-2363", "DMPM-2923", "DMPM-2924", "DMPM-2926", "DMPM-1736", "DMPM-2359","marketplace", "Document Storage", "priority-minor" })
 	public void testEditImageTitle() {
 		navigateToDigiVaultPageWithEmptyData();
@@ -357,6 +400,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
 		Assert.assertNotNull(digitalVaultPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "folder1")), "Folder was not renamed");	
 	}
+
 	
 	@Test(groups = { "DMPM-820", "DMPM-1535", "DMPM-1536", "DMPM-1538", "DMPM-1539", "DMPM-1540","marketplace", "Document Storage", "priority-minor" })
 	public void testDeleteImageFromFullScreenView() {

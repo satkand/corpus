@@ -155,6 +155,57 @@ public class FolderViewTest extends App {
 			Assert.assertNotNull(digitalVaultPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "file1")), "File was not moved");
 		}
 		
+	
+		//DMPM-2334 - Scenario 1-9
+		@Test(groups = { "DMPM-2334", "DMPM-2861", "DMPM-2862", "DMPM-2863", "DMPM-2864", "DMPM-2865", "DMPM-2866", "DMPM-2867", "DMPM-2868", "DMPM-2869","marketplace", "Document Storage", "priority-minor" })
+		public void testDeleteMultipleFilesFromInsideFolderViaEdit() {
+			navigateToFolderView();
+			digiVaultCommonPage.addAPhotoThroughGallery();
+			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
+			galleryPage.choosePicture();
+			imagePreviewPage.finishSavingImage(utils.readTestData("digivault", "hasItems", "file1"));
+			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			
+			folderViewPage.tapEditButton();
+			Assert.assertNotNull(folderViewPage.checkDeleteItemsButton(), "Delete items button not present");
+			folderViewPage.tapDeleteItemsButton();
+			Assert.assertNotNull(selectItemsPage.checkCloseButton(), "Close button not present");
+			selectItemsPage.tapCloseButton();
+			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			
+			folderViewPage.tapEditButton();
+			Assert.assertNotNull(folderViewPage.checkDeleteItemsButton(), "Delete items button not present");
+			folderViewPage.tapDeleteItemsButton();
+			Assert.assertFalse(selectItemsPage.isDeleteButtonEnabled(), "Delete button is enabled");
+			selectItemsPage.selectAllItems();
+			Assert.assertTrue(selectItemsPage.areAllItemsSelected(), "All items not selected");
+			
+			selectItemsPage.tapSelectAllButton();
+			Assert.assertFalse(selectItemsPage.areAllItemsSelected(), "All items not deselected");
+			selectItemsPage.tapSelectAllButton();
+			Assert.assertTrue(selectItemsPage.areAllItemsSelected(), "All items not selected");
+			Assert.assertTrue(selectItemsPage.isDeleteButtonEnabled(), "Move button is disabled");
+			selectItemsPage.tapDeleteButton();
+			
+			Assert.assertNotNull(digiVaultCommonPage.checkAndroidDialogMsg(), "Delete confirmation msg is not shown");
+			Assert.assertNotNull(digiVaultCommonPage.checkAndroidCancelButton(), "Delete cancelbutton is not shown");
+			digiVaultCommonPage.tapAndroidCancelButton();
+			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			folderViewPage.tapEditButton();
+			Assert.assertNotNull(folderViewPage.checkDeleteItemsButton(), "Delete items button not present");
+			folderViewPage.tapDeleteItemsButton();
+			selectItemsPage.tapSelectAllButton();
+			Assert.assertTrue(selectItemsPage.isDeleteButtonEnabled(), "Move button is disabled");
+			selectItemsPage.tapDeleteButton();
+			
+			
+			Assert.assertNotNull(digiVaultCommonPage.checkAndroidOkButton(), "Delete button is not shown");
+			digiVaultCommonPage.tapAndroidOkButton();
+			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			Assert.assertNull(digiVaultCommonPage.checkDocumentMoreOption(), "All files not deleted");
+			
+		}
+		
 		
 		//DMPM-1603 - Scenario 7
 		@Test(groups = { "DMPM-2130", "DMPM-2537","marketplace", "Document Storage", "priority-minor" })
