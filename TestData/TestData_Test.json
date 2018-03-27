@@ -86,7 +86,268 @@
           					"currentBalance": "-$123,456.25",
           					"availableBalance": "-$12,345.00"
 					}]
-			}
+			},
+		"wealthProducts": {
+				"login": "a@b.c",
+				"pwd": "Password1",
+				"products": [
+				{
+						"brand": "Suncorp",
+          				"accountNumber": "123456789",
+          				"description": "Sun Super",
+          				"accountBalance": 3141592.65,
+          				"status": "Active"
+				},
+				{
+						"brand": "Apia",
+          				"accountNumber": "564738291",
+          				"description": "Australian Everyday Customer Sunny Super",
+          				"accountBalance": 4.20,
+          				"status": "Active"
+				}]
+			},
+		"lifeProducts" : {
+				"login": "a@b.c",
+				"pwd": "Password1",
+				"products": [
+				{
+						"brand": "Suncorp",
+          				"policyNumber": "M374298342",
+          				"description": "Life Insurance",
+          				"insuredPersons": [
+            			{
+             				 "name": "Bob Smith"
+            			},
+            			{
+              				"name": "Andy Smith"
+            			}]
+				},
+				{
+						"brand": "AAMI",
+          				"policyNumber": "634654212",
+          				"description": "Accidental Injury Plan",
+          				"insuredPersons": [
+            			{
+              				"name": "Alex Sim"
+            			}]
+
+				}]
+
+		},
+		"insuranceProducts" : {
+				"policy1": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Renewal due",
+          				"risks": 
+            			{
+             				 "description1": "Single Risk, Single Cover Policy 1",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Cancellation Date"
+             				 
+            			}
+				},
+				"policy2": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Renewal overdue",
+          				"risks": 
+            			{
+             				 "description1": "Single Risk, Single Cover Policy 2",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Cancellation Date"
+            			}
+				},
+				"policy3": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Renewal due",
+          				"risks":{
+             				 "description1": "Single Risk, Single Cover Policy 3",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Start Date"
+            			}
+				},
+				"policy4": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Renewal overdue",
+          				"risks": 
+            			{
+             				 "description": "Single Risk, Single Cover Policy 4",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Start Date"
+            			}
+				},
+				"policy5": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+             				 "description": "Multi Risk, Multi Cover 1"
+            			},
+            			{
+            				"description": "Multi Risk, Multi Cover 2"
+            			}
+            			]
+				}],
+				"policy6": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Multi Cover 3"
+            			},
+            			{
+            				"description": "Multi Risk, Multi Cover 4"
+            			}]
+				}],
+				"policy7": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Multi Cover 5"
+            			},
+            			{
+            				"description": "Multi Risk, Multi Cover 6"
+            			}]
+				}],
+				"policy8": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Multi Cover 7"
+            			},
+            			{
+            				"description": "Multi Risk, Multi Cover 8"
+            			}]
+				}],
+				"policy9": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Single Cover 1"
+            			},
+            			{
+            				"description": "Multi Risk, Single Cover 2"
+            			}]
+				}],
+				"policy10": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Single Cover 3"
+            			},
+            			{
+            				"description": "Multi Risk, Single Cover 4"
+            			}]
+				}],
+				"policy11": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Single Risk Multi Cover 1"
+            			}]
+				}],
+				"policy12": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Multi Cover 9"
+            			},
+            			{
+            				"description": "Multi Risk, Multi Cover 10"
+            			}]
+				}],
+				"policy13": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Multi Cover 11"
+            			},
+            			{
+            				"description": "Multi Risk, Multi Cover 12"
+            			}]
+				}],
+				"policy14": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Single Cover 5"
+            			},
+            			{
+            				"description": "Multi Risk, Single Cover 6"
+            			}]
+				}],
+				"policy15": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Single Cover 7"
+            			},
+            			{
+            				"description": "Multi Risk, Single Cover 8"
+            			}]
+				}],
+				"policy16": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Single Risk Multi Cover 2"
+            			}]
+				}],
+				"policy17": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Multi Cover 13"
+            			},
+            			{
+            				"description": "Multi Risk, Multi Cover 14"
+            			}]
+				}],
+				"policy18": [
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+          				"risks": [
+            			{
+            				"description": "Multi Risk, Multi Cover 15"
+            			},
+            			{
+            				"description": "Multi Risk, Multi Cover 16"
+            			}]
+				}]
+
+		}
 	},
 	"hasSuncorpBankAccounts" :{
 		"login": "ab@ab.com",
