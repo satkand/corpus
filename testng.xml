@@ -48,6 +48,7 @@
 					<include name="testSpendingsPageElements"/>
 				</methods>
 			</class>
+			<class name="test.marketplace.common.HomeJourneyMenuTest"></class>
 		</classes>
  -->
 <!-- 
