@@ -47,8 +47,11 @@ public class MyProductsPage extends BasePage {
 	private String riskXpathSuffix = "\']";
 	private String dateDescXpathSuffix1 = "']/following-sibling::android.widget.LinearLayout/child::android.widget.TextView[@text = \'";
 	private String dateDescXpathSuffix2 = "\']";
+	private String policyStatusXpathSuffix1="']/parent::android.widget.LinearLayout/parent::android.widget.LinearLayout/parent::android.widget.LinearLayout/preceding-sibling::android.widget.LinearLayout/child::android.widget.TextView[@text = \'";
+	private String policyStatusXpathSuffix2="\']";
 	private By dateDescText = null;
 	private By endDate = null;
+	private By policyStatus = null;
 	
 	public List<WebElement> fetchAccountItemLayoutList() {
 		List<WebElement> elements = finds(accountItemLayout);
@@ -233,14 +236,13 @@ public class MyProductsPage extends BasePage {
 	
 	public void scrollTo(String riskName) {
 		String riskXpath = riskXpathPrefix + riskName + riskXpathSuffix;
-		System.out.println(riskXpath);
 		riskText = By.xpath(riskXpath);
 		scrollToElement(riskText);
-		//swipeScreen("DOWN");
 		
 	}
 	
 	public WebElement checkExpiryDateDesc(String riskName, String dateDesc) {
+		
 		String dateDescXpath = riskXpathPrefix + riskName + dateDescXpathSuffix1 + dateDesc + dateDescXpathSuffix2;
 		dateDescText = By.xpath(dateDescXpath); 
 		return find(dateDescText);
@@ -251,6 +253,13 @@ public class MyProductsPage extends BasePage {
 		String dateXpath = riskXpathPrefix + riskName + dateDescXpathSuffix1 + Date + dateDescXpathSuffix2;
 		endDate = By.xpath(dateXpath);
 		return find(endDate);
+		
+	}
+	
+	public WebElement checkPolicyStatus(String riskName, String policyDesc) {
+		String policyStatusXpath = riskXpathPrefix + riskName + policyStatusXpathSuffix1 + policyDesc + policyStatusXpathSuffix2;
+		policyStatus = By.xpath(policyStatusXpath); 
+		return find(policyStatus);
 		
 	}
 	

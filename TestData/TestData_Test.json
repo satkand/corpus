@@ -90,39 +90,50 @@
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
+						"status":"Renewal due",
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 1",
-             				 "endDate1":"10 November 2017"
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Cancellation Date"
+             				 
             			}
 				},
-				"policy2": [
+				"policy2": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Renewal overdue",
+          				"risks": 
             			{
-             				 "description": "Single Risk, Single Cover Policy 2"
-            			}]
-				}],
-				"policy3": [
+             				 "description1": "Single Risk, Single Cover Policy 2",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Cancellation Date"
+            			}
+				},
+				"policy3": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
-            			{
-             				 "description": "Single Risk, Single Cover Policy 3"
-            			}]
-				}],
-				"policy4": [
+						"status":"Renewal due",
+          				"risks":{
+             				 "description1": "Single Risk, Single Cover Policy 3",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Start Date"
+            			}
+				},
+				"policy4": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Renewal overdue",
+          				"risks": 
             			{
-             				 "description": "Single Risk, Single Cover Policy 4"
-            			}]
-				}],
+             				 "description": "Single Risk, Single Cover Policy 4",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Start Date"
+            			}
+				},
 				"policy5": [
 				{
 						"login": "a@b.c",

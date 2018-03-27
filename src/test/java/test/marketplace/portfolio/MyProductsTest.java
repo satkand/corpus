@@ -1,6 +1,7 @@
 package test.marketplace.portfolio;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -131,21 +132,31 @@ public class MyProductsTest extends App {
 		}
 	}
 
-	/*167 - Scenario 2 - DMPM-467*/
-	@Test (groups = {"DMPM-167", "DMPM-467","marketplace", "portfolio", "priority-minor"})
-	public void testExpiryDateRenewalPolicy(){
+	@DataProvider(name = "ExpiryDateRenewalDueAndOverduePolicy")
+	 
+	  public static Object[][] policy() {
+	 
+	     	return new Object[][] { {"policy1",1}, {"policy2",1}, {"policy3",1}, {"policy4",1} };
+		 
+	  }
+	
+	//DMPM-3667 Highlight expiry date for Renewal Overdue policy - Scenario 1
+	@Test (dataProvider ="ExpiryDateRenewalDueAndOverduePolicy", groups = {"DMPM-3667", "DMPM-4139","marketplace", "portfolio", "priority-minor"})
+	public void testExpiryDateRenewalDueAndOverduePolicy(String policy, int coverNumber){
 		
-		loginToApp(utils.readTestData("portfolio","insuranceProducts","policy1","login"), utils.readTestData("portfolio","insuranceProducts","policy1","pwd"));
-		navigationMenu.tapSplitMenuIcon();
-		navigationMenu.tapProductsMenuItem();
-		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
+		String coverDescription = utils.readTestData("portfolio","insuranceProducts",policy, "risks","description"+coverNumber);
+		String coverDateDescription = utils.readTestData("portfolio","insuranceProducts",policy, "risks","endDateDescription"+coverNumber);
+		String coverEndDate = utils.readTestData("portfolio","insuranceProducts",policy, "risks","endDate"+coverNumber);
+		String policyStatus = utils.readTestData("portfolio","insuranceProducts",policy, "status");
 		
-		myProductsPage.scrollTo(utils.readTestData("portfolio","insuranceProducts","policy1", "risks","description1"));
+		navigateToMyProductsScreenInsuranceProducts(policy);
 		
-		Assert.assertNotNull(myProductsPage.checkExpiryDateDesc(utils.readTestData("portfolio","insuranceProducts","policy1", "risks","description1"), "Cancellation Date"),"Cancellation Date description not displayed.");
-		System.out.println("checked date desc");
-		Assert.assertNotNull(myProductsPage.checkExpiryDate(utils.readTestData("portfolio","insuranceProducts","policy1", "risks","description1"), "10 November 2017"),"Cancellation Date not displayed.");
-		System.out.println("checked date");
+		myProductsPage.scrollTo(coverDescription);
+		
+		Assert.assertNotNull(myProductsPage.checkExpiryDateDesc(coverDescription, coverDateDescription),"Cover end date description is incorrect");
+		Assert.assertNotNull(myProductsPage.checkExpiryDate(coverDescription, coverEndDate),"Cover End Date is incorrect");
+		Assert.assertNotNull(myProductsPage.checkPolicyStatus(coverDescription, policyStatus),"Policy status is incorrect");
+		
 	}
 	
 	
@@ -156,6 +167,17 @@ public class MyProductsTest extends App {
 		}else {
 			loginToApp(utils.readTestData("portfolio","loginProdList", "login"), utils.readTestData("portfolio","loginProdList", "pwd"));
 		}
+		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.tapProductsMenuItem();
+		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
+		
+		
+	}
+	
+	private void navigateToMyProductsScreenInsuranceProducts(String user){
+		
+		loginToApp(utils.readTestData("portfolio","insuranceProducts",user,"login"), utils.readTestData("portfolio","insuranceProducts",user,"pwd"));
+
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapProductsMenuItem();
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
