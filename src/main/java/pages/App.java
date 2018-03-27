@@ -18,6 +18,7 @@ import pages.marketplace.auth.pin.PINCustomKeypad;
 import pages.marketplace.auth.pin.PINOptionsPage;
 import pages.marketplace.auth.pin.PINSetupPage;
 import pages.marketplace.auth.registration.GetStartedPage;
+import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CameraPage;
@@ -97,7 +98,9 @@ public class App extends BaseTest {
 	public PropertyDetailsPage propertyDetailsPage = null;
 	
 	public WebviewPage webviewPage = null;
-	
+	public MemberLoginPage memberLoginPage = null;
+
+
 	@BeforeClass
 	public void initializeApp() {
 		
@@ -152,6 +155,7 @@ public class App extends BaseTest {
 		propertyExplorerPage = new PropertyExplorerPage(driver);
 		propertyDetailsPage = new PropertyDetailsPage(driver);
 		webviewPage = new WebviewPage(driver);
+		memberLoginPage = new MemberLoginPage(driver);
 	}
 	
 	@Parameters({ "stub" })

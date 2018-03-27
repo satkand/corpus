@@ -1090,7 +1090,9 @@
 			"longPostCode" : "979797989",
 			"emailLong" : "giehrgireghewhgogiehrgireghewhgokjlkjllljwhgowgowehgaesvnoroiegiehrgireghewhgowhgowgowehgaesvnoroiesfdsff@.com",
 			"mobileLong" : "453592486085082350",
-			"mobileInvalid" : "9897494549",
+			"mobileInvalidFormat" : "9897494549",
+			"mobileEmpty" : "",
+			"mobileShort" : "0422222",
 			"shortPassword" : "4tger",
 			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
 			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
@@ -1124,7 +1126,8 @@
 	"loginCredentials": {
 		"validLoginCredentials": {
 			"login": "son@son.com",
-			"pwd": "Password1"
+			"pwd": "Password1",
+			"maskedValidPwd": "•••••••••"
 		},
 		"invalidCredentials": {
 			"emailEmpty" : "",
@@ -1133,10 +1136,16 @@
 			"emailIncorrectFormat1": "a@.com",
 			"emailIncorrectFormat2": "a@b",
 			"passwordEmpty": "",
-			"invalidPassword" : "1234567"
+			"invalidPassword" : "1234567",
+			"invalidMemberLogin": "x@g.z",
+			"invalidMemberLoginPwd": "Pwd1"
 		},
 		"hasNoProducts": {
 			"login": "fer@fer.com",
+			"pwd": "Password1"
+		},
+		"validMemberLogin": {
+			"login": "x@y.z",
 			"pwd": "Password1"
 		}
 	},
@@ -1298,12 +1307,36 @@
 			"digiVaultEmptyImageTitle" : "Your vault is empty",
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
 		},
-		"brandIcons": {
-			"aamiBrandIcon": "AAMI member login",
-			"apiaBrandIcon": "APIA member login",
-			"gioBrandIcon": "GIO member login",
-			"shannonsBrandIcon": "Shannons member login"
+		"memberLogin" : {
+			"shortMobileNumberError" : "Must be 10 digits",
+			"invalidMobileNumberError" : "Must use 04XXXXXXXX format",
+			"emptyMobileNumberError" : "Field is required",
+			"incorrectCredentialsSnackbarText" : "Wrong email or password. Please check and retry."
+		},
+		"getStartedPage" : {
+			"getStartedPageTitle" : "Welcome to the Suncorp family"
 		}
+	},
+	"brands": [
+		{
+			"button": "aamiButton",
+			"brandIcon": "AAMI member login"
+		},
+		{
+			"button": "apiaButton",
+			"brandIcon": "APIA member login"
+		},
+		{
+			"button": "gioButton",
+			"brandIcon": "GIO member login"
+		},
+		{
+			"button": "shannonsButton",
+			"brandIcon": "Shannons member login"
+		}
+	],
+	"bundleId": {
+		"value": "au.com.suncorp.marketplace:id/"
 	}
 }
 
