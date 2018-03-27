@@ -66,7 +66,23 @@ public class DigiVaultCommonPage extends BasePage {
 	public void tapAndroidCancelButton() {
 		tapElement(androidCancelButton);
 	}
+
+	public WebElement checkSignUpButton() {
+		return find(androidCancelButton);
+	}
+
+	public void tapSignUpButton() {
+		tapElement(androidCancelButton);
+	}
 	
+	public WebElement checkLoginButton() {
+		return find(androidOkButton);
+	}
+
+	public void tapLoginButton() {
+		tapElement(androidOkButton);
+	}
+
 	public WebElement checkAndroidOkButton() {
 		return find(androidOkButton);
 	}

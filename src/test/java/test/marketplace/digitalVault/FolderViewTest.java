@@ -157,7 +157,8 @@ public class FolderViewTest extends App {
 		
 	
 		//DMPM-2334 - Scenario 1-9
-		@Test(groups = { "DMPM-2334", "DMPM-2861", "DMPM-2862", "DMPM-2863", "DMPM-2864", "DMPM-2865", "DMPM-2866", "DMPM-2867", "DMPM-2868", "DMPM-2869","marketplace", "Document Storage", "priority-minor" })
+		@Test(groups = { "DMPM-2334", "DMPM-2861", "DMPM-2862", "DMPM-2863", "DMPM-2864", "DMPM-2865", "DMPM-2866", 
+				"DMPM-2867", "DMPM-2868", "DMPM-2869","marketplace", "Document Storage", "priority-minor" })
 		public void testDeleteMultipleFilesFromInsideFolderViaEdit() {
 			navigateToFolderView();
 			digiVaultCommonPage.addAPhotoThroughGallery();

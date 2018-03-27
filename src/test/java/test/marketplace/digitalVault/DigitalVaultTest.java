@@ -787,6 +787,28 @@ public class DigitalVaultTest extends App {
 			createDummyData();
 		}
 	}
+
+	@Test(groups = { "DMPM-3527","marketplace", "Document Storage", "priority-minor" })
+	public void testMoveFileFromInsideFolder() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		welcomePage.tapGuestAccessButton();
+		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(),"Split menu icon not seen");
+		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkDigitalVaultMenuItem(),"Digital vault menu icon not seen");
+		navigationMenu.tapDigitalVaultMenuItem();
+		Assert.assertNotNull(digiVaultCommonPage.checkLoginButton(), "Login button not present");
+		digiVaultCommonPage.tapLoginButton();
+		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login page not seen");
+		common.goBack();
+		
+		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(),"Split menu icon not seen");
+		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkDigitalVaultMenuItem(),"Digital vault menu icon not seen");
+		navigationMenu.tapDigitalVaultMenuItem();
+		Assert.assertNotNull(digiVaultCommonPage.checkSignUpButton(), "Signup button not present");
+		digiVaultCommonPage.tapSignUpButton();
+		Assert.assertNotNull(getStartedPage.checkSetupNewAccountButton(), "Sign up page not seen");
+	}
 	
 	private void navigateToDigiVaultPageWithEmptyData() {
 
