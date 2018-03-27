@@ -24,7 +24,7 @@ public class GetStartedPage extends BasePage {
 	private By brandIcon = null;
 	
 	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
-	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");	//private By registerWithSupportedGroupbutton = By.id("au.com.suncorp.marketplace:id/aamiButton");
+	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");	
 	private String registerWithSupportedGroupButtonsuffix = "au.com.suncorp.marketplace:id/";
 	private By registerWithSupportedGroupButton;
 

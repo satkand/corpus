@@ -149,4 +149,8 @@ public class LoginPage extends BasePage{
 	public WebElement checkLoadingIndicator() {
 		return find(loadingIndicator, 30);
 	}
+	
+	public String getEmailFieldData() {
+		return getText(emailField);
+	}
 }

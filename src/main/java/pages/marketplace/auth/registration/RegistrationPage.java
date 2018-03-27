@@ -77,6 +77,10 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By okButtonDuplicateEmailPopUp = By.id("android:id/button2");
+	private By anotherEmailButtonDuplicateEmailPopUp = By.id("android:id/button1");
+	private By duplicateEmailPopUpTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
+	private By duplicateEmailPopUpText = By.id("android:id/message");
 
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
@@ -400,29 +404,56 @@ public class RegistrationPage extends BasePage {
 		return find(cancelButton);
 	}
 
-	public void clearFirstName() {
-		clearValue(firstNameField);
+	public void clearField(String fieldname)
+	{
+		switch (fieldname)
+		{
+		case "firstNameField" :
+			clearValue(firstNameField);
+			break;
+		case "surNameField":
+			clearValue(surnameField);
+			break;
+		case "mobileField":
+			clearValue(mobileField);
+			break;
+		case "emailField":
+			clearValue(emailField);
+			break;
+		case "desiredPassword":
+			clearValue(passwordField);
+			break;
+		}
 		dismissKeyboard();
+		
+	}
+
+	public WebElement checkDuplicateEmailPopUpTitle(){
+		return find(duplicateEmailPopUpTitle);
 	}
 	
-	public void clearLastName() {
-		clearValue(surnameField);
-		dismissKeyboard();
+	public String getDuplicateEmailPopUpTitle() {
+		return getText(duplicateEmailPopUpTitle);
 	}
 	
-	public void clearMobileNumber() {
-		clearValue(mobileField);
-		dismissKeyboard();
+	public String getDuplicateEmailPopUpText() {
+		return getText(duplicateEmailPopUpText);
 	}
 	
-	public void clearEmail() {
-		clearValue(emailField);
-		dismissKeyboard();
+	public String getDuplicateEmailPopUpOkButtonLabel() {
+		return getText(okButtonDuplicateEmailPopUp);
 	}
 	
-	public void clearDesiredPassword() {
-		clearValue(passwordField);
-		dismissKeyboard();
+	public String getDuplicateEmailPopUpAnotherLoginButtonLabel() {
+		return getText(anotherEmailButtonDuplicateEmailPopUp);
+	}
+	
+	public void tapOkButton() {
+		tapElement(okButtonDuplicateEmailPopUp);
+	}
+	
+	public void tapAnotherLoginButton() {
+		tapElement(anotherEmailButtonDuplicateEmailPopUp);
 	}
 	
 	
