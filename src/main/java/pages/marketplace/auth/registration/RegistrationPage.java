@@ -67,6 +67,7 @@ public class RegistrationPage extends BasePage {
 	private By mobileNumberUserTip = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
 			+ "TextInputLayout[2]/android.widget.TextView");
 	
+	
 	private By passwordLengthRequirementsField = By.id("au.com.suncorp.marketplace:id/lengthStatusLabel");
 	private By passwordCharRequirements1Field = By.id("au.com.suncorp.marketplace:id/atLeastOneLowercase");
 	private By passwordCharRequirements2Field = By.id("au.com.suncorp.marketplace:id/atLeastOneUppercase");
@@ -76,7 +77,7 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	
+
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
 	}
@@ -296,6 +297,11 @@ public class RegistrationPage extends BasePage {
 		return getText(surnameErrorMsg);
 	}
 	
+	public String getPasswordNameRequirementsText()
+	{
+		return getText(passwordNameRequirementsField);
+	}
+	
 	public String getDOBErrorMsg() {
 		return getText(dobErrorMsg);
 	}
@@ -393,4 +399,31 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkCancelButton() {
 		return find(cancelButton);
 	}
+
+	public void clearFirstName() {
+		clearValue(firstNameField);
+		dismissKeyboard();
+	}
+	
+	public void clearLastName() {
+		clearValue(surnameField);
+		dismissKeyboard();
+	}
+	
+	public void clearMobileNumber() {
+		clearValue(mobileField);
+		dismissKeyboard();
+	}
+	
+	public void clearEmail() {
+		clearValue(emailField);
+		dismissKeyboard();
+	}
+	
+	public void clearDesiredPassword() {
+		clearValue(passwordField);
+		dismissKeyboard();
+	}
+	
+	
 }

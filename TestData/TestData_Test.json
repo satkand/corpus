@@ -1,7 +1,7 @@
 {
-	"appPackage" : {
-       "packageName" : "au.com.suncorp.mobile",
-       "platform": "aos"
+    "appPackage": {
+        "packageName": "au.com.suncorp.mobile",
+        "platform": "aos"
     },
     "pinEntries" :{
 		"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
@@ -810,6 +810,7 @@
 			"date" : "12/02/2002",
 			"postcode" : "3010",
 			"email" : "abc",
+			"email1":"emailhd@f.com",
 			"mobile" : "0428737283",
 			"password" : "Password1"
 		},
@@ -822,7 +823,7 @@
 			"noSpecialCharName" : "Don' Trum-",
 			"specialCharSurname" : "Don!@#' Trum**-",
 			"longPostCode" : "979797989",
-			"emailLong" : "giehrgireghewhgowhgowgowehgaesvnoroie",
+			"emailLong" : "giehrgireghewhgogiehrgireghewhgokjlkjllljwhgowgowehgaesvnoroiegiehrgireghewhgowhgowgowehgaesvnoroiesfdsff@.com",
 			"mobileLong" : "453592486085082350",
 			"mobileInvalidFormat" : "9897494549",
 			"mobileEmpty" : "",
@@ -831,7 +832,8 @@
 			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
 			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
 			"onlyCharPassword" : "football",
-			"onlyCharUpperCasePassword" : "FOOTBALL"
+			"onlyCharUpperCasePassword" : "FOOTBALL",
+			"invalidPostcode":"0000"
 		}
 	},
 	"chatbot" :{
@@ -902,6 +904,11 @@
 			"emptyEmailError" : "Field is required",
 			"longEmailError" : "Must be between 2 and 100 characters",
 			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
+		},
+		"registration": {
+			"supportedGroup":["aami","apia","gio","shannons"],
+			"supportedGroupLoginTitleSuffix": " member login",
+			"invalidPostcodeMessage":"Please enter a valid australian postcode"
 		},
 		"portfolio": {
 			"emptyStateLabel": "Looks like you haven't added any products yet.",
@@ -985,6 +992,9 @@
 			"registerPage2Title" : "Step 2 of 3",
 			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
 			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
+			"longSurnameErrorMsg":"Must be between 2 and 40 characters",
+			"longEmailErrorMsg":"Must be between 2 and 100 characters",
+			"longMobileErrorMsg":"Must be 10 digits",
 			"longPostcodeErrorMsg" : "Must be 4 digits",
 			"firstNameUserTip" : "Middle name not required",
 			"mobileNumberUserTip" : "Use 04XXXXXXXX format",
@@ -993,9 +1003,11 @@
 			"shortPasswordErrorMsg" : "Must be at least 7 characters long",
 			"firstNamePasswordErrorMsg" : "Must not contain your first name",
 			"lastNamePasswordErrorMsg" : "Must not contain your last name",
+			"emailPasswordErrorMsg":"Must not contain your email",
 			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
-			"passwordNotMatch" : "Password do not match"
+			"passwordNotMatch" : "Password do not match",
+			"passwordNameRequirement":"not contain your first name, surname or email"
 		},
 		"chatbot": {
 			"phoneLabel": "CALL NOW"
@@ -1058,3 +1070,4 @@
 		"value": "au.com.suncorp.marketplace:id/"
 	}
 }
+

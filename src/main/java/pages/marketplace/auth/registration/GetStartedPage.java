@@ -16,15 +16,17 @@ public class GetStartedPage extends BasePage {
 	private By getStartedPageSubheader = By.id("au.com.suncorp.marketplace:id/subHeadingText");
 	private By suncorpBrandIcon = By.id("au.com.suncorp.marketplace:id/suncorpButton");
 	private By newAccountText = By.id("au.com.suncorp.marketplace:id/newAccountText");
-	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
-
 	private By suncorpAccountOptions = By.id("au.com.suncorp.marketplace:id/suncorpBottomSheet");
 	private By suncorpAccountOptionsHeading = By.id("au.com.suncorp.marketplace:id/suncorpAccountQuestionText");
 	private By suncorpBankingOption = By.id("au.com.suncorp.marketplace:id/bankingBottomSheetButton");
 	private By suncorpInsuranceOption = By.id("au.com.suncorp.marketplace:id/insuranceBottomSheetButton");
 	private By suncorpBothOption = By.id("au.com.suncorp.marketplace:id/bothBottomSheetButton");
 	private By brandIcon = null;
+	
+	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");	//private By registerWithSupportedGroupbutton = By.id("au.com.suncorp.marketplace:id/aamiButton");
+	private String registerWithSupportedGroupButtonsuffix = "au.com.suncorp.marketplace:id/";
+	private By registerWithSupportedGroupButton;
 
 	public WebElement checkGetStartedPageTitle() {
 		return find(getStartedPageTitle);
@@ -32,6 +34,15 @@ public class GetStartedPage extends BasePage {
 	
 	public String getGetStartedPageTitleValue() {
 		return getText(getStartedPageTitle);
+	}
+
+	public WebElement checkRegisterWithSupportedGroupButton(String supportedGroupName) {
+		registerWithSupportedGroupButton = By.id(registerWithSupportedGroupButtonsuffix+supportedGroupName+"Button");
+		return find(registerWithSupportedGroupButton);
+	}
+	
+	public void tapBackButton() {
+		tapElement(backButton);
 	}
 
 	public WebElement checkGetStartedPageSubheader() {
@@ -44,6 +55,11 @@ public class GetStartedPage extends BasePage {
 
 	public void tapSetupNewAccount() {
 		tapElement(setupNewAccountButton);
+	}
+	
+	public void tapRegisterWithSupportedGroupButton(String supportedGroupName){
+		registerWithSupportedGroupButton = By.id(registerWithSupportedGroupButtonsuffix+supportedGroupName+"Button");
+		tapElement(registerWithSupportedGroupButton);
 	}
 
 	public WebElement checkSuncorpBrandIcon() {
@@ -60,10 +76,6 @@ public class GetStartedPage extends BasePage {
 
 	public WebElement checkBackButton() {
 		return find(backButton);
-	}
-
-	public void tapBackButton() {
-		tapElement(backButton);
 	}
 
 	public WebElement checkSuncorpAccountOptionsSheet() {
