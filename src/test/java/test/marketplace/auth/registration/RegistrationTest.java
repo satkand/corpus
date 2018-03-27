@@ -623,7 +623,7 @@ public class RegistrationTest extends App{
 		registrationPage.tapNextButton();
 
 		// Enter email id which already exists
-		registrationPage.enterEmail(utils.readTestData("noSuncorpBankAccounts", "login"));
+		registrationPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
 		registrationPage.enterMobile(utils.readTestData("registration", "success", "mobile"));
 
 		registrationPage.tapNextButton();
