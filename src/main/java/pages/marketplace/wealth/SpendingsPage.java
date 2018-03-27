@@ -162,7 +162,7 @@ public class SpendingsPage extends BasePage {
 	
 	// Returns the months prior to the last 3 months of the current months. These months shouldn't show the transactions count in the categories and vendors list
 	public List<String> fetchPastMonthsPriorToLast3Months(String currentMonth){
-		List<String> pastMonths = List.of(monthsMp.get(currentMonth.toLowerCase()));
+		List<String> pastMonths = Arrays.asList(monthsMp.get(currentMonth.toLowerCase()));
 		return pastMonths;
 	}
 	

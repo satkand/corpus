@@ -2,6 +2,7 @@ package pages.marketplace.portfolio;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
 import java.util.List;
 
 import automation.framework.common.BasePage;
@@ -25,9 +26,7 @@ public class MyProductsPage extends BasePage {
 	private By bankAccountBottomSheetButton = By.id("au.com.suncorp.marketplace:id/addBankAccountButton");
 	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='My products']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
-	//TO DO DMPM-3713
-	//private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");//
-	//private By availableBalanceLable = By.xpath("au.com.suncorp.marketplace:id/availableBalanceText");//
+	//TODO DMPM-3713
 	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");
     private By availableBalanceLable = By.xpath("//android.widget.TextView[@text='Available balance']");
 
@@ -37,7 +36,7 @@ public class MyProductsPage extends BasePage {
 	private By availableBalance = By.id("au.com.suncorp.marketplace:id/availableBalanceText");
 	private By viewDetailsButton = By.id("au.com.suncorp.marketplace:id/viewBankAccountDetailsButton");
 	private By accountTypeLabel = By.id("au.com.suncorp.marketplace:id/accountTypeText");
-	//TO DO DMPM-3713
+	//TODO DMPM-3713
 	private By productTypeImage = By.xpath(
 			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");//
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
@@ -159,7 +158,6 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapBackButton(){
-		find(backButton,30);
 		tapElement(backButton);
 	}
 	
@@ -172,12 +170,10 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapInsurancePolicyBottomSheetButton(){
-		find(insurancePolicyBottomSheetButton,30);
 		tapElement(insurancePolicyBottomSheetButton);
 	}
 	
 	public void tapViewDetails(){
-		find(viewDetailsButton,30);
 		tapElement(viewDetailsButton);
 	}
 	
@@ -190,7 +186,6 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapBankAccountBottomSheetButton(){
-		find(bankAccountBottomSheetButton,30);
 		tapElement(bankAccountBottomSheetButton);
 	}
 	
@@ -215,7 +210,6 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapAddExistingProductButton(){
-		find(addExistingProductButton,30);
 		tapElement(addExistingProductButton);
 	}
 	
@@ -224,7 +218,6 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void tapMaybeLaterButton(){
-		find(maybeLaterButton,30);
 		tapElement(maybeLaterButton);
 	}
 	
@@ -261,6 +254,11 @@ public class MyProductsPage extends BasePage {
 		policyStatus = By.xpath(policyStatusXpath); 
 		return find(policyStatus);
 		
+	}
+	
+	public void scrollToAddExistingProductButton() {
+		scrollToElement(addExistingProductButton, "true");
+
 	}
 	
 }

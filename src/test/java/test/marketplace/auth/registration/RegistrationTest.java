@@ -420,6 +420,196 @@ public class RegistrationTest extends App{
 		Assert.assertNotNull(registrationPage.checkYearPicker(), "Year picker not seen");
 	}
 	
+	// DMPM-2730 : I don't have any credentials
+	@Test( groups = { "DMPM-2730","DMPM-2922","DMPM-2925","marketplace", "Registration", "priority-major" })
+	public void testNoCredentialsSupportedBrand() {
+
+		navigateToGetStartedPage();
+			
+		// read supported groups from the test data
+		List supportedGroupList = (List)utils.readTestDataList("copy", "registration", "supportedGroup");
+		for(Object supportedGroup : (List)supportedGroupList) {
+			
+		String supportedGroupName = 	supportedGroup.toString();
+	
+		// check supported group icon is displayed
+		Assert.assertNotNull(getStartedPage.checkRegisterWithSupportedGroupButton(supportedGroupName),"Get registered with supported group button is not displayed");
+		
+		// check the registration screen for supported group
+		getStartedPage.tapRegisterWithSupportedGroupButton(supportedGroupName);
+		Assert.assertEquals(loginPage.getLoginPageTitle().toLowerCase(),supportedGroupName+ utils.readTestData("copy", "registration", "supportedGroupLoginTitleSuffix"),
+						supportedGroupName+ "Supported group login page title is not shown as expected");
+		
+		Assert.assertNotNull(loginPage.checkNoCredentialsButton(),"I don't have any credentials button is not displayed");
+		loginPage.tapNoCredentialsButton();
+		
+		// check if first page of registration is displayed on tapping - I don't have credentials button
+		Assert.assertNotNull(registrationPage.checkRegisterPage1Title(), "First Page of registration is not displayed");
+		
+		registrationPage.tapCancelButton();
+		Assert.assertEquals(loginPage.getLoginPageTitle().toLowerCase(),supportedGroupName+ utils.readTestData("copy", "registration", "supportedGroupLoginTitleSuffix"),
+						supportedGroupName+ "Supported group login page title is not shown as expected");
+		
+		registrationPage.tapCancelButton();
+		}
+		
+	}
+	
+	// DMPM-213 : Check if post code is valid
+	@Test(groups = { "DMPM-213","DMPM-3842","DMPM-3843","marketplace","Registration", "priority-major" })
+	public void testPostcodeInlineError() {
+
+		navigateToRegistrationPage();
+		
+		// check post code field is mandatory error message is displayed on tapping outside the post code field
+		registrationPage.enterPostcode("");
+		registrationPage.enterSurname("");
+		Assert.assertNotNull(registrationPage.checkPostcodeInvalidErrorMsg(),"Postcode tooltip inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(),utils.readTestData("copy", "registrationPage", "fieldErrorMsg"),
+				"Incorrect postcode inline message is displayed");
+
+		// check post code field is mandatory error message is displayed on tapping Next button
+		registrationPage.enterPostcode("");
+		registrationPage.tapNextButton();
+		Assert.assertNotNull(registrationPage.checkPostcodeInvalidErrorMsg(),"Postcode tooltip inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(),utils.readTestData("copy", "registrationPage", "fieldErrorMsg"),
+				"Incorrect postcode inline message is displayed");
+
+		// check invalid post code error message is displayed on tapping Next button
+		registrationPage.enterPostcode(utils.readTestData("registration", "failure", "invalidPostcode"));
+		registrationPage.tapNextButton();
+		Assert.assertNotNull(registrationPage.checkPostcodeInvalidErrorMsg(),"Postcode tooltip inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(),utils.readTestData("copy", "registration", "invalidPostcodeMessage"),
+				"Incorrect postcode inline message is displayed");
+
+		registrationPage.enterPostcode(utils.readTestData("registration", "success", "postcode"));
+		registrationPage.tapNextButton();
+		Assert.assertNull(registrationPage.checkPostcodeInvalidErrorMsg(),"Postcode tooltip inline message is displayed.");
+
+	}
+
+	// DMPM-329 : Updates to Validation of Maximum Length of Fields
+	@Test(groups = {"DMPM-329","DMPM-3715","DMPM-3725","marketplace", "Registration", "priority-major" })
+	public void testMaximumLengthError() {
+
+		navigateToRegistrationPage();
+		
+		// check maximum length of first name
+		registrationPage.enterFirstName(utils.readTestData("registration", "failure", "longFirstName"));
+		Assert.assertNotNull(registrationPage.checkFirstNameErrorMsg(), "First Name inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(),utils.readTestData("copy", "registrationPage", "longFirstNameErrorMsg"),
+				"Maximum length error message for first name is not displayed");
+
+		registrationPage.clearFirstName();
+
+		// check maximum length of  surname
+		registrationPage.enterSurname(utils.readTestData("registration", "failure", "longSurname"));
+		Assert.assertNotNull(registrationPage.checkSurnameErrorMsg(), "Surname inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getSurnameErrorMsg(),utils.readTestData("copy", "registrationPage", "longSurnameErrorMsg"),
+				"Maximum length error message for surname is not displayed");
+
+		registrationPage.clearLastName();
+
+		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
+				utils.readTestData("registration", "success", "surname"),
+				utils.readTestData("registration", "success", "date"),
+				utils.readTestData("registration", "success", "postcode"));
+		
+		// check no error message is displayed if first name and surname is within the permitted length limit
+		Assert.assertNull(registrationPage.checkFirstNameErrorMsg(), "First Name inline message is displayed.");
+		Assert.assertNull(registrationPage.checkSurnameErrorMsg(), "Surname inline message is displayed.");
+
+		registrationPage.tapNextButton();
+
+		// check error message is displayed for long mobile number
+		registrationPage.enterMobile(utils.readTestData("registration", "failure", "mobileLong"));
+		Assert.assertNotNull(registrationPage.checkMobileErrorMsg(), "Mobile number inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(),utils.readTestData("copy", "registrationPage", "longMobileErrorMsg"),
+				"Maximum length error message for mobile number is not displayed");
+
+		registrationPage.clearMobileNumber();
+
+		// check error message is displayed for long email ID
+		registrationPage.enterEmail(utils.readTestData("registration", "failure", "emailLong"));
+		Assert.assertNotNull(registrationPage.checkEmailErrorMsg(), "Email inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(),utils.readTestData("copy", "registrationPage", "longEmailErrorMsg"),
+				"Maximum length error message for email is not displayed");
+
+		registrationPage.clearEmail();
+
+		registrationPage.fill2ndPageFields(utils.readTestData("registration", "success", "email"),
+				utils.readTestData("registration", "success", "mobile"));
+
+		// check no error message is displayed if mobile number and email id is valid
+		Assert.assertNull(registrationPage.checkMobileErrorMsg(), "Mobile number inline message is displayed.");
+		Assert.assertNull(registrationPage.checkEmailErrorMsg(), "Email inline message is displayed.");
+
+	}
+
+	// DMPM-1058 : Prevent user name from being used when creating a password
+	@Test(groups = { "DMPM-1058","DMPM-1816","DMPM-3817","DMPM-3820","marketplace","Registration", "priority-major" })
+	public void testDesiredPasswordError() {
+
+		navigateToRegistrationPage();
+		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
+				utils.readTestData("registration", "success", "surname"),
+				utils.readTestData("registration", "success", "date"),
+				utils.readTestData("registration", "success", "postcode"));
+
+		registrationPage.tapNextButton();
+
+		registrationPage.enterEmail(utils.readTestData("registration", "success", "email1"));
+		registrationPage.enterMobile(utils.readTestData("registration", "success", "mobile"));
+
+		registrationPage.tapNextButton();
+
+		Assert.assertNotNull(registrationPage.checkPasswordNameRequirements(),"Password name requirements are not displayed.");
+		Assert.assertEquals(registrationPage.getPasswordNameRequirementsText(),utils.readTestData("copy", "registrationPage", "passwordNameRequirement"),
+				"Incorrect password name requirements are displayed");
+
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "firstName"));
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "firstNamePasswordErrorMsg")),
+				"Desired password must not contain first name message is not displayed.");
+
+		registrationPage.enterConfirmPassword("");
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "firstNamePasswordErrorMsg")),
+				"Desired password must not contain first name message is not displayed.");
+
+		registrationPage.tapRegisterButton();
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "firstNamePasswordErrorMsg")),
+				"Desired password must not contain first name message is not displayed.");
+
+		registrationPage.clearDesiredPassword();
+
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "surname"));
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
+				"Desired password must not contain surname message is not displayed.");
+
+		registrationPage.enterConfirmPassword("");
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
+				"Desired password must not contain surname message is not displayed.");
+
+		registrationPage.tapRegisterButton();
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
+				"Desired password must not contain surname message is not displayed.");
+
+		registrationPage.clearDesiredPassword();
+
+		registrationPage.enterPassword(utils.readTestData("registration", "success", "email1"));
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "emailPasswordErrorMsg")),
+				"Desired password must not contain email message is not displayed.");
+
+		registrationPage.enterConfirmPassword("");
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "emailPasswordErrorMsg")),
+				"Desired password must not contain email message is not displayed.");
+
+		registrationPage.tapRegisterButton();
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "emailPasswordErrorMsg")),
+				"Desired password must not contain email message is not displayed.");
+
+	}
+	
+
 	private void navigateToRegistrationPage() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
@@ -429,6 +619,14 @@ public class RegistrationTest extends App{
 		}
 		Assert.assertNotNull(registrationPage.checkRegistrationPageTitle(), "Registration page not loaded");
 		
+	}
+	
+	private void navigateToGetStartedPage() {
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
+		welcomePage.tapRegisterButton();
+		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get started page not loaded");
+
 	}
 	
 

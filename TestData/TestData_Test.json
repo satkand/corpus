@@ -1,7 +1,7 @@
 {
-	"appPackage" : {
-       "packageName" : "au.com.suncorp.mobile",
-       "platform": "aos"
+    "appPackage": {
+        "packageName": "au.com.suncorp.mobile",
+        "platform": "aos"
     },
     "pinEntries" :{
 		"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
@@ -12,14 +12,63 @@
 		"login": "ab@ab.com",
 		"pwd": "Password1"
 	},
+	"propertyDimension" :{
+		"propertyDetails":{
+					"address": "1018/40 Rossana Road",
+					"stateAndSuburb": "North Heidelberg VIC 3084",
+					"bedRooms": "2",
+					"bathrooms": "1",
+					"parkingSpaces": "1",
+					"landSize": "289 m²",
+					"propertyType": "House - Duplex",
+					"roofType": "Tiled (Terra Cotta or Cement)",
+					"wallMaterial": "Brick",
+					"salePrice": "$1,000,000",
+					"saleDate": "30 Feb 2018",
+					"buildYear": "1966"
+		},
+		"propertyExplorer":{
+					"login": "a@b.c",
+					"pwd": "Password1",
+					"clearSearchText":"1234567890ABCD#$%^"
+					"enterAdress":"1"
+		},
+		"NoProperties":{
+					"login": "a@b.c",
+					"pwd": "Password1"
+		},
+		"propertyProducts":{
+			"withProducts": {
+					"login": "a@b.c",
+					"pwd": "Password1",
+					"addressLineText": "123 New Street, Brighton",
+         			"suburbText":"NSW 3186",
+          			"productDescriptionText1": "Home and Contents protected until 10 October 2018",
+         			"productDescriptionText2": "Home loan next payment due 10 October 2018"
+			},
+			"withOutProducts": {
+					"login": "a@b.c",
+					"pwd": "Password1",
+					"addressLineText": "201/64-66 Sahi Crescent, Roxburgh Park",
+         			"suburbText":"VIC 3064",
+          			"productDescriptionText1": "Home and Contents protected until 10 October 2019",
+         			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
+			}}
+	},
 	"portfolio" :{
 		"loginEmptyProdList":{
-				"login": "rest@rest.com",
+				"login": "a@b.c",
 				"pwd": "Password1"
 			},
 		"loginProdList":{
-				"login": "best@best.com",
+				"login": "a@b.c",
 				"pwd": "Password1",
+				"addPolicy":{
+					"enterPolicyNumber": "12345678-aA",
+					"policyNumberExceedsMaxLimit": "ABCDEFGHIJKLMNOPQRSTUVWXYZ12-45",
+					"policyNumberInvalidChars": "#$% &",
+					"minimumChar": "1"
+				},
 				"bankingProducts": [
 					{
 						"brand": "Suncorp",
@@ -1022,6 +1071,7 @@
 			"date" : "12/02/2002",
 			"postcode" : "3010",
 			"email" : "abc",
+			"email1":"emailhd@f.com",
 			"mobile" : "0428737283",
 			"password" : "Password1"
 		},
@@ -1034,14 +1084,15 @@
 			"noSpecialCharName" : "Don' Trum-",
 			"specialCharSurname" : "Don!@#' Trum**-",
 			"longPostCode" : "979797989",
-			"emailLong" : "giehrgireghewhgowhgowgowehgaesvnoroie",
+			"emailLong" : "giehrgireghewhgogiehrgireghewhgokjlkjllljwhgowgowehgaesvnoroiegiehrgireghewhgowhgowgowehgaesvnoroiesfdsff@.com",
 			"mobileLong" : "453592486085082350",
 			"mobileInvalid" : "9897494549",
 			"shortPassword" : "4tger",
 			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
 			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
 			"onlyCharPassword" : "football",
-			"onlyCharUpperCasePassword" : "FOOTBALL"
+			"onlyCharUpperCasePassword" : "FOOTBALL",
+			"invalidPostcode":"0000"
 		}
 	},
 	"chatbot" :{
@@ -1066,100 +1117,24 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
-	"loginCredentials" :{
-		"validLoginCredentials" : {
-			"login1":{
-				"login": "flash@dc.com",
-				"pwd": "Password1"
-			},
-			"hasWealthCategoriesAndVendorsData":{
-				"login": "flash@dc.com",
-				"pwd": "Password1"
-			}
+	"loginCredentials": {
+		"validLoginCredentials": {
+			"login": "son@son.com",
+			"pwd": "Password1"
 		},
-		"invalidLoginCredentials_appSideValidations" :[ 
-			{
-				"login": "",
-				"pwd": "",
-				"loginError": "This field is required",
-				"pwdError": "This field is required",
-				"loginButton": false
-			},
-			{
-				"login": "a",
-				"pwd": "p",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@",
-				"pwd": "p1",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.",
-				"pwd": "$%",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.",
-				"pwd": "pqr@",
-				"loginError": "Please enter a valid email address",
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@.c",
-				"pwd": "1234567",
-				"loginError": "Please enter a valid email address",
-				"pwdError": null,
-				"loginButton": false
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "123456",
-				"loginError": null,
-				"pwdError": "Must be at least 7 characters",
-				"loginButton": false
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null,
-				"loginButton": true
-			}
-		],
-
-			"invalidLoginCredentials_ServerSideValidations" :[ 
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			},
-			{
-				"login": "a@a.c",
-				"pwd": "1234567",
-				"loginError": null,
-				"pwdError": null
-			}
-		]
-	},
-	"hasNoProducts" : {
-		"login": "fer@fer.com",
-		"pwd": "Password1"
+		"invalidCredentials": {
+			"emailEmpty" : "",
+			"emailExceedsMaxLength": "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendb@j.c",
+			"emailMinLength": "a",
+			"emailIncorrectFormat1": "a@.com",
+			"emailIncorrectFormat2": "a@b",
+			"passwordEmpty": "",
+			"invalidPassword" : "1234567"
+		},
+		"hasNoProducts": {
+			"login": "fer@fer.com",
+			"pwd": "Password1"
+		}
 	},
 	"PIN" :{
 		"loginWithExistingPin" : {
@@ -1174,14 +1149,29 @@
 	},
 	"copy" : {
 		"loginPage": {
-			"loginPageTitle": "Log in"
+			"loginPageTitle": "Log in",
+			"shortEmailError" : "Please enter a valid email address Must be between 2 and 100 characters",
+			"invalidEmailError" : "Please enter a valid email address",
+			"emptyPasswordError" : "Field is required",
+			"emptyEmailError" : "Field is required",
+			"longEmailError" : "Must be between 2 and 100 characters",
+			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
+		},
+		"registration": {
+			"supportedGroup":["aami","apia","gio","shannons"],
+			"supportedGroupLoginTitleSuffix": " member login",
+			"invalidPostcodeMessage":"Please enter a valid australian postcode"
 		},
 		"portfolio": {
 			"emptyStateLabel": "Looks like you haven't added any products yet.",
 			"bottomSheetLabel": "What type of product?",
 			"availableBalanceLable": "Available balance",
 			"currentBalanceLabel": "Current balance",
-			"accountDetailsLabel": "Account Details"
+			"accountDetailsLabel": "Account Details",
+			"policyAddedSuccessfulMsg": "Policy added",
+			"maxLimitError": "Exceeding the max limit of 30",
+			"feildValidationError": "Field is required",
+			"invalidCharactor": "Please enter a valid insurance policy number"
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
@@ -1199,13 +1189,31 @@
 			"netWorthLabel": "Your net worth",
 			"netWorthDisclaimerMessage": "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days."
 		},
+		"propertyExplorer":{
+			"propertyInsightSearchHintText": "Enter address",
+			"suburbInsightSearchHintText": "Enter suburb's name"
+		},
 		"spendingsPage": {
 			"emptyTransactionsMessage": "Sorry, you don't have any transactions yet",
 			"emptyTransactionsHintMessage": "Please note: Transactions will take up to 24 hours to appear."
 		},
 		"homePropertyPage": {
 			"homeJourneyBannerHeading": "Hunting for a property?",
-			"homeJourneyBannerDescription": "Our Home Journey has helpful tips & ideas to guide you through each stage of the process."
+			"homeJourneyBannerDescription": "Our Home Journey has helpful tips & ideas to guide you through each stage of the process.",
+			"propertyInsightInfo": "Get property insights and market value",
+			"organiseDocumentsInfo": "Categorise and organise your documents to your property",
+			"accessProfessionalInfo": "Access professional services and suburb insights",
+			"addPropertyOrPolicyActionSheetTitle":"What would you like to add?",
+			"featureLockedMsgTitle":"Feature Locked",
+			"activeClaim":"Active claim",
+			"featureLockedTextCopy":"Unfortunately this feature is only available to registered users. Please Log In or Sign Up first."
+			
+		},
+		"propertyDetailsPage": {
+			"showMoreInfoLabel": "VIEW MORE INFO",
+			"showLessInfoLabel": "VIEW LESS INFO",
+			"HomeJourneyTitle": "Home journey"
+			
 		},
 		"homeJourneyPage": {
 			"journeyTitleText": "Our guide to\nbuying a home",
@@ -1228,7 +1236,6 @@
 			"movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything…",
 			"movingInReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/moving-into-your-home.html"
 		},
-
 		"registrationPage" : {
 			"shortSurnameErrorMsg" : "Must be between 2 and 40 characters",
 			"accountCreatingMsg" : "Registering details",
@@ -1237,6 +1244,9 @@
 			"registerPage2Title" : "Step 2 of 3",
 			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
 			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
+			"longSurnameErrorMsg":"Must be between 2 and 40 characters",
+			"longEmailErrorMsg":"Must be between 2 and 100 characters",
+			"longMobileErrorMsg":"Must be 10 digits",
 			"longPostcodeErrorMsg" : "Must be 4 digits",
 			"firstNameUserTip" : "Middle name not required",
 			"mobileNumberUserTip" : "Use 04XXXXXXXX format",
@@ -1245,9 +1255,11 @@
 			"shortPasswordErrorMsg" : "Must be at least 7 characters long",
 			"firstNamePasswordErrorMsg" : "Must not contain your first name",
 			"lastNamePasswordErrorMsg" : "Must not contain your last name",
+			"emailPasswordErrorMsg":"Must not contain your email",
 			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
-			"passwordNotMatch" : "Password do not match"
+			"passwordNotMatch" : "Password do not match",
+			"passwordNameRequirement":"not contain your first name, surname or email"
 		},
 		"chatbot": {
 			"phoneLabel": "CALL NOW"
@@ -1262,8 +1274,8 @@
 				"offerDescription": "More than 840,000 Australians have a bank account with Suncorp Bank. Stick with the brand you know you can trust."
 			},
 			"propertyTab": {
-				"offerTitle": "Building Insurance",
-				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
+				"offerTitle": "Contents Insurance",
+				"offerDescription": "Covers loss of and damage to the contents of your home, garage and shed, caused by fire, break-ins and weather events. Includes storm, flood and bushfire"
 			},
 			"vehiclesTab": {
 				"offerTitle": "CTP Insurance",
@@ -1277,6 +1289,13 @@
 		"digiVaultPage" : {
 			"digiVaultEmptyImageTitle" : "Your vault is empty",
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
+		},
+		"brandIcons": {
+			"aamiBrandIcon": "AAMI member login",
+			"apiaBrandIcon": "APIA member login",
+			"gioBrandIcon": "GIO member login",
+			"shannonsBrandIcon": "Shannons member login"
 		}
 	}
 }
+

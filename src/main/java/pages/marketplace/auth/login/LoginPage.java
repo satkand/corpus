@@ -14,26 +14,36 @@ public class LoginPage extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 
+	private By loadingIndicator = By.id("au.com.suncorp.marketplace:id/loadingIndicator");
 	private By loginPageTitle = By.id("au.com.suncorp.marketplace:id/screenTitleText");
 	private By emailField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
 	private By passwordField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By loginButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By helpButton = By.id("au.com.suncorp.marketplace:id/login_help_text");
 	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By noCredentialsButton = By.id("au.com.suncorp.marketplace:id/noCredentialsButton");
 
 	
 	//TODO Both have same id -> need to differentiate them
-	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
-	private By passwordFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+//	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+//	private By passwordFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
-	/* TODO
-	 -> 	Log in
-	 -> I need help logging in
-	 -> This field is required
-	*/
+	//Error scenario
+	private By errorSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
+	private By errorSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
 	
 	public WebElement checkLoginPageTitle(){
 		return find(loginPageTitle,20);
+	}
+	
+	public WebElement checkNoCredentialsButton() {
+		return find(noCredentialsButton);
+	}
+	
+	public void tapNoCredentialsButton() {
+		tapElement(noCredentialsButton);
 	}
 	
 	public String getLoginPageTitle(){
@@ -75,6 +85,7 @@ public class LoginPage extends BasePage{
 	}
 	
 	public void tapLoginButton(){
+		isKeyboardPresent();
 		tapElement(loginButton);
 	}
 	
@@ -96,7 +107,7 @@ public class LoginPage extends BasePage{
 	}
 		
 	public WebElement checkEmailFieldError(){
-		return find(emailFieldError);
+		return find(emailFieldError,30);
 	}
 	
 	public String getEmailFieldErrorValue() {
@@ -109,5 +120,33 @@ public class LoginPage extends BasePage{
 	
 	public String getPasswordFieldErrorValue() {
 		return getText(passwordFieldError);
+	}
+	
+	public String getPasswordFieldValue() {
+		return getText(passwordField);
+	}
+	
+	public void relaunchApp(int time, String appName) {
+		selectSuncorpApp(time, appName);
+	}
+	
+	public WebElement checkSnackbarText() {
+		return find(errorSnackbarText);
+	}
+	
+	public String getSnackbarTextValue () {
+		return getText(errorSnackbarText);
+	}
+	
+	public WebElement checkSnackbarButton() {
+		return find(errorSnackbarButton, 30);
+	}
+	
+	public void tapSnackbarOkButton() {
+		tapElement(errorSnackbarButton);
+	}
+	
+	public WebElement checkLoadingIndicator() {
+		return find(loadingIndicator, 30);
 	}
 }
