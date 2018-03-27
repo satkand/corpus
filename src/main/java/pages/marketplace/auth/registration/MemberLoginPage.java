@@ -1,16 +1,8 @@
 package pages.marketplace.auth.registration;
 
-import java.security.KeyStore.PrivateKeyEntry;
 
-import org.apache.bcel.generic.SWITCH;
-import org.omg.CORBA.BAD_POLICY_TYPE;
-import org.openqa.grid.common.exception.RemoteUnregisterException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.server.handler.SendKeys;
-
-import com.google.common.base.CaseFormat;
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 

@@ -87,28 +87,28 @@ public class MemberLoginTest extends App {
 		//Empty Email Error
 		memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailEmpty"));
 		memberLoginPage.tapOn(tapOn);
-		Assert.assertEquals(memberLoginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyEmailError"));
+		Assert.assertEquals(memberLoginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyEmailError"), "Member Login - Email error displayed is incorrect");
 
 		//Email length more than 100 characters
 		memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailExceedsMaxLength"));
 		memberLoginPage.tapOn(tapOn);
-		Assert.assertEquals(memberLoginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "longEmailError"));
+		Assert.assertEquals(memberLoginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "longEmailError"), "Member Login - Email error displayed is incorrect");
 
 		//Email length less than 2 characters
 		memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailMinLength"));
 		memberLoginPage.tapOn(tapOn);
 		errorVal = memberLoginPage.getEmailFieldErrorValue().replace("\n\n", " ");
-		Assert.assertEquals(errorVal, utils.readTestData("copy", "loginPage", "shortEmailError"));
+		Assert.assertEquals(errorVal, utils.readTestData("copy", "loginPage", "shortEmailError"), "Member Login - Email error displayed is incorrect");
 
 		//Incorrect email format 1
 		memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat1"));
 		memberLoginPage.tapOn(tapOn);
-		Assert.assertEquals(memberLoginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "invalidEmailError"));
+		Assert.assertEquals(memberLoginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "invalidEmailError"), "Member Login - Email error displayed is incorrect");
 
 		//Incorrect email format 2
 		memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat2"));
 		memberLoginPage.tapOn(tapOn);
-		Assert.assertEquals(memberLoginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "invalidEmailError"));
+		Assert.assertEquals(memberLoginPage.getEmailFieldErrorValue(), utils.readTestData("copy", "loginPage", "invalidEmailError"), "Member Login - Email error displayed is incorrect");
 
 		//Empty password - only inline error displayed for password
 		memberLoginPage.enterPassword(utils.readTestData("loginCredentials", "invalidCredentials","passwordEmpty"));
@@ -117,7 +117,7 @@ public class MemberLoginTest extends App {
 		}
 		else
 			memberLoginPage.tapOn(tapOn);
-		Assert.assertEquals(memberLoginPage.getPasswordFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyPasswordError"));
+		Assert.assertEquals(memberLoginPage.getPasswordFieldErrorValue(), utils.readTestData("copy", "loginPage", "emptyPasswordError"), "Member Login - Password error displayed is incorrect");
 
 		memberLoginPage.tapCancelButton();
 	}

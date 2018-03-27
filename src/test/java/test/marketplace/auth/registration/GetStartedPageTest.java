@@ -2,8 +2,6 @@ package test.marketplace.auth.registration;
 
 import java.util.HashMap;
 import java.util.List;
-
-import org.apache.tools.ant.types.CommandlineJava.SysProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
