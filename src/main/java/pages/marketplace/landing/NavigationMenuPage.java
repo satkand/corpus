@@ -31,6 +31,10 @@ public class NavigationMenuPage extends BasePage {
 		 return find(propfessionalServicesMenuItem);
 	}
 	
+	public WebElement checkPropfessionalServicesMenuItem() {
+		 return find(propfessionalServicesMenuItem);
+	}
+	
 	public NavigationMenuPage(AppiumDriver driver) {
 		super(driver);
 	}

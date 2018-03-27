@@ -951,7 +951,10 @@
 		"propertyDetailsPage": {
 			"showMoreInfoLabel": "VIEW MORE INFO",
 			"showLessInfoLabel": "VIEW LESS INFO",
+			"1stImageNumberText": "1/7",
+			"2ndImageNumberText":"2/7",
 			"HomeJourneyTitle": "Home journey"
+			
 			
 		},
 		"homeJourneyPage": {

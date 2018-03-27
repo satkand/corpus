@@ -18,6 +18,7 @@ public class NavigationMenuTest extends App {
 		Assert.assertNotNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkBackToStartMenuItem(), " Navigation Draw - Back To Start menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkFAPISettingsMenuItem(), " Navigation Draw - FAPI Settings menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkPropfessionalServicesMenuItem(), " Navigation Draw - Propfessional Services menu option not shown");
 	}
 	
 	//Scenario 4

@@ -47,6 +47,79 @@ public class PropertyDetailsPage   extends BasePage{
 	private By suburbInsightTitleText = By.id("au.com.suncorp.marketplace:id/suburbInsightTitleText");
 	private By suburbInsightDescription = By.id("au.com.suncorp.marketplace:id/suburbInsightDescriptionText");
 	
+	private By propertyImage = By.id("au.com.suncorp.marketplace:id/propertyImage");
+	private By favouriteButton = By.id("au.com.suncorp.marketplace:id/addToFavouriteButton");
+	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By imageNumberText = By.id("au.com.suncorp.marketplace:id/imageNumberText");
+	
+	private By fullScreenPropertyImage = By.id("au.com.suncorp.marketplace:id/propertyFullImage");
+	private By fullScreenPropertyAddress = By.id("au.com.suncorp.marketplace:id/addressText");
+	private By fullScreenCloseButton = By.id("au.com.suncorp.marketplace:id/closeButton");
+	private By fullScreenImageCounter = By.id("au.com.suncorp.marketplace:id/imageCounterText");
+	
+	public WebElement checkFullScreenPropertyImage() {
+		return find(fullScreenPropertyImage);
+	}
+	
+	public WebElement checkFullScreenPropertyAddress() {
+		return find(fullScreenPropertyAddress);
+	}
+	
+	public String getFullScreenPropertyAddress() {
+		return getText(fullScreenPropertyAddress);
+	}
+	
+	public String getfullScreenImageCounter() {
+		return getText(fullScreenImageCounter);
+	}
+	
+	public WebElement checkFullScreenCloseButton() {
+		return find(fullScreenCloseButton);
+	}
+	public WebElement checkFullScreenImageCounter() {
+		return find(fullScreenImageCounter);
+	}
+	
+	public WebElement checkPropertyImage() {
+		return find(propertyImage);
+	}
+	
+	public void tapFullScreenCloseButton() {
+		tapElement(fullScreenCloseButton);
+	}
+	
+	public void tapPropertyImage() {
+		tapElement(propertyImage);
+	}
+	
+	//Swiping image carousel left in property details
+	public void swipeImageCarouselLeft() {
+		swipeHorizontally(favouriteButton,backButton);
+	}
+	public void swipeFullScreenImageCarouselLeft() {
+		swipeHorizontallyToLeft();
+	}
+	
+	public void swipeFullScreenImageCarouselRight() {
+		swipeHorizontallyToRight();
+	}
+	
+	public WebElement checkFavouriteButton() {
+		return find(favouriteButton);
+	}
+	
+	public WebElement checkBackButton() {
+		return find(backButton);
+	}
+	
+	public String getImageNumberText() {
+		return getText(imageNumberText);
+	}
+	
+	public WebElement checkImageNumberText() {
+		return find(imageNumberText);
+	}
+	
 	public String getSuburbInsightTitleText() {
 		return getText(suburbInsightTitleText);
 	}
@@ -218,6 +291,11 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	public void scrollToWhatsNewButton() {
 		scrollToElement(miniMapWhatsNewButton, "true");
+	}
+
+	//Swiping image carousel right in property details
+	public void swipeImageCarouselRight() {
+		swipeHorizontallyToRight();
 	}
 	
 }
