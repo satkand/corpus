@@ -112,7 +112,7 @@ public class GetStartedPage extends BasePage {
 
 	public WebElement checkMemberBrandIcon(String currentBrand, String commonBundleId) {
 		brandIcon = By.id(commonBundleId+currentBrand);
-		return find(brandIcon, 30);
+		return find(brandIcon);
 	}
 
 	public void tapMemberBrandIcon(String currentBrand, String commonBundleId) {
