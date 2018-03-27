@@ -998,7 +998,11 @@
 			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
 			"passwordNotMatch" : "Password do not match",
-			"passwordNameRequirement":"not contain your first name, surname or email"
+			"passwordNameRequirement":"not contain your first name, surname or email",
+			"duplicateEmailPopUpTitle":"Email already in use",
+			"duplicateEmailPopUpText":"Please log in with this email address, or use a different one to register for a new account.",
+			"duplicateEmailPopUpOkButtonText":"OK",
+			"duplicateEmailPopUpUseAnotherEmailButtonText":"LOG IN WITH THIS EMAIL"
 		},
 		"chatbot": {
 			"phoneLabel": "CALL NOW"

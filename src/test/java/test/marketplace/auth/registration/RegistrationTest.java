@@ -500,16 +500,16 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(),utils.readTestData("copy", "registrationPage", "longFirstNameErrorMsg"),
 				"Maximum length error message for first name is not displayed");
 
-		registrationPage.clearFirstName();
-
+		registrationPage.clearField("firstNameField");
+		
 		// check maximum length of  surname
 		registrationPage.enterSurname(utils.readTestData("registration", "failure", "longSurname"));
 		Assert.assertNotNull(registrationPage.checkSurnameErrorMsg(), "Surname inline message is not displayed.");
 		Assert.assertEquals(registrationPage.getSurnameErrorMsg(),utils.readTestData("copy", "registrationPage", "longSurnameErrorMsg"),
 				"Maximum length error message for surname is not displayed");
 
-		registrationPage.clearLastName();
-
+		registrationPage.clearField("surNameField");
+	
 		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
 				utils.readTestData("registration", "success", "date"),
@@ -527,7 +527,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(),utils.readTestData("copy", "registrationPage", "longMobileErrorMsg"),
 				"Maximum length error message for mobile number is not displayed");
 
-		registrationPage.clearMobileNumber();
+		registrationPage.clearField("mobileField");
 
 		// check error message is displayed for long email ID
 		registrationPage.enterEmail(utils.readTestData("registration", "failure", "emailLong"));
@@ -535,7 +535,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(),utils.readTestData("copy", "registrationPage", "longEmailErrorMsg"),
 				"Maximum length error message for email is not displayed");
 
-		registrationPage.clearEmail();
+		registrationPage.clearField("emailField");
 
 		registrationPage.fill2ndPageFields(utils.readTestData("registration", "success", "email"),
 				utils.readTestData("registration", "success", "mobile"));
@@ -579,7 +579,7 @@ public class RegistrationTest extends App{
 		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "firstNamePasswordErrorMsg")),
 				"Desired password must not contain first name message is not displayed.");
 
-		registrationPage.clearDesiredPassword();
+		registrationPage.clearField("desiredPassword");
 
 		registrationPage.enterPassword(utils.readTestData("registration", "success", "surname"));
 		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
@@ -592,8 +592,7 @@ public class RegistrationTest extends App{
 		registrationPage.tapRegisterButton();
 		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "lastNamePasswordErrorMsg")),
 				"Desired password must not contain surname message is not displayed.");
-
-		registrationPage.clearDesiredPassword();
+		registrationPage.clearField("desiredPassword");
 
 		registrationPage.enterPassword(utils.readTestData("registration", "success", "email1"));
 		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "emailPasswordErrorMsg")),
@@ -609,6 +608,61 @@ public class RegistrationTest extends App{
 
 	}
 	
+
+	// DMPM-38 : Check Uniqueness of Email Address Used for Registration
+	@Test(groups = {"DMPM-38", "DMPM-2469", "DMPM-2470", "DMPM-2471", "DMPM-2474", "marketplace", "Registration",
+			"priority-major" })
+	public void testDuplicateEmailId() {
+
+		navigateToRegistrationPage();
+		registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
+				utils.readTestData("registration", "success", "surname"),
+				utils.readTestData("registration", "success", "date"),
+				utils.readTestData("registration", "success", "postcode"));
+
+		registrationPage.tapNextButton();
+
+		// Enter email id which already exists
+		registrationPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
+		registrationPage.enterMobile(utils.readTestData("registration", "success", "mobile"));
+
+		registrationPage.tapNextButton();
+
+		Assert.assertNotNull(registrationPage.checkDuplicateEmailPopUpTitle(),"Duplicate email alert pop up is not displayed on registration.");
+
+		// Check the elements on the pop up alert
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpTitle(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpTitle"),
+				"Duplicate email alert pop up title is not correct");
+
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpText(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpText"),
+				"Duplicate email alert pop up title is not correct");
+
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpOkButtonLabel(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpOkButtonText"),
+				"Duplicate email alert pop up title is not correct");
+
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpAnotherLoginButtonLabel(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpUseAnotherEmailButtonText"),
+				"Duplicate email alert pop up title is not correct");
+
+		registrationPage.tapOkButton();
+
+		// Check pop up alert is dismissed on tapping Ok button
+		Assert.assertNotNull(registrationPage.checkRegisterPage2Title(),"Registration Page 2 is not displayed on registration.");
+
+		registrationPage.tapNextButton();
+
+		Assert.assertNotNull(registrationPage.checkDuplicateEmailPopUpTitle(),"Duplicate email alert pop up is not displayed on registration.");
+
+		registrationPage.tapAnotherLoginButton();
+
+		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"),
+				"Login page title is not shown as expected");
+
+		Assert.assertEquals(loginPage.getEmailFieldData(), utils.readTestData("noSuncorpBankAccounts", "login"),
+				"Login page title is not shown as expected");
+
+	}
+	
+
 
 	private void navigateToRegistrationPage() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
