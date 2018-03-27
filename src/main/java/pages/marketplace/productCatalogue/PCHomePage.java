@@ -1,9 +1,5 @@
 package pages.marketplace.productCatalogue;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -12,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
+import pages.marketplace.common.MyJSONParser;
 
 public class PCHomePage extends BasePage {
 	

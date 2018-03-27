@@ -1,4 +1,4 @@
-package pages.marketplace.productCatalogue;
+package pages.marketplace.common;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
