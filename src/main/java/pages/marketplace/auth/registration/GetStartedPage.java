@@ -15,10 +15,17 @@ public class GetStartedPage extends BasePage {
 	
 	private By getStartedPageTitle = By.id("au.com.suncorp.marketplace:id/headingText");
 	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
-	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");
-
+	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");	
+	private String registerWithSupportedGroupButtonsuffix = "au.com.suncorp.marketplace:id/";
+	private By registerWithSupportedGroupButton;
+	
 	public WebElement checkGetStartedPageTitle() {
 		return find(getStartedPageTitle);
+	}
+	
+	public WebElement checkRegisterWithSupportedGroupButton(String supportedGroupName) {
+		registerWithSupportedGroupButton = By.id(registerWithSupportedGroupButtonsuffix+supportedGroupName+"Button");
+		return find(registerWithSupportedGroupButton);
 	}
 	
 	public void tapBackButton() {
@@ -31,6 +38,11 @@ public class GetStartedPage extends BasePage {
 	
 	public void tapSetupNewAccount() {
 		tapElement(setupNewAccountButton);
+	}
+	
+	public void tapRegisterWithSupportedGroupButton(String supportedGroupName){
+		registerWithSupportedGroupButton = By.id(registerWithSupportedGroupButtonsuffix+supportedGroupName+"Button");
+		tapElement(registerWithSupportedGroupButton);
 	}
 
 }

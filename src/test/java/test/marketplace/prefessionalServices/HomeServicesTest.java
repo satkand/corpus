@@ -13,7 +13,6 @@ public class HomeServicesTest extends App{
 	public void testNavigatingToProfessionalServicesScreen() {
 		navigateToProfessionalServices();
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "home Services Page - Home Services subtitle is not present");
-		Assert.assertEquals(homeServicesPage.getHomeServicesTitle(),utils.readTestData("copy", "professionalServices","homeServicesTitle"), "home Services Page - Home Services title text is different to the expected text");
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesDescription(), "home Services Page - Home Services description is not present");
 		Assert.assertEquals(homeServicesPage.getHomeServicesDescription(), utils.readTestData("copy", "professionalServices","homeServicesDescription"), "home Services Page - Home Services Description text is different to the expected text");
 		Assert.assertNotNull(homeServicesPage.checkChooseServiceLabel(), "home Services Page - Home Services label is not present");
@@ -34,8 +33,7 @@ public class HomeServicesTest extends App{
 		Assert.assertNotNull(navigationMenu.checkProffessionalServicesMenuItem(), "Navigation Menu - home Servicesmenu item is not present");
 		navigationMenu.tapProffessionalServicesMenuItem();
 		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesPageTitle(), "home Services Page - home Services Page title is not present");
-		Assert.assertEquals(homeServicesPage.getProfessionalServicesPageTitle(), utils.readTestData("copy", "professionalServices","professionalServicesPageTitle"), "home Services Page - home Services Page title text is different to the expected text");
-			
+				
 	}
 			
 		
