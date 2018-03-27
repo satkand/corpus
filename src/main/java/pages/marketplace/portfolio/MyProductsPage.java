@@ -227,11 +227,21 @@ public class MyProductsPage extends BasePage {
 		return find(riskText);
 	}
 	
-	public void scrollTo(String riskName) {
+	public boolean scrollToPolicyRisk(String riskName) {
 		String riskXpath = riskXpathPrefix + riskName + riskXpathSuffix;
 		riskText = By.xpath(riskXpath);
-		scrollToElement(riskText);
+		boolean policyRiskFound = false;
+		while (find(riskText) == null && find(addExistingProductButton) == null) 
+		{
+			swipeScreen("down");
+			
+			if(find(riskText)== null)
+				policyRiskFound = false;
+			else
+				policyRiskFound = true;
+		}
 		
+		return policyRiskFound;
 	}
 	
 	public WebElement checkExpiryDateDesc(String riskName, String dateDesc) {

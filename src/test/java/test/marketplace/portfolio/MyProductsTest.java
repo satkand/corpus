@@ -132,6 +132,7 @@ public class MyProductsTest extends App {
 		}
 	}
 
+	//DMPM-3667 Highlight expiry date for Renewal Overdue policy - Scenario 1
 	@DataProvider(name = "ExpiryDateRenewalDueAndOverduePolicy")
 	 
 	  public static Object[][] policy() {
@@ -140,26 +141,49 @@ public class MyProductsTest extends App {
 		 
 	  }
 	
-	//DMPM-3667 Highlight expiry date for Renewal Overdue policy - Scenario 1
-	@Test (dataProvider ="ExpiryDateRenewalDueAndOverduePolicy", groups = {"DMPM-3667", "DMPM-4139","marketplace", "portfolio", "priority-minor"})
-	public void testExpiryDateRenewalDueAndOverduePolicy(String policy, int coverNumber){
+	
+	@Test (dataProvider ="ExpiryDateRenewalDueAndOverduePolicy", groups = {"DMPM-3667", "DMPM-4139","marketplace", "portfolio", "priority-major"})
+	public void testExpiryDateRenewalDueAndOverduePolicy(String policy, int riskNumber){
 		
-		String coverDescription = utils.readTestData("portfolio","insuranceProducts",policy, "risks","description"+coverNumber);
-		String coverDateDescription = utils.readTestData("portfolio","insuranceProducts",policy, "risks","endDateDescription"+coverNumber);
-		String coverEndDate = utils.readTestData("portfolio","insuranceProducts",policy, "risks","endDate"+coverNumber);
+		String coverDescription = utils.readTestData("portfolio","insuranceProducts",policy, "risks","description"+riskNumber);
+		String coverDateDescription = utils.readTestData("portfolio","insuranceProducts",policy, "risks","endDateDescription"+riskNumber);
+		String coverEndDate = utils.readTestData("portfolio","insuranceProducts",policy, "risks","endDate"+riskNumber);
 		String policyStatus = utils.readTestData("portfolio","insuranceProducts",policy, "status");
 		
 		navigateToMyProductsScreenInsuranceProducts(policy);
 		
-		myProductsPage.scrollTo(coverDescription);
+		Assert.assertTrue(myProductsPage.scrollToPolicyRisk(coverDescription), "Policy not found");
 		
 		Assert.assertNotNull(myProductsPage.checkExpiryDateDesc(coverDescription, coverDateDescription),"Cover end date description is incorrect");
 		Assert.assertNotNull(myProductsPage.checkExpiryDate(coverDescription, coverEndDate),"Cover End Date is incorrect");
 		Assert.assertNotNull(myProductsPage.checkPolicyStatus(coverDescription, policyStatus),"Policy status is incorrect");
 		
 	}
+
+	//DMPM-2087 Display policy-level status
+	@DataProvider(name = "PolicyLevelStatus")
+	 
+	  public static Object[][] policyLevelStatus() {
+	 
+		return new Object[][] { { "policy1",1 }, { "policy2",1 }, { "policy5",1 },
+				{ "policy6",1 }, { "policy7",1 }, { "policy8",1 }, { "policy9",1 }, { "policy10",1 }, { "policy11",1 },
+				 { "policy14",1 } };
+
+	  }
 	
-	
+
+	@Test (dataProvider ="PolicyLevelStatus", groups = {"DMPM-2087", "DMPM-3388","marketplace", "portfolio", "priority-major"})
+	public void testPolicyLevelStatus(String policy, int riskNumber){
+		
+		String coverDescription = utils.readTestData("portfolio","insuranceProducts",policy, "risks","description"+riskNumber);
+		String policyStatus = utils.readTestData("portfolio","insuranceProducts",policy, "status");
+		
+		navigateToMyProductsScreenInsuranceProducts(policy);
+			
+		Assert.assertTrue(myProductsPage.scrollToPolicyRisk(coverDescription), "Policy not found");
+		Assert.assertNotNull(myProductsPage.checkPolicyStatus(coverDescription, policyStatus),"Policy status is incorrect");
+		
+	}
 	
 	private void navigateToMyProductsScreen(String userType){
 		if (userType.equals("emptyProdListUser")) {

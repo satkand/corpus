@@ -30,7 +30,7 @@
 		"propertyExplorer":{
 					"login": "a@b.c",
 					"pwd": "Password1",
-					"clearSearchText":"1234567890ABCD#$%^"
+					"clearSearchText":"1234567890ABCD#$%^",
 					"enterAdress":"1"
 		},
 		"NoProperties":{
@@ -178,174 +178,178 @@
 						"status":"Renewal overdue",
           				"risks": 
             			{
-             				 "description": "Single Risk, Single Cover Policy 4",
+             				 "description1": "Single Risk, Single Cover Policy 4",
              				 "endDate1":"10 November 2017",
              				 "endDateDescription1":"Start Date"
             			}
 				},
-				"policy5": [
+				"policy5": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Policy Active",
+          				"risks": 
             			{
-             				 "description": "Multi Risk, Multi Cover 1"
-            			},
-            			{
-            				"description": "Multi Risk, Multi Cover 2"
+            					"description1": "Multi Risk, Multi Cover 1",
+             				"endDate1":"10 November 2017",
+             				"endDateDescription1":"Start Date",
+             				"description2": "Multi Risk, Multi Cover 2",
+             				"endDate2":"10 November 2017",
+             				"endDateDescription2":"Start Date"
             			}
-            			]
-				}],
-				"policy6": [
+				},
+				"policy6": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
-            			{
-            				"description": "Multi Risk, Multi Cover 3"
-            			},
-            			{
-            				"description": "Multi Risk, Multi Cover 4"
-            			}]
-				}],
-				"policy7": [
+						"status":"Policy Active",
+          				"risks": 
+            				{
+            					"description1": "Multi Risk, Multi Cover 3",
+            			
+            					"description2": "Multi Risk, Multi Cover 4"
+            				}
+				},
+				"policy7": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Policy Active",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Multi Cover 5"
-            			},
-            			{
-            				"description": "Multi Risk, Multi Cover 6"
-            			}]
-				}],
-				"policy8": [
+            				"description1": "Multi Risk, Multi Cover 5",
+            			
+            				"description2": "Multi Risk, Multi Cover 6"
+            			}
+				},
+				"policy8": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Policy Active",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Multi Cover 7"
-            			},
-            			{
-            				"description": "Multi Risk, Multi Cover 8"
-            			}]
-				}],
-				"policy9": [
+            				"description1": "Multi Risk, Multi Cover 7",
+            			
+            				"description2": "Multi Risk, Multi Cover 8"
+            			}
+				},
+				"policy9": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Policy Active",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Single Cover 1"
-            			},
-            			{
-            				"description": "Multi Risk, Single Cover 2"
-            			}]
-				}],
-				"policy10": [
+            				"description1": "Multi Risk, Single Cover 1",
+            			
+            				"description2": "Multi Risk, Single Cover 2"
+            			}
+				},
+				"policy10": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Policy Active",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Single Cover 3"
-            			},
-            			{
-            				"description": "Multi Risk, Single Cover 4"
-            			}]
-				}],
-				"policy11": [
+            				"description1": "Multi Risk, Single Cover 3",
+            			
+            				"description2": "Multi Risk, Single Cover 4"
+            			}
+				},
+				"policy11": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Cancellation pending",
+          				"risks": 
             			{
             				"description": "Single Risk Multi Cover 1"
-            			}]
-				}],
-				"policy12": [
+            			}
+				},
+				"policy12": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status":"Cancellation pending",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Multi Cover 9"
-            			},
-            			{
-            				"description": "Multi Risk, Multi Cover 10"
-            			}]
-				}],
-				"policy13": [
+            				"description1": "Multi Risk, Multi Cover 9",
+            			
+            				"description2": "Multi Risk, Multi Cover 10"
+            			}
+				},
+				"policy13": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status": "Cancellation pending",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Multi Cover 11"
-            			},
-            			{
-            				"description": "Multi Risk, Multi Cover 12"
-            			}]
-				}],
-				"policy14": [
+            				"description1": "Multi Risk, Multi Cover 11",
+            			
+            				"description2": "Multi Risk, Multi Cover 12"
+            			}
+				},
+				"policy14": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status": "Policy Future Activation",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Single Cover 5"
-            			},
-            			{
-            				"description": "Multi Risk, Single Cover 6"
-            			}]
-				}],
-				"policy15": [
+            				"description1": "Multi Risk, Single Cover 5",
+            			
+            				"description2": "Multi Risk, Single Cover 6"
+            			}
+				},
+				"policy15": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status": "Policy Future Activation",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Single Cover 7"
-            			},
-            			{
-            				"description": "Multi Risk, Single Cover 8"
-            			}]
-				}],
-				"policy16": [
+            				"description1": "Multi Risk, Single Cover 7",
+            			
+            				"description2": "Multi Risk, Single Cover 8"
+            			}
+				},
+				"policy16": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status": "Policy Future Activation",
+          				"risks": 
             			{
-            				"description": "Single Risk Multi Cover 2"
-            			}]
-				}],
-				"policy17": [
+            				"description1": "Single Risk Multi Cover 2"
+            			}
+				},
+				"policy17": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status": "Policy Future Activation",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Multi Cover 13"
-            			},
-            			{
-            				"description": "Multi Risk, Multi Cover 14"
-            			}]
-				}],
-				"policy18": [
+            				"description1": "Multi Risk, Multi Cover 13",
+            			
+            				"description2": "Multi Risk, Multi Cover 14"
+            			}
+				},
+				"policy18": 
 				{
 						"login": "a@b.c",
 						"pwd": "Password1",
-          				"risks": [
+						"status": "Policy Future Activation",
+          				"risks": 
             			{
-            				"description": "Multi Risk, Multi Cover 15"
-            			},
-            			{
-            				"description": "Multi Risk, Multi Cover 16"
-            			}]
-				}]
+            				"description1": "Multi Risk, Multi Cover 15",
+            			
+            				"description2": "Multi Risk, Multi Cover 16"
+            			}
+				}
 
 		}
 	},
