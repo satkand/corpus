@@ -151,7 +151,7 @@ public class MyProductsTest extends App {
 		
 		navigateToMyProductsScreenInsuranceProducts(policy);
 		
-		myProductsPage.scrollTo(coverDescription);
+		Assert.assertTrue(myProductsPage.scrollToPolicyRisk(coverDescription), "Policy not found");
 		
 		Assert.assertNotNull(myProductsPage.checkExpiryDateDesc(coverDescription, coverDateDescription),"Cover end date description is incorrect");
 		Assert.assertNotNull(myProductsPage.checkExpiryDate(coverDescription, coverEndDate),"Cover End Date is incorrect");
