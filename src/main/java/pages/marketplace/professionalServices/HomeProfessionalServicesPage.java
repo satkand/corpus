@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
-public class HomeServicesPage  extends BasePage{
+public class HomeProfessionalServicesPage  extends BasePage{
 
-	public HomeServicesPage(AppiumDriver driver) {
+	public HomeProfessionalServicesPage(AppiumDriver driver) {
 		super(driver);
 	}
 	

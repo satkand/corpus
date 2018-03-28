@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import pages.App;
 
-public class HomeServicesTest extends App{
+public class HomeProfessionalServicesTest extends App{
 
 	// 4170 - Scenario 1 (TC-DMPM-4702),Scenario 2 (TC-DMPM-4703),Scenario 3 (TC-DMPM-4704),
 	// navigating to home Professional Services screen
