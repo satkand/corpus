@@ -13,6 +13,8 @@ public class HomeServicesTest extends App{
 	public void testNavigatingToProfessionalServicesScreen() {
 		navigateToProfessionalServices();
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "home Services Page - Home Services subtitle is not present");
+		Assert.assertEquals(homeServicesPage.getHomeServicesTitle(), utils.readTestData("copy", "professionalServices","homeServicesHeading"), "home Services Page - Home Services Description text is different to the expected text");
+	
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesDescription(), "home Services Page - Home Services description is not present");
 		Assert.assertEquals(homeServicesPage.getHomeServicesDescription(), utils.readTestData("copy", "professionalServices","homeServicesDescription"), "home Services Page - Home Services Description text is different to the expected text");
 		Assert.assertNotNull(homeServicesPage.checkChooseServiceLabel(), "home Services Page - Home Services label is not present");
@@ -22,13 +24,16 @@ public class HomeServicesTest extends App{
 		Assert.assertNotNull(homeServicesPage.checkViewServicesButton(), "home Services Page - View services button is not present");
 
 		homeServicesPage.tapViewServicesButton();			
-		Assert.assertNotNull(homeServicesPage.checkUrlBar(), "home Services Page - View services button is not present");
-		Assert.assertEquals(homeServicesPage.getUrlBarText(), utils.readTestData("copy", "professionalServices","urlBarText"), "home Services Page - View Services web view URL is different to the expected URL");
+		Assert.assertNotNull(webviewPage.checkUrlBar(), "home Services Page - View services button is not present");
+		Assert.assertEquals(webviewPage.getUrlBarText(), utils.readTestData("copy", "professionalServices","urlBarText"), "home Services Page - View Services web view URL is different to the expected URL");
 				
+		webviewPage.tapWebviewCloseButton();
+		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesPageTitle(), "home Services Page - home Services Page title is not present");
+		
 	}
 
 	private void navigateToProfessionalServices() {
-		loginToApp(utils.readTestData("propertyDimention","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimention", "propertyProducts","withProducts","pwd"));
+		loginToApp(utils.readTestData("loginCredentials","validLoginCredentials","login"), utils.readTestData("loginCredentials","validLoginCredentials","pwd"));
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkProffessionalServicesMenuItem(), "Navigation Menu - home Servicesmenu item is not present");
 		navigationMenu.tapProffessionalServicesMenuItem();
