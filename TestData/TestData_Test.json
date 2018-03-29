@@ -766,7 +766,7 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "son@son.com",
+			"login": "dest@dest.com",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••"
 		},
@@ -810,6 +810,13 @@
 			"emptyEmailError" : "Field is required",
 			"longEmailError" : "Must be between 2 and 100 characters",
 			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
+		},
+		"professionalServices": {
+			"chooseServiceLabel": "Choose a service that suits you:",
+			"urlBarText": "https://www.suncorp.com.au",
+			"professionalServicesPageTitle": "Professional Services",
+			"homeServicesHeading":"Home services",
+			"homeServicesDescription": "With the support of IBM and the natural language capabilities of Watson – IBM's artificial intelligence platform"
 		},
 		"registration": {
 			"supportedGroup":["aami","apia","gio","shannons"],

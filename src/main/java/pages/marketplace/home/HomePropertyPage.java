@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class HomePropertyPage extends BasePage {
 
@@ -42,6 +43,15 @@ public class HomePropertyPage extends BasePage {
 	private By featureLockedTextCopy = By.id("android:id/message");
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
+	private By backButton = MobileBy.AccessibilityId("Navigate up");
+	
+	public WebElement checkBackButton() {
+		return find(backButton);
+	}
+	
+	public void tapBackButton() {
+		tapElement(backButton);
+	}
 	
 	public WebElement checkFeatureLockedMsgTitle() {
 		return find(featureLockedMsgTitle);
@@ -221,13 +231,6 @@ public class HomePropertyPage extends BasePage {
 	
 	public void tapStartYourJourneyButton() {
 		tapElement(startYourJourneyButton);
-	}
-	
-
-	public void scrollToNextProduct() {
-			for(int i=0;i<4;i++) {
-				swipeScreen("down");
-			}
 	}
 	
 	public void scrollToEmptyStatePropertyAsset() {
