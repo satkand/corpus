@@ -100,7 +100,7 @@ public class PropertyDetailsTest extends App{
 	
 	public void navigateToPropertyDetails(String navigationPath) {
 		
-		loginToApp(utils.readTestData("propertyDimention","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimention", "propertyProducts","withProducts","pwd"));
+		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		homePropertyPage.scrollToJourneyBanner();

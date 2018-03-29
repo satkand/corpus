@@ -41,8 +41,8 @@ public class HomePropertyTest extends App {
 	public void testAddAPropertyOrPolicy() {
 		navigateToHomePropertyTab("noProperties");
 		
-		Assert.assertNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Property Assets are displaying for guest user");
-		Assert.assertNull(homePropertyPage.checksuburbText(), "Home Property Page - Property Assets are displaying for guest user");
+		Assert.assertNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Property Assets are displaying");
+		Assert.assertNull(homePropertyPage.checksuburbText(), "Home Property Page - Property Assets are displaying");
 		
 		Assert.assertNotNull(homePropertyPage.checkAddAPropertyOrPolicyImage(), "Home Property Page - Image is not present in add property section");
 		Assert.assertNotNull(homePropertyPage.checkAddAPropertyOrPolicyButton(), "Home Property Page - Add a Property or Policy button is not present");
@@ -68,7 +68,7 @@ public class HomePropertyTest extends App {
 		
 		homePropertyPage.tapAddAPropertyOrPolicyButton();
 		homePropertyPage.tapAddPropertyActionSheetButton();
-		homePropertyPage.tapDeviceBackButton();
+		homePropertyPage.tapBackButton();
 		Assert.assertNotNull(homePropertyPage.checkAddAPropertyOrPolicyButton(), "Home Property Page - Add a Property or Policy button is not present");
 		
 		

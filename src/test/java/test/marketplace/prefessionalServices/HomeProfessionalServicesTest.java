@@ -24,8 +24,8 @@ public class HomeProfessionalServicesTest extends App{
 		Assert.assertNotNull(homeServicesPage.checkViewServicesButton(), "home Services Page - View services button is not present");
 
 		homeServicesPage.tapViewServicesButton();			
-		Assert.assertNotNull(webviewPage.checkUrlBar(), "home Services Page - View services button is not present");
-		Assert.assertEquals(webviewPage.getUrlBarText(), utils.readTestData("copy", "professionalServices","urlBarText"), "home Services Page - View Services web view URL is different to the expected URL");
+		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "home Services Page - View services button is not present");
+		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "professionalServices","urlBarText"), "home Services Page - View Services web view URL is different to the expected URL");
 				
 		webviewPage.tapWebviewCloseButton();
 		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesPageTitle(), "home Services Page - home Services Page title is not present");
