@@ -46,6 +46,7 @@ import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
+import pages.marketplace.professionalServices.HomeProfessionalServicesPage;
 import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
@@ -96,7 +97,7 @@ public class App extends BaseTest {
 	public FAPISettingsPage fapiSettingsPage = null;
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
-	
+	public HomeProfessionalServicesPage homeServicesPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 
@@ -155,7 +156,9 @@ public class App extends BaseTest {
 		propertyExplorerPage = new PropertyExplorerPage(driver);
 		propertyDetailsPage = new PropertyDetailsPage(driver);
 		webviewPage = new WebviewPage(driver);
+		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
+
 	}
 	
 	@Parameters({ "stub" })
