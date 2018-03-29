@@ -67,6 +67,7 @@ public class RegistrationPage extends BasePage {
 	private By mobileNumberUserTip = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
 			+ "TextInputLayout[2]/android.widget.TextView");
 	
+	
 	private By passwordLengthRequirementsField = By.id("au.com.suncorp.marketplace:id/lengthStatusLabel");
 	private By passwordCharRequirements1Field = By.id("au.com.suncorp.marketplace:id/atLeastOneLowercase");
 	private By passwordCharRequirements2Field = By.id("au.com.suncorp.marketplace:id/atLeastOneUppercase");
@@ -76,7 +77,11 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	
+	private By okButtonDuplicateEmailPopUp = By.id("android:id/button2");
+	private By anotherEmailButtonDuplicateEmailPopUp = By.id("android:id/button1");
+	private By duplicateEmailPopUpTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
+	private By duplicateEmailPopUpText = By.id("android:id/message");
+
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
 	}
@@ -296,6 +301,11 @@ public class RegistrationPage extends BasePage {
 		return getText(surnameErrorMsg);
 	}
 	
+	public String getPasswordNameRequirementsText()
+	{
+		return getText(passwordNameRequirementsField);
+	}
+	
 	public String getDOBErrorMsg() {
 		return getText(dobErrorMsg);
 	}
@@ -393,4 +403,58 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkCancelButton() {
 		return find(cancelButton);
 	}
+
+	public void clearField(String fieldname)
+	{
+		switch (fieldname)
+		{
+		case "firstNameField" :
+			clearValue(firstNameField);
+			break;
+		case "surNameField":
+			clearValue(surnameField);
+			break;
+		case "mobileField":
+			clearValue(mobileField);
+			break;
+		case "emailField":
+			clearValue(emailField);
+			break;
+		case "desiredPassword":
+			clearValue(passwordField);
+			break;
+		}
+		dismissKeyboard();
+		
+	}
+
+	public WebElement checkDuplicateEmailPopUpTitle(){
+		return find(duplicateEmailPopUpTitle);
+	}
+	
+	public String getDuplicateEmailPopUpTitle() {
+		return getText(duplicateEmailPopUpTitle);
+	}
+	
+	public String getDuplicateEmailPopUpText() {
+		return getText(duplicateEmailPopUpText);
+	}
+	
+	public String getDuplicateEmailPopUpOkButtonLabel() {
+		return getText(okButtonDuplicateEmailPopUp);
+	}
+	
+	public String getDuplicateEmailPopUpAnotherLoginButtonLabel() {
+		return getText(anotherEmailButtonDuplicateEmailPopUp);
+	}
+	
+	public void tapOkButton() {
+		tapElement(okButtonDuplicateEmailPopUp);
+	}
+	
+	public void tapAnotherLoginButton() {
+		tapElement(anotherEmailButtonDuplicateEmailPopUp);
+	}
+	
+	
 }

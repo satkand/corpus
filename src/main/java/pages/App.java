@@ -18,6 +18,7 @@ import pages.marketplace.auth.pin.PINCustomKeypad;
 import pages.marketplace.auth.pin.PINOptionsPage;
 import pages.marketplace.auth.pin.PINSetupPage;
 import pages.marketplace.auth.registration.GetStartedPage;
+import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CameraPage;
@@ -36,6 +37,8 @@ import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.digitalVault.SelectItemsPage;
 import pages.marketplace.home.HomeJourneyPage;
 import pages.marketplace.home.HomePropertyPage;
+import pages.marketplace.home.PropertyDetailsPage;
+import pages.marketplace.home.PropertyExplorerPage;
 import pages.marketplace.landing.LandingPage;
 import pages.marketplace.landing.NavigationMenuPage;
 import pages.marketplace.landing.WelcomePage;
@@ -93,8 +96,11 @@ public class App extends BaseTest {
 	public AccountDetailsPage accountDetailsPage = null;
 	public PCHomePage productCatalogueHomePage = null;
 	public FAPISettingsPage fapiSettingsPage = null;
+	public PropertyExplorerPage propertyExplorerPage = null;
+	public PropertyDetailsPage propertyDetailsPage = null;
 	public WebviewPage webviewPage = null;
-	
+	public MemberLoginPage memberLoginPage = null;
+
 
 	@BeforeClass
 	public void initializeApp() {
@@ -148,7 +154,10 @@ public class App extends BaseTest {
 		accountDetailsPage = new AccountDetailsPage(driver);
 		productCatalogueHomePage = new PCHomePage(driver);
 		fapiSettingsPage = new FAPISettingsPage(driver);
+		propertyExplorerPage = new PropertyExplorerPage(driver);
+		propertyDetailsPage = new PropertyDetailsPage(driver);
 		webviewPage = new WebviewPage(driver);
+		memberLoginPage = new MemberLoginPage(driver);
 
 	}
 	
