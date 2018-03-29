@@ -17,13 +17,13 @@ public class PropertyExplorerTest extends App{
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchHint(), "Property Explorer Page - search Hint not present");
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchHintText(), utils.readTestData("copy","propertyExplorer","propertyInsightSearchHintText"));
 		
-		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","clearSearchText"));
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","clearSearchText"));
 		Assert.assertNotNull(propertyExplorerPage.checkClearSerchButton(), "Property Explorer Page - Clear search option is not present");
 		
 		propertyExplorerPage.tapClearSerchButton();
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchText(), "","Search text has not been cleared");
 		
-		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","enterAdress"));
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
 		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
@@ -48,13 +48,13 @@ public class PropertyExplorerTest extends App{
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchHint(), "Property Explorer Page - search Hint not present");
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchHintText(), utils.readTestData("copy","propertyExplorer","suburbInsightSearchHintText"));
 		
-		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","clearSearchText"));
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","clearSearchText"));
 		Assert.assertNotNull(propertyExplorerPage.checkClearSerchButton(), "Property Explorer Page - Clear search option is not present");
 		
 		propertyExplorerPage.tapClearSerchButton();
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchText(), "","Search text has not been cleared");
 	
-		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimention","propertyExplorer","enterAdress"));
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
 		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
@@ -68,7 +68,7 @@ public class PropertyExplorerTest extends App{
 	}
 	
 	public void navigateToPropertyExplorer() {
-		loginToApp(utils.readTestData("propertyDimention","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimention", "propertyProducts","withProducts","pwd"));
+		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		homePropertyPage.scrollToJourneyBanner();

@@ -16,8 +16,8 @@ public class WebviewPage extends BasePage {
 		
 	private By webviewCloseButton = MobileBy.AccessibilityId("Close tab");
 	private By webviewBrowserUrl = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
-	private By urlBar = By.id("com.android.chrome:id/url_bar");
-	
+	//private By urlBar = By.id("com.android.chrome:id/url_bar");
+	/*
 	public WebElement checkUrlBar() {
 		return find(urlBar);
 	}
@@ -25,7 +25,7 @@ public class WebviewPage extends BasePage {
 	public String getUrlBarText() {
 		return getText(urlBar);
 	}
-	
+	*/
 	public WebElement checkWebviewBrowserUrl() {
 		return find(webviewBrowserUrl);
 	}
