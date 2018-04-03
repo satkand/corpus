@@ -67,6 +67,28 @@ public class PropertyExplorerTest extends App{
 			
 	}
 	
+	// navigating to Property Explorer and search a property and switch tabs
+	@Test (groups = {"DMPM-4049","DMPM-5126", "marketplace", "Home buying journey", "priority-minor"})
+	public void testClearTextWhenChangingSearchType() {
+		
+		navigateToPropertyExplorer();
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchbox(), "Property Explorer Page - search box not present");
+		
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","clearSearchText"));
+		Assert.assertNotNull(propertyExplorerPage.checkClearSerchButton(), "Property Explorer Page - Clear search option is not present");
+		
+		propertyExplorerPage.tapSuburbInsight();
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchbox(), "Property Explorer Page - suburb Insight search box not present");
+		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchText(), "", "Previous search text is still present");
+		
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","clearSearchText"));	
+		propertyExplorerPage.tapPropertyInsight();
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchbox(), "Property Explorer Page - suburb Insight search box not present");
+		Assert.assertNotNull(propertyExplorerPage.checkClearSerchButton(), "Property Explorer Page - Clear search option is not present");
+		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchText(), "", "Previous search text is still present");
+		
+	}
+	
 	public void navigateToPropertyExplorer() {
 		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
 		landingPage.tapHomeTab();
