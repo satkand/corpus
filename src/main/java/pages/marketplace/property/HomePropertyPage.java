@@ -1,4 +1,4 @@
-package pages.marketplace.home;
+package pages.marketplace.property;
 
 import java.util.List;
 

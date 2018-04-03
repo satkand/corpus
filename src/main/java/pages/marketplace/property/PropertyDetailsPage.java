@@ -1,4 +1,4 @@
-package pages.marketplace.home;
+package pages.marketplace.property;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
