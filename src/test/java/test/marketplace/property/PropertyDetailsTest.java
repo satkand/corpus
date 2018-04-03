@@ -92,6 +92,15 @@ public class PropertyDetailsTest extends App{
 		for(int i=1;i<=imageCount;i++) {
 			Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
 			Assert.assertEquals(propertyDetailsPage.getImageNumberText(), i+"/"+imageCount);
+			
+			//Story DMPM-4780 covers from below code
+			if(i%2==0) {
+				propertyDetailsPage.tapPropertyImage();
+				String imageNumberInNormalView = propertyDetailsPage.getfullScreenImageCounter();
+				propertyDetailsPage.tapFullScreenCloseButton();
+				Assert.assertEquals(propertyDetailsPage.getImageNumberText(), imageNumberInNormalView);
+			}
+
 			propertyDetailsPage.swipeImageCarouselLeft();
 		}
 		

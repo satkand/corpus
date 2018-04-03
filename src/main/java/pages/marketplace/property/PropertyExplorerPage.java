@@ -72,6 +72,10 @@ public class PropertyExplorerPage  extends BasePage{
 		return find(propertyInsightTab);
 	}
 	
+	public void tapPropertyInsight() {
+		tapElement(propertyInsightTab);
+	}
+	
 	public WebElement checkSuburbInsightTab() {
 		return find(suburbInsightTab);
 	}
