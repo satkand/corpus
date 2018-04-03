@@ -1,12 +1,15 @@
 package pages.marketplace.home;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import pages.marketplace.common.WebviewPage;
 
 public class HomePropertyPage extends BasePage {
 
@@ -42,6 +45,65 @@ public class HomePropertyPage extends BasePage {
 	private By featureLockedTextCopy = By.id("android:id/message");
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
+	
+	//Articles carousel elements initialization --Start--
+	private By articleCarousel =	By.id("au.com.suncorp.marketplace:id/articleCarouselText");
+	private By articleImage = By.id("au.com.suncorp.marketplace:id/articleImage");
+	private By articleReadMoreBtn = By.id("au.com.suncorp.marketplace:id/articleReadMoreButton");
+	private By articleTitle = By.id("au.com.suncorp.marketplace:id/articleTitle");
+	private By articleDesc = By.id("au.com.suncorp.marketplace:id/articleDescription");
+	//Articles carousel elements initialization--End--
+	
+	//Article carousel element utilization --Start
+	public WebElement checkArticleImage() {
+		return find(articleImage, 2);
+	}
+	
+	public WebElement checkArticleReadMoreBtn() {
+		return find(articleReadMoreBtn, 2);
+	}
+	
+	public void tapArticleReadMoreBtn() {
+		 tapElement(articleReadMoreBtn);
+	}
+	
+	public WebElement checkArticleTitleElement() {
+		return find(articleTitle, 2);
+	}
+	
+	public String verifyArticleTitle() {
+		return find(articleTitle, 5).getText();
+	}
+	
+	public WebElement checkArticleDescElement() {
+		return find(articleDesc, 2);
+	}
+	
+	public String verifyArticleDescription() {
+		return find(articleDesc, 2).getText();
+	}
+	
+	public void swipeArticlesLeft() {
+		swipeHorizontallyToLeft();
+	}
+	
+	public void swipeArticlesRight() {
+		swipeHorizontallyToRight();
+	}
+	
+	public void scrollToArticles() {
+		scrollToElement(articleCarousel, "true");
+		scrollToElement(articleReadMoreBtn,"true");
+	}
+	
+	public WebElement checkArticleCarousel() {
+		return find(articleCarousel,2);
+	}
+	
+	public String getArticleCarouselText() {
+		return getText(articleCarousel);
+	}
+	//Article carousel element utilization --End
 	
 	public WebElement checkFeatureLockedMsgTitle() {
 		return find(featureLockedMsgTitle);
