@@ -52,7 +52,7 @@ public class PropertyDetailsTest extends App{
 		
 		navigateToPropertyDetails("StartYourJourney");
 		propertyExplorerPage.scrollToWhatsNearButton();
-		propertyDetailsPage.scrollToWhatsNewButton();
+		propertyDetailsPage.scrollToWhatsNearButton();
 
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyShowMoreInfo(), "Property Details Page -  Show more info Label is not present");
 		Assert.assertEquals(propertyDetailsPage.getPropertyShowMoreInfo(), utils.readTestData("copy","propertyDetailsPage","showMoreInfoLabel"));

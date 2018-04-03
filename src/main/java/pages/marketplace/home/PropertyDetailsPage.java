@@ -39,7 +39,7 @@ public class PropertyDetailsPage   extends BasePage{
 	private By lastSaleDate = By.id("au.com.suncorp.marketplace:id/saleDateValueText");
 	
 	private By miniMap = By.id("au.com.suncorp.marketplace:id/mapView");
-	private By miniMapWhatsNewButton = By.id("au.com.suncorp.marketplace:id/nearbyButton");
+	private By miniMapWhatsNearButton = By.id("au.com.suncorp.marketplace:id/nearbyButton");
 	private By miniMapLocationPin = By.xpath("//android.widget.FrameLayout[@resource-id='au.com.suncorp.marketplace:id/mapView']//android.widget.FrameLayout//android.view.View[@content-desc='Google Map']//android.view.View");
 	
 	private By suburbInsightImage = By.id("au.com.suncorp.marketplace:id/suburbInsightImage");
@@ -284,13 +284,13 @@ public class PropertyDetailsPage   extends BasePage{
 		return find(miniMap);
 	}
 	public WebElement checkMiniMapWhatsNewButton() {
-		return find(miniMapWhatsNewButton);
+		return find(miniMapWhatsNearButton);
 	}
 	public WebElement checkMiniMapLocationPin() {
 		return find(miniMapLocationPin);
 	}
-	public void scrollToWhatsNewButton() {
-		scrollToElement(miniMapWhatsNewButton, "true");
+	public void scrollToWhatsNearButton() {
+		scrollToElement(miniMapWhatsNearButton, "true");
 	}
 
 	//Swiping image carousel right in property details

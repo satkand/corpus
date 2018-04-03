@@ -8,6 +8,7 @@ import pages.App;
 public class PropertyDetailsTest extends App{
 
 	// DMPM-1126 - Scenario 1
+	//DMPM-4822
 	// navigating to Property Details and Verify property details
 	@Test (groups = {"DMPM-1126", "DMPM-4312", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigateToPropertyDetailsScreen() {
@@ -36,48 +37,26 @@ public class PropertyDetailsTest extends App{
 		
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyType(), "Property Details Page -  Property type is not present");
 		Assert.assertEquals(propertyDetailsPage.getPropertyType(), utils.readTestData("propertyDimension","propertyDetails","propertyType"));
-		
-		propertyDetailsPage.scrollToViewMoreInfo();
-		
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyShowMoreInfo(), "Property Details Page -  Show more info Label is not present");
-		Assert.assertEquals(propertyDetailsPage.getPropertyShowMoreInfo(), utils.readTestData("copy","propertyDetailsPage","showMoreInfoLabel"));
-				
+
+		//Show more accordion was removed as part of story 4822
+		Assert.assertNull(propertyDetailsPage.checkPropertyShowMoreInfo(), "Property Details Page -  Show more info Label is not present");
+			
 	}
 	
 	// DMPM-1126 - Scenario 2 and scenario 3
 	//DMPM-1267 - Scenario 1
+	//DMPM-4822
 	// navigating to Property Details and Verify show more information
-	@Test (groups = {"DMPM-1126", "DMPM-4310","DMPM-4315","DMPM-1267","DMPM-3536", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-1126", "DMPM-4310","DMPM-4315","DMPM-1267","DMPM-3536","DMPM-4822", "marketplace", "Home buying journey", "priority-minor"})
 	public void testShowMoreInfoOnPropertyDetailsScreen() {
 		
 		navigateToPropertyDetails("StartYourJourney");
-		propertyDetailsPage.scrollToWhatsNewButton();
+		propertyDetailsPage.scrollToWhatsNearButton();
 		Assert.assertNotNull(propertyDetailsPage.checkLastSaleTitle(), "Property Details Page -  Last Sale title is not present");
 		Assert.assertEquals(propertyDetailsPage.getLastSaleValue(), utils.readTestData("propertyDimension","propertyDetails","salePrice"));
 		Assert.assertEquals(propertyDetailsPage.getLastSaleDate(), utils.readTestData("propertyDimension","propertyDetails","saleDate"));
 		
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyShowMoreInfo(), "Property Details Page -  Show more info Label is not present");
-		Assert.assertEquals(propertyDetailsPage.getPropertyShowMoreInfo(), utils.readTestData("copy","propertyDetailsPage","showMoreInfoLabel"));
-		
-		propertyDetailsPage.tappropertyShowMoreDownArrow();
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyRoofTypeTitle(), "Property Details Page -  Property roof type title is not present");
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyWallMaterialTitle(), "Property Details Page -  Property wall material title is not present");
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyBuiltYearTitle(), "Property Details Page -  Property built year title is not present");
-		Assert.assertEquals(propertyDetailsPage.getPropertyShowMoreInfo(), utils.readTestData("copy","propertyDetailsPage","showLessInfoLabel"));
-		
-		
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyRoofType(), "Property Details Page -  Property roof type is not present");
-		Assert.assertEquals(propertyDetailsPage.getPropertyRoofType(), utils.readTestData("propertyDimension","propertyDetails","roofType"));
-		
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyWallMaterial(), "Property Details Page -  Property wall material is not present");
-		Assert.assertEquals(propertyDetailsPage.getPropertyWallMaterial(), utils.readTestData("propertyDimension","propertyDetails","wallMaterial"));
-		
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyBuiltYear(), "Property Details Page -  Property built year is not present");
-		Assert.assertEquals(propertyDetailsPage.getPropertyBuiltYear(),  utils.readTestData("propertyDimension","propertyDetails","buildYear"));
-		
-		propertyDetailsPage.tappropertyShowMoreDownArrow();
-		Assert.assertEquals(propertyDetailsPage.getPropertyShowMoreInfo(), utils.readTestData("copy","propertyDetailsPage","showMoreInfoLabel"));
-		Assert.assertNull(propertyDetailsPage.checkPropertyRoofTypeTitle(), "Property Details Page -  Property roof type title is not present");
+		Assert.assertNull(propertyDetailsPage.checkPropertyShowMoreInfo(), "Property Details Page -  Show more info Label is not present");
 		
 	}
 	
@@ -108,16 +87,19 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNotNull(propertyDetailsPage.checkFavouriteButton(), "Property Details Page - Favorite button is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkImageNumberText(), "Property Details Page - Image number text is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkBackButton(), "Property Details Page - back button is not present");
-		Assert.assertEquals(propertyDetailsPage.getImageNumberText(), utils.readTestData("copy","propertyDetailsPage","1stImageNumberText"));
 		
-		propertyDetailsPage.swipeImageCarouselLeft();
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
-		Assert.assertEquals(propertyDetailsPage.getImageNumberText(), utils.readTestData("copy","propertyDetailsPage","2ndImageNumberText"));
+		int imageCount = Integer.parseInt(utils.readTestData("propertyDimension","propertyDetails","numberOfImages"));
+		for(int i=1;i<=imageCount;i++) {
+			Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
+			Assert.assertEquals(propertyDetailsPage.getImageNumberText(), i+"/"+imageCount);
+			propertyDetailsPage.swipeImageCarouselLeft();
+		}
 		
-		propertyDetailsPage.swipeImageCarouselRight();
-		Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
-		Assert.assertEquals(propertyDetailsPage.getImageNumberText(), utils.readTestData("copy","propertyDetailsPage","1stImageNumberText"));
-		
+		for(int i=imageCount;i>0;i--) {
+			Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
+			Assert.assertEquals(propertyDetailsPage.getImageNumberText(), i+"/"+imageCount);
+			propertyDetailsPage.swipeImageCarouselRight();
+		}		
 		
 	}
 	
@@ -135,21 +117,24 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view property image is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkFullScreenCloseButton(), "Property Details Page - Full screen view close button is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkFullScreenImageCounter(), "Property Details Page - Full screen view Image number text is not present");
-		Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), utils.readTestData("copy","propertyDetailsPage","1stImageNumberText"));
 		Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyAddress(), "Property Details Page - Full screen property address is not present");
 		Assert.assertEquals(propertyAddress, propertyDetailsPage.getFullScreenPropertyAddress());
 		
-		propertyDetailsPage.swipeFullScreenImageCarouselLeft();
-		Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
-		Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), utils.readTestData("copy","propertyDetailsPage","2ndImageNumberText"));
+		int imageCount = Integer.parseInt(utils.readTestData("propertyDimension","propertyDetails","numberOfImages"));
+		for(int i=1;i<=imageCount;i++) {
+			Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
+			Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
+			propertyDetailsPage.swipeFullScreenImageCarouselLeft();
+		}
 		
-		propertyDetailsPage.swipeFullScreenImageCarouselRight();
-		Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
-		Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), utils.readTestData("copy","propertyDetailsPage","1stImageNumberText"));
+		for(int i=imageCount;i>0;i--) {	
+			Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
+			Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
+			propertyDetailsPage.swipeFullScreenImageCarouselRight();
+		}	
 		
 		propertyDetailsPage.tapFullScreenCloseButton();
 		Assert.assertNotNull(propertyDetailsPage.checkFavouriteButton(), "Property Details Page - Favorite button is not present when coming back from full screen view");
-		
 		
 	}
 

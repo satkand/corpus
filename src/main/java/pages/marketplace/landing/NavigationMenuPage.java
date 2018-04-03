@@ -23,7 +23,6 @@ public class NavigationMenuPage extends BasePage {
 	private By propfessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
 
 	public void tapProffessionalServicesMenuItem() {
-		find(propfessionalServicesMenuItem, 30);
 		 tapElement(propfessionalServicesMenuItem);
 	}
 	
@@ -71,6 +70,11 @@ public class NavigationMenuPage extends BasePage {
 		 return find(homeJourneyMenuItem);
 	}
 	
+public void tapHomeJourneyMenuItem() {
+	find(homeJourneyMenuItem, 30);
+	 tapElement(homeJourneyMenuItem);
+	
+}
 	public WebElement checkBackToStartMenuItem() {
 		 return find(backToStartMenuItem);
 	}

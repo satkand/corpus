@@ -18,6 +18,7 @@ import pages.marketplace.auth.pin.PINCustomKeypad;
 import pages.marketplace.auth.pin.PINOptionsPage;
 import pages.marketplace.auth.pin.PINSetupPage;
 import pages.marketplace.auth.registration.GetStartedPage;
+import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.common.CameraPage;
@@ -45,7 +46,7 @@ import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
-import pages.marketplace.professionalServices.HomeServicesPage;
+import pages.marketplace.professionalServices.HomeProfessionalServicesPage;
 import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
@@ -96,9 +97,11 @@ public class App extends BaseTest {
 	public FAPISettingsPage fapiSettingsPage = null;
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
-	public HomeServicesPage homeServicesPage = null;
+	public HomeProfessionalServicesPage homeServicesPage = null;
 	public WebviewPage webviewPage = null;
-	
+	public MemberLoginPage memberLoginPage = null;
+
+
 	@BeforeClass
 	public void initializeApp() {
 		
@@ -153,7 +156,9 @@ public class App extends BaseTest {
 		propertyExplorerPage = new PropertyExplorerPage(driver);
 		propertyDetailsPage = new PropertyDetailsPage(driver);
 		webviewPage = new WebviewPage(driver);
-		homeServicesPage = new HomeServicesPage(driver);
+		homeServicesPage = new HomeProfessionalServicesPage(driver);
+		memberLoginPage = new MemberLoginPage(driver);
+
 	}
 	
 	@Parameters({ "stub" })

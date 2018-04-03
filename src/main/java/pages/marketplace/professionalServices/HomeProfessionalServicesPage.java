@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
-public class HomeServicesPage  extends BasePage{
+public class HomeProfessionalServicesPage  extends BasePage{
 
-	public HomeServicesPage(AppiumDriver driver) {
+	public HomeProfessionalServicesPage(AppiumDriver driver) {
 		super(driver);
 	}
 	
@@ -19,15 +19,6 @@ public class HomeServicesPage  extends BasePage{
 	private By viewServicesButton = By.id("au.com.suncorp.marketplace:id/viewHomeServicesButton");
 	private By chooseServiceLabel = By.id("au.com.suncorp.marketplace:id/chooseServiceText");
 	private By homeServicesDescription = By.id("au.com.suncorp.marketplace:id/homeServicesDescription");
-	private By urlBar = By.id("com.android.chrome:id/url_bar");
-	
-	public WebElement checkUrlBar() {
-		return find(urlBar);
-	}
-	
-	public String getUrlBarText() {
-		return getText(urlBar);
-	}
 	
 	public WebElement checkHomeServicesDescription() {
 		return find(homeServicesDescription);
