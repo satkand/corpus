@@ -25,7 +25,9 @@
 					"wallMaterial": "Brick",
 					"salePrice": "$1,000,000",
 					"saleDate": "30 Feb 2018",
+					"numberOfImages":"7",
 					"buildYear": "1966"
+					
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
@@ -874,6 +876,7 @@
 			"showMoreInfoLabel": "VIEW MORE INFO",
 			"showLessInfoLabel": "VIEW LESS INFO",
 			"HomeJourneyTitle": "Home journey"
+			
 			
 		},
 		"homeJourneyPage": {

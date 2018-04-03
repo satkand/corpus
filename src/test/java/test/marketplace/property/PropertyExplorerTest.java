@@ -13,7 +13,7 @@ public class PropertyExplorerTest extends App{
 	@Test (groups = {"DMPM-3110", "DMPM-3868","DMPM-969", "DMPM-4019", "DMPM-4020", "DMPM-4026","DMPM-4030","DMPM-4032", "marketplace", "Home buying journey", "priority-minor"})
 	public void testDisplayMiniMapOnPropertyDetailsScreen() {
 		navigateToPropertyExplorer();
-		Assert.assertNotNull(propertyExplorerPage.checkPropertyHubSearchbox(), "Property Explorer Page - search box not present");
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchbox(), "Property Explorer Page - search box not present");
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchHint(), "Property Explorer Page - search Hint not present");
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchHintText(), utils.readTestData("copy","propertyExplorer","propertyInsightSearchHintText"));
 		
@@ -27,7 +27,7 @@ public class PropertyExplorerTest extends App{
 		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
-		propertyDetailsPage.scrollToWhatsNewButton();
+		propertyDetailsPage.scrollToWhatsNearButton();
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMapLocationPin(), "Property Explorer Page - Mini Map location pin not present");
 		
@@ -41,10 +41,10 @@ public class PropertyExplorerTest extends App{
 		Assert.assertEquals(propertyExplorerPage.getHomeJourneyTitle(), utils.readTestData("copy","propertyDetailsPage","HomeJourneyTitle"));
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyInsightTab(), "Property Details Page -  Property insight tab is not present");
 		Assert.assertNotNull(propertyExplorerPage.checkSuburbInsightTab(), "Property Details Page -  Suburb insight tab is not present");
-		Assert.assertNotNull(propertyExplorerPage.checkPropertyHubSearchbox(), "Property explorer Page - property Insight search box not present");
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchbox(), "Property explorer Page - property Insight search box not present");
 		
 		propertyExplorerPage.tapSuburbInsight();
-		Assert.assertNotNull(propertyExplorerPage.checkPropertyHubSearchbox(), "Property Explorer Page - suburb Insight search box not present");
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchbox(), "Property Explorer Page - suburb Insight search box not present");
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyExplorerSearchHint(), "Property Explorer Page - search Hint not present");
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchHintText(), utils.readTestData("copy","propertyExplorer","suburbInsightSearchHintText"));
 		
