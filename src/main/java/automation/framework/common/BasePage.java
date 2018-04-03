@@ -272,7 +272,7 @@ public class BasePage {
 	
 	protected void scrollToElement(By locator, String... args) {
 		int numOfSwipes = 0;
-		while (find(locator) == null && numOfSwipes <= 15) {
+		while (find(locator,7) == null && numOfSwipes <= 15) {
 			if(args.length < 1) {
 				swipeScreen("down");
 			} else {

@@ -76,6 +76,10 @@ public class HomeJourneyPage extends BasePage {
 		return getText(journeyDescriptionText);
 	}
 	
+	public void scrollToJourneyDescriptionText(){
+		scrollToElement(journeyDescriptionText);
+	}
+	
 	public WebElement checkPlanningImage() {
 		return find(planningImage);
 	}
@@ -102,6 +106,10 @@ public class HomeJourneyPage extends BasePage {
 	
 	public void tapPlanningReadMoreButton() {
 		tapElement(planningReadMoreButton);
+	}
+	
+	public void scrollToPlanningReadMoreButton(){
+		scrollToElement(planningReadMoreButton);
 	}
 	
 	public WebElement checkHouseHuntingImage() {
