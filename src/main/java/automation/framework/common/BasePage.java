@@ -205,7 +205,8 @@ public class BasePage {
 	protected void swipeHorizontallyToRight() {
 		int screenHeight = driver.manage().window().getSize().getHeight();
 		int screenWidth = driver.manage().window().getSize().getWidth();
-		swipeAction((int)(screenWidth*.02), (int)(screenHeight*.15), (int)(screenWidth*.9), (int)(screenHeight*.01));
+		//swipeAction((int)(screenWidth*.02), (int)(screenHeight*.15), (int)(screenWidth*.9), (int)(screenHeight*.01));
+		swipeAction((int)(screenWidth*.10), (int)(screenHeight*.75), (int)(screenWidth*.9), (int)(screenHeight*.61));
 		//swipeAction(19, 259, 995, 15);
 
 	}
