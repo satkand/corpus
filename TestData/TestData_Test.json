@@ -870,7 +870,28 @@
 			"featureLockedMsgTitle":"Feature Locked",
 			"activeClaim":"Active claim",
 			"featureLockedTextCopy":"Unfortunately this feature is only available to registered users. Please Log In or Sign Up first."
-			
+		},
+		"articlesCarousel": {
+			"articleCarouselText":"Articles",
+			"articleCarouselDescription":"Learn more about how to make the most out of your property with these insightful articles.",
+			"articleReadMoreButton": "READ MORE",
+			"articleViewPager": [
+				{ 
+					"articleTitle" : "The 5 Steps to Master Renting",
+					"articleDescription" : "Whatever it is that has you scanning the “TO LET” listings, there are a number of important things to consider before you sign a rental lease.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/master-renting.html"
+				},
+				{ 
+					"articleTitle" : "What are landlord responsibilities?",
+					"articleDescription" : "Landlords need to keep a property in a livable condition.Find out what you should expect here.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/landlord-responsibilities.html"
+				},
+				{ 
+					"articleTitle" : "How can I estimate the total costs involved in buying a home?",
+					"articleDescription" : "The price you see in the ads or at aunction is rarely the full price of buyign a house. We detail here some of the 'hidden' costs you need to watch out for.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/buying-a-home/estimating-costs-of-buying-a-home.html"
+				}
+			]
 		},
 		"propertyDetailsPage": {
 			"showMoreInfoLabel": "VIEW MORE INFO",
