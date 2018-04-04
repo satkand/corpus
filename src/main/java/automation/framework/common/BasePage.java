@@ -1,57 +1,29 @@
 package automation.framework.common;
 
-import java.awt.RenderingHints.Key;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 //import java.util.function.Function;
-
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Keyboard;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-
 import com.google.common.base.Function;
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.PressesKeyCode;
+
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.Activity;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.android.StartsActivity;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 public class BasePage {
 	
@@ -308,14 +280,6 @@ public class BasePage {
 		}
 	}
 	
-	protected void waitForLoadingIndicatorToDismiss(By locator) {
-		int numOfTries = 0;
-		while (find(locator) != null && numOfTries <= 15) {
-			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
-			numOfTries++;
-		}
-	}
-	
 	// TODO -> Different in iOS -> change it and test it if it works for android as well
 	protected void tapOnBottomRightCorner() {
 		int screenHeight = driver.manage().window().getSize().getHeight();
@@ -415,6 +379,12 @@ public class BasePage {
 		}
 	}
 	
+	protected boolean isKeyboardDisplayed() {
+		
+	 return ((AndroidDriver)driver).isKeyboardShown();
+	
+	}
+	
 	protected void navigateBack() {
 		driver.navigate().back();
 	}
@@ -429,6 +399,7 @@ public class BasePage {
 		
 		}
 	}
+
 
 	public void tapDeviceBackButton(){
 		try {
@@ -448,6 +419,79 @@ public class BasePage {
 		((AndroidDriver) driver).pressKeyCode(keycode);
 	}
 	
+
+	protected void scrollToElement(String locatorString, String locatorType) {
+
+		switch (locatorType) {
+		case "text":
+			((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
+							+ locatorString + "\").instance(0))");
+			break;
+		case "id":
+			((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().resourceId(\""
+							+ locatorString + "\").instance(0))");
+			break;
+		case "desc":
+			((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().description(\""
+							+ locatorString + "\").instance(0))");
+			break;
+
+		}
+
+	}
+	
+	protected WebElement findByUIAutomator(String locatorString, String locatorType) {
+		
+		WebElement webElement = null;
+		
+		switch (locatorType) {
+
+		case "text":
+			webElement = find(
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)));
+			break;
+			
+		case "id":
+			webElement = find(
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)));
+			break;
+
+		case "desc":
+			webElement = find(
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)));
+			break;
+
+		}
+		
+		return webElement;
+	}
+	
+	
+	public void waitForElementToDisappear(By locator) {
+		
+		WebElement element  = find(locator);
+		
+		if (element != null) {
+		      WebDriverWait wait = new WebDriverWait(driver, 30);
+		      wait.until(ExpectedConditions.invisibilityOfElementLocated(
+		    		  locator)
+		            );
+		}
+		
+	}	
+	
+
+	protected void waitForLoadingIndicatorToDismiss(By locator) {
+		int numOfTries = 0;
+		while (find(locator) != null && numOfTries <= 15) {
+			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
+			numOfTries++;
+		}
+	}
+
 public void waitForElementToDisappear(By locator,int timeout) {
 		
 //	WebElement element  = find(locator);
@@ -469,32 +513,6 @@ public Map<String,Object> getAppiumSessionDetails() {
 public String getDeviceAttribute(String deviceAttribute) {
 	
 	return getAppiumSessionDetails().get(deviceAttribute).toString();
-}
-
-protected WebElement findByUIAutomator(String locatorString, String locatorType) {
-	
-	WebElement webElement = null;
-	
-	switch (locatorType) {
-
-	case "text":
-		webElement = find(
-				MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)));
-		break;
-		
-	case "id":
-		webElement = find(
-				MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)));
-		break;
-
-	case "desc":
-		webElement = find(
-				MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)));
-		break;
-
-	}
-	
-	return webElement;
 }
 
 protected WebElement findByUIAutomatorContains(String locatorString, String locatorType) {

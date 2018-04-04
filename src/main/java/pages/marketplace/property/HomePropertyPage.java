@@ -38,6 +38,7 @@ public class HomePropertyPage extends BasePage {
 	private By productDescriptionText = By.id("au.com.suncorp.marketplace:id/productDescriptionText");
 	private By brandIcon = By.id("au.com.suncorp.marketplace:id/brandIcon");
 	private By propertyItem = By.id("au.com.suncorp.marketplace:id/propertyItemLayout");
+	private String startYourJourneyButtonID = "au.com.suncorp.marketplace:id/startHomeJourneyButton";
 	private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='456 Sesame St, Melbourne']");
 	private By featureLockedMsgTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By featureLockedTextCopy = By.id("android:id/message");
@@ -235,6 +236,7 @@ public class HomePropertyPage extends BasePage {
 	
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
+		
 	}
 
 }
