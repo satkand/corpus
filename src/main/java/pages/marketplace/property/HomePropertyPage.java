@@ -45,6 +45,33 @@ public class HomePropertyPage extends BasePage {
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	
+	private By propertyDetailsButton = By.id("au.com.suncorp.marketplace:id/propertyDetailsButton");
+	private By propertyDocumentsButton = By.id("au.com.suncorp.marketplace:id/propertyDocumentsButton");
+	
+	public void tapPropertyImage() {
+		tapElement(propertyImage);
+	}
+	
+	public void tapAddressLineText() {
+		tapElement(addressLineText);
+	}
+	
+	public WebElement checkPropertyDetailsButton() {
+		return find(propertyDetailsButton);
+	}
+	
+	public void tapPropertyDetailsButton() {
+		tapElement(propertyDetailsButton);
+	}
+	
+	public WebElement checkPropertyDocumentsButton() {
+		return find(propertyDocumentsButton);
+	}
+	
+	public void tapPropertyDocumentsButton() {
+		tapElement(propertyDocumentsButton);
+	}
+	
 	public WebElement checkBackButton() {
 		return find(backButton);
 	}
@@ -78,17 +105,14 @@ public class HomePropertyPage extends BasePage {
 	}
 
 	public List<String> fetchProductDescriptionTextList() {
-		find(productDescriptionText);
 		return getTextList(productDescriptionText);
 	}
 	
 	public String getAddressLineText() {
-		find(addressLineText);
 		return getText(addressLineText);
 	}
 	
 	public String getSuburbTextList() {
-		find(suburbText);
 		return getText(suburbText);
 	}
 	
@@ -211,6 +235,10 @@ public class HomePropertyPage extends BasePage {
 	
 	public void scrollToJourneyBanner(){
 		scrollToElement(startYourJourneyButton, "true");
+	}
+	
+	public void scrollToSuppliedAsset(){
+		scrollToElement(emptyStatePropertyAsset, "true");
 	}
 	
 	public WebElement checkHomeJourneyBannerImage() {

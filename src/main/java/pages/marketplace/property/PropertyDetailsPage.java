@@ -64,6 +64,16 @@ public class PropertyDetailsPage   extends BasePage{
 	private By confidenceIndicator = By.id("au.com.suncorp.marketplace:id/confidenceLevelIndicator");
 	private By confidenceIndicatorInfoButton = By.id("au.com.suncorp.marketplace:id/confidenceLevelInfoButton");
 	
+	private By derivedAssetText = By.xpath("//android.widget.TextView[@text='derived']");
+	private By suppliedAssetText = By.xpath("//android.widget.TextView[@text='supplied']");
+	
+	public WebElement checkDerivedAssetText() {
+		return find(derivedAssetText);
+	}
+	public WebElement checkSuppliedAssetText() {
+		return find(suppliedAssetText);
+	}
+	
 	public WebElement checkEstimatedMarketValueLabel() {
 		return find(estimatedMarketValueLabel);
 	}
