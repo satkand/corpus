@@ -808,7 +808,23 @@
 		"loginWithoutExistingPin" : {
 			"login": "c@b.com",
 			"pwd": "Password1"
-		}
+		},
+		"loginWithPinLocked" : {
+			"login": "pinlocked@sun.com",
+			"pwd": "Test123",
+			"pin": "1234"
+		},
+		"loginForPinLockedSetupFlow" : {
+		"login": "pinsetup@sun.com",
+			"pwd": "Test123",
+			"invalidPin": "1234",
+			"validPin":"2580"
+		},
+		"loginForConfirmCurrentPin" : {
+			"login": "ss@sun.com",
+			"pwd": "Password1",
+			"pin": "2121"
+		},
 	},
 	"copy" : {
 		"loginPage": {

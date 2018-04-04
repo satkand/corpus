@@ -12,6 +12,7 @@ import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
 import pages.marketplace.auth.login.LoginAuthPage;
 import pages.marketplace.auth.login.LoginPage;
+import pages.marketplace.auth.pin.EnterCurrentPINPage;
 import pages.marketplace.auth.pin.ForgotPINPage;
 import pages.marketplace.auth.pin.PINAuthPage;
 import pages.marketplace.auth.pin.PINCustomKeypad;
@@ -96,6 +97,7 @@ public class App extends BaseTest {
 	public AddBankAccountPage addBankAccountPage = null;
 	public AccountDetailsPage accountDetailsPage = null;
 	public FAPISettingsPage fapiSettingsPage = null;
+	public EnterCurrentPINPage enterCurrentPINPage=null;
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
 	public HomeProfessionalServicesPage homeServicesPage = null;
@@ -155,6 +157,7 @@ public class App extends BaseTest {
 		addBankAccountPage = new AddBankAccountPage(driver);
 		accountDetailsPage = new AccountDetailsPage(driver);
 		fapiSettingsPage = new FAPISettingsPage(driver);
+		enterCurrentPINPage = new EnterCurrentPINPage(driver);
 		propertyExplorerPage = new PropertyExplorerPage(driver);
 		propertyDetailsPage = new PropertyDetailsPage(driver);
 		webviewPage = new WebviewPage(driver);
