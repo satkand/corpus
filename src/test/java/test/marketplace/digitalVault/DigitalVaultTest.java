@@ -183,7 +183,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertTrue(digiVaultCommonPage.isPositiveButtonEnabled(), "Save button is disabled");
 		digiVaultCommonPage.tapPositiveButton();
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to digi root folder");
-		Assert.assertNotNull(folderViewPage.verifyFileNameExists("file 1"), "Document not found in the folder");
+		Assert.assertNotNull(folderViewPage.verifyFileNameExists(utils.readTestData("digivault", "hasItems", "file1")), "Document not found in the folder");
 	}
 	
 		
@@ -221,7 +221,6 @@ public class DigitalVaultTest extends App {
 		Assert.assertTrue(digiVaultCommonPage.isPositiveButtonEnabled(), "Rename button is not enabled");
 		digiVaultCommonPage.tapPositiveButton();
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder view is not loaded");
-		//Assert.assertNotNull(folderViewPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "newname")), "Document not found in the folder");
 		Assert.assertNotNull(folderViewPage.verifyFileNameExists(utils.readTestData("digivault", "hasItems", "newname")), "Document not found in the folder");
 		digiVaultCommonPage.tapDocumentMoreOption();
 		Assert.assertNotNull(digiVaultCommonPage.checkRenameItem(), "Rename item button is not shown");
