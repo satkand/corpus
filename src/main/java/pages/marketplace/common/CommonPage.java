@@ -4,9 +4,12 @@ import org.openqa.selenium.By;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class CommonPage extends BasePage {
-
+	
+	private By backNavigationButton = MobileBy.AccessibilityId("Navigate up");
+	
 	public CommonPage(AppiumDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -30,7 +33,9 @@ public class CommonPage extends BasePage {
 	public void goBack() {
 		navigateBack();
 	}
-	
+	public void tapBackButton() {
+		find(backNavigationButton);
+	}
 	/* TODO
 	public void scrollDown() {
 		swipeScreen("Down");

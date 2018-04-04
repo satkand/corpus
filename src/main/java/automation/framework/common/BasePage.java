@@ -27,7 +27,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -186,13 +188,36 @@ public class BasePage {
 	}
 	
 	protected void tapByOffsetFromStart(By locator, int offsetX, int offsetY) {
-		TouchAction ta = new TouchAction(driver);
-		ta.press(find(locator).getLocation().getX() + offsetX, find(locator).getLocation().getY() + offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
+		WebElement element = find(locator);
+		Point location = element.getLocation();
+
+		final int finalXLocation = location.getX() + offsetX;
+		final int finalYLocation = location.getY() + offsetY;
+		TouchAction touchAction = new TouchAction(driver);
+
+		((TouchAction) touchAction).tap(finalXLocation, finalYLocation).perform();
+
+		// ta.press(find(locator).getLocation().getX() + offsetX,
+		// find(locator).getLocation().getY() +
+		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 	
 	protected void tapByOffsetFromEnd(By locator, int offsetX, int offsetY) {
-		TouchAction ta = new TouchAction(driver);
-		ta.press(find(locator).getLocation().getX() + find(locator).getSize().getWidth() + offsetX, find(locator).getLocation().getY() + offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
+
+		WebElement element = find(locator);
+		Point location = element.getLocation();
+		int width = element.getSize().getWidth();
+
+		final int finalXLocation = location.getX() + width + offsetX;
+		final int finalYLocation = location.getY() + offsetY;
+		TouchAction touchAction = new TouchAction(driver);
+
+		((TouchAction) touchAction).tap(finalXLocation, finalYLocation).perform();
+
+		// ta.press(find(locator).getLocation().getX() +
+		// find(locator).getSize().getWidth() + offsetX,
+		// find(locator).getLocation().getY() +
+		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 	
 	protected void swipeHorizontally(By startElementLocator, By destElementLocator) {
@@ -419,6 +444,92 @@ public class BasePage {
 		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_ENTER);
 	}
 
+	public void pressDeviceButton(int keycode){
+		((AndroidDriver) driver).pressKeyCode(keycode);
+	}
+	
+public void waitForElementToDisappear(By locator,int timeout) {
+		
+//	WebElement element  = find(locator);
+		
+		if (find(locator,5) != null) {
+		      WebDriverWait wait = new WebDriverWait(driver, timeout);
+		      wait.until(ExpectedConditions.invisibilityOfElementLocated(
+		    		  locator)
+		            );
+		}
+		
+	}
+
+public Map<String,Object> getAppiumSessionDetails() {
+	
+	return driver.getSessionDetails();
+}
+
+public String getDeviceAttribute(String deviceAttribute) {
+	
+	return getAppiumSessionDetails().get(deviceAttribute).toString();
+}
+
+protected WebElement findByUIAutomator(String locatorString, String locatorType) {
+	
+	WebElement webElement = null;
+	
+	switch (locatorType) {
+
+	case "text":
+		webElement = find(
+				MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)));
+		break;
+		
+	case "id":
+		webElement = find(
+				MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)));
+		break;
+
+	case "desc":
+		webElement = find(
+				MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)));
+		break;
+
+	}
+	
+	return webElement;
+}
+
+protected WebElement findByUIAutomatorContains(String locatorString, String locatorType) {
+	
+	WebElement webElement = null;
+	
+	switch (locatorType) {
+
+	case "text":
+		webElement = find(
+				MobileBy.AndroidUIAutomator(String.format("new UiSelector().textContains(\"%s\")", locatorString)));
+		break;
+		
+	case "desc":
+		webElement = find(
+				MobileBy.AndroidUIAutomator(String.format("new UiSelector().descriptionContains(\"%s\")", locatorString)));
+		break;
+
+	}
+	
+	return webElement;
+}
+
+	public WebElement getScreenTitle(String title) {
+
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 7.0) {
+
+			title = title.toUpperCase();
+		}
+
+		return findByUIAutomator(title, "text");
+
+	}
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
 //	 * Using this sets pin very quickly.
@@ -621,13 +732,13 @@ public class BasePage {
 //		startApp();
 //	}
 //
-//	/**
-//	 * Pass the locator of WebElement on which you want to perform the precise
-//	 * single tap action. Typically used in situations like click on overlaid
-//	 * video play buttons etc
-//	 * 
-//	 * @param locator
-//	 */
+	/**
+	 * Pass the locator of WebElement on which you want to perform the precise
+	 * single tap action. Typically used in situations like click on overlaid
+	 * video play buttons etc
+	 * 
+	 * @param locator
+	 */
 //	protected void preciseTap(By locator) {
 //		WebElement element = find(locator);
 //		Point upperLeft = element.getLocation();
@@ -645,7 +756,7 @@ public class BasePage {
 //			}
 //		});
 //	}
-//
+
 //	/**
 //	 * This method takes a boolean parameter true/false. When user expects an
 //	 * Alert then pass "true" as parameter else send "false" parameter
