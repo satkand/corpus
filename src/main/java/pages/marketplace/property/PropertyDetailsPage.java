@@ -57,6 +57,49 @@ public class PropertyDetailsPage   extends BasePage{
 	private By fullScreenCloseButton = By.id("au.com.suncorp.marketplace:id/closeButton");
 	private By fullScreenImageCounter = By.id("au.com.suncorp.marketplace:id/imageCounterText");
 	
+	private By estimatedMarketValueLabel = By.id("au.com.suncorp.marketplace:id/estimateValueText");
+	private By estimatedMarketValueinfoButton = By.id("au.com.suncorp.marketplace:id/estimateValueInfoButton");
+	private By estimatedMarketValue = By.id("au.com.suncorp.marketplace:id/marketPriceRangeText");
+	private By confidenceLevelLabel = By.id("au.com.suncorp.marketplace:id/confidenceLevelText");
+	private By confidenceIndicator = By.id("au.com.suncorp.marketplace:id/confidenceLevelIndicator");
+	private By confidenceIndicatorInfoButton = By.id("au.com.suncorp.marketplace:id/confidenceLevelInfoButton");
+	
+	public WebElement checkEstimatedMarketValueLabel() {
+		return find(estimatedMarketValueLabel);
+	}
+	
+	public WebElement checkEstimatedMarketValueinfoButton() {
+		return find(estimatedMarketValueinfoButton);
+	}
+	
+	public WebElement checkEstimatedMarketValue() {
+		return find(estimatedMarketValue);
+	}
+	
+	public WebElement checkConfidenceLevelLabel() {
+		return find(confidenceLevelLabel);
+	}
+	
+	public WebElement checkConfidenceIndicator() {
+		return find(confidenceIndicator);
+	}
+	
+	public WebElement checkConfidenceIndicatorInfoButton() {
+		return find(confidenceIndicatorInfoButton);
+	}
+	
+	public String getEstimatedMarketValueLabel() {
+		return getText(estimatedMarketValueLabel);
+	}
+	
+	public String getEstimatedMarketValue() {
+		return getText(estimatedMarketValue);
+	}
+	
+	public String getConfidenceLevelLabel() {
+		return getText(confidenceLevelLabel);
+	}
+	
 	public WebElement checkFullScreenPropertyImage() {
 		return find(fullScreenPropertyImage);
 	}
@@ -76,6 +119,7 @@ public class PropertyDetailsPage   extends BasePage{
 	public WebElement checkFullScreenCloseButton() {
 		return find(fullScreenCloseButton);
 	}
+	
 	public WebElement checkFullScreenImageCounter() {
 		return find(fullScreenImageCounter);
 	}
@@ -96,6 +140,7 @@ public class PropertyDetailsPage   extends BasePage{
 	public void swipeImageCarouselLeft() {
 		swipeHorizontally(favouriteButton,backButton);
 	}
+	
 	public void swipeFullScreenImageCarouselLeft() {
 		swipeHorizontallyToLeft();
 	}
@@ -112,6 +157,10 @@ public class PropertyDetailsPage   extends BasePage{
 		return find(backButton);
 	}
 	
+	public void tapBackButton(){
+		tapElement(backButton);
+	}
+	
 	public String getImageNumberText() {
 		return getText(imageNumberText);
 	}
@@ -123,33 +172,43 @@ public class PropertyDetailsPage   extends BasePage{
 	public String getSuburbInsightTitleText() {
 		return getText(suburbInsightTitleText);
 	}
+	
 	public WebElement checkSuburbInsightTitleText() {
 		return find(suburbInsightTitleText);
 	}
+	
 	public String getSuburbInsightDescription() {
 		return getText(suburbInsightDescription);
 	}
+	
 	public WebElement checkSuburbInsightDescription() {
 		return find(suburbInsightDescription);
 	}
+	
 	public String getSuburbInsightImage() {
 		return getText(suburbInsightImage);
 	}
+	
 	public WebElement checkSuburbInsightImage() {
 		return find(suburbInsightImage);
 	}
+	
 	public String getLastSaleValue() {
 		return getText(lastSaleValue);
 	}
+	
 	public String getLastSaleDate() {
 		return getText(lastSaleDate);
 	}
+	
 	public WebElement checkLastSaleTitle() {
 		return find(lastSaleTitle);
 	}
+	
 	public WebElement checkLastSaleValue() {
 		return find(lastSaleValue);
 	}
+	
 	public WebElement checkLastSaleDate() {
 		return find(lastSaleDate);
 	}
@@ -157,6 +216,7 @@ public class PropertyDetailsPage   extends BasePage{
 	public WebElement checkPropertyRoofType() {
 		return find(propertyRoofType);
 	}
+	
 	public String getPropertyRoofType() {
 		return getText(propertyRoofType);
 	}
@@ -168,6 +228,7 @@ public class PropertyDetailsPage   extends BasePage{
 	public String getPropertyWallMaterial() {
 		return getText(propertyWallMaterial);
 	}
+	
 	public WebElement checkPropertyBuiltYear() {
 		return find(propertyBuiltYear);
 	}
@@ -175,12 +236,15 @@ public class PropertyDetailsPage   extends BasePage{
 	public String getPropertyBuiltYear() {
 		return getText(propertyBuiltYear);
 	}
+	
 	public WebElement checkPropertyRoofTypeTitle() {
 		return find(propertyRoofTypeTitle);
 	}
+	
 	public WebElement checkPropertyWallMaterialTitle() {
 		return find(propertyWallMaterialTitle);
 	}
+	
 	public WebElement checkPropertyBuiltYearTitle() {
 		return find(propertyBuiltYearTitle);
 	}
@@ -192,6 +256,7 @@ public class PropertyDetailsPage   extends BasePage{
 	public void tappropertyShowMoreDownArrow() {
 		tapElement(propertyShowMoreDownArrow);
 	}
+	
 	public String getPropertyAddress() {
 		return getText(propertyAddress);
 	}
@@ -271,24 +336,31 @@ public class PropertyDetailsPage   extends BasePage{
 	public void scrollToViewMoreInfo() {
 		scrollToElement(propertyShowMoreInfo, "true");
 	}
+	
 	public void tapAndroidDeviceBackButton(){
 		tapDeviceBackButton();
 	}
+	
 	public void scrollToShowMeInsightButton() {
 		scrollToElement(showMeInsightButton, "true");
 	}
+	
 	public void tapShowMeInsightButton(){
 		tapElement(showMeInsightButton);
 	}
+	
 	public WebElement checkMiniMap() {
 		return find(miniMap);
 	}
+	
 	public WebElement checkMiniMapWhatsNewButton() {
 		return find(miniMapWhatsNearButton);
 	}
+	
 	public WebElement checkMiniMapLocationPin() {
 		return find(miniMapLocationPin);
 	}
+	
 	public void scrollToWhatsNearButton() {
 		scrollToElement(miniMapWhatsNearButton, "true");
 	}
