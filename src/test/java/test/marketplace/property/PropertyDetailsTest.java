@@ -176,7 +176,35 @@ public class PropertyDetailsTest extends App{
 		
 	}
 		
-
+	// DMPM-1261 - Scenario 1 (DMPM-4716), Scenario 2 (DMPM-4717), Scenario 5 (DMPM-4720)
+	// navigating to Property details and verify the full screen view of the map
+	@Test (groups = {"DMPM-1261","DMPM-4716","DMPM-4717","DMPM-4720", "marketplace", "Property Hub", "priority-minor"})
+	public void testDisplayOptionToGoToFullScreenMap() {
+			
+		navigateToPropertyDetails("StartYourJourney");
+		propertyDetailsPage.scrollToWhatsNearButton();
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
+		
+		propertyExplorerPage.tapMiniMapWhatsNearByButton();
+		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapCloseButton(), "Property Explorer Page - Full screen map pin is not present");
+		
+		propertyFullScreenMap.tapFullScreenMapCloseButton();
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
+		
+		
+		propertyExplorerPage.tapMiniMap();
+		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapCloseButton(), "Property Explorer Page - Full screen map pin is not present");
+		
+		propertyFullScreenMap.tapFullScreenMapCloseButton();
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
+		
+		}
+			
 	public void navigateToPropertyDetails(String navigationPath) {
 		
 		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
