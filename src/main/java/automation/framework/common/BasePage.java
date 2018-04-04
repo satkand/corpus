@@ -188,13 +188,36 @@ public class BasePage {
 	}
 	
 	protected void tapByOffsetFromStart(By locator, int offsetX, int offsetY) {
-		TouchAction ta = new TouchAction(driver);
-		ta.press(find(locator).getLocation().getX() + offsetX, find(locator).getLocation().getY() + offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
+		WebElement element = find(locator);
+		Point location = element.getLocation();
+
+		final int finalXLocation = location.getX() + offsetX;
+		final int finalYLocation = location.getY() + offsetY;
+		TouchAction touchAction = new TouchAction(driver);
+
+		((TouchAction) touchAction).tap(finalXLocation, finalYLocation).perform();
+
+		// ta.press(find(locator).getLocation().getX() + offsetX,
+		// find(locator).getLocation().getY() +
+		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 	
 	protected void tapByOffsetFromEnd(By locator, int offsetX, int offsetY) {
-		TouchAction ta = new TouchAction(driver);
-		ta.press(find(locator).getLocation().getX() + find(locator).getSize().getWidth() + offsetX, find(locator).getLocation().getY() + offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
+
+		WebElement element = find(locator);
+		Point location = element.getLocation();
+		int width = element.getSize().getWidth();
+
+		final int finalXLocation = location.getX() + width + offsetX;
+		final int finalYLocation = location.getY() + offsetY;
+		TouchAction touchAction = new TouchAction(driver);
+
+		((TouchAction) touchAction).tap(finalXLocation, finalYLocation).perform();
+
+		// ta.press(find(locator).getLocation().getX() +
+		// find(locator).getSize().getWidth() + offsetX,
+		// find(locator).getLocation().getY() +
+		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 	
 	protected void swipeHorizontally(By startElementLocator, By destElementLocator) {
@@ -493,26 +516,6 @@ protected WebElement findByUIAutomatorContains(String locatorString, String loca
 	}
 	
 	return webElement;
-}
-
-/**
- * Pass the locator of WebElement on which you want to perform the precise
- * single tap action. Typically used in situations like click on overlaid
- * video play buttons etc
- * 
- * @param locator
- */
-protected void tapElementByLocation(By locator,int offset_x,int offset_y) {
-	WebElement element = find(locator);
-	Point upperLeft = element.getLocation();
-   System.out.println("x and y"+upperLeft.getX()+ " "+upperLeft.getY());
-   
-	final int finalXLocation = upperLeft.getX() + offset_x;
-	final int finalYLocation = upperLeft.getY() + offset_y;
-	TouchAction touchAction = new TouchAction(driver);
-	
-	((TouchAction) touchAction).tap(finalXLocation, finalYLocation).perform();
-			
 }
 
 	public WebElement getScreenTitle(String title) {
