@@ -1,12 +1,17 @@
 package pages.marketplace.common;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class CommonPage extends BasePage {
 
+	private By loadingSpinner = MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.ProgressBar\")");
+	private By backNavigationButton = MobileBy.AccessibilityId("Back");
+	
 	public CommonPage(AppiumDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -31,6 +36,13 @@ public class CommonPage extends BasePage {
 		navigateBack();
 	}
 	
+	
+	public void tapBackNavigateButton() {
+
+		tapElement(backNavigationButton);
+	}
+
+
 	/* TODO
 	public void scrollDown() {
 		swipeScreen("Down");
@@ -40,4 +52,15 @@ public class CommonPage extends BasePage {
 	public void swipeLeft() {
 		swipeHorizontallyToLeft();
 	}
+	
+	public WebElement checkLoadingSpinner() {
+		return find(loadingSpinner);
+	}
+	
+	public void waitForLoadingSpinnerToDisappear() {
+		
+		waitForElementToDisappear(loadingSpinner);
+		
+	}
+	
 }

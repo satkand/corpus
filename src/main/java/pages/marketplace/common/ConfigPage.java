@@ -7,10 +7,13 @@ import org.openqa.selenium.By;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 
 public class ConfigPage extends BasePage {
 	
-	private By configPageTitle = By.xpath("//android.widget.TextView[@text='Config']");
+	//private By configPageTitle = By.xpath("//android.widget.TextView[@text='Config']");
+	private By configPageTitle = MobileBy.AndroidUIAutomator("new UiSelector().text(\"Config\")");
 	private By globalBaseURL = By.id("au.com.suncorp.marketplace:id/globalBaseUrl");
 	private By applyGlobalBaseUrlButton = By.id("au.com.suncorp.marketplace:id/globalBaseUrlButton");
 
@@ -24,26 +27,34 @@ public class ConfigPage extends BasePage {
 	//FAPI Settings page
 	private By hasBankAccountsToggle = By.id("au.com.suncorp.marketplace:id/hasAccountsToggle");
 	
+	private String continueBtnID="au.com.suncorp.marketplace:id/configContinueButton";
+	
 	public ConfigPage(AppiumDriver driver) {
 		super(driver);
 	}
 	
 	public void dismissConfigPage(String stub) {
-		if(find(configPageTitle,30) != null) {
+		if (find(configPageTitle, 30) != null) {
 			// Added this just to add some delay before checking for keyboard
-			find(continueButton,10);
-			if(!(isKeyboardPresent() == true)) {
-				isKeyboardPresent();
+			find(continueButton, 3);
+			// if(!(isKeyboardPresent() == true)) {
+			// isKeyboardPresent();
+			// }
+
+			if (isKeyboardDisplayed()) {
+				dismissKeyboard();
 			}
-			
-	        //Uncomment the below line if Stub Server is to be connect
-			if(!stub.equalsIgnoreCase("false")) {
-		        ConnectToStubSever(stub);
+
+			// Uncomment the below line if Stub Server is to be connect
+			if (!stub.equalsIgnoreCase("false")) {
+				ConnectToStubSever(stub);
 			}
-			for(int i=0; i<=2; i++) {
-				swipeScreen("down");
-			}
-			if(find(continueButton, 30) != null) {
+			// for(int i=0; i<=2; i++) {
+			// swipeScreen("down");
+			// }
+
+			scrollToElement(continueBtnID, "id");
+			if (find(continueButton, 30) != null) {
 				tapElement(continueButton);
 			}
 		}
@@ -73,30 +84,39 @@ public class ConfigPage extends BasePage {
 			System.out.println("stub:::"+stub+"::::::banking");
 			clearValue(bankingBaseUrl);
 			typeValue(baseURL+"marketplace/api/", bankingBaseUrl);
-			if(!(isKeyboardPresent() == true)) {
-				isKeyboardPresent();
+			if(isKeyboardDisplayed()) {
+				dismissKeyboard();
 			}
 		}	
 		if(stub.equalsIgnoreCase("portfolio") && find(portfolioBaseUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::portfolio");
 			clearValue(portfolioBaseUrl);
 			typeValue(baseURL, portfolioBaseUrl);
-			if(!(isKeyboardPresent() == true)) {
-				isKeyboardPresent();
+			if(isKeyboardDisplayed()) {
+				dismissKeyboard();
 			}
 		}
 		if(stub.equalsIgnoreCase("spendings") && find(spendingUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::spendings");
 			clearValue(spendingUrl);
 			typeValue(baseURL, spendingUrl);
-			if(!(isKeyboardPresent() == true)) {
-				isKeyboardPresent();
+			if(isKeyboardDisplayed()) {
+				dismissKeyboard();
 			}
 		}
 		if(stub.equalsIgnoreCase("vehicles") && find(vehiclesBaseUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::vehicles");
 			clearValue(vehiclesBaseUrl);
 			typeValue(baseURL, vehiclesBaseUrl);
+			if(isKeyboardDisplayed()) {
+				dismissKeyboard();
+			}
+		}
+		if(stub.equalsIgnoreCase("memberLogin")) {
+			System.out.println("stub:::"+stub+"::::::memberLogin");
+			clearValue(globalBaseURL);
+			typeValue("192.168.213.2:4567", globalBaseURL);
+			tapElement(applyGlobalBaseUrlButton);
 			if(!(isKeyboardPresent() == true)) {
 				isKeyboardPresent();
 			}

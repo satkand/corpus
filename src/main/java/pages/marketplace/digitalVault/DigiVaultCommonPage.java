@@ -8,13 +8,12 @@ import org.testng.Assert;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class DigiVaultCommonPage extends BasePage {
 
 	
 	private By renameItemButton = By.id("au.com.suncorp.marketplace:id/renameDocumentButton");
-	
-
 	private By documentItem = By.id("au.com.suncorp.marketplace:id/documentForeground");
 	private By documentMoreButton = By.id("au.com.suncorp.marketplace:id/documentMoreButton");
 	private By deleteDocumentButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentButton");
@@ -30,11 +29,11 @@ public class DigiVaultCommonPage extends BasePage {
 	private By binBox = By.id("au.com.suncorp.marketplace:id/deleteDocumentOption");
 	private By renameDialogTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
 	private By renameEditField = By.id("au.com.suncorp.marketplace:id/dialogEditText");
-	
 	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
 	private By androidDialogMsg = By.id("android:id/message");
+	private By backNavigationButton = MobileBy.AccessibilityId("Navigate up");
 	
 	public DigiVaultCommonPage(AppiumDriver driver) {
 		super(driver);
@@ -42,7 +41,7 @@ public class DigiVaultCommonPage extends BasePage {
 	}
 
 	public void tapFolder(String folderName) {
-		tapElement(By.xpath(String.format( "//*[@text=\"%s\"]", folderName)));
+		tapElement(findByUIAutomator(folderName, "text"));
 		
 	}
 	
@@ -93,6 +92,11 @@ public class DigiVaultCommonPage extends BasePage {
 	public void tapMoveToFolderButton() {
 		tapElement(moveToFolderButton);
 	}
+	public void tapBackNavigationButton() {
+		tapElement(backNavigationButton);
+	}
+	
+	
 	
 	public WebElement checkMoveDocumentToFolderButton() {
 		return find(moveDocumentToFolderButton);
@@ -239,7 +243,7 @@ public class DigiVaultCommonPage extends BasePage {
 	public void addAPhotoThroughCamera() {
 		tapAddButton();
 		tapTakePhotoCard();
-		if(find(permissionOkButton) != null) {
+		if(find(permissionOkButton,5) != null) {
 			tapPermissionOkButton();
 		}		
 	}
@@ -248,9 +252,12 @@ public class DigiVaultCommonPage extends BasePage {
 		checkAddButton();
 		tapAddButton();
 		checkUploadPhotoCard();
-		tapUploadPhotoCard();
-		if(find(permissionOkButton) != null) {
-			tapPermissionOkButton();
-		}	
+		tapUploadPhotoCard();	
 	}
+	
+	public void waitForAddButtonToDisappear() {
+		
+		waitForElementToDisappear(addButton,5);
+	}
+	
 }

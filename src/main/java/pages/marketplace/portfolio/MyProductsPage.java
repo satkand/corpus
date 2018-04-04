@@ -41,6 +41,7 @@ public class MyProductsPage extends BasePage {
 			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");//
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
 	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
+	private String addExistingProductButtonID = "au.com.suncorp.marketplace:id/addProductButton";
 	private By riskText = null;
 	private String riskXpathPrefix = "//android.widget.TextView[@text = \'";
 	private String riskXpathSuffix = "\']";
@@ -71,8 +72,7 @@ public class MyProductsPage extends BasePage {
 	private By accountNumberField = By.id("au.com.suncorp.marketplace:id/accountNumberField");
 	private By accountNumberError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
-	
-	
+
 	public List<WebElement> fetchAccountItemLayoutList() {
 		List<WebElement> elements = finds(accountItemLayout);
 		return elements;
@@ -377,6 +377,7 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public void scrollToAddExistingProductButton() {
+
 		scrollToElement(addExistingProductButton, "true");
 
 	}
