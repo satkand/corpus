@@ -2,72 +2,70 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" verbose="50" configfailurepolicy="continue" >
 	<test name="Test">
-
  
-		<parameter name="stub" value="false"></parameter>
-		<packages>
-			<package name="test.marketplace.home"/>
+ 		<parameter name="stub" value="false"></parameter>
+ 		<packages> 		
+  			<package name="test.marketplace.auth.registration"/>
+ 										<package name="test.marketplace.auth.pin"/>
+ 			<package name="test.marketplace.auth.login"/>
 			<package name="test.marketplace.chatbot"/>
-			<package name="test.marketplace.common"/>
-			<package name="test.marketplace.offers"/>
+			<package name="test.marketplace.digitalVault"/> 
+			<package name="test.marketplace.landing"/>
+ 										<package name="test.marketplace.offers"/>
+			<package name="test.marketplace.professionalServices"/>
+ 			<package name="test.marketplace.settings"/> 
 		</packages>
-		<classes>
-			<class name="test.marketplace.vehicles.VehiclesTest">
-				<parameter name="stub" value="vehicles"></parameter>
-				 <methods>
-					<include name="testNavigatingToVehicleDetailsScreen"/>
-				</methods>
-			</class>
-			<class name="test.marketplace.wealth.FinanceTest">
-				<parameter name="stub" value="spendings"></parameter>
-				 <methods>
-					<include name="testElementsOnFinancePageWithSuncorpBankAccounts"/>
-				</methods>
-			</class>
-			<class name="test.marketplace.wealth.SpendingsTest">
-				<parameter name="stub" value="spendings"></parameter>
-				 <methods>
-					<include name="testSpendingsPageElements"/>
-				</methods>
-			</class>
-		</classes>
+
 		
+		<classes>
+					<!--  Portfolio -->
+					<class name="test.marketplace.portfolio.AddPolicyTest">
+		 				<parameter name="stub" value="false"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.portfolio.MyProductsTest">
+		 				<parameter name="stub" value="false"></parameter>
+		 			</class>	
+		 			
+		 			
+		 			
+		 			<!--  Property -->
+		 			<class name="test.marketplace.property.HomeJourneyTest">
+		 				<parameter name="stub" value="false"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.property.HomePropertyTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>		 			
+		 			<class name="test.marketplace.property.PropertyDetailsTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.property.PropertyExplorerTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>	 	
+		 			
+		 			
+		 			
+		 			<!-- Vehicles -->
+		 			<class name="test.marketplace.vehicles.VehiclesTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			
+		 			
+		 			
+		 			<!-- Wealth -->
+		 			<class name="test.marketplace.wealth.FinanceTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.wealth.SpendingsTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		</classes>
 
 <!-- 
-
-	<package name="test.marketplace.auth.registration"/>
-	<package name="test.marketplace.auth.pin"/>
-	<package name="test.marketplace.auth.login"/>
-	<package name="test.marketplace.settings"/>
-	
-
-	<package name="test.marketplace.vehicles"/>
-	<package name="test.marketplace.wealth"/>
-			 
-	<classes>
-		<class name="test.marketplace.common.WelcomeTest"></class>
-		<class name="test.marketplace.common.LandingTest"></class>
-		<class name="test.marketplace.common.NavigationMenuTest"></class>
-
-		<class name="test.marketplace.chatbot.ChatbotTest"></class>
-		
-		<class name="test.marketplace.vehicles.VehiclesTest"></class>
-		
-		<class name="test.marketplace.home.HomeJourneyTest"/>
-		<class name="test.marketplace.home.HomePropertyTest"></class>
-		
-		<class name="test.marketplace.wealth.FinanceTest"></class>
-		
-		
-		<class name="test.marketplace.LoginTest"></class>
-
-		<class name="test.marketplace.PINSetupTest"></class>
-		<class name="test.marketplace.PINReAuthPasswordTest"></class>
-			<methods>
-				<include name="testEmptyTransactionsOnCategoryTabForMonthSelected"/>
-			</methods>
-		</class>	
-	</classes>
+<class name="test.marketplace.PINReAuthPasswordTest"></class>
+	<methods>
+		<include name="testEmptyTransactionsOnCategoryTabForMonthSelected"/>
+	</methods>
+</class>	
  -->
 	
 </test>

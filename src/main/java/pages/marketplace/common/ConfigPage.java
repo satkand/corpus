@@ -112,6 +112,15 @@ public class ConfigPage extends BasePage {
 				dismissKeyboard();
 			}
 		}
+		if(stub.equalsIgnoreCase("memberLogin")) {
+			System.out.println("stub:::"+stub+"::::::memberLogin");
+			clearValue(globalBaseURL);
+			typeValue("192.168.213.2:4567", globalBaseURL);
+			tapElement(applyGlobalBaseUrlButton);
+			if(!(isKeyboardPresent() == true)) {
+				isKeyboardPresent();
+			}
+		}
 	}
 	
 	public void enableHasBankAccountsToggle() {

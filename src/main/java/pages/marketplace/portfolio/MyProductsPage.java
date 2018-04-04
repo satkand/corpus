@@ -42,6 +42,17 @@ public class MyProductsPage extends BasePage {
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
 	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
 	private String addExistingProductButtonID = "au.com.suncorp.marketplace:id/addProductButton";
+	private By riskText = null;
+	private String riskXpathPrefix = "//android.widget.TextView[@text = \'";
+	private String riskXpathSuffix = "\']";
+	private String dateDescXpathSuffix1 = "']/following-sibling::android.widget.LinearLayout/child::android.widget.TextView[@text = \'";
+	private String dateDescXpathSuffix2 = "\']";
+	private String policyStatusXpathSuffix1="']/parent::android.widget.LinearLayout/parent::android.widget.LinearLayout/parent::android.widget.LinearLayout/preceding-sibling::android.widget.LinearLayout/child::android.widget.TextView[@text = \'";
+	private String policyStatusXpathSuffix2="\']";
+	private By dateDescText = null;
+	private By endDate = null;
+	private By policyStatus = null;
+
 	public List<WebElement> fetchAccountItemLayoutList() {
 		List<WebElement> elements = finds(accountItemLayout);
 		return elements;
@@ -211,10 +222,55 @@ public class MyProductsPage extends BasePage {
 		tapElement(maybeLaterButton);
 	}
 	
-	public void scrollToAddExistingProductButton() {
-		//scrollToElement(addExistingProductButton, "true");
-		scrollToElement(addExistingProductButtonID, "true");
+	public WebElement checkRisk(String riskName) {
+		String riskXpath = riskXpathPrefix + riskName + riskXpathSuffix;
+		riskText = By.xpath(riskXpath);
+		return find(riskText);
+	}
+	
+	public boolean scrollToPolicyRisk(String riskName) {
+		String riskXpath = riskXpathPrefix + riskName + riskXpathSuffix;
+		riskText = By.xpath(riskXpath);
+		boolean policyRiskFound = false;
+		while (find(riskText) == null && find(addExistingProductButton) == null) 
+		{
+			swipeScreen("down");
+			
+			if(find(riskText)== null)
+				policyRiskFound = false;
+			else
+				policyRiskFound = true;
+		}
 		
+		return policyRiskFound;
+	}
+	
+	public WebElement checkExpiryDateDesc(String riskName, String dateDesc) {
+		
+		String dateDescXpath = riskXpathPrefix + riskName + dateDescXpathSuffix1 + dateDesc + dateDescXpathSuffix2;
+		dateDescText = By.xpath(dateDescXpath); 
+		return find(dateDescText);
+		
+	}
+	
+	public WebElement checkExpiryDate(String riskName,String Date) {
+		String dateXpath = riskXpathPrefix + riskName + dateDescXpathSuffix1 + Date + dateDescXpathSuffix2;
+		endDate = By.xpath(dateXpath);
+		return find(endDate);
+		
+	}
+	
+	public WebElement checkPolicyStatus(String riskName, String policyDesc) {
+		String policyStatusXpath = riskXpathPrefix + riskName + policyStatusXpathSuffix1 + policyDesc + policyStatusXpathSuffix2;
+		policyStatus = By.xpath(policyStatusXpath); 
+		return find(policyStatus);
+		
+	}
+	
+	public void scrollToAddExistingProductButton() {
+
+		scrollToElement(addExistingProductButton, "true");
+
 	}
 	
 }

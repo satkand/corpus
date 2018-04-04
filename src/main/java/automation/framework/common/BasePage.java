@@ -1,57 +1,29 @@
 package automation.framework.common;
 
-import java.awt.RenderingHints.Key;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 //import java.util.function.Function;
-
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Keyboard;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-
 import com.google.common.base.Function;
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.PressesKeyCode;
+
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.Activity;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.android.StartsActivity;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 public class BasePage {
 	
@@ -188,13 +160,36 @@ public class BasePage {
 	}
 	
 	protected void tapByOffsetFromStart(By locator, int offsetX, int offsetY) {
-		TouchAction ta = new TouchAction(driver);
-		ta.press(find(locator).getLocation().getX() + offsetX, find(locator).getLocation().getY() + offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
+		WebElement element = find(locator);
+		Point location = element.getLocation();
+
+		final int finalXLocation = location.getX() + offsetX;
+		final int finalYLocation = location.getY() + offsetY;
+		TouchAction touchAction = new TouchAction(driver);
+
+		((TouchAction) touchAction).tap(finalXLocation, finalYLocation).perform();
+
+		// ta.press(find(locator).getLocation().getX() + offsetX,
+		// find(locator).getLocation().getY() +
+		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 	
 	protected void tapByOffsetFromEnd(By locator, int offsetX, int offsetY) {
-		TouchAction ta = new TouchAction(driver);
-		ta.press(find(locator).getLocation().getX() + find(locator).getSize().getWidth() + offsetX, find(locator).getLocation().getY() + offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
+
+		WebElement element = find(locator);
+		Point location = element.getLocation();
+		int width = element.getSize().getWidth();
+
+		final int finalXLocation = location.getX() + width + offsetX;
+		final int finalYLocation = location.getY() + offsetY;
+		TouchAction touchAction = new TouchAction(driver);
+
+		((TouchAction) touchAction).tap(finalXLocation, finalYLocation).perform();
+
+		// ta.press(find(locator).getLocation().getX() +
+		// find(locator).getSize().getWidth() + offsetX,
+		// find(locator).getLocation().getY() +
+		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 	
 	protected void swipeHorizontally(By startElementLocator, By destElementLocator) {
@@ -274,7 +269,7 @@ public class BasePage {
 	
 	protected void scrollToElement(By locator, String... args) {
 		int numOfSwipes = 0;
-		while (find(locator) == null && numOfSwipes <= 15) {
+		while (find(locator,7) == null && numOfSwipes <= 15) {
 			if(args.length < 1) {
 				swipeScreen("down");
 			} else {
@@ -415,6 +410,14 @@ public class BasePage {
 		}
 		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
 	}
+		
+	public void tapEnterOnTheKeyboard(){
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_ENTER);
+	}
+
+	public void pressDeviceButton(int keycode){
+		((AndroidDriver) driver).pressKeyCode(keycode);
+	}
 	
 
 	protected void scrollToElement(String locatorString, String locatorType) {
@@ -480,15 +483,71 @@ public class BasePage {
 		
 	}	
 	
-//TODO
-//	protected void waitForLoadingIndicatorToDismiss(By locator) {
-//		int numOfTries = 0;
-//		while (find(locator) != null && numOfTries <= 15) {
-//			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
-//			numOfTries++;
-//		}
-//	}
 
+	protected void waitForLoadingIndicatorToDismiss(By locator) {
+		int numOfTries = 0;
+		while (find(locator) != null && numOfTries <= 15) {
+			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
+			numOfTries++;
+		}
+	}
+
+public void waitForElementToDisappear(By locator,int timeout) {
+		
+//	WebElement element  = find(locator);
+		
+		if (find(locator,5) != null) {
+		      WebDriverWait wait = new WebDriverWait(driver, timeout);
+		      wait.until(ExpectedConditions.invisibilityOfElementLocated(
+		    		  locator)
+		            );
+		}
+		
+	}
+
+public Map<String,Object> getAppiumSessionDetails() {
+	
+	return driver.getSessionDetails();
+}
+
+public String getDeviceAttribute(String deviceAttribute) {
+	
+	return getAppiumSessionDetails().get(deviceAttribute).toString();
+}
+
+protected WebElement findByUIAutomatorContains(String locatorString, String locatorType) {
+	
+	WebElement webElement = null;
+	
+	switch (locatorType) {
+
+	case "text":
+		webElement = find(
+				MobileBy.AndroidUIAutomator(String.format("new UiSelector().textContains(\"%s\")", locatorString)));
+		break;
+		
+	case "desc":
+		webElement = find(
+				MobileBy.AndroidUIAutomator(String.format("new UiSelector().descriptionContains(\"%s\")", locatorString)));
+		break;
+
+	}
+	
+	return webElement;
+}
+
+	public WebElement getScreenTitle(String title) {
+
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 7.0) {
+
+			title = title.toUpperCase();
+		}
+
+		return findByUIAutomator(title, "text");
+
+	}
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
 //	 * Using this sets pin very quickly.
@@ -691,13 +750,13 @@ public class BasePage {
 //		startApp();
 //	}
 //
-//	/**
-//	 * Pass the locator of WebElement on which you want to perform the precise
-//	 * single tap action. Typically used in situations like click on overlaid
-//	 * video play buttons etc
-//	 * 
-//	 * @param locator
-//	 */
+	/**
+	 * Pass the locator of WebElement on which you want to perform the precise
+	 * single tap action. Typically used in situations like click on overlaid
+	 * video play buttons etc
+	 * 
+	 * @param locator
+	 */
 //	protected void preciseTap(By locator) {
 //		WebElement element = find(locator);
 //		Point upperLeft = element.getLocation();
@@ -715,7 +774,7 @@ public class BasePage {
 //			}
 //		});
 //	}
-//
+
 //	/**
 //	 * This method takes a boolean parameter true/false. When user expects an
 //	 * Alert then pass "true" as parameter else send "false" parameter

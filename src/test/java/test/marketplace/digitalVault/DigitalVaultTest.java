@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pages.App;
+import pages.marketplace.common.CommonPage;
 
 public class DigitalVaultTest extends App {
 	// Navigate to the DigitalVault tab and verify all elements
@@ -182,7 +183,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertTrue(digiVaultCommonPage.isPositiveButtonEnabled(), "Save button is disabled");
 		digiVaultCommonPage.tapPositiveButton();
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to digi root folder");
-		Assert.assertNotNull(folderViewPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "file1")), "Document not found in the folder");
+		Assert.assertNotNull(folderViewPage.verifyFileNameExists(utils.readTestData("digivault", "hasItems", "file1")), "Document not found in the folder");
 	}
 	
 		
@@ -220,7 +221,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertTrue(digiVaultCommonPage.isPositiveButtonEnabled(), "Rename button is not enabled");
 		digiVaultCommonPage.tapPositiveButton();
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder view is not loaded");
-		Assert.assertNotNull(folderViewPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "newname")), "Document not found in the folder");
+		Assert.assertNotNull(folderViewPage.verifyFileNameExists(utils.readTestData("digivault", "hasItems", "newname")), "Document not found in the folder");
 		digiVaultCommonPage.tapDocumentMoreOption();
 		Assert.assertNotNull(digiVaultCommonPage.checkRenameItem(), "Rename item button is not shown");
 		digiVaultCommonPage.tapRenameItem();
@@ -326,6 +327,7 @@ public class DigitalVaultTest extends App {
 	public void testEditImageTitleCancel() {
 		navigateToDigiVaultPageWithEmptyData();
 		digiVaultCommonPage.addAPhotoThroughCamera();
+		digiVaultCommonPage.waitForAddButtonToDisappear();
 		cameraPage.capturePhoto();
 		imagePreviewPage.tapNextButton();
 		Assert.assertNotNull(digiVaultCommonPage.checkCancelButton(), "Cancel button not present");
@@ -490,11 +492,11 @@ public class DigitalVaultTest extends App {
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.checkLockMenuOption();
 		navigationMenu.tapLockMenuOption();
-		Assert.assertNotNull(loginAuthPage.checkChangeAccountButton(), "Change account button is not shown");
+		loginAuthPage.checkChangeAccountButton();
 		loginAuthPage.tapChangeAccountButton();
-		Assert.assertNotNull(welcomePage.checkGuestAccessButton(), "Guest access button is not shown");
+		welcomePage.checkGuestAccessButton();
 		welcomePage.tapGuestAccessButton();
-		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Split Menu button is not displayed");
+		navigationMenu.checkSplitMenuIcon();
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.checkDigitalVaultMenuItem();
 		navigationMenu.tapDigitalVaultMenuItem();
@@ -539,11 +541,11 @@ public class DigitalVaultTest extends App {
 		//TODO: Can be replaced later by a user which already has existing images.
 		navigateToDigiVaultPage();
 		digiVaultCommonPage.addAPhotoThroughGallery();
-		Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
-		galleryPage.choosePicture();
+//		Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
+//		galleryPage.choosePicture();
+		galleryPage.selectPicture();
 		imagePreviewPage.finishSavingImageByChoosingFolder(utils.readTestData("digivault", "hasItems", "file1"));
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
-		
 		digitalVaultPage.tapEditButton();
 		Assert.assertNotNull(digiVaultCommonPage.checkMoveToFolderButton(), "Move contents button not present");
 		digiVaultCommonPage.tapMoveToFolderButton();
@@ -581,8 +583,9 @@ public class DigitalVaultTest extends App {
 			//TODO: Can be replaced later by a user which already has existing images.
 			navigateToDigiVaultPage();
 			digiVaultCommonPage.addAPhotoThroughGallery();
-			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
-			galleryPage.choosePicture();
+//			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
+//			galleryPage.choosePicture();
+			galleryPage.selectPicture();
 			imagePreviewPage.finishSavingImageByChoosingFolder(utils.readTestData("digivault", "hasItems", "file1"));
 			Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
 			
@@ -636,11 +639,11 @@ public class DigitalVaultTest extends App {
 			Assert.assertTrue(chooseFolderPage.isMoveToFolderButtonEnabled(), "Move button not enabled");
 			chooseFolderPage.tapMoveToFolderButton();
 			Assert.assertEquals(folderViewPage.getTitle(), utils.readTestData("digivault", "hasItems", "folderName"));
-			common.goBack();
+			folderViewPage.waitForSuccessNotificationToDisappear();
+			folderViewPage.tapBackButton();
 			Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
 			digiVaultCommonPage.addAPhotoThroughGallery();
-			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
-			galleryPage.choosePicture();
+			galleryPage.selectPicture();
 			imagePreviewPage.finishSavingImageByChoosingFolder();
 			Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
 			digitalVaultPage.tapEditButton();
@@ -708,8 +711,9 @@ public class DigitalVaultTest extends App {
 			Assert.assertNotNull(digitalVaultPage.checkSortingButtonIcon(), "Sorting Button Icon is not displayed");
 			Assert.assertFalse(digitalVaultPage.isSortingButtonIconEnabled(),"Sorting Button Icon is enabled");
 			digiVaultCommonPage.addAPhotoThroughGallery();
-			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
-			galleryPage.choosePicture();
+			//Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
+			//galleryPage.choosePicture();
+			galleryPage.selectPicture();
 			imagePreviewPage.finishSavingImageByChoosingFolder(utils.readTestData("digivault", "hasItems", "file1"));
 			Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
 			
@@ -757,12 +761,14 @@ public class DigitalVaultTest extends App {
 		
 		Assert.assertNotNull(digiVaultCommonPage.checkAddButton(), "Add button not present");
 		digiVaultCommonPage.addAPhotoThroughCamera();
+		digiVaultCommonPage.waitForAddButtonToDisappear();
 		cameraPage.capturePhoto();
 		imagePreviewPage.finishSavingImageByChoosingFolder();
 		
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digital vault home page is not displayed");
 		digitalVaultPage.createFolder(utils.readTestData("digivault", "hasItems", "folderName"));
 		digiVaultCommonPage.addAPhotoThroughCamera();
+		digiVaultCommonPage.waitForAddButtonToDisappear();
 		cameraPage.capturePhoto();
 		imagePreviewPage.finishSavingImage();
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder view page not loaded");

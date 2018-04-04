@@ -1,4 +1,4 @@
-package test.marketplace.common;
+package test.marketplace.landing;
 
 import org.testng.annotations.Test;
 

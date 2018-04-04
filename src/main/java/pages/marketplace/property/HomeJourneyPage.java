@@ -1,4 +1,4 @@
-package pages.marketplace.home;
+package pages.marketplace.property;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -40,9 +40,6 @@ public class HomeJourneyPage extends BasePage {
 	private By movingInDescriptionText = By.id("au.com.suncorp.marketplace:id/movingInDescriptionText");
 	private By movingInReadMoreButton = By.id("au.com.suncorp.marketplace:id/movingInReadMoreButton");
 	
-	private By closeCardPageButton = MobileBy.AccessibilityId("Close tab");
-	private By cardPageBrowserUrl = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
-	
 	public WebElement checkHomeJourneyPageTitle() {
 		return find(homeJourneyPageTitle);
 	}
@@ -79,6 +76,10 @@ public class HomeJourneyPage extends BasePage {
 		return getText(journeyDescriptionText);
 	}
 	
+	public void scrollToJourneyDescriptionText(){
+		scrollToElement(journeyDescriptionText);
+	}
+	
 	public WebElement checkPlanningImage() {
 		return find(planningImage);
 	}
@@ -105,6 +106,10 @@ public class HomeJourneyPage extends BasePage {
 	
 	public void tapPlanningReadMoreButton() {
 		tapElement(planningReadMoreButton);
+	}
+	
+	public void scrollToPlanningReadMoreButton(){
+		scrollToElement(planningReadMoreButton);
 	}
 	
 	public WebElement checkHouseHuntingImage() {
@@ -189,13 +194,5 @@ public class HomeJourneyPage extends BasePage {
 	
 	public void tapMovingInReadMoreButton() {
 		tapElement(movingInReadMoreButton);
-	}
-	
-	public String getCardPageBrowserUrl() {
-		return getText(cardPageBrowserUrl);
-	}
-	
-	public void tapCloseCardPageButton() {
-		tapElement(closeCardPageButton);
 	}
 }

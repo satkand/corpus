@@ -9,7 +9,6 @@ import io.appium.java_client.MobileBy;
 
 public class CommonPage extends BasePage {
 
-	
 	private By loadingSpinner = MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.ProgressBar\")");
 	private By backNavigationButton = MobileBy.AccessibilityId("Back");
 	
@@ -42,7 +41,8 @@ public class CommonPage extends BasePage {
 
 		tapElement(backNavigationButton);
 	}
-	
+
+
 	/* TODO
 	public void scrollDown() {
 		swipeScreen("Down");
