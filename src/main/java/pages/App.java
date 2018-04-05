@@ -12,6 +12,7 @@ import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
 import pages.marketplace.auth.login.LoginAuthPage;
 import pages.marketplace.auth.login.LoginPage;
+import pages.marketplace.auth.pin.EnterCurrentPINPage;
 import pages.marketplace.auth.pin.ForgotPINPage;
 import pages.marketplace.auth.pin.PINAuthPage;
 import pages.marketplace.auth.pin.PINCustomKeypad;
@@ -35,10 +36,6 @@ import pages.marketplace.digitalVault.FolderViewPage;
 import pages.marketplace.digitalVault.ImagePreviewPage;
 import pages.marketplace.digitalVault.ImageViewPage;
 import pages.marketplace.digitalVault.SelectItemsPage;
-import pages.marketplace.home.HomeJourneyPage;
-import pages.marketplace.home.HomePropertyPage;
-import pages.marketplace.home.PropertyDetailsPage;
-import pages.marketplace.home.PropertyExplorerPage;
 import pages.marketplace.landing.LandingPage;
 import pages.marketplace.landing.NavigationMenuPage;
 import pages.marketplace.landing.WelcomePage;
@@ -47,6 +44,11 @@ import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
 import pages.marketplace.productCatalogue.PCHomePage;
+import pages.marketplace.professionalServices.HomeProfessionalServicesPage;
+import pages.marketplace.property.HomeJourneyPage;
+import pages.marketplace.property.HomePropertyPage;
+import pages.marketplace.property.PropertyDetailsPage;
+import pages.marketplace.property.PropertyExplorerPage;
 import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
@@ -96,8 +98,11 @@ public class App extends BaseTest {
 	public AccountDetailsPage accountDetailsPage = null;
 	public PCHomePage productCatalogueHomePage = null;
 	public FAPISettingsPage fapiSettingsPage = null;
+	public EnterCurrentPINPage enterCurrentPINPage=null;
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
+	public HomeProfessionalServicesPage homeServicesPage = null;
+
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 
@@ -154,9 +159,11 @@ public class App extends BaseTest {
 		accountDetailsPage = new AccountDetailsPage(driver);
 		productCatalogueHomePage = new PCHomePage(driver);
 		fapiSettingsPage = new FAPISettingsPage(driver);
+		enterCurrentPINPage = new EnterCurrentPINPage(driver);
 		propertyExplorerPage = new PropertyExplorerPage(driver);
 		propertyDetailsPage = new PropertyDetailsPage(driver);
 		webviewPage = new WebviewPage(driver);
+		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
 
 	}

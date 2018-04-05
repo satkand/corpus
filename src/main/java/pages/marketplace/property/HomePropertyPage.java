@@ -1,4 +1,4 @@
-package pages.marketplace.home;
+package pages.marketplace.property;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class HomePropertyPage extends BasePage {
 
@@ -37,11 +38,21 @@ public class HomePropertyPage extends BasePage {
 	private By productDescriptionText = By.id("au.com.suncorp.marketplace:id/productDescriptionText");
 	private By brandIcon = By.id("au.com.suncorp.marketplace:id/brandIcon");
 	private By propertyItem = By.id("au.com.suncorp.marketplace:id/propertyItemLayout");
+	private String startYourJourneyButtonID = "au.com.suncorp.marketplace:id/startHomeJourneyButton";
 	private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='456 Sesame St, Melbourne']");
 	private By featureLockedMsgTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By featureLockedTextCopy = By.id("android:id/message");
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
+	private By backButton = MobileBy.AccessibilityId("Navigate up");
+	
+	public WebElement checkBackButton() {
+		return find(backButton);
+	}
+	
+	public void tapBackButton() {
+		tapElement(backButton);
+	}
 	
 	public WebElement checkFeatureLockedMsgTitle() {
 		return find(featureLockedMsgTitle);
@@ -223,15 +234,9 @@ public class HomePropertyPage extends BasePage {
 		tapElement(startYourJourneyButton);
 	}
 	
-
-	public void scrollToNextProduct() {
-			for(int i=0;i<4;i++) {
-				swipeScreen("down");
-			}
-	}
-	
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
+		
 	}
 
 }

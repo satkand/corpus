@@ -1,4 +1,4 @@
-package pages.marketplace.home;
+package pages.marketplace.property;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -55,37 +55,48 @@ public class PropertyExplorerPage  extends BasePage{
 	public String getPropertyExplorerSearchHintText() {
 		return getText(propertyExplorerSearchHintText);
 	}
+	
 	public void tapBackButton(){
 		tapElement(backButton);
 	}
+	
 	public WebElement checkClearSerchButton() {
 		return find(clearSerchButton);
 	}
+	
 	public void tapClearSerchButton(){
 		tapElement(clearSerchButton);
 	}
+	
 	public WebElement checkPropertyInsightTab() {
 		return find(propertyInsightTab);
 	}
+	
+	public void tapPropertyInsight() {
+		tapElement(propertyInsightTab);
+	}
+	
 	public WebElement checkSuburbInsightTab() {
 		return find(suburbInsightTab);
 	}
+	
 	public void tapSuburbInsight() {
 		tapElement(suburbInsightTab);
 	}
-	public WebElement checkPropertyHubSearchbox() {
-		return find(propertyExplorerSearchbox);
-	}
+
 	public String getHomeJourneyTitle() {
 		return getText(homeJourneyPageTitle);
 	}
+	
 	public void tapSearch() {
 		tapEnterOnTheKeyboard();
 	}
+	
 	public void enterTextInPropertyHubSearchbox(String propertySearchText) {
 		tapElement(propertyExplorerSearchbox);
 		typeValue(propertySearchText, propertyExplorerSearchText);
 	}
+	
 	public String getPropertyExplorerSearchText() {
 		return getText(propertyExplorerSearchText);
 	}

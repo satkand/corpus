@@ -21,8 +21,16 @@ public class NavigationMenuPage extends BasePage {
 	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
 	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
 	private By profilePicture = By.id("au.com.suncorp.marketplace:id/profilePicture");
+	private By propfessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
 
-
+	public void tapProffessionalServicesMenuItem() {
+		 tapElement(propfessionalServicesMenuItem);
+	}
+	
+	public WebElement checkProffessionalServicesMenuItem() {
+		 return find(propfessionalServicesMenuItem);
+	}
+	
 	public NavigationMenuPage(AppiumDriver driver) {
 		super(driver);
 	}
