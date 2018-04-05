@@ -51,7 +51,7 @@ public class FolderViewTest extends App {
 		digiVaultCommonPage.enterName(utils.readTestData("digivault", "hasItems", "folder1"));	
 		Assert.assertTrue(digiVaultCommonPage.isPositiveButtonEnabled(), "Save button is disabled");
 		digiVaultCommonPage.tapPositiveButton();
-		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to  folder");
+		folderViewPage.checkFolderTitle();
 		Assert.assertEquals(folderViewPage.getTitle(), utils.readTestData("digivault", "hasItems", "folder1"));
 	}
 	
@@ -67,7 +67,7 @@ public class FolderViewTest extends App {
 		Assert.assertNull(digiVaultCommonPage.checkAndroidCancelButton(), "Rename button is not shown");
 		
 		folderViewPage.tapEditButton();
-		Assert.assertNotNull(folderViewPage.checkDeleteFolderButton(), "Delete folder button not present");
+		folderViewPage.checkDeleteFolderButton();
 		folderViewPage.tapDeleteFolderButton();
 		Assert.assertNotNull(digiVaultCommonPage.checkAndroidDialogMsg(), "Delete confirmation msg is not shown");
 		Assert.assertNotNull(digiVaultCommonPage.checkAndroidOkButton(), "Rename button is not shown");
@@ -95,7 +95,7 @@ public class FolderViewTest extends App {
 			Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digital vault home page is not displayed");
 			
 			digiVaultCommonPage.tapFolder(utils.readTestData("digivault", "hasItems", "folder1"));
-			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			folderViewPage.checkFolderTitle();
 			Assert.assertNotNull(digiVaultCommonPage.checkDocumentMoreOption(), "Document more button not present");
 			digiVaultCommonPage.tapDocumentMoreOption();
 			Assert.assertNotNull(digiVaultCommonPage.checkMoveDocumentToFolderButton(), "Move to folder button not present");
@@ -132,7 +132,7 @@ public class FolderViewTest extends App {
 			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
 			
 			digitalVaultPage.tapEditButton();
-			Assert.assertNotNull(digiVaultCommonPage.checkMoveToFolderButton(), "Move contents button not present");
+			digiVaultCommonPage.checkMoveToFolderButton();
 			digiVaultCommonPage.tapMoveToFolderButton();
 			Assert.assertFalse(selectItemsPage.isMoveButtonEnabled(), "Move button is enabled");
 			selectItemsPage.selectAllItems();
@@ -145,7 +145,7 @@ public class FolderViewTest extends App {
 			Assert.assertTrue(selectItemsPage.isMoveButtonEnabled(), "Move button is disabled");
 			selectItemsPage.tapMoveButton();
 			
-			Assert.assertNotNull(chooseFolderPage.checkAddFolderButton(), "Add new folder button not present");
+			chooseFolderPage.checkAddFolderButton();
 			Assert.assertFalse(chooseFolderPage.isMoveToFolderButtonEnabled(), "Move button not enabled");
 			digiVaultCommonPage.tapFolder(utils.readTestData("digivault", "hasItems", "folder1"));
 			Assert.assertNotNull(chooseFolderPage.checkMoveToFolderButton(), "Pick folder button not present");
@@ -171,7 +171,7 @@ public class FolderViewTest extends App {
 			folderViewPage.tapDeleteItemsButton();
 			Assert.assertNotNull(selectItemsPage.checkCloseButton(), "Close button not present");
 			selectItemsPage.tapCloseButton();
-			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			folderViewPage.checkFolderTitle();
 			
 			folderViewPage.tapEditButton();
 			Assert.assertNotNull(folderViewPage.checkDeleteItemsButton(), "Delete items button not present");
@@ -190,7 +190,7 @@ public class FolderViewTest extends App {
 			Assert.assertNotNull(digiVaultCommonPage.checkAndroidDialogMsg(), "Delete confirmation msg is not shown");
 			Assert.assertNotNull(digiVaultCommonPage.checkAndroidCancelButton(), "Delete cancelbutton is not shown");
 			digiVaultCommonPage.tapAndroidCancelButton();
-			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			folderViewPage.checkFolderTitle();
 			folderViewPage.tapEditButton();
 			Assert.assertNotNull(folderViewPage.checkDeleteItemsButton(), "Delete items button not present");
 			folderViewPage.tapDeleteItemsButton();
@@ -201,7 +201,7 @@ public class FolderViewTest extends App {
 			
 			Assert.assertNotNull(digiVaultCommonPage.checkAndroidOkButton(), "Delete button is not shown");
 			digiVaultCommonPage.tapAndroidOkButton();
-			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			folderViewPage.checkFolderTitle();
 			Assert.assertNull(digiVaultCommonPage.checkDocumentMoreOption(), "All files not deleted");
 			
 		}
