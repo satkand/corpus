@@ -44,7 +44,7 @@ public class ConfigPage extends BasePage {
 			if (isKeyboardDisplayed()) {
 				dismissKeyboard();
 			}
-
+			
 			// Uncomment the below line if Stub Server is to be connect
 			if (!stub.equalsIgnoreCase("false")) {
 				ConnectToStubSever(stub);
@@ -78,8 +78,16 @@ public class ConfigPage extends BasePage {
 			tapElement(applyGlobalBaseUrlButton);
 		}
 		*/
-		String baseURL = "http://"+IP.getHostAddress()+":4567/";
+		
+		String baseURL = IP.getHostAddress()+":4567/";
+		System.out.println("stub:::"+stub+"::::::global");
+		typeValue(baseURL, globalBaseURL);
+		tapElement(applyGlobalBaseUrlButton);
+		if(!(isKeyboardPresent() == true)) {
+			isKeyboardPresent();
+		}
 
+		baseURL = "http://"+IP.getHostAddress()+":4567/";
 		if(stub.equalsIgnoreCase("banking") && find(bankingBaseUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::banking");
 			clearValue(bankingBaseUrl);
