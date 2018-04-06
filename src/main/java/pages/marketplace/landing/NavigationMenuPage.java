@@ -17,15 +17,15 @@ public class NavigationMenuPage extends BasePage {
 	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='My Products']");
 	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
 	private By homeJourneyMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Home journey']");
-	
-	
+	private By productsCatalogueItem = By.xpath("//android.widget.CheckedTextView[@text='Product catalogue']");
+
 	private By propfessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
 
 	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
-	
-	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 	private By devSettings = By.xpath("//android.widget.CheckedTextView[@text='Dev Settings']");
+
+	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 
 	public void tapProffessionalServicesMenuItem() {
 		 tapElement(propfessionalServicesMenuItem);
@@ -59,6 +59,15 @@ public class NavigationMenuPage extends BasePage {
 	
 	public WebElement checkProductsMenuItem() {
 		 return find(productsMenuItem);
+	}
+	
+	public WebElement checkProductCatalogueItem() {
+		 return find(productsCatalogueItem);
+	}
+	
+	public void tapProductCatalogueMenuItem() {
+		 find(productsCatalogueItem, 30);
+		 tapElement(productsCatalogueItem);
 	}
 	
 	public WebElement checkDigitalVaultMenuItem() {
