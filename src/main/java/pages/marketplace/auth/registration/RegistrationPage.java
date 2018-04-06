@@ -57,7 +57,7 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
 
-	
+	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptEnablePinButton");
 	private By registerPage1Title = By.xpath("//android.widget.TextView[@text='Step 1 of 3']");
 	private By registerPage2Title = By.id("au.com.suncorp.marketplace:id/pageDescriptionText");
 	private By backButton = By.id("BackButton");
@@ -456,5 +456,8 @@ public class RegistrationPage extends BasePage {
 		tapElement(anotherEmailButtonDuplicateEmailPopUp);
 	}
 	
+	public WebElement checkEnablePinButtonAfterRegistration(){
+		return find(enablePinButton,40);
+	}
 	
 }

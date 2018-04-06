@@ -22,7 +22,7 @@ public class RegistrationTest extends App{
 					utils.readTestData("registration", "success", "mobile"));
 			registrationPage.tapNextButton();
 			registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
-			Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(),"Pin enable screen is not displayed");	
+			Assert.assertNotNull(registrationPage.checkEnablePinButtonAfterRegistration(),"Pin enable screen is not displayed");	
 	}
 	
 	@Test(groups = {"DMPM-185", "DMPM-375", "marketplace", "Registration", "priority-major"})
@@ -73,8 +73,8 @@ public class RegistrationTest extends App{
 				utils.readTestData("registration", "success", "date"),
 				utils.readTestData("registration", "success", "postcode"));
 		registrationPage.tapNextButton();
-		registrationPage.enterEmail(utils.readTestData("registration", "failure", "emailLong"));
-		registrationPage.enterMobile(utils.readTestData("registration", "failure", "mobileInvalid"));
+		registrationPage.enterEmail(utils.readTestData("registration", "failure", "invalidEmail"));
+		registrationPage.enterMobile(utils.readTestData("registration", "failure", "mobileInvalidFormat"));
 		registrationPage.tapNextButton();
 		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "invalidEmailErrorMsg"));
 		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(), utils.readTestData("copy", "registrationPage", "invalidMobileErrorMsg"));
@@ -167,10 +167,10 @@ public class RegistrationTest extends App{
 				utils.readTestData("registration", "success", "date"),
 				utils.readTestData("registration", "success", "postcode"));
 		registrationPage.tapNextButton();
-		registrationPage.enterEmail(utils.readTestData("registration", "failure", "emailLong"));
+		registrationPage.enterEmail(utils.readTestData("registration", "failure", "invalidEmail"));
 		registrationPage.tapMobileNumberField();
 		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "invalidEmailErrorMsg"));
-		registrationPage.enterMobile(utils.readTestData("registration", "failure", "mobileInvalid"));
+		registrationPage.enterMobile(utils.readTestData("registration", "failure", "mobileInvalidFormat"));
 		registrationPage.tapEmailField();
 		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(), utils.readTestData("copy", "registrationPage", "invalidMobileErrorMsg"));
 		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "invalidEmailErrorMsg"));
@@ -657,8 +657,8 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"),
 				"Login page title is not shown as expected");
 
-		Assert.assertEquals(loginPage.getEmailFieldData(), utils.readTestData("noSuncorpBankAccounts", "login"),
-				"Login page title is not shown as expected");
+		Assert.assertEquals(loginPage.getEmailFieldData(), utils.readTestData("loginCredentials", "validLoginCredentials","login"),
+				"Email field is not pre populated with email as expected");
 
 	}
 	

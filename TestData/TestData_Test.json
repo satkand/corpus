@@ -30,7 +30,7 @@
 		"propertyExplorer":{
 					"login": "a@b.c",
 					"pwd": "Password1",
-					"clearSearchText":"1234567890ABCD#$%^"
+					"clearSearchText":"1234567890ABCD#$%^",
 					"enterAdress":"1"
 		},
 		"NoProperties":{
@@ -825,7 +825,8 @@
 			"longPostCode" : "979797989",
 			"emailLong" : "giehrgireghewhgogiehrgireghewhgokjlkjllljwhgowgowehgaesvnoroiegiehrgireghewhgowhgowgowehgaesvnoroiesfdsff@.com",
 			"mobileLong" : "453592486085082350",
-			"mobileInvalid" : "9897494549",
+			"invalidEmail":"aa",
+			"mobileInvalidFormat" : "9897494549",
 			"shortPassword" : "4tger",
 			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
 			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
