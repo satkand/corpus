@@ -23,7 +23,7 @@ public class RegistrationTest extends App{
 			registrationPage.tapNextButton();
 			registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
 			
-			Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(),"Pin enable screen is not displayed");	
+			Assert.assertNotNull(registrationPage.checkEnablePinButtonAfterRegistration(),"Pin enable screen is not displayed");	
 	}
 	
 	@Test(groups = {"DMPM-185", "DMPM-375", "marketplace", "Registration", "priority-major"})

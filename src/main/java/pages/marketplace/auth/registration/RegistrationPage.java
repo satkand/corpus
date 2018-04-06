@@ -458,7 +458,7 @@ public class RegistrationPage extends BasePage {
 	}
 	
 	public WebElement checkEnablePinButtonAfterRegistration(){
-		return find(enablePinButton,35);
+		return find(enablePinButton,40);
 	}
 	
 	
