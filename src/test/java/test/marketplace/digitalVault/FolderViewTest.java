@@ -248,6 +248,7 @@ public class FolderViewTest extends App {
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digital vault home page is not displayed");
 		digitalVaultPage.createFolder(utils.readTestData("digivault", "hasItems", "folderName"));
 		digiVaultCommonPage.addAPhotoThroughCamera();
+		digiVaultCommonPage.waitForAddButtonToDisappear();
 		cameraPage.capturePhoto();
 		imagePreviewPage.finishSavingImage();
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder view page not loaded");
