@@ -67,6 +67,12 @@ public class PropertyDetailsPage   extends BasePage{
 	private By derivedAssetText = By.xpath("//android.widget.TextView[@text='derived']");
 	private By suppliedAssetText = By.xpath("//android.widget.TextView[@text='supplied']");
 	
+	private By imageLoadingIndicator = By.xpath("au.com.suncorp.marketplace:id/loadingIndicator");
+	
+	public void waitForFullScreenLoadingIndicatorToDisappear() {
+		waitForElementToDisappear(imageLoadingIndicator);
+	}
+	
 	public WebElement checkDerivedAssetText() {
 		return find(derivedAssetText);
 	}
@@ -153,6 +159,16 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	public void swipeFullScreenImageCarouselLeft() {
 		swipeHorizontallyToLeft();
+	}
+	
+	public void swipeFullScreenImageCarouselLeftMultipleTimes() {
+			swipeHorizontallyToLeft();
+			swipeHorizontallyToLeft();
+	}
+	
+	public void swipeFullScreenImageCarouselRightMultipleTimes() {
+		swipeHorizontallyToRight();
+		swipeHorizontallyToRight();
 	}
 	
 	public void swipeFullScreenImageCarouselRight() {
@@ -378,6 +394,10 @@ public class PropertyDetailsPage   extends BasePage{
 	//Swiping image carousel right in property details
 	public void swipeImageCarouselRight() {
 		swipeHorizontallyToRight();
+	}
+	
+	public void doubleTapOnPropertyImage() {
+		doubleTapOnAnElement(fullScreenPropertyImage);
 	}
 	
 }

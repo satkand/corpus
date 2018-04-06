@@ -548,6 +548,12 @@ protected WebElement findByUIAutomatorContains(String locatorString, String loca
 		return findByUIAutomator(title, "text");
 
 	}
+	
+	public void doubleTapOnAnElement(By locator) {
+		TouchAction touchAction = new TouchAction(driver);
+		touchAction.tap(find(locator)).tap(find(locator)).perform();
+		
+	}
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
 //	 * Using this sets pin very quickly.

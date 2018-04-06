@@ -3,6 +3,8 @@ package test.marketplace.property;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.TestDetails;
+import automation.framework.common.TestDetails.Priority;
 import pages.App;
 
 public class PropertyDetailsTest extends App{
@@ -12,7 +14,7 @@ public class PropertyDetailsTest extends App{
 	// navigating to Property Details and Verify property details
 	@Test (groups = {"DMPM-1126", "DMPM-4312", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigateToPropertyDetailsScreen() {
-		navigateToPropertyDetails("StartYourJourney");
+		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		Assert.assertEquals(propertyDetailsPage.getPropertyAddress(), utils.readTestData("propertyDimension","propertyDetails","address"));
@@ -50,7 +52,7 @@ public class PropertyDetailsTest extends App{
 	@Test (groups = {"DMPM-1126", "DMPM-4310","DMPM-4315","DMPM-1267","DMPM-3536","DMPM-4822", "marketplace", "Home buying journey", "priority-minor"})
 	public void testShowMoreInfoOnPropertyDetailsScreen() {
 		
-		navigateToPropertyDetails("StartYourJourney");
+		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		propertyDetailsPage.scrollToWhatsNearButton();
 		Assert.assertNotNull(propertyDetailsPage.checkLastSaleTitle(), "Property Details Page -  Last Sale title is not present");
 		Assert.assertEquals(propertyDetailsPage.getLastSaleValue(), utils.readTestData("propertyDimension","propertyDetails","salePrice"));
@@ -64,7 +66,7 @@ public class PropertyDetailsTest extends App{
 	@Test (groups = {"DMPM-1275", "DMPM-4450","DMPM-4451","marketplace", "Home buying journey", "priority-minor"})
 	public void testSuburbInsightInPropertyDetailsScreen() {
 			
-		navigateToPropertyDetails("StartYourJourney");
+		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		propertyDetailsPage.scrollToShowMeInsightButton();
 		Assert.assertNotNull(propertyDetailsPage.checkSuburbInsightDescription(), "Property Details Page - suburb insight description is not present");
 		Assert.assertEquals(propertyDetailsPage.getSuburbInsightDescription(), "Get the latest median prices, real estate market data & demographic information");
@@ -78,11 +80,12 @@ public class PropertyDetailsTest extends App{
 	}
 	
 	//DMPM-1151 - Scenario 1 (TC DMPM-4462), Scenario 3(TC DMPM-4464), Scenario 5 (TC DMPM-4466)
+	//DMPM-4788 - Scenario 1 (TC DMPM-5530)
 	//Navigate to property details and see what the property actually looks like
-	@Test (groups = {"DMPM-1151", "DMPM-4462","DMPM-4464","DMPM-4466","marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-1151", "DMPM-4462","DMPM-4464","DMPM-4466","DMPM-4788","DMPM-5530","marketplace", "Home buying journey", "priority-minor"})
 	public void testDisplayPropertyImages() {
 				
-		navigateToPropertyDetails("StartYourJourney");
+		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkFavouriteButton(), "Property Details Page - Favorite button is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkImageNumberText(), "Property Details Page - Image number text is not present");
@@ -102,23 +105,28 @@ public class PropertyDetailsTest extends App{
 			}
 
 			propertyDetailsPage.swipeImageCarouselLeft();
+			
+			
 		}
 		
 		for(int i=imageCount;i>0;i--) {
 			Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
 			Assert.assertEquals(propertyDetailsPage.getImageNumberText(), i+"/"+imageCount);
 			propertyDetailsPage.swipeImageCarouselRight();
+			propertyDetailsPage.waitForFullScreenLoadingIndicatorToDisappear();
+			
 		}		
 		
 	}
 	
 	//DMPM-3794 - Scenario 1 (TC DMPM-4478), Scenario 3(TC DMPM-4480), Scenario 5 (TC DMPM-4483), Scenario 6 (TC DMPM-4484)
+	//DMPM-4788 - Scenario 1 (TC DMPM-5530)
 	//Navigate to property details, tap on image and see the full screen view
-	@Test (groups = {"DMPM-3794", "DMPM-4478","DMPM-4480","DMPM-4483","DMPM-4484","marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-3794", "DMPM-4478","DMPM-4480","DMPM-4483","DMPM-4484","DMPM-4788","DMPM-5530","marketplace", "Property Hub", "priority-minor"})
 	public void testDisplayPropertyImagesFullScreenView() {
 				
 		
-		navigateToPropertyDetails("StartYourJourney");
+		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
 		
 		String propertyAddress = propertyDetailsPage.getPropertyAddress();
@@ -134,12 +142,14 @@ public class PropertyDetailsTest extends App{
 			Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
 			Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
 			propertyDetailsPage.swipeFullScreenImageCarouselLeft();
+			propertyDetailsPage.waitForFullScreenLoadingIndicatorToDisappear();
 		}
 		
 		for(int i=imageCount;i>0;i--) {	
 			Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
 			Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
 			propertyDetailsPage.swipeFullScreenImageCarouselRight();
+			propertyDetailsPage.waitForFullScreenLoadingIndicatorToDisappear();
 		}	
 		
 		propertyDetailsPage.tapFullScreenCloseButton();
@@ -147,12 +157,13 @@ public class PropertyDetailsTest extends App{
 		
 	}
 	
+	
 	// DMPM-3116 - Scenario 1 (DMPM-5245)
 	// navigating to Property details and verify the estimated property value section
 	@Test (groups = {"DMPM-3116","DMPM-5245", "marketplace", "Property Hub", "priority-minor"})
 	public void testEstimatedPropertyValue() {
 		
-		navigateToPropertyDetails("StartYourJourney");
+		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		Assert.assertNotNull(propertyDetailsPage.checkEstimatedMarketValueLabel(), "Property Details Page - Estmated market value label is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkEstimatedMarketValueinfoButton(), "Property Details Page - Estmated market value info button is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkEstimatedMarketValue(), "Property Details Page - Estmated market value is not present");
@@ -181,7 +192,7 @@ public class PropertyDetailsTest extends App{
 	@Test (groups = {"DMPM-1261","DMPM-4716","DMPM-4717","DMPM-4720", "marketplace", "Property Hub", "priority-minor"})
 	public void testDisplayOptionToGoToFullScreenMap() {
 			
-		navigateToPropertyDetails("StartYourJourney");
+		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		propertyDetailsPage.scrollToWhatsNearButton();
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
 		
@@ -193,7 +204,6 @@ public class PropertyDetailsTest extends App{
 		propertyFullScreenMap.tapFullScreenMapCloseButton();
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
 		
-		
 		propertyExplorerPage.tapMiniMap();
 		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
 		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
@@ -204,8 +214,42 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
 		
 		}
+	
+	@TestDetails(story1 = "DMPM-3988:DMPM-4470,DMPM-4471", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Property Hub", "priority-minor" })
+	public void testDoubleTapToZoominAndOutPropertyImages() {
+						
+		navigateToPropertyDetails("StartYourJourney","MeduimConfident");
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
+		String propertyAddress = propertyDetailsPage.getPropertyAddress();
+		
+		propertyDetailsPage.tapPropertyImage();
+		Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyAddress(), "Property Details Page - Full screen property address is not present");
+		Assert.assertEquals(propertyAddress,propertyDetailsPage.getFullScreenPropertyAddress(),"Property address is not matching");
+				
+		int imageCount = Integer.parseInt(utils.readTestData("propertyDimension","propertyDetails","numberOfImages"));
+				
+		 	for(int i=1;i<imageCount-4;i++) {
+				Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
+				propertyDetailsPage.doubleTapOnPropertyImage();
+				Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
+				propertyDetailsPage.swipeFullScreenImageCarouselLeftMultipleTimes();
+				Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), (i+1)+"/"+imageCount);
+			}
+				
+			for(int i=2;i>1;i--) {	
+				propertyDetailsPage.swipeFullScreenImageCarouselRight();
+				Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
+				propertyDetailsPage.doubleTapOnPropertyImage();
+				Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
+				propertyDetailsPage.swipeFullScreenImageCarouselRight();
+				Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), (i-1)+"/"+imageCount);
+			}
+				
+				
+		}
 			
-	public void navigateToPropertyDetails(String navigationPath) {
+	public void navigateToPropertyDetails(String navigationPath, String confidenceLevel) {
 		
 		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
 		landingPage.tapHomeTab();
@@ -213,7 +257,13 @@ public class PropertyDetailsTest extends App{
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
-		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
+		if(confidenceLevel.equals("HighConfident")) {
+			propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
+			
+		}else {
+			propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
+			
+		}
 		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
