@@ -22,7 +22,7 @@ public class LoginTest extends App {
 		Assert.assertNotNull(loginPage.checkEmailField(), "Login screen - email field is not shown");
 		Assert.assertNotNull(loginPage.checkPasswordField(), "Login screen - password is not shown");
 		Assert.assertNotNull(loginPage.checkLoginButton(), "Login screen - login button is not shown");
-		Assert.assertNotNull(loginPage.checkHelpButton(), "Login screen - help link is not shown");
+		Assert.assertNotNull(loginPage.checkForgotPasswordButton(), "Login screen - Forgot Password button is not shown");
 		Assert.assertNotNull(loginPage.checkBackButton(), "Login screen - back button is not shown");
 	}
 	
@@ -52,7 +52,6 @@ public class LoginTest extends App {
 		//Putting the app in background indefinitely and launching it using currentActivity method
 		loginPage.relaunchApp(-1, "Config");
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login screen - page title is not shown");
-		System.out.println("############"+loginPage.getPasswordFieldValue());
 		Assert.assertEquals(loginPage.getPasswordFieldValue(), "", "VLogin screen - Password field is not empty");
 	}
 	
@@ -186,7 +185,7 @@ public class LoginTest extends App {
 	
 	
 	private void navigateToLoginScreen() {
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - Suncorp image is not shown");
 		welcomePage.tapLoginButton();
 	}
 }
