@@ -23,7 +23,7 @@ import pages.App;
 
 public class HomePropertyTest extends App {
 	
-//	@Test (groups = {"DMPM-86", "DMPM-857", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-86", "DMPM-857", "marketplace", "Home buying journey", "priority-minor"})
 	public void testHomePropertyPageElements() {
 		navigateToHomePropertyTab("guest");
 		
@@ -37,7 +37,7 @@ public class HomePropertyTest extends App {
 	// 86 - scenario
 	// 503 - Scenario 1
 	// navigating to home journey screen and again navigating back to home property screen
-//	@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToHomeJourneyScreen() {
 		navigateToHomePropertyTab("guest");
 		homePropertyPage.scrollToJourneyBanner();
@@ -50,7 +50,7 @@ public class HomePropertyTest extends App {
 	//Story 2627 - Scenario 1 (TC : DMPM-3504) and scenario 2 (TC: DMPM-3505)
 	//Story 2620 - Scenario 2 (No Assets - Display my property assets - TC-DMPM-3548)
 	// navigating to Property tap on add a property or policy button
-//	@Test (groups = {"DMPM-2627", "DMPM-3504","DMPM-3505","DMPM-2620","DMPM-3548", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2627", "DMPM-3504","DMPM-3505","DMPM-2620","DMPM-3548", "marketplace", "Home buying journey", "priority-minor"})
 	public void testAddAPropertyOrPolicy() {
 		navigateToHomePropertyTab("noProperties");
 		
@@ -91,7 +91,7 @@ public class HomePropertyTest extends App {
 	//2997 - scenario 1
 	//2620 - scenario 1
 	// navigating to Property tab and verify products
-	//@Test (groups = {"DMPM-2646", "DMPM-4037","DMPM-2997","DMPM-4014","DMPM-2620","DMPM-3541", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2646", "DMPM-4037","DMPM-2997","DMPM-4014","DMPM-2620","DMPM-3541", "marketplace", "Home buying journey", "priority-minor"})
 	public void testDisplayActiveProductsAssociatedWithAPropertyAsset() {
 			
 		navigateToHomePropertyTab("withProducts");
@@ -119,7 +119,7 @@ public class HomePropertyTest extends App {
 	//2646 - scenario 2 
 	//2997 - scenario 2
 	// navigating to Property tab and verify empty state for products
-//	//@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017", "marketplace", "Home buying journey", "priority-minor"})
 		public void testDisplayEmptyStateForPropertyAsset() {
 		
  		navigateToHomePropertyTab("withOutProducts");
@@ -137,7 +137,7 @@ public class HomePropertyTest extends App {
 	//3799 - scenario 1 (TC-DMPM-3506)
 	//2620 - scenario 3 (TC-DMPM-3549)
 	//Add a property or policy (Guest Experience)
-	//@Test (groups = {"DMPM-2799","DMPM-3506","DMPM-2620","DMPM-3549", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2799","DMPM-3506","DMPM-2620","DMPM-3549", "marketplace", "Home buying journey", "priority-minor"})
 		public void testAddPolicyGuestExperience() {
 			
 		navigateToHomePropertyTab("guest");
@@ -162,8 +162,8 @@ public class HomePropertyTest extends App {
 	 * texts/title if applicable.
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	//@TestDetails(story1 = "DMPM-2697:DMPM-3074")
-	//@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
+	@TestDetails(story1 = "DMPM-2697:DMPM-3074")
+	@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesElements() {
 		//Preconditions
 		//1. Navigate to Home Property dimension and then to articles carousel.
@@ -204,8 +204,8 @@ public class HomePropertyTest extends App {
 	 * DMPM-3085:Do not refresh articles displayed if the application has successfully loaded the content for the first time.
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	//@TestDetails(story1 = "DMPM-2697:DMPM-3085")
-	//@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
+	@TestDetails(story1 = "DMPM-2697:DMPM-3085")
+	@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesRefresh() {
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
@@ -229,8 +229,8 @@ public class HomePropertyTest extends App {
 	 * DMPM-3077: Redirect user to an external url. [Verify each article Readmore and validate the external URL launched against test data]
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	//@TestDetails(story1 = "DMPM-2697:DMPM-3077")
-	//@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
+	@TestDetails(story1 = "DMPM-2697:DMPM-3077")
+	@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesCallToAction() throws InterruptedException {
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
