@@ -23,7 +23,6 @@ public class RegistrationTest extends App{
 			registrationPage.tapNextButton();
 			registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
 			
-			//TODO : Wait for element
 			Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(),"Pin enable screen is not displayed");	
 	}
 	

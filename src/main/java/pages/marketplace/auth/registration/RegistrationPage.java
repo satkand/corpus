@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import pages.marketplace.auth.pin.PINOptionsPage;
 
 public class RegistrationPage extends BasePage {
 	
@@ -67,7 +68,7 @@ public class RegistrationPage extends BasePage {
 	private By mobileNumberUserTip = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
 			+ "TextInputLayout[2]/android.widget.TextView");
 	
-	
+	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptEnablePinButton");
 	private By passwordLengthRequirementsField = By.id("au.com.suncorp.marketplace:id/lengthStatusLabel");
 	private By passwordCharRequirements1Field = By.id("au.com.suncorp.marketplace:id/atLeastOneLowercase");
 	private By passwordCharRequirements2Field = By.id("au.com.suncorp.marketplace:id/atLeastOneUppercase");
@@ -454,6 +455,10 @@ public class RegistrationPage extends BasePage {
 	
 	public void tapAnotherLoginButton() {
 		tapElement(anotherEmailButtonDuplicateEmailPopUp);
+	}
+	
+	public WebElement checkEnablePinButtonAfterRegistration(){
+		return find(enablePinButton,35);
 	}
 	
 	
