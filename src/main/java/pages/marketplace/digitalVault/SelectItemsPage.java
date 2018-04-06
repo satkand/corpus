@@ -7,12 +7,13 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class SelectItemsPage extends BasePage {
 
 	private By selectAllButton = By.id("au.com.suncorp.marketplace:id/selectAllHeaderText");
 	private By deleteButton = By.id("au.com.suncorp.marketplace:id/deleteContentsOption");
-	private By closeButton = By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']");
+	private By closeButton = MobileBy.AccessibilityId("Navigate up");
 	private By itemsToBeDeleted = By.xpath("//android.widget.ImageView[@resource-id='au.com.suncorp.marketplace:id/documentItemSelector']");
 	private By foldersToBeDeleted = By.xpath("//android.widget.ImageView[@resource-id='au.com.suncorp.marketplace:id/folderItemSelector']");
 	private By itemSelectedDisplay = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']/android.widget.TextView");

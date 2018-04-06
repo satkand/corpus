@@ -1,5 +1,6 @@
 package test.marketplace.landing;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,13 +13,16 @@ public class NavigationMenuTest extends App {
 	public void testDisplayingNavigationMenu() {
 		navigateToLandingPage();
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), "Navigation Draw - Suncorp menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkProfilePicture(), "Navigation Menu - Profile Picture not displayed");
+
+		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), "Navigation Draw - Suncorp menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkProductsMenuItem(), " Navigation Draw - Products menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkDigitalVaultMenuItem(), " Navigation Draw - Products menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkProffessionalServicesMenuItem(), " Navigation Draw - Propfessional Services menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkSettingsMenuItem(), " Navigation Draw - Propfessional Services menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkBackToStartMenuItem(), " Navigation Draw - Back To Start menu option not shown");
-		Assert.assertNotNull(navigationMenu.checkFAPISettingsMenuItem(), " Navigation Draw - FAPI Settings menu option not shown");
-	}
+	}	
 	
 	//Scenario 4
 	// Verifying Back To Start option

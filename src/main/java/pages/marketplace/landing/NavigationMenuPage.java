@@ -10,18 +10,31 @@ import io.appium.java_client.MobileBy;
 public class NavigationMenuPage extends BasePage {
 
 	private By splitMenuIcon = MobileBy.AccessibilityId("Open navigation menu");
-	
-	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
-	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='My Products']");
-	private By homeJourneyMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Home journey']");
-	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
-	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
-	private By fapiSettingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='FAPI Settings']");
-	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
-	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
 	private By profilePicture = By.id("au.com.suncorp.marketplace:id/profilePicture");
 
+	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
+	
+	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='My Products']");
+	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
+	private By homeJourneyMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Home journey']");
+	private By productsCatalogueItem = By.xpath("//android.widget.CheckedTextView[@text='Product catalogue']");
 
+	private By propfessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
+
+	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
+	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
+	private By devSettings = By.xpath("//android.widget.CheckedTextView[@text='Dev Settings']");
+
+	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
+
+	public void tapProffessionalServicesMenuItem() {
+		 tapElement(propfessionalServicesMenuItem);
+	}
+	
+	public WebElement checkProffessionalServicesMenuItem() {
+		 return find(propfessionalServicesMenuItem);
+	}
+	
 	public NavigationMenuPage(AppiumDriver driver) {
 		super(driver);
 	}
@@ -48,6 +61,15 @@ public class NavigationMenuPage extends BasePage {
 		 return find(productsMenuItem);
 	}
 	
+	public WebElement checkProductCatalogueItem() {
+		 return find(productsCatalogueItem);
+	}
+	
+	public void tapProductCatalogueMenuItem() {
+		 find(productsCatalogueItem, 30);
+		 tapElement(productsCatalogueItem);
+	}
+	
 	public WebElement checkDigitalVaultMenuItem() {
 		 return find(digitalVaultMenuItem);
 	}
@@ -62,6 +84,11 @@ public class NavigationMenuPage extends BasePage {
 		 return find(homeJourneyMenuItem);
 	}
 	
+public void tapHomeJourneyMenuItem() {
+	find(homeJourneyMenuItem, 30);
+	 tapElement(homeJourneyMenuItem);
+	
+}
 	public WebElement checkBackToStartMenuItem() {
 		 return find(backToStartMenuItem);
 	}
@@ -83,13 +110,13 @@ public class NavigationMenuPage extends BasePage {
 		 tapElement(digitalVaultMenuItem);
 	}
 	
-	public WebElement checkFAPISettingsMenuItem() {
-		 return find(fapiSettingsMenuItem);
+	public WebElement checkDevSettings() {
+		 return find(devSettings);
 	}
 	
-	public void tapFAPISettingsMenuItem() {
-		find(fapiSettingsMenuItem, 30);
-		 tapElement(fapiSettingsMenuItem);
+	public void tapDevSettings() {
+		find(devSettings, 30);
+		 tapElement(devSettings);
 	}
 	
 	public WebElement checkSettingsMenuItem() {
