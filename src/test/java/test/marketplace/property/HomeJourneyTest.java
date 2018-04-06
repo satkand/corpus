@@ -1,4 +1,4 @@
-package test.marketplace.home;
+package test.marketplace.property;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -14,12 +14,16 @@ public class HomeJourneyTest extends App {
 		navigateToHomePropertyTab();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 
+		homeJourneyPage.scrollToJourneyDescriptionText();
+		
 		Assert.assertNotNull(homeJourneyPage.checkJourneyTitleText(), "Home Journey Page - Journey title text is not shown");
 		Assert.assertEquals(homeJourneyPage.getJourneyTitleText(), utils.readTestData("copy", "homeJourneyPage", "journeyTitleText"), "Home Journey Page -Journey title copy is not shown as expected");
 		Assert.assertNotNull(homeJourneyPage.checkJourneySubtitleText(), "Home Journey Page - Journey subtitle text is not shown");
 		Assert.assertEquals(homeJourneyPage.getJourneySubtitleText(), utils.readTestData("copy", "homeJourneyPage", "journeySubtitleText"), "Home Journey Page - Journey subtitle text copy is not shown as expected");
 		Assert.assertNotNull(homeJourneyPage.checkJourneyDescriptionText(), "Home Journey Page - Journey description text is not shown");
 		Assert.assertEquals(homeJourneyPage.getJourneyDescriptionText(), utils.readTestData("copy", "homeJourneyPage", "journeyDescriptionText"), "Home Journey Page - Journey description text copy is not shown as expected");
+		
+		homeJourneyPage.scrollToPlanningReadMoreButton();
 		
 		Assert.assertNotNull(homeJourneyPage.checkPlanningImage(), "Home Journey Page - Planning card Image is not shown");
 		Assert.assertNotNull(homeJourneyPage.checkPlanningTitleText(), "Home Journey Page - Planning card Title text is not shown");
@@ -60,6 +64,8 @@ public class HomeJourneyTest extends App {
 	@Test (groups = {"DMPM-503", "DMPM-983", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToHomeBuyingGuideLinks() {
 		navigateToHomePropertyTab();
+		homeJourneyPage.scrollToPlanningReadMoreButton();
+
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapPlanningReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "planningReadMoreButtonLink"), "Planning card page - browser url is not valid");
@@ -91,6 +97,27 @@ public class HomeJourneyTest extends App {
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 	}
 	
+	@Test (groups = {"DMPM-797", "DMPM-855", "DMPM-856", "marketplace", "Home buying journey", "priority-minor"})
+	
+	//DMPM-797 - Scenario 1 & 2
+	//DMPM-855: Navigating to Home journey option in Menu
+	public void testHomeJourneyviaMenu()
+	{
+		navigateToHomeJourneyviaMenu();
+		Assert.assertNotNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
+		navigationMenu.tapHomeJourneyMenuItem();
+		
+		//DMPM-856: Navigating to Home journey screen
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
+		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Home Journey Page - Hamburger Menu not shown");
+		
+	}
+	
+	private void navigateToHomeJourneyviaMenu() {
+		welcomePage.tapGuestAccessButton();
+		navigationMenu.tapSplitMenuIcon();
+	
+}
 	private void navigateToHomePropertyTab() {
 		welcomePage.tapGuestAccessButton();
 		landingPage.tapHomeTab();

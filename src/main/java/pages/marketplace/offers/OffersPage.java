@@ -18,8 +18,14 @@ public class OffersPage extends BasePage {
 	private By offerDescription = By.id("au.com.suncorp.marketplace:id/offerDescription");
 	private By callToActionButton = By.id("au.com.suncorp.marketplace:id/offerActionButton");
 	private By backgroundImage = By.id("au.com.suncorp.marketplace:id/offerBackgroundImage");
-	
+	private String callToActionButtonID = "au.com.suncorp.marketplace:id/offerActionButton";
+	private By offerLogoImage = By.id("au.com.suncorp.marketplace:id/offerBrandLogoImage");
 
+
+	public WebElement checkOfferLogoImage() {
+		return find(offerLogoImage, 30);
+	}
+	
 	public WebElement checkOfferIcon() {
 		return find(offerIcon, 30);
 	}
@@ -50,7 +56,7 @@ public class OffersPage extends BasePage {
 
 	public void scrollToOffersBanner() {
 		swipeHorizontallyToLeft();
-		scrollToElement(callToActionButton);;
+		scrollToElement(callToActionButton, "true");
 	}
 	
 	public String getOffersPageTitle(){

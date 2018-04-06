@@ -58,7 +58,7 @@ public class VehiclesPage extends BasePage {
 	}
 	
 	public void waitForDataToLoad() {
-		waitForLoadingIndicatorToDismiss(loadingIndicator);
+		waitForElementToDisappear(loadingIndicator);
 	}
 	
 }

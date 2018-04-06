@@ -9,7 +9,7 @@ public class FolderViewTest extends App {
 
 	@Test(groups = { "DMPM-1111", "DMPM-2717", "DMPM-2718", "DMPM-2719", "DMPM-2720", "DMPM-2721", "DMPM-2722","marketplace", "Document Storage", "priority-minor" })
 	public void testAddFilesFromRootToFolder() {
-		navigateToFolderView();
+		navigateToFolderView(); 
 		folderViewPage.addAPhotoFromVault();
 		Assert.assertNotNull(selectItemsPage.checkCloseButton(), "Cancel button not present");
 		selectItemsPage.tapCloseButton();
@@ -19,11 +19,11 @@ public class FolderViewTest extends App {
 		Assert.assertFalse(selectItemsPage.isMoveButtonEnabled(), "Move button is enabled");
 		selectItemsPage.selectAllFolders();
 		Assert.assertTrue(selectItemsPage.areAllFoldersSelected(), "All items not selected");
-		
 		selectItemsPage.tapSelectAllButton();
 		Assert.assertFalse(selectItemsPage.areAllFoldersSelected(), "All items not deselected");
 		selectItemsPage.tapSelectAllButton();
 		Assert.assertTrue(selectItemsPage.areAllFoldersSelected(), "All items not selected");
+	    selectItemsPage.checkMoveButton();
 		Assert.assertTrue(selectItemsPage.isMoveButtonEnabled(), "Move button is disabled");
 		selectItemsPage.tapMoveButton();
 		Assert.assertEquals(digiVaultCommonPage.findNumberOfItems(),2,"Items not moved");
@@ -91,7 +91,7 @@ public class FolderViewTest extends App {
 			digiVaultCommonPage.enterName(utils.readTestData("digivault", "hasItems", "folder1"));
 			digiVaultCommonPage.tapPositiveButton();
 			Assert.assertNotNull(digiVaultCommonPage.checkDocumentMoreOption(), "No document present");
-			common.goBack();
+			digiVaultCommonPage.tapBackNavigationButton();
 			Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Digital vault home page is not displayed");
 			
 			digiVaultCommonPage.tapFolder(utils.readTestData("digivault", "hasItems", "folder1"));
@@ -112,18 +112,18 @@ public class FolderViewTest extends App {
 			//TODO: Can be replaced later by a user which already has existing images.
 			navigateToFolderView();
 			digiVaultCommonPage.addAPhotoThroughGallery();
-			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
-			galleryPage.choosePicture();
+			galleryPage.selectPicture();
 			imagePreviewPage.finishSavingImage(utils.readTestData("digivault", "hasItems", "file1"));
+			folderViewPage.waitForSuccessNotificationToDisappear();
 			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
 			common.goBack();
 			digitalVaultPage.checkDigiVaultTitle();
 			digitalVaultPage.createFolder(utils.readTestData("digivault", "hasItems", "folder1"));
 			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
+			folderViewPage.waitForSuccessNotificationToDisappear();
 			common.goBack();
 			digitalVaultPage.checkDigiVaultTitle();
 			digiVaultCommonPage.tapFolder(utils.readTestData("digivault", "hasItems", "folderName"));
-			
 			folderViewPage.tapEditButton();
 			Assert.assertNotNull(digiVaultCommonPage.checkMoveToFolderButton(), "Move contents button not present");
 			digiVaultCommonPage.tapMoveToFolderButton();
@@ -221,7 +221,6 @@ public class FolderViewTest extends App {
 			selectItemsPage.selectAllItems();
 			Assert.assertTrue(selectItemsPage.isMoveButtonEnabled(), "Move button is disabled");
 			selectItemsPage.tapMoveButton();
-			
 			Assert.assertNotNull(chooseFolderPage.checkBackButton(), "Back button not present");
 			chooseFolderPage.tapBackButton();
 			//To be modified to check folder once bug is fixed
@@ -233,8 +232,9 @@ public class FolderViewTest extends App {
 			//TODO: Can be replaced later by a user which already has existing images.
 			navigateToFolderView();
 			digiVaultCommonPage.addAPhotoThroughGallery();
-			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
-			galleryPage.choosePicture();
+//			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
+//			galleryPage.choosePicture();
+			galleryPage.selectPicture();
 			imagePreviewPage.finishSavingImage(utils.readTestData("digivault", "hasItems", "file1"));
 			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
 						
@@ -292,6 +292,7 @@ public class FolderViewTest extends App {
 	private void createDummyData() {
 		Assert.assertNotNull(digiVaultCommonPage.checkAddButton(), "Add button not present");
 		digiVaultCommonPage.addAPhotoThroughCamera();
+		digiVaultCommonPage.waitForAddButtonToDisappear();
 		cameraPage.capturePhoto();
 		imagePreviewPage.finishSavingImageByChoosingFolder();
 		
