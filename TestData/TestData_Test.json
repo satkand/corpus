@@ -1,16 +1,77 @@
 {
-	"appPackage" : {
-       "packageName" : "au.com.suncorp.mobile",
-       "platform": "aos"
+    "appPackage": {
+        "packageName": "au.com.suncorp.mobile",
+        "platform": "aos"
     },
-    "pinEntries" :{
-		"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
-		"validPINEntry1" : "7634",
-		"validPINEntry2" : "2580"
+	"PIN" :{
+		"loginWithExistingPin" : {
+			"login": "thisloginhaspin@haspin.com",
+			"pwd": "Password1",
+			"pin": "2580"
+		},
+							"backup_loginWithExistingPin" : {
+								"login": "b@b.com",
+								"pwd": "Password1",
+								"pin": "2580"
+							},
+		"_comment": "Please do not use this login to set the pin",
+		"loginWithoutExistingPin" : {
+			"login": "thislogindonothavepin@donothavepin.com",
+			"pwd": "Password1"
+		},
+								"backup_loginWithoutExistingPin" : {
+									"login": "c@b.com",
+									"pwd": "Password1"
+								},
+		"_comment": "This login is used to set the pin. And the credentials need to change every time, after each run",
+		"_comment": "CHANGE",
+		"loginWithoutExistingPin_usedToDoPINSetup" : {
+			"login": "a1@a.com",
+			"pwd": "Password1"
+		},
+		"loginWithPinLocked" : {
+			"login": "pinlocked@sun.com",
+			"pwd": "Test123",
+			"pin": "1234"
+		},
+		"loginForPinLockedSetupFlow" : {
+			"login": "pinsetup@sun.com",
+			"pwd": "Test123",
+			"invalidPin": "1234",
+			"validPin":"2580"
+		},
+		"loginForConfirmCurrentPin" : {
+			"login": "ss@sun.com",
+			"pwd": "Password1",
+			"pin": "2121"
+		},
+		"pinEntries" :{
+			"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
+			"validPINEntry1" : "7634",
+			"validPINEntry2" : "2580"
+		}
 	},
-	"noSuncorpBankAccounts" :{
-		"login": "ab@ab.com",
-		"pwd": "Password1"
+	"loginCredentials": {
+		"validLoginCredentials": {
+			"login": "dest@dest.com",
+			"pwd": "Password1",
+			"maskedValidPwd": "•••••••••"
+		},
+		"invalidCredentials": {
+			"emailEmpty" : "",
+			"emailExceedsMaxLength": "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendb@j.c",
+			"emailMinLength": "a",
+			"emailIncorrectFormat1": "a@.com",
+			"emailIncorrectFormat2": "a@b",
+			"passwordEmpty": "",
+			"invalidPassword" : "1234567",
+			"invalidMemberLogin": "x@g.z",
+			"invalidMemberLoginPwd": "Pwd1"
+		},
+		"validMemberLogin": {
+			"login": "x@y.z",
+			"pwd": "Password1"
+		}
 	},
 	"propertyDimension" :{
 		"propertyDetails":{
@@ -25,7 +86,9 @@
 					"wallMaterial": "Brick",
 					"salePrice": "$1,000,000",
 					"saleDate": "30 Feb 2018",
+					"numberOfImages":"7",
 					"buildYear": "1966"
+					
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
@@ -53,7 +116,28 @@
          			"suburbText":"VIC 3064",
           			"productDescriptionText1": "Home and Contents protected until 10 October 2019",
          			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
-			}}
+			}},
+		"articlesCarousel": {
+			"articleCarouselText":"Articles",
+			"articleReadMoreButton": "READ MORE",
+			"articleViewPager": [
+				{ 
+					"articleTitle" : "The 5 Steps to Master Renting",
+					"articleDescription" : "Whatever it is that has you scanning the “TO LET” listings, there are a number of important things to consider before you sign a rental lease.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/master-renting.html"
+				},
+				{ 
+					"articleTitle" : "What are landlord responsibilities?",
+					"articleDescription" : "Landlords need to keep a property in a livable condition.Find out what you should expect here.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/landlord-responsibilities.html"
+				},
+				{ 
+					"articleTitle" : "How can I estimate the total costs involved in buying a home?",
+					"articleDescription" : "The price you see in the ads or at aunction is rarely the full price of buyign a house. We detail here some of the 'hidden' costs you need to watch out for.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/buying-a-home/estimating-costs-of-buying-a-home.html"
+				}
+			]
+		}
 	},
 	"portfolio" :{
 		"loginEmptyProdList":{
@@ -86,7 +170,276 @@
           					"currentBalance": "-$123,456.25",
           					"availableBalance": "-$12,345.00"
 					}]
-			}
+			},
+		"wealthProducts": {
+				"login": "a@b.c",
+				"pwd": "Password1",
+				"products": [
+				{
+						"brand": "Suncorp",
+          				"accountNumber": "123456789",
+          				"description": "Sun Super",
+          				"accountBalance": 3141592.65,
+          				"status": "Active"
+				},
+				{
+						"brand": "Apia",
+          				"accountNumber": "564738291",
+          				"description": "Australian Everyday Customer Sunny Super",
+          				"accountBalance": 4.20,
+          				"status": "Active"
+				}]
+			},
+		"lifeProducts" : {
+				"login": "a@b.c",
+				"pwd": "Password1",
+				"products": [
+				{
+						"brand": "Suncorp",
+          				"policyNumber": "M374298342",
+          				"description": "Life Insurance",
+          				"insuredPersons": [
+            			{
+             				 "name": "Bob Smith"
+            			},
+            			{
+              				"name": "Andy Smith"
+            			}]
+				},
+				{
+						"brand": "AAMI",
+          				"policyNumber": "634654212",
+          				"description": "Accidental Injury Plan",
+          				"insuredPersons": [
+            			{
+              				"name": "Alex Sim"
+            			}]
+
+				}]
+
+		},
+		"insuranceProducts" : {
+				"policy1": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Renewal due",
+          				"risks": 
+            			{
+             				 "description1": "Single Risk, Single Cover Policy 1",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Cancellation Date"
+             				 
+            			}
+				},
+				"policy2": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Renewal overdue",
+          				"risks": 
+            			{
+             				 "description1": "Single Risk, Single Cover Policy 2",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Cancellation Date"
+            			}
+				},
+				"policy3": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Renewal due",
+          				"risks":{
+             				 "description1": "Single Risk, Single Cover Policy 3",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Start Date"
+            			}
+				},
+				"policy4": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Renewal overdue",
+          				"risks": 
+            			{
+             				 "description1": "Single Risk, Single Cover Policy 4",
+             				 "endDate1":"10 November 2017",
+             				 "endDateDescription1":"Start Date"
+            			}
+				},
+				"policy5": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Policy Active",
+          				"risks": 
+            			{
+            					"description1": "Multi Risk, Multi Cover 1",
+             				"endDate1":"10 November 2017",
+             				"endDateDescription1":"Start Date",
+             				"description2": "Multi Risk, Multi Cover 2",
+             				"endDate2":"10 November 2017",
+             				"endDateDescription2":"Start Date"
+            			}
+				},
+				"policy6": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Policy Active",
+          				"risks": 
+            				{
+            					"description1": "Multi Risk, Multi Cover 3",
+            			
+            					"description2": "Multi Risk, Multi Cover 4"
+            				}
+				},
+				"policy7": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Policy Active",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Multi Cover 5",
+            			
+            				"description2": "Multi Risk, Multi Cover 6"
+            			}
+				},
+				"policy8": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Policy Active",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Multi Cover 7",
+            			
+            				"description2": "Multi Risk, Multi Cover 8"
+            			}
+				},
+				"policy9": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Policy Active",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Single Cover 1",
+            			
+            				"description2": "Multi Risk, Single Cover 2"
+            			}
+				},
+				"policy10": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Policy Active",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Single Cover 3",
+            			
+            				"description2": "Multi Risk, Single Cover 4"
+            			}
+				},
+				"policy11": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Cancellation pending",
+          				"risks": 
+            			{
+            				"description": "Single Risk Multi Cover 1"
+            			}
+				},
+				"policy12": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status":"Cancellation pending",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Multi Cover 9",
+            			
+            				"description2": "Multi Risk, Multi Cover 10"
+            			}
+				},
+				"policy13": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status": "Cancellation pending",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Multi Cover 11",
+            			
+            				"description2": "Multi Risk, Multi Cover 12"
+            			}
+				},
+				"policy14": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status": "Policy Future Activation",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Single Cover 5",
+            			
+            				"description2": "Multi Risk, Single Cover 6"
+            			}
+				},
+				"policy15": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status": "Policy Future Activation",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Single Cover 7",
+            			
+            				"description2": "Multi Risk, Single Cover 8"
+            			}
+				},
+				"policy16": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status": "Policy Future Activation",
+          				"risks": 
+            			{
+            				"description1": "Single Risk Multi Cover 2"
+            			}
+				},
+				"policy17": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status": "Policy Future Activation",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Multi Cover 13",
+            			
+            				"description2": "Multi Risk, Multi Cover 14"
+            			}
+				},
+				"policy18": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status": "Policy Future Activation",
+          				"risks": 
+            			{
+            				"description1": "Multi Risk, Multi Cover 15",
+            			
+            				"description2": "Multi Risk, Multi Cover 16"
+            			}
+				}
+
+		}
+	},
+	"noSuncorpBankAccounts" :{
+		"login": "ab@ab.com",
+		"pwd": "Password1"
 	},
 	"hasSuncorpBankAccounts" :{
 		"login": "ab@ab.com",
@@ -417,365 +770,6 @@
 			"May 2017"
 		]
 	},
-	"hasSuncorpBankAccounts_old" :{
-		"login": "flash@dc.com",
-		"pwd": "Password1",
-		"netWorthAmount": "-$893,818.75",
-		"bankAccounts": "",
-		"spendingsAmountPerMonth": [
-			{
-				"month": "January 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "February 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "March 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "April 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "May 2017",
-				"amount": "$0.00"
-			},
-			{
-				"month": "June 2017",
-				"amount": "-$50.00"
-			},
-			{
-				"month": "July 2017",
-				"amount": "-$100.00"
-			},
-			{
-				"month": "August 2017",
-				"amount": "-$200.00"
-			},
-			{
-				"month": "September 2017",
-				"amount": "-$10,000,025,285.20"
-			},
-			{
-				"month": "October 2017",
-				"amount": "-$400.00"
-			},
-			{
-				"month": "November 2017",
-				"amount": "-$522.34"
-			},
-			{
-				"month": "December 2017",
-				"amount": "-$600.00"
-			}
-		],
-		"spendingsByVendor": [
-			{	
-				"month": "December 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "1",
-						"Name": "Coles",
-						"Amount": "-$600.00"
-					}
-				]
-			},
-			{	
-				"month": "November 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "2",
-						"Name": "Coles",
-						"Amount": "-$522.34"
-					}
-				]
-			},
-			{
-				"month": "October 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "1",
-						"Name": "Coles",
-						"Amount": "-$400.00"
-					}
-				]
-			},
-			{
-				"month": "September 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "6",
-						"Name": "Coles",
-						"Amount": "-$10,000,000,622.33"
-					}, 
-					{
-						"transactionsText": "275",
-						"Name": "Woolworths",
-						"Amount": "-$22,840.53"
-					},
-					{
-						"transactionsText": "2",
-						"Name": "Telstra",
-						"Amount": "-$122.34"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "ALDI",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Big W",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Cineplex",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Click Energy",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Cold Rock",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Costco",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Curves",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "David Jones",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Dodo",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Dominos",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "IGA",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Kmart",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Myer",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Optus",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Other",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Vaya",
-						"Amount": "-$100.00"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Vodafone",
-						"Amount": "-$100.00"
-					}
-				]
-			},
-			{	
-				"month": "August 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "1",
-						"Name": "Coles",
-						"Amount": "-$200.00"
-					}
-				]
-			},
-			{	
-				"month": "July 2017",
-				"vendorsList": [
-					{
-						"transactionsText": "1",
-						"Name": "Coles",
-						"Amount": "-$100.00"
-					}
-				]
-			}
-		],
-		"spendingsByCategories": [
-			{	
-				"month": "December 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "1",
-						"Name": "Transport",
-						"Amount": "-$600.00"
-					}
-				]
-			},
-			{	
-				"month": "November 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "2",
-						"Name": "Transport",
-						"Amount": "-$522.34"
-					}
-				]
-			},
-			{	
-				"month": "October 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "1",
-						"Name": "Transport",
-						"Amount": "-$400.00"
-					}
-				]
-			},
-			{	
-				"month": "September 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "9",
-						"Name": "Transport",
-						"Amount": "-$10,000,000,743.18"
-					}, 
-					{
-						"transactionsText": "113",
-						"Name": "Groceries",
-						"Amount": "-$10,920.02"
-					},
-					{
-						"transactionsText": "104",
-						"Name": "Cash & gifts",
-						"Amount": "-$10,022.68"
-					},
-					{
-						"transactionsText": "11",
-						"Name": "Shopping",
-						"Amount": "-$807.19"
-					},
-					{
-						"transactionsText": "9",
-						"Name": "Food & drink",
-						"Amount": "-$555.85"
-					},
-					{
-						"transactionsText": "10",
-						"Name": "Bills & utilities",
-						"Amount": "-$529.14"
-					},
-					{
-						"transactionsText": "7",
-						"Name": "Health & fitness",
-						"Amount": "-$356.02"
-					},
-					{
-						"transactionsText": "5",
-						"Name": "Travel",
-						"Amount": "-$345.85"
-					},
-					{
-						"transactionsText": "6",
-						"Name": "Home",
-						"Amount": "-$292.02"
-					},
-					{
-						"transactionsText": "9",
-						"Name": "Entertainment",
-						"Amount": "-$233.36"
-					},
-					{
-						"transactionsText": "8",
-						"Name": "Financial",
-						"Amount": "-$197.36"
-					},
-					{
-						"transactionsText": "2",
-						"Name": "Internal transfers & savings",
-						"Amount": "-$107.34"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Other",
-						"Amount": "-$72.17"
-					},
-					{
-						"transactionsText": "1",
-						"Name": "Other",
-						"Amount": "-$52.17"
-					},
-					{
-						"transactionsText": "5",
-						"Name": "Education & family",
-						"Amount": "-$50.85"
-					}
-				]
-			},
-			{	
-				"month": "August 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "1",
-						"Name": "Transport",
-						"Amount": "-$200.00"
-					}
-				]
-			},
-			{	
-				"month": "July 2017",
-				"categoriesList": [
-					{
-						"transactionsText": "1",
-						"Name": "Transport",
-						"Amount": "-$100.00"
-					}
-				]
-			}
-		],
-		"emptyCategoryMonths": [
-			"May 2017",
-			"April 2017",
-			"March 2017",
-			"February 2017",
-			"January 2017"
-		],
-		"emptyVendorMonths": [
-			"May 2017",
-			"April 2017",
-			"March 2017",
-			"February 2017",
-			"January 2017"
-		]
-	},
 	"hasVehicles" :{
 		"login": "ab@ab.com",
 		"pwd": "Password1",
@@ -810,6 +804,7 @@
 			"date" : "12/02/2002",
 			"postcode" : "3010",
 			"email" : "abc",
+			"email1":"emailhd@f.com",
 			"mobile" : "0428737283",
 			"password" : "Password1"
 		},
@@ -822,14 +817,17 @@
 			"noSpecialCharName" : "Don' Trum-",
 			"specialCharSurname" : "Don!@#' Trum**-",
 			"longPostCode" : "979797989",
-			"emailLong" : "giehrgireghewhgowhgowgowehgaesvnoroie",
+			"emailLong" : "giehrgireghewhgogiehrgireghewhgokjlkjllljwhgowgowehgaesvnoroiegiehrgireghewhgowhgowgowehgaesvnoroiesfdsff@.com",
 			"mobileLong" : "453592486085082350",
-			"mobileInvalid" : "9897494549",
+			"mobileInvalidFormat" : "9897494549",
+			"mobileEmpty" : "",
+			"mobileShort" : "0422222",
 			"shortPassword" : "4tger",
 			"firstNameInPassword" : ["Abc123", "123Abc2", "sgbAbcihio", "abc"],
 			"lastNameInPassword" : ["2xyz", "xyz123", "adixyzig", "xyz"],
 			"onlyCharPassword" : "football",
-			"onlyCharUpperCasePassword" : "FOOTBALL"
+			"onlyCharUpperCasePassword" : "FOOTBALL",
+			"invalidPostcode":"0000"
 		}
 	},
 	"chatbot" :{
@@ -854,36 +852,6 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
-	"loginCredentials": {
-		"validLoginCredentials": {
-			"login": "son@son.com",
-			"pwd": "Password1"
-		},
-		"invalidCredentials": {
-			"emailEmpty" : "",
-			"emailExceedsMaxLength": "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendb@j.c",
-			"emailMinLength": "a",
-			"emailIncorrectFormat1": "a@.com",
-			"emailIncorrectFormat2": "a@b",
-			"passwordEmpty": "",
-			"invalidPassword" : "1234567"
-		},
-		"hasNoProducts": {
-			"login": "fer@fer.com",
-			"pwd": "Password1"
-		}
-	},
-	"PIN" :{
-		"loginWithExistingPin" : {
-			"login": "b@b.com",
-			"pwd": "Password1",
-			"pin": "2580"
-		},
-		"loginWithoutExistingPin" : {
-			"login": "c@b.com",
-			"pwd": "Password1"
-		}
-	},
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in",
@@ -893,6 +861,18 @@
 			"emptyEmailError" : "Field is required",
 			"longEmailError" : "Must be between 2 and 100 characters",
 			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
+		},
+		"professionalServices": {
+			"chooseServiceLabel": "Choose a service that suits you:",
+			"urlBarText": "https://www.suncorp.com.au",
+			"professionalServicesPageTitle": "Professional Services",
+			"homeServicesHeading":"Home services",
+			"homeServicesDescription": "With the support of IBM and the natural language capabilities of Watson – IBM's artificial intelligence platform"
+		},
+		"registration": {
+			"supportedGroup":["aami","apia","gio","shannons"],
+			"supportedGroupLoginTitleSuffix": " member login",
+			"invalidPostcodeMessage":"Please enter a valid australian postcode"
 		},
 		"portfolio": {
 			"emptyStateLabel": "Looks like you haven't added any products yet.",
@@ -940,32 +920,10 @@
 			"activeClaim":"Active claim",
 			"featureLockedTextCopy":"Unfortunately this feature is only available to registered users. Please Log In or Sign Up first."
 		},
-		"articlesCarousel": {
-			"articleCarouselText":"Articles",
-			"articleReadMoreButton": "READ MORE",
-			"articleViewPager": [
-				{ 
-					"articleTitle" : "The 5 Steps to Master Renting",
-					"articleDescription" : "Whatever it is that has you scanning the “TO LET” listings, there are a number of important things to consider before you sign a rental lease.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/master-renting.html"
-				},
-				{ 
-					"articleTitle" : "What are landlord responsibilities?",
-					"articleDescription" : "Landlords need to keep a property in a livable condition.Find out what you should expect here.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/landlord-responsibilities.html"
-				},
-				{ 
-					"articleTitle" : "How can I estimate the total costs involved in buying a home?",
-					"articleDescription" : "The price you see in the ads or at aunction is rarely the full price of buyign a house. We detail here some of the 'hidden' costs you need to watch out for.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/buying-a-home/estimating-costs-of-buying-a-home.html"
-				}
-			]
-		},
 		"propertyDetailsPage": {
 			"showMoreInfoLabel": "VIEW MORE INFO",
 			"showLessInfoLabel": "VIEW LESS INFO",
 			"HomeJourneyTitle": "Home journey"
-			
 		},
 		"homeJourneyPage": {
 			"journeyTitleText": "Our guide to\nbuying a home",
@@ -996,6 +954,9 @@
 			"registerPage2Title" : "Step 2 of 3",
 			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
 			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
+			"longSurnameErrorMsg":"Must be between 2 and 40 characters",
+			"longEmailErrorMsg":"Must be between 2 and 100 characters",
+			"longMobileErrorMsg":"Must be 10 digits",
 			"longPostcodeErrorMsg" : "Must be 4 digits",
 			"firstNameUserTip" : "Middle name not required",
 			"mobileNumberUserTip" : "Use 04XXXXXXXX format",
@@ -1004,9 +965,15 @@
 			"shortPasswordErrorMsg" : "Must be at least 7 characters long",
 			"firstNamePasswordErrorMsg" : "Must not contain your first name",
 			"lastNamePasswordErrorMsg" : "Must not contain your last name",
+			"emailPasswordErrorMsg":"Must not contain your email",
 			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
-			"passwordNotMatch" : "Password do not match"
+			"passwordNotMatch" : "Password do not match",
+			"passwordNameRequirement":"not contain your first name, surname or email",
+			"duplicateEmailPopUpTitle":"Email already in use",
+			"duplicateEmailPopUpText":"Please log in with this email address, or use a different one to register for a new account.",
+			"duplicateEmailPopUpOkButtonText":"OK",
+			"duplicateEmailPopUpUseAnotherEmailButtonText":"LOG IN WITH THIS EMAIL"
 		},
 		"chatbot": {
 			"phoneLabel": "CALL NOW"
@@ -1037,11 +1004,36 @@
 			"digiVaultEmptyImageTitle" : "Your vault is empty",
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
 		},
-		"brandIcons": {
-			"aamiBrandIcon": "AAMI member login",
-			"apiaBrandIcon": "APIA member login",
-			"gioBrandIcon": "GIO member login",
-			"shannonsBrandIcon": "Shannons member login"
+		"memberLogin" : {
+			"shortMobileNumberError" : "Must be 10 digits",
+			"invalidMobileNumberError" : "Must use 04XXXXXXXX format",
+			"emptyMobileNumberError" : "Field is required",
+			"incorrectCredentialsSnackbarText" : "Wrong email or password. Please check and retry."
+		},
+		"getStartedPage" : {
+			"getStartedPageTitle" : "Welcome to the Suncorp family"
 		}
+	},
+	"brands": [
+		{
+			"button": "aamiButton",
+			"brandIcon": "AAMI member login"
+		},
+		{
+			"button": "apiaButton",
+			"brandIcon": "APIA member login"
+		},
+		{
+			"button": "gioButton",
+			"brandIcon": "GIO member login"
+		},
+		{
+			"button": "shannonsButton",
+			"brandIcon": "Shannons member login"
+		}
+	],
+	"bundleId": {
+		"value": "au.com.suncorp.marketplace:id/"
 	}
 }
+

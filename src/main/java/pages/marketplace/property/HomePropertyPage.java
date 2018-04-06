@@ -1,4 +1,4 @@
-package pages.marketplace.home;
+package pages.marketplace.property;
 
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +10,8 @@ import org.testng.Reporter;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 import pages.marketplace.common.WebviewPage;
+import io.appium.java_client.MobileBy;
+
 
 public class HomePropertyPage extends BasePage {
 
@@ -40,18 +42,31 @@ public class HomePropertyPage extends BasePage {
 	private By productDescriptionText = By.id("au.com.suncorp.marketplace:id/productDescriptionText");
 	private By brandIcon = By.id("au.com.suncorp.marketplace:id/brandIcon");
 	private By propertyItem = By.id("au.com.suncorp.marketplace:id/propertyItemLayout");
+	private String startYourJourneyButtonID = "au.com.suncorp.marketplace:id/startHomeJourneyButton";
 	private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='456 Sesame St, Melbourne']");
 	private By featureLockedMsgTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By featureLockedTextCopy = By.id("android:id/message");
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
+	private By backButton = MobileBy.AccessibilityId("Navigate up");
+	
+	public WebElement checkBackButton() {
+		return find(backButton);
+	}
+	
+	public void tapBackButton() {
+		tapElement(backButton);
+	}
 	
 	//Articles carousel elements initialization --Start--
-	private By articleCarousel =	By.id("au.com.suncorp.marketplace:id/articleCarouselText");
+	private By articleCarousel =	By.id("au.com.suncorp.marketplace:id/articleCarouselTitle");
 	private By articleImage = By.id("au.com.suncorp.marketplace:id/articleImage");
-	private By articleReadMoreBtn = By.id("au.com.suncorp.marketplace:id/articleReadMoreButton");
+	private By articleReadMoreBtn = By.id("au.com.suncorp.marketplace:id/articleReadMoreAction");
 	private By articleTitle = By.id("au.com.suncorp.marketplace:id/articleTitle");
 	private By articleDesc = By.id("au.com.suncorp.marketplace:id/articleDescription");
+	
+	private String articleCarouselStr = "au.com.suncorp.marketplace:id/articleCarouselTitle";
+	private String articleReadMoreBtnStr = "au.com.suncorp.marketplace:id/articleReadMoreAction";
 	//Articles carousel elements initialization--End--
 	
 	//Article carousel element utilization --Start
@@ -67,19 +82,19 @@ public class HomePropertyPage extends BasePage {
 		 tapElement(articleReadMoreBtn);
 	}
 	
-	public WebElement checkArticleTitleElement() {
+	public WebElement checkArticleTitle() {
 		return find(articleTitle, 2);
 	}
 	
-	public String verifyArticleTitle() {
+	public String getArticleTitle() {
 		return find(articleTitle, 5).getText();
 	}
 	
-	public WebElement checkArticleDescElement() {
+	public WebElement checkArticleDesc() {
 		return find(articleDesc, 2);
 	}
 	
-	public String verifyArticleDescription() {
+	public String getArticleDesc() {
 		return find(articleDesc, 2).getText();
 	}
 	
@@ -88,21 +103,25 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public void swipeArticlesRight() {
-		swipeHorizontallyToRight();
-	}
-	
-	public void scrollToArticles() {
-		scrollToElement(articleCarousel, "true");
-		scrollToElement(articleReadMoreBtn,"true");
+		
+		swipeHorizontallyToRight(0.20, 0.6, 0.9, 0.6);
 	}
 	
 	public WebElement checkArticleCarousel() {
-		return find(articleCarousel,2);
+		return find(articleCarousel,10);
 	}
 	
 	public String getArticleCarouselText() {
 		return getText(articleCarousel);
 	}
+	
+	public void scrollToArticles() {
+		
+		scrollToElement(articleCarousel, "true");
+		scrollToElement(articleReadMoreBtnStr,"id");
+	}
+	
+	
 	//Article carousel element utilization --End
 	
 	public WebElement checkFeatureLockedMsgTitle() {
@@ -285,15 +304,9 @@ public class HomePropertyPage extends BasePage {
 		tapElement(startYourJourneyButton);
 	}
 	
-
-	public void scrollToNextProduct() {
-			for(int i=0;i<4;i++) {
-				swipeScreen("down");
-			}
-	}
-	
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
+		
 	}
-
+	
 }
