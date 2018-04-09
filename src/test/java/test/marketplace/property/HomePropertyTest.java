@@ -1,20 +1,24 @@
 package test.marketplace.property;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
+
 
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
 import automation.framework.common.BasePage;
+import automation.framework.common.Copy;
+import automation.framework.common.TestDetails;
 import pages.App;
 
 public class HomePropertyTest extends App {
@@ -33,7 +37,7 @@ public class HomePropertyTest extends App {
 	// 86 - scenario
 	// 503 - Scenario 1
 	// navigating to home journey screen and again navigating back to home property screen
-//	@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
+	//@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToHomeJourneyScreen() {
 		navigateToHomePropertyTab("guest");
 		homePropertyPage.scrollToJourneyBanner();
@@ -170,7 +174,8 @@ public class HomePropertyTest extends App {
 	 * Story DMPM-4318, Test cases covered are DMPM-4316, DMPM-4290.
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	//@Test (groups = {"DMPM-2697", "DMPM-3074", "DMPM-4318", "DMPM-4316","DMPM-4290", "marketplace", "Home property articles", "priority-minor"})
+	
+	@Test (groups = {"DMPM-2697", "DMPM-3074", "DMPM-4318", "DMPM-4316","DMPM-4290", "marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesElements() {
 		//Preconditions
 		//1. Navigate to Home Property dimension and then to articles carousel.
@@ -185,7 +190,7 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(homePropertyPage.checkArticleCarousalDescr(), "Home Property Page - Articles description is NOT Present");
 		Assert.assertEquals(homePropertyPage.verifyArticleCarousalDescr(), utils.readTestData("copy", "articlesCarousel", "articleCarouselDescription"), "Home Property Page - Articles description is NOT as expected!");
 		
-		homePropertyPage.scrollToArticlesReadMoreBtn();
+		homePropertyPage.scrollToArticles();
 		
 		//DMPM-4290 Step 1: Verify article properties present
 		//DMPM-3074 Step 1: Verify each element of every article and then validate the content against the test data json
@@ -221,7 +226,8 @@ public class HomePropertyTest extends App {
 	 * DMPM-3076: Display previous article [Verify each article elements and validate the contents against test data]
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	//@Test (groups = {"DMPM-2697", "DMPM-3075", "DMPM-3706", "marketplace", "Home property articles", "priority-minor"})
+	
+	@Test (groups = {"DMPM-2697", "DMPM-3075", "DMPM-3706", "marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesPreviousElements() {
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
@@ -230,29 +236,7 @@ public class HomePropertyTest extends App {
 			Assert.assertNotNull(homePropertyPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
 			
 			//Step 1,2: Verify swiping carousel in forward order then repeat the same in backwards order.
-			List<Object> list =  utils.readTestDataList("copy","articlesCarousel","articleViewPager");
-			JSONArray articlesArray = (JSONArray)list;
-			int articlesArraySize = articlesArray.size();
-			if (articlesArraySize <= 1) {
-				Reporter.log("There are too few articles to test swipe functionality", true);
-			}
-			else {
-				//Verify articles carousel swipe functionality in forward order
-				for (int i = 1; i<articlesArraySize ; i++) {
-					homePropertyPage.swipeArticlesLeft();
-					String articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
-					Assert.assertNotNull(homePropertyPage.checkArticleTitleElement(), "Home Proeprty Page - Next article swipe is as excpected.");
-					Assert.assertEquals(homePropertyPage.verifyArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
-					}
-				
-				//Verify articles carousel swipe functionality in backwards order
-				for (int j = articlesArraySize-1; j>0 ; j--) {
-					homePropertyPage.swipeArticlesRight();
-					String articleTitle = ((JSONObject)articlesArray.get(j-1)).get("articleTitle").toString();
-					Assert.assertNotNull(homePropertyPage.checkArticleImage(), "Home Proeprty Page - Previous article swipe is not as excpected.");
-					Assert.assertEquals(homePropertyPage.verifyArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
-					}
-				}
+			verifyArticlesNotRefreshed();
 			}
 	
 	
@@ -261,7 +245,7 @@ public class HomePropertyTest extends App {
 	 * DMPM-3085:Do not refresh articles displayed if the application has successfully loaded the content for the first time.
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	//@Test (groups = {"DMPM-2697", "DMPM-3085", "marketplace", "Home property articles", "priority-minor"})
+	@Test (groups = {"DMPM-2697", "DMPM-3085", "marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesRefresh() {
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
@@ -276,20 +260,7 @@ public class HomePropertyTest extends App {
 			
 			//Step 2: Verify each individual content in the Articles to ascertain that it is not refreshed.
 			homePropertyPage.scrollToArticles();
-			Assert.assertNotNull(homePropertyPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
-			List<Object> list =  utils.readTestDataList("copy","articlesCarousel","articleViewPager");
-			JSONArray articlesArray = (JSONArray)list;
-			for(int i=0; i<articlesArray.size(); i++) {
-				String articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
-				String articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
-				Assert.assertNotNull(homePropertyPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
-				Assert.assertNotNull(homePropertyPage.checkArticleTitleElement(), "Home Proeprty Page - Article Title is not shown as excpected.");
-				Assert.assertNotNull(homePropertyPage.checkArticleDescElement(), "Home Proeprty Page - Article description is not shown as expected.");
-				Assert.assertEquals(homePropertyPage.verifyArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
-				Assert.assertEquals(homePropertyPage.verifyArticleDescription(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
-				Assert.assertNotNull(homePropertyPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Read More button is MISSING!");
-				homePropertyPage.swipeArticlesLeft();
-				}	
+			verifyArticlesNotRefreshed();
 			}
 	
 	/*
@@ -297,7 +268,7 @@ public class HomePropertyTest extends App {
 	 * DMPM-3077: Redirect user to an external url. [Verify each article Readmore and validate the external URL launched against test data]
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	//@Test (groups = {"DMPM-2697", "DMPM-3077", "marketplace", "Home property articles", "priority-minor"})
+	@Test (groups = {"DMPM-2697", "DMPM-3077", "marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesCallToAction() throws InterruptedException {
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
@@ -306,21 +277,7 @@ public class HomePropertyTest extends App {
 			Assert.assertNotNull(homePropertyPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
 			
 			//Step 1: Verify Readmore button click and validate the external URL displayed against the test data json.
-			List<Object> list =  utils.readTestDataList("copy","articlesCarousel","articleViewPager");
-			JSONArray articlesArray = (JSONArray)list;
-			for(int i=0; i<articlesArray.size(); i++) {
-				String articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
-				String webViewUrl = ((JSONObject)articlesArray.get(i)).get("webViewUrl").toString();
-				Assert.assertNotNull(homePropertyPage.checkArticleTitleElement(), "Home Proeprty Page - Article Title is not shown as excpected.");
-				Assert.assertNotNull(homePropertyPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Article button is MISSING!");
-				homePropertyPage.tapArticleReadMoreBtn();
-				Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(),"Home Proeprty Page - Article's webview is not shown as excpected.");
-				Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),webViewUrl,"Home Proeprty Page - Article ReadMore page is not as expected.");
-				webviewPage.tapWebviewCloseButton();
-				Assert.assertNotNull(homePropertyPage.checkArticleTitleElement(), "Home Proeprty Page - Article Title is not shown as excpected.");
-				Assert.assertEquals(homePropertyPage.verifyArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
-				homePropertyPage.swipeArticlesLeft();
-				}	
+			verifyCallToAction();
 			}
 
 	
@@ -335,10 +292,98 @@ public class HomePropertyTest extends App {
 			welcomePage.tapGuestAccessButton();
 		}
 		
+
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		landingPage.tapPropertyTab();
+		Assert.assertTrue(landingPage.ispropertyTabSelected(), "Home tab is not selected on landing page");
 	}
-		//2697 - Scenario 1,2,3,4,5
-		// navigating to Property Dimension and verify "Articles" feature
 	
+	private void verifyCallToAction() {
+		Assert.assertNotNull(homePropertyPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
+		List<Object> list =  utils.readTestDataList("propertyDimension","articlesCarousel","articleViewPager");
+		JSONArray articlesArray = (JSONArray)list;
+		String articleTitle = new String();
+		String webViewUrl = new String();
+		for(int i=0; i<articlesArray.size(); i++) {
+			articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
+			homePropertyPage.swipeArticlesLeft(articleTitle);
+			webViewUrl = ((JSONObject)articlesArray.get(i)).get("webViewUrl").toString();
+			Assert.assertNotNull(homePropertyPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
+			Assert.assertNotNull(homePropertyPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Article button is MISSING!");
+			homePropertyPage.tapArticleReadMoreBtn();
+			Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(),"Home Proeprty Page - Article's webview is not shown as excpected.");
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),webViewUrl,"Home Proeprty Page - Article ReadMore page is not as expected.");
+			webviewPage.tapWebviewCloseButton();
+			Assert.assertNotNull(homePropertyPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
+			Assert.assertEquals(homePropertyPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+			
+			}	
+	}
+	
+	private void verifyArticlesNotRefreshed() {
+		Assert.assertNotNull(homePropertyPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
+		List<Object> list =  utils.readTestDataList("propertyDimension","articlesCarousel","articleViewPager");
+		JSONArray articlesArray = (JSONArray)list;
+		String articleTitle = new String();
+		String articleDesc = new String();
+		for(int i=0; i<articlesArray.size(); i++) {
+			articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
+			homePropertyPage.swipeArticlesLeft(articleTitle);
+			articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
+			Assert.assertNotNull(homePropertyPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
+			Assert.assertNotNull(homePropertyPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
+			Assert.assertNotNull(homePropertyPage.checkArticleDesc(), "Home Proeprty Page - Article description is not shown as expected.");
+			Assert.assertEquals(homePropertyPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+			Assert.assertEquals(homePropertyPage.getArticleDesc(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
+			Assert.assertNotNull(homePropertyPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Read More button is MISSING!");
+			
+			}	
+		
+	}
+	
+	private void verifySwipeLeftAndRight() {
+		List<Object> list =  utils.readTestDataList("propertyDimension","articlesCarousel","articleViewPager");
+		JSONArray articlesArray = (JSONArray)list;
+		int articlesArraySize = articlesArray.size();
+		if (articlesArraySize <= 1) {
+			Reporter.log("There are too few articles to test swipe functionality", true);
+		}
+		else {
+			String articleTitle = new String();
+			for (int i = 0; i<articlesArray.size() ; i++) {
+				articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
+				homePropertyPage.swipeArticlesLeft(articleTitle);
+				Assert.assertNotNull(homePropertyPage.checkArticleTitle(), "Home Proeprty Page - Next article swipe is not as excpected.");
+				Assert.assertEquals(homePropertyPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+				
+				}
+			
+			for (int j = articlesArraySize-1; j>0 ; j--) {
+				articleTitle = ((JSONObject)articlesArray.get(j-1)).get("articleTitle").toString();
+				homePropertyPage.swipeArticlesRight(articleTitle);
+				Assert.assertNotNull(homePropertyPage.checkArticleImage(), "Home Proeprty Page - Previous article swipe is not as excpected.");
+				Assert.assertEquals(homePropertyPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+				}
+			}
+	}
+
+	private void verifyArticleCarousel() {
+		List<Object> list =  utils.readTestDataList("propertyDimension","articlesCarousel","articleViewPager");
+		JSONArray articlesArray = (JSONArray)list;
+		String articleTitle = new String();
+		String articleDesc = new String();
+		for(int i=0; i<articlesArray.size(); i++) {
+			articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
+			homePropertyPage.swipeArticlesLeft(articleTitle);
+			articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
+			Assert.assertNotNull(homePropertyPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
+			Assert.assertNotNull(homePropertyPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
+			Assert.assertNotNull(homePropertyPage.checkArticleDesc(), "Home Proeprty Page - Article description is not shown as expected.");
+			Assert.assertEquals(homePropertyPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+			Assert.assertEquals(homePropertyPage.getArticleDesc(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
+			Assert.assertNotNull(homePropertyPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Read More button is MISSING!");
+			}	
+	}
+
 }

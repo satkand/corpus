@@ -23,17 +23,17 @@ public class HomePropertyPage extends BasePage {
 	private By homeJourneyBannerHeading = By.id("au.com.suncorp.marketplace:id/journeyHeadingText");
 	private By homeJourneyBannerDescription = By.id("au.com.suncorp.marketplace:id/journeyDescriptionText");
 	private By startYourJourneyButton = By.id("au.com.suncorp.marketplace:id/startHomeJourneyButton");
-	
+
 	private By addAPropertyOrPolicyButton = By.id("au.com.suncorp.marketplace:id/addPropertyOrPolicyActionText");
 	private By addAPropertyOrPolicyImage = By.id("au.com.suncorp.marketplace:id/addPropertyOrPolicyImage");
 	private By propertyInsightInfo = By.id("au.com.suncorp.marketplace:id/addPropertyOrPolicyInfo1Text");
 	private By organiseDocumentsInfo = By.id("au.com.suncorp.marketplace:id/addPropertyOrPolicyInfo2Text");
 	private By accessProfessionalInfo = By.id("au.com.suncorp.marketplace:id/addPropertyOrPropertyInfo3Text");
-	
+
 	private By addPropertyOrPolicyActionSheetTitle = By.id("au.com.suncorp.marketplace:id/propertyOrPolicySelectionText");
 	private By addPolicyActionSheetButton = By.id("au.com.suncorp.marketplace:id/addPolicyButton");
 	private By addPropertyActionSheetButton = By.id("au.com.suncorp.marketplace:id/addPropertyButton");
-	
+
 	private By activeClaimTitle = By.id("au.com.suncorp.marketplace:id/activeClaimText");
 	private By propertyImage = By.id("au.com.suncorp.marketplace:id/propertyImage");
 	private By addressLineText = By.id("au.com.suncorp.marketplace:id/addressLine1Text");
@@ -49,14 +49,14 @@ public class HomePropertyPage extends BasePage {
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
-	
-	
+
+
 	//DMPM-2644-Display background image elements initialization --Start--
 	private By propertyPillarBackgroundImg = By.id("au.com.suncorp.marketplace:id/propertyPillarBackground");
 	//DMPM-2644-Display background image elements initialization  --End--
-	
+
 	//Articles carousel elements initialization --Start--
-	
+
 	private By articleCarousel =	By.id("au.com.suncorp.marketplace:id/articleCarouselTitle");
 	private By articleCarouselDesc = By.id("au.com.suncorp.marketplace:id/articleCarouselDescription");
 	private By articleImage = By.id("au.com.suncorp.marketplace:id/articleImage");
@@ -64,23 +64,29 @@ public class HomePropertyPage extends BasePage {
 	private By articleReadMoreBtn = By.id("au.com.suncorp.marketplace:id/articleReadMoreAction");
 	private By articleTitle = By.id("au.com.suncorp.marketplace:id/articleTitle");
 	private By articleDesc = By.id("au.com.suncorp.marketplace:id/articleDescription");
-		
+
 	//Articles carousel elements initialization --End--
 	public WebElement checkBackButton() {
 		return find(backButton);
 	}
-	
+
 	public void tapBackButton() {
 		tapElement(backButton);
 	}
-		
+
 	//Article carousel elements utilization --Start
+	private String articleCarouselStr = "au.com.suncorp.marketplace:id/articleCarouselTitle";
+	private String articleReadMoreBtnStr = "au.com.suncorp.marketplace:id/articleReadMoreAction";
+	private String articleCarouselScrollableView = "au.com.suncorp.marketplace:id/articleViewPager";
+	//Articles carousel elements initialization--End--
+
+	//Article carousel element utilization --Start
 	public WebElement checkArticleImage() {
-		return find(articleImage, 2);
+		return find(articleImage);
 	}
-		
+
 	public WebElement checkArticleReadMoreBtn() {
-		return find(articleReadMoreBtn, 2);
+		return find(articleReadMoreBtn);
 	}
 
 	public void tapArticleReadMoreBtn() {
@@ -111,8 +117,29 @@ public class HomePropertyPage extends BasePage {
 		swipeHorizontallyToRight();
 	}
 
-	public void scrollToArticles() {
-		scrollToElement(articleCarousel, "true");
+	public WebElement checkArticleTitle() {
+		return find(articleTitle);
+	}
+
+	public String getArticleTitle() {
+		return find(articleTitle).getText();
+	}
+
+	public WebElement checkArticleDesc() {
+		return find(articleDesc);
+	}
+
+	public String getArticleDesc() {
+		return find(articleDesc).getText();
+	}
+
+	public void swipeArticlesLeft(String articleTitle) {
+		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableView);
+	}
+
+	public void swipeArticlesRight(String articleTitle) {
+		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableView);
+
 	}
 
 	public void scrollToArticlesReadMoreBtn() {
@@ -127,42 +154,48 @@ public class HomePropertyPage extends BasePage {
 		return getText(articleCarousel);
 	}
 
+
 	public WebElement checkArticleCarousalDescr() {
 		return find(articleCarouselDesc, 1);
+	}
+
+	public void scrollToArticles() {
+		scrollToElement(articleCarouselStr,"id", 10);
+		scrollToElement(articleReadMoreBtnStr,"id", 10);
 	}
 
 	public String verifyArticleCarousalDescr() {
 		return find(articleCarouselDesc, 1).getText();
 	}
 	//Article carousel elements utilization --End
-	
-	
+
+
 	//DMPM-2644-Display background image elements utilization  --Start--
 	public WebElement checkPropertyPillarBackGrndImg() {
 		return find(propertyPillarBackgroundImg);
 	}
 	//DMPM-2644-Display background image elements utilization  --End--
-		
+
 	public WebElement checkFeatureLockedMsgTitle() {
 		return find(featureLockedMsgTitle);
 	}
-	
+
 	public String getFeatureLockedMsgTitle() {
 		return getText(featureLockedMsgTitle);
 	}
-	
+
 	public WebElement checkFeatureLockedTextCopy() {
 		return find(featureLockedTextCopy);
 	}
-	
+
 	public String getFeatureLockedTextCopy() {
 		return getText(featureLockedTextCopy);
 	}
-	
+
 	public WebElement checkFeatureLockedMsgSignUpButton() {
 		return find(featureLockedMsgSignUpButton);
 	}
-	
+
 	public WebElement checkFeatureLockedMsgLogInButton() {
 		return find(featureLockedMsgLogInButton);
 	}
@@ -171,161 +204,161 @@ public class HomePropertyPage extends BasePage {
 		find(productDescriptionText);
 		return getTextList(productDescriptionText);
 	}
-	
+
 	public String getAddressLineText() {
 		find(addressLineText);
 		return getText(addressLineText);
 	}
-	
+
 	public String getSuburbTextList() {
 		find(suburbText);
 		return getText(suburbText);
 	}
-	
+
 	public WebElement checkbrandIcon() {
 		return find(brandIcon);
 	}
-	
+
 	public WebElement checkproductDescriptionText() {
 		return find(productDescriptionText);
 	}
-	
+
 	public String getproductDescriptionText() {
 		return getText(productDescriptionText);
 	}
-	
+
 	public WebElement checkproductIcon() {
 		return find(productIcon);
 	}
-	
+
 	public WebElement checksuburbText() {
 		return find(suburbText);
 	}
-	
+
 	public String getsuburbText() {
 		return getText(suburbText);
 	}
-	
+
 	public WebElement checkaddressLineText() {
 		return find(addressLineText);
 	}
-	
+
 	public String getaddressLineText() {
 		return getText(addressLineText);
 	}
-	
+
 	public WebElement checkpropertyImage() {
 		return find(propertyImage);
 	}
-	
+
 	public WebElement checkactiveClaimTitle() {
 		return find(activeClaimTitle);
 	}
-	
+
 	public String getactiveClaimTitle() {
 		return getText(activeClaimTitle);
 	}
-	
-	
+
+
 	public WebElement checkAddPropertyOrPolicyActionSheetTitle() {
 		return find(addPropertyOrPolicyActionSheetTitle);
 	}
-	
+
 	public String getAddPropertyOrPolicyActionSheetTitle() {
 		return getText(addPropertyOrPolicyActionSheetTitle);
 	}
-	
+
 	public WebElement checkAddPolicyActionSheetButton() {
 		return find(addPolicyActionSheetButton);
 	}
-	
+
 	public String getAddPolicyActionSheetButton() {
 		return getText(addPolicyActionSheetButton);
 	}
-	
+
 	public void tapAddPolicyActionSheetButton() {
 		tapElement(addPolicyActionSheetButton);
 	}
-	
+
 	public WebElement checkAddPropertyActionSheetButton() {
 		return find(addPropertyActionSheetButton);
 	}
-	
+
 	public String getAddPropertyActionSheetButton() {
 		return getText(addPropertyActionSheetButton);
 	}
-	
+
 	public void tapAddPropertyActionSheetButton() {
 		tapElement(addPropertyActionSheetButton);
 	}
-	
+
 	public WebElement checkAddAPropertyOrPolicyImage() {
 		return find(addAPropertyOrPolicyImage);
 	}
-	
+
 	public WebElement checkPropertyInsightInfo() {
 		return find(propertyInsightInfo);
 	}
-	
+
 	public String getPropertyInsightInfo() {
 		return getText(propertyInsightInfo);
 	}
-	
+
 	public WebElement checkOrganiseDocumentsInfo() {
 		return find(organiseDocumentsInfo);
 	}
-	
+
 	public String getOrganiseDocumentsInfo() {
 		return getText(organiseDocumentsInfo);
 	}
-	
+
 	public WebElement checkAccessProfessionalInfo() {
 		return find(accessProfessionalInfo);
 	}
-	
+
 	public String getAccessProfessionalInfo() {
 		return getText(accessProfessionalInfo);
 	}
-	
+
 	public void tapAddAPropertyOrPolicyButton() {
 		tapElement(addAPropertyOrPolicyButton);
 	}
-	
+
 	public WebElement checkAddAPropertyOrPolicyButton() {
 		return find(addAPropertyOrPolicyButton);
 	}
-	
+
 	public String getAddAPropertyOrPolicyButton() {
 		return getText(addAPropertyOrPolicyButton);
 	}
-	
+
 	public void scrollToJourneyBanner(){
 		scrollToElement(startYourJourneyButton, "true");
 	}
-	
+
 	public WebElement checkHomeJourneyBannerImage() {
 		return find(homeJourneyBannerImage);
 	}
-	
+
 	public String getHomeJourneyBannerHeading() {
 		return getText(homeJourneyBannerHeading);
 	}
-	
+
 	public String getHomeJourneyBannerDescription() {
 		return getText(homeJourneyBannerDescription);
 	}
-	
+
 	public WebElement checkStartYourJourneyButton() {
 		return find(startYourJourneyButton);
 	}
-	
+
 	public void tapStartYourJourneyButton() {
 		tapElement(startYourJourneyButton);
 	}
-	
+
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
-		
+
 	}
 
 }

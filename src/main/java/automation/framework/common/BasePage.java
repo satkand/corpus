@@ -281,6 +281,35 @@ public class BasePage {
 		}
 	}
 	
+	protected WebElement scrollHorizontallyToElement(String locatorString, String locatorType,String scrollableId,int... args) {
+
+		WebElement element =null;
+
+		int timeout = (args.length > 0 ? args[0] : 15);
+
+		switch (locatorType) {
+		case "text":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector().resourceId(\""+ scrollableId +"\")).setAsHorizontalList().scrollIntoView(new UiSelector().text(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+		case "id":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector().resourceId(\"" + scrollableId +"\")).setAsHorizontalList().scrollIntoView(new UiSelector().resourceId(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+		case "desc":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector().resourceId(\"" +scrollableId+"\")).setAsHorizontalList().scrollIntoView(new UiSelector().description(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+
+		}	
+		return element;
+
+	}
+
+	
 	// TODO -> Different in iOS -> change it and test it if it works for android as well
 	protected void tapOnBottomRightCorner() {
 		int screenHeight = driver.manage().window().getSize().getHeight();
@@ -442,6 +471,34 @@ public class BasePage {
 
 		}
 
+	}
+	
+	protected WebElement scrollToElement(String locatorString, String locatorType,int... args) {
+
+		WebElement element =null;
+
+		int timeout = (args.length > 0 ? args[0] : 15);
+
+		switch (locatorType) {
+		case "text":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+		case "id":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().resourceId(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+		case "desc":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+
+		}
+
+		return element;
 	}
 	
 	protected WebElement findByUIAutomator(String locatorString, String locatorType) {
