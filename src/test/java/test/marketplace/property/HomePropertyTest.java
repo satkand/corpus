@@ -158,7 +158,8 @@ public class HomePropertyTest extends App {
 	
 	
 	//Story DMPM 2644, test cases covered are DMPM-3064.
-	@Test (groups = {"DMPM-2644", "DMPM-3064", "marketplace", "Home property pillar", "priority-minor"})
+	@TestDetails(story1 = "DMPM-2644:DMPM-3064")
+	@Test (groups = {"DMPM-3064", "marketplace", "Home property pillar", "priority-minor"})
 	public void testHomePropertyPillarBackGrndImg() {
 		//Preconditions
 		//1. Navigate to Home Property dimension.
