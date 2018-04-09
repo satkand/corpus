@@ -14,6 +14,8 @@ public class GalleryPage extends BasePage {
 	private By galleryTitle = By.xpath("//android.view.ViewGroup/android.widget.TextView");
 	private By pictureFolder = By.xpath("//android.widget.RelativeLayout/android.widget.TextView[@text='Pictures']");
 	private By firstPicture = By.xpath("//android.support.v7.widget.RecyclerView/android.view.ViewGroup[@index='1']");
+	private By galleryCancelButton = By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']");
+
 	private String galleryTitleGoogle = "Select a photo";
 	private String galleryTitleSamsung = "Gallery";
 	private String cameraFolderGoogle = "Camera";
@@ -26,6 +28,7 @@ public class GalleryPage extends BasePage {
 			"new UiSelector().className(\"com.sec.samsung.gallery.glview.composeView.PositionControllerBase$ThumbObject\").instance(0)");
 	private String cameraFolderTitleSamsung = "Camera";
 	private By cameraFolder = By.id("com.sec.android.gallery3d:id/gl_root_view");
+
 
 	public GalleryPage(AppiumDriver driver) {
 		super(driver);
@@ -59,6 +62,12 @@ public class GalleryPage extends BasePage {
 
 		return find(galleryTitle);
 	}
+
+
+	public WebElement checkGalleryCancelButton() {
+		return find(galleryCancelButton);
+	}
+	
 
 	public WebElement checkGalleryTitleGoogleLG() {
 
@@ -104,6 +113,12 @@ public class GalleryPage extends BasePage {
 
 		tapElement(firstPicture);
 	}
+
+	
+	public void tapGalleryCancelButton() {
+		tapElement(galleryCancelButton);
+	}
+	
 
 	public void tapFirstPictureSamsung() {
 

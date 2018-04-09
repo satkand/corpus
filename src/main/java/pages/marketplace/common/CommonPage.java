@@ -34,6 +34,13 @@ public class CommonPage extends BasePage {
 	
 	public void goBack() {
 		navigateBack();
+		//TODO: The below sleep is to be removed once we find a better approach to handle this
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
