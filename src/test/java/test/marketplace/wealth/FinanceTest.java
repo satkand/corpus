@@ -68,7 +68,7 @@ public class FinanceTest extends App {
 		
 		//TODO This logic is for enabling the bank accounts option in settings, This needs to be removed, when the logic for fetching the the bank accounts from api is implemented
 		navigationMenu.tapSplitMenuIcon();
-		navigationMenu.tapFAPISettingsMenuItem();
+		navigationMenu.tapDevSettings();
 		configPage.enableHasBankAccountsToggle();
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
@@ -85,7 +85,7 @@ public class FinanceTest extends App {
 		
 		//TODO This logic is for enabling the bank accounts option in settings, This needs to be removed, when the logic for fetching the the bank accounts from api is implemented
 		navigationMenu.tapSplitMenuIcon();
-		navigationMenu.tapFAPISettingsMenuItem();
+		navigationMenu.tapDevSettings();
 		configPage.disableHasBankAccountsToggle();
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
