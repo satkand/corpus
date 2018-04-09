@@ -67,15 +67,16 @@ public class HomePropertyPage extends BasePage {
 	
 	private String articleCarouselStr = "au.com.suncorp.marketplace:id/articleCarouselTitle";
 	private String articleReadMoreBtnStr = "au.com.suncorp.marketplace:id/articleReadMoreAction";
+	private String articleCarouselScrollableView = "au.com.suncorp.marketplace:id/articleViewPager";
 	//Articles carousel elements initialization--End--
 	
 	//Article carousel element utilization --Start
 	public WebElement checkArticleImage() {
-		return find(articleImage, 2);
+		return find(articleImage);
 	}
 	
 	public WebElement checkArticleReadMoreBtn() {
-		return find(articleReadMoreBtn, 2);
+		return find(articleReadMoreBtn);
 	}
 	
 	public void tapArticleReadMoreBtn() {
@@ -83,28 +84,27 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public WebElement checkArticleTitle() {
-		return find(articleTitle, 2);
+		return find(articleTitle);
 	}
 	
 	public String getArticleTitle() {
-		return find(articleTitle, 5).getText();
+		return find(articleTitle).getText();
 	}
 	
 	public WebElement checkArticleDesc() {
-		return find(articleDesc, 2);
+		return find(articleDesc);
 	}
 	
 	public String getArticleDesc() {
-		return find(articleDesc, 2).getText();
+		return find(articleDesc).getText();
 	}
 	
-	public void swipeArticlesLeft() {
-		swipeHorizontallyToLeft();
+	public void swipeArticlesLeft(String articleTitle) {
+		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableView);
 	}
 	
-	public void swipeArticlesRight() {
-		
-		swipeHorizontallyToRight(0.20, 0.6, 0.9, 0.6);
+	public void swipeArticlesRight(String articleTitle) {
+		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableView);
 	}
 	
 	public WebElement checkArticleCarousel() {
@@ -116,9 +116,9 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public void scrollToArticles() {
-		
-		scrollToElement(articleCarousel, "true");
-		scrollToElement(articleReadMoreBtnStr,"id");
+	
+		scrollToElement(articleCarouselStr,"id", 10);
+		scrollToElement(articleReadMoreBtnStr,"id", 10);
 	}
 	
 	
