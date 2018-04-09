@@ -23,7 +23,7 @@ import pages.App;
 
 public class HomePropertyTest extends App {
 	
-	//@Test (groups = {"DMPM-86", "DMPM-857", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-86", "DMPM-857", "marketplace", "Home buying journey", "priority-minor"})
 	public void testHomePropertyPageElements() {
 		navigateToHomePropertyTab("guest");
 		
@@ -37,7 +37,7 @@ public class HomePropertyTest extends App {
 	// 86 - scenario
 	// 503 - Scenario 1
 	// navigating to home journey screen and again navigating back to home property screen
-	//@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToHomeJourneyScreen() {
 		navigateToHomePropertyTab("guest");
 		homePropertyPage.scrollToJourneyBanner();
@@ -50,7 +50,7 @@ public class HomePropertyTest extends App {
 	//Story 2627 - Scenario 1 (TC : DMPM-3504) and scenario 2 (TC: DMPM-3505)
 	//Story 2620 - Scenario 2 (No Assets - Display my property assets - TC-DMPM-3548)
 	// navigating to Property tap on add a property or policy button
-	//@Test (groups = {"DMPM-2627", "DMPM-3504","DMPM-3505","DMPM-2620","DMPM-3548", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2627", "DMPM-3504","DMPM-3505","DMPM-2620","DMPM-3548", "marketplace", "Home buying journey", "priority-minor"})
 	public void testAddAPropertyOrPolicy() {
 		navigateToHomePropertyTab("noProperties");
 		
@@ -91,7 +91,7 @@ public class HomePropertyTest extends App {
 	//2997 - scenario 1
 	//2620 - scenario 1
 	// navigating to Property tab and verify products
-	//@Test (groups = {"DMPM-2646", "DMPM-4037","DMPM-2997","DMPM-4014","DMPM-2620","DMPM-3541", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2646", "DMPM-4037","DMPM-2997","DMPM-4014","DMPM-2620","DMPM-3541", "marketplace", "Home buying journey", "priority-minor"})
 	public void testDisplayActiveProductsAssociatedWithAPropertyAsset() {
 			
 		navigateToHomePropertyTab("withProducts");
@@ -119,7 +119,7 @@ public class HomePropertyTest extends App {
 	//2646 - scenario 2 
 	//2997 - scenario 2
 	// navigating to Property tab and verify empty state for products
-	//@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017", "marketplace", "Home buying journey", "priority-minor"})
 	public void testDisplayEmptyStateForPropertyAsset() {
 		
  		navigateToHomePropertyTab("withOutProducts");
@@ -137,7 +137,7 @@ public class HomePropertyTest extends App {
 	//3799 - scenario 1 (TC-DMPM-3506)
 	//2620 - scenario 3 (TC-DMPM-3549)
 	//Add a property or policy (Guest Experience)
-	//@Test (groups = {"DMPM-2799","DMPM-3506","DMPM-2620","DMPM-3549", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2799","DMPM-3506","DMPM-2620","DMPM-3549", "marketplace", "Home buying journey", "priority-minor"})
 	public void testAddPolicyGuestExperience() {
 			
 		navigateToHomePropertyTab("guest");
@@ -157,7 +157,7 @@ public class HomePropertyTest extends App {
 	}
 	
 	
-	 //Story DMPM 2644, test cases covered are DMPM-3064.
+	//Story DMPM 2644, test cases covered are DMPM-3064.
 	@Test (groups = {"DMPM-2644", "DMPM-3064", "marketplace", "Home property pillar", "priority-minor"})
 	public void testHomePropertyPillarBackGrndImg() {
 		//Preconditions
@@ -174,8 +174,8 @@ public class HomePropertyTest extends App {
 	 * Story DMPM-4318, Test cases covered are DMPM-4316, DMPM-4290.
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	
-	@Test (groups = {"DMPM-2697", "DMPM-3074", "DMPM-4318", "DMPM-4316","DMPM-4290", "marketplace", "Home property articles", "priority-minor"})
+	@TestDetails(story1 = "DMPM-2697:DMPM-3074", story2= "DMPM-4318:DMPM-4316,DMPM-4290")
+	@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesElements() {
 		//Preconditions
 		//1. Navigate to Home Property dimension and then to articles carousel.
@@ -194,30 +194,7 @@ public class HomePropertyTest extends App {
 		
 		//DMPM-4290 Step 1: Verify article properties present
 		//DMPM-3074 Step 1: Verify each element of every article and then validate the content against the test data json
-		List<Object> list =  utils.readTestDataList("copy","articlesCarousel","articleViewPager");
-		JSONArray articlesArray = (JSONArray)list;
-		for(int i=0; i<articlesArray.size(); i++) {
-			
-			String articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
-			String articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
-			
-			//Verify background Image.
-			Assert.assertNotNull(homePropertyPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
-			
-			//Verify Article Title.
-			Assert.assertNotNull(homePropertyPage.checkArticleTitleElement(), "Home Proeprty Page - Article Title is not as excpected.");
-			Assert.assertEquals(homePropertyPage.verifyArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
-			
-			//Verify Article description.
-			Assert.assertNotNull(homePropertyPage.checkArticleDescElement(), "Home Proeprty Page - Article description is not shown as expected.");
-			Assert.assertEquals(homePropertyPage.verifyArticleDescription(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
-			
-			//Verify Article Read More button.
-			Assert.assertNotNull(homePropertyPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Read More button is MISSING!");
-			
-			//Swipe to next Article in the carousel.
-			homePropertyPage.swipeArticlesLeft();
-			}	
+		verifyArticleCarousel();
 		}
 	
 	/*
@@ -226,8 +203,8 @@ public class HomePropertyTest extends App {
 	 * DMPM-3076: Display previous article [Verify each article elements and validate the contents against test data]
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	
-	@Test (groups = {"DMPM-2697", "DMPM-3075", "DMPM-3706", "marketplace", "Home property articles", "priority-minor"})
+	@TestDetails(story1 = "DMPM-2697:DMPM-3075,DMPM-3706")
+	@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesPreviousElements() {
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
@@ -236,7 +213,7 @@ public class HomePropertyTest extends App {
 			Assert.assertNotNull(homePropertyPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
 			
 			//Step 1,2: Verify swiping carousel in forward order then repeat the same in backwards order.
-			verifyArticlesNotRefreshed();
+			verifySwipeLeftAndRight();
 			}
 	
 	
@@ -245,7 +222,8 @@ public class HomePropertyTest extends App {
 	 * DMPM-3085:Do not refresh articles displayed if the application has successfully loaded the content for the first time.
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	@Test (groups = {"DMPM-2697", "DMPM-3085", "marketplace", "Home property articles", "priority-minor"})
+	@TestDetails(story1 = "DMPM-2697:DMPM-3085")
+	@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesRefresh() {
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
@@ -267,8 +245,9 @@ public class HomePropertyTest extends App {
 	 *Story DMPM 2697, Test case covered,
 	 * DMPM-3077: Redirect user to an external url. [Verify each article Readmore and validate the external URL launched against test data]
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
-	 */	
-	@Test (groups = {"DMPM-2697", "DMPM-3077", "marketplace", "Home property articles", "priority-minor"})
+	 */
+	@TestDetails(story1 = "DMPM-2697:DMPM-3077")
+	@Test (groups = { "marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesCallToAction() throws InterruptedException {
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
@@ -369,21 +348,31 @@ public class HomePropertyTest extends App {
 	}
 
 	private void verifyArticleCarousel() {
-		List<Object> list =  utils.readTestDataList("propertyDimension","articlesCarousel","articleViewPager");
+
+
+		List<Object> list =  utils.readTestDataList("copy","articlesCarousel","articleViewPager");
 		JSONArray articlesArray = (JSONArray)list;
-		String articleTitle = new String();
-		String articleDesc = new String();
 		for(int i=0; i<articlesArray.size(); i++) {
-			articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
-			homePropertyPage.swipeArticlesLeft(articleTitle);
-			articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
+
+			String articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
+			homePropertyPage.swipeArticlesLeft();
+			String articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
+
+			//Verify background Image.
 			Assert.assertNotNull(homePropertyPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
-			Assert.assertNotNull(homePropertyPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
-			Assert.assertNotNull(homePropertyPage.checkArticleDesc(), "Home Proeprty Page - Article description is not shown as expected.");
-			Assert.assertEquals(homePropertyPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
-			Assert.assertEquals(homePropertyPage.getArticleDesc(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
+
+			//Verify Article Title.
+			Assert.assertNotNull(homePropertyPage.checkArticleTitleElement(), "Home Proeprty Page - Article Title is not as excpected.");
+			Assert.assertEquals(homePropertyPage.verifyArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+
+			//Verify Article description.
+			Assert.assertNotNull(homePropertyPage.checkArticleDescElement(), "Home Proeprty Page - Article description is not shown as expected.");
+			Assert.assertEquals(homePropertyPage.verifyArticleDescription(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
+
+			//Verify Article Read More button.
 			Assert.assertNotNull(homePropertyPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Read More button is MISSING!");
-			}	
+		}	
+
 	}
 
 }
