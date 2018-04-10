@@ -23,7 +23,7 @@ public class PINOptionsPage extends BasePage{
 	}
 
 	public WebElement checkEnablePinButton(){
-		return find(enablePinButton,20);
+		return find(enablePinButton,45);
 	}
 	
 	public WebElement checkMaybeLaterButton(){
