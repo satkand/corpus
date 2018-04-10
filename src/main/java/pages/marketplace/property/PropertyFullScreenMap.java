@@ -19,6 +19,122 @@ public class PropertyFullScreenMap extends BasePage{
 	private By fullScreenMapTitle= By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']//android.widget.TextView");
 	private By fullScreenMap= MobileBy.AccessibilityId("Google Map");
 	
+	private By propertyTab = By.xpath("//android.widget.TextView[@text='PROPERTY']");
+	private By educationTab = By.xpath("//android.widget.TextView[@text='EDUCATION']");
+	private By shoppingTab = By.xpath("//android.widget.TextView[@text='SHOPPING']");
+	private By transportTab = By.xpath("//android.widget.TextView[@text='TRANSPORT']");
+	private By entertainmentTab = By.xpath("//android.widget.TextView[@text='ENTERTAINMENT']");
+	private By healthTab = By.xpath("//android.widget.TextView[@text='HEALTH']");
+	private By diningTab = By.xpath("//android.widget.TextView[@text='DINING']");
+	private By otherTab = By.xpath("//android.widget.TextView[@text='OTHER']");
+	
+	//Map location indicators
+	private By educationCentreIndicator = MobileBy.AccessibilityId("NorthanMelbourneInstituteOfTAFE. ");
+	private By shoppingAmenityIndicator = MobileBy.AccessibilityId("Penny Blue. ");
+	private By transportAmenityIndicator = MobileBy.AccessibilityId("Elizabeth St. ");
+	private By entertainmentOutletIndicator = MobileBy.AccessibilityId("Federal Coffee Palace. ");
+	private By healthCentreIndicator = MobileBy.AccessibilityId("Derma Tech Centre. ");
+	private By diningCentreIndicator = MobileBy.AccessibilityId("secret garden restraunt. ");
+	private By otherAmenityIndicator = MobileBy.AccessibilityId("Coomonwealth bank Niddrie. ");
+	
+	private String tabBarID = "au.com.suncorp.marketplace:id/nearbyCategoryAppBarLayout";
+	
+	public boolean isPropertyTabSelected() {
+		return isEnabled(propertyTab);
+	}
+
+	public WebElement checkEducationCentreIndicator() {
+		return find(educationCentreIndicator);
+	}
+	
+	public WebElement checkShoppingAmenityIndicator() {
+		return find(shoppingAmenityIndicator);
+	}
+	
+	public WebElement checkTransportAmenityIndicator() {
+		return find(transportAmenityIndicator);
+	}
+	
+	public WebElement checkEntertainmentOutletIndicator() {
+		return find(entertainmentOutletIndicator);
+	}
+	
+	public WebElement checkHealthCentreIndicator() {
+		return find(healthCentreIndicator);
+	}
+	
+	public WebElement checkDiningCentreIndicator() {
+		return find(diningCentreIndicator);
+	}
+	
+	public WebElement checkOtherAmenityIndicator() {
+		return find(otherAmenityIndicator);
+	}
+	
+	public WebElement checkPropertyTab() {
+		return find(propertyTab);
+	}
+	
+	public void tapPropertyTab() {
+		tapElement(propertyTab);
+	}
+	
+	public WebElement checkEducationTab() {
+		return find(educationTab);
+	}
+	
+	public void tapEducationTab() {
+		tapElement(educationTab);
+	}
+	
+	public WebElement checkShoppingTab() {
+		return find(shoppingTab);
+	}
+	
+	public void tapShoppingTab() {
+		tapElement(shoppingTab);
+	}
+	
+	public WebElement checkTransportTab() {
+		return find(transportTab);
+	}
+	
+	public void tapTransportTab() {
+		tapElement(transportTab);
+	}
+	
+	public WebElement checkEntertainmentTab() {
+		return find(entertainmentTab);
+	}
+	
+	public void tapEntertainmentTab() {
+		tapElement(entertainmentTab);
+	}
+	
+	public WebElement checkHealthTab() {
+		return find(healthTab);
+	}
+	
+	public void tapHealthTab() {
+		tapElement(healthTab);
+	}
+	
+	public WebElement checkDiningTab() {
+		return find(diningTab);
+	}
+	
+	public void tapDiningTab() {
+		tapElement(diningTab);
+	}
+	
+	public WebElement checkOtherTab() {
+		return find(otherTab);
+	}
+	
+	public void tapOtherTab() {
+		tapElement(otherTab);
+	}
+	
 	public WebElement checkFullScreenMapCloseButton() {
 		return find(fullScreenMapCloseButton);
 	}

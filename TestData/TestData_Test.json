@@ -104,6 +104,11 @@
 					"enterAdress":"1",
 					"highConfidenceAddress":"2"
 		},
+		"propertyHub":{
+					"login":"a@b.c",
+					"pwd":"Password1",
+					"searchText":"1"
+		},
 		"NoProperties":{
 					"login": "a@b.c",
 					"pwd": "Password1"

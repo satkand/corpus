@@ -3,6 +3,7 @@ package test.marketplace.property;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.Copy;
 import automation.framework.common.TestDetails;
 import automation.framework.common.TestDetails.Priority;
 import pages.App;
@@ -248,6 +249,72 @@ public class PropertyDetailsTest extends App{
 				
 				
 		}
+	
+	@TestDetails(story1 = "DMPM-4151:DMPM-5587,DMPM-5588", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Property Hub", "priority-minor" })
+	public void testDisplayPointOfInterestCategories() {
+		navigateToPropertyDetails("StartYourJourney","HighConfident");
+		propertyDetailsPage.scrollToWhatsNearButton();
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
+		
+		propertyExplorerPage.tapMiniMapWhatsNearByButton();
+		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertTrue(propertyFullScreenMap.isPropertyTabSelected(), "Whats nearby Page - Property tab is not selected by default");
+		
+		Assert.assertNotNull(propertyFullScreenMap.checkEducationTab(), "Whats nearby Page - Education tab is not present");
+		propertyFullScreenMap.tapEducationTab();
+		Assert.assertNotNull(propertyFullScreenMap.checkEducationCentreIndicator(), "Whats nearby Page - Education centre indicator is not present");
+		
+		Assert.assertNotNull(propertyFullScreenMap.checkShoppingTab(), "Whats nearby Page - Shopping tab is not present");
+		propertyFullScreenMap.tapShoppingTab();
+		Assert.assertNotNull(propertyFullScreenMap.checkShoppingAmenityIndicator(), "Whats nearby Page - Shopping Amenity Indicator is not present");
+		
+		Assert.assertNotNull(propertyFullScreenMap.checkTransportTab(), "Whats nearby Page - Transport tab is not present");
+		propertyFullScreenMap.tapTransportTab();
+		Assert.assertNotNull(propertyFullScreenMap.checkTransportAmenityIndicator(), "Whats nearby Page - transport Amenity Indicator is not present");
+	
+		Assert.assertNotNull(propertyFullScreenMap.checkEntertainmentTab(), "Whats nearby Page - Entertainment tab is not present");
+		propertyFullScreenMap.tapEntertainmentTab();
+		Assert.assertNotNull(propertyFullScreenMap.checkEntertainmentOutletIndicator(), "Whats nearby Page - Entertainment Amenity Indicator is not present");
+		
+		Assert.assertNotNull(propertyFullScreenMap.checkHealthTab(), "Whats nearby Page - Health tab is not present");
+		propertyFullScreenMap.tapHealthTab();
+		Assert.assertNotNull(propertyFullScreenMap.checkHealthCentreIndicator(), "Whats nearby Page - Health Amenity Indicator is not present");
+		
+		Assert.assertNotNull(propertyFullScreenMap.checkDiningTab(), "Whats nearby Page - Dining tab is not present");
+		propertyFullScreenMap.tapDiningTab();
+		Assert.assertNotNull(propertyFullScreenMap.checkDiningCentreIndicator(), "Whats nearby Page - Dining amenity Indicator is not present");
+		
+		Assert.assertNotNull(propertyFullScreenMap.checkOtherTab(), "Whats nearby Page - Dining tab is not present");
+		propertyFullScreenMap.tapOtherTab();
+		Assert.assertNotNull(propertyFullScreenMap.checkOtherAmenityIndicator(), "Whats nearby Page - Other Amenity Indicator is not present");
+		
+	}
+	
+	@TestDetails(story1 = "DMPM-3663:DMPM-5577,DMPM-5578,DMPM-5579,", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Property Hub", "priority-minor" })
+	public void testDisplayOptionToSaveProperty() {
+		navigateToPropertyDetails("StartYourJourney","HighConfident");
+		Assert.assertNotNull(propertyDetailsPage.checkThisIsMyPropertyLabel(), "Property details page - This is my property label is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkThisIsMyPropertyInfo(), "Property details page - This is my property info icon is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkThisIsMyPropertyToggleButton(), "Property details page - This is my property toggle button is not present");
+		Assert.assertEquals(propertyDetailsPage.getThisIsMyPropertyLabel(), Copy.PROPERTY_DETAILS_THIS_IS_MY_PROPERTY_LABEL,"this is my property label is not matching");
+		
+		propertyDetailsPage.tapThisIsMyPropertyToggleButton();
+		Assert.assertNotNull(propertyDetailsPage.checkMyPropertyBottomSheetTitleLabel(), "Property details page - This is my property label is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkMyPropertyBottomSheetOwnerOccupierButton(), "Property details page - This is my property label is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkMyPropertyBottomSheetRenterButton(), "Property details page - This is my property info icon is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkMyPropertyBottomSheetLandLordButton(), "Property details page - This is my property toggle button is not present");
+		Assert.assertEquals(propertyDetailsPage.getMyPropertyBottomSheetTitleLabel(), Copy.PROPERTY_DETAILS_BOTTOM_SHEET_TITLE,"my property label is not matching in the bottom sheet");
+		Assert.assertEquals(propertyDetailsPage.getMyPropertyBottomSheetOwnerOccupierButton(), Copy.PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT,"my property label is not matching in the bottom sheet");
+		Assert.assertEquals(propertyDetailsPage.getMyPropertyBottomSheetRenterButton(), Copy.PROPERTY_DETAILS_RENTER_BUTTON_TEXT,"my property label is not matching in the bottom sheet");
+		Assert.assertEquals(propertyDetailsPage.getMyPropertyBottomSheetLandLordButton(), Copy.PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT,"my property label is not matching in the bottom sheet");
+		
+		propertyDetailsPage.tapOutsideOfMyPropertyBottomSheet();
+		Assert.assertNull(propertyDetailsPage.checkMyPropertyBottomSheetTitleLabel(), "Property details page - This is my property label still presents after cancelling the bottom sheet");
+		Assert.assertFalse(propertyDetailsPage.isToggleButtonSelected(), "This is my property toggle button is selected even after dismissing the bottom sheet");
+		
+	}
 			
 	public void navigateToPropertyDetails(String navigationPath, String confidenceLevel) {
 		

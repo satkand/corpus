@@ -223,6 +223,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public void tapAddAPropertyOrPolicyButton() {
+		scrollToElement(addAPropertyOrPolicyButton, "true");
 		tapElement(addAPropertyOrPolicyButton);
 	}
 	
@@ -237,7 +238,7 @@ public class HomePropertyPage extends BasePage {
 	public void scrollToJourneyBanner(){
 		scrollToElement(startYourJourneyButton, "true");
 	}
-	
+
 	public void scrollToSuppliedAsset(){
 		scrollToElement(emptyStatePropertyAsset, "true");
 	}

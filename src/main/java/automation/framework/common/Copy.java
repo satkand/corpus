@@ -9,5 +9,18 @@ public interface Copy {
 	
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
-
+	
+	//PROPERTYHUB PAGE
+	public String PROPERTY_HUB_DESCRIPTION_HEADING ="Explore valuable insights on suburbs & properties";
+	public String PROPERTY_HUB_DESCRIPTION ="Find your perfect property and save it as a favourite, or explore whats nearby.";
+	public String PROPERTY_HUB_TITLE_TEXT ="Property Hub";
+	public String PROPERTY_HUB_SEARCH_HINT = "Search address";
+	
+	//PROPERTY DETAILS PAGE
+	public String PROPERTY_DETAILS_THIS_IS_MY_PROPERTY_LABEL ="This is my property";
+	public String PROPERTY_DETAILS_BOTTOM_SHEET_TITLE ="My property";
+	public String PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT ="Owner/Occupier";
+	public String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
+	public String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
+	
 }
