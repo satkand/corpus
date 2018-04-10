@@ -93,22 +93,6 @@ public class HomePropertyPage extends BasePage {
 		tapElement(articleReadMoreBtn);
 	}
 
-	public WebElement checkArticleTitleElement() {
-		return find(articleTitle, 2);
-	}
-
-	public String verifyArticleTitle() {
-		return find(articleTitle, 5).getText();
-	}
-
-	public WebElement checkArticleDescElement() {
-		return find(articleDesc, 2);
-	}
-
-	public String verifyArticleDescription() {
-		return find(articleDesc, 2).getText();
-	}
-
 	public void swipeArticlesLeft() {
 		swipeHorizontallyToLeft();
 	}
@@ -143,7 +127,7 @@ public class HomePropertyPage extends BasePage {
 	}
 
 	public void scrollToArticlesReadMoreBtn() {
-		scrollToElement(articleReadMoreBtn,"true");
+		scrollToArticles();
 	}
 
 	public WebElement checkArticleCarousel() {

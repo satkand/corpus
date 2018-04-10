@@ -363,12 +363,12 @@ public class HomePropertyTest extends App {
 			Assert.assertNotNull(homePropertyPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
 
 			//Verify Article Title.
-			Assert.assertNotNull(homePropertyPage.checkArticleTitleElement(), "Home Proeprty Page - Article Title is not as excpected.");
-			Assert.assertEquals(homePropertyPage.verifyArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+			Assert.assertNotNull(homePropertyPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not as excpected.");
+			Assert.assertEquals(homePropertyPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
 
 			//Verify Article description.
-			Assert.assertNotNull(homePropertyPage.checkArticleDescElement(), "Home Proeprty Page - Article description is not shown as expected.");
-			Assert.assertEquals(homePropertyPage.verifyArticleDescription(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
+			Assert.assertNotNull(homePropertyPage.checkArticleDesc(), "Home Proeprty Page - Article description is not shown as expected.");
+			Assert.assertEquals(homePropertyPage.getArticleDesc(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
 
 			//Verify Article Read More button.
 			Assert.assertNotNull(homePropertyPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Read More button is MISSING!");
