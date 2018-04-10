@@ -19,7 +19,7 @@ public class LoginPage extends BasePage{
 	private By emailField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
 	private By passwordField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By loginButton = By.id("au.com.suncorp.marketplace:id/loginButton");
-	private By helpButton = By.id("au.com.suncorp.marketplace:id/login_help_text");
+	private By forgotPasswordButton = By.id("au.com.suncorp.marketplace:id/forgotPasswordButton");
 	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
 	private By noCredentialsButton = By.id("au.com.suncorp.marketplace:id/noCredentialsButton");
 
@@ -94,8 +94,8 @@ public class LoginPage extends BasePage{
 	}
 
 	
-	public WebElement checkHelpButton(){
-		return find(helpButton);
+	public WebElement checkForgotPasswordButton(){
+		return find(forgotPasswordButton);
 	}
 	
 	public WebElement checkBackButton(){
