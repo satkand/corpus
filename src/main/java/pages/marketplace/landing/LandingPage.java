@@ -18,7 +18,7 @@ public class LandingPage extends BasePage {
 	private By chatbotOption = By.id("au.com.suncorp.marketplace:id/chatbotOption");
 	private String propertyTitle = "Property";
 	private String vehiclesTitle = "Vehicles";
-	private String naviScrollable = "au.com.suncorp.marketplace:id/navigationTabLayout";
+	private String naviScrollableId = "au.com.suncorp.marketplace:id/navigationTabLayout";
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='ONE SUNCORP']");
 	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLES']");
@@ -65,7 +65,7 @@ public class LandingPage extends BasePage {
 	}
 
 	public void tapPropertyTab() {
-		tapElement(scrollHorizontallyToElement(propertyTitle,"text",naviScrollable));
+		tapElement(scrollHorizontallyToElement(propertyTitle,"text",naviScrollableId));
 	}
 
 	public boolean ispropertyTabSelected() {
@@ -81,7 +81,7 @@ public class LandingPage extends BasePage {
 	}
 
 	public void tapVehiclesTab() {
-		tapElement(scrollHorizontallyToElement(vehiclesTitle,"text",naviScrollable));
+		tapElement(scrollHorizontallyToElement(vehiclesTitle,"text",naviScrollableId));
 	}
 
 	public boolean isVehiclesTabSelected() {
