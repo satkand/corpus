@@ -65,9 +65,9 @@ public class HomePropertyPage extends BasePage {
 	private By articleTitle = By.id("au.com.suncorp.marketplace:id/articleTitle");
 	private By articleDesc = By.id("au.com.suncorp.marketplace:id/articleDescription");
 	
-	private String articleCarouselStr = "au.com.suncorp.marketplace:id/articleCarouselTitle";
-	private String articleReadMoreBtnStr = "au.com.suncorp.marketplace:id/articleReadMoreAction";
-	private String articleCarouselScrollableView = "au.com.suncorp.marketplace:id/articleViewPager";
+	private String articleCarouselId = "au.com.suncorp.marketplace:id/articleCarouselTitle";
+	private String articleReadMoreBtnId = "au.com.suncorp.marketplace:id/articleReadMoreAction";
+	private String articleCarouselScrollableViewId = "au.com.suncorp.marketplace:id/articleViewPager";
 	//Articles carousel elements initialization--End--
 	
 	//Article carousel element utilization --Start
@@ -100,11 +100,11 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public void swipeArticlesLeft(String articleTitle) {
-		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableView);
+		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableViewId);
 	}
 	
 	public void swipeArticlesRight(String articleTitle) {
-		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableView);
+		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableViewId);
 	}
 	
 	public WebElement checkArticleCarousel() {
@@ -117,8 +117,8 @@ public class HomePropertyPage extends BasePage {
 	
 	public void scrollToArticles() {
 	
-		scrollToElement(articleCarouselStr,"id", 10);
-		scrollToElement(articleReadMoreBtnStr,"id", 10);
+		scrollToElement(articleCarouselId,"id", 10);
+		scrollToElement(articleReadMoreBtnId,"id", 10);
 	}
 	
 	

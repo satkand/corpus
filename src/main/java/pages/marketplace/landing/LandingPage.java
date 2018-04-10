@@ -30,44 +30,44 @@ public class LandingPage extends BasePage {
 	private By vehiclesTab = By.xpath("//android.widget.TextView[@text='VEHICLES']");
 	private By wealthTab = By.xpath("//android.widget.TextView[@text='WEALTH']");
 	private By healthTab = By.xpath("//android.widget.TextView[@text='HEALTH']");
-	*/
-	
+	 */
+
 	public WebElement checkLandingPageTitle() {
 		return find(landingPageTitle, 20);
 	}
-	
+
 	public WebElement checkChatbotOption() {
 		return find(chatbotOption, 20);
 	}
-	
+
 	public void tapChatbotOption(){
 		tapElement(chatbotOption);
 	}
-	
+
 	public WebElement checkSuncorpTab() {
 		return find(suncorpTab, 30);
 	}
-	
+
 	public void tapSuncorpTab() {
 		tapElement(suncorpTab);
 	}
-	
+
 	public boolean isSuncorpTabSelected() {
 		return isSelected(suncorpTab);
 	}
-	
+
 	public WebElement checkHomeTab() {
 		return find(homeTab);
 	}
-	
+
 	public void tapHomeTab() {
 		tapElement(homeTab);
 	}
-	
+
 	public void tapPropertyTab() {
 		tapElement(scrollHorizontallyToElement(propertyTitle,"text",naviScrollable));
 	}
-	
+
 	public boolean ispropertyTabSelected() {
 		String text = getScreenTitle(propertyTitle).getAttribute("selected");
 		return Boolean.parseBoolean(text);
@@ -75,51 +75,48 @@ public class LandingPage extends BasePage {
 	public boolean isHomeTabSelected() {
 		return isSelected(homeTab);
 	}
-	
+
 	public WebElement checkVehiclesTab() {
 		return find(vehiclesTab);
 	}
-	
+
 	public void tapVehiclesTab() {
-		//tapElement(vehiclesTab);
-		//tap element using new method in base-page
-		//tapElement(getScreenTitle(vehiclesTitle));
 		tapElement(scrollHorizontallyToElement(vehiclesTitle,"text",naviScrollable));
 	}
-	
+
 	public boolean isVehiclesTabSelected() {
 		return isSelected(vehiclesTab);
 	}
-	
+
 	public WebElement checkWealthTab() {
 		return find(wealthTab);
 	}
-	
+
 	public void tapWealthTab() {
 		tapElement(wealthTab);
 	}
-	
+
 	public boolean isWealthTabSelected() {
 		return isSelected(wealthTab);
 	}
-	
+
 	public WebElement checkHealthTab() {
 		return find(healthTab);
 	}
-	
+
 	public void tapHealthTab() {
 		tapElement(healthTab);
 	}
-	
+
 	public boolean isHealthTabSelected() {
 		return isSelected(healthTab);
 	}
-	
+
 	public void swipeToHealthTab() {
 		swipeHorizontally(vehiclesTab, suncorpTab);
 		swipeHorizontally(healthTab, vehiclesTab);
 	}	
-	
+
 	public void swipeToSuncorpTab() {
 		swipeHorizontally(vehiclesTab, healthTab);
 		swipeHorizontally(homeTab, vehiclesTab);
