@@ -19,6 +19,7 @@ public class GalleryPage extends BasePage {
 	private String galleryTitleGoogle = "Select a photo";
 	private String galleryTitleSamsung = "Gallery";
 	private String cameraFolderGoogle = "Camera";
+	private String pictureFolderGoogle = "Pictures";
 	private String picturesFolderSamsung = "PICTURES";
 	private By firstPictureGoogleLG = MobileBy.AndroidUIAutomator(
 			"new UiSelector().className(\"android.support.v7.widget.RecyclerView\").childSelector(new UiSelector().className(\"android.view.ViewGroup\").index(1))");
@@ -52,7 +53,7 @@ public class GalleryPage extends BasePage {
 				|| getDeviceAttribute("deviceManufacturer").equals("LGE")) {
 
 			checkGalleryTitleGoogleLG();
-			tapCameraFolderGoogleLG();
+			tapPictureFolderGoogleLG();
 			tapFirstPictureGoogleLG();
 		}
 
@@ -85,6 +86,11 @@ public class GalleryPage extends BasePage {
 		tapElement(pictureFolder);
 	}
 
+	public void tapPictureFolderGoogleLG() {
+
+		tapElement(findByUIAutomator(pictureFolderGoogle, "text"));
+	}
+	
 	public void tapCameraFolderGoogleLG() {
 
 		tapElement(findByUIAutomator(cameraFolderGoogle, "text"));
