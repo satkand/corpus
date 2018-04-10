@@ -116,10 +116,12 @@
          			"suburbText":"VIC 3064",
           			"productDescriptionText1": "Home and Contents protected until 10 October 2019",
          			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
-			}},
-		"articlesCarousel": {
+			}}
+	},
+	"articlesCarousel": {
 			"articleCarouselText":"Articles",
 			"articleReadMoreButton": "READ MORE",
+			"property": { 
 			"articleViewPager": [
 				{ 
 					"articleTitle" : "The 5 Steps to Master Renting",
@@ -136,9 +138,8 @@
 					"articleDescription" : "The price you see in the ads or at aunction is rarely the full price of buyign a house. We detail here some of the 'hidden' costs you need to watch out for.",
 					"webViewUrl" : "https://www.suncorp.com.au/learn-about/buying-a-home/estimating-costs-of-buying-a-home.html"
 				}
-			]
-		}
-	},
+			]}
+		},
 	"portfolio" :{
 		"loginEmptyProdList":{
 				"login": "a@b.c",
