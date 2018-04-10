@@ -3,9 +3,6 @@ package test.marketplace.portfolio;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import automation.framework.common.BasePage;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class MyProductsTest extends App {
 	// DMPM-240 Scenario 4
 	//106 - Scenario 1 (DMPM-389 and DMPM-411)
 	// 215 - Scenario 1 (DMPM-476)
-	@Test (groups = {"DMPM-106", "DMPM-389","DMPM-411","DMPM-215","DMPM-476", "marketplace", "portfolio", "priority-minor"})
+	@Test (groups = {"DMPM-106", "DMPM-389","DMPM-411","DMPM-215","DMPM-476","DMPM-240","DMPM-1327", "marketplace", "portfolio", "priority-minor"})
 	public void testElementsOnMyProductsPageWithEmptyState(){
 
 		navigateToMyProductsScreen("bankingProduct","loginEmptyProdList");
@@ -45,7 +42,7 @@ public class MyProductsTest extends App {
 
 	// DMPM-105 Scenario 3
 	// 106 - Scenario 2 (DMPM-393), Scenario 3 (DMPM-410)
-	@Test (groups = {"DMPM-106", "DMPM-393","DMPM-410", "DMPM-105","marketplace", "portfolio", "priority-minor"})
+	@Test (groups = {"DMPM-106", "DMPM-393","DMPM-410", "DMPM-105","DMPM-365","marketplace", "portfolio", "priority-minor"})
 	public void testProductSelectionOnEmptyScreen(){
 		
 		navigateToMyProductsScreen("bankingProduct","loginEmptyProdList");
@@ -83,7 +80,7 @@ public class MyProductsTest extends App {
 	// DMPM-240 - Scenario 2 -Display bank account
 	/*167 - Scenario 1 - DMPM-466
 	 DMPM-2988 : Update mapping for banking products*/
-	@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","marketplace", "portfolio", "priority-minor"})
+	@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","marketplace", "portfolio", "priority-minor"})
 	public void testDisplayBankAccounts(){
 		
 		navigateToMyProductsScreen("bankingProduct","loginProdList");
@@ -235,7 +232,7 @@ public class MyProductsTest extends App {
 
 	}
 
-	@Test(dataProvider = "policyData", groups = { "DMPM-2308", "DMPM-2714","DMPM-2093","DMPM-2675", "DMPM-105","marketplace", "portfolio",
+	@Test(dataProvider = "policyData", groups = { "DMPM-2308", "DMPM-2714","DMPM-2093","DMPM-2675", "DMPM-105","DMPM-363","marketplace", "portfolio",
 				"priority-major" })
 	public void testpolicyData(String policy, int riskNumber) {
 
@@ -297,7 +294,7 @@ public class MyProductsTest extends App {
 
 	}
 
-	@Test(dataProvider = "FutureDatePolicies", groups = { "DMPM-2189", "DMPM-3401", "DMPM-3402", "marketplace",
+	@Test(dataProvider = "FutureDatePolicies", groups = { "DMPM-2187", "DMPM-3397", "DMPM-3398", "DMPM-3399","DMPM-3400","marketplace",
 			"portfolio", "priority-major" })
 	
 	public void testFutureDatePolicy(String policy, int riskNumber) {
@@ -345,7 +342,7 @@ public class MyProductsTest extends App {
 	}
 	
 	// DMPM-2599 Display superannuation products
-		@Test(groups = { "DMPM-1014", "DMPM-4236", "marketplace", "portfolio", "priority-major" })
+		@Test(groups = { "DMPM-2599", "DMPM-3118", "marketplace", "portfolio", "priority-major" })
 		public void testLifeProducts()
 		{
 			

@@ -93,32 +93,26 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public List<String> fetchWealthProductTypeTextList() {
-		find(wealthProductAccountTypeLabel);
 		return getTextList(wealthProductAccountTypeLabel);
 	}
 	
 	public List<String> fetchLifeProductTypeTextList() {
-		find(lifeProductAccountTypeLabel);
 		return getTextList(lifeProductAccountTypeLabel);
 	}
 	
 	public List<String> fetchLifePolicyStatusList() {
-		find(lifePolicyStatus);
 		return getTextList(lifePolicyStatus);
 	}
 	
 	public List<String> fetchLifePolicyInsuredNamesList() {
-		find(insuredPersonName);
 		return getTextList(insuredPersonName);
 	}
 	
 	public List<String> fetchAccountNumberTextList() {
-		find(accountNumber);
 		return getTextList(accountNumber);
 	}
 	
 	public List<String> fetchWealthProductAccountNumberTextList() {
-		find(wealthProductAccountNumber);
 		return getTextList(wealthProductAccountNumber);
 	}
 	
