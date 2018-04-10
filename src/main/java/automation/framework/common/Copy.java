@@ -10,4 +10,6 @@ public interface Copy {
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
 
+	//MemberLoginPage
+	public String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
 }
