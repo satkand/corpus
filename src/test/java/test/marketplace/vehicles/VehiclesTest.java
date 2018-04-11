@@ -68,12 +68,13 @@ public class VehiclesTest extends App {
 	 */
 	@TestDetails(story1 = "DMPM-4609:DMPM-5136")
 	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
-	public void testVehilesTile()
+	public void testVehiclesTile()
 	{
 		//Step 1, 2 & 3: Login to App and then navigate Vehicles Dimension
 		navigateToVehiclesTab("guest");
 
 		//Step 4
+		vehiclesPage.scrollToVechilesTile();
 		//Validate Vehicles services tile image.
 		Assert.assertNotNull(vehiclesPage.checkVehicleServicesImage(), "Vehicles Page = Vehicles services tile image not shown");
 
