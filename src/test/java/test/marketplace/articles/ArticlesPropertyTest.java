@@ -26,17 +26,18 @@ public class ArticlesPropertyTest extends App{
 		//Preconditions
 		//1. Navigate to Home Property dimension and then to articles carousel.
 		navigateToHomePropertyTab("guest");
-		articlesPage.scrollToArticles();
+		articlesPage.scrollToArticlesCarousel();
 		
 		//DMPM-4316-verify Article carousel title.
 		Assert.assertNotNull(articlesPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
 		Assert.assertEquals(articlesPage.getArticleCarouselText(), Copy.ARTICLE_CAROUSEL_TITLE, "Home Property Page - Article text is DIFFERENT than expected");
-
+		
 		//DMPM-4316-verify Article carousel description.
 		Assert.assertNotNull(articlesPage.checkArticleCarousalDescr(), "Home Property Page - Articles description is NOT Present");
 		Assert.assertEquals(articlesPage.getArticleCarousalDescr(), Copy.ARTICLE_CAROUSEL_DESC, "Home Property Page - Articles description is NOT as expected!");
 		//DMPM-4290 Step 1: Verify article properties present
 		//DMPM-3074 Step 1: Verify each element of every article and then validate the content against the test data json
+		articlesPage.scrollToArticlesReadMoreBtn();
 		verifyArticleCarousel();
 		}
 

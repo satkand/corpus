@@ -22,6 +22,7 @@ public class ArticlesPage extends BasePage{
 
 	private String articleCarouselId = "au.com.suncorp.marketplace:id/articleCarouselTitle";
 	private String articleReadMoreBtnId = "au.com.suncorp.marketplace:id/articleReadMoreAction";
+	private String articleTitleId = "au.com.suncorp.marketplace:id/articleTitle";
 	private String articleCarouselScrollableViewId = "au.com.suncorp.marketplace:id/articleViewPager";
 
 	public WebElement checkArticleImage() {
@@ -82,5 +83,13 @@ public class ArticlesPage extends BasePage{
 		return find(articleCarouselDesc).getText();
 	}
 
-
+	public void scrollToArticlesCarousel() {
+		scrollToElement(articleCarouselId,"id", 10);
+		
+	}
+	
+	public void scrollToArticlesReadMoreBtn() {
+		scrollToElement(articleReadMoreBtnId,"id", 10);
+		
+	}
 }
