@@ -2,6 +2,7 @@ package pages.marketplace.landing;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
@@ -15,7 +16,9 @@ public class LandingPage extends BasePage {
 
 	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='One Suncorp']");
 	private By chatbotOption = By.id("au.com.suncorp.marketplace:id/chatbotOption");
-
+	private String propertyTitle = "Property";
+	private String vehiclesTitle = "Vehicles";
+	private String naviScrollableId = "au.com.suncorp.marketplace:id/navigationTabLayout";
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='ONE SUNCORP']");
 	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLES']");
@@ -63,6 +66,14 @@ public class LandingPage extends BasePage {
 		tapElement(homeTab);
 	}
 
+	public void tapPropertyTab() {
+		tapElement(scrollHorizontallyToElement(propertyTitle,"text",naviScrollableId));
+	}
+
+	public boolean ispropertyTabSelected() {
+		String text = getScreenTitle(propertyTitle).getAttribute("selected");
+		return Boolean.parseBoolean(text);
+	}
 	public boolean isHomeTabSelected() {
 		return isSelected(homeTab);
 	}
@@ -73,10 +84,12 @@ public class LandingPage extends BasePage {
 
 	public void tapVehiclesTab() {
 		tapElement(getScreenTitle(vehiclesTabTitle));
+		tapElement(scrollHorizontallyToElement(vehiclesTitle,"text",naviScrollableId));
 	}
 
 	public boolean isVehiclesTabSelected() {
-		return isSelected(vehiclesTab);
+		return Boolean.parseBoolean(getScreenTitle(vehiclesTabTitle).getAttribute("selected"));
+		//return isSelected(vehiclesTab);
 	}
 
 	public WebElement checkWealthTab() {

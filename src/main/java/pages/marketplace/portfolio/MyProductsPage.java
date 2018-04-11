@@ -52,6 +52,26 @@ public class MyProductsPage extends BasePage {
 	private By dateDescText = null;
 	private By endDate = null;
 	private By policyStatus = null;
+	private By viewButton = null;
+	private String viewButtonXpathSuffix = "\']/parent::android.widget.LinearLayout/parent::android.widget.LinearLayout/following-sibling::android.widget.TextView[@text = \'VIEW DETAILS\']";
+	
+	//wealth products
+	private By wealthProductAccountTypeLabel = By.id("au.com.suncorp.marketplace:id/wealthAccountTypeText");
+	private By wealthProductAccountNumber = By.id("au.com.suncorp.marketplace:id/wealthAccountNumberText");
+	private By wealthProductCurrentBalance = By.id("au.com.suncorp.marketplace:id/wealthAccountBalanceText");
+	
+	//life products
+	private By lifeProductAccountTypeLabel = By.id("au.com.suncorp.marketplace:id/lifePolicyShortDescriptionText");
+	private By insuredPersonName = By.id("au.com.suncorp.marketplace:id/insuredPerson");
+	private By lifePolicyStatus = By.id("au.com.suncorp.marketplace:id/lifePolicyStatus");
+	
+	//policy details
+	private By policyDetailsTitle = By.xpath("//android.widget.TextView[@text='Policy Details']");
+	
+	//Add Bank Account screen
+	private By accountNumberField = By.id("au.com.suncorp.marketplace:id/accountNumberField");
+	private By accountNumberError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
 
 	public List<WebElement> fetchAccountItemLayoutList() {
 		List<WebElement> elements = finds(accountItemLayout);
@@ -72,9 +92,28 @@ public class MyProductsPage extends BasePage {
 		return getTextList(accountTypeLabel);
 	}
 	
+	public List<String> fetchWealthProductTypeTextList() {
+		return getTextList(wealthProductAccountTypeLabel);
+	}
+	
+	public List<String> fetchLifeProductTypeTextList() {
+		return getTextList(lifeProductAccountTypeLabel);
+	}
+	
+	public List<String> fetchLifePolicyStatusList() {
+		return getTextList(lifePolicyStatus);
+	}
+	
+	public List<String> fetchLifePolicyInsuredNamesList() {
+		return getTextList(insuredPersonName);
+	}
+	
 	public List<String> fetchAccountNumberTextList() {
-		find(accountNumber);
 		return getTextList(accountNumber);
+	}
+	
+	public List<String> fetchWealthProductAccountNumberTextList() {
+		return getTextList(wealthProductAccountNumber);
 	}
 	
 	public WebElement checkAccountDetailsTitle(){
@@ -88,6 +127,11 @@ public class MyProductsPage extends BasePage {
 	public List<String> fetchCurrentBalanceTextList() {
 		find(currentBalance);
 		return getTextList(currentBalance);
+	}
+	
+	public List<String> fetchWealthProductCurrentBalanceTextList() {
+		find(wealthProductCurrentBalance);
+		return getTextList(wealthProductCurrentBalance);
 	}
 	
 	public String getAccountDetailsTitle() {
@@ -232,6 +276,12 @@ public class MyProductsPage extends BasePage {
 		String riskXpath = riskXpathPrefix + riskName + riskXpathSuffix;
 		riskText = By.xpath(riskXpath);
 		boolean policyRiskFound = false;
+		
+		if(find(riskText)== null)
+			policyRiskFound = false;
+		else
+			policyRiskFound = true;
+		
 		while (find(riskText) == null && find(addExistingProductButton) == null) 
 		{
 			swipeScreen("down");
@@ -243,6 +293,15 @@ public class MyProductsPage extends BasePage {
 		}
 		
 		return policyRiskFound;
+	}
+	
+	public boolean checkPolicyDisplayed(By riskText)
+	{
+		if(find(riskText)== null)
+			return false;
+		else
+			return true;
+		
 	}
 	
 	public WebElement checkExpiryDateDesc(String riskName, String dateDesc) {
@@ -265,6 +324,50 @@ public class MyProductsPage extends BasePage {
 		policyStatus = By.xpath(policyStatusXpath); 
 		return find(policyStatus);
 		
+	}
+	
+	public WebElement checkViewDetailsButtonForPolicy(String riskName) {
+		String viewDetailsXpath = riskXpathPrefix + riskName + viewButtonXpathSuffix;
+		viewButton = By.xpath(viewDetailsXpath);
+		return find(viewButton);
+	}
+	
+	public void tapViewPolicyButton(String riskName){
+		String viewDetailsXpath = riskXpathPrefix + riskName + viewButtonXpathSuffix;
+		viewButton = By.xpath(viewDetailsXpath);
+		tapElement(viewButton);
+	}
+	
+	public WebElement checkPolicyDetailsTitle(){
+		return find(policyDetailsTitle);
+	}
+	
+	public void tapAccountNumberField(){
+		tapElement(accountNumberField);
+	}
+	
+	public boolean checkKeyboardDisplayed() {
+		return isKeyboardPresent();
+	}
+	
+	public void enterAccountNumber(String accountNumber) {
+		typeValue(accountNumber,accountNumberField);
+	}
+	
+	public String getAccountNumberError() {
+		return getText(accountNumberError);
+	}
+	
+	public WebElement checkAccountNumberError(){
+		return find(accountNumberError);
+	}
+	
+	public void tapAddAccount() {
+		tapElement(addAccountButton);
+	}
+	
+	public void clearAccountNumber() {
+		clearValue(accountNumberField);
 	}
 	
 	public void scrollToAddExistingProductButton() {

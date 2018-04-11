@@ -21,10 +21,51 @@ public class VehiclesPage extends BasePage {
 	private By vehicleRegistrationNumber = By.id("au.com.suncorp.marketplace:id/registrationNumberText");
 	private By viewDetailsButton = By.id("au.com.suncorp.marketplace:id/viewDetailsButton");
 	private By loadingIndicator = By.id("au.com.suncorp.marketplace:id/vehicleLoadingIndicator");
+	
+	//Vehicle Tile Common elements initialisation
+	private By vehicleServicesImg = By.id("au.com.suncorp.marketplace:id/vehicleServicesImage");
+	private By vehicleServicesTitle = By.id("au.com.suncorp.marketplace:id/vehicleServicesTitle");
+	private By vehicleServicesDesc = By.id("au.com.suncorp.marketplace:id/vehicleServicesDescription");
+	private By vehicleServicesBtn = By.id("au.com.suncorp.marketplace:id/vehicleServicesButton");
 
 	// TODO -> Cannot find this in ANdroid. But its there on iOS
 	private By checkClaimStatusButton = By.id("VehicleCell.ClaimLabel");
 
+	
+	//Vehicle tile common elements utilisation
+	public WebElement checkVehicleServicesImage() {
+		return find(vehicleServicesImg);
+	}
+	
+	public WebElement checkVehicleServicesTitle() {
+		return find(vehicleServicesTitle);
+	}
+	
+	public String getVehicleServicesTitle() {
+		return checkVehicleServicesTitle().getText();
+	}
+	
+	public WebElement checkVehiclesServicesDesc() {
+		return find(vehicleServicesDesc);
+	}
+	
+	public String getVehiclesServicesDesc() {
+		return checkVehiclesServicesDesc().getText();
+	}
+	
+	public WebElement checkVehiclesServicesBtn() {
+		return find(vehicleServicesBtn);
+	}
+	
+	public String getVehiclesServicesBtnTxt() {
+		return checkVehiclesServicesBtn().getText();
+		
+	}
+	
+	public void tapVehiclesServicesBtn() {
+		tapElement(checkVehiclesServicesBtn());
+	}
+	
 	public List<WebElement> fetchVehicleTypeImageList(){
 		return finds(vehicleTypeImage);
 	}
