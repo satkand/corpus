@@ -70,7 +70,6 @@ public class VehiclesPage extends BasePage {
 	}
 
 	public void scrollToVechilesTile() {
-		//scrollHorizontallyToElement(vehicleServicesTitleStr,"id","android.support.v4.view.ViewPager");
 		scrollToElement(vehicleServicesBtnStr, "id", 10);
 
 	}
