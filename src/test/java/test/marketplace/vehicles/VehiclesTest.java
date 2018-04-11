@@ -13,7 +13,7 @@ public class VehiclesTest extends App {
 	// 507 - Scenario 1
 	// 507 - Scenario 2
 	// 1052 - Scenario 1
-	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
+	//@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesListOnVehiclesPage() {
 		navigateToVehiclesTab();
 		vehiclesPage.waitForDataToLoad();
@@ -49,7 +49,7 @@ public class VehiclesTest extends App {
 	}
 	
 	// 507 - Scenario 3
-	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
+	//@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testNavigatingToVehicleDetailsScreen(){
 		navigateToVehiclesTab();
 		Assert.assertNotNull(vehiclesPage.checkViewDetailsButton(), "Vehicles Page - view details button not shown");
@@ -58,7 +58,11 @@ public class VehiclesTest extends App {
 		vehicleDetailsPage.tapBackButton();
 		Assert.assertTrue(landingPage.isVehiclesTabSelected(), "Vehicles tab is not selected on landing page");
 	}
-	
+	@Test
+	public void testVehilesTile()
+	{
+		navigateToVehiclesTab();
+	}
 	private void navigateToVehiclesTab() {
 		loginToApp(utils.readTestData("hasVehicles", "login"), utils.readTestData("hasVehicles", "pwd"));
 		landingPage.tapVehiclesTab();
