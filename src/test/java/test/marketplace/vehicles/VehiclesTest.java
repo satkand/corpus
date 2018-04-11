@@ -16,7 +16,7 @@ public class VehiclesTest extends App {
 	// 507 - Scenario 1
 	// 507 - Scenario 2
 	// 1052 - Scenario 1
-	//@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
+	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesListOnVehiclesPage() {
 		navigateToVehiclesTab("hasVehicles");
 		vehiclesPage.waitForDataToLoad();
@@ -52,7 +52,7 @@ public class VehiclesTest extends App {
 	}
 
 	// 507 - Scenario 3
-	//@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
+	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testNavigatingToVehicleDetailsScreen(){
 		navigateToVehiclesTab("hasVehicles");
 		Assert.assertNotNull(vehiclesPage.checkViewDetailsButton(), "Vehicles Page - view details button not shown");
@@ -61,7 +61,7 @@ public class VehiclesTest extends App {
 		vehicleDetailsPage.tapBackButton();
 		Assert.assertTrue(landingPage.isVehiclesTabSelected(), "Vehicles tab is not selected on landing page");
 	}
-	
+
 	/*
 	 * Story: DMPM-4609
 	 * Test case: DMPM-5136 - Display vehicle services tile
@@ -72,31 +72,28 @@ public class VehiclesTest extends App {
 	{
 		//Step 1, 2 & 3: Login to App and then navigate Vehicles Dimension
 		navigateToVehiclesTab("guest");
-		
+
 		//Step 4
 		//Validate Vehicles services tile image.
 		Assert.assertNotNull(vehiclesPage.checkVehicleServicesImage(), "Vehicles Page = Vehicles services tile image not shown");
-		
+
 		//Validate Vehicles services tile title
 		Assert.assertNotNull(vehiclesPage.checkVehicleServicesTitle(), "Vehicles Page = Vehicles Tile title not shown");
 		Assert.assertEquals(vehiclesPage.getVehicleServicesTitle(), Copy.VEHICLE_SERVICES_TITLE,"Vehicles Page = Vehicles Tile title not shown");
-		
+
 		//Validate Vehicles services tile description
 		Assert.assertNotNull(vehiclesPage.checkVehiclesServicesDesc(), "Vehicles Page = Vehicles services tile description not shown");
 		Assert.assertEquals(vehiclesPage.getVehiclesServicesDesc(), Copy.VEHICLE_SERVICES_DESCRIPTION,"Vehicles Page = Vehicles services description is not as expected");
-		
+
 		//Validate Vehicles services tile button
 		Assert.assertNotNull(vehiclesPage.checkVehiclesServicesBtn(), "Vehicles Page = Vehicles services button not shown");
 		Assert.assertEquals(vehiclesPage.getVehiclesServicesBtnTxt(), Copy.VEHICLE_SERVICES_BTN_TXT,"Vehicles Page = Vehicles Tile button text is not as expected");
-		
+
 	}
-	
+
 	private void navigateToVehiclesTab(String loginType) {
-
-
 		if(loginType.equals("hasVehicles")) {
 			loginToApp(utils.readTestData("hasVehicles", "login"), utils.readTestData("hasVehicles", "pwd"));
-
 		}
 		else {
 			welcomePage.tapGuestAccessButton();
