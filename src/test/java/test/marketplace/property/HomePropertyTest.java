@@ -1,11 +1,15 @@
 package test.marketplace.property;
 
-import java.util.HashMap;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+import automation.framework.common.Copy;
+import automation.framework.common.TestDetails;
 import pages.App;
 
 public class HomePropertyTest extends App {
@@ -24,7 +28,7 @@ public class HomePropertyTest extends App {
 	// 86 - scenario
 	// 503 - Scenario 1
 	// navigating to home journey screen and again navigating back to home property screen
-	@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
+	//@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToHomeJourneyScreen() {
 		navigateToHomePropertyTab("guest");
 		homePropertyPage.scrollToJourneyBanner();
@@ -142,7 +146,7 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgLogInButton(), "Home Property Page - Log in button is not present");
 			
 	}
-	
+
 	//3803 - scenario 1 (TC-DMPM-4712), Scenario 2 (TC-4714)
 	//View my property assets details option from property dimension
 	@Test (groups = {"DMPM-3803","DMPM-4712","DMPM-4714", "marketplace", "Property Dimension", "priority-minor"})
@@ -178,7 +182,6 @@ public class HomePropertyTest extends App {
 
 	}
 
-	
 	private void navigateToHomePropertyTab(String loginType) {
 		if(loginType.equals("withProducts")) {
 			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
@@ -190,8 +193,10 @@ public class HomePropertyTest extends App {
 			welcomePage.tapGuestAccessButton();
 		}
 		
-		landingPage.tapHomeTab();
-		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		landingPage.tapPropertyTab();
+		Assert.assertTrue(landingPage.ispropertyTabSelected(), "Home tab is not selected on landing page");
 	}
+	
+
 	
 }

@@ -32,6 +32,7 @@ public class DigiVaultCommonPage extends BasePage {
 	private By androidOkButton = By.id("android:id/button1");
 	private By androidCancelButton = By.id("android:id/button2");
 	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
+	private By permissionDontAllowButton = By.id("com.android.packageinstaller:id/permission_deny_button");
 	private By androidDialogMsg = By.id("android:id/message");
 	private By backNavigationButton = MobileBy.AccessibilityId("Navigate up");
 	
@@ -64,7 +65,23 @@ public class DigiVaultCommonPage extends BasePage {
 	public void tapAndroidCancelButton() {
 		tapElement(androidCancelButton);
 	}
+
+	public WebElement checkSignUpButton() {
+		return find(androidCancelButton);
+	}
+
+	public void tapSignUpButton() {
+		tapElement(androidCancelButton);
+	}
 	
+	public WebElement checkLoginButton() {
+		return find(androidOkButton);
+	}
+
+	public void tapLoginButton() {
+		tapElement(androidOkButton);
+	}
+
 	public WebElement checkAndroidOkButton() {
 		return find(androidOkButton);
 	}
@@ -189,6 +206,10 @@ public class DigiVaultCommonPage extends BasePage {
 		}
 	}
 	
+	public void tapUploadPhotoCardWithoutPermission() {
+		tapElement(uploadPhotoCard);
+	}
+	
 	public void addDocumentThroughCamera() {
 		tapAddButton();
 		tapTakePhotoCard();
@@ -240,7 +261,20 @@ public class DigiVaultCommonPage extends BasePage {
 		typeValue(name, renameEditField);
 	}
 	
+	public WebElement checkPermissionButton() {
+		return find(permissionOkButton);
+	}
+	
+	public WebElement checkPermissionDontAllowButton() {
+		return find(permissionDontAllowButton);
+	}
+	
+	public void tapPermissionDontAllowButton() {
+		tapElement(permissionDontAllowButton);
+	}
+	
 	public void addAPhotoThroughCamera() {
+		checkAddButton();
 		tapAddButton();
 		tapTakePhotoCard();
 		if(find(permissionOkButton,5) != null) {
