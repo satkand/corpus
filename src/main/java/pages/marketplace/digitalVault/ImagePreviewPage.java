@@ -5,11 +5,13 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class ImagePreviewPage extends BasePage {
 
 	DigiVaultCommonPage digiVaultCommonPage = new DigiVaultCommonPage(driver);
 	private By nextButton = By.id("au.com.suncorp.marketplace:id/nextDocumentOption");
+	private By previousButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private ChooseFolderPage choosefolderPage = new ChooseFolderPage(driver);
 	
@@ -18,6 +20,13 @@ public class ImagePreviewPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
+	public WebElement checkPreviousButton() {
+		return find(previousButton);
+	}
+	
+	public void tapPreviousButton() {
+		tapElement(previousButton);
+	}
 	
 	public void tapNextButton() {
 		tapElement(nextButton);

@@ -1,17 +1,13 @@
 package pages.marketplace.property;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Reporter;
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
-
 import io.appium.java_client.MobileBy;
-import pages.marketplace.common.WebviewPage;
+
 
 public class HomePropertyPage extends BasePage {
 
@@ -49,23 +45,16 @@ public class HomePropertyPage extends BasePage {
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
-
-
+	
 	//DMPM-2644-Display background image elements initialization --Start--
 	private By propertyPillarBackgroundImg = By.id("au.com.suncorp.marketplace:id/propertyPillarBackground");
-	//DMPM-2644-Display background image elements initialization  --End--
 
-	//Articles carousel elements initialization --Start--
+	//DMPM-2644-Display background image elements utilization  --Start--
+	public WebElement checkPropertyPillarBackGrndImg() {
+		return find(propertyPillarBackgroundImg);
+	}
+	
 
-	private By articleCarousel =	By.id("au.com.suncorp.marketplace:id/articleCarouselTitle");
-	private By articleCarouselDesc = By.id("au.com.suncorp.marketplace:id/articleCarouselDescription");
-	private By articleImage = By.id("au.com.suncorp.marketplace:id/articleImage");
-	//private By articleReadMoreBtn = By.id("au.com.suncorp.marketplace:id/articleReadMoreButton");
-	private By articleReadMoreBtn = By.id("au.com.suncorp.marketplace:id/articleReadMoreAction");
-	private By articleTitle = By.id("au.com.suncorp.marketplace:id/articleTitle");
-	private By articleDesc = By.id("au.com.suncorp.marketplace:id/articleDescription");
-
-	//Articles carousel elements initialization --End--
 	public WebElement checkBackButton() {
 		return find(backButton);
 	}
@@ -73,92 +62,6 @@ public class HomePropertyPage extends BasePage {
 	public void tapBackButton() {
 		tapElement(backButton);
 	}
-
-	//Article carousel elements utilization --Start
-	private String articleCarouselStr = "au.com.suncorp.marketplace:id/articleCarouselTitle";
-	private String articleReadMoreBtnStr = "au.com.suncorp.marketplace:id/articleReadMoreAction";
-	private String articleCarouselScrollableView = "au.com.suncorp.marketplace:id/articleViewPager";
-	//Articles carousel elements initialization--End--
-
-	//Article carousel element utilization --Start
-	public WebElement checkArticleImage() {
-		return find(articleImage);
-	}
-
-	public WebElement checkArticleReadMoreBtn() {
-		return find(articleReadMoreBtn);
-	}
-
-	public void tapArticleReadMoreBtn() {
-		tapElement(articleReadMoreBtn);
-	}
-
-	public void swipeArticlesLeft() {
-		swipeHorizontallyToLeft();
-	}
-
-	public void swipeArticlesRight() {
-		swipeHorizontallyToRight();
-	}
-
-	public WebElement checkArticleTitle() {
-		return find(articleTitle);
-	}
-
-	public String getArticleTitle() {
-		return find(articleTitle).getText();
-	}
-
-	public WebElement checkArticleDesc() {
-		return find(articleDesc);
-	}
-
-	public String getArticleDesc() {
-		return find(articleDesc).getText();
-	}
-
-	public void swipeArticlesLeft(String articleTitle) {
-		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableView);
-	}
-
-	public void swipeArticlesRight(String articleTitle) {
-		scrollHorizontallyToElement(articleTitle,"text",articleCarouselScrollableView);
-
-	}
-
-	public void scrollToArticlesReadMoreBtn() {
-		scrollToArticles();
-	}
-
-	public WebElement checkArticleCarousel() {
-		return find(articleCarousel,2);
-	}
-
-	public String getArticleCarouselText() {
-		return getText(articleCarousel);
-	}
-
-
-	public WebElement checkArticleCarousalDescr() {
-		return find(articleCarouselDesc, 1);
-	}
-
-	public void scrollToArticles() {
-		scrollToElement(articleCarouselStr,"id", 10);
-		scrollToElement(articleReadMoreBtnStr,"id", 10);
-	}
-
-	public String verifyArticleCarousalDescr() {
-		return find(articleCarouselDesc, 1).getText();
-	}
-	//Article carousel elements utilization --End
-
-
-	//DMPM-2644-Display background image elements utilization  --Start--
-	public WebElement checkPropertyPillarBackGrndImg() {
-		return find(propertyPillarBackgroundImg);
-	}
-	//DMPM-2644-Display background image elements utilization  --End--
 
 	public WebElement checkFeatureLockedMsgTitle() {
 		return find(featureLockedMsgTitle);

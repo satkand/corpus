@@ -44,7 +44,7 @@ public class ConfigPage extends BasePage {
 			if (isKeyboardDisplayed()) {
 				dismissKeyboard();
 			}
-
+			
 			// Uncomment the below line if Stub Server is to be connect
 			if (!stub.equalsIgnoreCase("false")) {
 				ConnectToStubSever(stub);
@@ -67,6 +67,7 @@ public class ConfigPage extends BasePage {
 		InetAddress IP = null;
 		try {
 			IP = InetAddress.getLocalHost();
+			System.out.println("IPPPPPPPP:::::::::::::"+IP);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -78,8 +79,17 @@ public class ConfigPage extends BasePage {
 			tapElement(applyGlobalBaseUrlButton);
 		}
 		*/
-		String baseURL = "http://"+IP.getHostAddress()+":4567/";
+		
+		// TODO: This hardcoding needs to removed, once we figure out a way to get the second ip from the list of ips on the mac mini
+		String baseURL = "192.168.213.20:4567";//IP.getHostAddress()+":4567/";
+		System.out.println("stub:::"+stub+"::::::global");
+		typeValue(baseURL, globalBaseURL);
+		tapElement(applyGlobalBaseUrlButton);
+		if(!(isKeyboardPresent() == true)) {
+			isKeyboardPresent();
+		}
 
+		baseURL = "http://"+IP.getHostAddress()+":4567/";
 		if(stub.equalsIgnoreCase("banking") && find(bankingBaseUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::banking");
 			clearValue(bankingBaseUrl);
