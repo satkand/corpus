@@ -9,5 +9,8 @@ public interface Copy {
 	
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
+	
+	//PROPERTY PAGE
+	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
 
 }

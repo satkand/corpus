@@ -67,6 +67,7 @@ public class ConfigPage extends BasePage {
 		InetAddress IP = null;
 		try {
 			IP = InetAddress.getLocalHost();
+			System.out.println("IPPPPPPPP:::::::::::::"+IP);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -79,7 +80,8 @@ public class ConfigPage extends BasePage {
 		}
 		*/
 		
-		String baseURL = IP.getHostAddress()+":4567/";
+		// TODO: This hardcoding needs to removed, once we figure out a way to get the second ip from the list of ips on the mac mini
+		String baseURL = "192.168.213.20:4567";//IP.getHostAddress()+":4567/";
 		System.out.println("stub:::"+stub+"::::::global");
 		typeValue(baseURL, globalBaseURL);
 		tapElement(applyGlobalBaseUrlButton);

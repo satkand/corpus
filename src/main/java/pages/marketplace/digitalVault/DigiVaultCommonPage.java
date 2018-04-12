@@ -274,6 +274,7 @@ public class DigiVaultCommonPage extends BasePage {
 	}
 	
 	public void addAPhotoThroughCamera() {
+		checkAddButton();
 		tapAddButton();
 		tapTakePhotoCard();
 		if(find(permissionOkButton,5) != null) {
