@@ -178,14 +178,17 @@ public class PropertyDetailsTest extends App{
 		
 
 	public void navigateToPropertyDetails(String navigationPath) {
-		
-		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
-		landingPage.tapHomeTab();
-		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
-		homePropertyPage.scrollToJourneyBanner();
-		Assert.assertNotNull(homePropertyPage.checkStartYourJourneyButton(), "Home Property Page - Start your journey button is not present");
-		homePropertyPage.tapStartYourJourneyButton();
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
+		if(navigationPath.equals("StartYourJourney")) {
+			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
+			landingPage.tapHomeTab();
+			Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+			homePropertyPage.scrollToJourneyBanner();
+			Assert.assertNotNull(homePropertyPage.checkStartYourJourneyButton(), "Home Property Page - Start your journey button is not present");
+			homePropertyPage.tapStartYourJourneyButton();
+			Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
+		}else {
+			//TODO when other navigation paths are developed
+		}
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
 		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
