@@ -631,6 +631,36 @@ protected WebElement findByUIAutomatorContains(String locatorString, String loca
 		touchAction.tap(find(locator)).tap(find(locator)).perform();
 		
 	}
+	
+	
+	protected WebElement scrollHorizontallyToElement(String locatorString, String locatorType,String ScrollableId,int... args) {
+
+	      WebElement element =null;
+	     
+	      int timeout = (args.length > 0 ? args[0] : 15);
+	   	 
+			switch (locatorType) {
+			case "text":
+				element = find(MobileBy.AndroidUIAutomator(
+				"new UiScrollable(new UiSelector().resourceId(\""+ ScrollableId +"\")).setAsHorizontalList().scrollIntoView(new UiSelector().text(\""
+				+ locatorString + "\").instance(0))"),timeout);
+				break;
+			case "id":
+				element = find(MobileBy.AndroidUIAutomator(
+				"new UiScrollable(new UiSelector().resourceId(\"" + ScrollableId +"\")).setAsHorizontalList().scrollIntoView(new UiSelector().resourceId(\""
+				+ locatorString + "\").instance(0))"),timeout);
+				break;
+			case "desc":
+				element = find(MobileBy.AndroidUIAutomator(
+				"new UiScrollable(new UiSelector().resourceId(\"" +ScrollableId+"\")).setAsHorizontalList().scrollIntoView(new UiSelector().description(\""
+				+ locatorString + "\").instance(0))"),timeout);
+				break;
+
+	}	
+
+	return element;
+
+	}
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
 //	 * Using this sets pin very quickly.

@@ -6,6 +6,9 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.CustomRetryListener;
+import automation.framework.common.TestDetails;
+import automation.framework.common.TestDetails.Priority;
 import pages.App;
 
 public class HomePropertyTest extends App {
@@ -105,19 +108,23 @@ public class HomePropertyTest extends App {
 		
 	//2646 - scenario 2 
 	//2997 - scenario 2
+	//3001 - scenario 5
 	// navigating to Property tab and verify empty state for products
-	@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017","DMPM-4461", "marketplace", "Home buying journey", "priority-minor"})
 		public void testDisplayEmptyStateForPropertyAsset() {
 		
  		navigateToHomePropertyTab("withOutProducts");
-		//enableFAPISettings();
-		
+ 		
 		homePropertyPage.scrollToEmptyStatePropertyAsset();
 		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Address Line is not present");
 		Assert.assertNotNull(homePropertyPage.checksuburbText(), "Home Property Page - Suburb is not present");
 		Assert.assertNull(homePropertyPage.checkproductDescriptionText(), "Home Property Page - Product Description is present");
 		Assert.assertNull(homePropertyPage.checkactiveClaimTitle(), "Home Property Page - Active CLaime title is present");
 		
+		/*TODO (3001 - scenario 5) below code needs to be run in API. In Stubs this will fail*/
+		//homePropertyPage.scrollToVirtualAssetsCarousel();
+		//Assert.assertNull(homePropertyPage.checkVirtualAssetsTitleTxt(), "Property Dimention Page - Virtual assets title is not present");
+		//Assert.assertNull(homePropertyPage.checkVirtualAssetImage(), "Property Dimention Page - Virtual asset image is not present");
 		
 	}
 	
@@ -177,7 +184,138 @@ public class HomePropertyTest extends App {
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 
 	}
+	
+	@TestDetails(story1 = "DMPM-3001:DMPM-4457,DMPM-4458,DMPM-4459,DMPM-4460", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Property Dimension", "priority-minor" })
+	public void testDisplayVirtualAssets() {
+		navigateToHomePropertyTab("noProperties");
+		homePropertyPage.scrollToVirtualAssetsCarousel();
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetsTitleTxt(), "Property Dimention Page - Virtual assets title is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetsTitleTxt(), "Your saved properties", "Home Property Page - Your saved properties label is different to the expected label");
+		
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetImage(), "Property Dimention Page - Virtual asset image is not present");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetEstimatedSalesPriceLabel(), "Property Dimention Page - Virtual asset Estimated Sales Price Label is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetEstimatedSalesPriceLabel(), "Estimated sale price", "Home Property Page - Estimated sale price label is different to the expected title");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetSalePrice(), "Property Dimention Page - Virtual asset Sale Price is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetSalePrice(), "$10,000,000 - $20,000,000", "Home Property Page - Estimated sale price is different to the expected value");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetAddress(), "Property Dimention Page - Virtual asset adress is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetAddress(), "123 Sesame St, Melbourne Vic 3000", "Home Property Page - Address is different to the expected");
+		
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetBedroomIcon(), "Property Dimention Page - Virtual asset Bedroom Icon is not present");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetNoOFBedrooms(), "Property Dimention Page - Virtual asset number of bedrooms is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFBedrooms(), "4", "Home Property Page - No of Bedrooms is different to the expected");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetNoOFBathrooms(), "Property Dimention Page - Virtual asset number of bathrooms is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFBathrooms(), "2", "Home Property Page - No of Bathrooms is different to the expected");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetNoOFCarParks(), "Property Dimention Page - Virtual asset number of car parks is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFCarParks(), "2", "Home Property Page - No of carparks is different to the expected");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetLandSize(), "Property Dimention Page - Virtual asset land size is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetLandSize(), "1000m²", "Home Property Page - Land size is different to the expected");
+		
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetViewDetailsButton(), "Property Dimention Page - Virtual asset View Details button is not present");
+		
+		homePropertyPage.swipePropertyCarouselLeft();
+		
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetImage(), "Property Dimention Page - Virtual asset image is not present");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetEstimatedSalesPriceLabel(), "Property Dimention Page - Virtual asset Estimated Sales Price Label is not present");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetSalePrice(), "Property Dimention Page - Virtual asset Sale Price is not present");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetAddress(), "Property Dimention Page - Virtual asset adress is not present");
+		
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetViewDetailsButton(), "Property Dimention Page - Virtual asset View Details button is not present");
+	
+		homePropertyPage.swipePropertyCarouselRight();
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetAddress(), "Property Dimention Page - Virtual asset adress is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetAddress(), "123 Sesame St, Melbourne Vic 3000", "Home Property Page - Address is different to the expected");
+		
+		homePropertyPage.tapVirtualAssetViewDetailsButton();
+		
+		//TODO - update these assertions for the particular property details. ATM this is only verifying page navigation to Property Details
+		Assert.assertNotNull(propertyDetailsPage.checkThisIsMyPropertyLabel(), "Home property page Page - User is not navigated to Property details screen when clicks on View Details button");
+		Assert.assertNotNull(propertyDetailsPage.checkEstimatedMarketValueLabel(), "Home property page Page - User is not navigated to Property details screen when clicks on View Details button");
+		
+		
+	}
+	
+	@TestDetails(story1 = "DMPM-3025:DMPM-4454,DMPM-4455,DMPM-4456", priority = Priority.LOW)
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "Property Dimension", "priority-minor" })
+	public void testDisplayOptionToShowPropertyAssetDocuments() {
+		
+		navigateToHomePropertyTab("withProducts");
+		Assert.assertNotNull(homePropertyPage.checkPropertyDocumentsButton(), "Home property page -property documents button is not present");
+		String propertyAddress = homePropertyPage.getaddressLineText().replace(",", "");
+		
+		
+		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkDigitalVaultMenuItem(), "Navigation menu - Digital Vault Menu button is not displayed");
+		navigationMenu.tapDigitalVaultMenuItem();
+		
+		// fetch the folder names shown on the current page
+		List<String> folders = digitalVaultPage.fetchFolderNameList();
+		//iterate the folder list to find out delete the folder if it is already available in the list
+		for(int i=0; i<folders.size();i++) {
+			if(folders.get(i).toString().equals(propertyAddress)) {
+				Assert.assertNotNull(digitalVaultPage.checkFolderMoreOption(), "Digital Vault page - Folder more option is not present");
+				digitalVaultPage.swipeToDeleteFolder();
+				Assert.assertNotNull(digitalVaultPage.checkBinBoxForFolder(), "Digital Vault page - Bin box button is not present");
+				digitalVaultPage.tapBinBoxForFolder();
+				Assert.assertNotNull(digitalVaultPage.checkDeleteFolderPopupButton(), "Digital Vault page - Delete folder popup button is not present");
+				digitalVaultPage.tapDeleteFolderPopupButton();
+				Assert.assertNotNull(digitalVaultPage.checkDeleteFolderConfirmationMsg(), "Digital Vault page - Delete folder popup button is not present");		
+			}				
+		}
+		
+		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), "Navigation menu - One suncorp Menu button is not displayed");
+		navigationMenu.tapSuncorpMenuItem();
+		Assert.assertNotNull(homePropertyPage.checkPropertyDocumentsButton(), "Home Property page - property document button is not present");
+		
+		homePropertyPage.tapPropertyDocumentsButton();
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder View page - Folder Title label is not present");
+		Assert.assertNotNull(folderViewPage.checkEditButton(), "Folder View page - Edit button is not present");
+		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder View page - Edit button is not present");
+		Assert.assertEquals(propertyAddress, folderViewPage.getTitle(),"Folder View Page - folder name is not matching with the property address");
+		
+		verifyDocumentsFolderName(propertyAddress);
 
+		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), "Navigation menu - One suncorp Menu button is not displayed");
+		navigationMenu.tapSuncorpMenuItem();
+		landingPage.tapHomeTab();
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Landing page - Home tab is not selected on landing page");
+		
+		homePropertyPage.tapPropertyDocumentsButton();
+		Assert.assertEquals(propertyAddress, folderViewPage.getTitle(),"Folder View Page - folder name is not matching with the property address");
+		
+		verifyDocumentsFolderName(propertyAddress);
+	
+	}
+	
+	private void verifyDocumentsFolderName(String folderName) {
+		folderViewPage.tapBackButton();
+		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "DigiVault title is not displayed");
+		
+		boolean isNameDuplicated = false;
+		boolean isNameNotPresent = false;
+		int count = 0;
+		// fetch the folder names shown on the current page
+		List<String> folderList = digitalVaultPage.fetchFolderNameList();
+		
+		//iterate the folder list to find out folder name is already available in the list
+		for(int i=0; i<folderList.size();i++) {
+			if(folderList.get(i).toString().equals(folderName)) {
+				count = count+1;
+			}				
+		}
+		
+		if (count>1) {
+			isNameDuplicated = true;
+		}
+		if (count<1) {
+			isNameNotPresent = true;
+		}
+		
+		Assert.assertFalse(isNameDuplicated, "Multiple folders were created for property "+folderName);
+		Assert.assertFalse(isNameNotPresent, "Folder was not created for the property "+folderName);
+	}
 	
 	private void navigateToHomePropertyTab(String loginType) {
 		if(loginType.equals("withProducts")) {
