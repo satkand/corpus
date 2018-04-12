@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
+import automation.framework.common.Copy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class SettingsPage  extends BasePage {
 
@@ -18,7 +20,7 @@ public class SettingsPage  extends BasePage {
 	}
 	
 	public WebElement checkSettingsTitle() {
-		return find(settingsTitle);
+		return findByUIAutomator(Copy.SETTINGS_TITLE_TEXT, "text");
 	}
 	
 	public WebElement checkEnablePinToggle() {
@@ -32,4 +34,15 @@ public class SettingsPage  extends BasePage {
 	public boolean isPinToggleEnabled() {
 		return isToggleEnabled(enablePinToggle);
 	}
+	
+	public WebElement checkChangePinLink() {
+		return find(changePinLink);
+	}
+	
+	public void tapChangePinLink() {
+		tapElement(changePinLink);
+	}
+	
+	
+	
 }
