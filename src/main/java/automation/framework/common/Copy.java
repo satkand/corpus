@@ -23,4 +23,7 @@ public interface Copy {
 	public String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
 	public String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
 	
+	//PROPERTY PAGE
+	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+
 }

@@ -57,7 +57,6 @@ public class RegistrationPage extends BasePage {
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
 
-	
 	private By registerPage1Title = By.xpath("//android.widget.TextView[@text='Step 1 of 3']");
 	private By registerPage2Title = By.id("au.com.suncorp.marketplace:id/pageDescriptionText");
 	private By backButton = By.id("BackButton");
@@ -455,6 +454,5 @@ public class RegistrationPage extends BasePage {
 	public void tapAnotherLoginButton() {
 		tapElement(anotherEmailButtonDuplicateEmailPopUp);
 	}
-	
 	
 }

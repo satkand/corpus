@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
+
 
 public class HomePropertyPage extends BasePage {
 
@@ -19,13 +19,13 @@ public class HomePropertyPage extends BasePage {
 	private By homeJourneyBannerHeading = By.id("au.com.suncorp.marketplace:id/journeyHeadingText");
 	private By homeJourneyBannerDescription = By.id("au.com.suncorp.marketplace:id/journeyDescriptionText");
 	private By startYourJourneyButton = By.id("au.com.suncorp.marketplace:id/startHomeJourneyButton");
-	
+
 	private By addAPropertyOrPolicyButton = By.id("au.com.suncorp.marketplace:id/addPropertyOrPolicyActionText");
 	private By addAPropertyOrPolicyImage = By.id("au.com.suncorp.marketplace:id/addPropertyOrPolicyImage");
 	private By propertyInsightInfo = By.id("au.com.suncorp.marketplace:id/addPropertyOrPolicyInfo1Text");
 	private By organiseDocumentsInfo = By.id("au.com.suncorp.marketplace:id/addPropertyOrPolicyInfo2Text");
 	private By accessProfessionalInfo = By.id("au.com.suncorp.marketplace:id/addPropertyOrPropertyInfo3Text");
-	
+
 	private By addPropertyOrPolicyActionSheetTitle = By.id("au.com.suncorp.marketplace:id/propertyOrPolicySelectionText");
 	private By addPolicyActionSheetButton = By.id("au.com.suncorp.marketplace:id/addPolicyButton");
 	private By addPropertyActionSheetButton = By.id("au.com.suncorp.marketplace:id/addPropertyButton");
@@ -178,7 +178,7 @@ public class HomePropertyPage extends BasePage {
 	public WebElement checkBackButton() {
 		return find(backButton);
 	}
-	
+
 	public void tapBackButton() {
 		tapElement(backButton);
 	}
@@ -186,23 +186,23 @@ public class HomePropertyPage extends BasePage {
 	public WebElement checkFeatureLockedMsgTitle() {
 		return find(featureLockedMsgTitle);
 	}
-	
+
 	public String getFeatureLockedMsgTitle() {
 		return getText(featureLockedMsgTitle);
 	}
-	
+
 	public WebElement checkFeatureLockedTextCopy() {
 		return find(featureLockedTextCopy);
 	}
-	
+
 	public String getFeatureLockedTextCopy() {
 		return getText(featureLockedTextCopy);
 	}
-	
+
 	public WebElement checkFeatureLockedMsgSignUpButton() {
 		return find(featureLockedMsgSignUpButton);
 	}
-	
+
 	public WebElement checkFeatureLockedMsgLogInButton() {
 		return find(featureLockedMsgLogInButton);
 	}
@@ -210,132 +210,132 @@ public class HomePropertyPage extends BasePage {
 	public List<String> fetchProductDescriptionTextList() {
 		return getTextList(productDescriptionText);
 	}
-	
+
 	public String getAddressLineText() {
 		return getText(addressLineText);
 	}
-	
+
 	public String getSuburbTextList() {
 		return getText(suburbText);
 	}
-	
+
 	public WebElement checkbrandIcon() {
 		return find(brandIcon);
 	}
-	
+
 	public WebElement checkproductDescriptionText() {
 		return find(productDescriptionText);
 	}
-	
+
 	public String getproductDescriptionText() {
 		return getText(productDescriptionText);
 	}
-	
+
 	public WebElement checkproductIcon() {
 		return find(productIcon);
 	}
-	
+
 	public WebElement checksuburbText() {
 		return find(suburbText);
 	}
-	
+
 	public String getsuburbText() {
 		return getText(suburbText);
 	}
-	
+
 	public WebElement checkaddressLineText() {
 		return find(addressLineText);
 	}
-	
+
 	public String getaddressLineText() {
 		return getText(addressLineText);
 	}
-	
+
 	public WebElement checkpropertyImage() {
 		return find(propertyImage);
 	}
-	
+
 	public WebElement checkactiveClaimTitle() {
 		return find(activeClaimTitle);
 	}
-	
+
 	public String getactiveClaimTitle() {
 		return getText(activeClaimTitle);
 	}
-	
+
 	public WebElement checkAddPropertyOrPolicyActionSheetTitle() {
 		return find(addPropertyOrPolicyActionSheetTitle);
 	}
-	
+
 	public String getAddPropertyOrPolicyActionSheetTitle() {
 		return getText(addPropertyOrPolicyActionSheetTitle);
 	}
-	
+
 	public WebElement checkAddPolicyActionSheetButton() {
 		return find(addPolicyActionSheetButton);
 	}
-	
+
 	public String getAddPolicyActionSheetButton() {
 		return getText(addPolicyActionSheetButton);
 	}
-	
+
 	public void tapAddPolicyActionSheetButton() {
 		tapElement(addPolicyActionSheetButton);
 	}
-	
+
 	public WebElement checkAddPropertyActionSheetButton() {
 		return find(addPropertyActionSheetButton);
 	}
-	
+
 	public String getAddPropertyActionSheetButton() {
 		return getText(addPropertyActionSheetButton);
 	}
-	
+
 	public void tapAddPropertyActionSheetButton() {
 		tapElement(addPropertyActionSheetButton);
 	}
-	
+
 	public WebElement checkAddAPropertyOrPolicyImage() {
 		return find(addAPropertyOrPolicyImage);
 	}
-	
+
 	public WebElement checkPropertyInsightInfo() {
 		return find(propertyInsightInfo);
 	}
-	
+
 	public String getPropertyInsightInfo() {
 		return getText(propertyInsightInfo);
 	}
-	
+
 	public WebElement checkOrganiseDocumentsInfo() {
 		return find(organiseDocumentsInfo);
 	}
-	
+
 	public String getOrganiseDocumentsInfo() {
 		return getText(organiseDocumentsInfo);
 	}
-	
+
 	public WebElement checkAccessProfessionalInfo() {
 		return find(accessProfessionalInfo);
 	}
-	
+
 	public String getAccessProfessionalInfo() {
 		return getText(accessProfessionalInfo);
 	}
-	
+
 	public void tapAddAPropertyOrPolicyButton() {
 		scrollToElement(addAPropertyOrPolicyButton, "true");
 		tapElement(addAPropertyOrPolicyButton);
 	}
-	
+
 	public WebElement checkAddAPropertyOrPolicyButton() {
 		return find(addAPropertyOrPolicyButton);
 	}
-	
+
 	public String getAddAPropertyOrPolicyButton() {
 		return getText(addAPropertyOrPolicyButton);
 	}
-	
+
 	public void scrollToJourneyBanner(){
 		scrollToElement(startYourJourneyButton, "true");
 	}
@@ -347,26 +347,26 @@ public class HomePropertyPage extends BasePage {
 	public WebElement checkHomeJourneyBannerImage() {
 		return find(homeJourneyBannerImage);
 	}
-	
+
 	public String getHomeJourneyBannerHeading() {
 		return getText(homeJourneyBannerHeading);
 	}
-	
+
 	public String getHomeJourneyBannerDescription() {
 		return getText(homeJourneyBannerDescription);
 	}
-	
+
 	public WebElement checkStartYourJourneyButton() {
 		return find(startYourJourneyButton);
 	}
-	
+
 	public void tapStartYourJourneyButton() {
 		tapElement(startYourJourneyButton);
 	}
-	
+
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
-		
+
 	}
 	
 	public void swipePropertyCarouselLeft() {
