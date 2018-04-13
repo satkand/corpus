@@ -28,6 +28,7 @@ import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.FAPISettingsPage;
+import pages.marketplace.common.ForceUpdatePage;
 import pages.marketplace.common.GalleryPage;
 import pages.marketplace.common.WebviewPage;
 import pages.marketplace.digitalVault.ChooseFolderPage;
@@ -110,7 +111,7 @@ public class App extends BaseTest {
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 	public PropertyFullScreenMap propertyFullScreenMap = null;
-
+	public ForceUpdatePage forceUpdatePage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -173,7 +174,7 @@ public class App extends BaseTest {
 		propertyFullScreenMap = new PropertyFullScreenMap(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		articlesPage = new ArticlesPage(driver);
-
+		forceUpdatePage = new ForceUpdatePage(driver);
 	}
 	
 	@Parameters({ "stub" })

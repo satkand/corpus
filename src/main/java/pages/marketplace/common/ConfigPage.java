@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
@@ -28,6 +29,8 @@ public class ConfigPage extends BasePage {
 	private By hasBankAccountsToggle = By.id("au.com.suncorp.marketplace:id/hasAccountsToggle");
 	
 	private String continueBtnID="au.com.suncorp.marketplace:id/configContinueButton";
+	
+	private By minimumAppVersionEditText= By.id("au.com.suncorp.marketplace:id/minApplicationVersionEditText");
 	
 	public ConfigPage(AppiumDriver driver) {
 		super(driver);
@@ -143,6 +146,39 @@ public class ConfigPage extends BasePage {
 		if (isToggleEnabled(hasBankAccountsToggle)) {
 			tapElement(hasBankAccountsToggle);
 		}
+	}
+	
+	public void enterMinimumAppVersion(String version) {
+		tapElement(minimumAppVersionEditText);
+		typeValue(version, minimumAppVersionEditText);
+		if(isKeyboardDisplayed()) {
+			dismissKeyboard();
+		}
+		
+	}
+	
+	public WebElement checkMinimumAppVersionEditText() {
+		return find(minimumAppVersionEditText);
+	}
+	
+	public WebElement checkConfigPageTitle() {
+		return find(configPageTitle);
+	}
+	
+	public void scrollToContinueButton(){
+		if(isKeyboardDisplayed()) {
+			dismissKeyboard();
+		}
+		scrollToElement(continueBtnID, "id");
+	}
+	
+	public WebElement checkContinueButton() {
+		return find(continueButton);
+	}
+	
+	public void tapContinueButton() {
+		tapElement(continueButton);
+		
 	}
 
 }

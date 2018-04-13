@@ -53,7 +53,7 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "dest@dest.com",
+			"login": "a@b.c",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••"
 		},

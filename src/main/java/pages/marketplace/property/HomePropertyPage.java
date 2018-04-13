@@ -66,6 +66,44 @@ public class HomePropertyPage extends BasePage {
 	private By virtualAssetLandSize= By.id("au.com.suncorp.marketplace:id/landSizeText");
 	private By virtualAssetViewDetailsButton = By.id("au.com.suncorp.marketplace:id/propertyDetailsButton");
 	
+	//Home professional services
+	private By homeProfessionalServicesImage = By.id("au.com.suncorp.marketplace:id/professionalServicesImage");
+	private By homeProfessionalServicesTitle = By.id("au.com.suncorp.marketplace:id/propertyProfessionalServicesTitle");
+	private By homeProfessionalServicesDescription= By.id("au.com.suncorp.marketplace:id/propertyProfessionalServicesBodyText");
+	private By homeProfessionalServicesButton = By.id("au.com.suncorp.marketplace:id/propertyViewProfessionalServicesButton");
+	
+	public void scrollToHomeProfessionalServicesButton(){
+		scrollToElement(homeProfessionalServicesButton);
+	}
+	
+	public WebElement checkHomeProfessionalServicesButton() {
+		return find(homeProfessionalServicesButton);
+	}
+	
+	public void tapHomeProfessionalServicesButton() {
+		tapElement(homeProfessionalServicesButton);
+	}
+	
+	public WebElement checkHomeProfessionalServicesDescription() {
+		return find(homeProfessionalServicesDescription);
+	}
+	
+	public WebElement checkHomeProfessionalServicesTitle() {
+		return find(homeProfessionalServicesTitle);
+	}
+	
+	public String getHomeProfessionalServicesDescription() {
+		return getText(homeProfessionalServicesDescription);
+	}
+	
+	public String getHomeProfessionalServicesTitle() {
+		return getText(homeProfessionalServicesTitle);
+	}
+	
+	public WebElement checkHomeProfessionalServicesImage() {
+		return find(homeProfessionalServicesImage);
+	}
+	
 	public void scrollToVirtualAssetsCarousel(){
 		scrollToElement(incomeProtectionTitleText);
 			

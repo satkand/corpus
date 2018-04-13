@@ -1,5 +1,8 @@
 package automation.framework.common;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,6 +29,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.android.StartsActivity;
+//import src.main.java.auto.common.String;
 
 public class BasePage {
 
@@ -1485,4 +1490,28 @@ public class BasePage {
 		find(suncorpApp);
 		tapElement(suncorpApp);
 	}
+	
+	protected void restartSuncorpConfigApp() throws Throwable {
+	
+		File appDir = new File("resources");
+		File app = null;
+		File[] listOfFiles = appDir.listFiles();
+		for (int i = 0; i < listOfFiles.length; i++) {
+			if (listOfFiles[i].getName().contains("Marketplace")) {
+				app = listOfFiles[i];
+				break;
+			}
+
+		}
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("deviceName", "Samsung");
+		capabilities.setCapability("automationName", "UIAutomator2");
+		capabilities.setCapability("app", app.getAbsolutePath());
+		capabilities.setCapability("appPackage", "au.com.suncorp.marketplace");
+		capabilities.setCapability("appWaitActivity", "*");
+		capabilities.setCapability("app", app.getAbsolutePath());
+		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
+	}
+	
 }

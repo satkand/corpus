@@ -25,5 +25,21 @@ public interface Copy {
 	
 	//PROPERTY PAGE
 	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+	
+	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	
+	//PROFESSIONAL SERVICES FROM NAVIGATION MENU
+	public String HOME_PROFESSIONAL_SERVICES_INTRO_TITLE ="Professional services";
+	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property.";
+	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	
+	//FORCE UPDATE SCREEN
+	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
+	public String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
+	
+	
 
 }
