@@ -88,8 +88,8 @@ public class LandingPage extends BasePage {
 	}
 
 	public boolean isVehiclesTabSelected() {
-		return Boolean.parseBoolean(getScreenTitle(vehiclesTabTitle).getAttribute("selected"));
-		//return isSelected(vehiclesTab);
+		return isTabSelected(vehiclesTabTitle);
+		
 	}
 
 	public WebElement checkWealthTab() {

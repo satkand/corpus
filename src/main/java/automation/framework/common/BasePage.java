@@ -322,7 +322,10 @@ public class BasePage {
 		return element;
 
 	}
-
+	protected boolean isTabSelected(String tabTitleTxt) {
+		
+		return Boolean.parseBoolean(getScreenTitle(tabTitleTxt).getAttribute("selected"));
+	}
 
 	// TODO -> Different in iOS -> change it and test it if it works for android as well
 	protected void tapOnBottomRightCorner() {
