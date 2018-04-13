@@ -10,6 +10,7 @@ import org.testng.annotations.Parameters;
 import automation.framework.common.BaseTest;
 import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
+import pages.marketplace.articles.ArticlesPage;
 import pages.marketplace.auth.login.LoginAuthPage;
 import pages.marketplace.auth.login.LoginPage;
 import pages.marketplace.auth.pin.EnterCurrentPINPage;
@@ -102,7 +103,8 @@ public class App extends BaseTest {
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
 	public HomeProfessionalServicesPage homeServicesPage = null;
-
+	public ArticlesPage articlesPage = null;
+	
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 
@@ -165,6 +167,7 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
+		articlesPage = new ArticlesPage(driver);
 
 	}
 	

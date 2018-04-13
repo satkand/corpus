@@ -9,6 +9,10 @@ public interface Copy {
 	
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
+	
+	//Articles common
+	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 
 	//MemberLoginPage
 	public String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
