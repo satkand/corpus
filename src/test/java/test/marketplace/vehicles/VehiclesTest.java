@@ -9,14 +9,13 @@ import org.testng.annotations.Test;
 import automation.framework.common.Copy;
 import automation.framework.common.TestDetails;
 import pages.App;
-import pages.marketplace.vehicles.VehiclesPage;
 
 public class VehiclesTest extends App {
 
 	// 507 - Scenario 1
 	// 507 - Scenario 2
 	// 1052 - Scenario 1
-	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
+//	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesListOnVehiclesPage() {
 		navigateToVehiclesTab("hasVehicles");
 		vehiclesPage.waitForDataToLoad();
@@ -52,7 +51,7 @@ public class VehiclesTest extends App {
 	}
 
 	// 507 - Scenario 3
-	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
+//	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testNavigatingToVehicleDetailsScreen(){
 		navigateToVehiclesTab("hasVehicles");
 		Assert.assertNotNull(vehiclesPage.checkViewDetailsButton(), "Vehicles Page - view details button not shown");
@@ -74,22 +73,50 @@ public class VehiclesTest extends App {
 		navigateToVehiclesTab("guest");
 
 		//Step 4
-		vehiclesPage.scrollToVechilesTile();
 		//Validate Vehicles services tile image.
-		Assert.assertNotNull(vehiclesPage.checkVehicleServicesImage(), "Vehicles Page = Vehicles services tile image not shown");
+		verifyVehiclesTileTitle();
 
 		//Validate Vehicles services tile title
-		Assert.assertNotNull(vehiclesPage.checkVehicleServicesTitle(), "Vehicles Page = Vehicles Tile title not shown");
-		Assert.assertEquals(vehiclesPage.getVehicleServicesTitle(), Copy.VEHICLE_SERVICES_TITLE,"Vehicles Page = Vehicles Tile title not shown");
-
+		verifyVehiclesTileImage();
+		
 		//Validate Vehicles services tile description
-		Assert.assertNotNull(vehiclesPage.checkVehiclesServicesDesc(), "Vehicles Page = Vehicles services tile description not shown");
-		Assert.assertEquals(vehiclesPage.getVehiclesServicesDesc(), Copy.VEHICLE_SERVICES_DESCRIPTION,"Vehicles Page = Vehicles services description is not as expected");
-
+		verifyVehiclesTileDesc();
+		
 		//Validate Vehicles services tile button
+		verifyVehiclesTileBtn();
+	}
+
+	private void verifyVehiclesTileBtn() {
+		if(vehiclesPage.isVehiclesServicesBtnDisplayed()==null) {
+			vehiclesPage.scrollToVechilesTileBtn();
+		}
 		Assert.assertNotNull(vehiclesPage.checkVehiclesServicesBtn(), "Vehicles Page = Vehicles services button not shown");
 		Assert.assertEquals(vehiclesPage.getVehiclesServicesBtnTxt(), Copy.VEHICLE_SERVICES_BTN_TXT,"Vehicles Page = Vehicles Tile button text is not as expected");
 
+	}
+
+	private void verifyVehiclesTileDesc() {
+		if(vehiclesPage.isVehiclesServicesDescDisplayed()==null) {
+			vehiclesPage.scrollToVechilesTileDesc();
+		}
+		Assert.assertNotNull(vehiclesPage.checkVehiclesServicesDesc(), "Vehicles Page = Vehicles services tile description not shown");
+		Assert.assertEquals(vehiclesPage.getVehiclesServicesDesc(), Copy.VEHICLE_SERVICES_DESCRIPTION,"Vehicles Page = Vehicles services description is not as expected");
+	}
+
+	private void verifyVehiclesTileImage() {
+		if(vehiclesPage.isVehicleServicesImageDisplayed()==null) {
+			vehiclesPage.scrollToVechilesTile();
+		}
+		Assert.assertNotNull(vehiclesPage.checkVehicleServicesImage(), "Vehicles Page = Vehicles services tile image not shown");
+	}
+
+	private void verifyVehiclesTileTitle() {
+		if(vehiclesPage.isVehiclesServicesTitleDisplayed()==null) {
+			vehiclesPage.scrollToVechilesTile();
+		}
+		Assert.assertNotNull(vehiclesPage.checkVehicleServicesTitle(), "Vehicles Page = Vehicles Tile title not shown");
+		Assert.assertEquals(vehiclesPage.getVehicleServicesTitle(), Copy.VEHICLE_SERVICES_TITLE,"Vehicles Page = Vehicles Tile title not shown");
+		
 	}
 
 	private void navigateToVehiclesTab(String loginType) {

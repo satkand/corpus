@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import automation.framework.common.BasePage;
 import automation.framework.common.Copy;
@@ -13,7 +14,6 @@ public class VehiclesPage extends BasePage {
 
 	public VehiclesPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	private By vehicleTypeImage = By.id("au.com.suncorp.marketplace:id/vehicleTypeImage");
@@ -23,21 +23,28 @@ public class VehiclesPage extends BasePage {
 	private By viewDetailsButton = By.id("au.com.suncorp.marketplace:id/viewDetailsButton");
 	private By loadingIndicator = By.id("au.com.suncorp.marketplace:id/vehicleLoadingIndicator");
 
-	//Vehicle Tile Common elements initialisation
+	//Vehicle Tile Common elements initialization
 	private By vehicleServicesImg = By.id("au.com.suncorp.marketplace:id/vehicleServicesImage");
 	private By vehicleServicesTitle = By.id("au.com.suncorp.marketplace:id/vehicleServicesTitle");
-	private String vehicleServicesTitleStr = "au.com.suncorp.marketplace:id/vehicleServicesTitle";
+	private String vehicleServicesTitleId = "au.com.suncorp.marketplace:id/vehicleServicesTitle";
 	private By vehicleServicesDesc = By.id("au.com.suncorp.marketplace:id/vehicleServicesDescription");
+	private String vehicleServicesDescId = "au.com.suncorp.marketplace:id/vehicleServicesDescription";
 	private By vehicleServicesBtn = By.id("au.com.suncorp.marketplace:id/vehicleServicesButton");
-	private String vehicleServicesBtnStr = "au.com.suncorp.marketplace:id/vehicleServicesButton";
+	private String vehicleServicesBtnId = "au.com.suncorp.marketplace:id/vehicleServicesButton";
+	private String scrollableId = "au.com.suncorp.marketplace:id/navigationViewPager";
 
 	// TODO -> Cannot find this in ANdroid. But its there on iOS
 	private By checkClaimStatusButton = By.id("VehicleCell.ClaimLabel");
 
 
-	//Vehicle tile common elements utilisation
+	//Vehicle tile common elements utilization
 	public WebElement checkVehicleServicesImage() {
 		return find(vehicleServicesImg);
+	}
+	
+	public WebElement isVehicleServicesImageDisplayed() {
+
+		return find(vehicleServicesImg,1);
 	}
 
 	public WebElement checkVehicleServicesTitle() {
@@ -48,6 +55,11 @@ public class VehiclesPage extends BasePage {
 		return checkVehicleServicesTitle().getText();
 	}
 
+	public WebElement isVehiclesServicesTitleDisplayed() {
+
+		return find(vehicleServicesTitle,1);
+	}
+
 	public WebElement checkVehiclesServicesDesc() {
 		return find(vehicleServicesDesc);
 	}
@@ -56,24 +68,61 @@ public class VehiclesPage extends BasePage {
 		return checkVehiclesServicesDesc().getText();
 	}
 
+	public WebElement isVehiclesServicesDescDisplayed() {
+
+		return find(vehicleServicesDesc,1);
+	}
+
 	public WebElement checkVehiclesServicesBtn() {
 		return find(vehicleServicesBtn);
 	}
 
 	public String getVehiclesServicesBtnTxt() {
-		return checkVehiclesServicesBtn().getText();
+		String text = checkVehiclesServicesBtn().getText();
+		return text.toUpperCase();
 
 	}
 
+	public WebElement isVehiclesServicesBtnDisplayed() {
+
+		return find(vehicleServicesBtn,1);
+	}
+
 	public void tapVehiclesServicesBtn() {
+
 		tapElement(checkVehiclesServicesBtn());
 	}
 
 	public void scrollToVechilesTile() {
-		scrollToElement(vehicleServicesBtnStr, "id", 10);
 
+		if (getScreenHeight()>1920) {
+			scrollToElement(vehicleServicesTitleId, "id", scrollableId, 10);	
+		}
+		else {
+			scrollToElement(vehicleServicesTitle);
+		}
 	}
 
+	public void scrollToVechilesTileBtn() {
+
+		if (getScreenHeight()>1920) {
+			scrollToElement(vehicleServicesBtnId, "id", scrollableId, 10);
+
+		}
+		else {
+			scrollToElement(vehicleServicesBtn);
+		}
+	}
+
+	public void scrollToVechilesTileDesc() {
+		if (getScreenHeight()>1920) {
+			scrollToElement(vehicleServicesDescId, "id", scrollableId, 10);
+		}
+		else {
+
+			scrollToElement(vehicleServicesDesc);
+		}
+	}
 
 	public List<WebElement> fetchVehicleTypeImageList(){
 		return finds(vehicleTypeImage);

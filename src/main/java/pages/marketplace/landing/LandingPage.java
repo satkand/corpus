@@ -84,7 +84,7 @@ public class LandingPage extends BasePage {
 
 	public void tapVehiclesTab() {
 		tapElement(getScreenTitle(vehiclesTabTitle));
-		tapElement(scrollHorizontallyToElement(vehiclesTitle,"text",naviScrollableId));
+		//tapElement(scrollHorizontallyToElement(vehiclesTitle,"text",naviScrollableId));
 	}
 
 	public boolean isVehiclesTabSelected() {

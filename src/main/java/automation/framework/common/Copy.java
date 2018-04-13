@@ -16,5 +16,5 @@ public interface Copy {
 	//VEHICLES PAGE
 	public static final String VEHICLE_SERVICES_TITLE = "Vehicle Services at your finger tips";
 	public static final String VEHICLE_SERVICES_DESCRIPTION = "Browse and access from a range of professional services for your vehicle or just buy one.";
-	public static final String VEHICLE_SERVICES_BTN_TXT = "Vehicle services";
+	public static final String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
 }
