@@ -53,13 +53,14 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "dest@dest.com",
+			"login": "a@b.c",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••"
 		},
 		"invalidCredentials": {
 			"emailEmpty" : "",
 			"emailExceedsMaxLength": "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendb@j.c",
+			"emailExceedsMaxLengthInvalid" : "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendbsdtehdikd",
 			"emailMinLength": "a",
 			"emailIncorrectFormat1": "a@.com",
 			"emailIncorrectFormat2": "a@b",
@@ -1088,19 +1089,23 @@
 	"brands": [
 		{
 			"button": "aamiButton",
-			"brandIcon": "AAMI member login"
+			"brandIcon": "AAMI member login",
+			"resetPasswordDescription" : "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
 			"button": "apiaButton",
-			"brandIcon": "APIA member login"
+			"brandIcon": "APIA member login",
+			"resetPasswordDescription" : "Enter the email associated with your APIA account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
 			"button": "gioButton",
-			"brandIcon": "GIO member login"
+			"brandIcon": "GIO member login",
+			"resetPasswordDescription" : "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
 			"button": "shannonsButton",
-			"brandIcon": "Shannons member login"
+			"brandIcon": "Shannons member login",
+			"resetPasswordDescription" : "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}
 	],
 	"bundleId": {
