@@ -9,7 +9,7 @@ public interface Copy {
 	
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
-	
+
 	//PROPERTYHUB PAGE
 	public String PROPERTY_HUB_DESCRIPTION_HEADING ="Explore valuable insights on suburbs & properties";
 	public String PROPERTY_HUB_DESCRIPTION ="Find your perfect property and save it as a favourite, or explore whats nearby.";
@@ -22,10 +22,7 @@ public interface Copy {
 	public String PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT ="Owner/Occupier";
 	public String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
 	public String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
-	
-	//PROPERTY PAGE
-	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
-	
+
 	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
@@ -40,6 +37,13 @@ public interface Copy {
 	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
 	public String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
 	
+	//Articles common
+	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 	
+	//WEB VIEW
+	public static String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
+	
+
 
 }

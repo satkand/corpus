@@ -28,12 +28,15 @@ public class PropertyDetailsPage   extends BasePage{
 	private By myPropertyBottomSheetRenterButton = By.id("au.com.suncorp.marketplace:id/tenantTypeButton");
 	private By myPropertyBottomSheetLandLordButton = By.id("au.com.suncorp.marketplace:id/landlordTypeButton");
 	private By outsideOfMyPropertyBottomSheet = By.id("au.com.suncorp.marketplace:id/touch_outside");
+	private By attributeBar = By.id("au.com.suncorp.marketplace:id/attributesView");
 	
 	private By propertyNumberOfBathrooms = By.id("au.com.suncorp.marketplace:id/bathNumberText");
 	private By propertyNumberOfBathroomsImage = By.id("au.com.suncorp.marketplace:id/bathImage");
 	private By propertyNumberOfParkingSpaces = By.id("au.com.suncorp.marketplace:id/parkingNumberText");
 	private By propertyNumberOfParkingSpacesImage = By.id("au.com.suncorp.marketplace:id/parkingImage");
 	private By propertyLandSize = By.id("au.com.suncorp.marketplace:id/landSizeNumberText");
+	private By propertyLandSizeImage = By.id("au.com.suncorp.marketplace:id/landSizeImage");
+	
 	private By propertyType = By.id("au.com.suncorp.marketplace:id/propertyTypeText");
 	private By propertyShowMoreInfo = By.id("au.com.suncorp.marketplace:id/viewExtraInfoTitleText");
 	private By propertyShowMoreDownArrow = By.id("au.com.suncorp.marketplace:id/extraInfoButton");
@@ -82,6 +85,14 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	public WebElement checkMyPropertyBottomSheetTitleLabel() {
 		return find(myPropertyBottomSheetTitleLabel);
+	}
+	
+	public WebElement checkPropertyLandSizeImage() {
+		return find(propertyLandSizeImage,3);
+	}
+	
+	public WebElement checkAttributeBar() {
+		return find(attributeBar,3);
 	}
 	
 	public WebElement checkMyPropertyBottomSheetOwnerOccupierButton() {
@@ -387,7 +398,7 @@ public class PropertyDetailsPage   extends BasePage{
 	}	
 	
 	public WebElement checkPropertyNumberOfParkingSpacesImage() {
-		return find(propertyNumberOfParkingSpacesImage);
+		return find(propertyNumberOfParkingSpacesImage,3);
 	}
 	
 	public WebElement checkPropertyLandSize() {
@@ -403,11 +414,11 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkPropertyNumberOfBathroomsImage() {
-		return find(propertyNumberOfBathroomsImage);
+		return find(propertyNumberOfBathroomsImage,3);
 	}
 	
 	public WebElement checkPropertyNumberOfParkingSpaces() {
-		return find(propertyNumberOfParkingSpaces);
+		return find(propertyNumberOfParkingSpaces,3);
 	}
 	
 	public WebElement checkPropertyStatePostCode() {
@@ -415,15 +426,15 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkPropertyNumberOfBedrooms() {
-		return find(propertyNumberOfBedrooms);
+		return find(propertyNumberOfBedrooms,3);
 	}
 	
 	public WebElement checkPropertyNumberOfBedroomsImage() {
-		return find(propertyNumberOfBedroomsImage);
+		return find(propertyNumberOfBedroomsImage,5);
 	}
 	
 	public WebElement checkPropertyNumberOfBathrooms() {
-		return find(propertyNumberOfBathrooms);
+		return find(propertyNumberOfBathrooms,3);
 	}
 	
 	public WebElement checkPropertyAddress() {
