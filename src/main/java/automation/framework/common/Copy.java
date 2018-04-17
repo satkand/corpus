@@ -10,7 +10,8 @@ public interface Copy {
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
 	
-	//PROPERTY PAGE
+	//Articles common
 	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 
 }

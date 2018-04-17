@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite configfailurepolicy="continue" verbose="0" name="Failed suite [Suite]">
+  <parameter name="stub" value="false"/>
+  <test name="Test(failed)">
+    <parameter name="stub" value="false"/>
+    <classes>
+      <class name="test.marketplace.property.PropertyExplorerTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testNavigatingToThePropertyOrSuburbSearch"/>
+          <include name="testClearTextWhenChangingSearchType"/>
+          <include name="testDisplayMiniMapOnPropertyDetailsScreen"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- test.marketplace.property.PropertyExplorerTest -->
+      <class name="test.marketplace.auth.pin.PINOptionsTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testElementsOnPinOptionsPage"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.pin.PINOptionsTest -->
+      <class name="test.marketplace.auth.registration.RegistrationTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testInlineError2ndPageOnTapOut"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testDuplicateEmailId"/>
+          <include name="testValidationOnSubmitEmailScreen"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.registration.RegistrationTest -->
+      <class name="test.marketplace.wealth.FinanceTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testElementsOnFinancePageWithSuncorpBankAccounts"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testNavigatingToSpendingsScreen"/>
+          <include name="testElementsOnFinancePageWithOutSuncorpBankAccounts"/>
+        </methods>
+      </class> <!-- test.marketplace.wealth.FinanceTest -->
+      <class name="test.marketplace.offers.OffersPropertyTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testLinkToRegistrationPage"/>
+          <include name="testPropertyJourneyOffers"/>
+          <include name="testRetryContentRetrievalPropertyTab"/>
+        </methods>
+      </class> <!-- test.marketplace.offers.OffersPropertyTest -->
+      <class name="test.marketplace.wealth.SpendingsTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testSpendingsPageElements"/>
+          <include name="testDismissingTheDatePickerByTappingTwice"/>
+          <include name="testEmptyTransactionsOnVendorsTabForMonthSelected"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testSpendingsOnVendorTab"/>
+          <include name="testSpendingsOnCategoriesTab"/>
+          <include name="testSpendingsAmountForEachMonth"/>
+          <include name="testEmptyTransactionsOnCategoryTabForMonthSelected"/>
+        </methods>
+      </class> <!-- test.marketplace.wealth.SpendingsTest -->
+      <class name="test.marketplace.property.HomeJourneyTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+        </methods>
+      </class> <!-- test.marketplace.property.HomeJourneyTest -->
+      <class name="test.marketplace.portfolio.MyProductsTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testProductSelectionScreenBackgroundAndForeground"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testElementsOnMyProductsPageWithEmptyState"/>
+          <include name="testExpiryDateRenewalDueAndOverduePolicy" invocation-numbers="0 1 2 3"/>
+          <include name="testPolicyLevelStatus" invocation-numbers="0 1 2 3 4 5 6 7 8 9"/>
+          <include name="testProductSelectionOnEmptyScreen"/>
+          <include name="testDisplayBankAccounts"/>
+          <include name="testNavigatingToBankAccountDetails"/>
+        </methods>
+      </class> <!-- test.marketplace.portfolio.MyProductsTest -->
+      <class name="test.marketplace.auth.pin.PINAuthTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testLoginUsingPin"/>
+          <include name="cancelReauthUsingPin"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.pin.PINAuthTest -->
+      <class name="test.marketplace.property.HomePropertyTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testAddAPropertyOrPolicy"/>
+          <include name="testDisplayEmptyStateForPropertyAsset"/>
+          <include name="testDisplayActiveProductsAssociatedWithAPropertyAsset"/>
+        </methods>
+      </class> <!-- test.marketplace.property.HomePropertyTest -->
+      <class name="test.marketplace.auth.registration.MemberLoginTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testCorrectingInlineValidationError"/>
+          <include name="testBackCancelBehaviour"/>
+          <include name="testMobileNumberValidations"/>
+          <include name="testSuccessfulMemberLogin"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.registration.MemberLoginTest -->
+      <class name="test.marketplace.landing.WelcomeTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+        </methods>
+      </class> <!-- test.marketplace.landing.WelcomeTest -->
+      <class name="test.marketplace.auth.login.LoginTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.login.LoginTest -->
+      <class name="test.marketplace.digitalVault.DigitalVaultTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testItemActionMenuDelete"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testDisplayFolderActionMenu"/>
+          <include name="testDifferentSortByName"/>
+          <include name="testMoveFileFromFullScreenView"/>
+          <include name="testHideOptionsWhenNoFiles"/>
+          <include name="testEditImageTitle"/>
+          <include name="testAddImageFromGallery"/>
+          <include name="testEnabledEditOption"/>
+          <include name="testDeleteFolderFromRoot"/>
+        </methods>
+      </class> <!-- test.marketplace.digitalVault.DigitalVaultTest -->
+      <class name="test.marketplace.digitalVault.FolderViewTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testAddFilesFromRootToFolder"/>
+          <include name="testDeleteMultipleFilesFromInsideFolderViaEdit"/>
+          <include name="testMoveMultipleFilesFromInsideFolderToExistingFolderViaEdit_cancelFolderSelection"/>
+        </methods>
+      </class> <!-- test.marketplace.digitalVault.FolderViewTest -->
+      <class name="test.marketplace.vehicles.VehiclesTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testNavigatingToVehicleDetailsScreen"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testVehiclesListOnVehiclesPage"/>
+        </methods>
+      </class> <!-- test.marketplace.vehicles.VehiclesTest -->
+      <class name="test.marketplace.landing.NavigationMenuTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+        </methods>
+      </class> <!-- test.marketplace.landing.NavigationMenuTest -->
+      <class name="test.marketplace.auth.pin.ChangePINTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testPINSetupSuccessForPinLocked"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.pin.ChangePINTest -->
+      <class name="test.marketplace.auth.registration.GetStartedPageTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.registration.GetStartedPageTest -->
+      <class name="test.marketplace.portfolio.AddPolicyTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testInlineErrorsAsItype"/>
+          <include name="testInlineErrorMessagesOnTapOut"/>
+          <include name="testAddingAPolicy"/>
+        </methods>
+      </class> <!-- test.marketplace.portfolio.AddPolicyTest -->
+      <class name="test.marketplace.chatbot.ChatbotTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testChatbotResponseWithPhNo"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testCopyTextContentInBubbleMessage"/>
+          <include name="testChatbotResponseWithParagraphs"/>
+          <include name="testChatbotResponseWithExternalUrl"/>
+          <include name="testUserInputMessageBubble"/>
+        </methods>
+      </class> <!-- test.marketplace.chatbot.ChatbotTest -->
+      <class name="test.marketplace.offers.OffersOverviewTab">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testOverviewTabOffers"/>
+          <include name="testRetryContentRetrievalOverviewTab"/>
+          <include name="testLinkToRegistrationPage"/>
+        </methods>
+      </class> <!-- test.marketplace.offers.OffersOverviewTab -->
+      <class name="test.marketplace.offers.OffersVehiclesTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testRetryContentRetrievalVehiclesTab"/>
+          <include name="testVehicleJourneyOffers"/>
+        </methods>
+      </class> <!-- test.marketplace.offers.OffersVehiclesTest -->
+      <class name="test.marketplace.settings.SettingsTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testPinAuthenticationOptionsWithPinEnabled"/>
+        </methods>
+      </class> <!-- test.marketplace.settings.SettingsTest -->
+      <class name="test.marketplace.landing.LandingTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+        </methods>
+      </class> <!-- test.marketplace.landing.LandingTest -->
+      <class name="test.marketplace.offers.OffersHealthTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testHealthJourneyOffers"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testRetryContentRetrievalHealthTab"/>
+        </methods>
+      </class> <!-- test.marketplace.offers.OffersHealthTest -->
+      <class name="test.marketplace.auth.pin.PINSetupTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="testCloseOptionOnPINSetupPage"/>
+          <include name="beforeEachTest"/>
+          <include name="testDifferentPINOnConfirmPINPage"/>
+          <include name="testBlacklistedNumbersAsPIN"/>
+          <include name="testValidNumberAsPIN"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.pin.PINSetupTest -->
+      <class name="test.marketplace.auth.pin.ForgotPINTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testClearPasswordOnMovingAppToBackground"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testInvalidPwdByTappingOnNextButton"/>
+          <include name="testReauthSuccessfulByTappingOnNextButton"/>
+          <include name="testValidatePasswordWithEmptyValue"/>
+          <include name="testPINReAuthPasswordPageElements"/>
+        </methods>
+      </class> <!-- test.marketplace.auth.pin.ForgotPINTest -->
+      <class name="test.marketplace.offers.OffersWealthTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testRetryContentRetrievalWealthTab"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="beforeEachTest"/>
+          <include name="testWealthJourneyOffers"/>
+        </methods>
+      </class> <!-- test.marketplace.offers.OffersWealthTest -->
+      <class name="test.marketplace.property.PropertyDetailsTest">
+        <parameter name="stub" value="true"/>
+        <methods>
+          <include name="testShowMoreInfoOnPropertyDetailsScreen"/>
+          <include name="afterEachTest"/>
+          <include name="initializeApp"/>
+          <include name="testNavigateToPropertyDetailsScreen"/>
+          <include name="beforeEachTest"/>
+          <include name="testDisplayPropertyImages"/>
+          <include name="testDisplayPropertyImagesFullScreenView"/>
+          <include name="testSuburbInsightInPropertyDetailsScreen"/>
+        </methods>
+      </class> <!-- test.marketplace.property.PropertyDetailsTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
