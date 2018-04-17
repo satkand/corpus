@@ -1,5 +1,7 @@
 package pages.marketplace.property;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -7,17 +9,21 @@ import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 
-public class PropertyFullScreenMap extends BasePage{
+public class WhatsNearbyPage extends BasePage{
 
 	
-	public PropertyFullScreenMap(AppiumDriver driver) {
+	public WhatsNearbyPage(AppiumDriver driver) {
 		super(driver);
 		}
 
 	private By fullScreenMapPin = By.xpath("//android.widget.FrameLayout[@resource-id='au.com.suncorp.marketplace:id/whatsNearbyMapView']//android.widget.FrameLayout//android.view.View[@content-desc='Google Map']//android.view.View");
+	private By fullScreenGoogleLabel = By.xpath("//android.widget.FrameLayout[@resource-id='au.com.suncorp.marketplace:id/whatsNearbyMapView']//android.widget.FrameLayout//android.widget.RelativeLayout//android.widget.ImageView");
+	
 	private By fullScreenMapCloseButton = MobileBy.AccessibilityId("Navigate up");
 	private By fullScreenMapTitle= By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']//android.widget.TextView");
 	private By fullScreenMap= MobileBy.AccessibilityId("Google Map");
+	private By fullScreenMapPropertyPin= MobileBy.AccessibilityId("PROPERTY. ");
+	
 	
 	private By propertyTab = By.xpath("//android.widget.TextView[@text='PROPERTY']");
 	private By educationTab = By.xpath("//android.widget.TextView[@text='EDUCATION']");
@@ -37,10 +43,55 @@ public class PropertyFullScreenMap extends BasePage{
 	private By diningCentreIndicator = MobileBy.AccessibilityId("secret garden restraunt. ");
 	private By otherAmenityIndicator = MobileBy.AccessibilityId("Coomonwealth bank Niddrie. ");
 	
+	//Property card details
+	private By propertyCardThumbnail = By.id("au.com.suncorp.marketplace:id/propertyCardThumbnail");
+	private By propertyCardTitle = By.id("au.com.suncorp.marketplace:id/propertyCardTitle");
+	private By propertyCardDetails = By.id("au.com.suncorp.marketplace:id/propertyCardDetail");
+	
 	private String tabBarID = "au.com.suncorp.marketplace:id/nearbyCategoryAppBarLayout";
+	
+	public String getPropertyCardTitle() {
+		return getText(propertyCardTitle);
+	}
+	
+	public void tapPropertyCardTitle() {
+		tapElement(propertyCardTitle);
+	}
+	
+	public String getPropertyCardDetails() {
+		return getText(propertyCardDetails);
+	}
+	
+	public WebElement checkPropertyCardThumbnail() {
+		return find(propertyCardThumbnail,3);
+	}
+	
+	public void tapPropertyCardThumbnail() {
+		tapElement(propertyCardThumbnail);
+	}
+	
+	public WebElement checkPropertyCardTitle() {
+		return find(propertyCardTitle,3);
+	}
+	
+	public WebElement checkPropertyCardDetails() {
+		return find(propertyCardDetails,3);
+	}
+	
+	public WebElement checkFullScreenMapPropertyPin() {
+		return find(fullScreenMapPropertyPin);
+	}
+	
+	public void tapFullScreenMapPropertyPin() {
+		tapElement(fullScreenMapPropertyPin);
+	}
 	
 	public boolean isPropertyTabSelected() {
 		return isEnabled(propertyTab);
+	}
+
+	public boolean isEducationTabSelected() {
+		return isEnabled(educationTab);
 	}
 
 	public WebElement checkEducationCentreIndicator() {
@@ -128,7 +179,7 @@ public class PropertyFullScreenMap extends BasePage{
 	}
 	
 	public WebElement checkOtherTab() {
-		return find(otherTab);
+		return find(otherTab,5);
 	}
 	
 	public void tapOtherTab() {
@@ -158,6 +209,11 @@ public class PropertyFullScreenMap extends BasePage{
 	public void doubleTapFullScreenMap() {
 		tapElement(fullScreenMap);
 		tapElement(fullScreenMap);	
+	}
+	
+	public void tapFullScreenGoogleLabel(){
+		find(fullScreenGoogleLabel,3);
+		tapElement(fullScreenGoogleLabel);
 	}
 	
 }

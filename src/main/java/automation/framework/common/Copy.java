@@ -44,6 +44,15 @@ public interface Copy {
 	//WEB VIEW
 	public static String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
 	
-
+	//SUBURB DETAILS PAGE
+	public String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
+	public String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
+	public String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood Risk";
+	public String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush Fire Risk";
+	public String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft Risk";
+	public String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
+	public String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
+	public String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
+	
 
 }

@@ -1,5 +1,7 @@
 package pages.marketplace.property;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -80,8 +82,48 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	private By derivedAssetText = By.xpath("//android.widget.TextView[@text='derived']");
 	private By suppliedAssetText = By.xpath("//android.widget.TextView[@text='supplied']");
-	
 	private By imageLoadingIndicator = By.xpath("au.com.suncorp.marketplace:id/loadingIndicator");
+	
+	private By professionalServicesImage = By.id("au.com.suncorp.marketplace:id/professionalServicesImage");
+	
+	
+	//EDUCATION CENTRES
+	private By nearbyEducationTitle = By.id("au.com.suncorp.marketplace:id/nearbyEducationText");
+	private By nearbyEducationViewAllButton = By.id("au.com.suncorp.marketplace:id/nearbyEducationViewAllText");
+	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	
+	public WebElement checkNearbyEducationTitle() {
+		return find(nearbyEducationTitle);
+	}
+	
+	public void tapNearbyEducationViewAllButton(){
+		tapElement(nearbyEducationViewAllButton);
+	}
+	
+	public String getnearbyEducationTitle() {
+		return getText(nearbyEducationTitle);
+	}
+	
+	public WebElement checkNearbyEducationViewAllButton() {
+		return find(nearbyEducationViewAllButton);
+	}
+	
+	public String getnearbyEducationViewAllButton() {
+		return getText(nearbyEducationViewAllButton);
+	}
+	
+	public WebElement checkNearbyEducationCentres() {
+		return find(nearbyEducationCentres);
+	}
+	
+	public List<WebElement> fetchNearbyEducationCentres() {
+		List<WebElement> elements = finds(nearbyEducationCentres);
+		return elements;
+	}
+	
+	public void scrollToProfessionalServicesImage(){
+		scrollToElement(professionalServicesImage, "true");
+	}
 	
 	public WebElement checkMyPropertyBottomSheetTitleLabel() {
 		return find(myPropertyBottomSheetTitleLabel);
@@ -457,9 +499,18 @@ public class PropertyDetailsPage   extends BasePage{
 		tapElement(showMeInsightButton);
 	}
 	
+	public WebElement checkShowMeInsightButton() {
+		return find(showMeInsightButton);
+	}
+	
 	public WebElement checkMiniMap() {
 		return find(miniMap);
 	}
+	
+	public void tapMiniMap(){
+		tapElement(miniMap);
+	}
+	
 	
 	public WebElement checkMiniMapWhatsNewButton() {
 		return find(miniMapWhatsNearButton);
@@ -471,6 +522,10 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	public void scrollToWhatsNearButton() {
 		scrollToElement(miniMapWhatsNearButton, "true");
+	}
+	
+	public void tapMiniMapWhatsNearbyButton(){
+		tapElement(miniMapWhatsNearButton);
 	}
 
 	//Swiping image carousel right in property details

@@ -16,7 +16,7 @@ public class LandingPage extends BasePage {
 
 	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='One Suncorp']");
 	private By chatbotOption = By.id("au.com.suncorp.marketplace:id/chatbotOption");
-	private String propertyTitle = "Property";
+	private String propertyTitle = "PROPERTY";
 	private String vehiclesTitle = "Vehicles";
 	private String naviScrollableId = "au.com.suncorp.marketplace:id/navigationTabLayout";
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='ONE SUNCORP']");

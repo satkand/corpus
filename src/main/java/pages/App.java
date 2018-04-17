@@ -57,8 +57,9 @@ import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
-import pages.marketplace.property.PropertyFullScreenMap;
+import pages.marketplace.property.WhatsNearbyPage;
 import pages.marketplace.property.PropertyHubPage;
+import pages.marketplace.property.SuburbDetailsPage;
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -110,8 +111,9 @@ public class App extends BaseTest {
 	public ArticlesPage articlesPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
-	public PropertyFullScreenMap propertyFullScreenMap = null;
+	public WhatsNearbyPage whatsNearbyPage = null;
 	public ForceUpdatePage forceUpdatePage = null;
+	public SuburbDetailsPage suburbDetailsPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -171,10 +173,11 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
-		propertyFullScreenMap = new PropertyFullScreenMap(driver);
+		whatsNearbyPage = new WhatsNearbyPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		articlesPage = new ArticlesPage(driver);
 		forceUpdatePage = new ForceUpdatePage(driver);
+		suburbDetailsPage = new SuburbDetailsPage(driver);
 	}
 	
 	@Parameters({ "stub" })

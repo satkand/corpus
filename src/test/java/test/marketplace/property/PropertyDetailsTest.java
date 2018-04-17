@@ -198,20 +198,20 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
 		
 		propertyExplorerPage.tapMiniMapWhatsNearByButton();
-		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
-		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map pin is not present");
-		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapCloseButton(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapCloseButton(), "Property Explorer Page - Full screen map pin is not present");
 		
-		propertyFullScreenMap.tapFullScreenMapCloseButton();
+		whatsNearbyPage.tapFullScreenMapCloseButton();
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
 		
 		propertyExplorerPage.tapMiniMap();
-		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
-		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
-		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map pin is not present");
-		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapCloseButton(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapCloseButton(), "Property Explorer Page - Full screen map pin is not present");
 		
-		propertyFullScreenMap.tapFullScreenMapCloseButton();
+		whatsNearbyPage.tapFullScreenMapCloseButton();
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
 		
 		}
@@ -258,36 +258,36 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property Explorer Page - Mini Map not present");
 		
 		propertyExplorerPage.tapMiniMapWhatsNearByButton();
-		Assert.assertNotNull(propertyFullScreenMap.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
-		Assert.assertTrue(propertyFullScreenMap.isPropertyTabSelected(), "Whats nearby Page - Property tab is not selected by default");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertTrue(whatsNearbyPage.isPropertyTabSelected(), "Whats nearby Page - Property tab is not selected by default");
 		
-		Assert.assertNotNull(propertyFullScreenMap.checkEducationTab(), "Whats nearby Page - Education tab is not present");
-		propertyFullScreenMap.tapEducationTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkEducationCentreIndicator(), "Whats nearby Page - Education centre indicator is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkEducationTab(), "Whats nearby Page - Education tab is not present");
+		whatsNearbyPage.tapEducationTab();
+		Assert.assertNotNull(whatsNearbyPage.checkEducationCentreIndicator(), "Whats nearby Page - Education centre indicator is not present");
 		
-		Assert.assertNotNull(propertyFullScreenMap.checkShoppingTab(), "Whats nearby Page - Shopping tab is not present");
-		propertyFullScreenMap.tapShoppingTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkShoppingAmenityIndicator(), "Whats nearby Page - Shopping Amenity Indicator is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkShoppingTab(), "Whats nearby Page - Shopping tab is not present");
+		whatsNearbyPage.tapShoppingTab();
+		Assert.assertNotNull(whatsNearbyPage.checkShoppingAmenityIndicator(), "Whats nearby Page - Shopping Amenity Indicator is not present");
 		
-		Assert.assertNotNull(propertyFullScreenMap.checkTransportTab(), "Whats nearby Page - Transport tab is not present");
-		propertyFullScreenMap.tapTransportTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkTransportAmenityIndicator(), "Whats nearby Page - transport Amenity Indicator is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkTransportTab(), "Whats nearby Page - Transport tab is not present");
+		whatsNearbyPage.tapTransportTab();
+		Assert.assertNotNull(whatsNearbyPage.checkTransportAmenityIndicator(), "Whats nearby Page - transport Amenity Indicator is not present");
 	
-		Assert.assertNotNull(propertyFullScreenMap.checkEntertainmentTab(), "Whats nearby Page - Entertainment tab is not present");
-		propertyFullScreenMap.tapEntertainmentTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkEntertainmentOutletIndicator(), "Whats nearby Page - Entertainment Amenity Indicator is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkEntertainmentTab(), "Whats nearby Page - Entertainment tab is not present");
+		whatsNearbyPage.tapEntertainmentTab();
+		Assert.assertNotNull(whatsNearbyPage.checkEntertainmentOutletIndicator(), "Whats nearby Page - Entertainment Amenity Indicator is not present");
 		
-		Assert.assertNotNull(propertyFullScreenMap.checkHealthTab(), "Whats nearby Page - Health tab is not present");
-		propertyFullScreenMap.tapHealthTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkHealthCentreIndicator(), "Whats nearby Page - Health Amenity Indicator is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkHealthTab(), "Whats nearby Page - Health tab is not present");
+		whatsNearbyPage.tapHealthTab();
+		Assert.assertNotNull(whatsNearbyPage.checkHealthCentreIndicator(), "Whats nearby Page - Health Amenity Indicator is not present");
 		
-		Assert.assertNotNull(propertyFullScreenMap.checkDiningTab(), "Whats nearby Page - Dining tab is not present");
-		propertyFullScreenMap.tapDiningTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkDiningCentreIndicator(), "Whats nearby Page - Dining amenity Indicator is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkDiningTab(), "Whats nearby Page - Dining tab is not present");
+		whatsNearbyPage.tapDiningTab();
+		Assert.assertNotNull(whatsNearbyPage.checkDiningCentreIndicator(), "Whats nearby Page - Dining amenity Indicator is not present");
 		
-		Assert.assertNotNull(propertyFullScreenMap.checkOtherTab(), "Whats nearby Page - Dining tab is not present");
-		propertyFullScreenMap.tapOtherTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkOtherAmenityIndicator(), "Whats nearby Page - Other Amenity Indicator is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkOtherTab(), "Whats nearby Page - Dining tab is not present");
+		whatsNearbyPage.tapOtherTab();
+		Assert.assertNotNull(whatsNearbyPage.checkOtherAmenityIndicator(), "Whats nearby Page - Other Amenity Indicator is not present");
 		
 	}
 	
@@ -390,6 +390,30 @@ public class PropertyDetailsTest extends App{
 		
 	}
 	
+	@TestDetails(story1 = "DMPM-4982:DMPM-5935,DMPM-5936", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
+	public void testViewEducationCentresNearToTheProperty() {
+		int numberOFSchools = 3;
+		navigateToPropertyDetails("StartYourJourney","HighConfident");
+		Assert.assertNotNull(propertyDetailsPage.checkEstimatedMarketValueLabel(), "Property Details page - Estimated market value label is not present");
+		
+		propertyDetailsPage.scrollToProfessionalServicesImage();
+		Assert.assertNotNull(propertyDetailsPage.checkNearbyEducationTitle(), "Property Details Page - Nearby Education centres title is not displayed");
+		Assert.assertNotNull(propertyDetailsPage.checkNearbyEducationViewAllButton(), "Property Details Page - Nearby Education centres, VIEW ALL button is not displayed");
+		Assert.assertNotNull(propertyDetailsPage.checkNearbyEducationCentres(), "Property Details Page - Nearby Education centres are not displayed");
+		Assert.assertEquals(propertyDetailsPage.fetchNearbyEducationCentres().size(),numberOFSchools,"Property Details page - Number of schools is not matching");
+		
+		Assert.assertEquals(propertyDetailsPage.fetchNearbyEducationCentres().get(0).getText(),utils.readTestData("propertyDimension","propertyDetailsHighConfidence","nearbySchool1") ,"Property Details page - School 1 name is not matching");
+		Assert.assertEquals(propertyDetailsPage.fetchNearbyEducationCentres().get(1).getText(),utils.readTestData("propertyDimension","propertyDetailsHighConfidence","nearbySchool2") ,"Property Details page - School 2 name is not matching");
+		Assert.assertEquals(propertyDetailsPage.fetchNearbyEducationCentres().get(2).getText(),utils.readTestData("propertyDimension","propertyDetailsHighConfidence","nearbySchool3") ,"Property Details page - School 2 name is not matching");
+		
+		propertyDetailsPage.tapNearbyEducationViewAllButton();
+		Assert.assertNotNull(whatsNearbyPage.checkEducationTab(), "Whats nearby page - Education tab is not selected");
+		Assert.assertTrue(whatsNearbyPage.isEducationTabSelected(), "Whats nearby page - Education tab is not selected");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMap(), "Whats nearby page - Full screen map is not displayed");
+		
+		
+	}
 			
 	public void navigateToPropertyDetails(String navigationPath, String confidenceLevel) {
 		

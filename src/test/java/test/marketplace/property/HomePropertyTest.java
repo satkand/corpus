@@ -291,6 +291,67 @@ public class HomePropertyTest extends App {
 	
 	}
 	
+	@TestDetails(story1 = "DMPM-1263:DMPM-6016,DMPM-6017,DMPM-6018,DMPM-6019", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Property Hub", "priority-minor" })
+	public void testVirtualAssetsPropertyCardInFullscreenMapView() {
+		navigateToHomePropertyTab("noProperties");
+		homePropertyPage.scrollToVirtualAssetsCarousel();
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetsTitleTxt(), "Property Dimention Page - Virtual assets title is not present");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetsTitleTxt(), "Your saved properties", "Home Property Page - Your saved properties label is different to the expected label");
+		Assert.assertNotNull(homePropertyPage.checkVirtualAssetViewDetailsButton(), "Property Dimention Page - Virtual assets title is not present");
+		
+		homePropertyPage.tapVirtualAssetViewDetailsButton();
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property details page - User is not navigated to Property details screen when clicks on View Details button in virtual property tile");
+		
+		String propertyAddress = propertyDetailsPage.getPropertyAddress()+", "+propertyDetailsPage.getPropertyStatePostCode().replace(",", "");
+		String propertyType = propertyDetailsPage.getPropertyType();
+	
+		propertyDetailsPage.scrollToWhatsNearButton();
+		propertyDetailsPage.tapMiniMapWhatsNearbyButton();
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMap(), "Whats nearby page - Fullscreen map is not displayed");
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyTab(), "Whats nearby page - User is not navigated to whats nearby screen when clicks on whats nearby button in minimap");
+		Assert.assertTrue(whatsNearbyPage.isPropertyTabSelected(), "Property tab is not selected by default");
+		
+		whatsNearbyPage.tapFullScreenMapCloseButton();
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property details page - User is not navigated to Property details screen when clicks on View Details button in virtual property tile");
+		
+		propertyDetailsPage.tapMiniMap();
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMap(), "Whats nearby page - Fullscreen map is not displayed");
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyTab(), "WHats nearby page - User is not navigated to whats nearby screen when clicks on whats nearby button in minimap");
+		Assert.assertTrue(whatsNearbyPage.isPropertyTabSelected(), "Property tab is not selected by default");
+		
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardThumbnail(), "Whats nearby page - Property Card Thumbnail is not displayed");
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardTitle(), "Whats nearby page - Property card title is not displayed");
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardDetails(), "Whats nearby page - Property card details is not displayed");
+		Assert.assertEquals(whatsNearbyPage.getPropertyCardTitle(), propertyAddress, "Whats nearby page - Title is different to the property address");
+		Assert.assertEquals(whatsNearbyPage.getPropertyCardDetails(), propertyType, "Whats nearby page - Property type is different to the property address");
+		
+		whatsNearbyPage.tapFullScreenGoogleLabel();
+		Assert.assertNull(whatsNearbyPage.checkOtherTab(), "Whats nearby page - Other tab is displayed");//This assert is used for time pass till the property card is disappeared 
+		Assert.assertNull(whatsNearbyPage.checkPropertyCardThumbnail(), "Whats nearby page - Property Card Thumbnail is still displayed");
+		Assert.assertNull(whatsNearbyPage.checkPropertyCardTitle(), "Whats nearby page - Property card title is still displayed");
+		Assert.assertNull(whatsNearbyPage.checkPropertyCardDetails(), "Whats nearby page - Property card details is still displayed");
+		
+		whatsNearbyPage.tapFullScreenMapPropertyPin();
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardThumbnail(), "Whats nearby page - Property Card Thumbnail is not displayed");
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardTitle(), "Whats nearby page - Property card title is not displayed");
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardDetails(), "Whats nearby page - Property card details is not displayed");
+		Assert.assertEquals(whatsNearbyPage.getPropertyCardTitle(), propertyAddress, "Whats nearby page - Title is different to the property address");
+		Assert.assertEquals(whatsNearbyPage.getPropertyCardDetails(), propertyType, "Whats nearby page - Property type is different to the property address");
+		
+		whatsNearbyPage.tapPropertyCardThumbnail();
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property details page - User is not navigated to Property details screen when clicks on View Details button in virtual property tile");
+		
+		propertyDetailsPage.tapMiniMapWhatsNearbyButton();
+		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardTitle(), "Whats nearby page - Property card title is not displayed");
+		
+		whatsNearbyPage.tapPropertyCardTitle();
+		Assert.assertNotNull(propertyDetailsPage.checkMiniMap(), "Property details page - User is not navigated to Property details screen when clicks on View Details button in virtual property tile");
+				
+	}
+	
+	
+	
 	private void verifyDocumentsFolderName(String folderName) {
 		folderViewPage.tapBackButton();
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "DigiVault title is not displayed");
