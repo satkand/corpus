@@ -14,6 +14,7 @@ public class ArticlesPage extends BasePage{
 	}
 
 	private By articleCarousel =	By.id("au.com.suncorp.marketplace:id/articleCarouselTitle");
+	private By articleCarouselDesc = By.id("au.com.suncorp.marketplace:id/articleCarouselDescription");
 	private By articleDesc = By.id("au.com.suncorp.marketplace:id/articleDescription");
 	private By articleImage = By.id("au.com.suncorp.marketplace:id/articleImage");
 	private By articleReadMoreBtn = By.id("au.com.suncorp.marketplace:id/articleReadMoreAction");
@@ -21,6 +22,7 @@ public class ArticlesPage extends BasePage{
 
 	private String articleCarouselId = "au.com.suncorp.marketplace:id/articleCarouselTitle";
 	private String articleReadMoreBtnId = "au.com.suncorp.marketplace:id/articleReadMoreAction";
+	private String articleTitleId = "au.com.suncorp.marketplace:id/articleTitle";
 	private String articleCarouselScrollableViewId = "au.com.suncorp.marketplace:id/articleViewPager";
 
 	public WebElement checkArticleImage() {
@@ -73,5 +75,21 @@ public class ArticlesPage extends BasePage{
 		scrollToElement(articleReadMoreBtnId,"id", 10);
 	}
 
+	public WebElement checkArticleCarousalDescr() {
+		return find(articleCarouselDesc);
+	}
 
+	public String getArticleCarousalDescr() {
+		return find(articleCarouselDesc).getText();
+	}
+
+	public void scrollToArticlesCarousel() {
+		scrollToElement(articleCarouselId,"id", 10);
+		
+	}
+	
+	public void scrollToArticlesReadMoreBtn() {
+		scrollToElement(articleReadMoreBtnId,"id", 10);
+		
+	}
 }
