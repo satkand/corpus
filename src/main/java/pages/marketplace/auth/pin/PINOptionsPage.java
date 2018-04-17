@@ -11,11 +11,12 @@ public class PINOptionsPage extends BasePage{
 
 	
 	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
+	private By enableFingerPrintButton = By.id("au.com.suncorp.marketplace:id/enableFingerprintButton");
 	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePromptDismissButton");
 	
-	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePinPromptImage");
-	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePinPromptUserWelcome");
-	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
+	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePromptImage");
+	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePromptUserWelcome");
+	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePromptDescription");
 	
 	public PINOptionsPage(AppiumDriver driver) {
 		super(driver);
@@ -24,6 +25,10 @@ public class PINOptionsPage extends BasePage{
 
 	public WebElement checkEnablePinButton(){
 		return find(enablePinButton,45);
+	}
+	
+	public WebElement checkFingerPrintButton(){
+		return find(enableFingerPrintButton);
 	}
 	
 	public WebElement checkMaybeLaterButton(){
