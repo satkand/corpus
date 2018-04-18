@@ -34,25 +34,25 @@ public interface Copy {
 	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
 	
 	//FORCE UPDATE SCREEN
-	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
-	public String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
+	public static final String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
+	public static final String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
 	
 	//Articles common
 	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 	
 	//WEB VIEW
-	public static String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
+	public static final String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
 	
 	//SUBURB DETAILS PAGE
-	public String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
-	public String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
-	public String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood Risk";
-	public String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush Fire Risk";
-	public String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft Risk";
-	public String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
-	public String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
-	public String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
+	public static final String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood Risk";
+	public static final String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush Fire Risk";
+	public static final String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft Risk";
+	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
+	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
+	public static final String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
 	
 
 }

@@ -492,7 +492,7 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public void scrollToShowMeInsightButton() {
-		scrollToElement(showMeInsightButton, "true");
+		scrollToElement("SHOW ME INSIGHTS", "text");
 	}
 	
 	public void tapShowMeInsightButton(){

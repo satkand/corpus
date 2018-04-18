@@ -16,6 +16,8 @@ public class SuburbDetailsTest extends App {
 		
 		navigateToPropertyDetails("Property Hub","NotAGuest");
 		verifyScreenContents();
+		suburbDetailsPage.tapBackButton();
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Property Hub page - page title is not present when coming back from suburb insight");
 		
 		
@@ -28,6 +30,8 @@ public class SuburbDetailsTest extends App {
 		
 		navigateToPropertyDetails("Property Details","NotAGuest");
 		verifyScreenContents();
+		suburbDetailsPage.tapBackButton();
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		Assert.assertNotNull(propertyDetailsPage.checkShowMeInsightButton(), "Property Details page - propertyAddress is not present when coming back from suburb insight");
 		
 	}
@@ -35,6 +39,22 @@ public class SuburbDetailsTest extends App {
 	
 	public void verifyScreenContents() {
 		
+		
+		checkElements();
+		verifyElementNames();
+		
+		suburbDetailsPage.scrollToDisclaimerLabelText();
+		Assert.assertNotNull(suburbDetailsPage.checkTravelButton(), "Suburb Details page - Travel button is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkWeeklyIncomeButton(),"Suburb Details page - Weekly income button is not present");
+		
+		Assert.assertEquals(suburbDetailsPage.getDemographicsTitleText(),Copy.SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT,"Suburb Details page - Theft Risk label is not matching");
+		Assert.assertEquals(suburbDetailsPage.getdemographicsText(),Copy.SUBURB_DETAILS_DEMOGRAPHICS_TEXT, "Suburb Details page - Theft RIsk value is not present");
+	
+		Assert.assertEquals(suburbDetailsPage.getDisclaimerLabelText(),Copy.SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT, "Suburb Details page - Theft Risk value is not present");
+		
+	}
+	
+	public void checkElements() {
 		Assert.assertNotNull(suburbDetailsPage.checkBackButton(), "Suburb Details page - Back button is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkRiskAndHazardTitleText(), "Suburb Details page - Risk and Hazards title is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkRiskAndHazardTextt(), "Suburb Details page - Risk and Hazards text is not present");
@@ -44,7 +64,16 @@ public class SuburbDetailsTest extends App {
 		Assert.assertNotNull(suburbDetailsPage.checkBushFireValue(), "Suburb Details page - Bush Fire value is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkTheftRiskLabelText(),"Suburb Details page - Theft Risk label is not matching");
 		Assert.assertNotNull(suburbDetailsPage.checkTheftRiskValue(), "Suburb Details page - Theft RIsk value is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkDemographicsTitleText(), "Suburb Details page - Demographics title is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkDemographicsText(), "Suburb Details page - Demographics text is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkFamilyCompositionButton(),"Suburb Details page - Family Composition button is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkOccupancyTypeButton(), "Suburb Details page - Occupancy Type button is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkAgesButton(),"Suburb Details page - Ages button not present");
 		
+	}
+	
+	
+	public void verifyElementNames() {
 		Assert.assertEquals(suburbDetailsPage.getRiskAndHazardTitleText(),Copy.SUBURB_DETAILS_RISK_AND_HAZARD_TITLE,"Suburb Details page - Floor Risk label is not matching");
 		Assert.assertEquals(suburbDetailsPage.getRiskAndHazardText(),Copy.SUBURB_DETAILS_RISK_AND_HAZARD_TEXT,"Suburb Details page - Floor Risk label is not matching");
 		Assert.assertEquals(suburbDetailsPage.getFloodRiskLabelText(),Copy.SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT,"Suburb Details page - Floor Risk label is not matching");
@@ -54,24 +83,7 @@ public class SuburbDetailsTest extends App {
 		Assert.assertEquals(suburbDetailsPage.getTheftRiskLabelText(),Copy.SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT,"Suburb Details page - Theft Risk label is not matching");
 		Assert.assertEquals(suburbDetailsPage.getTheftRiskValue(),utils.readTestData("propertyDimension","suburbInsight", "theifRiskValue"), "Suburb Details page - Theft RIsk value is not present");
 		
-		Assert.assertNotNull(suburbDetailsPage.checkDemographicsTitleText(), "Suburb Details page - Demographics title is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkDemographicsText(), "Suburb Details page - Demographics text is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkFamilyCompositionButton(),"Suburb Details page - Family Composition button is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkOccupancyTypeButton(), "Suburb Details page - Occupancy Type button is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkAgesButton(),"Suburb Details page - Ages button not present");
-		Assert.assertNotNull(suburbDetailsPage.checkTravelButton(), "Suburb Details page - Travel button is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkWeeklyIncomeButton(),"Suburb Details page - Weekly income button is not present");
-		
-		Assert.assertEquals(suburbDetailsPage.getDemographicsTitleText(),Copy.SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT,"Suburb Details page - Theft Risk label is not matching");
-		Assert.assertEquals(suburbDetailsPage.getdemographicsText(),Copy.SUBURB_DETAILS_DEMOGRAPHICS_TEXT, "Suburb Details page - Theft RIsk value is not present");
-		
-		suburbDetailsPage.scrollToDisclaimerLabelText();
-		
-		Assert.assertEquals(suburbDetailsPage.getDisclaimerLabelText(),Copy.SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT, "Suburb Details page - Theft Risk value is not present");
-		suburbDetailsPage.tapBackButton();
-		
 	}
-	
 	
 
 	public void navigateToPropertyDetails(String navigationPath, String userType) {

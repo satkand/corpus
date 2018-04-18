@@ -375,7 +375,7 @@ public class HomePropertyPage extends BasePage {
 	}
 
 	public void scrollToJourneyBanner(){
-		scrollToElement(startYourJourneyButton, "true");
+		scrollToElement("START YOUR JOURNEY", "text");
 	}
 
 	public void scrollToSuppliedAsset(){

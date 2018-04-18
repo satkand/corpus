@@ -46,7 +46,7 @@ public class SuburbDetailsPage extends BasePage{
 	}
 	
 	public void scrollToDisclaimerLabelText(){
-		scrollToElement(disclaimerLabelText, "true");
+		scrollToElement("Disclaimer","text");
 	}
 	
 	public WebElement checkDisclaimerLabelText() {
