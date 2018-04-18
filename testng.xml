@@ -3,8 +3,8 @@
 <suite name="allSuites">
 
   <suite-files>
-    <suite-file path="testng1.xml" />
-    <suite-file path="testng2.xml" />
+    <suite-file path="testng_withstub.xml" />
+    <suite-file path="testng_withoutstub.xml" />
   </suite-files>
   
 </suite>
