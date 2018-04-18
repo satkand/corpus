@@ -13,24 +13,31 @@ import automation.framework.common.TestDetails;
 import pages.App;
 
 public class ArticlesPropertyTest extends App{
-
+	
+	
 	/*
-	 * Story DMPM 2697, Test cases covered are,
-	 * DMPM-3074: Display articles.[Verify each article elements and validate the contents against test data]
-	 * texts/title if applicable.
+	 * Story DMPM 2697, test cases covered are DMPM-3074.
+	 * Story DMPM-4318, Test cases covered are DMPM-4316, DMPM-4290.
 	 * NOTE: Oder of items in the carousel and Testdata.JSON should be same.
 	 */	
-	@TestDetails(story1 = "DMPM-2697:DMPM-3074")
+	@TestDetails(story1 = "DMPM-2697:DMPM-3074",story2 = "DMPM-4318:DMPM-4316,DMPM-4290")
 	@Test (groups = {"marketplace", "Home property articles", "priority-minor"})
 	public void testDisplayArticlesElements() {
 		//Preconditions
 		//1. Navigate to Home Property dimension and then to articles carousel.
 		navigateToHomePropertyTab("guest");
-		articlesPage.scrollToArticles();
+		articlesPage.scrollToArticlesCarousel();
+		
+		//DMPM-4316-verify Article carousel title.
 		Assert.assertNotNull(articlesPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
 		Assert.assertEquals(articlesPage.getArticleCarouselText(), Copy.ARTICLE_CAROUSEL_TITLE, "Home Property Page - Article text is DIFFERENT than expected");
 		
-		//Step 1: Verify each element of every article and then validate the content against the test data json
+		//DMPM-4316-verify Article carousel description.
+		Assert.assertNotNull(articlesPage.checkArticleCarousalDescr(), "Home Property Page - Articles description is NOT Present");
+		Assert.assertEquals(articlesPage.getArticleCarousalDescr(), Copy.ARTICLE_CAROUSEL_DESC, "Home Property Page - Articles description is NOT as expected!");
+		//DMPM-4290 Step 1: Verify article properties present
+		//DMPM-3074 Step 1: Verify each element of every article and then validate the content against the test data json
+		articlesPage.scrollToArticlesReadMoreBtn();
 		verifyArticleCarousel();
 		}
 

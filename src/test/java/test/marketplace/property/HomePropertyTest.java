@@ -2,10 +2,7 @@ package test.marketplace.property;
 
 import java.util.List;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 import automation.framework.common.CustomRetryListener;
 import automation.framework.common.TestDetails;

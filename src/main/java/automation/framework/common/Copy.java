@@ -32,9 +32,6 @@ public interface Copy {
 	public String FULL_SCREEN_MAP_DINING_CENTRE_INDICATOR = "secret garden restraunt. ";
 	public String FULL_SCREEN_MAP_OTHER_AMENITY_INDICATOR= "Coomonwealth bank Niddrie. ";
 	
-	//PROPERTY PAGE
-	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
-	
 	//VIRTUAL ASSETS
 	public String VIRTUAL_ASSETS_TITLE_TEXT ="Your saved properties";
 	public String VIRTUAL_ASSETS_ESTIMATED_SALES_PRICE_LABEL = "Estimated sale price";
@@ -44,5 +41,10 @@ public interface Copy {
 	public String VIRTUAL_ASSETS_PROPERTY_NO_OF_BATHROOMS ="2";
 	public String VIRTUAL_ASSETS_PROPERTY_NO_OF_PARKING_SPACES ="2";
 	public String VIRTUAL_ASSETS_PROPERTY_LAND_SIZE="1000m²";
+
+	//Articles common
+	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
+
 
 }
