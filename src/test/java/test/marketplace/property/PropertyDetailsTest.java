@@ -263,31 +263,32 @@ public class PropertyDetailsTest extends App{
 		
 		Assert.assertNotNull(propertyFullScreenMap.checkEducationTab(), "Whats nearby Page - Education tab is not present");
 		propertyFullScreenMap.tapEducationTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkEducationCentreIndicator(), "Whats nearby Page - Education centre indicator is not present");
+		Assert.assertTrue(propertyFullScreenMap.checkElementWithAccessibilityID(Copy.FULL_SCREEN_MAP_EDUCATION_CENTRE_INDICATOR), "Whats nearby Page - Education centre indicator is not present");
 		
 		Assert.assertNotNull(propertyFullScreenMap.checkShoppingTab(), "Whats nearby Page - Shopping tab is not present");
 		propertyFullScreenMap.tapShoppingTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkShoppingAmenityIndicator(), "Whats nearby Page - Shopping Amenity Indicator is not present");
+		Assert.assertTrue(propertyFullScreenMap.checkElementWithAccessibilityID(Copy.FULL_SCREEN_MAP_SHOPPING_AMENITY_INDICATOR), "Whats nearby Page - Shopping Amenity Indicator is not present");
 		
 		Assert.assertNotNull(propertyFullScreenMap.checkTransportTab(), "Whats nearby Page - Transport tab is not present");
 		propertyFullScreenMap.tapTransportTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkTransportAmenityIndicator(), "Whats nearby Page - transport Amenity Indicator is not present");
+		Assert.assertTrue(propertyFullScreenMap.checkElementWithAccessibilityID(Copy.FULL_SCREEN_MAP_TRANSPORT_AMENITY_INDICATOR), "Whats nearby Page - transport Amenity Indicator is not present");
 	
 		Assert.assertNotNull(propertyFullScreenMap.checkEntertainmentTab(), "Whats nearby Page - Entertainment tab is not present");
 		propertyFullScreenMap.tapEntertainmentTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkEntertainmentOutletIndicator(), "Whats nearby Page - Entertainment Amenity Indicator is not present");
+		Assert.assertTrue(propertyFullScreenMap.checkElementWithAccessibilityID(Copy.FULL_SCREEN_MAP_ENTERTAINMENTOUTLET_INDICATOR), "Whats nearby Page - Entertainment Amenity Indicator is not present");
 		
 		Assert.assertNotNull(propertyFullScreenMap.checkHealthTab(), "Whats nearby Page - Health tab is not present");
 		propertyFullScreenMap.tapHealthTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkHealthCentreIndicator(), "Whats nearby Page - Health Amenity Indicator is not present");
+		Assert.assertTrue(propertyFullScreenMap.checkElementWithAccessibilityID(Copy.FULL_SCREEN_MAP_HEALTH_CENTRE_INDICATOR), "hats nearby Page - Health Amenity Indicator is not present");
 		
 		Assert.assertNotNull(propertyFullScreenMap.checkDiningTab(), "Whats nearby Page - Dining tab is not present");
 		propertyFullScreenMap.tapDiningTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkDiningCentreIndicator(), "Whats nearby Page - Dining amenity Indicator is not present");
+		Assert.assertTrue(propertyFullScreenMap.checkElementWithAccessibilityID(Copy.FULL_SCREEN_MAP_DINING_CENTRE_INDICATOR), "Whats nearby Page - Dining amenity Indicator is not present");
 		
 		Assert.assertNotNull(propertyFullScreenMap.checkOtherTab(), "Whats nearby Page - Dining tab is not present");
 		propertyFullScreenMap.tapOtherTab();
-		Assert.assertNotNull(propertyFullScreenMap.checkOtherAmenityIndicator(), "Whats nearby Page - Other Amenity Indicator is not present");
+		Assert.assertTrue(propertyFullScreenMap.checkElementWithAccessibilityID(Copy.FULL_SCREEN_MAP_OTHER_AMENITY_INDICATOR), "Whats nearby Page - Other Amenity Indicator is not present");
+		
 		
 	}
 	

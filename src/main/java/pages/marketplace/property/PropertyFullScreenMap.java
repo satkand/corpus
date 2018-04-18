@@ -28,49 +28,23 @@ public class PropertyFullScreenMap extends BasePage{
 	private By diningTab = By.xpath("//android.widget.TextView[@text='DINING']");
 	private By otherTab = By.xpath("//android.widget.TextView[@text='OTHER']");
 	
-	//Map location indicators
-	private By educationCentreIndicator = MobileBy.AccessibilityId("NorthanMelbourneInstituteOfTAFE. ");
-	private By shoppingAmenityIndicator = MobileBy.AccessibilityId("Penny Blue. ");
-	private By transportAmenityIndicator = MobileBy.AccessibilityId("Elizabeth St. ");
-	private By entertainmentOutletIndicator = MobileBy.AccessibilityId("Federal Coffee Palace. ");
-	private By healthCentreIndicator = MobileBy.AccessibilityId("Derma Tech Centre. ");
-	private By diningCentreIndicator = MobileBy.AccessibilityId("secret garden restraunt. ");
-	private By otherAmenityIndicator = MobileBy.AccessibilityId("Coomonwealth bank Niddrie. ");
-	
 	private String tabBarID = "au.com.suncorp.marketplace:id/nearbyCategoryAppBarLayout";
+	
+	public boolean checkElementWithAccessibilityID(String text) {
+		String t =  "\""+text+"\"";  
+		By titleName = MobileBy.AccessibilityId(t);
+		WebElement element = find(titleName);
+		if (element !=null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	
 	public boolean isPropertyTabSelected() {
 		return isEnabled(propertyTab);
 	}
 
-	public WebElement checkEducationCentreIndicator() {
-		return find(educationCentreIndicator);
-	}
-	
-	public WebElement checkShoppingAmenityIndicator() {
-		return find(shoppingAmenityIndicator);
-	}
-	
-	public WebElement checkTransportAmenityIndicator() {
-		return find(transportAmenityIndicator);
-	}
-	
-	public WebElement checkEntertainmentOutletIndicator() {
-		return find(entertainmentOutletIndicator);
-	}
-	
-	public WebElement checkHealthCentreIndicator() {
-		return find(healthCentreIndicator);
-	}
-	
-	public WebElement checkDiningCentreIndicator() {
-		return find(diningCentreIndicator);
-	}
-	
-	public WebElement checkOtherAmenityIndicator() {
-		return find(otherAmenityIndicator);
-	}
-	
 	public WebElement checkPropertyTab() {
 		return find(propertyTab);
 	}

@@ -196,25 +196,25 @@ public class HomePropertyTest extends App {
 		navigateToHomePropertyTab("noProperties");
 		homePropertyPage.scrollToVirtualAssetsCarousel();
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetsTitleTxt(), "Property Dimention Page - Virtual assets title is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetsTitleTxt(), "Your saved properties", "Home Property Page - Your saved properties label is different to the expected label");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetsTitleTxt(), Copy.VIRTUAL_ASSETS_TITLE_TEXT, "Home Property Page - Your saved properties label is different to the expected label");
 		
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetImage(), "Property Dimention Page - Virtual asset image is not present");
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetEstimatedSalesPriceLabel(), "Property Dimention Page - Virtual asset Estimated Sales Price Label is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetEstimatedSalesPriceLabel(), "Estimated sale price", "Home Property Page - Estimated sale price label is different to the expected title");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetEstimatedSalesPriceLabel(), Copy.VIRTUAL_ASSETS_ESTIMATED_SALES_PRICE_LABEL, "Home Property Page - Estimated sale price label is different to the expected title");
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetSalePrice(), "Property Dimention Page - Virtual asset Sale Price is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetSalePrice(), "$10,000,000 - $20,000,000", "Home Property Page - Estimated sale price is different to the expected value");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetSalePrice(),Copy.VIRTUAL_ASSETS_ESTIMATED_SALE_PRICE , "Home Property Page - Estimated sale price is different to the expected value");
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetAddress(), "Property Dimention Page - Virtual asset adress is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetAddress(), "123 Sesame St, Melbourne Vic 3000", "Home Property Page - Address is different to the expected");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetAddress(), Copy.VIRTUAL_ASSETS_PROPERTY_ADDRESS, "Home Property Page - Address is different to the expected");
 		
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetBedroomIcon(), "Property Dimention Page - Virtual asset Bedroom Icon is not present");
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetNoOFBedrooms(), "Property Dimention Page - Virtual asset number of bedrooms is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFBedrooms(), "4", "Home Property Page - No of Bedrooms is different to the expected");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFBedrooms(), Copy.VIRTUAL_ASSETS_PROPERTY_NO_OF_BEDROOMS, "Home Property Page - No of Bedrooms is different to the expected");
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetNoOFBathrooms(), "Property Dimention Page - Virtual asset number of bathrooms is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFBathrooms(), "2", "Home Property Page - No of Bathrooms is different to the expected");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFBathrooms(), Copy.VIRTUAL_ASSETS_PROPERTY_NO_OF_BATHROOMS, "Home Property Page - No of Bathrooms is different to the expected");
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetNoOFCarParks(), "Property Dimention Page - Virtual asset number of car parks is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFCarParks(), "2", "Home Property Page - No of carparks is different to the expected");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetNoOFCarParks(), Copy.VIRTUAL_ASSETS_PROPERTY_NO_OF_PARKING_SPACES, "Home Property Page - No of carparks is different to the expected");
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetLandSize(), "Property Dimention Page - Virtual asset land size is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetLandSize(), "1000m²", "Home Property Page - Land size is different to the expected");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetLandSize(), Copy.VIRTUAL_ASSETS_PROPERTY_LAND_SIZE, "Home Property Page - Land size is different to the expected");
 		
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetViewDetailsButton(), "Property Dimention Page - Virtual asset View Details button is not present");
 		
@@ -229,7 +229,7 @@ public class HomePropertyTest extends App {
 	
 		homePropertyPage.swipePropertyCarouselRight();
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetAddress(), "Property Dimention Page - Virtual asset adress is not present");
-		Assert.assertEquals(homePropertyPage.getVirtualAssetAddress(), "123 Sesame St, Melbourne Vic 3000", "Home Property Page - Address is different to the expected");
+		Assert.assertEquals(homePropertyPage.getVirtualAssetAddress(), Copy.VIRTUAL_ASSETS_PROPERTY_ADDRESS, "Home Property Page - Address is different to the expected");
 		
 		homePropertyPage.tapVirtualAssetViewDetailsButton();
 		

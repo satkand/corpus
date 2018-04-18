@@ -23,7 +23,26 @@ public interface Copy {
 	public String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
 	public String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
 	
+	//FULL SCREEN MAPMAP POINTS OF INTEREST INDICATORS
+	public String FULL_SCREEN_MAP_EDUCATION_CENTRE_INDICATOR = "NorthanMelbourneInstituteOfTAFE. ";
+	public String FULL_SCREEN_MAP_SHOPPING_AMENITY_INDICATOR = "Penny Blue. ";
+	public String FULL_SCREEN_MAP_TRANSPORT_AMENITY_INDICATOR = "Elizabeth St. ";
+	public String FULL_SCREEN_MAP_ENTERTAINMENTOUTLET_INDICATOR = "Federal Coffee Palace. ";
+	public String FULL_SCREEN_MAP_HEALTH_CENTRE_INDICATOR = "Derma Tech Centre. ";
+	public String FULL_SCREEN_MAP_DINING_CENTRE_INDICATOR = "secret garden restraunt. ";
+	public String FULL_SCREEN_MAP_OTHER_AMENITY_INDICATOR= "Coomonwealth bank Niddrie. ";
+	
 	//PROPERTY PAGE
 	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+	
+	//VIRTUAL ASSETS
+	public String VIRTUAL_ASSETS_TITLE_TEXT ="Your saved properties";
+	public String VIRTUAL_ASSETS_ESTIMATED_SALES_PRICE_LABEL = "Estimated sale price";
+	public String VIRTUAL_ASSETS_ESTIMATED_SALE_PRICE ="$10,000,000 - $20,000,000";
+	public String VIRTUAL_ASSETS_PROPERTY_ADDRESS = "123 Sesame St, Melbourne Vic 3000";
+	public String VIRTUAL_ASSETS_PROPERTY_NO_OF_BEDROOMS ="4";
+	public String VIRTUAL_ASSETS_PROPERTY_NO_OF_BATHROOMS ="2";
+	public String VIRTUAL_ASSETS_PROPERTY_NO_OF_PARKING_SPACES ="2";
+	public String VIRTUAL_ASSETS_PROPERTY_LAND_SIZE="1000m²";
 
 }
