@@ -14,4 +14,27 @@ public interface Copy {
 	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 
+	//POLICY DETAILS PAGE
+	public String POLICY_DETAILS_SCREEN_TITLE = "Policy Details";
+	public String INSTALMENT_FREUENCY_MONTHLY_LABEL ="Monthly instalment";
+	public String INSTALMENT_FREUENCY_QUARTERLY_LABEL ="Quarterly instalment";
+	public String INSTALMENT_FREUENCY_HALF_YEARLY_LABEL ="Half-yearly instalment";
+	public String INSTALMENT_FREUENCY_ANNUAL_LABEL ="Annual premium";
+	public String PAYMENT_METHOD_LABEL ="Payment method";
+	public String INSURED_AMOUNT_LABEL="Amount covered";
+	public String COVER_TYPE_LABEL="Cover type";
+	public String COVER_PERIOD_LABEL="Cover period";
+	public String OPTIONAL_COVER_LABEL="Optional";
+	public String INCLUDED_COVER_LABEL="Included";
+	public String DISCOUNTS_LABEL="Discounts";
+	//Risk Details Page
+	public String PARKING_ADDRESS_LABEL="Parking address";
+	public String ADDITIONAL_EXCESSES_DETAILS_LABEL="ADDITIONAL EXCESS DETAILS MAY APPLY";
+	public String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE ADDITIONAL EXCESSES";
+	public String POLICY_MAINTAINCE_ERROR_MESSAGE="Please come back and try again later.";
+	public String POLICY_MAINTAINCE_TITLE="Policy under maintenance";
+	
+	//RENEW POLICY
+	public String RENEW_POLICY_SCREEN_TITLE = "Renew Policy";
+
 }

@@ -12,6 +12,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -386,6 +387,11 @@ public class BasePage {
 		return find(locator).getText();
 	}
 
+	
+	protected String getText(WebElement element) {
+		return element.getText();
+	}
+
 	protected List<String> getTextList(By locator) {
 		List<WebElement> elements = finds(locator);
 		List<String> textList = new ArrayList();
@@ -567,25 +573,27 @@ public class BasePage {
 		return element;
 	}
 
-	protected WebElement findByUIAutomator(String locatorString, String locatorType) {
+	protected WebElement findByUIAutomator(String locatorString, String locatorType,int... args) {
 
 		WebElement webElement = null;
+		
+		int timeout = (args.length > 0 ? args[0] : 15);
 
 		switch (locatorType) {
 
 		case "text":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)),timeout);
 			break;
 
 		case "id":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)),timeout);
 			break;
 
 		case "desc":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)),timeout);
 			break;
 
 		}
@@ -593,16 +601,16 @@ public class BasePage {
 		return webElement;
 	}
 
-
-	public void waitForElementToDisappear(By locator) {
-
-		WebElement element  = find(locator);
-
+	public void waitForElementToDisappear(By locator,int timeout) {
+		
+		WebElement element  = find(locator,2);
+		
 		if (element != null) {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(
-					locator)
-					);
+		      WebDriverWait wait = new WebDriverWait(driver, timeout);
+		      wait.until(ExpectedConditions.invisibilityOfElementLocated(
+		    		  locator)
+		            );
+
 		}
 
 	}	
@@ -616,18 +624,8 @@ public class BasePage {
 		}
 	}
 
-	public void waitForElementToDisappear(By locator,int timeout) {
 
-		//	WebElement element  = find(locator);
 
-		if (find(locator,5) != null) {
-			WebDriverWait wait = new WebDriverWait(driver, timeout);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(
-					locator)
-					);
-		}
-
-	}
 
 	public Map<String,Object> getAppiumSessionDetails() {
 

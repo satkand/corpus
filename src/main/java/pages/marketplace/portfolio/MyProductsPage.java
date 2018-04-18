@@ -42,6 +42,8 @@ public class MyProductsPage extends BasePage {
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
 	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
 	private String addExistingProductButtonID = "au.com.suncorp.marketplace:id/addProductButton";
+	private By policyLayout = By.id("au.com.suncorp.marketplace:id/policyItemLayout");
+	
 	private By riskText = null;
 	private String riskXpathPrefix = "//android.widget.TextView[@text = \'";
 	private String riskXpathSuffix = "\']";
@@ -72,6 +74,8 @@ public class MyProductsPage extends BasePage {
 	private By accountNumberField = By.id("au.com.suncorp.marketplace:id/accountNumberField");
 	private By accountNumberError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
+	private String carPolicy="Car";
+
 
 	public List<WebElement> fetchAccountItemLayoutList() {
 		List<WebElement> elements = finds(accountItemLayout);
@@ -265,7 +269,7 @@ public class MyProductsPage extends BasePage {
 	public void tapMaybeLaterButton(){
 		tapElement(maybeLaterButton);
 	}
-	
+
 	public WebElement checkRisk(String riskName) {
 		String riskXpath = riskXpathPrefix + riskName + riskXpathSuffix;
 		riskText = By.xpath(riskXpath);
@@ -375,5 +379,41 @@ public class MyProductsPage extends BasePage {
 		scrollToElement(addExistingProductButton, "true");
 
 	}
+	
+	public void scrollToProductAndTap(String productType) {
+
+		 tapElement(scrollToElement(productType, "text"));
+		
+	}
+	
+	public void tapProductByInstance(int instance) {
+
+		   List <WebElement> policyLayouts = finds(policyLayout);
+		   
+		   tapElement(policyLayouts.get(instance));
+		
+	}
+
+	public void tapProductByPolicyStatus(String status) {
+
+		By policyItemLayoutlocator = By.xpath("//android.widget.TextView[@text = \"" + status+ "\"]/parent::android.widget.LinearLayout//following-sibling::android.widget.LinearLayout");
+
+		WebElement element = find(policyItemLayoutlocator, 2);
+
+		for (int i = 0; i < 2; i++) {
+
+			if (element == null) {
+
+				swipeScreen("DOWN");
+
+				element = find(policyItemLayoutlocator, 2);
+			} else {
+				break;
+			}
+		}
+		tapElement(element);
+	}
+
+	
 	
 }

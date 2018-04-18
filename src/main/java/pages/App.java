@@ -45,6 +45,9 @@ import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
 import pages.marketplace.productCatalogue.PCHomePage;
+import pages.marketplace.portfolio.PolicyDetailsPage;
+import pages.marketplace.portfolio.RenewPolicyPage;
+import pages.marketplace.portfolio.RiskDetailsPage;
 import pages.marketplace.professionalServices.HomeProfessionalServicesPage;
 import pages.marketplace.property.HomeJourneyPage;
 import pages.marketplace.property.HomePropertyPage;
@@ -107,7 +110,9 @@ public class App extends BaseTest {
 	
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
-
+	public PolicyDetailsPage policyDetailsPage = null;
+	public RiskDetailsPage riskDetailsPage = null;
+	public RenewPolicyPage renewPolicyPage = null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -168,6 +173,10 @@ public class App extends BaseTest {
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
 		articlesPage = new ArticlesPage(driver);
+		policyDetailsPage = new PolicyDetailsPage(driver);
+		riskDetailsPage = new RiskDetailsPage(driver);
+		renewPolicyPage = new RenewPolicyPage(driver);
+
 
 	}
 	
