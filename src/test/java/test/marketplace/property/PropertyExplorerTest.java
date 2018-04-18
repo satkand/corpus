@@ -67,6 +67,7 @@ public class PropertyExplorerTest extends App{
 			
 	}
 	
+	// DMPM-4049 - Scenario 1 (DMPM-5126)
 	// navigating to Property Explorer and search a property and switch tabs
 	@Test (groups = {"DMPM-4049","DMPM-5126", "marketplace", "Home buying journey", "priority-minor"})
 	public void testClearTextWhenChangingSearchType() {
