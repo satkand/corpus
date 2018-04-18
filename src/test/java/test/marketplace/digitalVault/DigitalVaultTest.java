@@ -332,6 +332,7 @@ public class DigitalVaultTest extends App {
 	public void testEditImageTitle() {
 		navigateToDigiVaultPageWithEmptyData();
 		digiVaultCommonPage.addAPhotoThroughCamera();
+		digiVaultCommonPage.waitForAddButtonToDisappear();
 		cameraPage.capturePhoto();
 		imagePreviewPage.tapNextButton();
 		Assert.assertNotNull(digiVaultCommonPage.checkEditField(), "Edit field not present");
@@ -413,6 +414,7 @@ public class DigitalVaultTest extends App {
 	public void testDeleteImageFromFullScreenView() {
 		navigateToDigiVaultPageWithEmptyData();
 		digiVaultCommonPage.addAPhotoThroughCamera();
+		digiVaultCommonPage.waitForAddButtonToDisappear();
 		cameraPage.capturePhoto();
 		imagePreviewPage.finishSavingImageByChoosingFolder();
 		Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
@@ -592,6 +594,7 @@ public class DigitalVaultTest extends App {
 		digiVaultCommonPage.addAPhotoThroughGallery();
 //		Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
 //		galleryPage.choosePicture();
+		digiVaultCommonPage.waitForAddButtonToDisappear();
 		galleryPage.selectPicture();
 		imagePreviewPage.finishSavingImageByChoosingFolder(utils.readTestData("digivault", "hasItems", "file1"));
 		digitalVaultPage.checkDigiVaultTitle();

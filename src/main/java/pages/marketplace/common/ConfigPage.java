@@ -16,7 +16,7 @@ public class ConfigPage extends BasePage {
 	private By configPageTitle = MobileBy.AndroidUIAutomator("new UiSelector().text(\"Config\")");
 	private By globalBaseURL = By.id("au.com.suncorp.marketplace:id/globalBaseUrl");
 	private By applyGlobalBaseUrlButton = By.id("au.com.suncorp.marketplace:id/globalBaseUrlButton");
-
+	private By  envSelector = By.id("au.com.suncorp.marketplace:id/environmentSpinner");
 	private By bankingBaseUrl = By.id("au.com.suncorp.marketplace:id/bankingBaseUrlEditText");
 	private By spendingUrl = By.id("au.com.suncorp.marketplace:id/spendingBaseUrlEditText");
 	private By vehiclesBaseUrl = By.id("au.com.suncorp.marketplace:id/vehicleBaseUrlEditText");
@@ -27,13 +27,23 @@ public class ConfigPage extends BasePage {
 	//FAPI Settings page
 	private By hasBankAccountsToggle = By.id("au.com.suncorp.marketplace:id/hasAccountsToggle");
 	
+	
 	private String continueBtnID="au.com.suncorp.marketplace:id/configContinueButton";
 	
 	public ConfigPage(AppiumDriver driver) {
 		super(driver);
 	}
 	
+	public void tapEnvSelector(){
+		
+		tapElement(envSelector);
+	}
+	
 	public void dismissConfigPage(String stub) {
+		 
+	    tapEnvSelector();
+	    tapElement(findByUIAutomator("Old UAT", "text"));
+	    
 		if (find(configPageTitle, 30) != null) {
 			// Added this just to add some delay before checking for keyboard
 			find(continueButton, 3);
@@ -67,6 +77,7 @@ public class ConfigPage extends BasePage {
 		InetAddress IP = null;
 		try {
 			IP = InetAddress.getLocalHost();
+			System.out.println("IPPPPPPPP:::::::::::::"+IP);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -79,7 +90,8 @@ public class ConfigPage extends BasePage {
 		}
 		*/
 		
-		String baseURL = IP.getHostAddress()+":4567/";
+		// TODO: This hardcoding needs to removed, once we figure out a way to get the second ip from the list of ips on the mac mini
+		String baseURL = "http://192.168.213.5:4567";//IP.getHostAddress()+":4567/";
 		System.out.println("stub:::"+stub+"::::::global");
 		typeValue(baseURL, globalBaseURL);
 		tapElement(applyGlobalBaseUrlButton);
@@ -87,7 +99,7 @@ public class ConfigPage extends BasePage {
 			isKeyboardPresent();
 		}
 
-		baseURL = "http://"+IP.getHostAddress()+":4567/";
+		//baseURL = "http://"+IP.getHostAddress()+":4567/";
 		if(stub.equalsIgnoreCase("banking") && find(bankingBaseUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::banking");
 			clearValue(bankingBaseUrl);
@@ -123,7 +135,10 @@ public class ConfigPage extends BasePage {
 		if(stub.equalsIgnoreCase("memberLogin")) {
 			System.out.println("stub:::"+stub+"::::::memberLogin");
 			clearValue(globalBaseURL);
-			typeValue("192.168.213.2:4567", globalBaseURL);
+			
+			typeValue("192.168.213.5:4567", globalBaseURL);
+			//mac mini
+			//typeValue("192.168.213.98:4567", globalBaseURL);
 			tapElement(applyGlobalBaseUrlButton);
 			if(!(isKeyboardPresent() == true)) {
 				isKeyboardPresent();
