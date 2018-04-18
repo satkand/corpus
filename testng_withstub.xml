@@ -5,18 +5,10 @@
 
 		<classes>
 					<!--  Portfolio -->
-					<class name="test.marketplace.portfolio.AddPolicyTest">
-		 				<parameter name="stub" value="false"></parameter>
-		 			</class>
-		 			<class name="test.marketplace.portfolio.MyProductsTest">
-		 				<parameter name="stub" value="false"></parameter>
-		 			</class>	
-		 			
-		 			
-		 			
-		 			<!--  Property -->
+				
+		 			<!-- Property-->
 		 			<class name="test.marketplace.property.HomeJourneyTest">
-		 				<parameter name="stub" value="false"></parameter>
+		 				<parameter name="stub" value="true"></parameter>
 		 			</class>
 		 			<class name="test.marketplace.property.HomePropertyTest">
 		 				<parameter name="stub" value="true"></parameter>
@@ -28,13 +20,10 @@
 		 				<parameter name="stub" value="true"></parameter>
 		 			</class>	 	
 		 			
-		 			
-		 			
 		 			<!-- Vehicles -->
 		 			<class name="test.marketplace.vehicles.VehiclesTest">
 		 				<parameter name="stub" value="true"></parameter>
 		 			</class>
-		 			
 		 			
 		 			
 		 			<!-- Wealth -->
@@ -43,7 +32,15 @@
 		 			</class>
 		 			<class name="test.marketplace.wealth.SpendingsTest">
 		 				<parameter name="stub" value="true"></parameter>
+		 				
 		 			</class>
+		 				<class name="test.marketplace.portfolio.AddPolicyTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.portfolio.MyProductsTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>	
+		 		
 		</classes>
 
 <!-- 

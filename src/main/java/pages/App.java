@@ -107,14 +107,16 @@ public class App extends BaseTest {
 	
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
-
+	
+	String CONFIG_FILE=null;
 
 	@BeforeClass
 	public void initializeApp() {
-		
+	
 		 utils = new AutoUtilities();
 		// Autoutilites file path
 		String JSONFilePath = "/TestData/TestData_Test.json";
+		CONFIG_FILE = System.getProperty("user.dir")+"/src/main/java/automation/framework/common/config.properties";
 		utils.loadTestData(JSONFilePath);
 		
 		// Initializing the fleuntAssert object for global use.
@@ -174,8 +176,10 @@ public class App extends BaseTest {
 	@Parameters({ "stub" })
 	@BeforeMethod(alwaysRun = true)
 	public void beforeEachTest(@Optional("false") String stub) throws Exception {
+		
 		welcomePage.launchApp();
-		configPage.dismissConfigPage(stub);
+		
+		configPage.dismissConfigPage(stub,CONFIG_FILE);
 	}
 	
 	@AfterMethod(alwaysRun = true)
