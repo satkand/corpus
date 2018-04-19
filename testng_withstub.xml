@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite1" verbose="50" configfailurepolicy="continue" >
+	<test name="Test">
+
+		<classes>
+					<!--  Portfolio -->
+				
+		 			<!-- Property-->
+		 			<class name="test.marketplace.property.HomeJourneyTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.property.HomePropertyTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>		 			
+		 			<class name="test.marketplace.property.PropertyDetailsTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.property.PropertyExplorerTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>	 	
+		 			
+		 			<!-- Vehicles -->
+		 			<class name="test.marketplace.vehicles.VehiclesTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			
+		 			
+		 			<!-- Wealth -->
+		 			<class name="test.marketplace.wealth.FinanceTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.wealth.SpendingsTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 				
+		 			</class>
+		 				<class name="test.marketplace.portfolio.AddPolicyTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>
+		 			<class name="test.marketplace.portfolio.MyProductsTest">
+		 				<parameter name="stub" value="true"></parameter>
+		 			</class>	
+		 		
+		</classes>
+
+<!-- 
+<class name="test.marketplace.PINReAuthPasswordTest"></class>
+	<methods>
+		<include name="testEmptyTransactionsOnCategoryTabForMonthSelected"/>
+	</methods>
+</class>	
+ -->
+	
+</test>
+
+</suite>

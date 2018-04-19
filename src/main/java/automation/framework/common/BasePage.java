@@ -1,9 +1,12 @@
 package automation.framework.common;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 //import java.util.function.Function;
@@ -704,6 +707,25 @@ public class BasePage {
 
 	}
 	
+
+	public String lookupProperty(String propFileName, String nameOfProperty) {
+	
+		InputStream inputStream = null;
+	
+		Properties properties = new Properties();
+		try {
+			inputStream = new FileInputStream(propFileName);
+			properties.load(inputStream);
+			inputStream.close();
+			if (properties != null) {
+				return properties.getProperty(nameOfProperty);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	//	/**
 	//	 * This method is specifically to use when needed to set PIN in an app.
 	//	 * Using this sets pin very quickly.
