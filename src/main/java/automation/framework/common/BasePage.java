@@ -325,7 +325,10 @@ public class BasePage {
 		return element;
 
 	}
-
+	protected boolean isSelected(String tabTitleTxt) {
+		
+		return Boolean.parseBoolean(getScreenTitle(tabTitleTxt).getAttribute("selected"));
+	}
 
 	// TODO -> Different in iOS -> change it and test it if it works for android as well
 	protected void tapOnBottomRightCorner() {
@@ -569,6 +572,34 @@ public class BasePage {
 
 		return element;
 	}
+	
+	protected WebElement scrollToElement(String locatorString, String locatorType, String scrollableId, int... args) {
+
+		WebElement element =null;
+
+		int timeout = (args.length > 0 ? args[0] : 15);
+
+		switch (locatorType) {
+		case "text":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+		case "id":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector().resourceId(\""+ scrollableId +"\").instance(0)).scrollIntoView(new UiSelector().resourceId(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+		case "desc":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+
+		}
+
+		return element;
+	}
 
 	protected WebElement findByUIAutomator(String locatorString, String locatorType) {
 
@@ -676,6 +707,7 @@ public class BasePage {
 
 	}
 	
+
 	public String lookupProperty(String propFileName, String nameOfProperty) {
 	
 		InputStream inputStream = null;
@@ -693,6 +725,7 @@ public class BasePage {
 		}
 		return null;
 	}
+
 	//	/**
 	//	 * This method is specifically to use when needed to set PIN in an app.
 	//	 * Using this sets pin very quickly.
@@ -1097,18 +1130,18 @@ public class BasePage {
 	//		tapElement(locator);
 	//	}
 	//
-	//	/**
-	//	 * This method is used to get the screen height
-	//	 * 
-	//	 * @author Shanoj
-	//	 * @param none
-	//	 * @return int
-	//	 */
-	//	protected int getScreenHeight() {
-	//
-	//		return driver.manage().window().getSize().getHeight();
-	//
-	//	}
+		/**
+		 * This method is used to get the screen height
+		 * 
+		 * @author Shanoj
+		 * @param none
+		 * @return int
+		 */
+		protected int getScreenHeight() {
+	
+			return driver.manage().window().getSize().getHeight();
+	
+		}
 	//
 	//	/**
 	//	 * This method is used to get the screen width
