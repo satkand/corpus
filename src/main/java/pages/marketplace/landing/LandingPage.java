@@ -88,7 +88,7 @@ public class LandingPage extends BasePage {
 	}
 
 	public boolean isVehiclesTabSelected() {
-		return isTabSelected(vehiclesTabTitle);
+		return isSelected(vehiclesTabTitle);
 		
 	}
 

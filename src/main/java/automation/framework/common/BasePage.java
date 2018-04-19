@@ -322,7 +322,7 @@ public class BasePage {
 		return element;
 
 	}
-	protected boolean isTabSelected(String tabTitleTxt) {
+	protected boolean isSelected(String tabTitleTxt) {
 		
 		return Boolean.parseBoolean(getScreenTitle(tabTitleTxt).getAttribute("selected"));
 	}
