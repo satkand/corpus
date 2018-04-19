@@ -116,7 +116,7 @@ public class App extends BaseTest {
 		 utils = new AutoUtilities();
 		// Autoutilites file path
 		String JSONFilePath = "/TestData/TestData_Test.json";
-		CONFIG_FILE = System.getProperty("user.dir")+"/src/main/java/automation/framework/common/config.properties";
+		CONFIG_FILE = System.getProperty("user.dir")+"/Config/config.properties";
 		utils.loadTestData(JSONFilePath);
 		
 		// Initializing the fleuntAssert object for global use.
