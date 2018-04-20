@@ -183,7 +183,6 @@ public class HomePropertyTest extends App {
 		
 		homePropertyPage.tapAddressLineText();
 		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
-		propertyDetailsPage.tapAndroidDeviceBackButton();
 
 	}
 	

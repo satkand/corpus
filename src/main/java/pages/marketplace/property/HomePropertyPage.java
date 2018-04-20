@@ -50,7 +50,6 @@ public class HomePropertyPage extends BasePage {
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	private By incomeProtectionTitleText = By.id("au.com.suncorp.marketplace:id/offerTitle");
-	
 	private By propertyDetailsButton = By.id("au.com.suncorp.marketplace:id/propertyDetailsButton");
 	
 	//Virtual Assets
