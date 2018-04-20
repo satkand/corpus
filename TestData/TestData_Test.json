@@ -140,6 +140,88 @@
 				}
 			]}
 		},
+	"claimDetails" :{
+		         "login": "a@b.c",
+				"pwd": "Password1",
+					"property":{
+					
+				        "claimLodged":{
+				          "claimNumber":"H00000001",
+				          "insuranceType":"Home Insurance",
+				          "homeRiskAddress":"Insured address",
+				          "homeRiskAddrPrimaryDesc":"530 Collins St, Melbourne",
+				          "homeRiskAddrSecondaryDesc":"VIC 3000",
+				          "whatHappened":"Natural Hazard",
+				          "accidentType":"Hail",
+				          "eventDate" :"Sunday 5 Jul 2015",
+				          "claimStageLabel" :"Stage 1 of 4",
+				          "claimStageValue" :"Claim lodged"
+				        },
+				        "claimInProgress":{
+				          "claimNumber":"H00000002",
+				          "claimStageLabel" :"Stage 2 of 4",
+				          "claimStageValue" :"Claim in progress"
+				        },
+				         "assessmentComplete":{
+				          "claimNumber":"H00000003",
+				          "claimStageLabel" :"Stage 3 of 4",
+				          "claimStageValue" :"Assessment complete",
+				          "excess":{
+				          "yourOutstandingExcess":"$3,000.00",
+				          "excessRecieved":"$976.55",
+				          "totalExcess":"$3,976.55"
+				           } 
+				        },
+				          "claimSettledAsAdvised":{
+				          "claimNumber":"H00000004",
+				          "claimStageLabel" :"Stage 4 of 4",
+				          "claimStageValue" :"Claim settled as advised"
+				        }	  	     
+				},
+				"vehicle":{
+					
+				        "claimLodged":{
+				          "claimNumber":"M00000001",
+				          "insuranceType":"Boat Insurance",
+				          "vehicleRisk":"Insured vehicle",
+				          "vehicleRiskPrimaryDesc":"2015 Boaty McBoatface",
+				          "vehicleRiskSecondaryDesc":"P1R4T3",
+				          "whatHappened":"Damage Whilst Boating",
+				          "accidentType":"Kraken attack",
+				          "eventDate" :"Sunday 5 Jul 2015",
+				          "claimStageLabel" :"Stage 1 of 4",
+				          "claimStageValue" :"Claim lodged",
+				          "excess":{
+				            "yourTotalExccess":"$500.00",
+				            "zeroExcess":{
+				            "claimNumber":"M00000005",
+				            "yourTotalExccess":"$0.00"
+				            }   
+				          }
+				          
+				        },
+				        "damageReview":{
+				          "claimNumber":"M00000002",
+				          "claimStageLabel" :"Stage 2 of 4",
+				          "claimStageValue" :"Damage review"
+				        },
+				         "repair":{
+				          "claimNumber":"M00000003",
+				          "claimStageLabel" :"Stage 3 of 4",
+				          "claimStageValue" :"Repair",
+				          "excess":{
+				          "referenceNumber":"PRN12345678901234",
+				          "paidExcess":"$888.88"
+				           }   
+				        },
+				          "claimCompleted":{
+				          "claimNumber":"M00000004",
+				          "claimStageLabel" :"Stage 4 of 4",
+				          "claimStageValue" :"Claim completed"
+				        }	  	     
+				}
+				
+		},
 	"portfolio" :{
 		"loginEmptyProdList":{
 				"login": "a@b.c",
@@ -550,7 +632,7 @@
             			 "excessDetails": 
             			 {
             			 	     "excessType": "Standard Excess",
-             				 "excessAmount":"$100.00",
+             				 "excessAmount":"$100.00"
             			 }
             			 
             			},
@@ -647,7 +729,7 @@
              				 "cancellationPending":"Cancellation pending",
              				 "futureActive": "Policy Future Activation",
              				 "renewalDue":"Renewal due",
-             				 "renewalOverDue":"Renewal overdue",
+             				 "renewalOverDue":"Renewal overdue"
             			}
 				}
 		}

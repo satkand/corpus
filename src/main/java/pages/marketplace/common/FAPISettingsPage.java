@@ -16,6 +16,8 @@ public class FAPISettingsPage extends BasePage {
 
 	private By userHasPropertiesToggle = By.id("au.com.suncorp.marketplace:id/hasPropertiesToggle");
 	private By userHasBankAccounts = By.id("au.com.suncorp.marketplace:id/hasAccountsToggle");
+	private By claimNumberEditText = By.id("au.com.suncorp.marketplace:id/claimNumberEditText");
+	private By goToClaimDetailsButton = By.id("au.com.suncorp.marketplace:id/goToClaimDetailsButton");
 	
 	public void tapUserHasPropertiesToggle() {
 		tapElement(userHasPropertiesToggle);
@@ -33,5 +35,22 @@ public class FAPISettingsPage extends BasePage {
 		return find(userHasBankAccounts);
 	}
 	
+	public void tapClaimNumberEditText() {
+		tapElement(userHasPropertiesToggle);
+	}
+	
+	public void tapGoToClaimDetailsButton() {
+		tapElement(goToClaimDetailsButton);
+	}
+	
+	public void enterClaimNumber(String inputValue) {
+		typeValue(inputValue, claimNumberEditText);
+	}
+	public void navigateToClaimDetails(String claimNumber) {
+			
+		enterClaimNumber(claimNumber);
+		tapGoToClaimDetailsButton();
+				
+	}
 
 }

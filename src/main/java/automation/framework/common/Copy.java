@@ -36,5 +36,23 @@ public interface Copy {
 	
 	//RENEW POLICY
 	public String RENEW_POLICY_SCREEN_TITLE = "Renew Policy";
+	
+	//CLAIM DETAILS PAGE
+	public String CLAIM_NUMBER_LABEL = "Claim number";
+	public String WHAT_HAPPENED_LABEL = "What happened";
+	public String ACCIDENT_TYPE_LABEL = "Accident type";
+	public String EVENT_DATE_LABEL = "Event date";
+	public String YOUR_EXCESS_TOTAL_LABEL = "Your total excess";
+	public String YOUR_PAID_EXCESS_LABEL = "Your paid excess";
+	public String PAID_BUTTON_LABEL = "PAID";
+	public String PAID_EXCESS_LABEL = "Your paid excess";
+	public String REFERENCE_NUMBER_LABEL = "Reference number";
+	public String OUTSTANDING_EXCESS_TITLE_LABEL = "Your outstanding excess";
+	public String EXCESS_RECIEVED_LABEL = "Your outstanding excess";
+	public String EXCESS_TOTAL_EXCESS_LABEL = "Total excess";
+	public String CHECK_CLAIM_UPDATES_LABEL="CHECK CLAIM UPDATES";
+	public String DOWNLOAD_DOCUMENTS_LABEL="DOWNLOAD DOCUMENTS";
+	public String UPLOAD_DOCUMENTS_LABEL="UPLOAD DOCUMENTS";
+	public String CLAIM_DETAILS_TITLE ="Active claim details";
 
 }

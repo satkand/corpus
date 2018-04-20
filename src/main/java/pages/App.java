@@ -23,6 +23,8 @@ import pages.marketplace.auth.registration.GetStartedPage;
 import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
+import pages.marketplace.claimdetails.ClaimDetailsPage;
+import pages.marketplace.claimdetails.NextActionWebViewPage;
 import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
@@ -107,13 +109,14 @@ public class App extends BaseTest {
 	public PropertyDetailsPage propertyDetailsPage = null;
 	public HomeProfessionalServicesPage homeServicesPage = null;
 	public ArticlesPage articlesPage = null;
-	
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 	public PolicyDetailsPage policyDetailsPage = null;
 	public RiskDetailsPage riskDetailsPage = null;
 	public RenewPolicyPage renewPolicyPage = null;
-
+	public ClaimDetailsPage claimDetailsPage = null;
+	public  NextActionWebViewPage nextActionWebViewPage=null;
+	
 	@BeforeClass
 	public void initializeApp() {
 		
@@ -176,7 +179,8 @@ public class App extends BaseTest {
 		policyDetailsPage = new PolicyDetailsPage(driver);
 		riskDetailsPage = new RiskDetailsPage(driver);
 		renewPolicyPage = new RenewPolicyPage(driver);
-
+		claimDetailsPage = new ClaimDetailsPage(driver);
+		nextActionWebViewPage = new NextActionWebViewPage(driver);
 
 	}
 	

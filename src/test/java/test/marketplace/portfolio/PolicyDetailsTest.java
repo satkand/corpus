@@ -445,18 +445,12 @@ public class PolicyDetailsTest extends App {
 		String expectedPolicyEndYear = utils.readTestData("portfolio", "policyDetails", policy, "periodOfCover",
 				"endYear");
 
-		Assert.assertEquals(policyDetailsPage.getPolicyDescriptionText(), expectedPolicyDescription,
-				"policy description is incorrect");
-		Assert.assertEquals(policyDetailsPage.getPolicyNumberText(), expectedPolicyNumber,
-				"policy number is incorrect");
-		Assert.assertEquals(policyDetailsPage.getPolicyStartDate(), expectedPolicyStartDate,
-				"policy start date is incorrect");
-		Assert.assertEquals(policyDetailsPage.getpolicyStartYear(), expectedPolicyStartYear,
-				"policy start year is incorrect");
-		Assert.assertEquals(policyDetailsPage.getPolicyEndDate(), expectedPolicyEndDate,
-				"policy end date is incorrect");
-		Assert.assertEquals(policyDetailsPage.getPolicyEndYear(), expectedPolicyEndYear,
-				"policy end year is incorrect");
+		Assert.assertEquals(policyDetailsPage.getPolicyDescriptionText(), expectedPolicyDescription,"policy description is incorrect");
+		Assert.assertEquals(policyDetailsPage.getPolicyNumberText(), expectedPolicyNumber,"policy number is incorrect");
+		Assert.assertEquals(policyDetailsPage.getPolicyStartDate(), expectedPolicyStartDate,"policy start date is incorrect");
+		Assert.assertEquals(policyDetailsPage.getpolicyStartYear(), expectedPolicyStartYear,"policy start year is incorrect");
+		Assert.assertEquals(policyDetailsPage.getPolicyEndDate(), expectedPolicyEndDate,"policy end date is incorrect");
+		Assert.assertEquals(policyDetailsPage.getPolicyEndYear(), expectedPolicyEndYear,"policy end year is incorrect");
 
 	}
 
