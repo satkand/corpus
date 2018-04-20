@@ -3,14 +3,75 @@
         "packageName": "au.com.suncorp.mobile",
         "platform": "aos"
     },
-    "pinEntries" :{
-		"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
-		"validPINEntry1" : "7634",
-		"validPINEntry2" : "2580"
+	"PIN" :{
+		"loginWithExistingPin" : {
+			"login": "thisloginhaspin@haspin.com",
+			"pwd": "Password1",
+			"pin": "2580"
+		},
+							"backup_loginWithExistingPin" : {
+								"login": "b@b.com",
+								"pwd": "Password1",
+								"pin": "2580"
+							},
+		"_comment": "Please do not use this login to set the pin",
+		"loginWithoutExistingPin" : {
+			"login": "thislogindonothavepin@donothavepin.com",
+			"pwd": "Password1"
+		},
+								"backup_loginWithoutExistingPin" : {
+									"login": "c@b.com",
+									"pwd": "Password1"
+								},
+		"_comment": "This login is used to set the pin. And the credentials need to change every time, after each run",
+		"_comment": "CHANGE",
+		"loginWithoutExistingPin_usedToDoPINSetup" : {
+			"login": "a1@a.com",
+			"pwd": "Password1"
+		},
+		"loginWithPinLocked" : {
+			"login": "pinlocked@sun.com",
+			"pwd": "Test123",
+			"pin": "1234"
+		},
+		"loginForPinLockedSetupFlow" : {
+			"login": "pinsetup@sun.com",
+			"pwd": "Test123",
+			"invalidPin": "1234",
+			"validPin":"2580"
+		},
+		"loginForConfirmCurrentPin" : {
+			"login": "ss@sun.com",
+			"pwd": "Password1",
+			"pin": "2121"
+		},
+		"pinEntries" :{
+			"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
+			"validPINEntry1" : "7634",
+			"validPINEntry2" : "2580"
+		}
 	},
-	"noSuncorpBankAccounts" :{
-		"login": "ab@ab.com",
-		"pwd": "Password1"
+	"loginCredentials": {
+		"validLoginCredentials": {
+			"login": "dest@dest.com",
+			"pwd": "Password1",
+			"maskedValidPwd": "•••••••••"
+		},
+		"invalidCredentials": {
+			"emailEmpty" : "",
+			"emailExceedsMaxLength": "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendb@j.c",
+			"emailMinLength": "a",
+			"emailIncorrectFormat1": "a@.com",
+			"emailIncorrectFormat2": "a@b",
+			"passwordEmpty": "",
+			"invalidPassword" : "1234567",
+			"invalidMemberLogin": "x@g.z",
+			"invalidMemberLoginPwd": "Pwd1"
+		},
+		"validMemberLogin": {
+			"login": "x@y.z",
+			"pwd": "Password1"
+		}
 	},
 	"propertyDimension" :{
 		"propertyDetails":{
@@ -64,10 +125,38 @@
          			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
 			}}
 	},
+	"articlesCarousel": {
+			"articleCarouselText":"Articles",
+			"articleReadMoreButton": "READ MORE",
+			"property": { 
+			"articleViewPager": [
+				{ 
+					"articleTitle" : "The 5 Steps to Master Renting",
+					"articleDescription" : "Whatever it is that has you scanning the “TO LET” listings, there are a number of important things to consider before you sign a rental lease.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/master-renting.html"
+				},
+				{ 
+					"articleTitle" : "What are landlord responsibilities?",
+					"articleDescription" : "Landlords need to keep a property in a livable condition.Find out what you should expect here.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/landlord-responsibilities.html"
+				},
+				{ 
+					"articleTitle" : "How can I estimate the total costs involved in buying a home?",
+					"articleDescription" : "The price you see in the ads or at aunction is rarely the full price of buyign a house. We detail here some of the 'hidden' costs you need to watch out for.",
+					"webViewUrl" : "https://www.suncorp.com.au/learn-about/buying-a-home/estimating-costs-of-buying-a-home.html"
+				}
+			]}
+		},
 	"portfolio" :{
 		"loginEmptyProdList":{
 				"login": "a@b.c",
-				"pwd": "Password1"
+				"pwd": "Password1",
+				"addBankAccount":{
+					"validAccountNumber": "12345678-aA",
+					"inValidCharacterAccountNumber": "#$",
+					"moreThanMaxAccountNumber": "AWRTE1234567890123456789012345TH"
+					
+				}
 			},
 		"loginProdList":{
 				"login": "a@b.c",
@@ -97,6 +186,7 @@
 					}]
 			},
 		"wealthProducts": {
+		"user1":{
 				"login": "a@b.c",
 				"pwd": "Password1",
 				"products": [
@@ -104,45 +194,39 @@
 						"brand": "Suncorp",
           				"accountNumber": "123456789",
           				"description": "Sun Super",
-          				"accountBalance": 3141592.65,
+          				"accountBalance": "$3,141,592.65",
           				"status": "Active"
 				},
 				{
 						"brand": "Apia",
           				"accountNumber": "564738291",
           				"description": "Australian Everyday Customer Sunny Super",
-          				"accountBalance": 4.20,
+          				"accountBalance": "$4.20",
           				"status": "Active"
 				}]
-			},
+			}},
 		"lifeProducts" : {
-				"login": "a@b.c",
-				"pwd": "Password1",
-				"products": [
-				{
-						"brand": "Suncorp",
-          				"policyNumber": "M374298342",
-          				"description": "Life Insurance",
-          				"insuredPersons": [
-            			{
-             				 "name": "Bob Smith"
-            			},
-            			{
-              				"name": "Andy Smith"
-            			}]
-				},
-				{
-						"brand": "AAMI",
-          				"policyNumber": "634654212",
-          				"description": "Accidental Injury Plan",
-          				"insuredPersons": [
-            			{
-              				"name": "Alex Sim"
-            			}]
-
-				}]
-
-		},
+        "user1":{
+        "login": "a@b.c",
+		"pwd": "Password1",
+		"products":[
+		{
+          "brand": "Suncorp",
+          "policyStatus": "Policy Active",
+          "description": "Life Insurance",
+          "insuredPersonsname1": "Bob Smith",
+          "insuredPersonsname2": "Andy Smith"
+           
+        },
+       {
+          "brand": "AAMI",
+          "policyStatus": "Policy Active",
+          "description": "Accidental Injury Plan",
+          "insuredPersonsname1": "Alex Sim",
+          "insuredPersonsname2": ""
+         
+        }]
+        }},
 		"insuranceProducts" : {
 				"policy1": 
 				{
@@ -200,11 +284,11 @@
           				"risks": 
             			{
             					"description1": "Multi Risk, Multi Cover 1",
-             				"endDate1":"10 November 2017",
-             				"endDateDescription1":"Start Date",
+             				"endDate1":"10 October 2017",
+             				"endDateDescription1":"Amendment date",
              				"description2": "Multi Risk, Multi Cover 2",
-             				"endDate2":"10 November 2017",
-             				"endDateDescription2":"Start Date"
+             				"endDate2":"25 July 2018",
+             				"endDateDescription2":"Expires"
             			}
 				},
 				"policy6": 
@@ -215,8 +299,11 @@
           				"risks": 
             				{
             					"description1": "Multi Risk, Multi Cover 3",
-            			
-            					"description2": "Multi Risk, Multi Cover 4"
+            					"endDate1":"10 June 2017",
+             				"endDateDescription1":"Amendment date",
+            					"description2": "Multi Risk, Multi Cover 4",
+            					"endDate2":"25 July 2018",
+             				"endDateDescription2":"Expires"
             				}
 				},
 				"policy7": 
@@ -227,8 +314,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 5",
-            			
-            				"description2": "Multi Risk, Multi Cover 6"
+            				"endDate1":"10 October 2017",
+             			"endDateDescription1":"Amendment date",
+            				"description2": "Multi Risk, Multi Cover 6",
+            				"endDate2":"10 January 2017",
+             			"endDateDescription2":"Amendment date"
             			}
 				},
 				"policy8": 
@@ -239,8 +329,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 7",
-            			
-            				"description2": "Multi Risk, Multi Cover 8"
+            				"endDate1":"10 October 2017",
+             			"endDateDescription1":"Amendment date",
+            				"description2": "Multi Risk, Multi Cover 8",
+            				"endDate2":"10 February 2017",
+             			"endDateDescription2":"Amendment date"
             			}
 				},
 				"policy9": 
@@ -251,8 +344,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 1",
-            			
-            				"description2": "Multi Risk, Single Cover 2"
+            				"endDate1":"10 November 2017",
+             			"endDateDescription1":"Cancellation Date",
+            				"description2": "Multi Risk, Single Cover 2",
+            				"endDate2":"25 July 2018",
+             			"endDateDescription2":"Expires"
             			}
 				},
 				"policy10": 
@@ -263,8 +359,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 3",
-            			
-            				"description2": "Multi Risk, Single Cover 4"
+            				"endDate1":"10 October 2017",
+             			"endDateDescription1":"Cancellation Date",            			
+            				"description2": "Multi Risk, Single Cover 4",
+            				"endDate2":"10 March 2017",
+             			"endDateDescription2":"Cancellation Date"
             			}
 				},
 				"policy11": 
@@ -274,7 +373,9 @@
 						"status":"Cancellation pending",
           				"risks": 
             			{
-            				"description": "Single Risk Multi Cover 1"
+            				"description1": "Single Risk Multi Cover 1",
+            				"endDate1":"10 October 2017",
+             			"endDateDescription1":"Cancellation Date"
             			}
 				},
 				"policy12": 
@@ -285,8 +386,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 9",
-            			
-            				"description2": "Multi Risk, Multi Cover 10"
+            				"endDate1":"10 October 2017",
+             			"endDateDescription1":"Cancellation Date",
+            				"description2": "Multi Risk, Multi Cover 10",
+            				"endDate2":"25 July 2018",
+             			"endDateDescription2":"Expires"
             			}
 				},
 				"policy13": 
@@ -297,8 +401,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 11",
-            			
-            				"description2": "Multi Risk, Multi Cover 12"
+            				"endDate1":"10 October 2017",
+             			"endDateDescription1":"Cancellation Date",
+            				"description2": "Multi Risk, Multi Cover 12",
+            				"endDate2":"10 January 2017",
+             			"endDateDescription2":"Cancellation Date"
             			}
 				},
 				"policy14": 
@@ -309,8 +416,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 5",
-            			
-            				"description2": "Multi Risk, Single Cover 6"
+            				"endDate1":"10 November 2017",
+             			"endDateDescription1":"Start date",	
+            				"description2": "Multi Risk, Single Cover 6",
+            				"endDate2":"25 July 2018",
+             			"endDateDescription2":"Expires"
             			}
 				},
 				"policy15": 
@@ -321,8 +431,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 7",
-            			
-            				"description2": "Multi Risk, Single Cover 8"
+            				"endDate1":"10 November 2019",
+             			"endDateDescription1":"Start date",
+            				"description2": "Multi Risk, Single Cover 8",
+            				"endDate2":"10 October 2019",
+             			"endDateDescription2":"Start date"
             			}
 				},
 				"policy16": 
@@ -332,7 +445,9 @@
 						"status": "Policy Future Activation",
           				"risks": 
             			{
-            				"description1": "Single Risk Multi Cover 2"
+            				"description1": "Single Risk Multi Cover 2",
+            				"endDate1":"10 October 2019",
+             			"endDateDescription1":"Start date"
             			}
 				},
 				"policy17": 
@@ -343,8 +458,11 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 13",
-            			
-            				"description2": "Multi Risk, Multi Cover 14"
+            				"endDate1":"10 October 2018",
+             			"endDateDescription1":"Start date",
+            				"description2": "Multi Risk, Multi Cover 14",
+            				"endDate2":"25 July 2018",
+             			"endDateDescription2":"Expires"
             			}
 				},
 				"policy18": 
@@ -355,12 +473,44 @@
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 15",
-            			
-            				"description2": "Multi Risk, Multi Cover 16"
+            				"endDate1":"10 October 2017",
+             			"endDateDescription1":"Start date",            			
+            				"description2": "Multi Risk, Multi Cover 16",
+            				"endDate2":"10 May 2017",
+             			"endDateDescription2":"Start date"
+            			}
+				},
+				"policy19": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status": "Policy Active",
+          				"risks": 
+            			{
+            				"description1": "Single Risk Multi Cover 3",
+            				"endDate1":"10 October 2017",
+             			"endDateDescription1":"Amendment date"
+            			}
+				},
+				"policy20": 
+				{
+						"login": "a@b.c",
+						"pwd": "Password1",
+						"status": "Policy Active",
+          				"risks": 
+            			{
+            				"description1": "Single Risk Multi Cover 4",
+            				"endDate1":"10 May 2017",
+             			"endDateDescription1":"Amendment date"
             			}
 				}
+				
 
 		}
+	},
+	"noSuncorpBankAccounts" :{
+		"login": "ab@ab.com",
+		"pwd": "Password1"
 	},
 	"hasSuncorpBankAccounts" :{
 		"login": "ab@ab.com",
@@ -692,7 +842,7 @@
 		]
 	},
 	"hasVehicles" :{
-		"login": "ab@ab.com",
+		"login": "a@b.c",
 		"pwd": "Password1",
 		"vehiclesList": [
 			{
@@ -740,6 +890,7 @@
 			"longPostCode" : "979797989",
 			"emailLong" : "giehrgireghewhgogiehrgireghewhgokjlkjllljwhgowgowehgaesvnoroiegiehrgireghewhgowhgowgowehgaesvnoroiesfdsff@.com",
 			"mobileLong" : "453592486085082350",
+			"invalidEmail":"aa",
 			"mobileInvalidFormat" : "9897494549",
 			"mobileEmpty" : "",
 			"mobileShort" : "0422222",
@@ -773,43 +924,6 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
-	"loginCredentials": {
-		"validLoginCredentials": {
-			"login": "dest@dest.com",
-			"pwd": "Password1",
-			"maskedValidPwd": "•••••••••"
-		},
-		"invalidCredentials": {
-			"emailEmpty" : "",
-			"emailExceedsMaxLength": "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendb@j.c",
-			"emailMinLength": "a",
-			"emailIncorrectFormat1": "a@.com",
-			"emailIncorrectFormat2": "a@b",
-			"passwordEmpty": "",
-			"invalidPassword" : "1234567",
-			"invalidMemberLogin": "x@g.z",
-			"invalidMemberLoginPwd": "Pwd1"
-		},
-		"hasNoProducts": {
-			"login": "fer@fer.com",
-			"pwd": "Password1"
-		},
-		"validMemberLogin": {
-			"login": "x@y.z",
-			"pwd": "Password1"
-		}
-	},
-	"PIN" :{
-		"loginWithExistingPin" : {
-			"login": "b@b.com",
-			"pwd": "Password1",
-			"pin": "2580"
-		},
-		"loginWithoutExistingPin" : {
-			"login": "c@b.com",
-			"pwd": "Password1"
-		}
-	},
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in",
@@ -841,7 +955,8 @@
 			"policyAddedSuccessfulMsg": "Policy added",
 			"maxLimitError": "Exceeding the max limit of 30",
 			"feildValidationError": "Field is required",
-			"invalidCharactor": "Please enter a valid insurance policy number"
+			"invalidCharactor": "Please enter a valid insurance policy number",
+			"":""
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
@@ -878,14 +993,11 @@
 			"featureLockedMsgTitle":"Feature Locked",
 			"activeClaim":"Active claim",
 			"featureLockedTextCopy":"Unfortunately this feature is only available to registered users. Please Log In or Sign Up first."
-			
 		},
 		"propertyDetailsPage": {
 			"showMoreInfoLabel": "VIEW MORE INFO",
 			"showLessInfoLabel": "VIEW LESS INFO",
 			"HomeJourneyTitle": "Home journey"
-			
-			
 		},
 		"homeJourneyPage": {
 			"journeyTitleText": "Our guide to\nbuying a home",
@@ -966,6 +1078,11 @@
 			"digiVaultEmptyImageTitle" : "Your vault is empty",
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
 		},
+		"portfolioError":{
+			"invalidAccountNumber":"Can only contain letters, numbers, and '-'",
+			"lengthError":"Must be between 1 – 30 characters",
+			"mandatoryError":"Field is required"
+			},
 		"memberLogin" : {
 			"shortMobileNumberError" : "Must be 10 digits",
 			"invalidMobileNumberError" : "Must use 04XXXXXXXX format",
@@ -996,6 +1113,7 @@
 	],
 	"bundleId": {
 		"value": "au.com.suncorp.marketplace:id/"
+
 	}
 }
 

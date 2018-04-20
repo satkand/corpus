@@ -7,22 +7,22 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class FolderViewPage extends BasePage {
 
 	DigiVaultCommonPage digiVaultCommonPage = new DigiVaultCommonPage(driver);
 	private By folderTitle  = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']/android.widget.TextView");
 	private By deleteFolderButton = By.id("au.com.suncorp.marketplace:id/deleteFolderButton");
-	private By deleteItemsButton = By.id("au.com.suncorp.marketplace:id/deleteItemsButton");
+	private By deleteItemsButton = By.id("au.com.suncorp.marketplace:id/deleteDocumentsButton");
 	private By renameFolderButton = By.id("au.com.suncorp.marketplace:id/renameFolderButton");
-
-
 	private By moveDocumentToFolderButton = By.id("au.com.suncorp.marketplace:id/moveDocumentToFolderButton");
 	private By editButton = By.id("au.com.suncorp.marketplace:id/editButton");
 	private By addFromVaultCard = By.id("au.com.suncorp.marketplace:id/addFromVaultCard");
 	private By emptyVaultImage = By.id("au.com.suncorp.marketplace:id/emptyDigitalVaultImage");
-	
 	private By permissionOkButton = By.id("com.android.packageinstaller:id/permission_allow_button");
+	private By successNotification = By.id("au.com.suncorp.marketplace:id/dialogMessage");
+	private By backButton = By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']");
 	
 	public FolderViewPage(AppiumDriver driver) {
 		super(driver);
@@ -47,6 +47,10 @@ public class FolderViewPage extends BasePage {
 	
 	public void tapPermissionOkButton() {
 		tapElement(permissionOkButton);
+	}
+	
+	public void tapDeleteItemsButton() {
+		tapElement(deleteItemsButton);
 	}
 	
 	public WebElement checkAddFileFromVaultCard() {
@@ -76,6 +80,10 @@ public class FolderViewPage extends BasePage {
 		String file =  driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", fileName )).getText();
 		return file;
 	}
+	public WebElement verifyFileNameExists(String fileName) {
+		
+		return findByUIAutomator(fileName, "text");
+	}
 	
 	public void tapEditButton() {
 		tapElement(editButton);
@@ -101,7 +109,12 @@ public class FolderViewPage extends BasePage {
 		tapElement(renameFolderButton);
 	}
 	
-
-
+	public void waitForSuccessNotificationToDisappear() {
+		waitForElementToDisappear(successNotification,5);
+	}
+	
+	public void tapBackButton() {
+		tapElement(backButton);
+	}
 	
 }
