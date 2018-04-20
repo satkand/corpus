@@ -159,5 +159,13 @@ public class ConfigPage extends BasePage {
 			tapElement(hasBankAccountsToggle);
 		}
 	}
+	
+	public void tapContinueToDismiss() {
+		dismissKeyboard();
+		scrollToElement(continueBtnID, "id");
+		if (find(continueButton, 30) != null) {
+			tapElement(continueButton);
+		}
+	}
 
 }

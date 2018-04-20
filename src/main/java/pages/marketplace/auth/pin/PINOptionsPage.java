@@ -11,11 +11,13 @@ public class PINOptionsPage extends BasePage{
 
 	
 	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
-	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePromptDismissButton");
+	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
 	
 	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePinPromptImage");
 	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePinPromptUserWelcome");
 	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
+	
+	private By pinFingerprintPromptImage = By.id("au.com.suncorp.marketplace:id/enablePromptImage");
 	
 	public PINOptionsPage(AppiumDriver driver) {
 		super(driver);
@@ -49,5 +51,4 @@ public class PINOptionsPage extends BasePage{
 	public void tapMaybeLater(){
 		tapElement(maybeLaterButton);
 	}
-	
 }

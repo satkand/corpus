@@ -22,6 +22,7 @@ public class LoginAuthPage extends BasePage{
 	private By loginReauthButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By forgotPasswordReauthButton = By.id("au.com.suncorp.marketplace:id/forgotPasswordButton");
 	private By backButtonReauthPassword = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By reauthPasswordLoginBtn = By.id("au.com.suncorp.marketplace:id/loginButton");
 	
 	public LoginAuthPage(AppiumDriver driver) {
 		super(driver);
@@ -74,5 +75,9 @@ public class LoginAuthPage extends BasePage{
 	
 	public void tapLoginReauthButton() {
 		tapElement(loginReauthButton);
+	}
+	
+	public void tapReauthPasswordLoginBtn() {
+		tapElement(reauthPasswordLoginBtn);
 	}
 }

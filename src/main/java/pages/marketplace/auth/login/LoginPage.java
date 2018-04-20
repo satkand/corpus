@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Keyboard;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 
 public class LoginPage extends BasePage{
 	
@@ -42,6 +44,9 @@ public class LoginPage extends BasePage{
 	private By resetPasswordEmailFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By resetPasswordSuccessSnackbar = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By resetPasswordSuccessSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
+	
+	private By emailPanel = By.id("android:id/titlePanel_default");
+	private By emailPanelOptions = By.id("android:id/icon");
 	
 	public WebElement checkLoginPageTitle(){
 		return find(loginPageTitle,20);
@@ -184,7 +189,7 @@ public class LoginPage extends BasePage{
 	}
 	
 	public WebElement checkResetPasswordEmailField() {
-		return find(resetPasswordEmailField);
+		return find(resetPasswordEmailField,5);
 	}
 	
 	public void enterResetPasswordEmail(String email) {
@@ -220,7 +225,7 @@ public class LoginPage extends BasePage{
 	}
 	
 	public WebElement checkResetPasswordSuccessSnackbar() {
-		return find(resetPasswordSuccessSnackbar, 30);
+		return find(resetPasswordSuccessSnackbar, 5);
 	}
 	
 	public String getResetPasswordSuccessSnackbarText() {
@@ -230,4 +235,31 @@ public class LoginPage extends BasePage{
 	public String getResetPasswordSuccessSnackbarBtn() {
 		return getText(resetPasswordSuccessSnackbarButton);
 	}
+	
+	public void tapResetPasswordSuccessSnackbarButton() {
+		tapElement(resetPasswordSuccessSnackbarButton);
+	}
+	
+	public WebElement checkEmailOptionPanel() {
+		return find(emailPanel);
+	}
+	
+	public WebElement checkFirstEmailPanelOption () {
+		 WebElement firstOption = finds(emailPanelOptions).get(0);
+		 return firstOption;
+	}
+	
+	public void tapFirstEmailOption() {
+		 WebElement firstOption = finds(emailPanelOptions).get(0);
+		 tapElement(firstOption);
+	}
+	
+	public String getActivityValue(){
+		return ((AndroidDriver<MobileElement>) driver).currentActivity();
+	}
+	
+	public void restartApp() {
+		closeAndLaunchApp();
+	}
+
 }

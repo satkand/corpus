@@ -1339,4 +1339,10 @@ public class BasePage {
 		find(suncorpApp);
 		tapElement(suncorpApp);
 	}
+	
+	// Added by Gitin George
+	protected void closeAndLaunchApp() {
+		driver.closeApp();
+		driver.launchApp();
+	}
 }
