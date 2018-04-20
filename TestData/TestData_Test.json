@@ -86,15 +86,22 @@
 					"wallMaterial": "Brick",
 					"salePrice": "$1,000,000",
 					"saleDate": "30 Feb 2018",
+					"confidenceLevel":"Medium confidence",
+					"estimatedMarketValue": "$1,100,000 - $1,275,000",
 					"numberOfImages":"7",
 					"buildYear": "1966"
 					
+		},
+		"propertyDetailsHighConfidence":{
+					"confidenceLevel":"High confidence",
+					"estimatedMarketValue": "$1,456,100,000 - $1,895,275,000"
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
 					"pwd": "Password1",
 					"clearSearchText":"1234567890ABCD#$%^",
-					"enterAdress":"1"
+					"enterAdress":"1",
+					"highConfidenceAddress":"2"
 		},
 		"NoProperties":{
 					"login": "a@b.c",
@@ -1068,7 +1075,7 @@
 		]
 	},
 	"hasVehicles" :{
-		"login": "ab@ab.com",
+		"login": "a@b.c",
 		"pwd": "Password1",
 		"vehiclesList": [
 			{
@@ -1202,6 +1209,7 @@
 		},
 		"propertyExplorer":{
 			"propertyInsightSearchHintText": "Enter address",
+			"estimatedMarketValue": "Estimated market value",
 			"suburbInsightSearchHintText": "Enter suburb's name"
 		},
 		"spendingsPage": {

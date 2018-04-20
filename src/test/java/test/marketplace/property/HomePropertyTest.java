@@ -142,6 +142,40 @@ public class HomePropertyTest extends App {
 			
 	}
 	
+	//3803 - scenario 1 (TC-DMPM-4712), Scenario 2 (TC-4714)
+	//View my property assets details option from property dimension
+	@Test (groups = {"DMPM-3803","DMPM-4712","DMPM-4714", "marketplace", "Property Dimension", "priority-minor"})
+		public void testViewPropertyAssetsDetailsOption() {
+		
+		navigateToHomePropertyTab("withProducts");
+		Assert.assertNotNull(homePropertyPage.checkPropertyDetailsButton(), "Home Property Page - Property details button is not present");
+		
+		homePropertyPage.tapPropertyDetailsButton();
+		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.tapPropertyImage();
+		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.tapAddressLineText();
+		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.scrollToSuppliedAsset();;
+		homePropertyPage.tapPropertyDetailsButton();
+		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.tapPropertyImage();
+		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.tapAddressLineText();
+		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
+
+	}
+
 	private void navigateToHomePropertyTab(String loginType) {
 		if(loginType.equals("withProducts")) {
 			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
