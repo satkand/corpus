@@ -550,7 +550,7 @@
             			 "excessDetails": 
             			 {
             			 	     "excessType": "Standard Excess",
-             				 "excessAmount":"$100.00",
+             				 "excessAmount":"$100.00"
             			 }
             			 
             			},
@@ -647,7 +647,7 @@
              				 "cancellationPending":"Cancellation pending",
              				 "futureActive": "Policy Future Activation",
              				 "renewalDue":"Renewal due",
-             				 "renewalOverDue":"Renewal overdue",
+             				 "renewalOverDue":"Renewal overdue"
             			}
 				}
 		}

@@ -129,30 +129,13 @@ public class PolicyDetailsPage extends BasePage {
 	}
 
 	public String getInstalmentAmt() {
-
-		WebElement element = find(instalmentAmount, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(instalmentAmount, 4);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(instalmentAmount, 1);
 	}
 
 	public String getInstalmentDebitDayLabel() {
-
-		WebElement element = find(debitDayLabel, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-			element = find(debitDayLabel, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(debitDayLabel, 1);
 	}
 
 	public String getPaymentMethodText() {
@@ -161,182 +144,55 @@ public class PolicyDetailsPage extends BasePage {
 	}
 
 	public WebElement checkRiskDescriptionText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		for (int i = 0; i < 3; i++) {
-
-			if (element == null) {
-
-				swipeScreen("DOWN");
-
-			} else {
-				break;
-			}
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
+	return scrollToElementByText(text, 3);
 
 	}
 
 	public WebElement checkRegistrationNumberText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
+		
+		return scrollToElementByText(text, 1);
 	}
 
 	public WebElement checkInsuredAmountLabelText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
+		return scrollToElementByText(text, 1);
 	}
 
 	public String getInsuredAmountText() {
-
-		WebElement element = find(insuredAmount, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(insuredAmount, 4);
-		}
-
-		return getText(element);
-
+		
+		return scrollAndGetElementText(insuredAmount, 1);
 	}
 
 	public WebElement checkInsuredAmountText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		for (int i = 0; i < 3; i++) {
-
-			if (element == null) {
-
-				swipeScreen("DOWN");
-
-			} else {
-				break;
-			}
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
+		return scrollToElementByText(text, 3);
 
 	}
 
 	public WebElement checkCoverTypeLabelText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
-
+		return scrollToElementByText(text, 3);
 	}
 
 	public String getCoverTypeText() {
-
-		WebElement element = find(coverType, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(coverType, 4);
-		}
-
-		return getText(element);
-
+		
+		return scrollAndGetElementText(coverType, 1);
 	}
 
 	public WebElement checkCoverTypeText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		for (int i = 0; i < 3; i++) {
-
-			if (element == null) {
-
-				swipeScreen("DOWN");
-
-			} else {
-				break;
-			}
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
-
+		 return scrollToElementByText(text, 3);
 	}
 
 	public WebElement checkCoverPeriodLabelText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
-
+		
+		return scrollToElementByText(text, 1);
 	}
 
 	public String getCoverPeriodText() {
-
-		WebElement element = find(coverPeriod, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(coverPeriod, 4);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(coverPeriod, 1);
 	}
 
 	public String getPaymentMethodAccountText() {
-
-		WebElement element = find(paymentMethodAccount, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(paymentMethodAccount, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(paymentMethodAccount, 1);
 	}
 
 	public WebElement scrollToRiskViewDetailsButton() {
@@ -348,23 +204,6 @@ public class PolicyDetailsPage extends BasePage {
 	public void scrollToRisksTitle() {
 
 		scrollToElement(risksTitle, "id");
-	}
-
-	public void scrollUpToPolicyDescription() {
-
-		WebElement policyDesc = find(policyDescription, 2);
-
-		for (int i = 0; i < 10; i++) {
-
-			if (policyDesc == null) {
-
-				swipeScreen("UP");
-			} else {
-				break;
-			}
-			policyDesc = find(policyDescription, 2);
-		}
-
 	}
 
 	public void scrollToRewardsSubtitle() {
@@ -403,17 +242,8 @@ public class PolicyDetailsPage extends BasePage {
 	}
 
 	public String getIncludedCoverLabel() {
-		WebElement element = find(includedCoverLabel, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(includedCoverLabel, 2);
-		}
-
-		return getText(element);
-
+		
+		return scrollAndGetElementText(includedCoverLabel, 1);
 	}
 
 	public String getDiscountsTitle() {

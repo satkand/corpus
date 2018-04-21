@@ -50,7 +50,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-3647:DMPM-4600,DMPM-4603,DMPM-4604", story2 = "DMPM-3659:DMPM-5131", story3 = "DMPM-3647:DMPM-4599")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class,groups = { "marketplace", "policy details", "priority-minor" })
 	public void testInstalmentAndPayments() throws InterruptedException {
 
 		String motorHomePolicy = "motorHomePolicy";
@@ -64,7 +64,6 @@ public class PolicyDetailsTest extends App {
 				"productType");
 		String motorHomeProduct = utils.readTestData("portfolio", "policyDetails", motorHomePolicy, "productType");
 		String boatProduct = utils.readTestData("portfolio", "policyDetails", boatPolicy, "productType");
-
 		String monthlyInstallmentAmnt = utils.readTestData("portfolio", "policyDetails", carPolicy, "instalmentDetails",
 				"instalmentAmount");
 		String quarterlyInstallmentAmnt = utils.readTestData("portfolio", "policyDetails", homePolicy,

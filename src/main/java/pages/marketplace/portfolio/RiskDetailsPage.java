@@ -65,127 +65,43 @@ public class RiskDetailsPage extends BasePage {
 	}
 
 	public WebElement checkRiskDescriptionText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		for (int i = 0; i < 3; i++) {
-
-			if (element == null) {
-
-				swipeScreen("DOWN");
-
-			} else {
-				break;
-			}
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
-
+		
+		return scrollToElementByText(text, 3);
 	}
 
 	
 	public WebElement checkRegistrationNumberText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
+		return scrollToElementByText(text, 1);
 	}
 
 	public WebElement checkInsuredAmountLabelText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
+		
+		return scrollToElementByText(text, 1);
 	}
 
 	public String getInsuredAmountText() {
-
-		WebElement element = find(insuredAmount, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(insuredAmount, 4);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(insuredAmount, 1);
 
 	}
 
 	public WebElement checkCoverTypeLabelText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
-
+		
+		return scrollToElementByText(text, 1);
 	}
 
 	public String getCoverTypeText() {
-
-		WebElement element = find(coverType, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(coverType, 4);
-		}
-
-		return getText(element);
-
+		
+		return scrollAndGetElementText(coverType, 1);
 	}
 
 	public String getCoverPeriodText() {
 
-		WebElement element = find(coverPeriod, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(coverPeriod, 4);
-		}
-
-		return getText(element);
+		return scrollAndGetElementText(coverPeriod, 1);
 	}
 
 	public WebElement checkCoverPeriodLabelText(String text) {
-
-		WebElement element = findByUIAutomator(text, "text", 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = findByUIAutomator(text, "text", 4);
-		}
-
-		return element;
-
+		return scrollToElementByText(text, 1);
 	}
 
 	public String getOptionalCoverLabel() {
@@ -204,17 +120,8 @@ public class RiskDetailsPage extends BasePage {
 	}
 
 	public String getIncludedCoverLabel() {
-		WebElement element = find(includedCoverLabel, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(includedCoverLabel, 2);
-		}
-
-		return getText(element);
-
+		
+		return scrollAndGetElementText(includedCoverLabel, 1);
 	}
 
 	public void scrollToMotorRiskParking() {
@@ -240,31 +147,14 @@ public class RiskDetailsPage extends BasePage {
  
 
 	public String getExcessType() {
-
-		WebElement element = find(standardExcess, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(standardExcess, 4);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(standardExcess, 1);
 	}
 	
 	public String getExcessAmount() {
 
-		WebElement element = find(excessAmount, 2);
+		return scrollAndGetElementText(excessAmount, 1);
 
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(excessAmount, 4);
-		}
-
-		return getText(element);
 	}
 	
 	public WebElement checkAdditionalExcessesTab(){
@@ -305,8 +195,5 @@ public class RiskDetailsPage extends BasePage {
 
 		return getText(additionalExcessUnListedDriver);
 	}
-
-
-
 	
 }

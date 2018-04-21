@@ -670,6 +670,57 @@ public class BasePage {
 		return findByUIAutomator(title, "text");
 
 	}
+
+	public String scrollAndGetElementText(By locator, int maxSwipes, int... args) {
+
+		int timeout = (args.length > 0 ? args[0] : 2);
+
+		WebElement element = find(locator, timeout);
+
+		for (int i = 0; i < maxSwipes; i++) {
+
+			if (element == null) {
+
+				swipeScreen("DOWN");
+
+			} else {
+
+				break;
+
+			}
+
+			element = find(locator, timeout);
+
+		}
+
+		return getText(element);
+
+	}
+	
+	public WebElement scrollToElementByText(String text, int maxSwipes, int... args) {
+		
+		int timeout = (args.length > 0 ? args[0] : 2);
+		
+		WebElement element = findByUIAutomator(text, "text", timeout);
+
+		for (int i = 0; i < maxSwipes; i++) {
+
+			if (element == null) {
+
+				swipeScreen("DOWN");
+
+			} else {
+				break;
+			}
+
+			element = findByUIAutomator(text, "text", timeout);
+		}
+
+		return element;
+		
+	}
+	
+	
 	//	/**
 	//	 * This method is specifically to use when needed to set PIN in an app.
 	//	 * Using this sets pin very quickly.
