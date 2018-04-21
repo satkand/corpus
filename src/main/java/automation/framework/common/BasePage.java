@@ -705,6 +705,28 @@ public class BasePage {
 
 	}
 	
+	public String scrollAndGetElementText(By locator,int maxSwipes,int... args ) {
+		
+		int timeout = (args.length > 0 ? args[0] : 2);
+		
+		WebElement element = find(locator, timeout);
+
+		for (int i = 0; i < maxSwipes; i++) {
+
+			if (element == null) {
+
+				swipeScreen("DOWN");
+
+			} else {
+				break;
+			}
+
+			element = find(locator, timeout);
+		}
+
+		return getText(element);
+		
+	}
 
 	public String lookupProperty(String propFileName, String nameOfProperty) {
 	

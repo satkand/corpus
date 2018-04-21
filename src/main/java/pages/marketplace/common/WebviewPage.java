@@ -16,6 +16,7 @@ public class WebviewPage extends BasePage {
 		
 	private By webviewCloseButton = MobileBy.AccessibilityId("Close tab");
 	private By webviewBrowserUrl = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
+	private By webview = By.id("au.com.suncorp.marketplace:id/webview");
 	//private By urlBar = By.id("com.android.chrome:id/url_bar");
 	/*
 	public WebElement checkUrlBar() {
@@ -36,5 +37,10 @@ public class WebviewPage extends BasePage {
 	
 	public void tapWebviewCloseButton() {
 		tapElement(webviewCloseButton);
+	}
+	
+	public WebElement checkWebview() {
+		
+		return find(webview);
 	}
 }

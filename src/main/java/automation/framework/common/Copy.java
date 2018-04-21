@@ -58,6 +58,12 @@ public interface Copy {
 	public String CHECK_CLAIM_UPDATES_LABEL="CHECK CLAIM UPDATES";
 	public String DOWNLOAD_DOCUMENTS_LABEL="DOWNLOAD DOCUMENTS";
 	public String UPLOAD_DOCUMENTS_LABEL="UPLOAD DOCUMENTS";
+	public String CHECK_CLAIM_UPDATES_TITLE="Check claim updates";
+	public String DOWNLOAD_DOCUMENTS_TITLE ="Download documents";
+	public String VIEW_ITEMS_DAMAGED_AND_LOST_LABEL="VIEW ITEMS DAMAGED AND LOST";
+	public String VIEW_ITEMS_DAMAGED_AND_LOST_TITLE="View items and lost";
+	public String UPLOAD_DOCUMENTS_TITLE ="Upload documents";
 	public String CLAIM_DETAILS_TITLE ="Active claim details";
+	
 
 }

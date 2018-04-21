@@ -24,8 +24,6 @@ public class ClaimDetailsPage extends BasePage {
 	private By incidentLossCauseValue = By.id("au.com.suncorp.marketplace:id/incidentLossCause");
 	private By incidentSubLossCauseLabel = By.id("au.com.suncorp.marketplace:id/incidentSubLossCauseTitle");
 	private By incidentSubLossCauseValue = By.id("au.com.suncorp.marketplace:id/incidentSubLossCause");
-	private String incidentLossCauseLabelId = "au.com.suncorp.marketplace:id/incidentLossCause";
-	private String incidentSubLossCauseLabelId = "au.com.suncorp.marketplace:id/incidentSubLossCause";
 	private By eventDateLabel = By.id("au.com.suncorp.marketplace:id/eventDateTitle");
 	private By eventDateValue = By.id("au.com.suncorp.marketplace:id/eventDateLabel");
 	private By navigateBackButton = MobileBy.AccessibilityId("Navigate up");
@@ -44,7 +42,6 @@ public class ClaimDetailsPage extends BasePage {
 	private By paymentReferenceNumber = By.id("au.com.suncorp.marketplace:id/paymentReferenceNumber");
 	private By paymentReferenceNumberLabel = By.id("au.com.suncorp.marketplace:id/paymentReferenceNumberTitle");
 	private By paidButton = By.id("au.com.suncorp.marketplace:id/payNowButton");
-	private String claimStageLabelId="au.com.suncorp.marketplace:id/claimStageLabel";	
 	private String eventDateLabelId = "au.com.suncorp.marketplace:id/eventDateTitle";
 	
 	
@@ -102,95 +99,44 @@ public class ClaimDetailsPage extends BasePage {
 
 	}
 
-	public String gethomeRiskAddrPrimaryDescText() {
+	public String getHomeRiskAddrPrimaryDescText() {
 
 		return getText(homeRiskAddrPrimaryDesc);
 
 	}
 
-	public String gethomeRiskAddrSecondaryDescText() {
+	public String getHomeRiskAddrSecondaryDescText() {
 
 		return getText(homeRiskAddrSecondaryDesc);
 
 	}
 
 	public String getIncidentLossCauseLabel() {
-
-		WebElement element = find(incidentLossCauseLabel, 2);
-
-		for (int i = 0; i < 3; i++) {
-
-			if (element == null) {
-
-				swipeScreen("DOWN");
-
-			} else {
-				break;
-			}
-
-			element = find(incidentLossCauseLabel, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(incidentLossCauseLabel,3);
 
 	}
 
 	public String getIncidentLossCauseValue() {
-
-		WebElement element = find(incidentLossCauseValue, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(incidentLossCauseLabel, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(incidentLossCauseValue,1);
 	}
 
 	public String getIncidentSubLossCauseLabel() {
-
-		WebElement element = find(incidentSubLossCauseLabel, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(incidentLossCauseLabel, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(incidentSubLossCauseLabel,1);
 
 	}
 
 	public String getIncidentSubLossCauseValue() {
-
-		WebElement element = find(incidentSubLossCauseValue, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(incidentSubLossCauseValue, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(incidentSubLossCauseValue,1);
 
 	}
 
 	public String getEventDateLabel() {
-
-		WebElement element = find(eventDateLabel, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(eventDateLabel, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(eventDateLabel,1);
 
 	}
 	
@@ -201,17 +147,8 @@ public class ClaimDetailsPage extends BasePage {
 	}
 
 	public String getEventDateValue() {
-
-		WebElement element = find(eventDateValue, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(eventDateValue, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(eventDateValue,1);
 
 	}
 
@@ -221,37 +158,14 @@ public class ClaimDetailsPage extends BasePage {
 	}
 
 	public String claimStageValue() {
-		WebElement element = find(claimStageValue, 2);
-
-		if (element == null) {
-
-			swipeScreen("DOWN");
-
-			element = find(claimStageValue, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(claimStageValue,1);
 
 	}
 
 	public String claimStageLabel() {
-
-		WebElement element = find(claimStageLabel, 2);
-
-		for (int i = 0; i < 3; i++) {
-
-			if (element == null) {
-
-				swipeScreen("DOWN");
-
-			} else {
-				break;
-			}
-
-			element = find(claimStageLabel, 2);
-		}
-
-		return getText(element);
+		
+		return scrollAndGetElementText(claimStageLabel,3);
 
 	}
 	
@@ -337,9 +251,9 @@ public class ClaimDetailsPage extends BasePage {
 		return findByUIAutomator(text, "text");
 	}
 	
-	public WebElement tapNextActionsLabel(String text) {
+	public void tapNextActionsLabel(String text) {
 
-		return findByUIAutomator(text, "text");
+		tapElement(findByUIAutomator(text, "text"));
 	}
 	
 	public WebElement checkClaimDetailsTitle(String text) {

@@ -15,10 +15,12 @@ public class NextActionWebViewPage extends BasePage {
 	
 	private By closeButton = MobileBy.AccessibilityId("Navigate up");
 	
-	public void closeButton() {
+	
+	public void tapCloseButton() {
 
 		tapElement(closeButton);
 	
 	}
+	
 
 }
