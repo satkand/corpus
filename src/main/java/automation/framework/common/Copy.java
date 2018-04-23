@@ -9,6 +9,15 @@ public interface Copy {
 	
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
+	
+	//Articles common
+	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+
+	//VEHICLES PAGE
+	public static final String VEHICLE_SERVICES_TITLE = "Vehicle Services at your finger tips";
+	public static final String VEHICLE_SERVICES_DESCRIPTION = "Browse and access from a range of professional services for your vehicle or just buy one.";
+	public static final String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
+	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 
 	//MemberLoginPage
 	public String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";

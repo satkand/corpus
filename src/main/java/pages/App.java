@@ -10,6 +10,7 @@ import org.testng.annotations.Parameters;
 import automation.framework.common.BaseTest;
 import automation.framework.utils.AutoUtilities;
 import automation.framework.utils.FluentAssert;
+import pages.marketplace.articles.ArticlesPage;
 import pages.marketplace.auth.login.LoginAuthPage;
 import pages.marketplace.auth.login.LoginPage;
 import pages.marketplace.auth.pin.EnterCurrentPINPage;
@@ -102,17 +103,20 @@ public class App extends BaseTest {
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
 	public HomeProfessionalServicesPage homeServicesPage = null;
-
+	public ArticlesPage articlesPage = null;
+	
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
-
+	
+	String CONFIG_FILE=null;
 
 	@BeforeClass
 	public void initializeApp() {
-		
+	
 		 utils = new AutoUtilities();
 		// Autoutilites file path
 		String JSONFilePath = "/TestData/TestData_Test.json";
+		CONFIG_FILE = System.getProperty("user.dir")+"/Config/config.properties";
 		utils.loadTestData(JSONFilePath);
 		
 		// Initializing the fleuntAssert object for global use.
@@ -165,14 +169,17 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
+		articlesPage = new ArticlesPage(driver);
 
 	}
 	
 	@Parameters({ "stub" })
 	@BeforeMethod(alwaysRun = true)
 	public void beforeEachTest(@Optional("false") String stub) throws Exception {
+		
 		welcomePage.launchApp();
-		configPage.dismissConfigPage(stub);
+		
+		configPage.dismissConfigPage(stub,CONFIG_FILE);
 	}
 	
 	@AfterMethod(alwaysRun = true)

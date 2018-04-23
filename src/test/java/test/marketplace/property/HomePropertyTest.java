@@ -1,6 +1,5 @@
 package test.marketplace.property;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.testng.Assert;
@@ -24,7 +23,7 @@ public class HomePropertyTest extends App {
 	// 86 - scenario
 	// 503 - Scenario 1
 	// navigating to home journey screen and again navigating back to home property screen
-	@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
+	//@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToHomeJourneyScreen() {
 		navigateToHomePropertyTab("guest");
 		homePropertyPage.scrollToJourneyBanner();
@@ -142,8 +141,41 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgLogInButton(), "Home Property Page - Log in button is not present");
 			
 	}
-
 	
+	//3803 - scenario 1 (TC-DMPM-4712), Scenario 2 (TC-4714)
+	//View my property assets details option from property dimension
+	@Test (groups = {"DMPM-3803","DMPM-4712","DMPM-4714", "marketplace", "Property Dimension", "priority-minor"})
+		public void testViewPropertyAssetsDetailsOption() {
+		
+		navigateToHomePropertyTab("withProducts");
+		Assert.assertNotNull(homePropertyPage.checkPropertyDetailsButton(), "Home Property Page - Property details button is not present");
+		
+		homePropertyPage.tapPropertyDetailsButton();
+		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.tapPropertyImage();
+		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.tapAddressLineText();
+		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.scrollToSuppliedAsset();;
+		homePropertyPage.tapPropertyDetailsButton();
+		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.tapPropertyImage();
+		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
+		propertyDetailsPage.tapAndroidDeviceBackButton();
+		
+		homePropertyPage.tapAddressLineText();
+		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
+
+	}
+
 	private void navigateToHomePropertyTab(String loginType) {
 		if(loginType.equals("withProducts")) {
 			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
@@ -155,8 +187,10 @@ public class HomePropertyTest extends App {
 			welcomePage.tapGuestAccessButton();
 		}
 		
-		landingPage.tapHomeTab();
-		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		landingPage.tapPropertyTab();
+		Assert.assertTrue(landingPage.ispropertyTabSelected(), "Home tab is not selected on landing page");
 	}
+	
+
 	
 }
