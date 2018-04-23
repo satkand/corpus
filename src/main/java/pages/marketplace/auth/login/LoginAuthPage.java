@@ -75,4 +75,8 @@ public class LoginAuthPage extends BasePage{
 	public void tapLoginReauthButton() {
 		tapElement(loginReauthButton);
 	}
+	
+	public void restartApp() {
+		closeAndLaunchApp();
+	}
 }
