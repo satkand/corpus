@@ -1,9 +1,12 @@
 package automation.framework.common;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 //import java.util.function.Function;
@@ -322,7 +325,10 @@ public class BasePage {
 		return element;
 
 	}
-
+	protected boolean isSelected(String tabTitleTxt) {
+		
+		return Boolean.parseBoolean(getScreenTitle(tabTitleTxt).getAttribute("selected"));
+	}
 
 	// TODO -> Different in iOS -> change it and test it if it works for android as well
 	protected void tapOnBottomRightCorner() {
@@ -566,6 +572,34 @@ public class BasePage {
 
 		return element;
 	}
+	
+	protected WebElement scrollToElement(String locatorString, String locatorType, String scrollableId, int... args) {
+
+		WebElement element =null;
+
+		int timeout = (args.length > 0 ? args[0] : 15);
+
+		switch (locatorType) {
+		case "text":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+		case "id":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector().resourceId(\""+ scrollableId +"\").instance(0)).scrollIntoView(new UiSelector().resourceId(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+		case "desc":
+			element = find(MobileBy.AndroidUIAutomator(
+					"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().description(\""
+							+ locatorString + "\").instance(0))"),timeout);
+			break;
+
+		}
+
+		return element;
+	}
 
 	protected WebElement findByUIAutomator(String locatorString, String locatorType) {
 
@@ -672,6 +706,225 @@ public class BasePage {
 		return findByUIAutomator(title, "text");
 
 	}
+	
+	public void doubleTapOnAnElement(By locator) {
+		TouchAction touchAction = new TouchAction(driver);
+		touchAction.tap(find(locator)).tap(find(locator)).perform();
+		
+	}
+	
+
+//	/**
+//	 * This method is specifically to use when needed to set PIN in an app.
+//	 * Using this sets pin very quickly.
+//	 * 
+//	 * @param pinValue
+//	 */
+//	protected void enterPin(String pinValue) {
+//		driver.getKeyboard().sendKeys(pinValue);
+//	}
+//
+//	protected void clearAnEntryInTextField() {
+//		driver.getKeyboard().sendKeys(Keys.CLEAR);
+//	}
+//
+//	protected void deleteAnEntryInTextField() {
+//		driver.getKeyboard().sendKeys(Keys.DELETE);
+//	}
+	
+	
+	
+	
+	
+	
+	
+//	
+//	protected WebElement findElementByText(String text, int... args) {
+//
+//		int timeout = (args.length > 0 ? args[0] : 10);
+//
+//		By locator = By.id(text);
+//		return find(locator, timeout);
+//
+//	}
+//
+//	protected WebElement findElementByValue(String text, int... args) {
+//
+//		int timeout = (args.length > 0 ? args[0] : 10);
+//
+//		String xpath = "//XCUIElementTypeStaticText[@value='" + text + "']";
+//		By locator = By.xpath(xpath);
+//		return find(locator, timeout);
+//
+//	}
+//
+//	/**
+//	 * The find method is the most frequent used method. This method takes a
+//	 * fixed parameter:'element By locator' and optional integer argument for
+//	 * timeout In cases where we need to wait longer time for an element to
+//	 * load, we can pass the required timeout. ex. find(userName, 10) where 10
+//	 * seconds timeout is requested.
+//	 * 
+//	 * @param locator
+//	 * @param args
+//	 * @return webelement
+//	 */
+//	protected List<WebElement> finds(final By locator, int... args) {
+//
+//		int timeout = (args.length > 0 ? args[0] : 15);
+//		List<WebElement> webelements = null;
+//
+//		try {
+//			FluentWait<AppiumDriver> wait = new FluentWait<AppiumDriver>(driver).withTimeout(timeout, TimeUnit.SECONDS)
+//					.pollingEvery(200, TimeUnit.MILLISECONDS).ignoring(Exception.class)
+//					.ignoring(NoSuchElementException.class);
+//
+//			webelements = wait.until(new Function<AppiumDriver, List<WebElement>>() {
+//				public List<WebElement> apply(AppiumDriver driver) {
+//					return (List) driver.findElements(locator);
+//				}
+//			});
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			// e.printStackTrace();
+//		}
+//
+//		return webelements;
+//
+//	}
+//
+//
+//
+//	/**
+//	 * Method to find multiple elements
+//	 * 
+//	 * @param locator
+//	 */
+//
+//	protected List<WebElement> findElements(By locator) {
+//		List<WebElement> webelements = driver.findElements(locator);
+//		return webelements;
+//
+//	}
+//
+//	/**
+//	 * This method performs swipe actions on a particular element when invoked
+//	 * with the Element and direction to swipe. Typically used to swipe on date
+//	 * picker, list picker in iOS etc
+//	 * 
+//	 * @param locator
+//	 * @param direction
+//	 */
+//	protected void swipeElement(By locator, SwipeElementDirection direction) {
+//		MobileElement element = (MobileElement) find(locator);
+//		element.swipe(direction, 1000);
+//	}
+//
+//	/**
+//	 * Method to simulate swipe action on the screen in desired direction
+//	 * 
+//	 * @param direction
+//	 */
+//	protected void swipeScreen(String direction) {
+//
+//		int y = driver.manage().window().getSize().getHeight();
+//		int x = driver.manage().window().getSize().getWidth();
+//
+//		try {
+//			switch (direction.toUpperCase()) {
+//			case "UP":
+//				// when navigating up, its opening the notifications bar. so
+//				// changing the startY value from 10 to 300
+//				driver.swipe(x - 50, y - 250, x - 50, y - 80, 100);
+//				break;
+//			case "DOWN":
+//				driver.swipe(50, y - 80, 50, y - 250, 100);
+//				break;
+//			case "LEFT":
+//				driver.swipe(50, y / 2, x - 10, y / 2, 100);
+//				break;
+//			case "RIGHT":
+//				driver.swipe(x - 50, y / 2, 10, y - 10, 100);
+//				break;
+//
+//			default:
+//				throw new IllegalArgumentException();
+//			}
+//		} catch (IllegalArgumentException ix) {
+//			System.out.println("Invalid directioN: Valid parameters- UP/DOWN/LEFT/RIGHT");
+//		}
+//
+//	}
+//
+//	protected swipeTo(WebElement element) {
+//
+//		scrollToWebElement(element);
+//	}
+//
+
+//
+
+//
+//	/**
+//	 * Method to start the app
+//	 */
+//	protected void startApp() {
+//		driver.launchApp();
+//
+//	}
+//
+//	/**
+//	 * Method to close the app
+//	 */
+//	protected void closeApp() {
+//		driver.closeApp();
+//	}
+//
+//	/**
+//	 * Method to restart the App. If appium server is configured with "full
+//	 * reset" option then the App is reinstalled. This will kill the current
+//	 * appium session and the test fails.
+//	 */
+//	protected void resetApp() {
+//		driver.resetApp();
+//	}
+//
+//	/**
+//	 * Method to restart the App. If appium server is configured with "full
+//	 * reset" option then the App is reinstalled. This will kill the current
+//	 * appium session and the test fails.
+//	 */
+//	protected void restartApp() {
+//
+//		// Close the app
+//		closeApp();
+//
+//		// Start the app
+//		startApp();
+//	}
+//
+//	protected void reInstallApp() {
+//
+//		// Close the app
+
+	public String lookupProperty(String propFileName, String nameOfProperty) {
+	
+		InputStream inputStream = null;
+	
+		Properties properties = new Properties();
+		try {
+			inputStream = new FileInputStream(propFileName);
+			properties.load(inputStream);
+			inputStream.close();
+			if (properties != null) {
+				return properties.getProperty(nameOfProperty);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	//	/**
 	//	 * This method is specifically to use when needed to set PIN in an app.
 	//	 * Using this sets pin very quickly.
@@ -1076,18 +1329,18 @@ public class BasePage {
 	//		tapElement(locator);
 	//	}
 	//
-	//	/**
-	//	 * This method is used to get the screen height
-	//	 * 
-	//	 * @author Shanoj
-	//	 * @param none
-	//	 * @return int
-	//	 */
-	//	protected int getScreenHeight() {
-	//
-	//		return driver.manage().window().getSize().getHeight();
-	//
-	//	}
+		/**
+		 * This method is used to get the screen height
+		 * 
+		 * @author Shanoj
+		 * @param none
+		 * @return int
+		 */
+		protected int getScreenHeight() {
+	
+			return driver.manage().window().getSize().getHeight();
+	
+		}
 	//
 	//	/**
 	//	 * This method is used to get the screen width
