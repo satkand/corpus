@@ -173,8 +173,8 @@ public class App extends BaseTest {
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
 		propertyFullScreenMap = new PropertyFullScreenMap(driver);
-		propertyHubPage = new PropertyHubPage(driver);
 		articlesPage = new ArticlesPage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
 
 	}
 	

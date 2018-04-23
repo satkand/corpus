@@ -342,7 +342,7 @@ public class HomePropertyPage extends BasePage {
 	public void scrollToSuppliedAsset(){
 		scrollToElement(emptyStatePropertyAsset, "true");
 	}
-	
+
 	public WebElement checkHomeJourneyBannerImage() {
 		return find(homeJourneyBannerImage);
 	}

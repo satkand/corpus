@@ -151,7 +151,7 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgLogInButton(), "Home Property Page - Log in button is not present");
 			
 	}
-	
+
 	//3803 - scenario 1 (TC-DMPM-4712), Scenario 2 (TC-4714)
 	//View my property assets details option from property dimension
 	@Test (groups = {"DMPM-3803","DMPM-4712","DMPM-4714", "marketplace", "Property Dimension", "priority-minor"})
