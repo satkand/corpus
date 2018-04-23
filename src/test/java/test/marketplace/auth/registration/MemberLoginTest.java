@@ -396,10 +396,5 @@ public class MemberLoginTest extends App {
 			loginPage.tapLoginButton();
 			
 			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
-			pinOptionsPage.tapMaybeLater();
-			Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
-			navigationMenu.tapSplitMenuIcon();
-			Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
-			navigationMenu.tapLockMenuOption();
 		}
 }
