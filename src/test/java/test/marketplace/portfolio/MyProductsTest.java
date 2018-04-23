@@ -168,7 +168,6 @@ public class MyProductsTest extends App {
 	@Test (dataProvider ="ExpiryDateRenewalDueAndOverduePolicy", groups = {"DMPM-3667", "DMPM-4139","DMPM-5598","DMPM-6010","marketplace", "portfolio", "priority-major"})
 	public void testExpiryDateRenewalDueAndOverduePolicy(String policy, int riskNumber){
 		
-		System.out.println(policy);
 		readPolicyData(policy,riskNumber);
 		
 		String policyStatus = utils.readTestData("portfolio","insuranceProducts",policy, "status");
@@ -667,7 +666,7 @@ public class MyProductsTest extends App {
 
 		}
 		
-	// DMPM-105 View Insurance Policies - Scenario 4
+		// DMPM-1460 UI updates on the Products Portfolio screen
 	@DataProvider(name = "AddExistingProduct")
 	public static Object[][] addExistingProduct1() {
 
