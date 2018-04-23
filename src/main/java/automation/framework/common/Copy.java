@@ -65,5 +65,14 @@ public interface Copy {
 	public String UPLOAD_DOCUMENTS_TITLE ="Upload documents";
 	public String CLAIM_DETAILS_TITLE ="Active claim details";
 	
-
+    //CLAIM INTRO PAGE
+	String CLAIM_PREREQUISITE_TITLE = "Before starting a claim";
+	String CLAIM_INSTRUCTION_FILE_LABEL = "Ensure everyone's safety before starting any claim - dial 000 if required";
+	String CLAIM_INSTRUCTION_DOCS_LABEL = "Photograph detail about what happened on your phone";
+	String CLAIM_INSTRUCTION_PEOPLE="Photograph or write down details of any other people involved";
+	String CLAIM_INSTRUCTION_SUBMIT = "Submit to your Personal Archive section in Marketplace app name to assist your claim";
+	
+    //MAKE A CLAIM PAGE
+	String INCIDENT_DATE_FIELD_LABEL = "When did the incident happen?";
+	String START_CLAIM_BUTTON_LABEL = "START CLAIM";
 }

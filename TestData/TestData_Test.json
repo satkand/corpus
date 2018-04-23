@@ -229,6 +229,35 @@
 				}
 				
 		},
+	"claimLodgement" :{
+		         "login": "a@b.c",
+				"pwd": "Password1",
+				"property":{
+				"home&Building":{
+				"policyDescription":"Home & building insurance",
+		         "brand1":"AAMI",
+		         "brand2":"Apia",
+		         "brand3":"Bingle",
+		         "brand4":"GIO",
+		         "brand5":"Shannons",
+		         "brand6":"Suncorp",
+		         "homeRiskAddress":"23 The Grove, Doncaster VIC 3224"
+				}
+	},
+	"vehicle":{
+				"car":{
+				"policyDescription":"Comprehensive car insurance",
+		         "brand1":"AAMI",
+		         "brand2":"Apia",
+		         "brand3":"Bingle",
+		         "brand4":"GIO",
+		         "brand5":"Shannons",
+		         "brand6":"Suncorp",
+		         "vehicleDescription":"2012 SUZUKI SWIFT GLX FZ 5D HATCHBACK 4 SP AUTOMATION TESTING TWO LINES",
+		         "vehicleRegistration":"ABC 123"
+				}
+		   }
+	},
 	"portfolio" :{
 		"loginEmptyProdList":{
 				"login": "a@b.c",
