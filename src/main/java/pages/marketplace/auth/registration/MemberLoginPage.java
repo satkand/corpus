@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class MemberLoginPage extends BasePage {
 
@@ -35,8 +36,8 @@ public class MemberLoginPage extends BasePage {
 	private By noMarketingTermsText = By.id("au.com.suncorp.marketplace:id/noMarketingTermsText");
 	private By registrationTermsText = By.id("au.com.suncorp.marketplace:id/registrationTermsText");
 	private By mobileNumberError  = By.id("au.com.suncorp.marketplace:id/textinput_error");
-
-	
+	private By mobileNumberTip = MobileBy.AndroidUIAutomator("new UiSelector().text(\"Use 04XXXXXXXX format\")");
+			
 	public String getPageTitle() {
 		find(pageTitle, 30);
 		return getText(pageTitle);
@@ -206,5 +207,13 @@ public class MemberLoginPage extends BasePage {
 	public void tapSnackbarOkButton() {
 		find(incorrectEmailSnackBarButton);
 		tapElement(incorrectEmailSnackBarButton);
+	}
+	
+	public WebElement checkMobileNumberTip() {
+		return find(mobileNumberTip);
+	}
+	
+	public String getMobileNumberTipText() {
+		return getText(mobileNumberTip);
 	}
 }
