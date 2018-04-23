@@ -62,12 +62,11 @@ public class LoginAuthTest extends App{
 		settingsPage.tapEnablePinToggle();
 
 		if(enterCurrentPINPage.checkEnterExistingPinLabel() != null){
-			enterCurrentPINPage.enterPIN();
+			enterCurrentPINPage.enterPIN(utils.readTestData("PIN", "loginWithExistingPin", "pin"));
 		}
 		else if(pinSetupPage.checkEnterPINLabel() != null) {
-			pinSetupPage.enterPIN();
 			Assert.assertNotNull(pinSetupPage.checkReEnterPINLabel(), "User is not navigated to the ReEnter PIN page");
-			pinSetupPage.enterPIN();
+			pinSetupPage.enterPIN(utils.readTestData("PIN", "loginWithExistingPin", "pin"));
 		}
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "User is not navigated back to Settings page");
 

@@ -12,11 +12,11 @@ public class PINOptionsPage extends BasePage{
 	
 	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
 	private By enableFingerPrintButton = By.id("au.com.suncorp.marketplace:id/enableFingerprintButton");
-	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePromptDismissButton");
+	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
 	
-	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePromptImage");
-	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePromptUserWelcome");
-	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePromptDescription");
+	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePinPromptImage");
+	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePinPromptUserWelcome");
+	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
 	
 	public PINOptionsPage(AppiumDriver driver) {
 		super(driver);

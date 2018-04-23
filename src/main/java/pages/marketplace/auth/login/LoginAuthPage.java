@@ -10,8 +10,6 @@ import io.appium.java_client.MobileBy;
 public class LoginAuthPage extends BasePage{
 
 	private By userNameWelcomeScreen = By.id("au.com.suncorp.marketplace:id/reauthUserNameText");
-	//TODO: Check for user name ID
-	private By userImageWelcomeScreen = MobileBy.AccessibilityId("Back to start");
 	private By loginButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By changeAccountButton = By.id("au.com.suncorp.marketplace:id/changeUserButton");
 	
