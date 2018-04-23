@@ -7,12 +7,7 @@
 					<!--  Portfolio -->
 				
 		 			<!-- Property-->
-		 			<class name="test.marketplace.property.HomeJourneyTest">
-		 				<parameter name="stub" value="true"></parameter>
-		 			</class>
-		 			<class name="test.marketplace.property.HomePropertyTest">
-		 				<parameter name="stub" value="true"></parameter>
-		 			</class>		 			
+		 			 			
 		 			<class name="test.marketplace.property.PropertyDetailsTest">
 		 				<parameter name="stub" value="true"></parameter>
 		 			</class>
@@ -34,12 +29,18 @@
 		 				<parameter name="stub" value="true"></parameter>
 		 				
 		 			</class>
-		 				<class name="test.marketplace.portfolio.AddPolicyTest">
+		 				<class name="test.marketplace.property.HomeJourneyTest">
 		 				<parameter name="stub" value="true"></parameter>
 		 			</class>
-		 			<class name="test.marketplace.portfolio.MyProductsTest">
+		 			<class name="test.marketplace.property.HomePropertyTest">
 		 				<parameter name="stub" value="true"></parameter>
 		 			</class>	
+<!-- 		 				<class name="test.marketplace.portfolio.AddPolicyTest"> -->
+<!-- 		 				<parameter name="stub" value="true"></parameter> -->
+<!-- 		 			</class> -->
+<!-- 		 			<class name="test.marketplace.portfolio.MyProductsTest"> -->
+<!-- 		 				<parameter name="stub" value="true"></parameter> -->
+<!-- 		 			</class>	 -->
 		 		
 		</classes>
 

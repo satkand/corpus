@@ -22,4 +22,8 @@ public interface Copy {
 	// PORTFOLIO
 	public static final String AVAILABLE_BALANCE_LABEL = "Available balance";	
 	public static final String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
+
+	//MemberLoginPage
+	public String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
+
 }

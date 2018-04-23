@@ -15,7 +15,7 @@ public class VehiclesTest extends App {
 	// 507 - Scenario 1
 	// 507 - Scenario 2
 	// 1052 - Scenario 1
-//	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
+	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesListOnVehiclesPage() {
 		navigateToVehiclesTab("hasVehicles");
 		vehiclesPage.waitForDataToLoad();
@@ -51,7 +51,7 @@ public class VehiclesTest extends App {
 	}
 
 	// 507 - Scenario 3
-//	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
+	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testNavigatingToVehicleDetailsScreen(){
 		navigateToVehiclesTab("hasVehicles");
 		Assert.assertNotNull(vehiclesPage.checkViewDetailsButton(), "Vehicles Page - view details button not shown");
