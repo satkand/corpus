@@ -18,6 +18,17 @@ public class PropertyDetailsPage   extends BasePage{
 	private By propertyNumberOfBedrooms = By.id("au.com.suncorp.marketplace:id/bedroomNumberText");
 	private By propertyNumberOfBedroomsImage = By.id("au.com.suncorp.marketplace:id/bedroomImage");
 	
+	private By thisIsMyPropertyLabel = By.id("au.com.suncorp.marketplace:id/thisIsMineText");
+	private By thisIsMyPropertyInfo = By.id("au.com.suncorp.marketplace:id/thisIsMineInfoButton");
+	private By thisIsMyPropertyToggleButton = By.id("au.com.suncorp.marketplace:id/propertyIsMineSwitch");
+	
+	//my Property bottom sheet
+	private By myPropertyBottomSheetTitleLabel = By.id("au.com.suncorp.marketplace:id/productSelectionQuestionText");
+	private By myPropertyBottomSheetOwnerOccupierButton = By.id("au.com.suncorp.marketplace:id/ownerTypeButton");
+	private By myPropertyBottomSheetRenterButton = By.id("au.com.suncorp.marketplace:id/tenantTypeButton");
+	private By myPropertyBottomSheetLandLordButton = By.id("au.com.suncorp.marketplace:id/landlordTypeButton");
+	private By outsideOfMyPropertyBottomSheet = By.id("au.com.suncorp.marketplace:id/touch_outside");
+	
 	private By propertyNumberOfBathrooms = By.id("au.com.suncorp.marketplace:id/bathNumberText");
 	private By propertyNumberOfBathroomsImage = By.id("au.com.suncorp.marketplace:id/bathImage");
 	private By propertyNumberOfParkingSpaces = By.id("au.com.suncorp.marketplace:id/parkingNumberText");
@@ -66,6 +77,72 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	private By derivedAssetText = By.xpath("//android.widget.TextView[@text='derived']");
 	private By suppliedAssetText = By.xpath("//android.widget.TextView[@text='supplied']");
+	
+	private By imageLoadingIndicator = By.xpath("au.com.suncorp.marketplace:id/loadingIndicator");
+	
+	public WebElement checkMyPropertyBottomSheetTitleLabel() {
+		return find(myPropertyBottomSheetTitleLabel);
+	}
+	
+	public WebElement checkMyPropertyBottomSheetOwnerOccupierButton() {
+		return find(myPropertyBottomSheetOwnerOccupierButton);
+	}
+	
+	public WebElement checkMyPropertyBottomSheetRenterButton() {
+		return find(myPropertyBottomSheetRenterButton);
+	}
+	
+	public String getMyPropertyBottomSheetOwnerOccupierButton() {
+		return getText(myPropertyBottomSheetOwnerOccupierButton);
+	}
+	
+	public String getMyPropertyBottomSheetRenterButton() {
+		return getText(myPropertyBottomSheetRenterButton);
+	}
+	
+	public String getMyPropertyBottomSheetLandLordButton() {
+		return getText(myPropertyBottomSheetLandLordButton);
+	}
+	
+	public WebElement checkMyPropertyBottomSheetLandLordButton() {
+		return find(myPropertyBottomSheetLandLordButton);
+	}
+	
+	public void tapOutsideOfMyPropertyBottomSheet(){
+		tapElement(outsideOfMyPropertyBottomSheet);
+	}
+	
+	public String getMyPropertyBottomSheetTitleLabel() {
+		return getText(myPropertyBottomSheetTitleLabel);
+	}
+	
+	public WebElement checkThisIsMyPropertyLabel() {
+		return find(thisIsMyPropertyLabel);
+	}
+	
+	public WebElement checkThisIsMyPropertyInfo() {
+		return find(thisIsMyPropertyInfo);
+	}
+	
+	public WebElement checkThisIsMyPropertyToggleButton() {
+		return find(thisIsMyPropertyToggleButton);
+	}
+	
+	public void tapThisIsMyPropertyToggleButton(){
+		tapElement(thisIsMyPropertyToggleButton);
+	}
+	
+	public boolean isToggleButtonSelected(){
+		return isSelected(thisIsMyPropertyToggleButton);
+	}
+	
+	public String getThisIsMyPropertyLabel() {
+		return getText(thisIsMyPropertyLabel);
+	}
+	
+	public void waitForFullScreenLoadingIndicatorToDisappear() {
+		waitForElementToDisappear(imageLoadingIndicator);
+	}
 	
 	public WebElement checkDerivedAssetText() {
 		return find(derivedAssetText);
@@ -153,6 +230,16 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	public void swipeFullScreenImageCarouselLeft() {
 		swipeHorizontallyToLeft();
+	}
+	
+	public void swipeFullScreenImageCarouselLeftMultipleTimes() {
+			swipeHorizontallyToLeft();
+			swipeHorizontallyToLeft();
+	}
+	
+	public void swipeFullScreenImageCarouselRightMultipleTimes() {
+		swipeHorizontallyToRight();
+		swipeHorizontallyToRight();
 	}
 	
 	public void swipeFullScreenImageCarouselRight() {
@@ -379,5 +466,12 @@ public class PropertyDetailsPage   extends BasePage{
 	public void swipeImageCarouselRight() {
 		swipeHorizontallyToRight();
 	}
+	
+	public void doubleTapOnPropertyImage() {
+		doubleTapOnAnElement(fullScreenPropertyImage);
+	}
+	
+	
+	
 	
 }
