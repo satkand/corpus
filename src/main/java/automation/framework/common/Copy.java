@@ -19,4 +19,7 @@ public interface Copy {
 	public static final String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 
+	// PORTFOLIO
+	public static final String AVAILABLE_BALANCE_LABEL = "Available balance";	
+	public static final String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
 }

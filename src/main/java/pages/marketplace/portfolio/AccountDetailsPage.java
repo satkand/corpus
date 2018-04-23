@@ -12,8 +12,8 @@ public class AccountDetailsPage   extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 	
-	private By accountDetailsTitle = By.xpath("//android.widget.TextView[@text='Account Details']");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/accountDetailsBackButton");
+	private By accountDetailsTitle = By.xpath("//android.widget.TextView[@text='Account details']");
+	private By backButton = By.xpath("//android.widget.ImageButton[@content-desc=\"Navigate up\"]");
 
 		
 		public WebElement checkAccountDetailsTitle(){

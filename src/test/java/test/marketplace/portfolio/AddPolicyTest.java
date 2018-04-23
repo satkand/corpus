@@ -11,7 +11,7 @@ public class AddPolicyTest extends App{
 	@Test (groups = {"DMPM-1011", "DMPM-1247", "DMPM-1249" ,"marketplace", "portfolio", "priority-minor"})
 	public void testAddingAPolicy(){
 	
-	navigateToMyProductsScreen("prodListUser");
+		navigateToAddProductsScreen("prodListUser");
 	
 	addPolicyPage.tapPolicyNumberTextBox();
 	addPolicyPage.enterPolicyNumber(utils.readTestData("portfolio","loginProdList", "addPolicy", "enterPolicyNumber"));
@@ -28,7 +28,7 @@ public class AddPolicyTest extends App{
 	/*344 - Scenario 1 - DMPM-462* and Scenario 3 - DMPM-464*/
 	@Test (groups = {"DMPM-344", "DMPM-462","DMPM-464", "marketplace", "portfolio", "priority-minor"})
 	public void testInlineErrorsAsItype(){
-		navigateToMyProductsScreen("prodListUser");
+		navigateToAddProductsScreen("prodListUser");
 		
 		addPolicyPage.tapPolicyNumberTextBox();
 		addPolicyPage.enterPolicyNumber(utils.readTestData("portfolio","loginProdList", "addPolicy", "policyNumberExceedsMaxLimit"));
@@ -60,7 +60,7 @@ public class AddPolicyTest extends App{
 	@Test (groups = {"DMPM-344", "DMPM-463", "DMPM-465","DMPM-108", "DMPM-459", "marketplace", "portfolio", "priority-minor"})
 	public void testInlineErrorMessagesOnTapOut(){
 		
-		navigateToMyProductsScreen("prodListUser");
+		navigateToAddProductsScreen("prodListUser");
 	
 		addPolicyPage.tapAddAccountButton();
 		
@@ -80,7 +80,7 @@ public class AddPolicyTest extends App{
 	}
 	
 	
-	private void navigateToMyProductsScreen(String userType) {
+	private void navigateToAddProductsScreen(String userType) {
 		
 		if (userType.equals("emptyProdListUser")) {
 			loginToApp(utils.readTestData("portfolio","loginEmptyProdList", "login"), utils.readTestData("portfolio","loginEmptyProdList", "pwd"));
