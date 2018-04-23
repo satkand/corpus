@@ -10,8 +10,8 @@ import pages.App;
 
 public class PropertyClaimDetailsTest extends App{
 
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
+	@TestDetails(story1 = "DMPM-2790:DMPM-5478,DMPM-5480", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
 	public void testPropertyClaimDetails() {
 		
 		String username = utils.readTestData("claimDetails","login");
@@ -43,8 +43,8 @@ public class PropertyClaimDetailsTest extends App{
 		
 	}
 	
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
+	@TestDetails(story1 = "DMPM-2790:DMPM-5445", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
 	public void testPropertyClaimStageValues() {
 
 		String username = utils.readTestData("claimDetails", "login");

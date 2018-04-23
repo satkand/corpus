@@ -10,8 +10,8 @@ import pages.App;
 
 public class VehicleClaimDetailsTest extends App{
 
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
+	@TestDetails(story1 = "DMPM-2783:DMPM-5231,DMPM-5233", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
 	public void testvehicleClaimDetails() {
 		
 		String username = utils.readTestData("claimDetails","login");
@@ -43,8 +43,8 @@ public class VehicleClaimDetailsTest extends App{
 		
 	}
 	
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
+	@TestDetails(story1 = "DMPM-2788:DMPM-5496", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
 	public void testvehicleClaimStageValues() {
 
 		String username = utils.readTestData("claimDetails", "login");
@@ -103,8 +103,8 @@ public class VehicleClaimDetailsTest extends App{
 		assertClaimStageLabelAndValue(claimCompletedLabel,claimCompletedValue);
 	}
 
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
+	@TestDetails(story1 = "DMPM-3180:DMPM-5601", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
 	public void testvehicleAndPropertyExcessNotPaid() {
 
 		String username = utils.readTestData("claimDetails", "login");
@@ -121,8 +121,8 @@ public class VehicleClaimDetailsTest extends App{
 
 	}
 
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
+	@TestDetails(story1 = "DMPM-3180:DMPM-5606", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
 	public void testvehicleAndPropertyExcessZero() {
 
 		String username = utils.readTestData("claimDetails", "login");
@@ -137,8 +137,8 @@ public class VehicleClaimDetailsTest extends App{
 
 	}
 	
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
+	@TestDetails(story1 = "DMPM-3180:DMPM-5602", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
 	public void testVehicleAndPropertyPartialExcess() {
 
 		String username = utils.readTestData("claimDetails", "login");
@@ -159,9 +159,9 @@ public class VehicleClaimDetailsTest extends App{
 	}
 	
 	
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
-	public void testvehicleAndPropertyExcessPaid() {
+	@TestDetails(story1 = "DMPM-3180:DMPM-5603", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
+	public void testvehicleAndPropertyExcessFullyPaid() {
 
 		String username = utils.readTestData("claimDetails", "login");
 		String pwd = utils.readTestData("claimDetails", "pwd");
@@ -179,10 +179,9 @@ public class VehicleClaimDetailsTest extends App{
 		
 	}
 	
-	
-	@TestDetails(story1 = "DMPM-3724:DMPM-4348", priority = Priority.LOW)
-	@Test(groups = { "marketplace", "pin", "priority-minor" })
-	public void testVehicleClaim(){
+	@TestDetails(story1 = "DMPM-2792:DMPM-5796,DMPM-5797,DMPM-5800", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim details", "priority-minor" })
+	public void testVehicleViewNextActions(){
 		
 		String username = utils.readTestData("claimDetails","login");
 		String pwd = utils.readTestData("claimDetails", "pwd");
