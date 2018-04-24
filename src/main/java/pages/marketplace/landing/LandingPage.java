@@ -24,6 +24,8 @@ public class LandingPage extends BasePage {
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLES']");
 	private By wealthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='WEALTH']");
 	private By healthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='HEALTH']");
+
+	private String vehiclesTabTitle = "Vehicles";
 	/*
 	private By suncorpTab = By.xpath("//android.widget.TextView[@text='ONE SUNCORP']");
 	private By homeTab = By.xpath("//android.widget.TextView[@text='HOME']");
@@ -81,11 +83,13 @@ public class LandingPage extends BasePage {
 	}
 
 	public void tapVehiclesTab() {
-		tapElement(scrollHorizontallyToElement(vehiclesTitle,"text",naviScrollableId));
+		tapElement(getScreenTitle(vehiclesTabTitle));
+		//tapElement(scrollHorizontallyToElement(vehiclesTitle,"text",naviScrollableId));
 	}
 
 	public boolean isVehiclesTabSelected() {
-		return isSelected(vehiclesTab);
+		return isSelected(vehiclesTabTitle);
+		
 	}
 
 	public WebElement checkWealthTab() {
