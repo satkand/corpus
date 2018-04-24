@@ -29,7 +29,8 @@ public class HomePropertyPage extends BasePage {
 	private By addPropertyOrPolicyActionSheetTitle = By.id("au.com.suncorp.marketplace:id/propertyOrPolicySelectionText");
 	private By addPolicyActionSheetButton = By.id("au.com.suncorp.marketplace:id/addPolicyButton");
 	private By addPropertyActionSheetButton = By.id("au.com.suncorp.marketplace:id/addPropertyButton");
-
+	
+	//Property Assets
 	private By activeClaimTitle = By.id("au.com.suncorp.marketplace:id/activeClaimText");
 	private By propertyImage = By.id("au.com.suncorp.marketplace:id/propertyImage");
 	private By addressLineText = By.id("au.com.suncorp.marketplace:id/addressLine1Text");
@@ -37,6 +38,9 @@ public class HomePropertyPage extends BasePage {
 	private By productIcon = By.id("au.com.suncorp.marketplace:id/productIcon");
 	private By productDescriptionText = By.id("au.com.suncorp.marketplace:id/productDescriptionText");
 	private By brandIcon = By.id("au.com.suncorp.marketplace:id/brandIcon");
+	private By propertyDocumentsButton = By.id("au.com.suncorp.marketplace:id/propertyDocumentsButton");
+	
+	
 	private By propertyItem = By.id("au.com.suncorp.marketplace:id/propertyItemLayout");
 	private String startYourJourneyButtonID = "au.com.suncorp.marketplace:id/startHomeJourneyButton";
 	private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='456 Sesame St, Melbourne']");
@@ -45,11 +49,109 @@ public class HomePropertyPage extends BasePage {
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
+	private By incomeProtectionTitleText = By.id("au.com.suncorp.marketplace:id/offerTitle");
 	private By propertyDetailsButton = By.id("au.com.suncorp.marketplace:id/propertyDetailsButton");
-	private By propertyDocumentsButton = By.id("au.com.suncorp.marketplace:id/propertyDocumentsButton");
+	
+	//Virtual Assets
+	private By virtualAssetsTitleTxt = By.id("au.com.suncorp.marketplace:id/propertyCarouselTitle");
+	private By virtualAssetImage = By.id("au.com.suncorp.marketplace:id/propertyImage");
+	private By virtualAssetEstimatedSalesPriceLabel= By.id("au.com.suncorp.marketplace:id/priceTitleText");
+	private By virtualAssetSalesPrice = By.id("au.com.suncorp.marketplace:id/priceRangeText");
+	private By virtualAssetAddress = By.id("au.com.suncorp.marketplace:id/propertyAddressText");
+	private By virtualAssetBedroomIcon = By.id("au.com.suncorp.marketplace:id/bedroomIcon");
+	private By virtualAssetNoOFBedrooms = By.id("au.com.suncorp.marketplace:id/bedroomCountText");
+	private By virtualAssetNoOFBathrooms = By.id("au.com.suncorp.marketplace:id/bathroomCountText");
+	private By virtualAssetNoOFCarParks = By.id("au.com.suncorp.marketplace:id/carparkCountText");
+	private By virtualAssetLandSize= By.id("au.com.suncorp.marketplace:id/landSizeText");
+	private By virtualAssetViewDetailsButton = By.id("au.com.suncorp.marketplace:id/propertyDetailsButton");
+	
+	public void scrollToVirtualAssetsCarousel(){
+		scrollToElement(incomeProtectionTitleText);
+			
+	}
+	
+	public WebElement checkVirtualAssetsTitleTxt() {
+		return find(virtualAssetsTitleTxt);
+	}
+	
+	public String getVirtualAssetsTitleTxt() {
+		return getText(virtualAssetsTitleTxt);
+	}
+	
+	public WebElement checkVirtualAssetImage() {
+		return find(virtualAssetImage);
+	}
+	
+	public WebElement checkVirtualAssetEstimatedSalesPriceLabel() {
+		return find(virtualAssetEstimatedSalesPriceLabel);
+	}
+	
+	public String getVirtualAssetEstimatedSalesPriceLabel() {
+		return getText(virtualAssetEstimatedSalesPriceLabel);
+	}
+	
+	public WebElement checkVirtualAssetSalePrice() {
+		return find(virtualAssetSalesPrice);
+	}
+	
+	public String getVirtualAssetSalePrice() {
+		return getText(virtualAssetSalesPrice);
+	}
+	
+	public WebElement checkVirtualAssetAddress() {
+		return find(virtualAssetAddress);
+	}
+	
+	public String getVirtualAssetAddress() {
+		return getText(virtualAssetAddress);
+	}
+	
+	public WebElement checkVirtualAssetBedroomIcon() {
+		return find(virtualAssetBedroomIcon);
+	}
+	
+	public WebElement checkVirtualAssetNoOFBedrooms() {
+		return find(virtualAssetNoOFBedrooms);
+	}
+	
+	public String getVirtualAssetNoOFBedrooms() {
+		return getText(virtualAssetNoOFBedrooms);
+	}
+	
+	public WebElement checkVirtualAssetNoOFBathrooms() {
+		return find(virtualAssetNoOFBathrooms);
+	}
+	
+	public String getVirtualAssetNoOFBathrooms() {
+		return getText(virtualAssetNoOFBathrooms);
+	}
+	
+	public WebElement checkVirtualAssetNoOFCarParks() {
+		return find(virtualAssetNoOFCarParks);
+	}
+	
+	public String getVirtualAssetNoOFCarParks() {
+		return getText(virtualAssetNoOFCarParks);
+	}
+	
+	public WebElement checkVirtualAssetLandSize() {
+		return find(virtualAssetLandSize);
+	}
+	
+	public String getVirtualAssetLandSize() {
+		return getText(virtualAssetLandSize);
+	}
+	
+	public WebElement checkVirtualAssetViewDetailsButton() {
+		return find(virtualAssetViewDetailsButton);
+	}
 	
 	public void tapPropertyImage() {
 		tapElement(propertyImage);
+	}
+	
+	public void tapVirtualAssetViewDetailsButton() {
+		tapElement(virtualAssetViewDetailsButton);
 	}
 	
 	public void tapAddressLineText() {
@@ -160,7 +262,6 @@ public class HomePropertyPage extends BasePage {
 		return getText(activeClaimTitle);
 	}
 
-
 	public WebElement checkAddPropertyOrPolicyActionSheetTitle() {
 		return find(addPropertyOrPolicyActionSheetTitle);
 	}
@@ -222,6 +323,7 @@ public class HomePropertyPage extends BasePage {
 	}
 
 	public void tapAddAPropertyOrPolicyButton() {
+		scrollToElement(addAPropertyOrPolicyButton, "true");
 		tapElement(addAPropertyOrPolicyButton);
 	}
 
@@ -236,11 +338,11 @@ public class HomePropertyPage extends BasePage {
 	public void scrollToJourneyBanner(){
 		scrollToElement(startYourJourneyButton, "true");
 	}
-	
+
 	public void scrollToSuppliedAsset(){
 		scrollToElement(emptyStatePropertyAsset, "true");
 	}
-	
+
 	public WebElement checkHomeJourneyBannerImage() {
 		return find(homeJourneyBannerImage);
 	}
@@ -264,6 +366,14 @@ public class HomePropertyPage extends BasePage {
 	public void scrollToEmptyStatePropertyAsset() {
 		scrollToElement(emptyStatePropertyAsset, "true");
 
+	}
+	
+	public void swipePropertyCarouselLeft() {
+		scrollHorizontallyToElement("7000m²","text","au.com.suncorp.marketplace:id/propertyViewPager",1);
+	}
+	
+	public void swipePropertyCarouselRight() {
+		scrollHorizontallyToElement("1000m²","text","au.com.suncorp.marketplace:id/propertyViewPager",1);
 	}
 
 }

@@ -35,6 +35,14 @@ public class PropertyExplorerPage  extends BasePage{
 		return find(miniMapLocationPin);
 	}
 	
+	public void tapMiniMapWhatsNearByButton() {
+		tapElement(miniMapWhatsNearByButton);
+	}
+	
+	public void tapMiniMap() {
+		tapElement(miniMap);
+	}
+	
 	public void scrollToWhatsNearButton() {
 		scrollToElement(miniMapWhatsNearByButton, "true");
 	}

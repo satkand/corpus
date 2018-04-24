@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import automation.framework.common.Copy;
 import pages.App;
 
 public class MemberLoginTest extends App {
@@ -11,6 +13,10 @@ public class MemberLoginTest extends App {
 	String errorVal; //To be used for inline errors
 
 	private void navigateToWelcomeToSuncorpPage() {
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
+		
 		welcomePage.checkWelcomeSuncorpImage();
 		welcomePage.tapRegisterButton();
 		getStartedPage.checkGetStartedPageTitle();
@@ -162,7 +168,8 @@ public class MemberLoginTest extends App {
 	// DMPM-1493 Scenario 8
 	// DMPM-1545 Scenario 1, 8
 	// DMPM-2362 Scenario 1, 2, 3
-	@Test(groups = {"DMPM-2098", "DMPM-3571", "DMPM-3572", "DMPM-3573", "DMPM-2730", "DMPM-2760", "DMPM-1545", "DMPM-3552", "DMPM-3560", "marketplace", "Registration", "priority-high"})
+	// DMPM-45 Scenario 1
+	@Test(groups = {"DMPM-2098", "DMPM-3571", "DMPM-3572", "DMPM-3573", "DMPM-2730", "DMPM-2760", "DMPM-1545", "DMPM-3552", "DMPM-3560", "DMPM-45", "marketplace", "Registration", "priority-high"})
 	public void testSuccessfulMemberLogin() {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
@@ -187,6 +194,8 @@ public class MemberLoginTest extends App {
 		Assert.assertNotNull(memberLoginPage.checkMobileTextField(), "Mobile Register - Mobile number text field");
 		Assert.assertNotNull(memberLoginPage.checkRegiterWithMobileButton(), "Mobile Register - Register button not displayed");
 		Assert.assertNotNull(memberLoginPage.checkNoMarketingTermsText(), "Mobile Register - No Marketing terms text not displayed");
+		memberLoginPage.tapMobileTextField();
+		Assert.assertEquals(memberLoginPage.getMobileNumberTipText(), Copy.MOBILE_NUMBER_TIP, "Mobile Register - Mobile number tool tip text is incorrect");
 		
 		memberLoginPage.enterMobileNumber(utils.readTestData("registration", "success", "mobile"));
 		memberLoginPage.tapRegisterButton();
@@ -336,4 +345,56 @@ public class MemberLoginTest extends App {
 		Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - Title is not correct");	
 		memberLoginPage.tapCancelButton();
 	}
+	
+	//DMPM-1481 Scenario 1, 3, 4
+		@Test(groups = {"DMPM-1481", "DMPM-3544", "DMPM-3546", "DMPM-3547", "marketplace", "Registration", "priority-medium"})
+		public void testSuncorpLoginCredentials() {
+			navigateToWelcomeToSuncorpPage();
+			List brandElements = utils.readTestDataList("brands");
+			for (Object brandIcons : brandElements) {
+				HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
+				Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
+				getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+				
+				// Test with valid credentials
+				memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+				memberLoginPage.tapNextButton();
+				
+				Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
+				pinOptionsPage.tapMaybeLater();
+				Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
+				navigationMenu.tapSplitMenuIcon();
+				Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+				navigationMenu.tapLockMenuOption();
+
+				// Test with invalid credentials
+				navigateToWelcomeToSuncorpPage();
+				Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
+				getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+				
+				memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidPassword"));
+				memberLoginPage.tapNextButton();
+				
+				Assert.assertNotNull(memberLoginPage.checkSnackbarDisplayed(), "Member Login Page - Error Snackbar not displayed");
+				memberLoginPage.tapSnackbarOkButton();
+				Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "User not back on the"+brandIcon.get("brandIcon"));
+				
+				memberLoginPage.tapCancelButton();
+			}
+		}
+		
+		// DMPM-1481 Scenario 2
+		@Test(groups = {"DMPM-1481", "DMPM-3545", "marketplace", "Registration", "priority-medium"})
+		public void testSuncorpInsuranceCredentials() {
+			navigateToWelcomeToSuncorpPage();
+			
+			getStartedPage.tapSuncorpBrandIcon();
+			Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
+			getStartedPage.tapSuncorpInsuranceButton();
+			Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not navigated to the login page");
+			loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+			loginPage.tapLoginButton();
+			
+			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
+		}
 }

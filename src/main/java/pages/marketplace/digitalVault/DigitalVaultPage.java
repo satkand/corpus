@@ -36,12 +36,20 @@ public class DigitalVaultPage extends BasePage {
 	private By renameFolderButton = By.id("au.com.suncorp.marketplace:id/renameFolderButton");
 	private By deleteFolderButton = By.id("au.com.suncorp.marketplace:id/deleteFolderButton");
 	private By folderItem = By.id("au.com.suncorp.marketplace:id/folderForeground");
+	private By folderName = By.id("au.com.suncorp.marketplace:id/folderName");
+	private By deleteFolderPopupButton = By.id("android:id/button1");
+	private By deleteFolderConfirmationMsg = By.id("au.com.suncorp.marketplace:id/dialogMessage");
+	
 
 	private By binBoxForFolder = By.id("au.com.suncorp.marketplace:id/deleteFolderOption");
 	private By sortingButtonIcon = By.id("au.com.suncorp.marketplace:id/sortingButtonIcon");
     private By sortByDate = By.id("au.com.suncorp.marketplace:id/sortByDateOption");
     private By sortByName = By.id("au.com.suncorp.marketplace:id/sortByNameOption");
     private By imageTitle = By.id("au.com.suncorp.marketplace:id/documentTitle");
+    
+    public List<String> fetchFolderNameList() {
+		return getTextList(folderName);
+	}
     
 	public WebElement checkDigiVaultTitle() {
 		return find(digiVaultTitle);
@@ -221,10 +229,18 @@ public class DigitalVaultPage extends BasePage {
 	public void tapDeleteFolderButton() {
 		tapElement(deleteFolderButton);
 	}
-	
 
+	public WebElement checkDeleteFolderPopupButton() {
+		return find(deleteFolderPopupButton);
+	}
 	
+	public void tapDeleteFolderPopupButton() {
+		tapElement(deleteFolderPopupButton);
+	}
 	
+	public WebElement checkDeleteFolderConfirmationMsg() {
+		return find(deleteFolderConfirmationMsg);
+	}
 
 	
 }
