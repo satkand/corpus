@@ -228,7 +228,8 @@ public class SpendingsTest extends App {
 	//5921 - Scenario 1-6
 	@Test (groups = {"DMPM-4034", "DMPM-5818", "DMPM-5819","DMPM-5820","DMPM-5821","DMPM-5822","DMPM-5823","DMPM-5921", "marketplace", "FFI", "priority-minor"})
 	public void testDatePickerInCategoryDetailsScreen() {
-		navigateToCategoryDetailScreen();
+		
+		navigateToCategoryDetailScreen();	
 		Assert.assertNotNull(categoryDetailsPage.checkMonthPicker(), "Month picker not seen");
 		categoryDetailsPage.tapMonthPicker();
 		Assert.assertNotNull(categoryDetailsPage.checkMonthsOptionInPicker(), "List of months not seen");
@@ -244,8 +245,9 @@ public class SpendingsTest extends App {
 		categoryDetailsPage.scrollDown();
 		Assert.assertNotNull(categoryDetailsPage.checkTop3VendorTitle(), "Top 3 vendor title not seen");
 		Assert.assertNotNull(categoryDetailsPage.checkTop3VendorsList(), "Top 3 vendor list not seen");
+		Assert.assertTrue(categoryDetailsPage.checkIfVendorsAreSorted(),"Top vendors are not sorted by the spending amount");
 		Assert.assertNotNull(categoryDetailsPage.checkTransactionList(), "Transaction list not seen");
-		
+		 
 		//Check when there are no transcations
 		categoryDetailsPage.scrollUp();
 		categoryDetailsPage.checkMonthPicker();
