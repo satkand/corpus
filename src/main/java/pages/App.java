@@ -113,12 +113,16 @@ public class App extends BaseTest {
 	public PropertyFullScreenMap propertyFullScreenMap = null;
 	public ForceUpdatePage forceUpdatePage = null;
 
+	String CONFIG_FILE=null;
+
+
 	@BeforeClass
 	public void initializeApp() {
-		
+	
 		 utils = new AutoUtilities();
 		// Autoutilites file path
 		String JSONFilePath = "/TestData/TestData_Test.json";
+		CONFIG_FILE = System.getProperty("user.dir")+"/Config/config.properties";
 		utils.loadTestData(JSONFilePath);
 		
 		// Initializing the fleuntAssert object for global use.
@@ -172,16 +176,19 @@ public class App extends BaseTest {
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
 		propertyFullScreenMap = new PropertyFullScreenMap(driver);
-		propertyHubPage = new PropertyHubPage(driver);
 		articlesPage = new ArticlesPage(driver);
 		forceUpdatePage = new ForceUpdatePage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
+
 	}
 	
 	@Parameters({ "stub" })
 	@BeforeMethod(alwaysRun = true)
 	public void beforeEachTest(@Optional("false") String stub) throws Exception {
+		
 		welcomePage.launchApp();
-		configPage.dismissConfigPage(stub);
+		
+		configPage.dismissConfigPage(stub,CONFIG_FILE);
 	}
 	
 	@AfterMethod(alwaysRun = true)
