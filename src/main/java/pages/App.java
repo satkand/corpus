@@ -176,6 +176,7 @@ public class App extends BaseTest {
 		articlesPage = new ArticlesPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 
+
 	}
 	
 	@Parameters({ "stub" })

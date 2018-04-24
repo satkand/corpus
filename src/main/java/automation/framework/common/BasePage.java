@@ -706,7 +706,7 @@ public class BasePage {
 		return findByUIAutomator(title, "text");
 
 	}
-	
+
 	public void doubleTapOnAnElement(By locator) {
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.tap(find(locator)).tap(find(locator)).perform();
@@ -942,13 +942,6 @@ public class BasePage {
 	//	protected void deleteAnEntryInTextField() {
 	//		driver.getKeyboard().sendKeys(Keys.DELETE);
 	//	}
-
-
-
-
-
-
-
 	//	
 	//	protected WebElement findElementByText(String text, int... args) {
 	//
