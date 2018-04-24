@@ -37,10 +37,35 @@ public interface Copy {
 	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
 	public String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
 	
+	//FULL SCREEN MAPMAP POINTS OF INTEREST INDICATORS
+	public String FULL_SCREEN_MAP_EDUCATION_CENTRE_INDICATOR = "NorthanMelbourneInstituteOfTAFE. ";
+	public String FULL_SCREEN_MAP_SHOPPING_AMENITY_INDICATOR = "Penny Blue. ";
+	public String FULL_SCREEN_MAP_TRANSPORT_AMENITY_INDICATOR = "Elizabeth St. ";
+	public String FULL_SCREEN_MAP_ENTERTAINMENTOUTLET_INDICATOR = "Federal Coffee Palace. ";
+	public String FULL_SCREEN_MAP_HEALTH_CENTRE_INDICATOR = "Derma Tech Centre. ";
+	public String FULL_SCREEN_MAP_DINING_CENTRE_INDICATOR = "secret garden restraunt. ";
+	public String FULL_SCREEN_MAP_OTHER_AMENITY_INDICATOR= "Coomonwealth bank Niddrie. ";
 	
+	//VIRTUAL ASSETS
+	public String VIRTUAL_ASSETS_TITLE_TEXT ="Your saved properties";
+	public String VIRTUAL_ASSETS_ESTIMATED_SALES_PRICE_LABEL = "Estimated sale price";
+	public String VIRTUAL_ASSETS_ESTIMATED_SALE_PRICE ="$10,000,000 - $20,000,000";
+	public String VIRTUAL_ASSETS_PROPERTY_ADDRESS = "123 Sesame St, Melbourne Vic 3000";
+	public String VIRTUAL_ASSETS_PROPERTY_NO_OF_BEDROOMS ="4";
+	public String VIRTUAL_ASSETS_PROPERTY_NO_OF_BATHROOMS ="2";
+	public String VIRTUAL_ASSETS_PROPERTY_NO_OF_PARKING_SPACES ="2";
+	public String VIRTUAL_ASSETS_PROPERTY_LAND_SIZE="1000m²";
 
 	//Articles common
 	public static final String ARTICLE_CAROUSEL_TITLE = "Articles";
+
+	//VEHICLES PAGE
+	public static final String VEHICLE_SERVICES_TITLE = "Vehicle Services at your finger tips";
+	public static final String VEHICLE_SERVICES_DESCRIPTION = "Browse and access from a range of professional services for your vehicle or just buy one.";
+	public static final String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
+
+	//MemberLoginPage
+	public String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
 
 }
