@@ -47,10 +47,6 @@ public class LoginAuthPage extends BasePage{
 		return find(userNameWelcomeScreen);
 	}
 	
-	public WebElement checkUserImage() {
-		return find(userImageWelcomeScreen);
-	}
-	
 	public WebElement checkPasswordReauthField() {
 		return find(passwordReauthField);
 	}
