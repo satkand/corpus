@@ -338,11 +338,12 @@ public class HomePropertyPage extends BasePage {
 	public void scrollToJourneyBanner(){
 		scrollToElement(startYourJourneyButton, "true");
 	}
-
+	
 	public void scrollToSuppliedAsset(){
 		scrollToElement(emptyStatePropertyAsset, "true");
 	}
-	
+
+
 	public WebElement checkHomeJourneyBannerImage() {
 		return find(homeJourneyBannerImage);
 	}
