@@ -111,16 +111,23 @@ public class App extends BaseTest {
 	public ArticlesPage articlesPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+<<<<<<< HEAD
 	public WhatsNearbyPage whatsNearbyPage = null;
 	public ForceUpdatePage forceUpdatePage = null;
 	public SuburbDetailsPage suburbDetailsPage = null;
+=======
+	public PropertyFullScreenMap propertyFullScreenMap = null;
+
+	String CONFIG_FILE=null;
+>>>>>>> develop
 
 	@BeforeClass
 	public void initializeApp() {
-		
+	
 		 utils = new AutoUtilities();
 		// Autoutilites file path
 		String JSONFilePath = "/TestData/TestData_Test.json";
+		CONFIG_FILE = System.getProperty("user.dir")+"/Config/config.properties";
 		utils.loadTestData(JSONFilePath);
 		
 		// Initializing the fleuntAssert object for global use.
@@ -173,18 +180,28 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
+<<<<<<< HEAD
 		whatsNearbyPage = new WhatsNearbyPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		articlesPage = new ArticlesPage(driver);
 		forceUpdatePage = new ForceUpdatePage(driver);
 		suburbDetailsPage = new SuburbDetailsPage(driver);
+=======
+		propertyFullScreenMap = new PropertyFullScreenMap(driver);
+		articlesPage = new ArticlesPage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
+
+
+>>>>>>> develop
 	}
 	
 	@Parameters({ "stub" })
 	@BeforeMethod(alwaysRun = true)
 	public void beforeEachTest(@Optional("false") String stub) throws Exception {
+		
 		welcomePage.launchApp();
-		configPage.dismissConfigPage(stub);
+		
+		configPage.dismissConfigPage(stub,CONFIG_FILE);
 	}
 	
 	@AfterMethod(alwaysRun = true)

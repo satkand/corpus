@@ -86,6 +86,17 @@ public class WhatsNearbyPage extends BasePage{
 		tapElement(fullScreenMapPropertyPin);
 	}
 	
+	public boolean checkElementWithAccessibilityID(String text) {
+		String t =  "\""+text+"\"";  
+		By titleName = MobileBy.AccessibilityId(t);
+		WebElement element = find(titleName);
+		if (element !=null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public boolean isPropertyTabSelected() {
 		return isEnabled(propertyTab);
 	}
@@ -121,7 +132,7 @@ public class WhatsNearbyPage extends BasePage{
 	public WebElement checkOtherAmenityIndicator() {
 		return find(otherAmenityIndicator);
 	}
-	
+
 	public WebElement checkPropertyTab() {
 		return find(propertyTab);
 	}
