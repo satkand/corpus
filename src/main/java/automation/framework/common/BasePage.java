@@ -965,13 +965,6 @@ public class BasePage {
 	//	protected void deleteAnEntryInTextField() {
 	//		driver.getKeyboard().sendKeys(Keys.DELETE);
 	//	}
-
-
-
-
-
-
-
 	//	
 	//	protected WebElement findElementByText(String text, int... args) {
 	//
