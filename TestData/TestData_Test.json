@@ -260,7 +260,9 @@
 		         "brand5":"Shannons",
 		         "brand6":"Suncorp",
 		         "vehicleDescription":"2012 SUZUKI SWIFT GLX FZ 5D HATCHBACK 4 SP AUTOMATION TESTING TWO LINES",
-		         "vehicleRegistration":"ABC 123"
+		         "vehicleRegistration":"ABC 123",
+		         "validIncidentDate":"22-4-2018",
+		         "futureIncidentDate":"20-8-2018"
 				}
 		   }
 	},

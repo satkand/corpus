@@ -1,5 +1,7 @@
 package test.marketplace.claimdetails;
 
+import java.text.ParseException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -68,7 +70,43 @@ public class PropertyClaimLodgementTest extends App{
 		Assert.assertEquals(makeAClaimPage.getStartClaimButtonText(),Copy.START_CLAIM_BUTTON_LABEL,"policy end year is incorrect");
 		
 	}
+	
+	@TestDetails(story1 = "DMPM-2222:DMPM-6502,DMPM-6503", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim lodgement", "priority-minor" })
+	public void testSelectIncidentDate() throws ParseException{
 
+		String username = utils.readTestData("claimLodgement", "login");
+		String pwd = utils.readTestData("claimLodgement", "pwd");
+		String dateToBeSelected =utils.readTestData("claimLodgement", "vehicle","car","validIncidentDate"); 
+		navigateToFapiSettingsPage(username, pwd);
+		fapiSettingsPage.tapVehicleClaimLodgementButton();
+		claimIntroPage.tapNextButton();
+		Assert.assertEquals(makeAClaimPage.getIncidentDateFieldInputText(),Copy.INCIDENT_DATE_FIELD_INPUT_LABEL,"policy end year is incorrect");
+		makeAClaimPage.tapIncidentDateFieldInputLayout();
+		Assert.assertNotNull(makeAClaimPage.checkDatePickerHeaderYear(),"Date Picker Header Year is not displayed");
+		Assert.assertNotNull(makeAClaimPage.checkDatePickerHeaderDate(),"Date Picker Header Date is not displayed");
+		Assert.assertNotNull(makeAClaimPage.checkMonthView(),"Date Picker month view is not displayed");
+		makeAClaimPage.selectDate(dateToBeSelected);
+		Assert.assertEquals(makeAClaimPage.getIncidentDateFieldText(),dateToBeSelected,"Date not set properly");
+	}
+	
+	@TestDetails(story1 = "DMPM-2222:DMPM-6504,DMPM-6505", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "claim lodgement", "priority-minor" })
+	public void testInvalidIncidentDate() throws ParseException{
+
+		String username = utils.readTestData("claimLodgement", "login");
+		String pwd = utils.readTestData("claimLodgement", "pwd");
+		String dateToBeSelected =utils.readTestData("claimLodgement", "vehicle","car","futureIncidentDate"); 
+		navigateToFapiSettingsPage(username, pwd);
+		fapiSettingsPage.tapVehicleClaimLodgementButton();
+		claimIntroPage.tapNextButton();
+		makeAClaimPage.tapStartClaimButton();
+		Assert.assertEquals(makeAClaimPage.getInLineErrorMsgText(),Copy.EMPTY_DATE_ERROR_MSG,"Empty date error message not displayed");
+		makeAClaimPage.tapIncidentDateFieldInputLayout();
+		makeAClaimPage.selectDate(dateToBeSelected);
+		Assert.assertEquals(makeAClaimPage.getInLineErrorMsgText(),Copy.FUTURE_DATE_ERROR_MSG,"Future date error message not displayed");
+	}
+	
 	private void navigateToFapiSettingsPage(String userName, String pwd) {
 		
 		loginToApp(userName, pwd);

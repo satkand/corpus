@@ -107,6 +107,9 @@ public interface Copy {
     //MAKE A CLAIM PAGE
 	String INCIDENT_DATE_FIELD_LABEL = "When did the incident happen?";
 	String START_CLAIM_BUTTON_LABEL = "START CLAIM";
+	String INCIDENT_DATE_FIELD_INPUT_LABEL= "Select date";
+	String EMPTY_DATE_ERROR_MSG = "Field is required";
+	String FUTURE_DATE_ERROR_MSG = "Invalid date input.\nPlease ensure you've entered the correct date";
 
 	//MemberLoginPage
 	public String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";

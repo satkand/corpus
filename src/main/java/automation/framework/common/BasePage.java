@@ -736,6 +736,12 @@ public class BasePage {
 		
 	}
 	
+	protected String getAttribute(By locator, String attribute) {
+	
+			WebElement element = find(locator);
+			String text = element.getAttribute(attribute);
+			return text;
+		}
 
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
