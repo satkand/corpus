@@ -40,10 +40,10 @@ public class PropertyClaimLodgementTest extends App{
 		navigateToFapiSettingsPage(username, pwd);
 		assertPropertyPolicyDescForEachBrand(brandNames,expctdPolicyDescription);
 		navigateToMakeClaimScreen(utils.readTestData("claimLodgement", "property","home&Building","brand1"),"property");
-		Assert.assertEquals(makeAClaimPage.getAssetDescriptionText(),expctdhomeRiskAddress,"policy end year is incorrect");
-		Assert.assertEquals(makeAClaimPage.getIncidentDateFieldLabel(),Copy.INCIDENT_DATE_FIELD_LABEL,"policy end year is incorrect");
-		Assert.assertNotNull(makeAClaimPage.checkIncidentDateField(),"policy end year is incorrect");
-		Assert.assertEquals(makeAClaimPage.getStartClaimButtonText(),Copy.START_CLAIM_BUTTON_LABEL,"policy end year is incorrect");
+		Assert.assertEquals(makeAClaimPage.getAssetDescriptionText(),expctdhomeRiskAddress,"Home Risk Address is incorrect");
+		Assert.assertEquals(makeAClaimPage.getIncidentDateFieldLabel(),Copy.INCIDENT_DATE_FIELD_LABEL,"Incident Date Field Label is incorrect");
+		Assert.assertNotNull(makeAClaimPage.checkIncidentDateField(),"Incident Date Field is not displayed");
+		Assert.assertEquals(makeAClaimPage.getStartClaimButtonText(),Copy.START_CLAIM_BUTTON_LABEL,"Start Claim Button Label is incorrect");
 	}
 	
 	@TestDetails(story1 = "DMPM-4489:DMPM-6136,DMPM-6137", priority = Priority.LOW)
@@ -61,11 +61,11 @@ public class PropertyClaimLodgementTest extends App{
 		navigateToFapiSettingsPage(username, pwd);
 		assertVehiclePolicyDescForEachBrand(brandNames,expctdPolicyDescription);
 		navigateToMakeClaimScreen(utils.readTestData("claimLodgement", "vehicle","car","brand1"),"vehicle");
-		Assert.assertEquals(makeAClaimPage.getAssetDescriptionText(),expctdVehicleDescription ,"policy end year is incorrect");
-		Assert.assertEquals(makeAClaimPage.getRegistrationNumberText(),expctdVehicleRegistration ,"policy end year is incorrect");
-		Assert.assertEquals(makeAClaimPage.getIncidentDateFieldLabel(),Copy.INCIDENT_DATE_FIELD_LABEL,"policy end year is incorrect");
-		Assert.assertNotNull(makeAClaimPage.checkIncidentDateField(),"policy end year is incorrect");
-		Assert.assertEquals(makeAClaimPage.getStartClaimButtonText(),Copy.START_CLAIM_BUTTON_LABEL,"policy end year is incorrect");
+		Assert.assertEquals(makeAClaimPage.getAssetDescriptionText(),expctdVehicleDescription ,"Vehicle Description is incorrect");
+		Assert.assertEquals(makeAClaimPage.getRegistrationNumberText(),expctdVehicleRegistration ,"Vehicle Registration is incorrect");
+		Assert.assertEquals(makeAClaimPage.getIncidentDateFieldLabel(),Copy.INCIDENT_DATE_FIELD_LABEL,"Incident Date Field Label is incorrect");
+		Assert.assertNotNull(makeAClaimPage.checkIncidentDateField(),"Incident Date Field is incorrect");
+		Assert.assertEquals(makeAClaimPage.getStartClaimButtonText(),Copy.START_CLAIM_BUTTON_LABEL,"Start Claim Button is incorrect");
 		
 	}
 
