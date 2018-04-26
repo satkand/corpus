@@ -93,7 +93,7 @@ public class MyProductsTest extends App {
 	@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","marketplace", "portfolio", "priority-minor"})
 	public void testDisplayBankAccounts(){
 		
-		navigateToMyProductsScreen("bankingProduct","loginProdList");
+		navigateToMyProductsScreen("prodList","loginProdList");
 		
 		// fetch the actual banking products shown on the current page
 		List<String> descriptionList = myProductsPage.fetchProductTypeTextList();
@@ -616,9 +616,9 @@ public class MyProductsTest extends App {
 			// fetch the actual banking products shown on the current page
 			List<String> descriptionList = myProductsPage.fetchProductTypeTextList();
 			List<String> bsbList = myProductsPage.fetchBsbList();
-			List<String> accountNumberList = myProductsPage.fetchAccountNumberTextList();
-			List<String> currentBalanceList = myProductsPage.fetchCurrentBalanceTextList();
 			List<String> overduePaymentList = myProductsPage.fetchOverduePaymentAmount();
+			List<String> accountNumberList = myProductsPage.fetchAccountNumberTextList();
+			List<String> currentBalanceList = myProductsPage.fetchCurrentBalanceTextList();	
 			List<String> nextPaymentAmountList = myProductsPage.fetchNextPaymentAmount();
 			List<String> nextPaymentDueDateList = myProductsPage.fetchNextPaymentDueDate();
 
@@ -635,7 +635,6 @@ public class MyProductsTest extends App {
 				String overduePayment = bankingProductItem.get("arrearsAmount");
 				String nextPaymentAmount =  bankingProductItem.get("nextPaymentamount");
 				String nextPaymentDueDate =  bankingProductItem.get("nextPaymentdate");
-
 
 				softAssert.assertEquals(descriptionList.get(0), accountType,"My Products Page - Account Type is not matching");
 				descriptionList.remove(0);
@@ -722,6 +721,9 @@ public class MyProductsTest extends App {
 		}
 		
 		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkProductsMenuItem(), "Main Menu : My Products menu option is not displayed");
+
+		
 		navigationMenu.tapProductsMenuItem();
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
 	}

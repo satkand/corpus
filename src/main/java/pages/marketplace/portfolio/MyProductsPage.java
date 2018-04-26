@@ -56,7 +56,7 @@ public class MyProductsPage extends BasePage {
 	private By policyStatus = null;
 	private By viewButton = null;
 	private String viewButtonXpathSuffix = "\']/parent::android.widget.LinearLayout/parent::android.widget.LinearLayout/following-sibling::android.widget.TextView[@text = \'VIEW DETAILS\']";
-	private By overduePaymentAmount = By.id("au.com.suncorp.marketplace:id/arrearsAmountText");
+	private By overduePaymentAmount = By.id("au.com.suncorp.marketplace:id/duePaymentAmountText");
 	private By nextPaymentAmount = By.id("au.com.suncorp.marketplace:id/nextPaymentAmountText");
 	private By nextPayementDueDate = By.id("au.com.suncorp.marketplace:id/nextPaymentDateText");
 	
@@ -136,7 +136,6 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public List<String> fetchOverduePaymentAmount() {
-		find(overduePaymentAmount);
 		return getTextList(overduePaymentAmount);
 	}
 	

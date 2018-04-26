@@ -260,7 +260,7 @@
 		},
 		"wealthProducts": {
 		"user1":{
-				"login": "a@b.c",
+				"login": "wealthProductsAccount@sun.com",
 				"pwd": "Password1",
 				"products": [
 				{

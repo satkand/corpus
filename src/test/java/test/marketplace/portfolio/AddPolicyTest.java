@@ -88,6 +88,8 @@ public class AddPolicyTest extends App{
 			loginToApp(utils.readTestData("portfolio","loginProdList", "login"), utils.readTestData("portfolio","loginProdList", "pwd"));
 		}
 		navigationMenu.tapSplitMenuIcon();
+		Assert.assertNotNull(navigationMenu.checkProductsMenuItem(), "Main Menu : My Products menu option is not displayed");
+
 		navigationMenu.tapProductsMenuItem();
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
 		

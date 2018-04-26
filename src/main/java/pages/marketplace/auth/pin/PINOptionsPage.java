@@ -10,8 +10,8 @@ import io.appium.java_client.AppiumDriver;
 public class PINOptionsPage extends BasePage{
 
 	
-	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
-	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePromptDismissButton");
+	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptEnablePinButton");
+	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
 	
 	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePinPromptImage");
 	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePinPromptUserWelcome");
@@ -47,6 +47,7 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public void tapMaybeLater(){
+		find(maybeLaterButton,25);
 		tapElement(maybeLaterButton);
 	}
 	
