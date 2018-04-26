@@ -94,6 +94,7 @@
 		},
 		"propertyDetailsHighConfidence":{
 					"confidenceLevel":"High confidence",
+					"numberOfImages":"2",
 					"estimatedMarketValue": "$1,456,100,000 - $1,895,275,000"
 		},
 		"propertyExplorer":{
@@ -102,6 +103,11 @@
 					"clearSearchText":"1234567890ABCD#$%^",
 					"enterAdress":"1",
 					"highConfidenceAddress":"2"
+		},
+		"propertyHub":{
+					"login":"a@b.c",
+					"pwd":"Password1",
+					"searchText":"1"
 		},
 		"NoProperties":{
 					"login": "a@b.c",
@@ -147,6 +153,119 @@
 				}
 			]}
 		},
+	"claimDetails" :{
+		         "login": "a@b.c",
+				"pwd": "Password1",
+					"property":{
+					
+				        "claimLodged":{
+				          "claimNumber":"H00000001",
+				          "insuranceType":"Home Insurance",
+				          "homeRiskAddress":"Insured address",
+				          "homeRiskAddrPrimaryDesc":"530 Collins St, Melbourne",
+				          "homeRiskAddrSecondaryDesc":"VIC 3000",
+				          "whatHappened":"Natural Hazard",
+				          "accidentType":"Hail",
+				          "eventDate" :"Sunday 5 Jul 2015",
+				          "claimStageLabel" :"Stage 1 of 4",
+				          "claimStageValue" :"Claim lodged"
+				        },
+				        "claimInProgress":{
+				          "claimNumber":"H00000002",
+				          "claimStageLabel" :"Stage 2 of 4",
+				          "claimStageValue" :"Claim in progress"
+				        },
+				         "assessmentComplete":{
+				          "claimNumber":"H00000003",
+				          "claimStageLabel" :"Stage 3 of 4",
+				          "claimStageValue" :"Assessment complete",
+				          "excess":{
+				          "yourOutstandingExcess":"$3,000.00",
+				          "excessRecieved":"$976.55",
+				          "totalExcess":"$3,976.55"
+				           } 
+				        },
+				          "claimSettledAsAdvised":{
+				          "claimNumber":"H00000004",
+				          "claimStageLabel" :"Stage 4 of 4",
+				          "claimStageValue" :"Claim settled as advised"
+				        }	  	     
+				},
+				"vehicle":{
+					
+				        "claimLodged":{
+				          "claimNumber":"M00000001",
+				          "insuranceType":"Boat Insurance",
+				          "vehicleRisk":"Insured vehicle",
+				          "vehicleRiskPrimaryDesc":"2015 Boaty McBoatface",
+				          "vehicleRiskSecondaryDesc":"P1R4T3",
+				          "whatHappened":"Damage Whilst Boating",
+				          "accidentType":"Kraken attack",
+				          "eventDate" :"Sunday 5 Jul 2015",
+				          "claimStageLabel" :"Stage 1 of 4",
+				          "claimStageValue" :"Claim lodged",
+				          "excess":{
+				            "yourTotalExccess":"$500.00",
+				            "zeroExcess":{
+				            "claimNumber":"M00000005",
+				            "yourTotalExccess":"$0.00"
+				            }   
+				          }
+				          
+				        },
+				        "damageReview":{
+				          "claimNumber":"M00000002",
+				          "claimStageLabel" :"Stage 2 of 4",
+				          "claimStageValue" :"Damage review"
+				        },
+				         "repair":{
+				          "claimNumber":"M00000003",
+				          "claimStageLabel" :"Stage 3 of 4",
+				          "claimStageValue" :"Repair",
+				          "excess":{
+				          "referenceNumber":"PRN12345678901234",
+				          "paidExcess":"$888.88"
+				           }   
+				        },
+				          "claimCompleted":{
+				          "claimNumber":"M00000004",
+				          "claimStageLabel" :"Stage 4 of 4",
+				          "claimStageValue" :"Claim completed"
+				        }	  	     
+				}
+				
+		},
+	"claimLodgement" :{
+		         "login": "a@b.c",
+				"pwd": "Password1",
+				"property":{
+				"home&Building":{
+				"policyDescription":"Home & building insurance",
+		         "brand1":"AAMI",
+		         "brand2":"Apia",
+		         "brand3":"Bingle",
+		         "brand4":"GIO",
+		         "brand5":"Shannons",
+		         "brand6":"Suncorp",
+		         "homeRiskAddress":"23 The Grove, Doncaster VIC 3224"
+				}
+	},
+	"vehicle":{
+				"car":{
+				"policyDescription":"Comprehensive car insurance",
+		         "brand1":"AAMI",
+		         "brand2":"Apia",
+		         "brand3":"Bingle",
+		         "brand4":"GIO",
+		         "brand5":"Shannons",
+		         "brand6":"Suncorp",
+		         "vehicleDescription":"2012 SUZUKI SWIFT GLX FZ 5D HATCHBACK 4 SP AUTOMATION TESTING TWO LINES",
+		         "vehicleRegistration":"ABC 123",
+		         "validIncidentDate":"22-4-2018",
+		         "futureIncidentDate":"20-8-2018"
+				}
+		   }
+	},
 	"portfolio" :{
 		"loginEmptyProdList":{
 				"login": "a@b.c",

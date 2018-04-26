@@ -23,6 +23,10 @@ import pages.marketplace.auth.registration.GetStartedPage;
 import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
+import pages.marketplace.claimdetails.ClaimDetailsPage;
+import pages.marketplace.claimdetails.ClaimIntroPage;
+import pages.marketplace.claimdetails.MakeAClaimPage;
+import pages.marketplace.claimdetails.NextActionWebViewPage;
 import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
@@ -59,6 +63,8 @@ import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
+import pages.marketplace.property.PropertyFullScreenMap;
+import pages.marketplace.property.PropertyHubPage;
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -106,15 +112,20 @@ public class App extends BaseTest {
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
 	public HomeProfessionalServicesPage homeServicesPage = null;
+	public PropertyHubPage propertyHubPage = null;
 	public ArticlesPage articlesPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 	public PolicyDetailsPage policyDetailsPage = null;
 	public RiskDetailsPage riskDetailsPage = null;
 	public RenewPolicyPage renewPolicyPage = null;
-	
-	public String CONFIG_FILE=null;
+	public ClaimDetailsPage claimDetailsPage = null;
+	public  NextActionWebViewPage nextActionWebViewPage=null;
+	public ClaimIntroPage claimIntroPage =null;
+	public MakeAClaimPage makeAClaimPage =null;
+	public PropertyFullScreenMap propertyFullScreenMap = null;
 
+	String CONFIG_FILE=null;
 
 	@BeforeClass
 	public void initializeApp() {
@@ -175,10 +186,16 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
+		propertyFullScreenMap = new PropertyFullScreenMap(driver);
 		articlesPage = new ArticlesPage(driver);
 		policyDetailsPage = new PolicyDetailsPage(driver);
 		riskDetailsPage = new RiskDetailsPage(driver);
 		renewPolicyPage = new RenewPolicyPage(driver);
+		claimDetailsPage = new ClaimDetailsPage(driver);
+		nextActionWebViewPage = new NextActionWebViewPage(driver);
+		claimIntroPage = new ClaimIntroPage(driver);
+		makeAClaimPage = new MakeAClaimPage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
 
 
 	}
