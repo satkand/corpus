@@ -9,25 +9,33 @@ import io.appium.java_client.AppiumDriver;
 
 public class PINOptionsPage extends BasePage{
 
-	
+	//No Fingerprint enabled
 	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptEnablePinButton");
-	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
-	
+	private By maybeLaterPinPromptButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
 	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePinPromptImage");
 	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePinPromptUserWelcome");
 	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
+	
+	//Fingerprint enabled
+	private By promptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePromptUserWelcome");
+	private By promptDescription = By.id("au.com.suncorp.marketplace:id/enablePromptDescription");
+	private By promptImage = By.id("au.com.suncorp.marketplace:id/enablePromptImage");
+//	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
+	private By maybeLaterPromptButton = By.id("au.com.suncorp.marketplace:id/enablePromptDismissButton");
 	
 	public PINOptionsPage(AppiumDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
+	//Methods for Fingerprint not enabled cases
+	
 	public WebElement checkEnablePinButton(){
 		return find(enablePinButton,45);
 	}
 	
 	public WebElement checkMaybeLaterButton(){
-		return find(maybeLaterButton);
+		return find(maybeLaterPinPromptButton);
 	}
 	
 	public WebElement checkPinPromptImage(){
@@ -47,7 +55,28 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public void tapMaybeLater(){
-		tapElement(maybeLaterButton);
+		tapElement(maybeLaterPinPromptButton);
 	}
 	
+	//Methods for Fingerprint enabled cases
+	
+	public WebElement checkPromptUserWelcome(){
+		return find(promptUserWelcome, 30);
+	}
+	
+	public WebElement checkPromptDescription(){
+		return find(promptDescription);
+	}
+	
+	public WebElement checkPromptImage(){
+		return find(promptImage);
+	}
+	
+	public WebElement checkMaybeLaterPromptButton(){
+		return find(maybeLaterPromptButton);
+	}
+	
+	public void tapPromptMaybeLater(){
+		tapElement(maybeLaterPromptButton);
+	}
 }

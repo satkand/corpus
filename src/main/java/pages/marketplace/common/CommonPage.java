@@ -11,6 +11,7 @@ public class CommonPage extends BasePage {
 
 	private By loadingSpinner = MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.ProgressBar\")");
 	private By backNavigationButton = MobileBy.AccessibilityId("Back");
+	private By successLoadingSpinner = By.id("au.com.suncorp.marketplace:id/successAlertDialog");
 	
 	public CommonPage(AppiumDriver driver) {
 		super(driver);
@@ -69,5 +70,10 @@ public class CommonPage extends BasePage {
 		waitForElementToDisappear(loadingSpinner);
 		
 	}
-	
+
+	public void waitForSuccessLoadingSpinnerToDisappear() {
+
+		waitForElementToDisappear(successLoadingSpinner);
+
+	}
 }
