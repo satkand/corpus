@@ -86,4 +86,8 @@ public class LoginAuthPage extends BasePage{
 	public String getPasswordInlineErrorVal() {
 		return getText(passwordInlineError);
 	}
+	
+	public void restartApp() {
+		closeAndLaunchApp();
+	}
 }

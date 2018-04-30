@@ -550,7 +550,7 @@ public class MemberLoginTest extends App {
 			memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
 			memberLoginPage.tapResetLinkButton();
 			
-			//TODO: Following code will part of later story which is not Manual Tested yet
+			//TODO: Following code will part of later story which is not Manually Tested yet
 //			common.waitForSuccessLoadingSpinnerToDisappear();
 //			Assert.assertNotNull(memberLoginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
 //			Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");

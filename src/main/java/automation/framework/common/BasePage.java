@@ -1531,4 +1531,9 @@ public class BasePage {
 		find(suncorpApp);
 		tapElement(suncorpApp);
 	}
+	
+	protected void closeAndLaunchApp() {
+		driver.closeApp();
+		driver.launchApp();
+	}
 }
