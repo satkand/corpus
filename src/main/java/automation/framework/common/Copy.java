@@ -19,4 +19,8 @@ public interface Copy {
 	public static final String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 
+	
+	//FFI
+	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you dont have any transactions yet.";
+	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
 }

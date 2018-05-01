@@ -57,6 +57,7 @@ import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
+import pages.marketplace.wealth.VendorDetailPage;
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -108,6 +109,7 @@ public class App extends BaseTest {
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+	public VendorDetailPage vendorDetailPage = null;
 	
 	String CONFIG_FILE=null;
 
@@ -172,6 +174,7 @@ public class App extends BaseTest {
 		memberLoginPage = new MemberLoginPage(driver);
 		articlesPage = new ArticlesPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
+		vendorDetailPage = new VendorDetailPage(driver);
 	}
 	
 	@Parameters({ "stub" })
