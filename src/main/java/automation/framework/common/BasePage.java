@@ -431,7 +431,9 @@ public class BasePage {
 					element = driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ));
 					break;
 				}			
-			}catch(Exception e) {				
+			}catch(Exception e) {	
+				element = driver.findElementByXPath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
+				break;
 			}
 			swipeScreen("down");
 			topElement = ((WebElement) driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();

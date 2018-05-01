@@ -57,6 +57,8 @@ public class PCHomePageTest extends App {
 					productCatalogueHomePage.tapSuncorpTab();
 					break;
 			}
+			Assert.assertTrue(productCatalogueHomePage.verifyDescription(brand));
+			
 			categories = productCatalogueHomePage.getCategories(brand);
 			
 			for(Object category : categories) {
@@ -77,7 +79,7 @@ public class PCHomePageTest extends App {
 					
 					Assert.assertNotNull(productCatalogueHomePage.checkFactsHeader(), "Features header not present");
 					Assert.assertTrue(productCatalogueHomePage.verifyFacts(subCategoryJSON), "All facts are not expected");
-					Assert.assertNotNull(productCatalogueHomePage.checkDisclaimer(), "Disclaimer not present");			
+					Assert.assertTrue(productCatalogueHomePage.checkDisclaimer(subCategoryJSON), "Disclaimer not as expected");			
 					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
 					
 					if( (((JSONObject) subCategoryJSON.get("quote")).get("quoteUrl").toString()).contentEquals("") &&
