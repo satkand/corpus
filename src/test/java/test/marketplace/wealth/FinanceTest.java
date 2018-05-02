@@ -38,6 +38,7 @@ public class FinanceTest extends App {
 		Assert.assertTrue(landingPage.isWealthTabSelected(), "Wealth tab is not selected on landing page");
 	}
 	
+	
 	// 486 - Scenario 2
 	// 91 - Scenario 3
 	// Spending option should not be shown if user does not have suncorp bank accounts
