@@ -298,6 +298,16 @@ public class BasePage {
 		}
 	}
 
+	protected void scrollUpToElement(By locator, String... args) {
+		int numOfSwipes = 0;
+		while (find(locator,7) == null && numOfSwipes <= 15) {
+			if(args.length < 1) {
+				swipeScreen("up");
+			}
+			numOfSwipes++;
+		}
+	}
+	
 	protected WebElement scrollHorizontallyToElement(String locatorString, String locatorType,String scrollableId,int... args) {
 
 		WebElement element =null;
@@ -431,7 +441,9 @@ public class BasePage {
 					element = driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ));
 					break;
 				}			
-			}catch(Exception e) {				
+			}catch(Exception e) {	
+				element = driver.findElementByXPath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
+				break;
 			}
 			swipeScreen("down");
 			topElement = ((WebElement) driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
@@ -1530,5 +1542,10 @@ public class BasePage {
 		By suncorpApp = By.xpath("//android.widget.TextView[@text='Config']");
 		find(suncorpApp);
 		tapElement(suncorpApp);
+	}
+	
+	protected void closeAndLaunchApp() {
+		driver.closeApp();
+		driver.launchApp();
 	}
 }
