@@ -32,7 +32,7 @@ public class ChangePINTest extends App {
 
 		enterPIN(pin);
 
-		Assert.assertNotNull(common.checkLoadingSpinner(), "Loading Spinner not displayed");
+		Assert.assertNotNull(common.checkLoadingIndicator(), "Loading Spinner not displayed");
 		Assert.assertNotNull(pinSetupPage.checkEnterPINLabel(), "Re-enter pin label is not displayed");
 
 	}
@@ -186,7 +186,7 @@ public class ChangePINTest extends App {
 			enterPIN(pin);
 
 			if (i != count - 1) {
-				common.waitForLoadingSpinnerToDisappear();
+				common.waitForLoadingIndicatorToDisappear();
 				if (i == 0) {
 
 					Assert.assertTrue(
