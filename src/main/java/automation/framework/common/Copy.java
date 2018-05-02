@@ -67,7 +67,7 @@ public interface Copy {
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 	
 	//WEB VIEW
-	public static String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
+	public static final String LOCATION_BAR_TEXT = "www.suncorp.com.au";
 	
 
 
