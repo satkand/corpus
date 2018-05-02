@@ -133,7 +133,7 @@ public class ArticlesPropertyTest extends App{
 			articlesPage.tapArticleReadMoreBtn();
 			Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(),"Home Proeprty Page - Article's webview is not shown as excpected.");
 			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),webViewUrl,"Home Proeprty Page - Article ReadMore page is not as expected.");
-			webviewPage.tapWebviewCloseButton();
+			webviewPage.tapWebviewChromeCloseButton();
 			Assert.assertNotNull(articlesPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
 			Assert.assertEquals(articlesPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
 			

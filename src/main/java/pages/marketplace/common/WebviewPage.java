@@ -13,7 +13,7 @@ public class WebviewPage extends BasePage {
 		super(driver);
 	}
 		
-	private By webviewCloseButton = MobileBy.AccessibilityId("Close tab");
+	private By webviewChromeCloseButton = MobileBy.AccessibilityId("Close tab");
 	private By webviewBrowserUrl = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
 	private By webViewLocationBar = By.id("com.sec.android.app.sbrowser:id/location_bar_edit_text");
 	private By webViewPopup = MobileBy.AccessibilityId("Close");
@@ -24,6 +24,14 @@ public class WebviewPage extends BasePage {
 	
 	public void tapWebViewToolbarOprions() {
 		tapElement(webViewToolbarOprions);
+	}
+	private By webview = By.id("au.com.suncorp.marketplace:id/webview");
+	private By webviewCloseButton = MobileBy.AccessibilityId("Navigate up");
+
+	private By urlBar = By.id("com.android.chrome:id/url_bar");
+	
+	public WebElement checkUrlBar() {
+		return find(urlBar);
 	}
 	
 	public WebElement checkViewToolbarOptions() {
@@ -59,8 +67,19 @@ public class WebviewPage extends BasePage {
 		return getText(webviewBrowserUrl);
 	}
 	
+	public void tapWebviewChromeCloseButton() {
+		tapElement(webviewChromeCloseButton);
+	}
+	
+	public WebElement checkWebview() {
+		
+		return find(webview);
+	}	
+	
 	public void tapWebviewCloseButton() {
+
 		tapElement(webviewCloseButton);
+	
 	}
 
 	public WebElement checkPopUp() {
@@ -70,4 +89,5 @@ public class WebviewPage extends BasePage {
 	public void tapWebViewPopup() {
 		tapElement(webViewPopup);
 	}
+
 }
