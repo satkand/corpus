@@ -140,8 +140,6 @@ public class ConfigPage extends BasePage {
 		if(stub.equalsIgnoreCase("memberLogin")) {
 			System.out.println("stub:::"+stub+"::::::memberLogin");
 			clearValue(globalBaseURL);
-			
-			typeValue("192.168.213.5:4567", globalBaseURL);
 			//mac mini
 			//typeValue("192.168.213.98:4567", globalBaseURL);
 			tapElement(applyGlobalBaseUrlButton);
@@ -160,6 +158,14 @@ public class ConfigPage extends BasePage {
 	public void disableHasBankAccountsToggle() {
 		if (isToggleEnabled(hasBankAccountsToggle)) {
 			tapElement(hasBankAccountsToggle);
+		}
+	}
+	
+	public void tapContinueToDismiss() {
+		dismissKeyboard();
+		scrollToElement(continueBtnID, "id");
+		if (find(continueButton, 30) != null) {
+			tapElement(continueButton);
 		}
 	}
 

@@ -57,6 +57,8 @@ import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
+import pages.marketplace.property.PropertyFullScreenMap;
+import pages.marketplace.property.PropertyHubPage;
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -104,11 +106,13 @@ public class App extends BaseTest {
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
 	public HomeProfessionalServicesPage homeServicesPage = null;
+	public PropertyHubPage propertyHubPage = null;
 	public ArticlesPage articlesPage = null;
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
-	
+	public PropertyFullScreenMap propertyFullScreenMap = null;
+
 	String CONFIG_FILE=null;
 
 	@BeforeClass
@@ -170,8 +174,11 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
+		propertyFullScreenMap = new PropertyFullScreenMap(driver);
 		articlesPage = new ArticlesPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
+
 	}
 	
 	@Parameters({ "stub" })

@@ -21,6 +21,8 @@ public class PINAuthPage extends BasePage {
 	private By forgottenPINButton = By.id("au.com.suncorp.marketplace:id/customKeypadForgotPinButton");
 	private By pinField = By.id("au.com.suncorp.marketplace:id/pinImage1");
 	
+	private By userNamePinReauth = By.id("au.com.suncorp.marketplace:id/enterPinUserNameText");
+	
 	public WebElement checkUserName() {
 		return find(userName);
 	}
@@ -40,5 +42,8 @@ public class PINAuthPage extends BasePage {
 	public void tapForgottenPINButton() {
 		tapElement(forgottenPINButton);
 	}
-
+	
+	public WebElement checkPinReauthUserName() {
+		return find(userNamePinReauth);
+	}
 }
