@@ -23,6 +23,9 @@ import pages.marketplace.auth.registration.GetStartedPage;
 import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
 import pages.marketplace.chatbot.ChatbotPage;
+import pages.marketplace.claimdetails.ClaimDetailsPage;
+import pages.marketplace.claimdetails.ClaimIntroPage;
+import pages.marketplace.claimdetails.MakeAClaimPage;
 import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
@@ -46,6 +49,9 @@ import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
 import pages.marketplace.productCatalogue.PCHomePage;
+import pages.marketplace.portfolio.PolicyDetailsPage;
+import pages.marketplace.portfolio.RenewPolicyPage;
+import pages.marketplace.portfolio.RiskDetailsPage;
 import pages.marketplace.professionalServices.HomeProfessionalServicesPage;
 import pages.marketplace.property.HomeJourneyPage;
 import pages.marketplace.property.HomePropertyPage;
@@ -112,6 +118,12 @@ public class App extends BaseTest {
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+	public PolicyDetailsPage policyDetailsPage = null;
+	public RiskDetailsPage riskDetailsPage = null;
+	public RenewPolicyPage renewPolicyPage = null;
+	public ClaimDetailsPage claimDetailsPage = null;
+	public ClaimIntroPage claimIntroPage =null;
+	public MakeAClaimPage makeAClaimPage =null;
 	public PropertyFullScreenMap propertyFullScreenMap = null;
 	public ForceUpdatePage forceUpdatePage = null;
 	
@@ -179,6 +191,12 @@ public class App extends BaseTest {
 		propertyFullScreenMap = new PropertyFullScreenMap(driver);
 		articlesPage = new ArticlesPage(driver);
 		forceUpdatePage = new ForceUpdatePage(driver);
+		policyDetailsPage = new PolicyDetailsPage(driver);
+		riskDetailsPage = new RiskDetailsPage(driver);
+		renewPolicyPage = new RenewPolicyPage(driver);
+		claimDetailsPage = new ClaimDetailsPage(driver);
+		claimIntroPage = new ClaimIntroPage(driver);
+		makeAClaimPage = new MakeAClaimPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 
