@@ -60,6 +60,7 @@ import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
+import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 import pages.marketplace.property.PropertyFullScreenMap;
@@ -113,6 +114,7 @@ public class App extends BaseTest {
 	public HomeProfessionalServicesPage homeServicesPage = null;
 	public PropertyHubPage propertyHubPage = null;
 	public ArticlesPage articlesPage = null;
+	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 	public PolicyDetailsPage policyDetailsPage = null;
@@ -192,8 +194,8 @@ public class App extends BaseTest {
 		claimDetailsPage = new ClaimDetailsPage(driver);
 		claimIntroPage = new ClaimIntroPage(driver);
 		makeAClaimPage = new MakeAClaimPage(driver);
+		categoryDetailsPage = new CategoryDetailsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
-
 
 	}
 	

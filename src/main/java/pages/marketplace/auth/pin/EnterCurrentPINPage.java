@@ -1,5 +1,7 @@
 package pages.marketplace.auth.pin;
 
+import java.security.KeyStore.PrivateKeyEntry;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -20,6 +22,11 @@ public class EnterCurrentPINPage extends BasePage {
 	private By reAuthenticateButton = By.id("android:id/button1");
 	private By incorrectPINErrorMessage = By.id("au.com.suncorp.marketplace:id/pinIncorrectErrorText");
 	private By backButton = By.id("au.com.suncorp.marketplace:id/reauthCancelButton");
+	
+	private By buttonOne = By.id("au.com.suncorp.marketplace:id/customKeypadButton1");
+	private By buttonThree = By.id("au.com.suncorp.marketplace:id/customKeypadButton3");
+	private By buttonFive = By.id("au.com.suncorp.marketplace:id/customKeypadButton5");
+	private By buttonSeven = By.id("au.com.suncorp.marketplace:id/customKeypadButton7");
 
 	public WebElement checkEnterExistingPinLabel() {
 		return find(enterExistingPinLabel, 20);
@@ -77,5 +84,10 @@ public class EnterCurrentPINPage extends BasePage {
 		return getText(incorrectPINErrorMessage);
 	}
 	
-
+	public void enterPIN(){
+		tapElement(buttonOne);
+		tapElement(buttonThree);
+		tapElement(buttonFive);
+		tapElement(buttonSeven);
+	}
 }
