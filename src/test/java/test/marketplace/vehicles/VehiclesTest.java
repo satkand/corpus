@@ -85,6 +85,25 @@ public class VehiclesTest extends App {
 		//Validate Vehicles services tile button
 		verifyVehiclesTileBtn();
 	}
+	
+	
+	/*
+	 * Story: DMPM-5582
+	 * Test case: DMPM-6034 - Display background image - Vehicle Dimension
+	 */
+	@TestDetails(story1 = "DMPM-5582:DMPM-6034")
+	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
+	public void testVehiclesDimensionBkgrndImg()
+	{
+		//Step 1: Login to App and then navigate Vehicles Dimension
+		navigateToVehiclesTab("hasVehicles");
+
+		//Step 2: Scroll to Vehicle dimension background image
+		vehiclesPage.scrollToVehicleDimensionBkgrndImg();
+
+		//Step 3: Validate Vehicles services tile title
+		Assert.assertNotNull(vehiclesPage.checkVehicleDimensionBkgrndImg(), "Vehicles Page- Vehicles services background image not shown");
+	}
 
 	private void verifyVehiclesTileBtn() {
 		if(vehiclesPage.isVehiclesServicesBtnDisplayed()==null) {

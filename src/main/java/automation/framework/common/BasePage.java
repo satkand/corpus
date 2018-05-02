@@ -303,6 +303,16 @@ public class BasePage {
 		}
 	}
 
+	protected void scrollUpToElement(By locator, String... args) {
+		int numOfSwipes = 0;
+		while (find(locator,7) == null && numOfSwipes <= 15) {
+			if(args.length < 1) {
+				swipeScreen("up");
+			}
+			numOfSwipes++;
+		}
+	}
+	
 	protected WebElement scrollHorizontallyToElement(String locatorString, String locatorType,String scrollableId,int... args) {
 
 		WebElement element =null;
@@ -436,7 +446,9 @@ public class BasePage {
 					element = driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ));
 					break;
 				}			
-			}catch(Exception e) {				
+			}catch(Exception e) {	
+				element = driver.findElementByXPath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
+				break;
 			}
 			swipeScreen("down");
 			topElement = ((WebElement) driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
@@ -711,7 +723,7 @@ public class BasePage {
 		return findByUIAutomator(title, "text");
 
 	}
-	
+
 	public void doubleTapOnAnElement(By locator) {
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.tap(find(locator)).tap(find(locator)).perform();
@@ -947,13 +959,6 @@ public class BasePage {
 	//	protected void deleteAnEntryInTextField() {
 	//		driver.getKeyboard().sendKeys(Keys.DELETE);
 	//	}
-
-
-
-
-
-
-
 	//	
 	//	protected WebElement findElementByText(String text, int... args) {
 	//
@@ -1567,4 +1572,8 @@ public class BasePage {
 		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 	}
 	
+	protected void closeAndLaunchApp() {
+		driver.closeApp();
+		driver.launchApp();
+	}
 }
