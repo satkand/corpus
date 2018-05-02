@@ -72,7 +72,7 @@ public class LoginAuthTest extends App{
 		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
 		navigationMenu.tapSettingsMenuItem();
 		//Wait for loading spinner to finish
-		common.waitForLoadingSpinnerToDisappear();
+		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "User is not navigated to Settings page");
 		Assert.assertNotNull(settingsPage.checkEnablePinToggle(), "Enable PIN toggle not found");
 
