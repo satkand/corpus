@@ -267,7 +267,7 @@ public class BasePage {
 				swipeAction(100, y - 80, 80, y - 700);
 				break;
 			case "DEEPDOWN":
-				swipeAction(100, y - 80, 80, y - 1200);
+				swipeAction(100, y - 80, 80, y - 1400);
 				break;
 			case "LEFT":
 				swipeAction(50, y / 2, x - 10, y / 2);
@@ -287,7 +287,7 @@ public class BasePage {
 
 	protected void scrollToElement(By locator, String... args) {
 		int numOfSwipes = 0;
-		while (find(locator,7) == null && numOfSwipes <= 15) {
+		while (find(locator,7) == null && numOfSwipes <= 35) {
 			if(args.length < 1) {
 				swipeScreen("down");
 			} else {

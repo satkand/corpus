@@ -30,6 +30,16 @@ public class VehiclesPage extends BasePage {
 	private String vehicleServicesBtnId = "au.com.suncorp.marketplace:id/vehicleServicesButton";
 	private String scrollableId = "au.com.suncorp.marketplace:id/navigationViewPager";
 	
+	//Add a vehicle policy
+	private By addVehiclePolicyImg = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyImage");
+	private String addVehiclePolicyImgId = "au.com.suncorp.marketplace:id/addVehiclePolicyImage";
+	private By addVehiclePolicyActionTxt = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyActionText");
+	private String addVehiclePolicyActionTxtId = "au.com.suncorp.marketplace:id/addVehiclePolicyActionText";
+	private By addVehiclePolicyInfo1Txt = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyInfo1Text");
+	private By addVehiclePolicyInfo2Txt = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyInfo2Text");
+	private By addInsurancePolicyLabel =  By.id("au.com.suncorp.marketplace:id/addInsurancePolicyLabel");
+	
+	
 	//Vehicles Dimension background Image
 	private By vehicleDimensionBkgrndImg = By.id("au.com.suncorp.marketplace:id/vehiclePillarBackground");
 	private String vehicleDimensionBkgrndImgId = "au.com.suncorp.marketplace:id/vehiclePillarBackground";
@@ -45,7 +55,79 @@ public class VehiclesPage extends BasePage {
 	public void scrollToVehicleDimensionBkgrndImg() {
 		scrollToElement(vehicleDimensionBkgrndImgId, "id", 20);
 	}
+	
+	// 
+	
+	public WebElement checkAddInsurancePolicyLabel() {
+		
+		return find(addInsurancePolicyLabel);
+	}
+	public WebElement checkAddVehiclePolicyImage() {
+		return find(addVehiclePolicyImg);
+	}
+	
+	public WebElement isAddVehiclePolicyImageDisplayed() {
 
+		return find(addVehiclePolicyImg,1);
+	}
+	
+	public WebElement checkAddVehiclePolicyInfo1Txt() {
+		return find(addVehiclePolicyInfo1Txt);
+	}
+	
+	public String getAddVehiclePolicyInfo1Txt() {
+		return find(addVehiclePolicyInfo1Txt).getText();
+	}
+	
+	public WebElement checkAddVehiclePolicyInfo2Txt() {
+		return find(addVehiclePolicyInfo2Txt);
+	}
+	
+	public String getAddVehiclePolicyInfo2Txt() {
+		return find(addVehiclePolicyInfo2Txt).getText();
+	}
+	
+	public WebElement checkAddVehiclePolicyActionTxt() {
+		return find(addVehiclePolicyActionTxt);
+	}
+	
+	public String getAddVehiclePolicyActionTxt() {
+		return find(addVehiclePolicyActionTxt).getText();
+	}
+	
+	public WebElement isAddVehiclePolicyActionTxtDisplayed() {
+
+		return find(addVehiclePolicyActionTxt,1);
+	}
+
+	public void tapAddAVechilesPolicy() {
+		
+		tapElement(addVehiclePolicyActionTxt);
+		
+	}
+	
+	public void scrollToAddVechilePolicyImage() {
+
+		if (getScreenHeight()>1920) {
+			scrollToElement(addVehiclePolicyImgId, "id", 45);
+
+		}
+		else {
+			scrollToElement(addVehiclePolicyImg,"deepdown");
+		}
+	}
+	
+	public void scrollToaddVehiclePolicyActionText() {
+
+		if (getScreenHeight()>1920) {
+			scrollToElement(addVehiclePolicyActionTxtId, "id", scrollableId, 30);
+
+		}
+		else {
+			scrollToElement(addVehiclePolicyActionTxt,"deepdown");
+		}
+	}
+	
 	//Vehicle tile common elements utilization
 	public WebElement checkVehicleServicesImage() {
 		return find(vehicleServicesImg);
@@ -101,7 +183,7 @@ public class VehiclesPage extends BasePage {
 
 		tapElement(checkVehiclesServicesBtn());
 	}
-
+	
 	public void scrollToVechilesTile() {
 
 		if (getScreenHeight()>1920) {
@@ -168,6 +250,7 @@ public class VehiclesPage extends BasePage {
 	public void waitForDataToLoad() {
 		waitForElementToDisappear(loadingIndicator);
 	}
+
 
 
 }

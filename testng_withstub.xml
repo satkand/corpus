@@ -8,12 +8,12 @@
 				
 		 			<!-- Property-->
 		 			 			
-		 			<class name="test.marketplace.property.PropertyDetailsTest">
+		 			<!-- <class name="test.marketplace.property.PropertyDetailsTest">
 		 				<parameter name="stub" value="true"></parameter>
 		 			</class>
 		 			<class name="test.marketplace.property.PropertyExplorerTest">
 		 				<parameter name="stub" value="true"></parameter>
-		 			</class>	 	
+		 			</class>	 	 -->
 		 			
 		 			<!-- Vehicles -->
 		 			<class name="test.marketplace.vehicles.VehiclesTest">
@@ -22,7 +22,7 @@
 		 			
 		 			
 		 			<!-- Wealth -->
-		 			<class name="test.marketplace.wealth.FinanceTest">
+		 			<!-- <class name="test.marketplace.wealth.FinanceTest">
 		 				<parameter name="stub" value="true"></parameter>
 		 			</class>
 		 			<class name="test.marketplace.wealth.SpendingsTest">
@@ -34,7 +34,7 @@
 		 			</class>
 		 			<class name="test.marketplace.property.HomePropertyTest">
 		 				<parameter name="stub" value="true"></parameter>
-		 			</class>	
+		 			</class>	 -->
 <!-- 		 				<class name="test.marketplace.portfolio.AddPolicyTest"> -->
 <!-- 		 				<parameter name="stub" value="true"></parameter> -->
 <!-- 		 			</class> -->

@@ -15,7 +15,7 @@ public class VehiclesTest extends App {
 	// 507 - Scenario 1
 	// 507 - Scenario 2
 	// 1052 - Scenario 1
-	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
+	//	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesListOnVehiclesPage() {
 		navigateToVehiclesTab("hasVehicles");
 		vehiclesPage.waitForDataToLoad();
@@ -51,7 +51,7 @@ public class VehiclesTest extends App {
 	}
 
 	// 507 - Scenario 3
-	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
+	//	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testNavigatingToVehicleDetailsScreen(){
 		navigateToVehiclesTab("hasVehicles");
 		Assert.assertNotNull(vehiclesPage.checkViewDetailsButton(), "Vehicles Page - view details button not shown");
@@ -66,7 +66,7 @@ public class VehiclesTest extends App {
 	 * Test case: DMPM-5136 - Display vehicle services tile
 	 */
 	@TestDetails(story1 = "DMPM-4609:DMPM-5136")
-	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
+	//	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesTile()
 	{
 		//Step 1, 2 & 3: Login to App and then navigate Vehicles Dimension
@@ -78,21 +78,22 @@ public class VehiclesTest extends App {
 
 		//Validate Vehicles services tile title
 		verifyVehiclesTileImage();
-		
+
 		//Validate Vehicles services tile description
 		verifyVehiclesTileDesc();
-		
+
 		//Validate Vehicles services tile button
 		verifyVehiclesTileBtn();
 	}
-	
-	
+
+
 	/*
+
 	 * Story: DMPM-5582
 	 * Test case: DMPM-6034 - Display background image - Vehicle Dimension
 	 */
 	@TestDetails(story1 = "DMPM-5582:DMPM-6034")
-	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
+//	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesDimensionBkgrndImg()
 	{
 		//Step 1: Login to App and then navigate Vehicles Dimension
@@ -103,6 +104,57 @@ public class VehiclesTest extends App {
 
 		//Step 3: Validate Vehicles services tile title
 		Assert.assertNotNull(vehiclesPage.checkVehicleDimensionBkgrndImg(), "Vehicles Page- Vehicles services background image not shown");
+	}
+
+	/* Story: DMPM-5356
+	 * Test case: DMPM-5728 - Add Vehicle Policy-Registered User
+	 */
+	@TestDetails(story1 = "DMPM-5356:DMPM-5728")
+	@Test(groups = {"marketplace", "Vehicle dimension", "priority-medium"})
+	public void testVehiclesAddAPolicy()
+	{
+		//Step 1, 2 & 3: Login to App and then navigate Vehicles Dimension
+		navigateToVehiclesTab("hasVehicles");
+		vehiclesPage.waitForDataToLoad();
+
+		//Step 4
+		//Validate add a vehicles policy image.
+		verifyAddVehiclesPolicyImage();
+
+		//Validate add a vehicles policy action text and button
+		verifyAddVehiclesPolicyActionText();;
+		//		
+		//Validate add a vehicles policy info text 1 and 2
+		verifyAddVehiclesPolicyInfo();
+
+		//Select add a vehicles policy function 
+		vehiclesPage.tapAddAVechilesPolicy();
+		Assert.assertNotNull(vehiclesPage.checkAddInsurancePolicyLabel(), "Add insurance policy page not displayed");
+	}
+
+	private void verifyAddVehiclesPolicyImage() {
+		if(vehiclesPage.isAddVehiclePolicyImageDisplayed()==null) {
+			vehiclesPage.scrollToAddVechilePolicyImage();
+		}
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyImage(), "Add a policy image not shown");
+	}
+
+	private void verifyAddVehiclesPolicyInfo() {
+		if(vehiclesPage.isAddVehiclePolicyActionTxtDisplayed()==null) {
+			vehiclesPage.scrollToaddVehiclePolicyActionText();
+		}
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyInfo1Txt(), "Add a policy info1 not shown");
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyInfo2Txt(), "Add a policy info2 not shown");
+		Assert.assertEquals(vehiclesPage.getAddVehiclePolicyInfo1Txt(), Copy.ADD_A_VEHICLE_POLICY_INFO1,"Add a vehicles info1 text is not as expected");
+		Assert.assertEquals(vehiclesPage.getAddVehiclePolicyInfo2Txt(), Copy.ADD_A_VEHICLE_POLICY_INFO2,"Add a vehicles info2 text is not as expected");
+	}
+
+	private void verifyAddVehiclesPolicyActionText() {
+		if(vehiclesPage.isAddVehiclePolicyActionTxtDisplayed()==null) {
+			vehiclesPage.scrollToaddVehiclePolicyActionText();
+		}
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyActionTxt(), "Add a policy action button not shown");
+		Assert.assertEquals(vehiclesPage.getAddVehiclePolicyActionTxt(), Copy.ADD_A_VEHICLE_POLICY,"Add a vehicles Tile button text is not as expected");
 	}
 
 	private void verifyVehiclesTileBtn() {
@@ -135,7 +187,7 @@ public class VehiclesTest extends App {
 		}
 		Assert.assertNotNull(vehiclesPage.checkVehicleServicesTitle(), "Vehicles Page = Vehicles Tile title not shown");
 		Assert.assertEquals(vehiclesPage.getVehicleServicesTitle(), Copy.VEHICLE_SERVICES_TITLE,"Vehicles Page = Vehicles Tile title not shown");
-		
+
 	}
 
 	private void navigateToVehiclesTab(String loginType) {
