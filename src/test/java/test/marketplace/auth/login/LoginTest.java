@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.Copy;
 import pages.App;
 
 public class LoginTest extends App {
@@ -159,9 +160,6 @@ public class LoginTest extends App {
 
 	@Test (groups = {"DMPM-43", "DMPM-163", "DMPM-1135", "DMPM-1136", "marketplace", "login", "priority-high"})
 	public void testValidCredentials() {
-		if(loginAuthPage.checkChangeAccountButton() != null) {
-			loginAuthPage.tapChangeAccountButton();
-		}
 		navigateToLoginScreen();
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
@@ -183,8 +181,171 @@ public class LoginTest extends App {
 		Assert.assertNull(loginPage.checkSnackbarText(), "Login Screen - The snackbar still displayed");
 	}
 	
+	// DMMPM-3729 Scenario 1, 2
+	@Test (groups = {"DMPM-3729", "DMPM-4767", "DMPM-4770", "marketplace", "login", "priority-high"})
+	public void testForgotSuncorpLoginPassword() {
+		navigateToLoginScreen();
+		
+		Assert.assertNotNull(loginPage.checkForgotPasswordButton(), "Login Page - Forgot Password button is not displayed");
+		
+		loginPage.tapForgotPassword();
+		Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password page");
+		Assert.assertEquals(loginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "Reset Password title does not match");
+		Assert.assertNotNull(loginPage.checkResetPasswordDescription(), "Reset Password - Description is not displayed");
+		Assert.assertEquals(loginPage.getResetPasswordDescription(), Copy.RESET_PASSWORD_DESCRIPTION_TEXT, "Reset Password description does not match");
+		Assert.assertNotNull(loginPage.checkResetPasswordEmailField(), "Reset Password - Email Field is not displayed");
+		Assert.assertNotNull(loginPage.checkResetLinkButton(), "Reset Password - Send Reset Link button is not displayed");
+		
+		loginPage.tapResetPasswordBackButton();
+		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not naviagted back to the Login Page");
+		//Blank email value
+		loginPage.enterEmail("");
+		loginPage.tapDeviceBackButton();
+		loginPage.tapForgotPassword();
+		Assert.assertEquals(loginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "User is not navigated to the Reset Password");
+		Assert.assertEquals(loginPage.getResetPasswordEmailValue(), "", "Reset Password - Email field is not empty");
+		loginPage.tapResetPasswordBackButton();
+		
+		//Invalid email valid
+		loginPage.enterEmail(utils.readTestData("loginCredentials", "invalidCredentials", "emailIncorrectFormat1"));
+		loginPage.tapDeviceBackButton();
+		loginPage.tapForgotPassword();
+		Assert.assertEquals(loginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "User is not navigated to the Reset Password");
+		Assert.assertEquals(loginPage.getResetPasswordEmailValue(), "", "Reset Password - Email field is not empty");
+		loginPage.tapResetPasswordBackButton();
+		
+		//Valid email value
+		loginPage.enterEmail(utils.readTestData("loginCredentials","validLoginCredentials", "login"));
+		loginPage.tapDeviceBackButton();
+		loginPage.tapForgotPassword();
+		Assert.assertEquals(loginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "User is not navigated to the Reset Password");
+		Assert.assertEquals(loginPage.getResetPasswordEmailValue(), utils.readTestData("loginCredentials","validLoginCredentials", "login"), "Reset Password - Email does not match with the email entered in login page");
+		loginPage.tapResetPasswordBackButton();
+		
+		loginPage.tapBackButton();
+		
+		//Navigate to Login Screen via Suncorp Insurance Credentials
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome Page - User is not navigated to the Welcome Page");
+		welcomePage.tapRegisterButton();
+		Assert.assertEquals(getStartedPage.getGetStartedPageTitleValue().replace("\n", " "), utils.readTestData("copy", "getStartedPage", "getStartedPageTitle"), "Get Started - User is not navigated to the Get Started Page");
+		getStartedPage.tapSuncorpBrandIcon();
+		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
+		getStartedPage.tapSuncorpInsuranceButton();
+		loginPage.tapForgotPassword();
+		Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
+		Assert.assertEquals(loginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "Reset Password title does not match");
+		Assert.assertNotNull(loginPage.checkResetPasswordDescription(), "Reset Password - Description is not displayed");
+		Assert.assertEquals(loginPage.getResetPasswordDescription(), Copy.RESET_PASSWORD_DESCRIPTION_TEXT, "Reset Password description does not match");
+		Assert.assertNotNull(loginPage.checkResetPasswordEmailField(), "Reset Password - Email Field is not displayed");
+		Assert.assertNotNull(loginPage.checkResetLinkButton(), "Reset Password - Send Reset Link button is not displayed");
+	}
+	
+	// DMPM-3729 Scenario 3, 4, 5, 6, 7
+	@Test (groups = {"DMPM-3729", "DMPM-4773", "DMPM-4774", "DMPM-4776", "DMPM-4777", "DMPM-4778 ", "marketplace", "login", "priority-medium"})
+	public void testResetPasswordEmailValidations() {
+		String errorVal = "";
+		navigateToLoginScreen();
+	
+		loginPage.tapForgotPassword();
+		Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
+		
+		/** Checking validations as the email is typed in **/
+		//Only one character typed in
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailMinLength"));
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_LONG_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		
+		//As user types in more than 100 characters
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailExceedsMaxLengthInvalid"));
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_LONG_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		
+		/** Tapping on the Send Reset Link button **/
+		//Empty Email Error
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailEmpty"));
+		loginPage.tapResetLinkButton();
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_EMPTY_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		
+		//Email length more than 100 characters
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailExceedsMaxLength"));
+		loginPage.tapResetLinkButton();
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_LONG_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		
+		//Email length less than 2 characters
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailMinLength"));
+		loginPage.tapResetLinkButton();
+		errorVal = loginPage.getResetPasswordEmailErrorVal().replace("\n\n", " ");
+		Assert.assertEquals(errorVal, Copy.RESET_PASSWORD_SHORT_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		
+		//Incorrect email format 1
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat1"));
+		loginPage.tapResetLinkButton();
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_INVALID_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		
+		//Incorrect email format 2
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat2"));
+		loginPage.tapResetLinkButton();
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_INVALID_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		
+		/** Correcting invalid email id **/
+		//Enter incorrect email id and correct the invalid data
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat1"));
+		loginPage.tapResetLinkButton();
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_INVALID_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
+		Assert.assertNull(loginPage.checkResetPasswordEmailError(), "Reset Password - Error message is still displayed");
+		
+		/** Put focus back on Field **/
+		loginPage.enterResetPasswordEmail(utils.readTestData("loginCredentials", "invalidCredentials","emailIncorrectFormat1"));
+		loginPage.tapResetLinkButton();
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_INVALID_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+		loginPage.tapDeviceBackButton();
+		loginPage.tapResetPasswordEmailField();
+		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_INVALID_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
+	}
+	
+	// DMPM-3729 Scenario 8
+		@Test (groups = {"DMPM-3729", "DMPM-4785", "marketplace", "login", "priority-high"})
+		public void testSuccessfulSendEmailLink() {
+			navigateToLoginScreen();
+			
+			loginPage.tapForgotPassword();
+			Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
+			loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
+			loginPage.tapResetLinkButton();
+			
+			//TODO: Following code will part of later story which is not Manual Tested yet
+//			common.waitForSuccessLoadingSpinnerToDisappear();
+//			Assert.assertNotNull(loginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
+//			Assert.assertEquals(loginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
+//			Assert.assertEquals(loginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
+			
+			Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"), "Login Page - User is not navigated to the Log in page");
+			loginPage.tapBackButton();
+			
+			Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome Page - User is not navigated to the Welcome Page");
+			welcomePage.tapRegisterButton();
+			Assert.assertEquals(getStartedPage.getGetStartedPageTitleValue().replace("\n", " "), utils.readTestData("copy", "getStartedPage", "getStartedPageTitle"), "Get Started - User is not navigated to the Get Started Page");
+			getStartedPage.tapSuncorpBrandIcon();
+			Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
+			getStartedPage.tapSuncorpInsuranceButton();
+			loginPage.tapForgotPassword();
+			Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
+			loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
+			loginPage.tapResetLinkButton();
+			
+			//TODO: Following code will part of later story which is not Manual Tested yet
+//			common.waitForSuccessLoadingSpinnerToDisappear();
+//			Assert.assertNotNull(loginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
+//			Assert.assertEquals(loginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
+//			Assert.assertEquals(loginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
+			
+			Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"), "Login Page - User is not navigated to the Log in page");
+		}
+	
 	
 	private void navigateToLoginScreen() {
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - Suncorp image is not shown");
 		welcomePage.tapLoginButton();
 	}
