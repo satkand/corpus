@@ -54,7 +54,7 @@ public class PolicyDetailsPage extends BasePage {
 	private By policyMaintenanceErrorMessage = By
 			.id("au.com.suncorp.marketplace:id/policyUnderPolicyMaintenanceSubtitle");
 	private By policyActiveStatus = By.id("au.com.suncorp.marketplace:id/policyActiveStatusText");
-	private By policyrenewalStatus = By.id("au.com.suncorp.marketplace:id/renewalStatusText");
+	private By policyrenewalStatus = By.id("PolicyDetails.PolicyStatus");
 	private By renewNowButton = By.id("au.com.suncorp.marketplace:id/renewNowButton");
 	private String optionalCoverTypeLabelId = "au.com.suncorp.marketplace:id/optionalCoverType";
 	private String riskViewDetailsId = "au.com.suncorp.marketplace:id/riskViewDetails";

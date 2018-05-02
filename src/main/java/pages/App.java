@@ -26,7 +26,6 @@ import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.claimdetails.ClaimDetailsPage;
 import pages.marketplace.claimdetails.ClaimIntroPage;
 import pages.marketplace.claimdetails.MakeAClaimPage;
-import pages.marketplace.claimdetails.NextActionWebViewPage;
 import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
@@ -120,7 +119,6 @@ public class App extends BaseTest {
 	public RiskDetailsPage riskDetailsPage = null;
 	public RenewPolicyPage renewPolicyPage = null;
 	public ClaimDetailsPage claimDetailsPage = null;
-	public  NextActionWebViewPage nextActionWebViewPage=null;
 	public ClaimIntroPage claimIntroPage =null;
 	public MakeAClaimPage makeAClaimPage =null;
 	public PropertyFullScreenMap propertyFullScreenMap = null;
@@ -192,7 +190,6 @@ public class App extends BaseTest {
 		riskDetailsPage = new RiskDetailsPage(driver);
 		renewPolicyPage = new RenewPolicyPage(driver);
 		claimDetailsPage = new ClaimDetailsPage(driver);
-		nextActionWebViewPage = new NextActionWebViewPage(driver);
 		claimIntroPage = new ClaimIntroPage(driver);
 		makeAClaimPage = new MakeAClaimPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);

@@ -7,6 +7,7 @@ import automation.framework.common.Copy;
 import automation.framework.common.TestDetails;
 import automation.framework.common.TestDetails.Priority;
 import pages.App;
+import pages.marketplace.common.WebviewPage;
 
 public class VehicleClaimDetailsTest extends App{
 
@@ -221,8 +222,8 @@ public class VehicleClaimDetailsTest extends App{
 		for (int i = 0; i < nextActions.length; i++) {
 			claimDetailsPage.tapNextActionsLabel(nextActions[i]);
 			Assert.assertNotNull(claimDetailsPage.checkClaimDetailsTitle(mcmTitle[i]), mcmTitle + " is not displayed");
-			Assert.assertNotNull(webviewPage.checkWebview(), "");
-			nextActionWebViewPage.tapCloseButton();
+			Assert.assertNotNull(webviewPage.checkWebview(), "not a webview");
+			webviewPage.tapWebviewCloseButton();
 			common.waitForLoadingIndicatorToDisappear();
 			Assert.assertNotNull(claimDetailsPage.checkClaimDetailsTitle(Copy.CLAIM_DETAILS_TITLE), "");
 		}

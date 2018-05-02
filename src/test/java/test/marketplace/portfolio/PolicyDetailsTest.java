@@ -334,10 +334,8 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.tapProductByInstance(0);
 		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertEquals(policyDetailsPage.getPolicyMaintenanceTitle(), Copy.POLICY_MAINTAINCE_TITLE,
-				"Policy maintiance title is incorrect");
-		Assert.assertEquals(policyDetailsPage.getPolicyMaintenanceErrorMessageText(),
-				Copy.POLICY_MAINTAINCE_ERROR_MESSAGE, "Policy maintiance error message is incorrect");
+		Assert.assertEquals(policyDetailsPage.getPolicyMaintenanceTitle(), Copy.POLICY_MAINTAINCE_TITLE, "Policy maintiance title is incorrect");
+		Assert.assertEquals(policyDetailsPage.getPolicyMaintenanceErrorMessageText(),Copy.POLICY_MAINTAINCE_ERROR_MESSAGE, "Policy maintiance error message is incorrect");
 		policyDetailsPage.tapNavigateBackButton();
 		myProductsPage.checkMyProductsTitle();
 		myProductsPage.tapProductByInstance(1);
