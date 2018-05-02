@@ -520,7 +520,7 @@
 		"pwd": "Password1"
 	},
 	"hasSuncorpBankAccounts" :{
-		"login": "ab@ab.com",
+		"login": "digi@v.com",
 		"pwd": "Password1",
 		"netWorthAmount": "$7,550.35",
 		"bankAccounts": "",
@@ -864,7 +864,7 @@
 	},
 	"digivault" : {
 		"hasItems" : {
-			"login" : "b@b.com",
+			"login" : "a@b.c",
 			"pwd" : "Password1",
 			"newname" : "NewName",
 			"folderName" : "ab",
@@ -873,6 +873,17 @@
 			"folder1" : "folder 1",
 			"rootFolder" : "Document storage",
 			"images" : ["File A", "File B" , "File C"]
+		}
+	},
+	"ffi" : {
+		"hasData" :{
+			"login" : "digi@v.com",
+			"pwd" : "Password1",
+			"month" : "February 2018",
+			"zeroSpending" : "$0.00"
+		},
+		"hasNoData" : {
+			"month" : "April 2018"
 		}
 	},
 	"registration" : {

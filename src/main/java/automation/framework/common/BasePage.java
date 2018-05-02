@@ -298,6 +298,16 @@ public class BasePage {
 		}
 	}
 
+	protected void scrollUpToElement(By locator, String... args) {
+		int numOfSwipes = 0;
+		while (find(locator,7) == null && numOfSwipes <= 15) {
+			if(args.length < 1) {
+				swipeScreen("up");
+			}
+			numOfSwipes++;
+		}
+	}
+	
 	protected WebElement scrollHorizontallyToElement(String locatorString, String locatorType,String scrollableId,int... args) {
 
 		WebElement element =null;
