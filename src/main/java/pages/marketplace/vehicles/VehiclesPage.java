@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import automation.framework.common.BasePage;
-import automation.framework.common.Copy;
 import io.appium.java_client.AppiumDriver;
 
 public class VehiclesPage extends BasePage {
@@ -32,10 +29,22 @@ public class VehiclesPage extends BasePage {
 	private By vehicleServicesBtn = By.id("au.com.suncorp.marketplace:id/vehicleServicesButton");
 	private String vehicleServicesBtnId = "au.com.suncorp.marketplace:id/vehicleServicesButton";
 	private String scrollableId = "au.com.suncorp.marketplace:id/navigationViewPager";
+	
+	//Vehicles Dimension background Image
+	private By vehicleDimensionBkgrndImg = By.id("au.com.suncorp.marketplace:id/vehiclePillarBackground");
+	private String vehicleDimensionBkgrndImgId = "au.com.suncorp.marketplace:id/vehiclePillarBackground";
 
 	// TODO -> Cannot find this in ANdroid. But its there on iOS
 	private By checkClaimStatusButton = By.id("VehicleCell.ClaimLabel");
-
+	
+	//check vehicle dimension background image element
+	public WebElement checkVehicleDimensionBkgrndImg() {
+		return find(vehicleDimensionBkgrndImg);
+	}
+	
+	public void scrollToVehicleDimensionBkgrndImg() {
+		scrollToElement(vehicleDimensionBkgrndImgId, "id", 20);
+	}
 
 	//Vehicle tile common elements utilization
 	public WebElement checkVehicleServicesImage() {

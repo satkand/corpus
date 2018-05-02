@@ -73,6 +73,10 @@ public class SpendingsPage extends BasePage {
 	private By emptyTransactionsMessage = By.id("au.com.suncorp.marketplace:id/missingTransactionsHeading");
 	private By emptyTransactionsHintMessage = By.id("au.com.suncorp.marketplace:id/missingTransactionsBodyText");
 	
+	
+	private By topMostCategory = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/spendingItem'][1]");
+	
+	
 	public WebElement checkSpendingPageTitle() {
 		return find(spendingPageTitle,30);
 	}
@@ -267,6 +271,10 @@ public class SpendingsPage extends BasePage {
 	
 	public String getEmptyTransactionsHintMessage() {
 		return getText(emptyTransactionsHintMessage);
+	}
+	
+	public void tapTopmostCategory() {
+		tapElement(topMostCategory);
 	}
 }
 

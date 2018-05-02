@@ -20,6 +20,7 @@ public class ConfigPage extends BasePage {
 	private By  envSelector = By.id("au.com.suncorp.marketplace:id/environmentSpinner");
 	private By bankingBaseUrl = By.id("au.com.suncorp.marketplace:id/bankingBaseUrlEditText");
 	private By spendingUrl = By.id("au.com.suncorp.marketplace:id/spendingBaseUrlEditText");
+	private By spendingAccNumbers = By.id("au.com.suncorp.marketplace:id/spendingAccountNumbersEditText");
 	private By vehiclesBaseUrl = By.id("au.com.suncorp.marketplace:id/vehicleBaseUrlEditText");
 	private By portfolioBaseUrl = By.id("au.com.suncorp.marketplace:id/portfolioBaseUrlEditText");
 	
@@ -97,6 +98,7 @@ public class ConfigPage extends BasePage {
 		
 		// TODO: This hardcoding needs to removed, once we figure out a way to get the second ip from the list of ips on the mac mini
 		String baseURL = lookupProperty(configFile,"baseURL"); ;//IP.getHostAddress()+":4567/";
+		String accountNum = lookupProperty(configFile,"accNum");
 		System.out.println("stub:::"+stub+"::::::global");
 		typeValue(baseURL, globalBaseURL);
 		tapElement(applyGlobalBaseUrlButton);
@@ -123,8 +125,9 @@ public class ConfigPage extends BasePage {
 		}
 		if(stub.equalsIgnoreCase("spendings") && find(spendingUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::spendings");
-			clearValue(spendingUrl);
-			typeValue(baseURL, spendingUrl);
+	//		clearValue(spendingUrl);
+	//		typeValue(baseURL, spendingUrl);
+			typeValue(accountNum, spendingAccNumbers);
 			if(isKeyboardDisplayed()) {
 				dismissKeyboard();
 			}
@@ -140,8 +143,6 @@ public class ConfigPage extends BasePage {
 		if(stub.equalsIgnoreCase("memberLogin")) {
 			System.out.println("stub:::"+stub+"::::::memberLogin");
 			clearValue(globalBaseURL);
-			
-			typeValue("192.168.213.5:4567", globalBaseURL);
 			//mac mini
 			//typeValue("192.168.213.98:4567", globalBaseURL);
 			tapElement(applyGlobalBaseUrlButton);
@@ -193,7 +194,14 @@ public class ConfigPage extends BasePage {
 	
 	public void tapContinueButton() {
 		tapElement(continueButton);
-		
+	}
+	
+	public void tapContinueToDismiss() {
+		dismissKeyboard();
+		scrollToElement(continueBtnID, "id");
+		if (find(continueButton, 30) != null) {
+			tapElement(continueButton);
+		}
 	}
 
 }

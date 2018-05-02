@@ -114,6 +114,10 @@ public void tapHomeJourneyMenuItem() {
 		 return find(devSettings);
 	}
 	
+	public void scrollToDevSettings() {
+		scrollToElement(devSettings);
+	}
+	
 	public void tapDevSettings() {
 		find(devSettings, 30);
 		 tapElement(devSettings);
