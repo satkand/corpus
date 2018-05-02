@@ -70,7 +70,7 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapPlanningReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "planningReadMoreButtonLink"), "Planning card page - browser url is not valid");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 
 		// swipe to the next card
@@ -78,7 +78,7 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapHouseHuntingReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "houseHuntingReadMoreButtonLink"), "House Hunting card page - browser url is not valid");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 
 		// swipe to the next card
@@ -86,7 +86,7 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapGettingReadyReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "gettingReadyReadMoreButtonLink"), "Getting Ready card page - browser url is not valid");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 		
 		// swipe to the next card
@@ -94,7 +94,7 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapMovingInReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "movingInReadMoreButtonLink"), "Moving In card page - browser url is not valid");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 	}
 	
