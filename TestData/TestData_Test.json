@@ -5,9 +5,9 @@
     },
 	"PIN" :{
 		"loginWithExistingPin" : {
-			"login": "thisloginhaspin@haspin.com",
+			"login": "pinenabledtest@sun.com",
 			"pwd": "Password1",
-			"pin": "2580"
+			"pin": "1357"
 		},
 							"backup_loginWithExistingPin" : {
 								"login": "b@b.com",
@@ -999,7 +999,7 @@
 		},
 		"portfolio": {
 			"emptyStateLabel": "No products listed here yet",
-			"bottomSheetLabel": "What type of product?",
+			"addExistingProductScreenLabel": "Add existing product",
 			"availableBalanceLable": "Available balance",
 			"currentBalanceLabel": "Current balance",
 			"accountDetailsLabel": "Account Details",
@@ -1017,7 +1017,7 @@
 			"pinSuccessfullySetMessage": "PIN set up"
 		},		
 		"pinReAuthPasswordPage" : {
-			"forgottenPINPageTitle": "Forgotten password?",
+			"forgottenPINPageTitle": "Forgotten PIN",
 			"pinReAuthPasswordLabel": "Please enter your password to reset your PIN",
 			"passwordRequiredError" : "Field is required"
 		},

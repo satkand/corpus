@@ -43,10 +43,12 @@ public class MyProductsTest extends App {
 		
 		myProductsPage.tapAddExistingProductButton();
 		
-		Assert.assertNotNull(myProductsPage.checkBottomSheetLabel(), "My Products screen - Bottom sheet label is not present");
-		Assert.assertEquals(myProductsPage.getBottomSheetTitleText(), utils.readTestData("copy", "portfolio","bottomSheetLabel"));
-		Assert.assertNotNull(myProductsPage.checkInsurancePolicyBottomSheetButton(), "My Products screen - Insurance policy button on Bottom sheet label is not present");
-		Assert.assertNotNull(myProductsPage.checkBankAccountBottomSheetButton(), "My Products screen - Bank Account button is not present");
+		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Bottom sheet label is not present");
+		Assert.assertEquals(myProductsPage.getaddExistingProductScreenTitleText(), utils.readTestData("copy", "portfolio","addExistingProductScreenLabel"));
+		Assert.assertNotNull(myProductsPage.checkAddInsurancePolicyButton(), "My Products screen - Insurance policy button on Bottom sheet label is not present");
+		Assert.assertNotNull(myProductsPage.checkAddBankAccountButton(), "My Products screen - Bank Account button is not present");
+		Assert.assertNotNull(myProductsPage.checkAddSuperAccountButton(), "My Products screen - Super Account button is not present");
+
 	}
 	
 
@@ -57,15 +59,15 @@ public class MyProductsTest extends App {
 		
 		navigateToMyProductsScreen("emptylist","loginEmptyProdList");
 		myProductsPage.tapAddExistingProductButton();
-		myProductsPage.tapInsurancePolicyBottomSheetButton();
+		myProductsPage.tapAddInsurancePolicyButton();
 		Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
 		
 		myProductsPage.tapBackButton();
-		Assert.assertNull(myProductsPage.checkBottomSheetLabel(), "My Products screen - Bottom sheet label is still presented");	
+		Assert.assertNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");	
 		myProductsPage.tapAddExistingProductButton();
-		Assert.assertNotNull(myProductsPage.checkBottomSheetLabel(), "My Products screen - Bottom sheet label is not present");
+		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is not present");
 		
-		myProductsPage.tapBankAccountBottomSheetButton();
+		myProductsPage.tapAddBankAccountButton();
 		Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
 		
 		myProductsPage.tapBackButton();
@@ -80,57 +82,13 @@ public class MyProductsTest extends App {
 		navigateToMyProductsScreen("emptylist","loginEmptyProdList");
 		myProductsPage.tapAddExistingProductButton();
 		common.moveAppToBackground();
-		Assert.assertNull(myProductsPage.checkBottomSheetLabel(), "My Products screen - Bottom sheet label is still presented");
-		Assert.assertNull(myProductsPage.checkInsurancePolicyBottomSheetButton(), "My Products screen - Insurance policy button on Bottom sheet label is still present");
-		Assert.assertNull(myProductsPage.checkBottomSheetLabel(), "My Products screen - Bank Account button is still present");
+		Assert.assertNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");
+		Assert.assertNull(myProductsPage.checkAddInsurancePolicyButton(), "My Products screen - Insurance policy button on Bottom sheet label is still present");
+		Assert.assertNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Bank Account button is still present");
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products screen - title is not present");
 		
 	}
 	
-	// DMPM-240 - Scenario 2 -Display bank account
-	/*167 - Scenario 1 - DMPM-466
-	 DMPM-2988 : Update mapping for banking products*/
-	@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","marketplace", "portfolio", "priority-minor"})
-	public void testDisplayBankAccounts(){
-		
-		navigateToMyProductsScreen("prodList","loginProdList");
-		
-		// fetch the actual banking products shown on the current page
-		List<String> descriptionList = myProductsPage.fetchProductTypeTextList();
-		List<String> bsbList = myProductsPage.fetchBsbList();
-		List<String> accountNumberList = myProductsPage.fetchAccountNumberTextList();
-		List<String> avaialbleBalanceList = myProductsPage.fetchAvailableBalanceTextList();
-		List<String> currentBalanceList = myProductsPage.fetchCurrentBalanceTextList();
-		
-		// Loading expected data from data sheet
-		List<Object> bankingProducts = utils.readTestDataList("portfolio","loginProdList","bankingProducts");
-		for (Object bankingProduct : bankingProducts) {
-			HashMap<String, String> bankingProductItem = (HashMap<String, String>)bankingProduct;
-			String accountType = bankingProductItem.get("description");
-			String accNumber = bankingProductItem.get("accountNumber");
-			String avaialbleBalance = bankingProductItem.get("availableBalance");
-			String currentBalance = bankingProductItem.get("currentBalance");
-			String bsb = bankingProductItem.get("bsb");
-
-			Assert.assertEquals(descriptionList.get(0), accountType, "My Products Page - Account Type is not matching");
-			descriptionList.remove(0);
-			Assert.assertEquals(accountNumberList.get(0), accNumber, "My Products Page - Account Number is not matching");
-			accountNumberList.remove(0);
-			Assert.assertEquals(avaialbleBalanceList.get(0), avaialbleBalance, "My Products Page - Available Balance is not matching");
-			avaialbleBalanceList.remove(0);
-			Assert.assertEquals(currentBalanceList.get(0), currentBalance, "My Products Page - Current Balance is not matching");
-			currentBalanceList.remove(0);
-			Assert.assertEquals(bsbList.get(0), bsb, "My Products Page - BSB is not matching");
-			bsbList.remove(0);
-			
-		}
-		Assert.assertNotNull(myProductsPage.checkProductTypeImage(), "My products screen - Product Type image is not present");
-		Assert.assertNotNull(myProductsPage.checkAvailableBalanceLable(), "My products screen - Available balance lable is not present");
-		Assert.assertNotNull(myProductsPage.checkCurrentBalanceLabel(), "My products screen - Current balance lable is not present");
-		Assert.assertNotNull(myProductsPage.checkViewDetailsButton(), "My Products Page - View details button is not present");
-		
-			
-	}
 	
 	/*167 - Scenario 2 - DMPM-467*/
 	@Test (groups = {"DMPM-167", "DMPM-467","marketplace", "portfolio", "priority-minor"})
@@ -323,7 +281,7 @@ public class MyProductsTest extends App {
 	}
 	
 	// DMPM-2599 Display superannuation products
-	@Test(groups = { "DMPM-2599", "DMPM-3118", "marketplace", "portfolio", "priority-major" })
+	@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2599", "DMPM-3118", "marketplace", "portfolio", "priority-major" })
 	public void testWealthProducts()
 	{
 		
@@ -434,10 +392,10 @@ public class MyProductsTest extends App {
 			"DMPM-475", "DMPM-476", "marketplace", "portfolio", "priority-major" })
 	public void testErrorValidationsOnAddBankAccount() {
 
-		navigateToMyProductsScreen("bankingProduct", "loginEmptyProdList");
+		navigateToMyProductsScreen("emptylist", "loginEmptyProdList");
 		myProductsPage.tapAddExistingProductButton();
-		Assert.assertNotNull(myProductsPage.checkBottomSheetLabel(),"My Products screen - Bottom sheet label is not present");
-		myProductsPage.tapBankAccountBottomSheetButton();
+		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(),"My Products screen - Add exisitng product screen title is not present");
+		myProductsPage.tapAddBankAccountButton();
 		Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
 		
 		myProductsPage.tapAccountNumberField();
@@ -448,7 +406,7 @@ public class MyProductsTest extends App {
 		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "mandatoryError"),"My Products: Add Bank Account screen: MAccount Number field is mandatory error message is not displayed");
 		
 		// Check inline error message for invalid character while typing
-		myProductsPage.enterAccountNumber(utils.readTestData("portfolio", "loginEmptyProdList", "addBankAccount", "inValidCharacterAccountNumber"));
+		myProductsPage.enterAccountNumber(utils.readTestData("portfolio","loginProdList","addBankAccount","inValidCharacterAccountNumber"));
 		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "invalidAccountNumber"),"My Products: Add Bank Account screen: Invalid characters error message not displayed");
 		
 		//Check inline error message for invalid character after tapping on Add Account button
@@ -463,7 +421,7 @@ public class MyProductsTest extends App {
 		myProductsPage.clearAccountNumber();
 		
 		// Check inline error message for field length while typing
-		myProductsPage.enterAccountNumber(utils.readTestData("portfolio", "loginEmptyProdList", "addBankAccount", "moreThanMaxAccountNumber"));
+		myProductsPage.enterAccountNumber(utils.readTestData("portfolio", "loginProdList", "addBankAccount", "moreThanMaxAccountNumber"));
 		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "lengthError"),"My Products: Add Bank Account screen: Account Number field max length error message not displayed.");
 		
 		// Check inline error message for field length is displayed on tapping Add Account button
@@ -477,15 +435,17 @@ public class MyProductsTest extends App {
 		myProductsPage.clearAccountNumber();
 		
 		// check the inline error message disappears when user types correct Account number
-		myProductsPage.enterAccountNumber(utils.readTestData("portfolio", "loginEmptyProdList", "addBankAccount", "validAccountNumber"));
+		myProductsPage.enterAccountNumber(utils.readTestData("portfolio", "loginProdList", "addBankAccount", "validAccountNumber"));
 		Assert.assertNull(myProductsPage.checkAccountNumberError(),"My Products: Add Bank Account screen: Error message is still displayed");
 		
 
 	}
 	
-	
+	// DMPM-240 - Scenario 2 -Display bank account
+		/*167 - Scenario 1 - DMPM-466
+		 DMPM-2988 : Update mapping for banking products*/
 	//DMPM-5555 Update displaying of Everyday Accounts
-	@Test (groups = {"DMPM-5555", "DMPM-6043","marketplace", "portfolio", "priority-minor"})
+	@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-5555", "DMPM-6043","marketplace", "portfolio", "priority-minor"})
 	public void testTransactionBankAccountDetails(){
 	
 		navigateToMyProductsScreen("bankingProduct", "everyDayAccount");
@@ -523,8 +483,11 @@ public class MyProductsTest extends App {
 		
 	}
 	
+	// DMPM-240 - Scenario 2 -Display bank account
+		/*167 - Scenario 1 - DMPM-466
+		 DMPM-2988 : Update mapping for banking products*/
 	//DMPM-3700 Update displaying of Term deposit Accounts
-		@Test (groups = {"DMPM-3700", "DMPM-6009","marketplace", "portfolio", "priority-minor"})
+		@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-3700", "DMPM-6009","marketplace", "portfolio", "priority-minor"})
 		public void testTermDepositsBankAccountDetails(){
 		
 			navigateToMyProductsScreen("bankingProduct", "termDepositAccount");
@@ -562,8 +525,11 @@ public class MyProductsTest extends App {
 			
 		}
 	
+		// DMPM-240 - Scenario 2 -Display bank account
+		/*167 - Scenario 1 - DMPM-466
+		 DMPM-2988 : Update mapping for banking products*/
 	// DMPM-2607 Display line of credit loan products
-	@Test(groups = { "DMPM-2607", "DMPM-6008", "marketplace", "portfolio", "priority-minor" })
+	@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2607", "DMPM-6008", "marketplace", "portfolio", "priority-minor" })
 	public void testLineOfCreditLoanBankAccountDetails() {
 
 		navigateToMyProductsScreen("bankingProduct", "lineOfCreditAccount");
@@ -606,9 +572,11 @@ public class MyProductsTest extends App {
 
 	}
 	
-	
+	// DMPM-240 - Scenario 2 -Display bank account
+		/*167 - Scenario 1 - DMPM-466
+		 DMPM-2988 : Update mapping for banking products*/
 	// DMPM-2605 Display variable and fixed rate loan products
-		@Test(groups = { "DMPM-2605", "DMPM-6044", "marketplace", "portfolio", "priority-minor" })
+		@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2605", "DMPM-6044", "marketplace", "portfolio", "priority-minor" })
 		public void testLoanBankAccountDetails() {
 
 			navigateToMyProductsScreen("bankingProduct", "loanAccount");
@@ -667,7 +635,7 @@ public class MyProductsTest extends App {
 		
 		// DMPM-1460 UI updates on the Products Portfolio screen
 	@DataProvider(name = "AddExistingProduct")
-	public static Object[][] addExistingProduct1() {
+	public static Object[][] addExistingProduct() {
 
 		return new Object[][] { { "policy1", 1 } };
 
@@ -714,7 +682,7 @@ public class MyProductsTest extends App {
 			loginToApp(utils.readTestData("portfolio","bankingProducts", user,"login"), utils.readTestData("portfolio","bankingProducts",user, "pwd"));
 			productFound = true;
 		}
-		if(productFound = false)
+		if(productFound == false)
 		{
 			loginToApp(utils.readTestData("portfolio",user,"login"), utils.readTestData("portfolio",user,"pwd"));
 

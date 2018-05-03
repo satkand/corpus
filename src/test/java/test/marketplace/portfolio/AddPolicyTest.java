@@ -96,8 +96,8 @@ public class AddPolicyTest extends App{
 		myProductsPage.scrollToAddExistingProductButton();
 		
 		myProductsPage.tapAddExistingProductButton();
-		Assert.assertNotNull(myProductsPage.checkInsurancePolicyBottomSheetButton(), "My Products screen - Insurance policy button on Bottom sheet label is not present");
-		myProductsPage.tapInsurancePolicyBottomSheetButton();
+		Assert.assertNotNull(myProductsPage.checkAddInsurancePolicyButton(), "My Products screen - Insurance policy button on Bottom sheet label is not present");
+		myProductsPage.tapAddInsurancePolicyButton();
 			
 		Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
 		Assert.assertNotNull(addPolicyPage.checkForgotMyDetailsButton(), "Add policy screen - Forgotten my details button is not present");
