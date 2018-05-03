@@ -53,13 +53,14 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "dest@dest.com",
+			"login": "a@b.c",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••"
 		},
 		"invalidCredentials": {
 			"emailEmpty" : "",
 			"emailExceedsMaxLength": "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendb@j.c",
+			"emailExceedsMaxLengthInvalid" : "suahdabdkjbsabdhabdjdamnsdasndkjasnddndaksndaksjdkjndkandkandnsadlnadendjshdhjhnehebebeeeooejendbsdtehdikd",
 			"emailMinLength": "a",
 			"emailIncorrectFormat1": "a@.com",
 			"emailIncorrectFormat2": "a@b",
@@ -94,6 +95,7 @@
 		},
 		"propertyDetailsHighConfidence":{
 					"confidenceLevel":"High confidence",
+					"numberOfImages":"2",
 					"estimatedMarketValue": "$1,456,100,000 - $1,895,275,000"
 		},
 		"propertyExplorer":{
@@ -102,6 +104,11 @@
 					"clearSearchText":"1234567890ABCD#$%^",
 					"enterAdress":"1",
 					"highConfidenceAddress":"2"
+		},
+		"propertyHub":{
+					"login":"a@b.c",
+					"pwd":"Password1",
+					"searchText":"1"
 		},
 		"NoProperties":{
 					"login": "a@b.c",
@@ -147,6 +154,119 @@
 				}
 			]}
 		},
+	"claimDetails" :{
+		         "login": "a@b.c",
+				"pwd": "Password1",
+					"property":{
+					
+				        "claimLodged":{
+				          "claimNumber":"H00000001",
+				          "insuranceType":"Home Insurance",
+				          "homeRiskAddress":"Insured address",
+				          "homeRiskAddrPrimaryDesc":"530 Collins St, Melbourne",
+				          "homeRiskAddrSecondaryDesc":"VIC 3000",
+				          "whatHappened":"Natural Hazard",
+				          "accidentType":"Hail",
+				          "eventDate" :"Sunday 5 Jul 2015",
+				          "claimStageLabel" :"Stage 1 of 4",
+				          "claimStageValue" :"Claim lodged"
+				        },
+				        "claimInProgress":{
+				          "claimNumber":"H00000002",
+				          "claimStageLabel" :"Stage 2 of 4",
+				          "claimStageValue" :"Claim in progress"
+				        },
+				         "assessmentComplete":{
+				          "claimNumber":"H00000003",
+				          "claimStageLabel" :"Stage 3 of 4",
+				          "claimStageValue" :"Assessment complete",
+				          "excess":{
+				          "yourOutstandingExcess":"$3,000.00",
+				          "excessRecieved":"$976.55",
+				          "totalExcess":"$3,976.55"
+				           } 
+				        },
+				          "claimSettledAsAdvised":{
+				          "claimNumber":"H00000004",
+				          "claimStageLabel" :"Stage 4 of 4",
+				          "claimStageValue" :"Claim settled as advised"
+				        }	  	     
+				},
+				"vehicle":{
+					
+				        "claimLodged":{
+				          "claimNumber":"M00000001",
+				          "insuranceType":"Boat Insurance",
+				          "vehicleRisk":"Insured vehicle",
+				          "vehicleRiskPrimaryDesc":"2015 Boaty McBoatface",
+				          "vehicleRiskSecondaryDesc":"P1R4T3",
+				          "whatHappened":"Damage Whilst Boating",
+				          "accidentType":"Kraken attack",
+				          "eventDate" :"Sunday 5 Jul 2015",
+				          "claimStageLabel" :"Stage 1 of 4",
+				          "claimStageValue" :"Claim lodged",
+				          "excess":{
+				            "yourTotalExccess":"$500.00",
+				            "zeroExcess":{
+				            "claimNumber":"M00000005",
+				            "yourTotalExccess":"$0.00"
+				            }   
+				          }
+				          
+				        },
+				        "damageReview":{
+				          "claimNumber":"M00000002",
+				          "claimStageLabel" :"Stage 2 of 4",
+				          "claimStageValue" :"Damage review"
+				        },
+				         "repair":{
+				          "claimNumber":"M00000003",
+				          "claimStageLabel" :"Stage 3 of 4",
+				          "claimStageValue" :"Repair",
+				          "excess":{
+				          "referenceNumber":"PRN12345678901234",
+				          "paidExcess":"$888.88"
+				           }   
+				        },
+				          "claimCompleted":{
+				          "claimNumber":"M00000004",
+				          "claimStageLabel" :"Stage 4 of 4",
+				          "claimStageValue" :"Claim completed"
+				        }	  	     
+				}
+				
+		},
+	"claimLodgement" :{
+		         "login": "a@b.c",
+				"pwd": "Password1",
+				"property":{
+				"home&Building":{
+				"policyDescription":"Home & building insurance",
+		         "brand1":"AAMI",
+		         "brand2":"Apia",
+		         "brand3":"Bingle",
+		         "brand4":"GIO",
+		         "brand5":"Shannons",
+		         "brand6":"Suncorp",
+		         "homeRiskAddress":"23 The Grove, Doncaster VIC 3224"
+				}
+	},
+	"vehicle":{
+				"car":{
+				"policyDescription":"Comprehensive car insurance",
+		         "brand1":"AAMI",
+		         "brand2":"Apia",
+		         "brand3":"Bingle",
+		         "brand4":"GIO",
+		         "brand5":"Shannons",
+		         "brand6":"Suncorp",
+		         "vehicleDescription":"2012 SUZUKI SWIFT GLX FZ 5D HATCHBACK 4 SP AUTOMATION TESTING TWO LINES",
+		         "vehicleRegistration":"ABC 123",
+		         "validIncidentDate":"22-4-2018",
+		         "futureIncidentDate":"20-8-2018"
+				}
+		   }
+	},
 	"portfolio" :{
 		"loginEmptyProdList":{
 				"login": "noProducts@sun.com",
@@ -557,6 +677,157 @@
 				}
 				
 
+		},
+		"policyDetails" : {
+		
+		"carPolicy": 
+				{
+				        "login": "policydetails@sun.com",
+		                "pwd": "Password1",
+		         		"status":"ACTIVE",
+						"brand":"AAMI",
+						"productType":"Car insurance",
+						"policyNumber":"MPA123456789",
+						"policyDescription":"Car insurance",
+          				"periodOfCover": 
+            			{
+             				 "startDate": "01 October",
+             				 "startYear":"2017",
+             				 "endDate": "10 November",
+             				 "endYear":"2018, 11:59PM"
+            			},
+            			"instalmentDetails":
+            			{
+            			 "instalmentAmount":"$21.00",
+            			 "debitDayLabel":"paid on the 22nd"
+            			},
+            			"riskDetails":{
+            			    "riskDescription1":"2017 Alfa Romeo Giulia",
+						"registrationNumber1":"ABC123",
+						"insuredAmount1":"$20,000.00",
+						"coverType1":"Comprehensive",
+						"coverPeriod1":"01 Oct 2017 - 01 Oct 2018",
+						 "riskDescription2":"2012 Nissan Patrol",
+						"registrationNumber2":"DEF007",
+						"insuredAmount2":"$8,888.00",
+						"coverType2":"Third-Party, Fire & Theft",
+						"coverPeriod2":"12 Aug 2016 - 11 Aug 2017",
+						"includedCoverDescription":"Lifetime new for old car replacement",
+						"optionalCoverDescription":"AAMI Roadside Assist",
+						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
+						"discounts":"Multi-Policy, Staff",
+						"rewardsTitle":"AAMI Safe driver rewards",
+						"rewards":"Sapphire with $45.50 credit available for your next renewal",
+						"riskCoverPeriod": 
+            			 {
+             				 "startDate": "01 October",
+             				 "startYear":"2017",
+             				 "endDate": "01 October",
+             				 "endYear":"2018, 11:59PM"
+            			 },
+            			 "excessDetails": 
+            			 {
+            			 	     "excessType": "Standard Excess",
+             				 "excessAmount":"$100.00"
+            			 }
+            			 
+            			},
+            			"paymentDetails":
+            			{
+            			"creditCardDetails":"VISA ending in 5123"
+            			}
+				},
+				"carAdvantagePolicy": 
+				{
+				    "login": "policydetails@sun.com",
+		            "pwd": "Password1",
+				    "productType":"Car advantage insurance",
+            			"paymentDetails":
+            			{
+            			"bankAccountDetails":"Savings Account ending in 9999"
+            			}
+				},
+				"boatPolicy": 
+				{   
+				     "login": "policydetails@sun.com",
+		             "pwd": "Password1",
+				    "productType":"Boat insurance",
+            			"instalmentDetails":
+            			{
+            			 "instalmentAmount":"$112.40"
+            			},
+            			"riskDetails":{
+            			
+            			 "additionalExcessDetails": 
+            			 {
+            			 	     "additionalExcessDescription": "Age excess",
+             				 "additionalExcessListedDriver":"$400.00 - Listed driver",
+             				 "additionalExcessUnListedDriver":"$1,400.00 - Unlisted driver"
+            			 }
+            			 
+            			}
+				},
+				"motorHomePolicy": 
+				{   
+				    "login": "policydetails@sun.com",
+				    "pwd": "Password1",
+				    "productType":"Motorhome insurance",
+            			"instalmentDetails":
+            			{
+            			 "instalmentAmount":"$112.14"
+            			},
+            			"policyLockedOrInReferralError":
+            			{
+            			"login": "policylocked@sun.com",
+				    "pwd": "Password1"
+            			},
+            			"policyEndorsementError":
+            			{
+            			"login": "policyendorserror@sun.com",
+				    "pwd": "Password1"
+            			}
+				},
+				"homePolicy": 
+				{
+						"login": "policydetails@sun.com",
+		                "pwd": "Password1",
+						"status":"ACTIVE",
+						"brand":"SUNCORP",
+						"productType":"Home and contents insurance",
+						"policyNumber":"HPS123456789",
+						"policyDescription":"Home and contents insurance",
+							"instalmentDetails":
+            			{
+            			 "instalmentAmount":"$88.88"
+            			},
+          				"periodOfCover": 
+            			{
+             				 "startDate": "15 October",
+             				 "startYear":"2017",
+             				 "endDate": "25 August",
+             				 "endYear":"2018, 11:59PM",
+             				 "endDateCancellationPending": "10 November",
+             				 "endYearCancellationPending":"2017, 11:59PM"
+            			},
+            				"policyStatus": 
+            			{
+            			        "login": "policystatus@sun.com",
+		                     "pwd": "Password1",
+             				 "active": "ACTIVE",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Future active",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            				"myProductPolicyStatus": 
+            			{
+             				"active": "Policy Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy Future Activation",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			}
+				}
 		}
 	},
 	"noSuncorpBankAccounts" :{
@@ -564,7 +835,7 @@
 		"pwd": "Password1"
 	},
 	"hasSuncorpBankAccounts" :{
-		"login": "ab@ab.com",
+		"login": "digi@v.com",
 		"pwd": "Password1",
 		"netWorthAmount": "$7,550.35",
 		"bankAccounts": "",
@@ -908,7 +1179,7 @@
 	},
 	"digivault" : {
 		"hasItems" : {
-			"login" : "b@b.com",
+			"login" : "a@b.c",
 			"pwd" : "Password1",
 			"newname" : "NewName",
 			"folderName" : "ab",
@@ -917,6 +1188,17 @@
 			"folder1" : "folder 1",
 			"rootFolder" : "Document storage",
 			"images" : ["File A", "File B" , "File C"]
+		}
+	},
+	"ffi" : {
+		"hasData" :{
+			"login" : "digi@v.com",
+			"pwd" : "Password1",
+			"month" : "February 2018",
+			"zeroSpending" : "$0.00"
+		},
+		"hasNoData" : {
+			"month" : "April 2018"
 		}
 	},
 	"registration" : {
@@ -1147,19 +1429,23 @@
 	"brands": [
 		{
 			"button": "aamiButton",
-			"brandIcon": "AAMI member login"
+			"brandIcon": "AAMI member login",
+			"resetPasswordDescription" : "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
 			"button": "apiaButton",
-			"brandIcon": "APIA member login"
+			"brandIcon": "APIA member login",
+			"resetPasswordDescription" : "Enter the email associated with your APIA account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
 			"button": "gioButton",
-			"brandIcon": "GIO member login"
+			"brandIcon": "GIO member login",
+			"resetPasswordDescription" : "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
 			"button": "shannonsButton",
-			"brandIcon": "Shannons member login"
+			"brandIcon": "Shannons member login",
+			"resetPasswordDescription" : "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}
 	],
 	"bundleId": {

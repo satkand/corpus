@@ -11,7 +11,6 @@ public class LoginPage extends BasePage{
 	
 	public LoginPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	private By loadingIndicator = By.id("au.com.suncorp.marketplace:id/loadingIndicator");
@@ -33,6 +32,16 @@ public class LoginPage extends BasePage{
 	//Error scenario
 	private By errorSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By errorSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
+	
+	//Reset Password
+	private By resetPasswordTitle = By.id("au.com.suncorp.marketplace:id/resetPasswordTitleText");
+	private By resetPasswordDescription = By.id("au.com.suncorp.marketplace:id/resetPasswordSubtitleText");
+	private By resetPasswordEmailField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
+	private By resetLinkButton = By.id("au.com.suncorp.marketplace:id/sendResetLinkButton");
+	private By resetPasswordBackButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By resetPasswordEmailFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By resetPasswordSuccessSnackbar = By.id("au.com.suncorp.marketplace:id/snackbar_text");
+	private By resetPasswordSuccessSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
 	
 	public WebElement checkLoginPageTitle(){
 		return find(loginPageTitle,20);
@@ -152,5 +161,73 @@ public class LoginPage extends BasePage{
 	
 	public String getEmailFieldData() {
 		return getText(emailField);
+	}
+	
+	public void tapForgotPassword() {
+		tapElement(forgotPasswordButton);
+	}
+	
+	public WebElement checkResetPasswordTitle() {
+		return find(resetPasswordTitle);
+	}
+	
+	public String getResetPasswordTitle() {
+		return getText(resetPasswordTitle);
+	}
+	
+	public WebElement checkResetPasswordDescription() {
+		return find(resetPasswordDescription);
+	}
+	
+	public String getResetPasswordDescription() {
+		return getText(resetPasswordDescription);
+	}
+	
+	public WebElement checkResetPasswordEmailField() {
+		return find(resetPasswordEmailField);
+	}
+	
+	public void enterResetPasswordEmail(String email) {
+		typeValue(email, resetPasswordEmailField);
+	}
+	
+	public String getResetPasswordEmailValue() {
+		return getText(resetPasswordEmailField);
+	}
+	
+	public void tapResetPasswordEmailField() {
+		tapElement(resetPasswordEmailField);
+	}
+	
+	public WebElement checkResetPasswordEmailError() {
+		return find(resetPasswordEmailFieldError);
+	}
+	
+	public String getResetPasswordEmailErrorVal() {
+		return getText(resetPasswordEmailFieldError);
+	}
+	
+	public WebElement checkResetLinkButton() {
+		return find(resetLinkButton);
+	}
+	
+	public void tapResetLinkButton() {
+		tapElement(resetLinkButton);
+	}
+	
+	public void tapResetPasswordBackButton() {
+		tapElement(resetPasswordBackButton);
+	}
+	
+	public WebElement checkResetPasswordSuccessSnackbar() {
+		return find(resetPasswordSuccessSnackbar, 30);
+	}
+	
+	public String getResetPasswordSuccessSnackbarText() {
+		return getText(resetPasswordSuccessSnackbar);
+	}
+	
+	public String getResetPasswordSuccessSnackbarBtn() {
+		return getText(resetPasswordSuccessSnackbarButton);
 	}
 }

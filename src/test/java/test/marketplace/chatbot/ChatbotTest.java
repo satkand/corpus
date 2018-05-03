@@ -106,7 +106,7 @@ public class ChatbotTest extends App {
 		chatbotPage.tapExternalUrlButton(externalUrlText);
 		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "Chatbot page - Webview - Url not shown");
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("chatbot", "externalUrl", "websiteURL"), "Chatbot page - not directed to the correct Webview");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(chatbotPage.checkChatbotPageTitle(), "Chatbot page - page title not shown");
 	}
 	

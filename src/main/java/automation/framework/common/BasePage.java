@@ -15,6 +15,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -298,6 +299,16 @@ public class BasePage {
 		}
 	}
 
+	protected void scrollUpToElement(By locator, String... args) {
+		int numOfSwipes = 0;
+		while (find(locator,7) == null && numOfSwipes <= 15) {
+			if(args.length < 1) {
+				swipeScreen("up");
+			}
+			numOfSwipes++;
+		}
+	}
+	
 	protected WebElement scrollHorizontallyToElement(String locatorString, String locatorType,String scrollableId,int... args) {
 
 		WebElement element =null;
@@ -392,6 +403,11 @@ public class BasePage {
 		return find(locator).getText();
 	}
 
+	
+	protected String getText(WebElement element) {
+		return element.getText();
+	}
+
 	protected List<String> getTextList(By locator) {
 		List<WebElement> elements = finds(locator);
 		List<String> textList = new ArrayList();
@@ -431,7 +447,9 @@ public class BasePage {
 					element = driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ));
 					break;
 				}			
-			}catch(Exception e) {				
+			}catch(Exception e) {	
+				element = driver.findElementByXPath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
+				break;
 			}
 			swipeScreen("down");
 			topElement = ((WebElement) driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
@@ -601,25 +619,27 @@ public class BasePage {
 		return element;
 	}
 
-	protected WebElement findByUIAutomator(String locatorString, String locatorType) {
+	protected WebElement findByUIAutomator(String locatorString, String locatorType,int... args) {
 
 		WebElement webElement = null;
+		
+		int timeout = (args.length > 0 ? args[0] : 15);
 
 		switch (locatorType) {
 
 		case "text":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)),timeout);
 			break;
 
 		case "id":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)),timeout);
 			break;
 
 		case "desc":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)),timeout);
 			break;
 
 		}
@@ -627,16 +647,18 @@ public class BasePage {
 		return webElement;
 	}
 
-
-	public void waitForElementToDisappear(By locator) {
-
-		WebElement element  = find(locator);
-
+	public void waitForElementToDisappear(By locator,int... args) {
+		
+		int timeout = (args.length > 0 ? args[0] : 15);
+		
+		WebElement element  = find(locator,2);
+		
 		if (element != null) {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(
-					locator)
-					);
+		      WebDriverWait wait = new WebDriverWait(driver, timeout);
+		      wait.until(ExpectedConditions.invisibilityOfElementLocated(
+		    		  locator)
+		            );
+
 		}
 
 	}	
@@ -648,19 +670,6 @@ public class BasePage {
 			System.out.println(numOfTries+ "::::: Loding Indicator is still shown" + locator);
 			numOfTries++;
 		}
-	}
-
-	public void waitForElementToDisappear(By locator,int timeout) {
-
-		//	WebElement element  = find(locator);
-
-		if (find(locator,5) != null) {
-			WebDriverWait wait = new WebDriverWait(driver, timeout);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(
-					locator)
-					);
-		}
-
 	}
 
 	public Map<String,Object> getAppiumSessionDetails() {
@@ -706,7 +715,265 @@ public class BasePage {
 		return findByUIAutomator(title, "text");
 
 	}
+
+	public String scrollAndGetElementText(By locator,int maxSwipes,int... args ) {
+		
+		int timeout = (args.length > 0 ? args[0] : 2);
+		
+
+		WebElement element = find(locator, timeout);
+
+		for (int i = 0; i < maxSwipes; i++) {
+
+			if (element == null) {
+
+				swipeScreen("DOWN");
+
+			} else {
+
+
+				break;
+
+			}
+
+			element = find(locator, timeout);
+
+		}
+
+		return getText(element);
+
+	}
 	
+	public WebElement scrollToElementByText(String text, int maxSwipes, int... args) {
+		
+		int timeout = (args.length > 0 ? args[0] : 2);
+		
+		WebElement element = findByUIAutomator(text, "text", timeout);
+
+		for (int i = 0; i < maxSwipes; i++) {
+
+			if (element == null) {
+
+				swipeScreen("DOWN");
+
+			} else {
+				break;
+			}
+
+			element = findByUIAutomator(text, "text", timeout);
+		}
+
+		return element;
+		
+	}
+		
+		
+
+	public void doubleTapOnAnElement(By locator) {
+		TouchAction touchAction = new TouchAction(driver);
+		touchAction.tap(find(locator)).tap(find(locator)).perform();
+		
+	}
+	
+	protected String getAttribute(By locator, String attribute) {
+	
+			WebElement element = find(locator);
+			String text = element.getAttribute(attribute);
+			return text;
+		}
+
+//	/**
+//	 * This method is specifically to use when needed to set PIN in an app.
+//	 * Using this sets pin very quickly.
+//	 * 
+//	 * @param pinValue
+//	 */
+//	protected void enterPin(String pinValue) {
+//		driver.getKeyboard().sendKeys(pinValue);
+//	}
+//
+//	protected void clearAnEntryInTextField() {
+//		driver.getKeyboard().sendKeys(Keys.CLEAR);
+//	}
+//
+//	protected void deleteAnEntryInTextField() {
+//		driver.getKeyboard().sendKeys(Keys.DELETE);
+//	}
+	
+	
+	
+	
+	
+	
+	
+//	
+//	protected WebElement findElementByText(String text, int... args) {
+//
+//		int timeout = (args.length > 0 ? args[0] : 10);
+//
+//		By locator = By.id(text);
+//		return find(locator, timeout);
+//
+//	}
+//
+//	protected WebElement findElementByValue(String text, int... args) {
+//
+//		int timeout = (args.length > 0 ? args[0] : 10);
+//
+//		String xpath = "//XCUIElementTypeStaticText[@value='" + text + "']";
+//		By locator = By.xpath(xpath);
+//		return find(locator, timeout);
+//
+//	}
+//
+//	/**
+//	 * The find method is the most frequent used method. This method takes a
+//	 * fixed parameter:'element By locator' and optional integer argument for
+//	 * timeout In cases where we need to wait longer time for an element to
+//	 * load, we can pass the required timeout. ex. find(userName, 10) where 10
+//	 * seconds timeout is requested.
+//	 * 
+//	 * @param locator
+//	 * @param args
+//	 * @return webelement
+//	 */
+//	protected List<WebElement> finds(final By locator, int... args) {
+//
+//		int timeout = (args.length > 0 ? args[0] : 15);
+//		List<WebElement> webelements = null;
+//
+//		try {
+//			FluentWait<AppiumDriver> wait = new FluentWait<AppiumDriver>(driver).withTimeout(timeout, TimeUnit.SECONDS)
+//					.pollingEvery(200, TimeUnit.MILLISECONDS).ignoring(Exception.class)
+//					.ignoring(NoSuchElementException.class);
+//
+//			webelements = wait.until(new Function<AppiumDriver, List<WebElement>>() {
+//				public List<WebElement> apply(AppiumDriver driver) {
+//					return (List) driver.findElements(locator);
+//				}
+//			});
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			// e.printStackTrace();
+//		}
+//
+//		return webelements;
+//
+//	}
+//
+//
+//
+//	/**
+//	 * Method to find multiple elements
+//	 * 
+//	 * @param locator
+//	 */
+//
+//	protected List<WebElement> findElements(By locator) {
+//		List<WebElement> webelements = driver.findElements(locator);
+//		return webelements;
+//
+//	}
+//
+//	/**
+//	 * This method performs swipe actions on a particular element when invoked
+//	 * with the Element and direction to swipe. Typically used to swipe on date
+//	 * picker, list picker in iOS etc
+//	 * 
+//	 * @param locator
+//	 * @param direction
+//	 */
+//	protected void swipeElement(By locator, SwipeElementDirection direction) {
+//		MobileElement element = (MobileElement) find(locator);
+//		element.swipe(direction, 1000);
+//	}
+//
+//	/**
+//	 * Method to simulate swipe action on the screen in desired direction
+//	 * 
+//	 * @param direction
+//	 */
+//	protected void swipeScreen(String direction) {
+//
+//		int y = driver.manage().window().getSize().getHeight();
+//		int x = driver.manage().window().getSize().getWidth();
+//
+//		try {
+//			switch (direction.toUpperCase()) {
+//			case "UP":
+//				// when navigating up, its opening the notifications bar. so
+//				// changing the startY value from 10 to 300
+//				driver.swipe(x - 50, y - 250, x - 50, y - 80, 100);
+//				break;
+//			case "DOWN":
+//				driver.swipe(50, y - 80, 50, y - 250, 100);
+//				break;
+//			case "LEFT":
+//				driver.swipe(50, y / 2, x - 10, y / 2, 100);
+//				break;
+//			case "RIGHT":
+//				driver.swipe(x - 50, y / 2, 10, y - 10, 100);
+//				break;
+//
+//			default:
+//				throw new IllegalArgumentException();
+//			}
+//		} catch (IllegalArgumentException ix) {
+//			System.out.println("Invalid directioN: Valid parameters- UP/DOWN/LEFT/RIGHT");
+//		}
+//
+//	}
+//
+//	protected swipeTo(WebElement element) {
+//
+//		scrollToWebElement(element);
+//	}
+//
+
+//
+
+//
+//	/**
+//	 * Method to start the app
+//	 */
+//	protected void startApp() {
+//		driver.launchApp();
+//
+//	}
+//
+//	/**
+//	 * Method to close the app
+//	 */
+//	protected void closeApp() {
+//		driver.closeApp();
+//	}
+//
+//	/**
+//	 * Method to restart the App. If appium server is configured with "full
+//	 * reset" option then the App is reinstalled. This will kill the current
+//	 * appium session and the test fails.
+//	 */
+//	protected void resetApp() {
+//		driver.resetApp();
+//	}
+//
+//	/**
+//	 * Method to restart the App. If appium server is configured with "full
+//	 * reset" option then the App is reinstalled. This will kill the current
+//	 * appium session and the test fails.
+//	 */
+//	protected void restartApp() {
+//
+//		// Close the app
+//		closeApp();
+//
+//		// Start the app
+//		startApp();
+//	}
+//
+//	protected void reInstallApp() {
+//
+//		// Close the app
 
 	public String lookupProperty(String propFileName, String nameOfProperty) {
 	
@@ -743,13 +1010,6 @@ public class BasePage {
 	//	protected void deleteAnEntryInTextField() {
 	//		driver.getKeyboard().sendKeys(Keys.DELETE);
 	//	}
-
-
-
-
-
-
-
 	//	
 	//	protected WebElement findElementByText(String text, int... args) {
 	//
@@ -1338,5 +1598,10 @@ public class BasePage {
 		By suncorpApp = By.xpath("//android.widget.TextView[@text='Config']");
 		find(suncorpApp);
 		tapElement(suncorpApp);
+	}
+	
+	protected void closeAndLaunchApp() {
+		driver.closeApp();
+		driver.launchApp();
 	}
 }

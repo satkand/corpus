@@ -24,7 +24,7 @@ public class NavigationMenuPage extends BasePage {
 	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By devSettings = By.xpath("//android.widget.CheckedTextView[@text='Dev Settings']");
-
+    private String devSettingsText ="Dev Settings";
 	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 
 	public void tapProffessionalServicesMenuItem() {
@@ -114,6 +114,10 @@ public void tapHomeJourneyMenuItem() {
 		 return find(devSettings);
 	}
 	
+//	public void scrollToDevSettings() {
+//		scrollToElement(devSettings);
+//	}
+	
 	public void tapDevSettings() {
 		find(devSettings, 30);
 		 tapElement(devSettings);
@@ -141,5 +145,11 @@ public void tapHomeJourneyMenuItem() {
 	
 	public WebElement checkProfilePicture() {
 		return find(profilePicture, 30);
+	}
+	
+	public void scrollToDevSettings() {
+		
+		scrollToElement(devSettingsText,"text");
+		 
 	}
 }
