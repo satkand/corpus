@@ -15,7 +15,7 @@ public class VehiclesTest extends App {
 	// 507 - Scenario 1
 	// 507 - Scenario 2
 	// 1052 - Scenario 1
-	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
+//	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesListOnVehiclesPage() {
 		navigateToVehiclesTab("hasVehicles");
 		vehiclesPage.waitForDataToLoad();
@@ -51,7 +51,7 @@ public class VehiclesTest extends App {
 	}
 
 	// 507 - Scenario 3
-	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
+//	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testNavigatingToVehicleDetailsScreen(){
 		navigateToVehiclesTab("hasVehicles");
 		Assert.assertNotNull(vehiclesPage.checkViewDetailsButton(), "Vehicles Page - view details button not shown");
@@ -66,7 +66,7 @@ public class VehiclesTest extends App {
 	 * Test case: DMPM-5136 - Display vehicle services tile
 	 */
 	@TestDetails(story1 = "DMPM-4609:DMPM-5136")
-	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
+//	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesTile()
 	{
 		//Step 1, 2 & 3: Login to App and then navigate Vehicles Dimension
@@ -78,21 +78,21 @@ public class VehiclesTest extends App {
 
 		//Validate Vehicles services tile title
 		verifyVehiclesTileImage();
-		
+
 		//Validate Vehicles services tile description
 		verifyVehiclesTileDesc();
-		
+
 		//Validate Vehicles services tile button
 		verifyVehiclesTileBtn();
 	}
-	
-	
+
+
 	/*
 	 * Story: DMPM-5582
 	 * Test case: DMPM-6034 - Display background image - Vehicle Dimension
 	 */
 	@TestDetails(story1 = "DMPM-5582:DMPM-6034")
-	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
+//	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesDimensionBkgrndImg()
 	{
 		//Step 1: Login to App and then navigate Vehicles Dimension
@@ -105,6 +105,51 @@ public class VehiclesTest extends App {
 		Assert.assertNotNull(vehiclesPage.checkVehicleDimensionBkgrndImg(), "Vehicles Page- Vehicles services background image not shown");
 	}
 
+	/*
+	 * Story: DMPM-5367
+	 * Test Case: DMPM-6286- Android-Derived assets details UI for Vehicles
+	 */
+	@TestDetails(story1 = "DMPM-5367:DMPM-6286")
+	@Test(groups = {"marketplace", "Vehicle dimension", "priority-high"})
+	public void testVehiclesDerivedAssetDetails() {
+		//Step 1: Login to App and then navigate Vehicles Dimension
+		navigateToVehiclesTab("hasVehicles");
+		
+		//Step 2: Scroll to Derived Asset
+		Assert.assertNotNull(vehiclesPage.scrollToDerivedAsset(), "Asset details view not found");
+		
+		
+		//Step 2: Tap Derived Asset
+		vehiclesPage.tapPolicyViewDocumentsBtn();
+
+		//Step 3: Validate Asset details UI elements
+		verifyAssetDetailsVehicleImage();
+		verifyAssetDetailsVehicleCameraImage();
+		verifyAssetDetailsVehicleDescription();
+		verifyAssetDetailsVehicleMakeAClaim();
+		verifyAssetDetailsVehicleAddDocuments();
+	}
+	
+	private void verifyAssetDetailsVehicleImage() {
+		Assert.assertNotNull(vehiclesPage.checkPolicyVehicleTypeImage(), "Vehicles asset's vehicle type image not shown");
+	}
+
+	private void verifyAssetDetailsVehicleCameraImage() {
+		Assert.assertNotNull(vehiclesPage.checkVehicleTakePhotoImage(), "Vehicles asset's vehicle type camera icon not shown");
+	}
+
+	private void verifyAssetDetailsVehicleDescription() {
+		Assert.assertNotNull(vehiclesPage.checkVehicleDescriptionText(), "Vehicles asset's vehicle description not shown");
+	}
+
+	private void verifyAssetDetailsVehicleMakeAClaim() {
+		Assert.assertNotNull(vehiclesPage.checkVehicleMakeClaimBtn(), "Vehicles asset's make claim button not shown");
+	}
+
+	private void verifyAssetDetailsVehicleAddDocuments() {
+		Assert.assertNotNull(vehiclesPage.checkVehicleAddDocumentsBtn(), "Vehicles asset's add document button not shown");
+	}
+	
 	private void verifyVehiclesTileBtn() {
 		if(vehiclesPage.isVehiclesServicesBtnDisplayed()==null) {
 			vehiclesPage.scrollToVechilesTileBtn();
@@ -135,7 +180,7 @@ public class VehiclesTest extends App {
 		}
 		Assert.assertNotNull(vehiclesPage.checkVehicleServicesTitle(), "Vehicles Page = Vehicles Tile title not shown");
 		Assert.assertEquals(vehiclesPage.getVehicleServicesTitle(), Copy.VEHICLE_SERVICES_TITLE,"Vehicles Page = Vehicles Tile title not shown");
-		
+
 	}
 
 	private void navigateToVehiclesTab(String loginType) {

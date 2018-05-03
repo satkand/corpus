@@ -208,6 +208,10 @@ public class App extends BaseTest {
 		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
 		}
+		
+		else if (pinOptionsPage.checkEnableFingerprintBtn() != null && args.length < 1) {
+			pinOptionsPage.tapPromptMaybeLater();
+		}
 	}
 	
 	//TODO : Remove
