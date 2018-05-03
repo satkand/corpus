@@ -95,7 +95,7 @@ public class ConfigPage extends BasePage {
 		
 		// TODO: This hardcoding needs to removed, once we figure out a way to get the second ip from the list of ips on the mac mini
 		String baseURL = lookupProperty(configFile,"baseURL"); ;//IP.getHostAddress()+":4567/";
-		String accountNum = lookupProperty(configFile,"accNum");
+		String accountNum = lookupProperty(configFile,"accountNum");
 		System.out.println("stub:::"+stub+"::::::global");
 		typeValue(baseURL, globalBaseURL);
 		tapElement(applyGlobalBaseUrlButton);

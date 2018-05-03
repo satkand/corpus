@@ -326,6 +326,39 @@ public class SpendingsTest extends App {
 		Assert.assertEquals(spendingsPage.getSnackBarText(), Copy.FFI_DISCLAIMER);
 	}
 	
+	//DMPM-2520 - Scneario 1-6
+		@Test (groups = {"DMPM-2520", "DMPM-6653","DMPM-6657","DMPM-6658","DMPM-6659","DMPM-6660","DMPM-6661", "marketplace", "FFI", "priority-minor"})
+		public void testSearchThroughVendorList() {
+			navigateToSpendingsScreen();
+			categoryDetailsPage.selectMonth(utils.readTestData("ffi", "hasData", "month"));
+			
+			spendingsPage.tapVendorTab();
+			Assert.assertNotNull(vendorDetailPage.checkSearchField(), "Search field not present");
+			vendorDetailPage.tapSearchField();
+			Assert.assertNotNull(vendorDetailPage.checkVendorSearchScreenTitle(), "Vendor Search screen title not present");
+			Assert.assertTrue(common.isKeyboardShown(), "Keyboard not seen");
+			Assert.assertNotNull(vendorDetailPage.checkCloseButton(), "Close button not present");
+			Assert.assertNotNull(vendorDetailPage.checkVendorSearchList(), "No vendor list seen");
+			vendorDetailPage.tapCloseButton();
+			Assert.assertNotNull(spendingsPage.checkSpendingPageTitle(), "Spending page title not seen");
+			
+			vendorDetailPage.tapSearchField();
+			vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString"));
+			Assert.assertTrue(vendorDetailPage.verifySearch(utils.readTestData("ffi", "hasData", "resultString1"),
+					utils.readTestData("ffi", "hasData", "resultString2"), utils.readTestData("ffi", "hasData", "resultString3")), "Search not as expected");
+			vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString4Letter"));
+			Assert.assertTrue(vendorDetailPage.verifySearch4Letter(utils.readTestData("ffi", "hasData", "resultString1"),
+					utils.readTestData("ffi", "hasData", "resultString2"), utils.readTestData("ffi", "hasData", "resultString3")), "Search not as expected");
+			vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString5Letter"));
+			Assert.assertNotNull(vendorDetailPage.checkSearchErrorMsg(), "Error msg not seen");
+			
+			//3 times backspace to remove 3 characters and unfilter list
+			vendorDetailPage.tapBackspace();
+			vendorDetailPage.tapBackspace();
+			vendorDetailPage.tapBackspace();
+			
+			Assert.assertTrue(vendorDetailPage.verifySearchItems(), "Search list did not unfilter");
+		}
 
 	
 	private void verifyEmptyTransactionsMessage(List months) {
