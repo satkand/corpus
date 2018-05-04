@@ -51,8 +51,9 @@ public interface Copy {
 	public static final String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 	public static final String  ADD_A_VEHICLE_POLICY = "Add a vehicle policy";
-	public static final String ADD_A_VEHICLE_POLICY_INFO1 = "Categorise and organise your documents to your vehicle";
-	public static final String ADD_A_VEHICLE_POLICY_INFO2 = "Access professional services and insights";
+	public static final String ADD_A_VEHICLE_POLICY_INFO_ONE = "Categorise and organise your documents to your vehicle";
+	public static final String ADD_A_VEHICLE_POLICY_INFO_TWO = "Access professional services and insights";
+	public static final String ADD_A_VEHICLE_POLICY_ADD_PRODUCT= "ADD PRODUCT";
 
 	//MemberLoginPage
 	public String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";

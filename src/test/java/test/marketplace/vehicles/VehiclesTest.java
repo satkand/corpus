@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import automation.framework.common.Copy;
 import automation.framework.common.TestDetails;
 import pages.App;
+import pages.marketplace.vehicles.VehiclesPage;
 
 public class VehiclesTest extends App {
 
@@ -99,54 +100,108 @@ public class VehiclesTest extends App {
 		//Step 1: Login to App and then navigate Vehicles Dimension
 		navigateToVehiclesTab("hasVehicles");
 
-		//Step 2: Scroll to Vehicle dimension background image
-		vehiclesPage.scrollToVehicleDimensionBkgrndImg();
+		//Step 2: Verify add vehicle tile image
+		verifyAddPolicyTileImage();
 
 		//Step 3: Validate Vehicles services tile title
 		Assert.assertNotNull(vehiclesPage.checkVehicleDimensionBkgrndImg(), "Vehicles Page- Vehicles services background image not shown");
 	}
 
-	/* Story: DMPM-5356
+	/* Stories: DMPM-5356, DMPM-5354
 	 * Test case: DMPM-5728 - Add Vehicle Policy-Registered User
+	 * Test case: DMPM-5725 - Vehicle dimension display loading indicator
+	 * Test case: DMPM-5726 - Vehicle dimension hide loading indicator
 	 */
-	@TestDetails(story1 = "DMPM-5356:DMPM-5728")
-	@Test(groups = {"marketplace", "Vehicle dimension", "priority-medium"})
+	@TestDetails(story1 = "DMPM-5356:DMPM-5728", story2 = "DMPM-5354:DMPM-5725,DMPM-5726")
+	//@Test(groups = {"marketplace", "Vehicle dimension", "priority-medium"})
 	public void testVehiclesAddAPolicy()
 	{
-		//Step 1, 2 & 3: Login to App and then navigate Vehicles Dimension
+		//Step 1: Login to App and then navigate Vehicles Dimension
 		navigateToVehiclesTab("hasVehicles");
+		
+		//Step 2a: DMPM-5725 wait for loader to appear
+		vehiclesPage.waitForLoadingIndicatorToAppear();
+		
+		//Step 2b: DMPM-5726 wait for loader to disappear after loading the data
 		vehiclesPage.waitForDataToLoad();
-
-		//Step 4
-		//Validate add a vehicles policy image.
-		verifyAddVehiclesPolicyImage();
-
-		//Validate add a vehicles policy action text and button
-		verifyAddVehiclesPolicyActionText();;
-		//		
-		//Validate add a vehicles policy info text 1 and 2
-		verifyAddVehiclesPolicyInfo();
-
-		//Select add a vehicles policy function 
+		
+		//Step 2c:DMPM-5728-verify add vehicle policy info One and Two
+		verifyAddPolicyTileInfoOneTwoIcons();
+		
+		//Step 2d:DMPM-5728-verify add vehicle policy info One and Two
+		verifyAddPolicyInfoTexts();
+		
+		//Step 3 : DMPM-5728-Validate add a vehicles policy tile and add action text and button
+		verifyAddVehiclesPolicyActionText();
+	
+		//Step 4: DMPM-5728-Select add a vehicles policy
 		vehiclesPage.tapAddAVechilesPolicy();
-		Assert.assertNotNull(vehiclesPage.checkAddInsurancePolicyLabel(), "Add insurance policy page not displayed");
+		
+		//Step 5: Verify that add policy page is displayed
+		verifyAddInsurancePage();
+		
+	}
+	
+	@TestDetails(story1 = "DMPM-5355:DMPM-6687")
+	@Test(groups = {"marketplace", "Vehicle dimension", "priority-medium"})
+	public void testVehiclesAddAPolicyGuestUser()
+	{
+		//Step 1: Login to App and then navigate Vehicles Dimension
+		navigateToVehiclesTab("guest");
+	
+		//Step 2: Select add a vehicles policy as a Guest user
+		vehiclesPage.tapAddAVechilesPolicy();
+		
+		//Step 3: Verify that add policy page is Not loaded and feature locked alert is displayed
+		vehiclesPage.waitForFeatureLockAlertTitle();
+		verifyAlertTitle();
+		
+	}
+	
+	private void verifyAlertTitle() {
+		Assert.assertNotNull(vehiclesPage.checkFeatureLockAlertTitle(), "Feature locked alert message not shown");
+		vehiclesPage.dismissFeatureLockedAlert();
 	}
 
-	private void verifyAddVehiclesPolicyImage() {
+	private void verifyAddInsurancePage() {
+		vehiclesPage.waitForInsurancePageToLoad();
+		Assert.assertNotNull(vehiclesPage.checkAddInsurancePolicyLabel(), "Add insurance policy page not displayed");
+		Assert.assertNotNull(vehiclesPage.checkAddInsurancePolicyButton(), "Add insurance policy page not displayed");
+	}
+
+	private void verifyAddPolicyTileImage() {
 		if(vehiclesPage.isAddVehiclePolicyImageDisplayed()==null) {
 			vehiclesPage.scrollToAddVechilePolicyImage();
 		}
-		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyImage(), "Add a policy image not shown");
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyImage(), "Add Vehicle policy tile image is not shown");
+		
 	}
-
-	private void verifyAddVehiclesPolicyInfo() {
-		if(vehiclesPage.isAddVehiclePolicyActionTxtDisplayed()==null) {
-			vehiclesPage.scrollToaddVehiclePolicyActionText();
+	
+	private void verifyAddPolicyTileInfoOneTwoIcons() {
+		if(vehiclesPage.isAddVehiclePolicyInfoOneIconDisplayed()==null) {
+			vehiclesPage.scrollToAddVechilePolicyInfoOneText();
 		}
-		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyInfo1Txt(), "Add a policy info1 not shown");
-		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyInfo2Txt(), "Add a policy info2 not shown");
-		Assert.assertEquals(vehiclesPage.getAddVehiclePolicyInfo1Txt(), Copy.ADD_A_VEHICLE_POLICY_INFO1,"Add a vehicles info1 text is not as expected");
-		Assert.assertEquals(vehiclesPage.getAddVehiclePolicyInfo2Txt(), Copy.ADD_A_VEHICLE_POLICY_INFO2,"Add a vehicles info2 text is not as expected");
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyInfoOneIcon(), "Add Vehicle policy tile info one icon is not shown");
+		
+		if(vehiclesPage.isAddVehiclePolicyInfoTwoIconDisplayed()==null) {
+			vehiclesPage.scrollToAddVechilePolicyInfoTwoText();
+		}
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyInfoTwoIcon(), "Add Vehicle policy tile info teo icon is not shown");
+		
+	}
+	private void verifyAddPolicyInfoTexts() {
+		if(vehiclesPage.isAddVehiclePolicyInfoOneTxtDisplayed()==null) {
+			vehiclesPage.scrollToAddVechilePolicyInfoOneText();
+		}
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyInfoOneTxt(), "Add vehicle tile info one text is not shown");
+		Assert.assertEquals(vehiclesPage.getAddVehiclePolicyInfoOneTxt(),Copy.ADD_A_VEHICLE_POLICY_INFO_ONE,"Add Vehicle policy info one is not as expected");
+		
+		if(vehiclesPage.isAddVehiclePolicyInfoTwoTxtDisplayed() == null) {
+			vehiclesPage.scrollToAddVechilePolicyInfoTwoText();
+		}
+		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyInfoTwoTxt(), "Add vehicle tile info two text is not shown");
+		Assert.assertEquals(vehiclesPage.getAddVehiclePolicyInfoTwoTxt(),Copy.ADD_A_VEHICLE_POLICY_INFO_TWO,"Add Vehicle policy info one is not as expected");
+		
 	}
 
 	private void verifyAddVehiclesPolicyActionText() {

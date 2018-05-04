@@ -652,6 +652,19 @@ public class BasePage {
 		}
 
 	}	
+	
+	public void waitForElementToAppear(By locator) {
+
+		WebElement element  = find(locator);
+
+		if (element != null) {
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(
+					locator)
+					);
+		}
+
+	}
 
 
 	protected void waitForLoadingIndicatorToDismiss(By locator) {

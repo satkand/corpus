@@ -33,12 +33,41 @@ public class VehiclesPage extends BasePage {
 	//Add a vehicle policy
 	private By addVehiclePolicyImg = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyImage");
 	private String addVehiclePolicyImgId = "au.com.suncorp.marketplace:id/addVehiclePolicyImage";
+	private By addVehiclePOlicyInfoOneIcon = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyInfoOneIcon");
+	private By addVehiclePOlicyInfoTwoIcon = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyInfoTwoIcon");
 	private By addVehiclePolicyActionTxt = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyActionText");
 	private String addVehiclePolicyActionTxtId = "au.com.suncorp.marketplace:id/addVehiclePolicyActionText";
-	private By addVehiclePolicyInfo1Txt = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyInfo1Text");
-	private By addVehiclePolicyInfo2Txt = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyInfo2Text");
+	private By addVehiclePolicyInfoOneTxt = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyInfoOneText");
+	private String addVehiclePolicyInfoOneTxtId = "au.com.suncorp.marketplace:id/addVehiclePolicyInfoOneText";
+	private By addVehiclePolicyInfoTwoTxt = By.id("au.com.suncorp.marketplace:id/addVehiclePolicyInfoTwoText");
+	private String addVehiclePolicyInfoTwoTxtId = "au.com.suncorp.marketplace:id/addVehiclePolicyInfoTwoText";
 	private By addInsurancePolicyLabel =  By.id("au.com.suncorp.marketplace:id/addInsurancePolicyLabel");
+	private By addInsurancePolicyButton = By.id("au.com.suncorp.marketplace:id/addPolicyButton");
+	private By featureLockAlertTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	
+	public WebElement checkFeatureLockAlertTitle() {
+		return find(featureLockAlertTitle);
+	}
+	
+	public void waitForFeatureLockAlertTitle() {
+		waitForElementToAppear(featureLockAlertTitle);
+	}
+	
+	public WebElement checkAddVehiclePolicyInfoOneIcon(){
+		return find(addVehiclePOlicyInfoOneIcon);
+	}
+	
+	public WebElement isAddVehiclePolicyInfoOneIconDisplayed(){
+		return find(addVehiclePOlicyInfoOneIcon);
+	}
+	
+	public WebElement checkAddVehiclePolicyInfoTwoIcon(){
+		return find(addVehiclePOlicyInfoTwoIcon);
+	}
+	
+	public WebElement isAddVehiclePolicyInfoTwoIconDisplayed(){
+		return find(addVehiclePOlicyInfoTwoIcon);
+	}
 	
 	//Vehicles Dimension background Image
 	private By vehicleDimensionBkgrndImg = By.id("au.com.suncorp.marketplace:id/vehiclePillarBackground");
@@ -56,7 +85,15 @@ public class VehiclesPage extends BasePage {
 		scrollToElement(vehicleDimensionBkgrndImgId, "id", 20);
 	}
 	
-	// 
+	// Add a policy
+	
+	public WebElement checkAddInsurancePolicyButton() {
+		return find(addInsurancePolicyButton);
+	}
+	
+	public String getAddInsurancePolicyButtonText() {
+		return getText(addInsurancePolicyButton);
+	}
 	
 	public WebElement checkAddInsurancePolicyLabel() {
 		
@@ -71,20 +108,28 @@ public class VehiclesPage extends BasePage {
 		return find(addVehiclePolicyImg,1);
 	}
 	
-	public WebElement checkAddVehiclePolicyInfo1Txt() {
-		return find(addVehiclePolicyInfo1Txt);
+	public WebElement checkAddVehiclePolicyInfoOneTxt() {
+		return find(addVehiclePolicyInfoOneTxt);
 	}
 	
-	public String getAddVehiclePolicyInfo1Txt() {
-		return find(addVehiclePolicyInfo1Txt).getText();
+	public WebElement isAddVehiclePolicyInfoOneTxtDisplayed() {
+		return find(addVehiclePolicyInfoOneTxt);
 	}
 	
-	public WebElement checkAddVehiclePolicyInfo2Txt() {
-		return find(addVehiclePolicyInfo2Txt);
+	public String getAddVehiclePolicyInfoOneTxt() {
+		return getText(addVehiclePolicyInfoOneTxt);
 	}
 	
-	public String getAddVehiclePolicyInfo2Txt() {
-		return find(addVehiclePolicyInfo2Txt).getText();
+	public WebElement checkAddVehiclePolicyInfoTwoTxt() {
+		return find(addVehiclePolicyInfoTwoTxt);
+	}
+	
+	public WebElement isAddVehiclePolicyInfoTwoTxtDisplayed() {
+		return find(addVehiclePolicyInfoTwoTxt);
+	}
+	
+	public String getAddVehiclePolicyInfoTwoTxt() {
+		return getText(addVehiclePolicyInfoTwoTxt);
 	}
 	
 	public WebElement checkAddVehiclePolicyActionTxt() {
@@ -92,7 +137,7 @@ public class VehiclesPage extends BasePage {
 	}
 	
 	public String getAddVehiclePolicyActionTxt() {
-		return find(addVehiclePolicyActionTxt).getText();
+		return getText(addVehiclePolicyActionTxt);
 	}
 	
 	public WebElement isAddVehiclePolicyActionTxtDisplayed() {
@@ -106,13 +151,46 @@ public class VehiclesPage extends BasePage {
 		
 	}
 	
+	public void scrollToAddVechilePolicy() {
+
+		if (getScreenHeight()>1920) {
+			scrollToElement(addVehiclePolicyActionTxtId, "id", 45);
+
+		}
+		else {
+			scrollToElement(addVehiclePolicyActionTxt,"deepdown");
+		}
+	}
+	
+	public void scrollToAddVechilePolicyInfoTwoText() {
+
+		if (getScreenHeight()>1920) {
+			scrollToElement(addVehiclePolicyInfoTwoTxtId, "id", 45);
+
+		}
+		else {
+			scrollToElement(addVehiclePolicyInfoTwoTxt,"deepdown");
+		}
+	}
+	
+	public void scrollToAddVechilePolicyInfoOneText() {
+
+		if (getScreenHeight()>1920) {
+			scrollToElement(addVehiclePolicyInfoOneTxtId, "id", 45);
+
+		}
+		else {
+			scrollToElement(addVehiclePolicyInfoOneTxt,"deepdown");
+		}
+	}
+	
 	public void scrollToAddVechilePolicyImage() {
 
 		if (getScreenHeight()>1920) {
 			scrollToElement(addVehiclePolicyImgId, "id", 45);
 
 		}
-		else {
+		else if(getScreenHeight()<1920)  {
 			scrollToElement(addVehiclePolicyImg,"deepdown");
 		}
 	}
@@ -120,10 +198,9 @@ public class VehiclesPage extends BasePage {
 	public void scrollToaddVehiclePolicyActionText() {
 
 		if (getScreenHeight()>1920) {
-			scrollToElement(addVehiclePolicyActionTxtId, "id", scrollableId, 30);
-
+			scrollToElement(addVehiclePolicyActionTxtId, "id", 30);
 		}
-		else {
+		else if(getScreenHeight()<1920) {
 			scrollToElement(addVehiclePolicyActionTxt,"deepdown");
 		}
 	}
@@ -246,9 +323,21 @@ public class VehiclesPage extends BasePage {
 	public void tapViewDetailsButton() {
 		tapElement(viewDetailsButton);
 	}
-
+	
+	public void waitForLoadingIndicatorToAppear() {
+		waitForElementToAppear(loadingIndicator);
+	}
 	public void waitForDataToLoad() {
 		waitForElementToDisappear(loadingIndicator);
+	}
+
+	public void waitForInsurancePageToLoad() {
+		waitForElementToAppear(addInsurancePolicyButton);
+	}
+
+	public void dismissFeatureLockedAlert() {
+		tapDeviceBackButton();
+		
 	}
 
 
