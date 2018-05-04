@@ -16,7 +16,7 @@ public class VehiclesTest extends App {
 	// 507 - Scenario 1
 	// 507 - Scenario 2
 	// 1052 - Scenario 1
-	//	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
+	@Test (groups = {"DMPM-507", "DMPM-1284", "DMPM-1290", "DMPM-1052", "DMPM-1320", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesListOnVehiclesPage() {
 		navigateToVehiclesTab("hasVehicles");
 		vehiclesPage.waitForDataToLoad();
@@ -52,7 +52,7 @@ public class VehiclesTest extends App {
 	}
 
 	// 507 - Scenario 3
-	//	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
+	@Test (groups = {"DMPM-507", "DMPM-1294", "marketplace", "Vehicle dimension", "priority-minor"})
 	public void testNavigatingToVehicleDetailsScreen(){
 		navigateToVehiclesTab("hasVehicles");
 		Assert.assertNotNull(vehiclesPage.checkViewDetailsButton(), "Vehicles Page - view details button not shown");
@@ -67,7 +67,7 @@ public class VehiclesTest extends App {
 	 * Test case: DMPM-5136 - Display vehicle services tile
 	 */
 	@TestDetails(story1 = "DMPM-4609:DMPM-5136")
-	//	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
+	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesTile()
 	{
 		//Step 1, 2 & 3: Login to App and then navigate Vehicles Dimension
@@ -94,7 +94,7 @@ public class VehiclesTest extends App {
 	 * Test case: DMPM-6034 - Display background image - Vehicle Dimension
 	 */
 	@TestDetails(story1 = "DMPM-5582:DMPM-6034")
-//	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
+	@Test(groups = {"marketplace", "Vehicle dimension", "priority-minor"})
 	public void testVehiclesDimensionBkgrndImg()
 	{
 		//Step 1: Login to App and then navigate Vehicles Dimension
@@ -113,7 +113,7 @@ public class VehiclesTest extends App {
 	 * Test case: DMPM-5726 - Vehicle dimension hide loading indicator
 	 */
 	@TestDetails(story1 = "DMPM-5356:DMPM-5728", story2 = "DMPM-5354:DMPM-5725,DMPM-5726")
-	//@Test(groups = {"marketplace", "Vehicle dimension", "priority-medium"})
+	@Test(groups = {"marketplace", "Vehicle dimension", "priority-medium"})
 	public void testVehiclesAddAPolicy()
 	{
 		//Step 1: Login to App and then navigate Vehicles Dimension
