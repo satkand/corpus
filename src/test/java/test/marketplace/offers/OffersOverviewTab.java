@@ -58,6 +58,15 @@ public class OffersOverviewTab extends App {
 
 	}
 
+	@Test(groups = { "DMPM-1198", "marketplace", "Offers", "priority-minor" })
+	public void testRedirectToExternalURL() {
+		navigateToOverviewScreen();
+		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Suncorp Page Offers - No offer banner");
+		offersPage.tapCallToActionButton();
+		Assert.assertNotNull(offersPage.checkChromeToolBar(), "Did not open chrome Browser");
+	}
+	
+	
 	private void navigateToOverviewScreen() {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(landingPage.isSuncorpTabSelected(),
