@@ -85,12 +85,20 @@ public class PropertyDetailsPage   extends BasePage{
 	private By imageLoadingIndicator = By.xpath("au.com.suncorp.marketplace:id/loadingIndicator");
 	
 	private By professionalServicesImage = By.id("au.com.suncorp.marketplace:id/professionalServicesImage");
-	
+	private By professionaServicesButton = By.id("au.com.suncorp.marketplace:id/propertyViewProfessionalServicesButton");
 	
 	//EDUCATION CENTRES
 	private By nearbyEducationTitle = By.id("au.com.suncorp.marketplace:id/nearbyEducationText");
 	private By nearbyEducationViewAllButton = By.id("au.com.suncorp.marketplace:id/nearbyEducationViewAllText");
 	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	
+	public void scrollToProfessionaServicesButton(){
+		scrollToElement(professionaServicesButton, "true");
+	}
+	
+	public void tapProfessionaServicesButton(){
+		tapElement(professionaServicesButton);
+	}
 	
 	public WebElement checkNearbyEducationTitle() {
 		return find(nearbyEducationTitle);
