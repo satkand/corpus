@@ -122,6 +122,7 @@ public class HomeJourneyTest extends App {
 		navigationMenu.tapSplitMenuIcon();
 	
 }
+
 	private void navigateToHomePropertyTab() {
 		welcomePage.tapGuestAccessButton();
 		landingPage.tapHomeTab();
