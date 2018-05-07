@@ -22,6 +22,7 @@ import pages.marketplace.auth.pin.PINSetupPage;
 import pages.marketplace.auth.registration.GetStartedPage;
 import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
+import pages.marketplace.auth.registration.TermsAndConditionsPage;
 import pages.marketplace.chatbot.ChatbotPage;
 import pages.marketplace.claimdetails.ClaimDetailsPage;
 import pages.marketplace.claimdetails.ClaimIntroPage;
@@ -124,6 +125,7 @@ public class App extends BaseTest {
 	public ClaimIntroPage claimIntroPage =null;
 	public MakeAClaimPage makeAClaimPage =null;
 	public PropertyFullScreenMap propertyFullScreenMap = null;
+	public TermsAndConditionsPage termsAndConditionsPage = null;
 
 	String CONFIG_FILE=null;
 
@@ -196,7 +198,7 @@ public class App extends BaseTest {
 		makeAClaimPage = new MakeAClaimPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
-
+		termsAndConditionsPage = new TermsAndConditionsPage(driver);
 	}
 	
 	@Parameters({ "stub" })
