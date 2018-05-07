@@ -16,7 +16,7 @@ public class DummyPageWithLinks extends BasePage {
 	private By pinSetupOption = By.id("au.com.suncorp.marketplace:id/tempPinSetupNavigation");
 	private By loginAsButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	
-
+/*
 	public WebElement checkPinSetupOption() {
 		return find(pinSetupOption,30);
 	}
@@ -30,5 +30,5 @@ public class DummyPageWithLinks extends BasePage {
 		//find(loginAsButton,30);
 		tapElement(loginAsButton);
 	}
-	
+	*/
 }
