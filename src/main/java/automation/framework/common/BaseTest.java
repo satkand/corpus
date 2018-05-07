@@ -117,7 +117,7 @@ public class BaseTest {
 	}
 
 	@AfterSuite(alwaysRun = true)
-	private void teardown() throws IOException {
+	public void teardown() throws IOException {
 		driver.removeApp("au.com.suncorp.marketplace");
 		//au.com.suncorp.suncorpgroup.marketplace
 		driver.quit();
