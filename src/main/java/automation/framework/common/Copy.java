@@ -2,6 +2,9 @@ package automation.framework.common;
 
 public interface Copy {
     
+	// NAVIGATION MENU PAGE
+	String NAV_MENU_WELCOME_MESSAGE = "Welcome back!";
+	
 	//ENTER CURRENT PIN PAGE
 	String PIN_LOCK_ALERT_MESSAGE = "Your PIN is currently locked. Please re-authenticate with your password to setup a new PIN.";
 	String REAUTHENTICATE_BUTTON_TEXT = "REAUTHENTICATE";
