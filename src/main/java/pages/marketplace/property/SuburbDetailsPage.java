@@ -49,6 +49,10 @@ public class SuburbDetailsPage extends BasePage{
 		scrollToElement("Disclaimer","text");
 	}
 	
+	public void scrollUpToRiskAndHazardTitleText(){
+		swipeScreen("up");
+	}
+	
 	public WebElement checkDisclaimerLabelText() {
 		return find(disclaimerLabelText);
 	}

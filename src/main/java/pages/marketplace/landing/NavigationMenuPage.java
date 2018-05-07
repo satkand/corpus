@@ -81,7 +81,7 @@ public class NavigationMenuPage extends BasePage {
 	}
 	
 	public WebElement checkHomeJourneyMenuItem() {
-		 return find(homeJourneyMenuItem);
+		 return find(homeJourneyMenuItem,3);
 	}
 	
 public void tapHomeJourneyMenuItem() {

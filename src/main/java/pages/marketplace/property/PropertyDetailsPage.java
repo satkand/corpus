@@ -408,10 +408,12 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public String getPropertyAddress() {
+		find(propertyImage);
 		return getText(propertyAddress);
 	}
 	
 	public String getPropertyStatePostCode() {
+		find(propertyImage);
 		return getText(propertyStatePostCode);
 	}
 	
@@ -534,7 +536,9 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public void doubleTapOnPropertyImage() {
-		doubleTapOnAnElement(fullScreenPropertyImage);
+		//doubleTapOnAnElement(fullScreenPropertyImage);
+		tapElement(fullScreenPropertyImage);
+		tapElement(fullScreenPropertyImage);
 	}
 	
 	

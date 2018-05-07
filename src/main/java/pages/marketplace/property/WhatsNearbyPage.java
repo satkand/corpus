@@ -37,8 +37,8 @@ public class WhatsNearbyPage extends BasePage{
 	//Map location indicators
 	private By educationCentreIndicator = MobileBy.AccessibilityId("NorthanMelbourneInstituteOfTAFE. ");
 	private By shoppingAmenityIndicator = MobileBy.AccessibilityId("Penny Blue. ");
-	private By transportAmenityIndicator = MobileBy.AccessibilityId("Elizabeth St. ");
-	private By entertainmentOutletIndicator = MobileBy.AccessibilityId("Federal Coffee Palace. ");
+	private By transportAmenityIndicator = MobileBy.AccessibilityId("Reynolds Rd. ");
+	private By entertainmentOutletIndicator = MobileBy.AccessibilityId("Rodder Reserve. ");
 	private By healthCentreIndicator = MobileBy.AccessibilityId("Derma Tech Centre. ");
 	private By diningCentreIndicator = MobileBy.AccessibilityId("secret garden restraunt. ");
 	private By otherAmenityIndicator = MobileBy.AccessibilityId("Coomonwealth bank Niddrie. ");
@@ -83,6 +83,7 @@ public class WhatsNearbyPage extends BasePage{
 	}
 	
 	public void tapFullScreenMapPropertyPin() {
+		find(fullScreenMapPropertyPin,15);
 		tapElement(fullScreenMapPropertyPin);
 	}
 	
@@ -190,7 +191,7 @@ public class WhatsNearbyPage extends BasePage{
 	}
 	
 	public WebElement checkOtherTab() {
-		return find(otherTab,5);
+		return find(otherTab,3);
 	}
 	
 	public void tapOtherTab() {

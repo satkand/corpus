@@ -54,6 +54,7 @@ public class PropertyExplorerTest extends App{
 		propertyExplorerPage.tapClearSerchButton();
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchText(), "","Search text has not been cleared");
 	
+		propertyExplorerPage.tapPropertyInsight();
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
 		propertyExplorerPage.tapSearch();
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
