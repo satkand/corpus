@@ -1,3 +1,4 @@
+//
 //package test.marketplace.landing;
 //
 //import org.testng.annotations.Test;
@@ -8,13 +9,13 @@
 //
 //public class WelcomeTest extends App {
 //	
-//	@Test (groups = {"DMPM-42", "DMPM-216", "marketplace", "welcome", "priority-minor"})
+//	// DMPM-1453 - Removing need help link as per designs
+//	@Test (groups = {"DMPM-42", "DMPM-216", "DMPM-1453", "marketplace", "welcome", "priority-minor"})
 //	public void testWelcomePageElements(){
 //		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 //		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
 //		Assert.assertNotNull(welcomePage.checkLoginButton(), "Welcome screen - Login button is not shown");
 //		Assert.assertNotNull(welcomePage.checkGuestAccessButton(), "Welcome screen - Guest Access button is not shown");
-//		Assert.assertNotNull(welcomePage.checkNeedHelpButton(), "Welcome screen - Need Help button is not shown");
 //	}
 //	
 //	@Test (groups = {"DMPM-42", "DMPM-217", "marketplace", "welcome", "priority-minor"})
@@ -33,10 +34,10 @@
 //		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started page - Title not shown");
 //		Assert.assertNotNull(getStartedPage.checkSetupNewAccountButton(), "Get Started page - 'Set up new account' button not shown");
 //		getStartedPage.tapSetupNewAccount();
+//		Assert.assertNotNull(termsAndConditionsPage.checkAcceptButton(), "Registration Terms And Conditions page - Accept button not shown");
+//		termsAndConditionsPage.tapAcceptButton();
 //		Assert.assertNotNull(registrationPage.checkRegistrationPageTitle(), "Registration page - Register Title not shown");
 //		registrationPage.tapCancelButton();
-//		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started page - Title not shown");
-//		getStartedPage.tapBackButton();
 //		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 //	}
 //	
@@ -48,3 +49,4 @@
 //		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Guest Landing page - Page Title not shown");
 //	}
 //}
+//

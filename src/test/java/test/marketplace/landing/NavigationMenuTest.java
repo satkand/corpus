@@ -1,25 +1,32 @@
+//
 //package test.marketplace.landing;
 //
 //import org.openqa.selenium.By;
 //import org.testng.Assert;
 //import org.testng.annotations.Test;
 //
+//import automation.framework.common.Copy;
 //import pages.App;
 //
 //public class NavigationMenuTest extends App {
 //	//Scenario 3
 //	// Displaying Navigation menu and verifying the items in the menu
-//	@Test (groups = {"DMPM-78", "DMPM-310", "DMPM-1447", "marketplace", "Guest User", "priority-minor"})
+//	// 4858 - Point 1
+//	// DMPM-6057 - scenario 1
+//	@Test (groups = {"DMPM-78", "DMPM-310", "DMPM-1447", "DMPM-4858", "DMPM-6057", "DMPM-6762", "marketplace", "Guest User", "priority-minor"})
 //	public void testDisplayingNavigationMenu() {
 //		navigateToLandingPage();
 //		navigationMenu.tapSplitMenuIcon();
-//		Assert.assertNotNull(navigationMenu.checkProfilePicture(), "Navigation Menu - Profile Picture not displayed");
 //
+//		Assert.assertEquals(navigationMenu.getWelcomeMessageText(), Copy.NAV_MENU_WELCOME_MESSAGE, "Navigation Draw - Welcome Message not shown");
 //		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), "Navigation Draw - Suncorp menu option not shown");
+//		Assert.assertNotNull(navigationMenu.checkBankingHomeMenuItem(), "Navigation Draw - Banking Home menu option not shown");
 //		Assert.assertNotNull(navigationMenu.checkProductsMenuItem(), " Navigation Draw - Products menu option not shown");
 //		Assert.assertNotNull(navigationMenu.checkDigitalVaultMenuItem(), " Navigation Draw - Products menu option not shown");
-//		Assert.assertNotNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
 //		Assert.assertNotNull(navigationMenu.checkProffessionalServicesMenuItem(), " Navigation Draw - Propfessional Services menu option not shown");
+//		Assert.assertNotNull(navigationMenu.checkProductCatalogueItem(), "Navigation Draw - Product Catalogue menu option not shown");
+//		Assert.assertNotNull(navigationMenu.checkRewardsForYouMenuItem(), "Navigation Draw - Rewards For You menu option not shown");
+//
 //		Assert.assertNotNull(navigationMenu.checkSettingsMenuItem(), " Navigation Draw - Propfessional Services menu option not shown");
 //		Assert.assertNotNull(navigationMenu.checkBackToStartMenuItem(), " Navigation Draw - Back To Start menu option not shown");
 //	}	
@@ -60,3 +67,4 @@
 //		
 //	}
 //}
+//
