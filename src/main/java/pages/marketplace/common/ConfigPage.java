@@ -19,6 +19,7 @@ public class ConfigPage extends BasePage {
 	private By  envSelector = By.id("au.com.suncorp.marketplace:id/environmentSpinner");
 	private By bankingBaseUrl = By.id("au.com.suncorp.marketplace:id/bankingBaseUrlEditText");
 	private By spendingUrl = By.id("au.com.suncorp.marketplace:id/spendingBaseUrlEditText");
+	private By spendingAccNumbers = By.id("au.com.suncorp.marketplace:id/spendingAccountNumbersEditText");
 	private By vehiclesBaseUrl = By.id("au.com.suncorp.marketplace:id/vehicleBaseUrlEditText");
 	private By portfolioBaseUrl = By.id("au.com.suncorp.marketplace:id/portfolioBaseUrlEditText");
 	
@@ -40,11 +41,6 @@ public class ConfigPage extends BasePage {
 	}
 	
 	public void dismissConfigPage(String stub,String configFile) {
-		
-	   String env = lookupProperty(configFile,"env"); 
-	 
-	   tapEnvSelector();
-	   tapElement(findByUIAutomator(env, "text"));
 	    
 		if (find(configPageTitle, 30) != null) {
 			// Added this just to add some delay before checking for keyboard
@@ -59,6 +55,10 @@ public class ConfigPage extends BasePage {
 			
 			// Uncomment the below line if Stub Server is to be connect
 			if (!stub.equalsIgnoreCase("false")) {
+				//String env = lookupProperty(configFile,"env"); 
+					 
+				//tapEnvSelector();
+				//tapElement(findByUIAutomator(env, "text"));
 				ConnectToStubSever(stub,configFile);
 			}
 			// for(int i=0; i<=2; i++) {
@@ -94,6 +94,7 @@ public class ConfigPage extends BasePage {
 		
 		// TODO: This hardcoding needs to removed, once we figure out a way to get the second ip from the list of ips on the mac mini
 		String baseURL = lookupProperty(configFile,"baseURL"); ;//IP.getHostAddress()+":4567/";
+		String accountNum = lookupProperty(configFile,"accNum");
 		System.out.println("stub:::"+stub+"::::::global");
 		typeValue(baseURL, globalBaseURL);
 		tapElement(applyGlobalBaseUrlButton);
@@ -120,8 +121,9 @@ public class ConfigPage extends BasePage {
 		}
 		if(stub.equalsIgnoreCase("spendings") && find(spendingUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::spendings");
-			clearValue(spendingUrl);
-			typeValue(baseURL, spendingUrl);
+	//		clearValue(spendingUrl);
+	//		typeValue(baseURL, spendingUrl);
+			typeValue(accountNum, spendingAccNumbers);
 			if(isKeyboardDisplayed()) {
 				dismissKeyboard();
 			}

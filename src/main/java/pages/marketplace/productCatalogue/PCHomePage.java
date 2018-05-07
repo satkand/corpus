@@ -29,6 +29,7 @@ public class PCHomePage extends BasePage {
 	private By webView = By.id("au.com.suncorp.marketplace:id/webview");
 	private By webViewCloseButton = MobileBy.AccessibilityId("Navigate up");
 	private By proceedButton = By.id("android:id/button1");
+	private By descriptonLabel = By.id("au.com.suncorp.marketplace:id/brandDescription");
 	
 	private By brandInfo = By.id("au.com.suncorp.marketplace:id/brandDescription");
 	private By factsTitle = By.id("au.com.suncorp.marketplace:id/factsTitle");
@@ -40,6 +41,15 @@ public class PCHomePage extends BasePage {
 		JSONArray brandList = jsonParser.parseJson();
 		return brandList;
 	}
+
+	public boolean verifyDescription(Object brand) {
+		JSONObject brandJSON = (JSONObject)brand;
+		String description =  brandJSON.get("description").toString();
+		if(readValue(descriptonLabel).contentEquals(description)){
+			return true;
+		}else
+			return false;
+	}
 	
 	public JSONArray getCategories(Object brand) {	
 			JSONObject brandJSON = (JSONObject)brand;			
@@ -49,6 +59,14 @@ public class PCHomePage extends BasePage {
 		
 	public JSONArray getSubCategories(JSONObject categoryJSON) {
 		return (JSONArray) categoryJSON.get("products");
+	}
+
+	public boolean checkDisclaimer(JSONObject subCategoryJson) {
+		String disclaimerJSON = (String) subCategoryJson.get("disclaimer");
+		if(readValue(disclaimer).contentEquals(disclaimerJSON)) {
+			return true;
+		}else
+			return false;	
 	}
 	
 	public boolean verifyFacts(JSONObject subCategoryJson) {
@@ -76,7 +94,11 @@ public class PCHomePage extends BasePage {
 	}
 	
 	public void tapObject (String objectName) {
-		tapElement(By.xpath(String.format("//*[@text='%s']",objectName)));
+		try {
+			tapElement(By.xpath(String.format("//*[@text='%s']",objectName)));
+		}catch(Exception e) {
+			tapElement(By.xpath(String.format("//*[contains(@text, \"%s\")]", objectName.split(" ")[0])));
+		}
 	}
 	
 	public WebElement findCategory(String elementName) {
@@ -102,6 +124,7 @@ public class PCHomePage extends BasePage {
 	public WebElement checkPCHomePageTitle() {
 		return find(pcHomePageTitle);
 	}
+	
 	
 	public boolean isAamiTabSelected() {
 		return isSelected(aamiTab);
@@ -149,6 +172,7 @@ public class PCHomePage extends BasePage {
 	}
 	
 	public void tapBingleTab() {
+		swipeToBingleTab();
 		tapElement(bingleTab);
 	}
 	
@@ -161,7 +185,6 @@ public class PCHomePage extends BasePage {
 	}
 	
 	public void tapSuncorpTab() {
-		swipeToSuncorpTab();
 		tapElement(suncorpTab);
 	}
 	
@@ -178,14 +201,14 @@ public class PCHomePage extends BasePage {
 		tapElement(shannonsTab);
 	}
 	
-	public void swipeToShannonsTab() {
-		swipeHorizontally(gioTab, bingleTab);
-		swipeHorizontally(shannonsTab, gioTab);
+	public void swipeToBingleTab() {
+		swipeHorizontally(apiaTab, aamiTab);
+		swipeHorizontally(bingleTab, gioTab);
 	}
 	
-	public void swipeToSuncorpTab() {
-		swipeHorizontally(gioTab, bingleTab);
-		swipeHorizontally(suncorpTab, shannonsTab);
+	public void swipeToShannonsTab() {
+		swipeHorizontally(apiaTab, aamiTab);
+		swipeHorizontally(shannonsTab, gioTab);
 	}
 	
 	public WebElement checkQuoteButton() {

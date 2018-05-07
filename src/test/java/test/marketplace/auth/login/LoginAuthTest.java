@@ -19,7 +19,7 @@ public class LoginAuthTest extends App{
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
 
-		common.waitForLoadingSpinnerToDisappear();
+		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
 		pinOptionsPage.tapMaybeLater();
 
@@ -79,7 +79,7 @@ public class LoginAuthTest extends App{
 		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
 		navigationMenu.tapSettingsMenuItem();
 		//Wait for loading spinner to finish
-		common.waitForLoadingSpinnerToDisappear();
+		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "User is not navigated to Settings page");
 		Assert.assertNotNull(settingsPage.checkEnablePinToggle(), "Enable PIN toggle not found");
 
@@ -151,7 +151,7 @@ public class LoginAuthTest extends App{
 		loginAuthPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginAuthPage.tapReauthPasswordLoginBtn();
 		
-		common.waitForLoadingSpinnerToDisappear();
+		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - User is not navigated to the landing page");
 	}
 }

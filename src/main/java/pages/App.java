@@ -22,7 +22,11 @@ import pages.marketplace.auth.pin.PINSetupPage;
 import pages.marketplace.auth.registration.GetStartedPage;
 import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
+import pages.marketplace.auth.registration.TermsAndConditionsPage;
 import pages.marketplace.chatbot.ChatbotPage;
+import pages.marketplace.claimdetails.ClaimDetailsPage;
+import pages.marketplace.claimdetails.ClaimIntroPage;
+import pages.marketplace.claimdetails.MakeAClaimPage;
 import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
@@ -45,6 +49,9 @@ import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
 import pages.marketplace.productCatalogue.PCHomePage;
+import pages.marketplace.portfolio.PolicyDetailsPage;
+import pages.marketplace.portfolio.RenewPolicyPage;
+import pages.marketplace.portfolio.RiskDetailsPage;
 import pages.marketplace.professionalServices.HomeProfessionalServicesPage;
 import pages.marketplace.property.HomeJourneyPage;
 import pages.marketplace.property.HomePropertyPage;
@@ -54,6 +61,7 @@ import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
+import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 import pages.marketplace.property.PropertyFullScreenMap;
@@ -107,9 +115,17 @@ public class App extends BaseTest {
 	public HomeProfessionalServicesPage homeServicesPage = null;
 	public PropertyHubPage propertyHubPage = null;
 	public ArticlesPage articlesPage = null;
+	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+	public PolicyDetailsPage policyDetailsPage = null;
+	public RiskDetailsPage riskDetailsPage = null;
+	public RenewPolicyPage renewPolicyPage = null;
+	public ClaimDetailsPage claimDetailsPage = null;
+	public ClaimIntroPage claimIntroPage =null;
+	public MakeAClaimPage makeAClaimPage =null;
 	public PropertyFullScreenMap propertyFullScreenMap = null;
+	public TermsAndConditionsPage termsAndConditionsPage = null;
 
 	String CONFIG_FILE=null;
 
@@ -174,9 +190,15 @@ public class App extends BaseTest {
 		memberLoginPage = new MemberLoginPage(driver);
 		propertyFullScreenMap = new PropertyFullScreenMap(driver);
 		articlesPage = new ArticlesPage(driver);
+		policyDetailsPage = new PolicyDetailsPage(driver);
+		riskDetailsPage = new RiskDetailsPage(driver);
+		renewPolicyPage = new RenewPolicyPage(driver);
+		claimDetailsPage = new ClaimDetailsPage(driver);
+		claimIntroPage = new ClaimIntroPage(driver);
+		makeAClaimPage = new MakeAClaimPage(driver);
+		categoryDetailsPage = new CategoryDetailsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
-
-
+		termsAndConditionsPage = new TermsAndConditionsPage(driver);
 	}
 	
 	@Parameters({ "stub" })

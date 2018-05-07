@@ -223,6 +223,48 @@ public class SpendingsTest extends App {
 		verifyEmptyTransactionsMessage(months);
 	}
 	
+	
+	// 4034 - Scenario 1-6
+	//5921 - Scenario 1-6
+	@Test (groups = {"DMPM-4034", "DMPM-5818", "DMPM-5819","DMPM-5820","DMPM-5821","DMPM-5822","DMPM-5823","DMPM-5921", "marketplace", "FFI", "priority-minor"})
+	public void testDatePickerInCategoryDetailsScreen() {
+		
+		navigateToCategoryDetailScreen();	
+		Assert.assertNotNull(categoryDetailsPage.checkMonthPicker(), "Month picker not seen");
+		categoryDetailsPage.tapMonthPicker();
+		Assert.assertNotNull(categoryDetailsPage.checkMonthsOptionInPicker(), "List of months not seen");
+		categoryDetailsPage.tapTop3VendorTitle();
+		Assert.assertNull(categoryDetailsPage.checkMonthsOptionInPicker(), "List of months still seen");
+		categoryDetailsPage.tapMonthPicker();
+		categoryDetailsPage.tapDeviceBackButton();
+		Assert.assertNull(categoryDetailsPage.checkMonthsOptionInPicker(), "List of months still seen");
+		
+		categoryDetailsPage.selectMonth(utils.readTestData("ffi", "hasData", "month"));
+		Assert.assertNotNull(categoryDetailsPage.checkSpendingsTotalAmount(), "Total spent amount not seen");
+		Assert.assertNotEquals(categoryDetailsPage.getSpendingsTotalAmount(), utils.readTestData("ffi", "hasData", "zeroSpending"));
+		categoryDetailsPage.scrollDown();
+		Assert.assertNotNull(categoryDetailsPage.checkTop3VendorTitle(), "Top 3 vendor title not seen");
+		Assert.assertNotNull(categoryDetailsPage.checkTop3VendorsList(), "Top 3 vendor list not seen");
+		Assert.assertTrue(categoryDetailsPage.checkIfVendorsAreSorted(),"Top vendors are not sorted by the spending amount");
+		Assert.assertNotNull(categoryDetailsPage.checkTransactionList(), "Transaction list not seen");
+		 
+		//Check when there are no transcations
+		categoryDetailsPage.scrollUp();
+		categoryDetailsPage.checkMonthPicker();
+		categoryDetailsPage.selectMonth(utils.readTestData("ffi", "hasNoData", "month"));
+		Assert.assertEquals(categoryDetailsPage.getSpendingsTotalAmount(), utils.readTestData("ffi", "hasData", "zeroSpending"));
+		Assert.assertNull(categoryDetailsPage.checkTop3VendorTitle(), "Top 3 vendor title not seen");
+		Assert.assertNull(categoryDetailsPage.checkTop3VendorsList(), "Top 3 vendor list not seen");
+		Assert.assertNotNull(categoryDetailsPage.checkTransactionErrorMsg(), "Transaction error msg not seen");
+		
+		categoryDetailsPage.tapCloseButton();
+		Assert.assertNotNull(spendingsPage.checkSpendingPageTitle(), "Did not navigate to spending screen");
+		Assert.assertEquals(spendingsPage.getSpendingsTotalAmount(), utils.readTestData("ffi", "hasData", "zeroSpending"));
+		
+		
+	}
+	
+	
 	private void verifyEmptyTransactionsMessage(List months) {
 		for (Object month : months) {
 			spendingsPage.selectMonth(month.toString());
@@ -234,21 +276,30 @@ public class SpendingsTest extends App {
 		}
 	}
 
+	private void navigateToCategoryDetailScreen() {
+		navigateToSpendingsScreen();
+		Assert.assertNotNull(spendingsPage.checkMonthPicker(), "Month picker not seen");
+		spendingsPage.selectMonth(utils.readTestData("ffi", "hasData", "month"));
+		spendingsPage.tapTopmostCategory();
+		
+	}
+	
 	private void navigateToSpendingsScreen(){
 		loginToApp(utils.readTestData("hasSuncorpBankAccounts", "login"), utils.readTestData("hasSuncorpBankAccounts", "pwd"));
-		if(landingPage.checkWealthTab() == null) {
+		if(landingPage.checkFinanceTab() == null) {
 			landingPage.swipeToHealthTab();
 		}
-		landingPage.tapWealthTab();
-		Assert.assertTrue(landingPage.isWealthTabSelected(), "Wealth tab is not selected on landing page");
+		landingPage.tapFinanceTab();
+		Assert.assertTrue(landingPage.isFinanceTabSelected(), "Wealth tab is not selected on landing page");
 		
 		// TODO This logic is for enabling the bank accounts option in settings, This needs to be removed, when the logic for fetching the the bank accounts from api is implemented
 		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.scrollToDevSettings();
 		navigationMenu.tapDevSettings();
-		configPage.enableHasBankAccountsToggle();
+		configPage.enableHasBankAccountsToggle(); 
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
-		landingPage.tapWealthTab();
+		landingPage.tapFinanceTab();
 		
 		// Actual logic
 		financePage.tapviewSpendingThisMonthButton();
