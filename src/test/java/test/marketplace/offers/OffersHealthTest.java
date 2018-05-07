@@ -31,8 +31,8 @@ public class OffersHealthTest extends App {
 		navigateToHealthScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed())) {
 				//&& offersPage.checkBackgroundImage().isDisplayed())) {
-			Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Navigation to different tab failed");
-			landingPage.tapWealthTab();
+			Assert.assertNotNull(landingPage.checkFinanceTab(), " Offers flow - Navigation to different tab failed");
+			landingPage.tapFinanceTab();
 			Assert.assertNotNull(landingPage.checkHealthTab(), " Offers flow - Navigation back to Health tab failed");
 			landingPage.tapHealthTab();
 		}

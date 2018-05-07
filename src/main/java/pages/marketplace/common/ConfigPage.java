@@ -41,11 +41,6 @@ public class ConfigPage extends BasePage {
 	}
 	
 	public void dismissConfigPage(String stub,String configFile) {
-		
-	   String env = lookupProperty(configFile,"env"); 
-	 
-	   tapEnvSelector();
-	   tapElement(findByUIAutomator(env, "text"));
 	    
 		if (find(configPageTitle, 30) != null) {
 			// Added this just to add some delay before checking for keyboard
@@ -60,6 +55,10 @@ public class ConfigPage extends BasePage {
 			
 			// Uncomment the below line if Stub Server is to be connect
 			if (!stub.equalsIgnoreCase("false")) {
+				//String env = lookupProperty(configFile,"env"); 
+					 
+				//tapEnvSelector();
+				//tapElement(findByUIAutomator(env, "text"));
 				ConnectToStubSever(stub,configFile);
 			}
 			// for(int i=0; i<=2; i++) {

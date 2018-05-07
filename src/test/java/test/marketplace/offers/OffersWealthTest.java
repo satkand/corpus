@@ -33,8 +33,8 @@ public class OffersWealthTest extends App {
 				//&& offersPage.checkBackgroundImage().isDisplayed())) {
 			Assert.assertNotNull(landingPage.checkHomeTab(), " Offers flow - Navigation to different tab failed");
 			landingPage.tapHomeTab();
-			Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Navigation back to Vehicles tab failed");
-			landingPage.tapWealthTab();
+			Assert.assertNotNull(landingPage.checkFinanceTab(), " Offers flow - Navigation back to Vehicles tab failed");
+			landingPage.tapFinanceTab();
 		}
 		Assert.assertNotNull(offersPage.checkOfferIcon(), "Wealth Page Offers - No offer Image");
 		Assert.assertNotNull(offersPage.checkOfferTitle(), "Wealth tab Offers - No offer Title");
@@ -44,8 +44,8 @@ public class OffersWealthTest extends App {
 
 	private void navigateToWealthScreen() {
 		welcomePage.tapGuestAccessButton();
-		Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Wealths tab not shown");
-		landingPage.tapWealthTab();
+		Assert.assertNotNull(landingPage.checkFinanceTab(), " Offers flow - Wealths tab not shown");
+		landingPage.tapFinanceTab();
 		offersPage.scrollToOffersBanner();
 	}
 }
