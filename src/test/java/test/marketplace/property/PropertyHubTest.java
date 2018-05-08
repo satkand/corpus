@@ -68,6 +68,37 @@ public class PropertyHubTest  extends App{
 			
 	}
 	
+	@TestDetails(story1 = "DMPM-1392:DMPM-6594,DMPM-6611", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Property Hub", "priority-minor" })
+	public void testSuburbDetailsMiniMap() {
+		navigateToPropertyHub();
+		Assert.assertNotNull(propertyExplorerPage.checkSuburbInsightTab(), "Property Explorer page - Property Insight tab is not present");
+		
+		propertyExplorerPage.tapSuburbInsight();
+		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
+		propertyExplorerPage.tapSearch();
+		
+		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(), "Suburb details page - Suburb name is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyeButton(), "Suburb details page - Whats nearby button is not present");
+		
+		suburbDetailsPage.tapBackButton();
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyInsightTab(), "Property Explorer page - Property Insight tab is not present");
+		propertyExplorerPage.tapPropertyInsight();
+		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
+		propertyExplorerPage.tapSearch();
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property details page - Property Address is not present");
+		
+		propertyDetailsPage.scrollToShowMeInsightButton();
+		propertyDetailsPage.tapShowMeInsightButton();
+		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(), "Suburb details page - Suburb name is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyeButton(), "Suburb details page - Whats nearby button is not present");
+		
+		
+		
+	}
+	
 	private void navigateToPropertyHub() {
 		navigateToPropertyDimension();
 		homePropertyPage.scrollToJourneyBanner();

@@ -34,6 +34,22 @@ public class SuburbDetailsPage extends BasePage{
 	private By travelButton= By.id("au.com.suncorp.marketplace:id/travelButton");
 	private By weeklyIncomeButton = By.id("au.com.suncorp.marketplace:id/weeklyIncomeButton");
 	
+	//google Map
+	private By staticMap=  MobileBy.AccessibilityId("Google Map");
+	private By whatsNearbyeButton = By.id("au.com.suncorp.marketplace:id/nearbyButton");
+	
+	public WebElement checkStaticMap() {
+		return find(staticMap);
+	}
+	
+	public WebElement checkWhatsNearbyeButton() {
+		return find(whatsNearbyeButton);
+	}
+	
+	public void tapWhatsNearbyeButton() {
+		tapElement(whatsNearbyeButton);
+	}
+	
 	public boolean checkScreenTitleWithSuburbName(String text) {
 		String t = "//android.widget.TextView[@text='"+text+"']";
 		By titleName = By.xpath(t);
