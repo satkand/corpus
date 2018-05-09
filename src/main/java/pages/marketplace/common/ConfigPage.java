@@ -22,6 +22,7 @@ public class ConfigPage extends BasePage {
 	private By spendingAccNumbers = By.id("au.com.suncorp.marketplace:id/spendingAccountNumbersEditText");
 	private By vehiclesBaseUrl = By.id("au.com.suncorp.marketplace:id/vehicleBaseUrlEditText");
 	private By portfolioBaseUrl = By.id("au.com.suncorp.marketplace:id/portfolioBaseUrlEditText");
+	private By mockSpendingToggle = By.id("au.com.suncorp.marketplace:id/mockSpendingAccountsToggle");
 	
 	private By continueButton = By.id("au.com.suncorp.marketplace:id/configContinueButton");
 	
@@ -128,6 +129,8 @@ public class ConfigPage extends BasePage {
 			if(isKeyboardDisplayed()) {
 				dismissKeyboard();
 			}
+			scrollToElement(mockSpendingToggle, "id");
+			enableMockSpendingToggle();
 		}
 		if(stub.equalsIgnoreCase("vehicles") && find(vehiclesBaseUrl, 30) != null) {
 			System.out.println("stub:::"+stub+"::::::vehicles");
@@ -148,6 +151,12 @@ public class ConfigPage extends BasePage {
 			if(!(isKeyboardPresent() == true)) {
 				isKeyboardPresent();
 			}
+		}
+	}
+	
+	public void enableMockSpendingToggle() {
+		if (!isToggleEnabled(mockSpendingToggle)) {
+			tapElement(mockSpendingToggle);
 		}
 	}
 	

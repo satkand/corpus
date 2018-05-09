@@ -28,6 +28,7 @@ public class VendorDetailPage extends BasePage{
 	private By vendorName = By.id("au.com.suncorp.marketplace:id/vendorName");
 	private By vendorAmount = By.id("au.com.suncorp.marketplace:id/amount");
 	private By searchField = By.id("au.com.suncorp.marketplace:id/searchBar");
+	private By searchBar = By.id("au.com.suncorp.marketplace:id/search_src_text");
 	private By vendorSearchList = By.id("au.com.suncorp.marketplace:id/vendorFilteredList");
 	private By vendorSearchScreenTitle = By.xpath("//android.widget.TextView[@text='Vendor search']");
 	private By closeButton = MobileBy.AccessibilityId("Navigate up");
@@ -106,7 +107,7 @@ public class VendorDetailPage extends BasePage{
 	}
 	
 	public void enterSearchText(String searchString) {
-		typeValue(searchString, searchField);
+		typeValue(searchString, searchBar);
 	}
 	
 	public boolean verifySearch(String resultString1,String resultString2,String resultString3 ) {

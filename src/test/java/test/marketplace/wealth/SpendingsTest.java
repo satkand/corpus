@@ -360,7 +360,37 @@ public class SpendingsTest extends App {
 			Assert.assertTrue(vendorDetailPage.verifySearchItems(), "Search list did not unfilter");
 		}
 
-	
+		//DMPM-4645 - Scneario 1-6
+			@Test (groups = {"DMPM-4645", "marketplace", "FFI", "priority-minor"})
+			public void testSearchThroughCategoryDetailsList() {
+				navigateToCategoryDetailScreen();
+				vendorDetailPage.tapSearchField();
+				Assert.assertTrue(common.isKeyboardShown(), "Keyboard not seen");
+				Assert.assertNotNull(vendorDetailPage.checkCloseButton(), "Close button not present");
+				Assert.assertNotNull(categoryDetailsPage.checkVendorSearchList(), "No vendor list seen");
+				categoryDetailsPage.tapCloseButton();
+				Assert.assertNotNull(categoryDetailsPage.checkTop3VendorTitle(), "Did not navigate back to category screen");
+				
+				vendorDetailPage.tapSearchField();
+				vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString"));
+				Assert.assertTrue(vendorDetailPage.verifySearch(utils.readTestData("ffi", "hasData", "resultString1"),
+						utils.readTestData("ffi", "hasData", "resultString2"), utils.readTestData("ffi", "hasData", "resultString3")), "Search not as expected");
+				vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString4Letter"));
+				Assert.assertTrue(vendorDetailPage.verifySearch4Letter(utils.readTestData("ffi", "hasData", "resultString1"),
+						utils.readTestData("ffi", "hasData", "resultString2"), utils.readTestData("ffi", "hasData", "resultString3")), "Search not as expected");
+				vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString5Letter"));
+				Assert.assertNotNull(vendorDetailPage.checkSearchErrorMsg(), "Error msg not seen");
+				
+				//3 times backspace to remove 3 characters and unfilter list
+				vendorDetailPage.tapBackspace();
+				vendorDetailPage.tapBackspace();
+				vendorDetailPage.tapBackspace();
+				
+				Assert.assertTrue(vendorDetailPage.verifySearchItems(), "Search list did not unfilter");
+						
+				
+			}
+				
 	private void verifyEmptyTransactionsMessage(List months) {
 		for (Object month : months) {
 			spendingsPage.selectMonth(month.toString());

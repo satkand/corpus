@@ -29,6 +29,7 @@ public class CategoryDetailsPage extends BasePage {
 	private By transactionErrorMsg = By.id("au.com.suncorp.marketplace:id/missingTransactionsHeading");
 	private By vendorAmount = By.id("au.com.suncorp.marketplace:id/vendorAmount");
 	private By vendorName = By.id("au.com.suncorp.marketplace:id/vendorName");
+	private By vendorSearchList = By.id("au.com.suncorp.marketplace:id/transactionFilteredList");
 	
 	public WebElement checkMonthPicker() {
 		return find(monthPicker);
@@ -130,6 +131,10 @@ public class CategoryDetailsPage extends BasePage {
 			return true;
 		}else
 			return false;
+	}
+	
+	public WebElement checkVendorSearchList() {
+		return find(vendorSearchList);
 	}
 	
 }
