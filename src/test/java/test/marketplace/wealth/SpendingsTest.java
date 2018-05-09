@@ -360,7 +360,7 @@ public class SpendingsTest extends App {
 			Assert.assertTrue(vendorDetailPage.verifySearchItems(), "Search list did not unfilter");
 		}
 
-		//DMPM-4645 - Scneario 1-6
+			//DMPM-4645 - Scneario 1-6
 			@Test (groups = {"DMPM-4645", "marketplace", "FFI", "priority-minor"})
 			public void testSearchThroughCategoryDetailsList() {
 				navigateToCategoryDetailScreen();
@@ -390,7 +390,29 @@ public class SpendingsTest extends App {
 						
 				
 			}
-				
+			
+		
+		//DMPM-4023 - Scneario 2
+		@Test (groups = {"DMPM-4023", "DMPM-6801","marketplace", "FFI", "priority-minor"})
+		public void testNavigateToConnectedScreens() {
+			navigateToCategoryDetailScreen();
+			Assert.assertNotNull(categoryDetailsPage.checkConnectedAccountsButton(), "Connected accounts button not present");
+			categoryDetailsPage.tapConnectedAccountsButton();
+			Assert.assertNotNull(connectedAccountsPage.checkTitle(), "Connected accounts title not present");
+			connectedAccountsPage.tapCloseButton();
+			Assert.assertNotNull(categoryDetailsPage.checkTop3VendorTitle(), "Vendor details page  not present");
+			categoryDetailsPage.tapCloseButton();
+			spendingsPage.checkSpendingPageTitle();
+			spendingsPage.tapVendorTab();
+			
+			Assert.assertNotNull(categoryDetailsPage.checkConnectedAccountsButton(), "Connected accounts button not present");
+			categoryDetailsPage.tapConnectedAccountsButton();
+			Assert.assertNotNull(connectedAccountsPage.checkTitle(), "Connected accounts title not present");
+			connectedAccountsPage.tapCloseButton();
+			
+		}
+		
+		
 	private void verifyEmptyTransactionsMessage(List months) {
 		for (Object month : months) {
 			spendingsPage.selectMonth(month.toString());
