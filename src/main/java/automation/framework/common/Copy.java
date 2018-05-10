@@ -11,7 +11,7 @@ public interface Copy {
 	String INCORRECT_PIN_ERROR_MESSAGE= "Incorrect PIN, please try again.";
 	
 	//SETTINGS PAGE
-	String SETTINGS_TITLE_TEXT ="Settings";
+	public String SETTINGS_TITLE_TEXT ="Settings";
 	
 	//PROPERTYHUB PAGE
 	String PROPERTY_HUB_DESCRIPTION_HEADING ="Explore valuable insights on suburbs & properties";
@@ -20,12 +20,27 @@ public interface Copy {
 	String PROPERTY_HUB_SEARCH_HINT = "Search address";
 	
 	//PROPERTY DETAILS PAGE
-	String PROPERTY_DETAILS_THIS_IS_MY_PROPERTY_LABEL ="This is my property";
-	String PROPERTY_DETAILS_BOTTOM_SHEET_TITLE ="My property";
-	String PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT ="Owner/Occupier";
-	String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
-	String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
+	public String PROPERTY_DETAILS_THIS_IS_MY_PROPERTY_LABEL ="This is my property";
+	public String PROPERTY_DETAILS_BOTTOM_SHEET_TITLE ="My property";
+	public String PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT ="Owner/Occupier";
+	public String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
+	public String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
+
+	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
 	
+	//PROFESSIONAL SERVICES FROM NAVIGATION MENU
+	public String HOME_PROFESSIONAL_SERVICES_INTRO_TITLE ="Professional services";
+	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property.";
+	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	
+	//FORCE UPDATE SCREEN
+	public static final String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
+	public static final String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
+
+
 	//FULL SCREEN MAPMAP POINTS OF INTEREST INDICATORS
 	String FULL_SCREEN_MAP_EDUCATION_CENTRE_INDICATOR = "NorthanMelbourneInstituteOfTAFE. ";
 	String FULL_SCREEN_MAP_SHOPPING_AMENITY_INDICATOR = "Penny Blue. ";
@@ -49,11 +64,24 @@ public interface Copy {
 	String ARTICLE_CAROUSEL_TITLE = "Articles";
 
 	//VEHICLES PAGE
-	String VEHICLE_SERVICES_TITLE = "Vehicle Services at your finger tips";
-	String VEHICLE_SERVICES_DESCRIPTION = "Browse and access from a range of professional services for your vehicle or just buy one.";
-	String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
-	String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
-
+	public static final String VEHICLE_SERVICES_TITLE = "Vehicle Services at your finger tips";
+	public static final String VEHICLE_SERVICES_DESCRIPTION = "Browse and access from a range of professional services for your vehicle or just buy one.";
+	public static final String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
+	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
+	
+	//WEB VIEW
+	public static final String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
+	
+	//SUBURB DETAILS PAGE
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
+	public static final String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood Risk";
+	public static final String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush Fire Risk";
+	public static final String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft Risk";
+	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
+	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
+	public static final String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
+	
 	//POLICY DETAILS PAGE
 	String POLICY_DETAILS_SCREEN_TITLE = "Policy Details";
 	String INSTALMENT_FREUENCY_MONTHLY_LABEL ="Monthly instalment";

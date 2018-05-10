@@ -9,7 +9,8 @@ import pages.App;
 public class HomeJourneyTest extends App {
 	
 	// 503 - Scenario 2
-	@Test (groups = {"DMPM-503", "DMPM-972", "marketplace", "Home buying journey", "priority-minor"})
+	//4850 - Scenario 1
+	@Test (groups = {"DMPM-503", "DMPM-972","DMPM-4850", "marketplace", "Home buying journey", "priority-minor"})
 	public void testHomeJourneyPageElements() {
 		navigateToHomePropertyTab();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
