@@ -226,9 +226,42 @@ public class PolicyDetailsTest extends App {
 		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.POLICY_DETAILS_SCREEN_TITLE),
 				"Not on policy details screen");
 	}
-
-	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852")
+	
+	@TestDetails(story1 = "DMPM-6151:DMPM-7074", story2 = "DMPM-5751:DMPM-7544")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	public void testRiskDetailsCoverPeriod() throws InterruptedException {
+		String carPolicy = "carPolicy";
+		String CoverTypeTitle;
+		String carProduct = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
+		String[] riskDetails = {
+				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "coverType1"),
+				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "coverPeriod1"),
+				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "riskDescription1"),
+				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "registrationNumber1")
+		};
+		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", carPolicy, "pwd");
+
+		navigateToMyProductsScreen(userName, pwd);
+		common.waitForLoadingIndicatorToDisappear();
+		myProductsPage.scrollToProductAndTap(carProduct);
+		common.waitForLoadingIndicatorToDisappear();
+		//DMPM-6151:DMPM-7074
+		Assert.assertNotNull(policyDetailsPage.scrollToRiskViewDetailsButton(), "View details button is not displayed");
+		CoverTypeTitle = policyDetailsPage.getCoverTypeTextUsingId();
+		//DMPM-5751:DMPM-7544
+		assertRiskTileElements(riskDetails);
+		//DMPM-6151:DMPM-7074 Continued
+		policyDetailsPage.tapRiskViewDetails();
+		assertRiskDetails(riskDetails,CoverTypeTitle);
+		riskDetailsPage.tapNavigateBackButton();
+		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.POLICY_DETAILS_SCREEN_TITLE),
+				"Not on policy details screen");
+	}
+
+	
+	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852")
+	@Test(groups = { "marketplace", "policy details", "priority-minor" })	
 	public void testViewDiscountsAndRewards() throws InterruptedException {
 		String carPolicy = "carPolicy";
 		String carAdvantagePolicy = "carAdvantagePolicy";
@@ -417,7 +450,12 @@ public class PolicyDetailsTest extends App {
 		loginToApp(username, pasword);
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapProductsMenuItem();
+		if(myProductsPage.checkProductDisclaimer()!=null && myProductsPage.checkProductDisclaimerTitle()!=null){
+			myProductsPage.tapProductDisclaimer();
+		}
 		myProductsPage.checkMyProductsTitle();
+		
+				
 	}
 
 	private void assertPolicyRenewalStatus(String myProductPolicyStatus, String policy) {
@@ -508,5 +546,22 @@ public class PolicyDetailsTest extends App {
 				"Parking description is incorrect");
 
 	}
+	
+	private void assertRiskDetails(String[] riskDetails, String coverTypeTitle) {
+		Assert.assertNotNull(riskDetailsPage.checkRiskCoverType(), "Risk cover type is not displayed");
+		Assert.assertEquals(riskDetailsPage.getRiskCoverTypeText(), riskDetails[0], "Cover type text is incorrect");
+		Assert.assertEquals(riskDetailsPage.getRiskCoverTypeText(), coverTypeTitle, "Cover type text is not matching with cover type title");
+	}
+
+	private void assertRiskTileElements(String[] riskDetails) {
+		Assert.assertNotNull(policyDetailsPage.checkPolicyRiskIcon(),"Risk tile is not displaying policy risk icon");
+		Assert.assertNotNull(policyDetailsPage.checkPolicyRiskDescription(),"Risk tile is not displaying policy risk description");
+		Assert.assertEquals(policyDetailsPage.getPolicyRiskDescription(), riskDetails[2], "Risk tile card title is incorrect");
+		Assert.assertNotNull(policyDetailsPage.checkRegistrationNumber(),"Risk tile registration number is not displayed");
+		Assert.assertEquals(policyDetailsPage.getRegistrationNumber(), riskDetails[3], "Risk tile registration number is incorrect");
+		Assert.assertNotNull(policyDetailsPage.checkCoverTypeTextUsingId(),"Risk tile not displaying card title");
+		Assert.assertEquals(policyDetailsPage.getCoverTypeTextUsingId(), riskDetails[0], "Risk tile card title is incorrect");
+	}
+
 
 }

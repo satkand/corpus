@@ -59,7 +59,39 @@ public class PolicyDetailsPage extends BasePage {
 	private String optionalCoverTypeLabelId = "au.com.suncorp.marketplace:id/optionalCoverType";
 	private String riskViewDetailsId = "au.com.suncorp.marketplace:id/riskViewDetails";
 	private String rewardsSubtitleId = "au.com.suncorp.marketplace:id/rewardsSubtitle";
+	private By coverTypeText = By.id("au.com.suncorp.marketplace:id/coverType");
+	private By riskDescription = By.id("au.com.suncorp.marketplace:id/riskDescription");
+	private By riskIcon = By.id("au.com.suncorp.marketplace:id/riskIcon");
+	private By registrationNumber = By.id("au.com.suncorp.marketplace:id/registrationNumber");
+	
+	public WebElement checkPolicyRiskDescription() {
+		return find(riskDescription);
+	}
+	
+	public String getPolicyRiskDescription() {
+		return getText(riskDescription);
+	}
+	
+	public WebElement checkPolicyRiskIcon() {
+		return find(riskIcon);
+	}
+	
+	public WebElement checkRegistrationNumber() {
+		return find(registrationNumber);
+	}
+	
+	public String getRegistrationNumber() {
+		return getText(registrationNumber);
+	}
+	
 
+	public WebElement checkCoverTypeTextUsingId() {
+		return find(coverTypeText);
+	}
+	public String getCoverTypeTextUsingId() {
+		return getText(coverTypeText);
+	}
+	
 	public WebElement checkPolicyDescription() {
 		return find(policyDescription);
 	}
@@ -309,5 +341,6 @@ public class PolicyDetailsPage extends BasePage {
 
 		return getText(policyrenewalStatus);
 	}
+
 
 }

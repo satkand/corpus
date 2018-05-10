@@ -43,6 +43,43 @@ public class RiskDetailsPage extends BasePage {
 	private By additionalexcessDescription = By.id("au.com.suncorp.marketplace:id/excessDescription");
 	private By additionalExcessListedDriver =By.id("au.com.suncorp.marketplace:id/listedDriverExcessValue");
 	private By additionalExcessUnListedDriver =By.id("au.com.suncorp.marketplace:id/unlistedDriverExcessValue");
+	private By riskCoverType = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/suncorpToolbar\").fromParent(new UiSelector().className(\"android.widget.TextView\"))");
+	private By riskCoverPeriodTitle = By.id("au.com.suncorp.marketplace:id/riskCoverPeriodTitle");
+	private By riskCoverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
+	private By riskCoverPeriodEnd  = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
+	
+	
+	//risk cover period related ---Start
+	public WebElement checkRiskCoverPeriodTitle() {
+		return find(riskCoverPeriodTitle);
+	}
+	
+	public WebElement checkRiskCoverPeriodStart() {
+		return find(riskCoverPeriodStart);
+	}
+	
+	public WebElement checkRiskCoverPeriodEnd() {
+		return find(riskCoverPeriodEnd);
+	}
+	
+	public String getRiskCoverPeriodTitle() {
+		return getText(riskCoverPeriodTitle);
+	}
+	
+	public String getRiskCoverPeriodStart() {
+		return getText(riskCoverPeriodStart);
+	}
+	
+	public String getRiskCoverPeriodEnd() {
+		return getText(riskCoverPeriodEnd);
+	}
+	//risk cover period related ---End
+	public WebElement checkRiskCoverType() {
+		 return find(riskCoverType);
+	}
+	public String getRiskCoverTypeText() {
+		return getText(riskCoverType);
+	}
 	
 	public String getRiskStartDateText() {
 
