@@ -208,7 +208,7 @@ public class PolicyDetailsPage extends BasePage {
 
 	public void scrollToRewardsSubtitle() {
 
-		scrollToElement(rewardsSubtitleId, "id");
+		scrollToElement(rewardsSubtitleId, "id",5);
 	}
 
 	public WebElement scrollToOptionalCover() {

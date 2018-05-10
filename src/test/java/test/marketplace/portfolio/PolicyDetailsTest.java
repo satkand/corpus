@@ -227,7 +227,7 @@ public class PolicyDetailsTest extends App {
 				"Not on policy details screen");
 	}
 
-	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852")
+	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852", story2 = "DMPM-5523:DMPM7433,DMPM-7446")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testViewDiscountsAndRewards() throws InterruptedException {
 		String carPolicy = "carPolicy";
@@ -257,6 +257,35 @@ public class PolicyDetailsTest extends App {
 		myProductsPage.scrollToProductAndTap(carAdvantageProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertFalse(policyDetailsPage.isDiscountOrRewardsDisplayed(), "Discounts/Rewards are displayed");
+	}
+	
+	
+	@TestDetails(story1 = "DMPM-5523:DMPM7433,DMPM-7446")
+	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	public void testDisplayRewards() throws InterruptedException {
+		String carPolicy = "carPolicy";
+		String motorHomePolicy = "motorHomePolicy";
+		String carProduct = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
+		String motorHomeProduct = utils.readTestData("portfolio", "policyDetails", motorHomePolicy,
+				"productType");
+		String rewardsTitle = utils.readTestData("portfolio", "policyDetails", motorHomePolicy, "riskDetails",
+				"rewardsTitle");
+		String rewards = utils.readTestData("portfolio", "policyDetails", motorHomePolicy, "riskDetails", "rewards");
+		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", carPolicy, "pwd");
+
+		navigateToMyProductsScreen(userName, pwd);
+		common.waitForLoadingIndicatorToDisappear();
+		myProductsPage.scrollToProductAndTap(carProduct);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToRewardsSubtitle();
+		Assert.assertFalse(policyDetailsPage.isDiscountOrRewardsDisplayed(), "Rewards are displayed");
+		policyDetailsPage.tapNavigateBackButton();
+		myProductsPage.scrollToProductAndTap(motorHomeProduct);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToRewardsSubtitle();
+		Assert.assertEquals(policyDetailsPage.getRewardsTitle(), rewardsTitle, "Rewards label is not displayed");
+		Assert.assertEquals(policyDetailsPage.getRewardsSubtitle(), rewards, "Rewards are not displayed");
 	}
 
 	@TestDetails(story1 = "DMPM-4392:DMPM-5805,DMPM-5806")

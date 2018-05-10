@@ -745,7 +745,10 @@
             			{
             			"login": "policyendorserror@sun.com",
 				    "pwd": "Password1"
-            			}
+            			},
+            			"riskDetails":{
+						"rewardsTitle":"Round the world reward",
+						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
 				},
 				"homePolicy": 
 				{
