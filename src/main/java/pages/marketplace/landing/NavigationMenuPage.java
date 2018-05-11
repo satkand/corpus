@@ -8,31 +8,31 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 
 public class NavigationMenuPage extends BasePage {
-
-	private By splitMenuIcon = MobileBy.AccessibilityId("Open navigation menu");
-	private By profilePicture = By.id("au.com.suncorp.marketplace:id/profilePicture");
-
-	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
 	
+	private By splitMenuIcon = MobileBy.AccessibilityId("Open navigation menu");
+
+	private By welcomeMessage = By.id("au.com.suncorp.marketplace:id/profileName");
+	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
+	private By bankingHome = By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
 	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='My Products']");
 	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
-	private By homeJourneyMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Home journey']");
 	private By productsCatalogueItem = By.xpath("//android.widget.CheckedTextView[@text='Product catalogue']");
-
-	private By propfessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
+	private By rewardsForYou = By.xpath("//android.widget.CheckedTextView[@text='Rewards for you']");
+	private By proffessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
 
 	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
+	
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By devSettings = By.xpath("//android.widget.CheckedTextView[@text='Dev Settings']");
-
+    private String devSettingsText ="Dev Settings";
 	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
 
 	public void tapProffessionalServicesMenuItem() {
-		 tapElement(propfessionalServicesMenuItem);
+		 tapElement(proffessionalServicesMenuItem);
 	}
 	
 	public WebElement checkProffessionalServicesMenuItem() {
-		 return find(propfessionalServicesMenuItem);
+		 return find(proffessionalServicesMenuItem);
 	}
 	
 	public NavigationMenuPage(AppiumDriver driver) {
@@ -57,6 +57,14 @@ public class NavigationMenuPage extends BasePage {
 		 tapElement(suncorpMenuItem);
 	}
 	
+	public String getWelcomeMessageText() {
+		return getText(welcomeMessage);
+	}
+	
+	public WebElement checkBankingHomeMenuItem() {
+		 return find(bankingHome);
+	}
+	
 	public WebElement checkProductsMenuItem() {
 		 return find(productsMenuItem);
 	}
@@ -70,6 +78,10 @@ public class NavigationMenuPage extends BasePage {
 		 tapElement(productsCatalogueItem);
 	}
 	
+	public WebElement checkRewardsForYouMenuItem() {
+		 return find(rewardsForYou);
+	}
+	
 	public WebElement checkDigitalVaultMenuItem() {
 		 return find(digitalVaultMenuItem);
 	}
@@ -80,15 +92,6 @@ public class NavigationMenuPage extends BasePage {
 
 	}
 	
-	public WebElement checkHomeJourneyMenuItem() {
-		 return find(homeJourneyMenuItem);
-	}
-	
-public void tapHomeJourneyMenuItem() {
-	find(homeJourneyMenuItem, 30);
-	 tapElement(homeJourneyMenuItem);
-	
-}
 	public WebElement checkBackToStartMenuItem() {
 		 return find(backToStartMenuItem);
 	}
@@ -113,6 +116,10 @@ public void tapHomeJourneyMenuItem() {
 	public WebElement checkDevSettings() {
 		 return find(devSettings);
 	}
+	
+//	public void scrollToDevSettings() {
+//		scrollToElement(devSettings);
+//	}
 	
 	public void tapDevSettings() {
 		find(devSettings, 30);
@@ -139,7 +146,9 @@ public void tapHomeJourneyMenuItem() {
 		tapOnBottomRightCorner();
 	}
 	
-	public WebElement checkProfilePicture() {
-		return find(profilePicture, 30);
+	public void scrollToDevSettings() {
+		
+		scrollToElement(devSettingsText,"text");
+		 
 	}
 }

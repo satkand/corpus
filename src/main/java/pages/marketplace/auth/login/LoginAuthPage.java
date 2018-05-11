@@ -80,4 +80,8 @@ public class LoginAuthPage extends BasePage{
 	public void tapReauthPasswordLoginBtn() {
 		tapElement(reauthPasswordLoginBtn);
 	}
+	
+	public void restartApp() {
+		closeAndLaunchApp();
+	}
 }

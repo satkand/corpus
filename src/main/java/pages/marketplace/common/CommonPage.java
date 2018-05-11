@@ -9,7 +9,7 @@ import io.appium.java_client.MobileBy;
 
 public class CommonPage extends BasePage {
 
-	private By loadingSpinner = MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.ProgressBar\")");
+	private By loadingIndicator = MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.ProgressBar\")");
 	private By backNavigationButton = MobileBy.AccessibilityId("Back");
 	private By successLoadingSpinner = By.id("au.com.suncorp.marketplace:id/successAlertDialog");
 	
@@ -61,13 +61,13 @@ public class CommonPage extends BasePage {
 		swipeHorizontallyToLeft();
 	}
 	
-	public WebElement checkLoadingSpinner() {
-		return find(loadingSpinner);
+	public WebElement checkLoadingIndicator() {
+		return find(loadingIndicator,5);
 	}
 	
-	public void waitForLoadingSpinnerToDisappear() {
+	public void waitForLoadingIndicatorToDisappear() {
 		
-		waitForElementToDisappear(loadingSpinner);
+		waitForElementToDisappear(loadingIndicator,30);
 		
 	}
 
