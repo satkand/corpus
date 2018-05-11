@@ -306,7 +306,6 @@ public class LoginTest extends App {
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
 		loginPage.tapResetLinkButton();
 
-		//TODO: Following code will part of later story which is not Manual Tested yet
 		common.waitForSuccessLoadingSpinnerToDisappear();
 		Assert.assertNotNull(loginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
 		Assert.assertEquals(loginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
@@ -328,7 +327,6 @@ public class LoginTest extends App {
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
 		loginPage.tapResetLinkButton();
 
-		//TODO: Following code will part of later story which is not Manual Tested yet
 		common.waitForSuccessLoadingSpinnerToDisappear();
 		Assert.assertNotNull(loginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
 		Assert.assertEquals(loginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
@@ -347,7 +345,6 @@ public class LoginTest extends App {
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
 		loginPage.tapResetLinkButton();
 		
-		//TODO: Following code will part of later story which is not Manual Tested yet
 		common.waitForSuccessLoadingSpinnerToDisappear();
 		Assert.assertNotNull(loginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
 		Assert.assertEquals(loginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
@@ -356,13 +353,13 @@ public class LoginTest extends App {
 		loginPage.tapResetPasswordSuccessSnackbarButton();
 		//For NOT google phones with default app and other email apps
 		if(loginPage.checkEmailOptionPanel()!=null) {
-			Assert.assertNotNull(loginPage.checkFirstEmailPanelOption(), "NOT SEEN HERE");
+			Assert.assertNotNull(loginPage.checkFirstEmailPanelOption(), "Email app option is not displayed");
 			loginPage.tapFirstEmailOption();
-			Assert.assertFalse(loginPage.getActivityValue().contains("ChooserActivity"));
+			Assert.assertFalse(loginPage.getActivityValue().contains("ChooserActivity"), "User is not navigated out of the app");
 		}
 		//For google phones with GMAIL as default app
 		Assert.assertNull(loginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar still displayed");
-		Assert.assertFalse(loginPage.getActivityValue().contains("ChooserActivity"));
+		Assert.assertFalse(loginPage.getActivityValue().contains("ChooserActivity"), "User is not navigated out of the app");
 	}
 	
 	//DMPM-69 Scenario 1, 2, 3, 4
@@ -390,7 +387,6 @@ public class LoginTest extends App {
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing page - User is not navigated to the Landing Page");
 		loginPage.restartApp();
 		
-		//TODO: Remove "tapContinueToDismiss" method added to dismiss config page and navigate to the app without any 
 		configPage.tapContinueToDismiss();
 		Assert.assertNotNull(loginAuthPage.checkChangeAccountButton(), "Reauth Welcome Screen - User is not navigated back to reauth screen");
 	}
