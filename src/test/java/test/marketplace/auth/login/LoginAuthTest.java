@@ -2,6 +2,8 @@ package test.marketplace.auth.login;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import automation.framework.common.BasePage;
 import pages.App;
 
 public class LoginAuthTest extends App{
@@ -18,20 +20,21 @@ public class LoginAuthTest extends App{
 		
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
+		
+		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
 
-		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
-		pinOptionsPage.tapMaybeLater();
-
-		//TODO:Behaviour needs to be checked 
-//		if(pinOptionsPage.checkPinPromptImage() != null){
-//			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
-//			pinOptionsPage.tapMaybeLater();
-//		} else
-//		{
-//			Assert.assertNotNull(pinOptionsPage.checkPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
-//			pinOptionsPage.tapPromptMaybeLater();
-//		}
+		
+		if(pinOptionsPage.checkPinPromptImage() != null){
+			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
+			pinOptionsPage.tapMaybeLater();
+		} else
+		{
+			Assert.assertNotNull(pinOptionsPage.checkPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
+			pinOptionsPage.tapPromptMaybeLater();
+		}
 
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
 		navigationMenu.tapSplitMenuIcon();
@@ -53,6 +56,11 @@ public class LoginAuthTest extends App{
 		loginAuthPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		Assert.assertNotNull(loginAuthPage.checkPasswordReauthField(), "Password Reauth - User is not navigated to the Password Reauth Screen");
 		loginAuthPage.tapReauthPasswordLoginBtn();
+		
+		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - User is not navigated to the Landing Page");
 		loginAuthPage.restartApp();
 		
@@ -74,6 +82,11 @@ public class LoginAuthTest extends App{
 
 		loginAuthPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginAuthPage.tapReloginButton();
+		
+		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
 		Assert.assertNotNull(landingPage.checkSuncorpTab(), "User is not navigated to the Landing screen");
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
@@ -85,13 +98,21 @@ public class LoginAuthTest extends App{
 
 		settingsPage.tapEnablePinToggle();
 
+		if (pinSetupPage.checkPinInstructionAlert() != null) {
+			pinSetupPage.tapOkButton();
+		}
+		
+		//Enabling the PIN
 		if(enterCurrentPINPage.checkEnterExistingPinLabel() != null){
 			enterCurrentPINPage.enterPIN(utils.readTestData("PIN", "loginWithExistingPin", "pin"));
 		}
 		else if(pinSetupPage.checkEnterPINLabel() != null) {
-			Assert.assertNotNull(pinSetupPage.checkReEnterPINLabel(), "User is not navigated to the ReEnter PIN page");
+			Assert.assertEquals(pinSetupPage.getEnterPINLabel(), utils.readTestData("copy", "pinSetupPage", "enterPINLabel") ,"User is not navigated to the enter new PIN page");
+			pinSetupPage.enterPIN(utils.readTestData("PIN", "loginWithExistingPin", "pin"));
+			Assert.assertEquals(pinSetupPage.getReEnterPINLabel(), utils.readTestData("copy", "pinSetupPage", "reEnterPINLabel") ,"User is not navigated to the re-enter new PIN page");
 			pinSetupPage.enterPIN(utils.readTestData("PIN", "loginWithExistingPin", "pin"));
 		}
+		
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "User is not navigated back to Settings page");
 
 		navigationMenu.tapSplitMenuIcon();
@@ -150,6 +171,10 @@ public class LoginAuthTest extends App{
 		
 		loginAuthPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginAuthPage.tapReauthPasswordLoginBtn();
+		
+		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
 		
 		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - User is not navigated to the landing page");

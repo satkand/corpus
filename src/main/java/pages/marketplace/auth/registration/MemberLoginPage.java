@@ -1,6 +1,5 @@
 package pages.marketplace.auth.registration;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
@@ -11,11 +10,10 @@ public class MemberLoginPage extends BasePage {
 
 	public MemberLoginPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	private By pageTitle = By.id("au.com.suncorp.marketplace:id/screenTitleText");
-	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	private By cancelButton = MobileBy.AccessibilityId("Cancel");
 	private By emailTextField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
 	private By passwordTextField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By nextButton = By.id("au.com.suncorp.marketplace:id/nextButton");
@@ -26,7 +24,6 @@ public class MemberLoginPage extends BasePage {
 	private By incorrectEmailSnackbar = By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.FrameLayout");
 	private By incorrectEmailSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By incorrectEmailSnackBarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
-
 	
 	//Mobile registration page elements
 	private By mobileRegisterPageTitle = By.xpath("//android.widget.TextView[@text='Almost there!']");
@@ -37,17 +34,22 @@ public class MemberLoginPage extends BasePage {
 	private By registrationTermsText = By.id("au.com.suncorp.marketplace:id/registrationTermsText");
 	private By mobileNumberError  = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By mobileNumberTip = MobileBy.AndroidUIAutomator("new UiSelector().text(\"Use 04XXXXXXXX format\")");
+	private By mobileNumberCancelButton = MobileBy.AccessibilityId("Cancel");
 	
 	//Member Login Reset Password
 	private By resetPasswordTitle = By.id("au.com.suncorp.marketplace:id/resetPasswordTitleText");
 	private By resetPasswordDescription = By.id("au.com.suncorp.marketplace:id/resetPasswordSubtitleText");
 	private By resetPasswordEmailField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
 	private By resetLinkButton = By.id("au.com.suncorp.marketplace:id/sendResetLinkButton");
-	private By resetPasswordBackButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By resetPasswordBackButton = MobileBy.AccessibilityId("Back");
 	private By resetPasswordEmailFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By resetPasswordSuccessSnackbar = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By resetPasswordSuccessSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
-			
+	
+	//Suncorp Bank Login elements
+	private By suncorpBankLoginTitle = By.id("au.com.suncorp.marketplace:id/bankingLoginTitle");
+	private By suncorpBankLoginBackButton = MobileBy.AccessibilityId("Back");
+	
 	public String getPageTitle() {
 		find(pageTitle, 30);
 		return getText(pageTitle);
@@ -201,6 +203,10 @@ public class MemberLoginPage extends BasePage {
 		return isKeyboardPresent();
 	}
 	
+	public void tapMobileNumberCancelButton() {
+		tapElement(mobileNumberCancelButton);
+	}
+	
 	public void tapBackBtn() {
 		tapDeviceBackButton();
 	}
@@ -293,5 +299,13 @@ public class MemberLoginPage extends BasePage {
 	
 	public String getResetPasswordSuccessSnackbarBtn() {
 		return getText(resetPasswordSuccessSnackbarButton);
+	}
+	
+	public WebElement checkSuncorpBankLoginTitle() {
+		return find(suncorpBankLoginTitle);
+	}
+	
+	public void tapSuncorpBankLoginBackButton() {
+		tapElement(suncorpBankLoginBackButton);
 	}
 }

@@ -25,6 +25,9 @@ public class PINSetupPage extends BasePage {
 	private By pinSuccessfullySetNotification = By.id("au.com.suncorp.marketplace:id/successAlertDialog");
 	private By pinSuccessfullySetMessage = By.id("au.com.suncorp.marketplace:id/dialogMessage");
 	
+	private By pinInstructionAlert = By.id("au.com.suncorp.marketplace:id/pinInstructionDialog");
+	private By pinInstructionAlertButton = By.id("android:id/button1");
+	
 	private By pinButton = null;
 	
 	public WebElement checkEnterPINLabel() {
@@ -94,5 +97,17 @@ public class PINSetupPage extends BasePage {
 			pinButton = By.id("au.com.suncorp.marketplace:id/"+elementAddition);
 			tapElement(pinButton); 
 		}
+	}
+	
+	public WebElement checkPinInstructionAlert() {
+		return find(pinInstructionAlert);
+	}
+	
+	public void tapOkButton() {
+		tapElement(pinInstructionAlertButton);
+	}
+	
+	public void dismissAlert() {
+		tapOnBottomRightCorner();
 	}
 }

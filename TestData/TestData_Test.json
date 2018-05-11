@@ -1,4 +1,4 @@
-{
+	{
     "appPackage": {
         "packageName": "au.com.suncorp.mobile",
         "platform": "aos"
@@ -68,10 +68,6 @@
 			"invalidPassword" : "1234567",
 			"invalidMemberLogin": "x@g.z",
 			"invalidMemberLoginPwd": "Pwd1"
-		},
-		"validMemberLogin": {
-			"login": "x@y.z",
-			"pwd": "Password1"
 		}
 	},
 	"propertyDimension" :{
@@ -96,6 +92,9 @@
 		"propertyDetailsHighConfidence":{
 					"confidenceLevel":"High confidence",
 					"numberOfImages":"2",
+					"nearbySchool1":"Eltham Woods Preschool (694m)",
+					"nearbySchool2":"Little Scooters Early Learning Centre & Kindergarten (703m)",
+					"nearbySchool3":"Research Primary School (843m)",
 					"estimatedMarketValue": "$1,456,100,000 - $1,895,275,000"
 		},
 		"propertyExplorer":{
@@ -104,6 +103,14 @@
 					"clearSearchText":"1234567890ABCD#$%^",
 					"enterAdress":"1",
 					"highConfidenceAddress":"2"
+		},
+		"suburbInsight":{
+					"login":"a@b.c",
+					"pwd":"Password1",
+					"suburbSearchText":"3978",
+					"floodRiskValue" : "Low",
+					"bushFireValue" : "Medium",
+					"theifRiskValue" : "High"
 		},
 		"propertyHub":{
 					"login":"a@b.c",
@@ -1206,6 +1213,33 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
+	 "brands": [
+		{
+			"brandName": "AAMI",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "AAMI member login",
+			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
+		},
+		{
+			"brandName": "GIO",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "GIO member login",
+			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
+		},
+		{
+			"brandName": "Shannons",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "Shannons member login",
+			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
+		}
+	],
+	"bundleId": {
+		"value": "au.com.suncorp.marketplace:id/"
+	},
+	
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in",
@@ -1374,32 +1408,6 @@
 		"getStartedPage" : {
 			"getStartedPageTitle" : "Welcome to the Suncorp family"
 		}
-	},
-	"brands": [
-		{
-			"button": "aamiButton",
-			"brandIcon": "AAMI member login",
-			"resetPasswordDescription" : "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "apiaButton",
-			"brandIcon": "APIA member login",
-			"resetPasswordDescription" : "Enter the email associated with your APIA account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "gioButton",
-			"brandIcon": "GIO member login",
-			"resetPasswordDescription" : "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "shannonsButton",
-			"brandIcon": "Shannons member login",
-			"resetPasswordDescription" : "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
-		}
-	],
-	"bundleId": {
-		"value": "au.com.suncorp.marketplace:id/"
-
 	}
 }
 

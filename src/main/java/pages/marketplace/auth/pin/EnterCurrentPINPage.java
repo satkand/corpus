@@ -15,7 +15,7 @@ public class EnterCurrentPINPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
-	private By enterExistingPinLabel = By.id("au.com.suncorp.marketplace:id/activate_pin_title");
+	private By enterExistingPinLabel = By.id("au.com.suncorp.marketplace:id/activatePinTitle");
 	private By pinField = By.id("au.com.suncorp.marketplace:id/pinImage1");
 	private By forgotPinButton = By.id("au.com.suncorp.marketplace:id/customKeypadForgotPinButton");
 	private By PINLockAlertMessage = By.id("android:id/message");
