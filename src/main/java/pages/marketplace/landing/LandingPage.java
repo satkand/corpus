@@ -79,7 +79,7 @@ public class LandingPage extends BasePage {
 	}
 
 	public WebElement checkVehiclesTab() {
-		return find(vehiclesTab);
+		return find(vehiclesTab,30);
 	}
 
 	public void tapVehiclesTab() {
