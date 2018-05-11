@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class ForgotPINPage extends BasePage {
 	
@@ -17,7 +18,7 @@ public class ForgotPINPage extends BasePage {
 	private By passwordField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By nextButton = By.id("au.com.suncorp.marketplace:id/submitButton");
 	private By forgotPasswordButton = By.id("au.com.suncorp.marketplace:id/forgotPassword");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton"); //By.id("Back");
+	private By backButton = MobileBy.AccessibilityId("Back");
 	private By passwordRequiredError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 
 	public WebElement checkForgottenPINPageTitle(){
@@ -67,7 +68,10 @@ public class ForgotPINPage extends BasePage {
 	public WebElement checkBackButton(){
 		return find(backButton);
 	}
-	
+	public void  tapBackButton(){
+		
+		tapElement(backButton);
+	}
 	public WebElement checkPasswordRequiredError(){
 		return find(passwordRequiredError);
 	}
