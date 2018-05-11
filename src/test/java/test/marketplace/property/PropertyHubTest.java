@@ -47,15 +47,47 @@ public class PropertyHubTest  extends App{
 
 	}
 	
+	@TestDetails(story1 = "DMPM-4625:DMPM-5229,DMPM-5230", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
+	public void testViewPropertyProfessionalServices() {
+		
+		navigateToPropertyHub();
+		Assert.assertNotNull(propertyExplorerPage.checkPropertyInsightTab(), "Property Explorer page - Property Insight tab is not present");
+		
+		homePropertyPage.scrollToHomeProfessionalServicesButton();
+		Assert.assertNotNull(homePropertyPage.checkHomeProfessionalServicesImage(), "Home Property Page - Home professional services image is not present");
+		Assert.assertNotNull(homePropertyPage.checkHomeProfessionalServicesTitle(), "Home Property Page - Home professional services title is not present");
+		Assert.assertEquals(homePropertyPage.getHomeProfessionalServicesTitle(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE,"Home professional services title is not matching");
+		Assert.assertNotNull(homePropertyPage.checkHomeProfessionalServicesDescription(), "Home Property Page - Home professional services description is not present");
+		Assert.assertEquals(homePropertyPage.getHomeProfessionalServicesDescription(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION,"Home professional services description is not matching");
+		Assert.assertNotNull(homePropertyPage.checkHomeProfessionalServicesButton(), "Home Property Page - Home professional services button is not present");
+		
+		homePropertyPage.tapHomeProfessionalServicesButton();
+		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "Web View Page - Web View URL bar is not present");
+		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Home professional services URL is not matching");
+			
+	}
+	
+	private void navigateToPropertyHub() {
+		navigateToPropertyDimension();
+		homePropertyPage.scrollToJourneyBanner();
+		homePropertyPage.tapStartYourJourneyButton();
+	}
+
 	public void navigateToAddProperty() {
-		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
-		landingPage.tapHomeTab();
-		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		navigateToPropertyDimension();
 		homePropertyPage.tapAddAPropertyOrPolicyButton();
 		Assert.assertNotNull(homePropertyPage.checkAddPropertyActionSheetButton(), "Home Property Page - Property action sheet button is not present");
 		
 		homePropertyPage.tapAddPropertyActionSheetButton();
 		Assert.assertNotNull(propertyHubPage.checkPropertyHubPageTitle(), "Property Hub Page - Page title is not present");
+		
+	}
+	
+	public void navigateToPropertyDimension() {
+		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
+		landingPage.tapHomeTab();
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		
 	}
 }
