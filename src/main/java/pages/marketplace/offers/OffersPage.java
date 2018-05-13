@@ -20,7 +20,7 @@ public class OffersPage extends BasePage {
 	private By backgroundImage = By.id("au.com.suncorp.marketplace:id/offerBackgroundImage");
 	private String callToActionButtonID = "au.com.suncorp.marketplace:id/offerActionButton";
 	private By offerLogoImage = By.id("au.com.suncorp.marketplace:id/offerBrandLogoImage");
-
+	private By chromeToolbar = By.id("com.android.chrome:id/toolbar");
 
 	public WebElement checkOfferLogoImage() {
 		return find(offerLogoImage, 30);
@@ -42,6 +42,10 @@ public class OffersPage extends BasePage {
 		tapElement(callToActionButton);
 	}
 
+	public WebElement checkChromeToolBar() {
+		return find(chromeToolbar);
+	}
+	
 	public WebElement checkBackgroundImage() {
 		return find(backgroundImage);
 	}

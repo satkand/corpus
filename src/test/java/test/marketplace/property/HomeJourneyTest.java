@@ -9,7 +9,8 @@ import pages.App;
 public class HomeJourneyTest extends App {
 	
 	// 503 - Scenario 2
-	@Test (groups = {"DMPM-503", "DMPM-972", "marketplace", "Home buying journey", "priority-minor"})
+	//4850 - Scenario 1
+	@Test (groups = {"DMPM-503", "DMPM-972","DMPM-4850", "marketplace", "Home buying journey", "priority-minor"})
 	public void testHomeJourneyPageElements() {
 		navigateToHomePropertyTab();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
@@ -97,27 +98,6 @@ public class HomeJourneyTest extends App {
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 	}
 	
-	@Test (groups = {"DMPM-797", "DMPM-855", "DMPM-856", "marketplace", "Home buying journey", "priority-minor"})
-	
-	//DMPM-797 - Scenario 1 & 2
-	//DMPM-855: Navigating to Home journey option in Menu
-	public void testHomeJourneyviaMenu()
-	{
-		navigateToHomeJourneyviaMenu();
-		Assert.assertNotNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
-		navigationMenu.tapHomeJourneyMenuItem();
-		
-		//DMPM-856: Navigating to Home journey screen
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
-		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Home Journey Page - Hamburger Menu not shown");
-		
-	}
-	
-	private void navigateToHomeJourneyviaMenu() {
-		welcomePage.tapGuestAccessButton();
-		navigationMenu.tapSplitMenuIcon();
-	
-}
 	private void navigateToHomePropertyTab() {
 		welcomePage.tapGuestAccessButton();
 		landingPage.tapHomeTab();
