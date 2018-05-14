@@ -26,6 +26,10 @@ public class MyProductsPage extends BasePage {
 	private By bankAccountBottomSheetButton = By.id("au.com.suncorp.marketplace:id/addBankAccountButton");
 	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='My products']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
+	//Newly added to operate on disclaimer page shown
+	private By productDisclaimer = By.id("au.com.suncorp.marketplace:id/productDisclaimerText");
+	private By disclaimerTitle = By.xpath("//android.widget.TextView[@text='Disclaimer title']");
+	private By closeDisclaimerBtn = By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']");
 	//TODO DMPM-3713
 	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");
     private By availableBalanceLable = By.xpath("//android.widget.TextView[@text='Available balance']");
@@ -70,13 +74,26 @@ public class MyProductsPage extends BasePage {
 	//policy details
 	private By policyDetailsTitle = By.xpath("//android.widget.TextView[@text='Policy Details']");
 	
+	
+	
 	//Add Bank Account screen
 	private By accountNumberField = By.id("au.com.suncorp.marketplace:id/accountNumberField");
 	private By accountNumberError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
 	private String carPolicy="Car";
 
-
+	public WebElement checkProductDisclaimer() {
+		return find(productDisclaimer);
+	}
+	
+	public WebElement checkProductDisclaimerTitle() {
+		return find(disclaimerTitle);
+	}
+	
+	public void tapProductDisclaimer() {
+		tapElement(closeDisclaimerBtn);
+	}
+	
 	public List<WebElement> fetchAccountItemLayoutList() {
 		List<WebElement> elements = finds(accountItemLayout);
 		return elements;

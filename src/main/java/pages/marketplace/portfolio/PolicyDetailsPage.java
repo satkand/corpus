@@ -59,7 +59,11 @@ public class PolicyDetailsPage extends BasePage {
 	private String optionalCoverTypeLabelId = "au.com.suncorp.marketplace:id/optionalCoverType";
 	private String riskViewDetailsId = "au.com.suncorp.marketplace:id/riskViewDetails";
 	private String rewardsSubtitleId = "au.com.suncorp.marketplace:id/rewardsSubtitle";
-
+	private By discountsAndBenifitsTitle = By.id("au.com.suncorp.marketplace:id/discountsAndBenefitsTitle");
+	
+	public void scrollToDiscountsAndBenefits() {
+		scrollToElement(discountsAndBenifitsTitle, "id");
+	}
 	public WebElement checkPolicyDescription() {
 		return find(policyDescription);
 	}
@@ -210,6 +214,11 @@ public class PolicyDetailsPage extends BasePage {
 
 		scrollToElement(rewardsSubtitleId, "id",5);
 	}
+	
+	public void scrollToDiscountsTitle() {
+
+		scrollToElement(discountsTitle, "id");
+	}
 
 	public WebElement scrollToOptionalCover() {
 
@@ -245,12 +254,16 @@ public class PolicyDetailsPage extends BasePage {
 		
 		return scrollAndGetElementText(includedCoverLabel, 1);
 	}
+	
+	public WebElement checkDiscountsTitle() {
+		return find(discountsTitle,3);
+	}
 
 	public String getDiscountsTitle() {
 
 		return getText(discountsTitle);
 	}
-
+	
 	public String getDiscounts() {
 
 		return getText(discountsSubtitle);

@@ -807,6 +807,12 @@
              				 "futureActive": "Policy Future Activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
+            			},
+            				"Discounts&Benefits":
+            			{
+            				"discounts1": "Multi-Policy,Staff",
+            				"discounts2": "Multi-Policy, Staff, Top-Bloke",
+            				"discounts3": "Multi-Policy"
             			}
 				}
 		}

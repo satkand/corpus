@@ -23,7 +23,7 @@ public class PolicyDetailsTest extends App {
 
 		String carPolicy = "carPolicy";
 		String homePolicy = "homePolicy";
-
+		
 		String car = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
 		String home = utils.readTestData("portfolio", "policyDetails", homePolicy, "productType");
 		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
@@ -227,7 +227,7 @@ public class PolicyDetailsTest extends App {
 				"Not on policy details screen");
 	}
 
-	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852", story2 = "DMPM-5523:DMPM7433,DMPM-7446")
+	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testViewDiscountsAndRewards() throws InterruptedException {
 		String carPolicy = "carPolicy";
@@ -288,6 +288,57 @@ public class PolicyDetailsTest extends App {
 		Assert.assertEquals(policyDetailsPage.getRewardsSubtitle(), rewards, "Rewards are not displayed");
 	}
 
+	@TestDetails(story1 = "DMPM-4939:DMPM-7055,DMPM-7057")
+	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	public void testDiscountsCommaSeperated() throws InterruptedException {
+		String homePolicy = "homePolicy";
+		String userName = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "pwd");
+		
+		
+		String myProductCancellationPending = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "cancellationPending");
+		String myProductrenewalOverDue = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "renewalOverDue");
+		String myProductFutureActive = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "futureActive");
+		
+		String discounts2 = utils.readTestData("portfolio", "policyDetails", homePolicy,"Discounts&Benefits","discounts2");
+		String discounts3 = utils.readTestData("portfolio", "policyDetails", homePolicy,"Discounts&Benefits","discounts3");
+		
+
+		navigateToMyProductsScreen(userName, pwd);
+		common.waitForLoadingIndicatorToDisappear();
+		myProductsPage.scrollToProductAndTap(myProductCancellationPending);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToDiscountsTitle();
+		Assert.assertEquals(policyDetailsPage.getDiscountsTitle(), Copy.DISCOUNTS_LABEL,"Discounts label is incorrect");
+		Assert.assertEquals(policyDetailsPage.getDiscounts(), discounts3, "Discounts are not displayed");
+		String notCommaSeperated = policyDetailsPage.getDiscounts();
+		
+		//DMPM-7057: Verify that a single discount is not containing any comma
+		Assert.assertFalse(notCommaSeperated.contains(","), "Discounts are comma seperated");
+		
+		//DMPM-7055: Verify that  discount is not present
+		policyDetailsPage.tapNavigateBackButton();
+		myProductsPage.scrollToProductAndTap(myProductFutureActive);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToDiscountsAndBenefits();
+		Assert.assertNull(policyDetailsPage.checkDiscountsTitle(),"Discounts label should not be present");
+		policyDetailsPage.tapNavigateBackButton();
+		
+		//DMPM-7055: Verify that  discount is present and contains comma seperated multiple discounts
+		myProductsPage.scrollToProductAndTap(myProductrenewalOverDue);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToDiscountsTitle();
+		Assert.assertEquals(policyDetailsPage.getDiscountsTitle(), Copy.DISCOUNTS_LABEL,"Discounts label is incorrect");
+		Assert.assertEquals(policyDetailsPage.getDiscounts(), discounts2, "Discounts are not displayed");
+		String commaSeperated = policyDetailsPage.getDiscounts();
+		Assert.assertTrue(commaSeperated.contains(","),"Discounts are not comma seperated");
+		
+		
+	}
+	
 	@TestDetails(story1 = "DMPM-4392:DMPM-5805,DMPM-5806")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testExcessInformation() throws InterruptedException {
@@ -446,6 +497,9 @@ public class PolicyDetailsTest extends App {
 		loginToApp(username, pasword);
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapProductsMenuItem();
+		if(myProductsPage.checkProductDisclaimer()!=null && myProductsPage.checkProductDisclaimerTitle()!=null){
+			myProductsPage.tapProductDisclaimer();
+		}
 		myProductsPage.checkMyProductsTitle();
 	}
 
