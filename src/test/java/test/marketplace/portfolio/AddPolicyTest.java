@@ -10,9 +10,10 @@ public class AddPolicyTest extends App{
 	/*1011 - Scenario 1 - DMPM-1247, Scenario 2 DMPM-1249*/
 	@Test (groups = {"DMPM-1011", "DMPM-1247", "DMPM-1249" ,"marketplace", "portfolio", "priority-minor"})
 	public void testAddingAPolicy(){
-	
-		navigateToAddProductsScreen("prodListUser");
-	
+
+	navigateToAddProductsScreen("prodListUser");
+	Assert.assertNotNull(addPolicyPage.checkForgotMyDetailsButton(),"Add policy screen - Forgotten my details button is not present");
+
 	addPolicyPage.tapPolicyNumberTextBox();
 	addPolicyPage.enterPolicyNumber(utils.readTestData("portfolio","loginProdList", "addPolicy", "enterPolicyNumber"));
 	Assert.assertNotNull(addPolicyPage.checkAddAccountButton(), "Add policy screen - Add account buttom is not present");
@@ -100,7 +101,6 @@ public class AddPolicyTest extends App{
 		myProductsPage.tapAddInsurancePolicyButton();
 			
 		Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
-		Assert.assertNotNull(addPolicyPage.checkForgotMyDetailsButton(), "Add policy screen - Forgotten my details button is not present");
 		
 		
 	}

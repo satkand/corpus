@@ -24,6 +24,7 @@ public class MyProductsTest extends App {
 	
 	SoftAssert softAssert = new SoftAssert();
 	
+	// This method verifies the elements on products screen without any policies or accounts
 	// DMPM-240 Scenario 4
 	//106 - Scenario 1 (DMPM-389 and DMPM-411)
 	// 215 - Scenario 1 (DMPM-476)
@@ -89,7 +90,7 @@ public class MyProductsTest extends App {
 		
 	}
 	
-	
+	// This method verifies the element on Bank Account details screens
 	/*167 - Scenario 2 - DMPM-467*/
 	@Test (groups = {"DMPM-167", "DMPM-467","marketplace", "portfolio", "priority-minor"})
 	public void testNavigatingToBankAccountDetails(){
@@ -112,6 +113,7 @@ public class MyProductsTest extends App {
 		}
 	}
 
+	// This function verifies the policy details where risk status - Expiry date
 	//DMPM-3667 Highlight expiry date for Renewal Overdue policy - Scenario 1
 	//DMPM-5598 Update mapping of expiry date for renewal statuses
 	@DataProvider(name = "ExpiryDateRenewalDueAndOverduePolicy")
@@ -139,6 +141,7 @@ public class MyProductsTest extends App {
 		
 	}
 
+	// This function verifies the policy statuses
 	//DMPM-2087 Display policy-level status
 	@DataProvider(name = "PolicyLevelStatus")
 	 
@@ -165,6 +168,7 @@ public class MyProductsTest extends App {
 	}
 	
 	
+	// This function verifies the policy details where risk status - Amendment date
 	// DMPM-2191 Display amendment date
 	// Scenario 1 - policy 19, policy 20 (Single risk, multi cover policies)
 	// Scenario 2 - 2.1 : policy 5, 2.2 : policy 6, 2.3 policy 7, 2.4 policy 8 (Multi risks, multi covers policies)
@@ -192,6 +196,7 @@ public class MyProductsTest extends App {
 	
 	}
 	
+	// This function verifies the policy data
 	// DMPM-2308 Update mapping of expiry date - {policy 6,2}
 	// DMPM-2093 Update mapping for risk description
 	@DataProvider(name = "policyData")
@@ -218,7 +223,7 @@ public class MyProductsTest extends App {
 
 		}
 	
-	
+	// This function verifies the policy details where risk status - Cancellation date
 	// DMPM-2189 Display cancellation date
 	// Scenario 1 - policy 1 (Single risk, multi cover policies)
 	// Scenario 2 - 2.1 : policy 9, 2.2 : policy 10 (Multi risks, single cover policies)
@@ -248,7 +253,7 @@ public class MyProductsTest extends App {
 	
 	}
 	
-	
+	// This function verifies the policy details where risk status - Future date
 	// DMPM-2187 Display future date
 	// Scenario 1 - policy 1 (Single risk, multi cover policies)
 	// Scenario 2 - 2.1 : policy 9, 2.2 : policy 10 (Multi risks, single cover policies)
@@ -280,6 +285,7 @@ public class MyProductsTest extends App {
 	
 	}
 	
+	// This function verifies the super accounts
 	// DMPM-2599 Display superannuation products
 	@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2599", "DMPM-3118", "marketplace", "portfolio", "priority-major" })
 	public void testWealthProducts()
@@ -312,6 +318,7 @@ public class MyProductsTest extends App {
 		}
 	}
 	
+	// This function verifies the life insurance accounts
 	// DMPM-2599 Display life insurance products
 	// DMPM-5799
 	// DMPM-5103 Append "insurance" to my product type
@@ -359,6 +366,7 @@ public class MyProductsTest extends App {
 			
 		}
 		
+	// This function verifies the Insurance accounts		
 	// DMPM-105 View Insurance Policies - Scenario 4	
 	@DataProvider(name = "PolicyDetails")
 	public static Object[][] policyDetails() {
@@ -386,7 +394,7 @@ public class MyProductsTest extends App {
 		
 	}
 	
-	
+	// This function verifies adding bank account with inline validations
 	// DMPM-112 Android - Add Bank Account and Inline Validations
 	@Test(groups = { "DMPM-112", "DMPM-468", "DMPM-469", "DMPM-470", "DMPM-471", "DMPM-472", "DMPM-473", "DMPM-474",
 			"DMPM-475", "DMPM-476", "marketplace", "portfolio", "priority-major" })
@@ -441,6 +449,7 @@ public class MyProductsTest extends App {
 
 	}
 	
+	// This function verifies the every day bank accounts
 	// DMPM-240 - Scenario 2 -Display bank account
 		/*167 - Scenario 1 - DMPM-466
 		 DMPM-2988 : Update mapping for banking products*/
@@ -483,6 +492,7 @@ public class MyProductsTest extends App {
 		
 	}
 	
+	// This function verifies the term deposit accounts
 	// DMPM-240 - Scenario 2 -Display bank account
 		/*167 - Scenario 1 - DMPM-466
 		 DMPM-2988 : Update mapping for banking products*/
@@ -525,9 +535,9 @@ public class MyProductsTest extends App {
 			
 		}
 	
-		// DMPM-240 - Scenario 2 -Display bank account
-		/*167 - Scenario 1 - DMPM-466
-		 DMPM-2988 : Update mapping for banking products*/
+	// This function verifies the credit loan accounts
+	// DMPM-240 - Scenario 2 -Display bank account
+	// 167 - Scenario 1 - DMPM-466 DMPM-2988 : Update mapping for banking products
 	// DMPM-2607 Display line of credit loan products
 	@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2607", "DMPM-6008", "marketplace", "portfolio", "priority-minor" })
 	public void testLineOfCreditLoanBankAccountDetails() {
@@ -572,9 +582,10 @@ public class MyProductsTest extends App {
 
 	}
 	
+	// This function verifies the Loan accounts
 	// DMPM-240 - Scenario 2 -Display bank account
-		/*167 - Scenario 1 - DMPM-466
-		 DMPM-2988 : Update mapping for banking products*/
+	/*167 - Scenario 1 - DMPM-466
+	DMPM-2988 : Update mapping for banking products*/
 	// DMPM-2605 Display variable and fixed rate loan products
 		@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2605", "DMPM-6044", "marketplace", "portfolio", "priority-minor" })
 		public void testLoanBankAccountDetails() {

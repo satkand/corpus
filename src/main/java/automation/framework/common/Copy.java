@@ -144,8 +144,8 @@ public interface Copy {
 	String FUTURE_DATE_ERROR_MSG = "Invalid date input.\nPlease ensure you've entered the correct date";
 
 	// PORTFOLIO
-	public static final String AVAILABLE_BALANCE_LABEL = "Available balance";	
-	public static final String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
+	String AVAILABLE_BALANCE_LABEL = "Available balance";	
+	String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
 
 	//MemberLoginPage
 
