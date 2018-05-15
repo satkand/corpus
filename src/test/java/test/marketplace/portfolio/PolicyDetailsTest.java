@@ -427,7 +427,7 @@ public class PolicyDetailsTest extends App {
 
 	}
 
-	@TestDetails(story1 = "DMPM-2193:DMPM-4191,DMPM-4192,DMPM-4193 ", story2 = "DMPM-5026:DMPM-6894,DMPM-6895,DMPM-6897")
+	@TestDetails(story1 = "DMPM-2193:DMPM-4191,DMPM-4192,DMPM-4193 ")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testPolicyDetailsStatus() throws InterruptedException {
 
