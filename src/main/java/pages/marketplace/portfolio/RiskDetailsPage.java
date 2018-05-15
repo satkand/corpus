@@ -43,6 +43,17 @@ public class RiskDetailsPage extends BasePage {
 	private By additionalexcessDescription = By.id("au.com.suncorp.marketplace:id/excessDescription");
 	private By additionalExcessListedDriver =By.id("au.com.suncorp.marketplace:id/listedDriverExcessValue");
 	private By additionalExcessUnListedDriver =By.id("au.com.suncorp.marketplace:id/unlistedDriverExcessValue");
+	private By coverStatusBannerText = By.id("au.com.suncorp.marketplace:id/coverStatusBannerText");
+	private By riskCoverPeriodTitle = By.id("au.com.suncorp.marketplace:id/riskCoverPeriodTitle");
+	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
+	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
+	public WebElement checkCoverStatusBannerText() {
+		return find(coverStatusBannerText);
+	}
+	
+	public String getCoverStatusBannerText() {
+		return getText(coverStatusBannerText);
+	}
 	
 	public String getRiskStartDateText() {
 
@@ -194,6 +205,32 @@ public class RiskDetailsPage extends BasePage {
 	public String getAdditionalExcessUnListedDriver() {
 
 		return getText(additionalExcessUnListedDriver);
+	}
+
+	public WebElement checkCoverPeriodLabel() {
+		
+		return find(riskCoverPeriodTitle);
+	}
+
+	public String getCoverPeriodLabel() {
+		
+		return getText(riskCoverPeriodTitle);
+	}
+
+	public WebElement checkCoverPeriodStart() {
+		return find(coverPeriodStart);
+	}
+
+	public String getCoverPeriodStart() {
+		return getText(coverPeriodStart);
+	}
+
+	public WebElement checkCoverPeriodEnd() {
+		return find(coverPeriodEnd);
+	}
+
+	public String getCoverPeriodEnd() {
+		return getText(coverPeriodEnd);
 	}
 	
 }

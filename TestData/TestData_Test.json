@@ -713,6 +713,37 @@
             			"paymentDetails":
             			{
             			"creditCardDetails":"VISA ending in 5123"
+            			},
+            			"vehiclePolicyStatus": 
+            			{
+            			        "login": "vehiclepolicystatus@sun.com",
+		                     "pwd": "Password1",
+             				 "active": "Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy commencing",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            			"myVehiclePolicyStatus": 
+            			{
+             				"active": "Policy Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy Future Activation",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            			"PeriodOfCover":
+            			{
+            				"activeStartDate": "01 Oct 2017 - ",
+            				"activeEndDate": "01 Oct 2018",
+            				"cancellationPendingStartDate": "01 Oct 2017 - ",
+            				"cancellationPendingEndDate": "01 Oct 2017",
+            				"futureActiveStartDate": "01 Oct 2017 - ",
+            				"futureActiveEndDate": "01 Oct 2018",
+            				"renewalStartDate": "01 Oct 2017 - ",
+            				"renewalEndDate": "01 Oct 2018",
+            				"renewalOverDueStartDate": "01 Oct 2017 - ",
+            				"renewalOverDueEndDate": "01 Oct 2018"
             			}
 				},
 				"carAdvantagePolicy": 
@@ -800,6 +831,7 @@
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
+            			
             				"myProductPolicyStatus": 
             			{
              				"active": "Policy Active",
