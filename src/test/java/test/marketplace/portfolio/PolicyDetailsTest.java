@@ -317,7 +317,7 @@ public class PolicyDetailsTest extends App {
 		Assert.assertNull(riskDetailsPage.checkAdditionalExcessesTab(), "Additional Excesses Tab is displayed");
 	}
 
-	@TestDetails(story1 = "DMPM-4392:DMPM-5808,DMPM-5813")
+	@TestDetails(story1 = "DMPM-4392:DMPM-5808,DMPM-5813", story2 = "DMPM-7199:DMPM-7920")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testAdditionalExcessInformation() throws InterruptedException {
 
