@@ -794,9 +794,9 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "ACTIVE",
+             				 "active": "Active",
              				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Future active",
+             				 "futureActive": "Policy commencing",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -813,6 +813,19 @@
             				"discounts1": "Multi-Policy,Staff",
             				"discounts2": "Multi-Policy, Staff, Top-Bloke",
             				"discounts3": "Multi-Policy"
+            			},
+            				"PeriodOfCover":
+            			{
+            				"activeStartDate": "01 Oct 2017 - ",
+            				"activeEndDate": "01 Oct 2018",
+            				"cancellationPendingStartDate": "01 Oct 2017 - ",
+            				"cancellationPendingEndDate": "01 Oct 2018",
+            				"futureActiveStartDate": "01 Oct 2017 - ",
+            				"futureActiveEndDate": "01 Oct 2018",
+            				"renewalStartDate": "01 Oct 2017 - ",
+            				"renewalEndDate": "01 Oct 2018",
+            				"renewalOverDueStartDate": "01 Oct 2017 - ",
+            				"renewalOverDueEndDate": "01 Oct 2018"
             			}
 				}
 		}

@@ -102,7 +102,7 @@ public interface Copy {
 	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE ADDITIONAL EXCESSES";
 	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please come back and try again later.";
 	String POLICY_MAINTAINCE_TITLE="Policy under maintenance";
-	
+	String PERIOD_OF_COVER ="Period of cover";
 	//RENEW POLICY
 	String RENEW_POLICY_SCREEN_TITLE = "Renew Policy";
 	

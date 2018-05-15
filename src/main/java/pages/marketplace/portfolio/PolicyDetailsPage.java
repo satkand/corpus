@@ -54,12 +54,40 @@ public class PolicyDetailsPage extends BasePage {
 	private By policyMaintenanceErrorMessage = By
 			.id("au.com.suncorp.marketplace:id/policyUnderPolicyMaintenanceSubtitle");
 	private By policyActiveStatus = By.id("au.com.suncorp.marketplace:id/policyActiveStatusText");
-	private By policyrenewalStatus = By.id("PolicyDetails.PolicyStatus");
+	private By policyrenewalStatus = By.id("au.com.suncorp.marketplace:id/renewalStatusText");
 	private By renewNowButton = By.id("au.com.suncorp.marketplace:id/renewNowButton");
 	private String optionalCoverTypeLabelId = "au.com.suncorp.marketplace:id/optionalCoverType";
 	private String riskViewDetailsId = "au.com.suncorp.marketplace:id/riskViewDetails";
 	private String rewardsSubtitleId = "au.com.suncorp.marketplace:id/rewardsSubtitle";
 	private By discountsAndBenifitsTitle = By.id("au.com.suncorp.marketplace:id/discountsAndBenefitsTitle");
+	private By coverPeriodLabel = By.id("au.com.suncorp.marketplace:id/coverPeriodLabel");
+	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
+	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
+	
+	public WebElement checkCoverPeriodLabel() {
+		return find(coverPeriodLabel);
+	}
+	
+	public String getCoverPeriodLabel() {
+		return getText(coverPeriodLabel);
+	}
+	
+	public WebElement checkCoverPeriodStart() {
+		return find(coverPeriodStart);
+	}
+	
+	public String getCoverPeriodStart() {
+		return getText(coverPeriodStart);
+	}
+	
+	public WebElement checkCoverPeriodEnd() {
+		return find(coverPeriodEnd);
+	}
+	
+	public String getCoverPeriodEnd() {
+		return getText(coverPeriodEnd);
+	}
+	
 	
 	public void scrollToDiscountsAndBenefits() {
 		scrollToElement(discountsAndBenifitsTitle, "id");
