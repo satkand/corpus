@@ -5,7 +5,7 @@
     },
 	"PIN" :{
 		"loginWithExistingPin" : {
-			"login": "thisloginhaspin@haspin.com",
+			"login": "pinenabled@sun.com",
 			"pwd": "Password1",
 			"pin": "1357"
 		},
@@ -31,19 +31,37 @@
 		},
 		"loginWithPinLocked" : {
 			"login": "pinlocked@sun.com",
-			"pwd": "Test123",
+			"pwd": "Password1",
 			"pin": "1234"
+		},
+		"loginLockPinAndSetup" : {
+			"login": "lockandsetup@sun.com",
+			"pwd": "Password1",
+			"pin": "2580",
+			"invalidPin":"1234"
+		},
+		"cancelForgotPIN" : {
+			"login": "cancelforgotpin@sun.com",
+			"pwd": "Password1",
+			"pin": "2580",
+			"invalidPin":"1234"
+		},
+		"cancelPINSetup" : {
+			"login": "cancelpinsetup@sun.com",
+			"pwd": "Password1",
+			"pin": "2580",
+			"invalidPin":"1234"
 		},
 		"loginForPinLockedSetupFlow" : {
 			"login": "pinsetup@sun.com",
-			"pwd": "Test123",
+			"pwd": "Password1",
 			"invalidPin": "1234",
 			"validPin":"2580"
 		},
 		"loginForConfirmCurrentPin" : {
-			"login": "ss@sun.com",
+			"login": "loginpinenabled@sun.com",
 			"pwd": "Password1",
-			"pin": "2121"
+			"pin": "2580"
 		},
 		"pinEntries" :{
 			"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],

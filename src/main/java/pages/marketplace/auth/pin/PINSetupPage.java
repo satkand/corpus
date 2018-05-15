@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class PINSetupPage extends BasePage {
 	
@@ -15,8 +16,8 @@ public class PINSetupPage extends BasePage {
 
 	private By enterPINLabel = By.id("au.com.suncorp.marketplace:id/enterPinMessage");
 	private By reEnterPINLabel = By.id("au.com.suncorp.marketplace:id/reenterPinMessage");
-	private By cancelButton = By.id("au.com.suncorp.marketplace:id/pinSetupCancelButton");
-	
+	//private By cancelButton = By.id("au.com.suncorp.marketplace:id/pinSetupCancelButton");
+	private By cancelButton = MobileBy.AccessibilityId("Cancel");
 	private By invalidPINAlertMessage = By.id("android:id/message");
 	private By invalidPINAlertOKButton = By.id("android:id/button1");
 
@@ -29,7 +30,8 @@ public class PINSetupPage extends BasePage {
 	private By pinInstructionAlertButton = By.id("android:id/button1");
 	
 	private By pinButton = null;
-	
+	private By okButton = By.id("android:id/button1");
+
 	public WebElement checkEnterPINLabel() {
 		return find(enterPINLabel);
 	}
@@ -106,8 +108,7 @@ public class PINSetupPage extends BasePage {
 	public void tapOkButton() {
 		tapElement(pinInstructionAlertButton);
 	}
-	
-	public void dismissAlert() {
-		tapOnBottomRightCorner();
+	public void tapOkbutton() {
+		tapElement(okButton);
 	}
 }
