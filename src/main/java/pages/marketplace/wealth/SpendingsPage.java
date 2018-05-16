@@ -35,13 +35,13 @@ public class SpendingsPage extends BasePage {
 									        put("january",   new String[] {"September", "August", "July", "June", "May", "April", "March", "February"});
 									        put("february",  new String[] {"October", "September", "August", "July", "June", "May", "April", "March"});
 									        put("march",     new String[] {"November", "October", "September", "August", "July", "June", "May", "April"});
-									        put("april",     new String[] {"December, November", "October", "September", "August", "July", "June", "May",});
-									        put("may",       new String[] {"December, November", "October", "September", "August", "July", "June", "January"});
-									        put("june",      new String[] {"December, November", "October", "September", "August", "July", "February", "January"});
-									        put("july",      new String[] {"December, November", "October", "September", "August", "March", "February", "January"});
-									        put("august",    new String[] {"December, November", "October", "September", "April", "March", "February", "January"});
-									        put("september", new String[] {"December, November", "October", "May", "April", "March", "February", "January"});
-									        put("october",   new String[] {"December, November", "June", "May", "April", "March", "February", "January"});
+									        put("april",     new String[] {"December", "November", "October", "September", "August", "July", "June", "May",});
+									        put("may",       new String[] {"December", "November", "October", "September", "August", "July", "June", "January"});
+									        put("june",      new String[] {"December", "November", "October", "September", "August", "July", "February", "January"});
+									        put("july",      new String[] {"December", "November", "October", "September", "August", "March", "February", "January"});
+									        put("august",    new String[] {"December", "November", "October", "September", "April", "March", "February", "January"});
+									        put("september", new String[] {"December", "November", "October", "May", "April", "March", "February", "January"});
+									        put("october",   new String[] {"December", "November", "June", "May", "April", "March", "February", "January"});
 									        put("november",  new String[] {"December", "July", "June", "May", "April", "March", "February", "January"});
 									        put("december",  new String[] {"August", "July", "June", "May", "April", "March", "February", "January"});
 									    }
@@ -111,6 +111,10 @@ public class SpendingsPage extends BasePage {
 		return find(updateMonthButton);
 	}
 	
+	public void swipeUp() {
+		swipeScreen("DOWN");
+		
+	}
 	public void selectMonth(String month) {
 		System.out.println("month:::"+month);
 		tapMonthPicker();
@@ -121,9 +125,9 @@ public class SpendingsPage extends BasePage {
 		int index = 0;
 		// After a month is selected, Loading indicator is shown before the data is getting refreshed on the page.
 		// So waiting for the loading indicator to disappear before verifying for the data on the screen.
-		while (find(loadingIndicator)!= null && index<=12) {
+/*		while (find(loadingIndicator)!= null && index<=12) {
 			index++;
-		}
+		} */
 		/*
 		switch(month) {
 		case "January":

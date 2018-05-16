@@ -144,7 +144,7 @@ public class SpendingsTest extends App {
 	}
 	
 	private void compareCategoryTransactionsForaMonth(List categories, boolean isTransactionCountShown) {
-		
+		spendingsPage.swipeUp();
 		// fetch the actual transactions shown on the current page
 		List categoriesNameList = spendingsPage.fetchCategoriesNameList();
 		List categoriesTransactionsList = spendingsPage.fetchCategoriesTransactionsTextList();
@@ -175,7 +175,7 @@ public class SpendingsTest extends App {
 	}
 	
 	private void compareVendorTransactionsForaMonth(List vendors, boolean isTransactionCountShown) {
-		
+		spendingsPage.swipeUp();
 		// fetch actual the transactions shown on the current page
 		List vendorsNameList = spendingsPage.fetchVendorsTransactionsNameList();
 		List vendorsTransactionsList = spendingsPage.fetchVendorsTransactionsTextList();
