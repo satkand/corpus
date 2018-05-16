@@ -66,13 +66,12 @@ import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.ConnectedAccountsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
-<<<<<<< HEAD
 import pages.marketplace.wealth.VendorDetailPage;
-=======
+
 import pages.marketplace.property.WhatsNearbyPage;
 import pages.marketplace.property.PropertyHubPage;
 import pages.marketplace.property.SuburbDetailsPage;
->>>>>>> develop
+
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
