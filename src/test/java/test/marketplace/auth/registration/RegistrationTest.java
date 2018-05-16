@@ -190,9 +190,9 @@ public class RegistrationTest extends App{
 		registrationPage.enterEmail(utils.readTestData("registration", "failure", "emailLong"));
 		registrationPage.tapMobileNumberField();
 		String errorVal = registrationPage.getInvalidEmailErrorMsg().replace("\n\n", " ");
-		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg"));
+		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg2"));
 		registrationPage.tapEmailField();
-		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg"));
+		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg2"));
 	}
 	
 	
@@ -531,7 +531,7 @@ public class RegistrationTest extends App{
 		Assert.assertNotNull(registrationPage.checkEmailErrorMsg(), "Email inline message is not displayed.");
 		String errorVal = registrationPage.getInvalidEmailErrorMsg().replace("\n\n", " ");
 		//Validation as user enters value
-		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg2"),
+		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg"),
 				"Maximum length error message for email is not displayed");
 
 		registrationPage.clearField("emailField");

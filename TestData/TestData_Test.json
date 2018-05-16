@@ -71,7 +71,7 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "a@b.c",
+			"login": "test5@test.com",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••"
 		},
@@ -1364,6 +1364,7 @@
 			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
 			"longSurnameErrorMsg":"Must be between 2 and 40 characters",
 			"longEmailErrorMsg":"Must be between 2 and 100 characters",
+			"longEmailErrorMsg2":"Must be between 2 and 100 characters Please enter a valid email address",
 			"longMobileErrorMsg":"Must be 10 digits",
 			"longPostcodeErrorMsg" : "Must be 4 digits",
 			"firstNameUserTip" : "Middle name not required",

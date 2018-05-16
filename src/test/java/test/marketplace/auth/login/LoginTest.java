@@ -166,11 +166,12 @@ public class LoginTest extends App {
 	//DMPM-163 - Scenario-3  - incorrect credentials: 401 Bad Username or Password
 	
 	@Test (groups = {"DMPM-163", "DMPM-1137", "marketplace", "login", "priority-high"})
-	public void testLoginServerSideValidations() {
+	public void testInvalidCredentials() {
 		navigateToLoginScreen();
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidPassword"));
 		loginPage.tapLoginButton();
 		Assert.assertNotNull(loginPage.checkSnackbarText(), "Login Screen -  The snackbar not displayed");
+		Assert.assertEquals(loginPage.getSnackbarTextValue(), Copy.LOGIN_INVALID_CREDENTIALS_SNACKBAR_TEXT, "Login Screen - The text on the Snackbar is incorrect");
 		Assert.assertNotNull(loginPage.checkSnackbarButton(), "Login Screen - The button not displayed on the snackbar");
 		Assert.assertEquals(loginPage.getSnackbarTextValue(), utils.readTestData("copy", "loginPage", "snackbarTextIncorrectLogin"));
 		loginPage.tapSnackbarOkButton();
