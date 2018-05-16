@@ -311,9 +311,16 @@
 					"minimumChar": "1"
 				},
 				"addBankAccount":{
-					"validAccountNumber": "12345678-aA",
+					"validAccountNumber": "12345-aAg",
 					"inValidCharacterAccountNumber": "#$",
 					"moreThanMaxAccountNumber": "AWRTE1234567890123456789012345TH"
+					
+				},
+				"addSuperAccount":{
+					"validAccountNumber": "1234454",
+					"inValidCharacterAccountNumber": "#$",
+					"moreThanMaxAccountNumber": "1234567890",
+					"lessThanMinAccountNumber":"12345"
 					
 				}
 			},
@@ -349,7 +356,7 @@
 				]
 			},
 			"lifeProductAccount": {
-				"login": "LifeProductsAccounts@sun.com",
+				"login": "lifeProductsAccounts@sun.com",
 				"pwd": "Password1",
 				"products": [
 					{
@@ -382,7 +389,7 @@
 				]
 			},
 			"loanAccount": {
-				"login": "LoanProductsAccounts@sun.com",
+				"login": "loanProductsAccounts@sun.com",
 				"pwd": "Password1",
 				"products": [
 					{
@@ -478,7 +485,7 @@
 				},
 				"policy5": 
 				{
-						"login": "amendmentDatePolicies1@sun.com",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
@@ -493,7 +500,7 @@
 				},
 				"policy6": 
 				{
-						"login": "amendmentDatePolicies1@sun.com",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
@@ -508,7 +515,7 @@
 				},
 				"policy7": 
 				{
-						"login": "amendmentDatePolicies1@sun.com",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
@@ -523,7 +530,7 @@
 				},
 				"policy8": 
 				{
-						"login": "amendmentDatePolicies1@sun.com",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
@@ -538,7 +545,7 @@
 				},
 				"policy9": 
 				{
-						"login": "cancellationDatePolicies1@sun.com",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
@@ -553,7 +560,7 @@
 				},
 				"policy10": 
 				{
-						"login": "cancellationDatePolicies1@sun.com",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
@@ -568,7 +575,7 @@
 				},
 				"policy11": 
 				{
-						"login": "cancellationDatePolicies1@sun.com",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Cancellation pending",
           				"risks": 
@@ -580,7 +587,7 @@
 				},
 				"policy12": 
 				{
-						"login": "cancellationDatePolicies1@sun.com",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Cancellation pending",
           				"risks": 
@@ -595,7 +602,7 @@
 				},
 				"policy13": 
 				{
-						"login": "cancellationDatePolicies1@sun.com",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Cancellation pending",
           				"risks": 
@@ -610,7 +617,7 @@
 				},
 				"policy14": 
 				{
-						"login": "futureDatePolicies1@sun.com",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
@@ -625,7 +632,7 @@
 				},
 				"policy15": 
 				{
-						"login": "futureDatePolicies1@sun.com",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
@@ -640,7 +647,7 @@
 				},
 				"policy16": 
 				{
-						"login": "futureDatePolicies1@sun.com",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
@@ -652,7 +659,7 @@
 				},
 				"policy17": 
 				{
-						"login": "futureDatePolicies1@sun.com",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
@@ -667,7 +674,7 @@
 				},
 				"policy18": 
 				{
-						"login": "futureDatePolicies1@sun.com",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
@@ -682,7 +689,7 @@
 				},
 				"policy19": 
 				{
-						"login": "amendmentDatePolicies1@sun.com",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Active",
           				"risks": 
@@ -694,7 +701,7 @@
 				},
 				"policy20": 
 				{
-						"login": "amendmentDatePolicies1@sun.com",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Active",
           				"risks": 
@@ -1441,8 +1448,8 @@
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
 		},
 		"portfolioError":{
-			"invalidAccountNumber":"Can only contain letters, numbers, and '-'",
-			"lengthError":"Must be between 1 – 30 characters",
+			"invalidAccountNumber":"Must be 9 characters  Can only contain numerical digits",
+			"lengthError":"Must be 9 characters",
 			"mandatoryError":"Field is required"
 			},
 		"memberLogin" : {

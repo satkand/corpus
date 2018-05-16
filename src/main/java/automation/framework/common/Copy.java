@@ -146,6 +146,10 @@ public interface Copy {
 	// PORTFOLIO
 	String AVAILABLE_BALANCE_LABEL = "Available balance";	
 	String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
+	String ADD_SUPER_ACC_SPECIAL_CHARS_ERROR = "Can only contain numerical digits  Must be between 7 – 9 characters";
+	String ADD_SUPER_ACC_MANDATORY_ERROR = "Field is required";
+	String ADD_SUPER_ACC_LENGTH_ERROR = "Must be between 7 – 9 characters";
+	
 
 	//MemberLoginPage
 

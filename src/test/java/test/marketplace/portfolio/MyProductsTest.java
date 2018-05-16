@@ -53,9 +53,10 @@ public class MyProductsTest extends App {
 	}
 	
 
+	// DMPM-6705 Design updates for add policy and add bank account screen
 	// DMPM-105 Scenario 3
 	// 106 - Scenario 2 (DMPM-393), Scenario 3 (DMPM-410)
-	@Test (groups = {"DMPM-106", "DMPM-393","DMPM-410", "DMPM-105","DMPM-365","marketplace", "portfolio", "priority-minor"})
+	@Test (groups = {"DMPM-106", "DMPM-393","DMPM-410", "DMPM-105","DMPM-365","DMPM-6705","marketplace", "portfolio", "priority-minor"})
 	public void testProductSelectionOnEmptyScreen(){
 		
 		navigateToMyProductsScreen("emptylist","loginEmptyProdList");
@@ -73,6 +74,11 @@ public class MyProductsTest extends App {
 		
 		myProductsPage.tapBackButton();
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
+		
+		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is not present");
+		myProductsPage.tapAddSuperAccountButton();
+		Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
+	
 	
 	}
 	
@@ -113,6 +119,7 @@ public class MyProductsTest extends App {
 		}
 	}
 
+	// DMPM-5862 Abbreviate month on the date
 	// This function verifies the policy details where risk status - Expiry date
 	//DMPM-3667 Highlight expiry date for Renewal Overdue policy - Scenario 1
 	//DMPM-5598 Update mapping of expiry date for renewal statuses
@@ -141,7 +148,34 @@ public class MyProductsTest extends App {
 		
 	}
 
+	// Check app navigates to policy details screen after tapping on renew now button
+	@DataProvider(name = "RenewNow")
+	 
+	  public static Object[][] renewNow() {
+	 
+	     	return new Object[][] { {"policy1",1} };
+	     			 
+	  }
+	
+	@Test (dataProvider ="RenewNow", groups = {"DMPM-6669", "DMPM-7145","marketplace", "portfolio", "priority-minor"})
+	public void testRenewNowButton(String policy, int riskNumber){
+		
+		readPolicyData(policy,riskNumber);
+
+		navigateToMyProductsScreen("insuranceProduct",policy);
+		
+		Assert.assertTrue(myProductsPage.scrollToPolicyRisk(coverDescription), "My Products Page: Insurance products "+policy+" Policy not found");
+		Assert.assertNotNull(myProductsPage.checkRenewNowButton(),"My Products Page: Insurance products: Renew Now button is not present");
+		
+		myProductsPage.tapRenewNowButton();
+		
+		// Check app navigates to policy details screen
+		Assert.assertNotNull(myProductsPage.checkPolicyDetailsTitle(),"My Products Page: Insurance products: Policy Details screen is not displayed");	
+		
+	}
+	
 	// This function verifies the policy statuses
+	// DMPM-5862 Abbreviate month on the date
 	//DMPM-2087 Display policy-level status
 	@DataProvider(name = "PolicyLevelStatus")
 	 
@@ -170,6 +204,7 @@ public class MyProductsTest extends App {
 	
 	// This function verifies the policy details where risk status - Amendment date
 	// DMPM-2191 Display amendment date
+	// DMPM-5862 Abbreviate month on the date
 	// Scenario 1 - policy 19, policy 20 (Single risk, multi cover policies)
 	// Scenario 2 - 2.1 : policy 5, 2.2 : policy 6, 2.3 policy 7, 2.4 policy 8 (Multi risks, multi covers policies)
 	@DataProvider(name = "AmendmentDatePolicies")
@@ -199,6 +234,7 @@ public class MyProductsTest extends App {
 	// This function verifies the policy data
 	// DMPM-2308 Update mapping of expiry date - {policy 6,2}
 	// DMPM-2093 Update mapping for risk description
+	// DMPM-5862 Abbreviate month on the date
 	@DataProvider(name = "policyData")
 
 	public static Object[][] policyData() {
@@ -229,6 +265,7 @@ public class MyProductsTest extends App {
 	// Scenario 2 - 2.1 : policy 9, 2.2 : policy 10 (Multi risks, single cover policies)
 	// Scenario 3 - policy11
 	// Scenario 4 - 4.1 : policy12, policy13
+	// DMPM-5862 Abbreviate month on the date
 	@DataProvider(name = "CancellationDatePolicies")
 
 	public static Object[][] cancellationDatePolicies() {
@@ -259,6 +296,7 @@ public class MyProductsTest extends App {
 	// Scenario 2 - 2.1 : policy 9, 2.2 : policy 10 (Multi risks, single cover policies)
 	// Scenario 3 - policy16 ( single risk, multi covers policy)
 	// Scenario 4 - 4.1 : policy17, policy18
+	// DMPM-5862 Abbreviate month on the date
 	@DataProvider(name = "FutureDatePolicies")
 	public static Object[][] futureDatePolicies() {
 
@@ -322,7 +360,8 @@ public class MyProductsTest extends App {
 	// DMPM-2599 Display life insurance products
 	// DMPM-5799
 	// DMPM-5103 Append "insurance" to my product type
-		@Test(groups = { "DMPM-2599", "DMPM-3118", "DMPM-5799","DMPM-5103","DMPM-6048","marketplace", "portfolio", "priority-major" })
+	// DMPM-5901 Enforce sentence case for all product descriptions
+	@Test(groups = { "DMPM-2599", "DMPM-3118", "DMPM-5799","DMPM-5103","DMPM-6048","marketplace", "portfolio", "priority-major" })
 		public void testLifeProducts()
 		{
 			
@@ -396,6 +435,7 @@ public class MyProductsTest extends App {
 	
 	// This function verifies adding bank account with inline validations
 	// DMPM-112 Android - Add Bank Account and Inline Validations
+	// DMPM-5901 Enforce sentence case for all product descriptions
 	@Test(groups = { "DMPM-112", "DMPM-468", "DMPM-469", "DMPM-470", "DMPM-471", "DMPM-472", "DMPM-473", "DMPM-474",
 			"DMPM-475", "DMPM-476", "marketplace", "portfolio", "priority-major" })
 	public void testErrorValidationsOnAddBankAccount() {
@@ -449,11 +489,82 @@ public class MyProductsTest extends App {
 
 	}
 	
+	
+	// This test case checks the error validations on adding Superannuation accounts
+	// DMPM-3420 Add superannuation product
+	@Test(groups = { "DMPM-3420", "DMPM-6854", "DMPM-6855", "DMPM-6856", "DMPM-6857", "DMPM-6858", "DMPM-6859", "DMPM-6860",
+			"DMPM-6861", "DMPM-6862", "DMPM-6863","marketplace", "portfolio", "priority-major" })
+	public void testErrorValidationsOnAddSuperAccount() {
+
+		navigateToMyProductsScreen("emptylist", "loginEmptyProdList");
+		myProductsPage.tapAddExistingProductButton();
+		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(),"My Products screen - Add exisitng product screen title is not present");
+		myProductsPage.tapAddSuperAccountButton();
+		Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
+		
+		myProductsPage.tapSuperAccountNumberField();
+		Assert.assertTrue(common.isKeyboardShown(),"Keyboard is not displayed after tapping on Account Number field");
+		
+		// Check mandatory field error message on Account Number
+		myProductsPage.tapAddSuperAccount();
+		Assert.assertEquals(myProductsPage.getAccountNumberError(), Copy.ADD_SUPER_ACC_MANDATORY_ERROR,"My Products: Add Super Account screen: Account Number field is mandatory error message is not displayed");
+		
+		// Check inline error message for invalid character while typing
+		myProductsPage.enterSuperAccountNumber(utils.readTestData("portfolio","loginProdList","addSuperAccount","inValidCharacterAccountNumber"));
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
+		
+		//Check inline error message for invalid character after tapping on Add Account button
+		myProductsPage.tapAddSuperAccount();
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
+
+		// check the inline error message for invalid character is still displayed when the user taps in the field
+		myProductsPage.tapSuperAccountNumberField();
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
+
+		
+		myProductsPage.clearSuperAccountNumber();
+		
+		// Check inline error message for field length while typing
+		myProductsPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "moreThanMaxAccountNumber"));
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
+		
+		// Check inline error message for field length is displayed on tapping Add Account button
+		myProductsPage.tapAddSuperAccount();
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
+
+		// check the inline error message is still displayed when the user taps in the field
+		myProductsPage.tapSuperAccountNumberField();
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
+
+		myProductsPage.clearSuperAccountNumber();
+		
+		// Check inline error message for field length while typing
+		myProductsPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "lessThanMinAccountNumber"));
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
+				
+		// Check inline error message for field length is displayed on tapping Add Account button
+		myProductsPage.tapAddSuperAccount();
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
+
+		// check the inline error message is still displayed when the user taps in the field
+		myProductsPage.tapSuperAccountNumberField();
+		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
+
+		myProductsPage.clearSuperAccountNumber();
+
+		// check the inline error message disappears when user types correct Account number
+		myProductsPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "validAccountNumber"));
+		Assert.assertNull(myProductsPage.checkAccountNumberError(),"My Products: Add Super Account screen: Error message is still displayed");
+		
+
+	}
+	
 	// This function verifies the every day bank accounts
 	// DMPM-240 - Scenario 2 -Display bank account
 		/*167 - Scenario 1 - DMPM-466
 		 DMPM-2988 : Update mapping for banking products*/
 	//DMPM-5555 Update displaying of Everyday Accounts
+	// DMPM-5901 Enforce sentence case for all product descriptions
 	@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-5555", "DMPM-6043","marketplace", "portfolio", "priority-minor"})
 	public void testTransactionBankAccountDetails(){
 	
@@ -487,6 +598,8 @@ public class MyProductsTest extends App {
 			
 		}
 		Assert.assertNotNull(myProductsPage.checkProductTypeImage(), "My products screen - Product Type image is not present");
+		
+		
 		Assert.assertNotNull(myProductsPage.checkAvailableBalanceLable(), "My products screen - Available balance lable is not present");
 		Assert.assertNotNull(myProductsPage.checkViewDetailsButton(), "My Products Page - View details button is not present");
 		
@@ -494,7 +607,7 @@ public class MyProductsTest extends App {
 	
 	// This function verifies the term deposit accounts
 	// DMPM-240 - Scenario 2 -Display bank account
-		/*167 - Scenario 1 - DMPM-466
+	/*167 - Scenario 1 - DMPM-466
 		 DMPM-2988 : Update mapping for banking products*/
 	//DMPM-3700 Update displaying of Term deposit Accounts
 		@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-3700", "DMPM-6009","marketplace", "portfolio", "priority-minor"})
@@ -539,6 +652,7 @@ public class MyProductsTest extends App {
 	// DMPM-240 - Scenario 2 -Display bank account
 	// 167 - Scenario 1 - DMPM-466 DMPM-2988 : Update mapping for banking products
 	// DMPM-2607 Display line of credit loan products
+	// DMPM-5901 Enforce sentence case for all product descriptions
 	@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2607", "DMPM-6008", "marketplace", "portfolio", "priority-minor" })
 	public void testLineOfCreditLoanBankAccountDetails() {
 
@@ -587,6 +701,7 @@ public class MyProductsTest extends App {
 	/*167 - Scenario 1 - DMPM-466
 	DMPM-2988 : Update mapping for banking products*/
 	// DMPM-2605 Display variable and fixed rate loan products
+	// DMPM-5901 Enforce sentence case for all product descriptions
 		@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2605", "DMPM-6044", "marketplace", "portfolio", "priority-minor" })
 		public void testLoanBankAccountDetails() {
 
@@ -666,7 +781,38 @@ public class MyProductsTest extends App {
 
 	}
 		
-		
+	// DMPM-1460 UI updates on the Products Portfolio screen
+		@Test(groups = { "DMPM-6127","DMPM-7151","DMPM-7153","DMPM-7154", "marketplace", "portfolio", "priority-major" })
+		public void testDisclaimerPortfolioScreen() {
+			
+			loginToApp(utils.readTestData("portfolio","bankingProducts","lifeProductAccount", "login"), utils.readTestData("portfolio","bankingProducts", "lifeProductAccount", "pwd"));
+
+			navigationMenu.tapSplitMenuIcon();
+			Assert.assertNotNull(navigationMenu.checkProductsMenuItem(), "Main Menu : My Products menu option is not displayed");
+			
+			navigationMenu.tapProductsMenuItem();
+			
+			// Check disclaimer is displayed
+			Assert.assertNotNull(myProductsPage.checkPortfolioDisclaimerScreenTitle(),"Portfolio disclaimer is not displayed.");
+			
+			// Tap back button
+			myProductsPage.tapBackButton();
+			
+			Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
+
+			// Navigate away from portfolio screen 
+			navigationMenu.tapSplitMenuIcon();
+			navigationMenu.tapSuncorpMenuItem();
+			
+			// Navigate to Portfolio screen and check disclaimer is not displayed
+			navigationMenu.tapSplitMenuIcon();
+			navigationMenu.tapProductsMenuItem();
+
+			// Check disclaimer is not displayed
+			Assert.assertNull(myProductsPage.checkPortfolioDisclaimerScreenTitle(),"Portfolio disclaimer is displayed.");
+	
+
+		}	
 		
 	private void navigateToMyProductsScreen(String productType, String user)
 	{
@@ -699,11 +845,18 @@ public class MyProductsTest extends App {
 
 		}
 		
+		
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkProductsMenuItem(), "Main Menu : My Products menu option is not displayed");
 
 		
 		navigationMenu.tapProductsMenuItem();
+		
+		// check if disclaimer is displayed, and if displayed tap back to close the screen
+		if(myProductsPage.checkPortfolioDisclaimerScreenTitle() != null) {
+			myProductsPage.tapBackButton();
+		}
+		
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
 	}
 	
