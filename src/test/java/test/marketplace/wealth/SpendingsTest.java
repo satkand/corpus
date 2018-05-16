@@ -445,11 +445,11 @@ public class SpendingsTest extends App {
 	
 	private void navigateToSpendingsScreen(){
 		loginToApp(utils.readTestData("hasSuncorpBankAccounts", "login"), utils.readTestData("hasSuncorpBankAccounts", "pwd"));
-		if(landingPage.checkWealthTab() == null) {
+		if(landingPage.checkFinanceTab() == null) {
 			landingPage.swipeToHealthTab();
 		}
-		landingPage.tapWealthTab();
-		Assert.assertTrue(landingPage.isWealthTabSelected(), "Wealth tab is not selected on landing page");
+		landingPage.tapFinanceTab();
+		Assert.assertTrue(landingPage.isFinanceTabSelected(), "Wealth tab is not selected on landing page");
 		
 		// TODO This logic is for enabling the bank accounts option in settings, This needs to be removed, when the logic for fetching the the bank accounts from api is implemented
 		navigationMenu.tapSplitMenuIcon();
@@ -458,7 +458,7 @@ public class SpendingsTest extends App {
 		configPage.enableHasBankAccountsToggle(); 
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
-		landingPage.tapWealthTab();
+		landingPage.tapFinanceTab();
 		
 		// Actual logic
 		financePage.tapviewSpendingThisMonthButton();

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class PINAuthPage extends BasePage {
 	
@@ -17,9 +18,12 @@ public class PINAuthPage extends BasePage {
 	}
 
 	private By userName = By.id("au.com.suncorp.marketplace:id/enterPinUserNameText");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/reauthCancelButton");
+	//private By backButton = By.id("au.com.suncorp.marketplace:id/reauthCancelButton");
+	private By backButton = MobileBy.AccessibilityId("Back");
 	private By forgottenPINButton = By.id("au.com.suncorp.marketplace:id/customKeypadForgotPinButton");
 	private By pinField = By.id("au.com.suncorp.marketplace:id/pinImage1");
+	
+	private By userNamePinReauth = By.id("au.com.suncorp.marketplace:id/enterPinUserNameText");
 	
 	public WebElement checkUserName() {
 		return find(userName);
@@ -40,5 +44,8 @@ public class PINAuthPage extends BasePage {
 	public void tapForgottenPINButton() {
 		tapElement(forgottenPINButton);
 	}
-
+	
+	public WebElement checkPinReauthUserName() {
+		return find(userNamePinReauth);
+	}
 }

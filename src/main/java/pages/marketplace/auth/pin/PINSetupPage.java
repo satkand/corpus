@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class PINSetupPage extends BasePage {
 	
@@ -15,8 +16,8 @@ public class PINSetupPage extends BasePage {
 
 	private By enterPINLabel = By.id("au.com.suncorp.marketplace:id/enterPinMessage");
 	private By reEnterPINLabel = By.id("au.com.suncorp.marketplace:id/reenterPinMessage");
-	private By cancelButton = By.id("au.com.suncorp.marketplace:id/pinSetupCancelButton");
-	
+	//private By cancelButton = By.id("au.com.suncorp.marketplace:id/pinSetupCancelButton");
+	private By cancelButton = MobileBy.AccessibilityId("Cancel");
 	private By invalidPINAlertMessage = By.id("android:id/message");
 	private By invalidPINAlertOKButton = By.id("android:id/button1");
 
@@ -25,6 +26,11 @@ public class PINSetupPage extends BasePage {
 	private By pinSuccessfullySetNotification = By.id("au.com.suncorp.marketplace:id/successAlertDialog");
 	private By pinSuccessfullySetMessage = By.id("au.com.suncorp.marketplace:id/dialogMessage");
 	
+	private By buttonOne = By.id("au.com.suncorp.marketplace:id/customKeypadButton1");
+	private By buttonThree = By.id("au.com.suncorp.marketplace:id/customKeypadButton3");
+	private By buttonFive = By.id("au.com.suncorp.marketplace:id/customKeypadButton5");
+	private By buttonSeven = By.id("au.com.suncorp.marketplace:id/customKeypadButton7");
+	private By okButton = By.id("android:id/button1");
 	public WebElement checkEnterPINLabel() {
 		return find(enterPINLabel);
 	}
@@ -83,5 +89,15 @@ public class PINSetupPage extends BasePage {
 	
 	public String getPINSuccessfullySetMessage() {
 		return getText(pinSuccessfullySetMessage);
+	}
+	public void tapOkbutton() {
+		
+		tapElement(okButton);
+	}
+	public void enterPIN(){
+		tapElement(buttonOne);
+		tapElement(buttonThree);
+		tapElement(buttonFive);
+		tapElement(buttonSeven);
 	}
 }
