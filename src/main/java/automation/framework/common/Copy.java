@@ -6,12 +6,13 @@ public interface Copy {
 	String NAV_MENU_WELCOME_MESSAGE = "Welcome back!";
 	
 	//ENTER CURRENT PIN PAGE
-	String PIN_LOCK_ALERT_MESSAGE = "Your PIN is currently locked. Please re-authenticate with your password to setup a new PIN.";
+	String PIN_LOCK_ALERT_MESSAGE = "Your PIN is locked. Please set up a new one";
 	String REAUTHENTICATE_BUTTON_TEXT = "REAUTHENTICATE";
 	String INCORRECT_PIN_ERROR_MESSAGE= "Incorrect PIN, please try again.";
-	
+	String PIN_INSTRUCTION_MESSAGE = "Don't create a PIN that represents your name or date of birth as it puts your account at risk and increases your liability for unauthorised transactions.";
+	String PIN_INSTRUCTION_TITLE = "Choose a PIN that's easy to remember, but not easy for others to guess.";
 	//SETTINGS PAGE
-	String SETTINGS_TITLE_TEXT ="Settings";
+	public String SETTINGS_TITLE_TEXT ="Settings";
 	
 	//PROPERTYHUB PAGE
 	String PROPERTY_HUB_DESCRIPTION_HEADING ="Explore valuable insights on suburbs & properties";
@@ -63,11 +64,24 @@ public interface Copy {
 	String ARTICLE_CAROUSEL_TITLE = "Articles";
 
 	//VEHICLES PAGE
-	String VEHICLE_SERVICES_TITLE = "Vehicle Services at your finger tips";
-	String VEHICLE_SERVICES_DESCRIPTION = "Browse and access from a range of professional services for your vehicle or just buy one.";
-	String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
-	String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
-
+	public static final String VEHICLE_SERVICES_TITLE = "Vehicle Services at your finger tips";
+	public static final String VEHICLE_SERVICES_DESCRIPTION = "Browse and access from a range of professional services for your vehicle or just buy one.";
+	public static final String VEHICLE_SERVICES_BTN_TXT = "VEHICLE SERVICES";
+	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
+	
+	//WEB VIEW
+	public static final String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
+	
+	//SUBURB DETAILS PAGE
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
+	public static final String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood Risk";
+	public static final String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush Fire Risk";
+	public static final String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft Risk";
+	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
+	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
+	public static final String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
+	
 	//POLICY DETAILS PAGE
 	String POLICY_DETAILS_SCREEN_TITLE = "Policy Details";
 	String INSTALMENT_FREUENCY_MONTHLY_LABEL ="Monthly instalment";
