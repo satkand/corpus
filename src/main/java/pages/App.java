@@ -133,7 +133,6 @@ public class App extends BaseTest {
 
 	String CONFIG_FILE=null;
 
-
 	@BeforeClass
 	public void initializeApp() {
 	
