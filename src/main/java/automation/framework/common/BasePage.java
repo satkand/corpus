@@ -33,7 +33,6 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.android.StartsActivity;
-//import src.main.java.auto.common.String;
 
 public class BasePage {
 
