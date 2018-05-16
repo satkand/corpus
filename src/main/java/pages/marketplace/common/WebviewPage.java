@@ -11,17 +11,14 @@ public class WebviewPage extends BasePage {
 
 	public WebviewPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 		
 	private By webviewChromeCloseButton = MobileBy.AccessibilityId("Close tab");
 	private By webviewBrowserUrl = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
 	private By webViewLocationBar = By.id("com.sec.android.app.sbrowser:id/location_bar_edit_text");
 	private By webViewPopup = MobileBy.AccessibilityId("Close");
-	
 	private By webViewToolbarOprions = MobileBy.AccessibilityId("More options");
 	private By webViewAddToBookMark = By.xpath("//android.widget.TextView[@text='Add to Bookmarks']");
-	//
 	private By webViewWebAddress = By.id("com.sec.android.app.sbrowser:id/add_bookmark_page_url_input");
 	
 	
@@ -48,7 +45,6 @@ public class WebviewPage extends BasePage {
 	
 	public WebElement checkUrlBar() {
 		return find(urlBar);
-
 	}
 	
 	public void tapWebViewAddToBookMarkButton() {
@@ -93,6 +89,6 @@ public class WebviewPage extends BasePage {
 	public void tapWebViewPopup() {
 		tapElement(webViewPopup);
 	}
-	
+
 
 }

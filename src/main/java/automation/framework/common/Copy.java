@@ -13,7 +13,7 @@ public interface Copy {
 	String PIN_INSTRUCTION_TITLE = "Choose a PIN that's easy to remember, but not easy for others to guess.";
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
-	
+
 	//PROPERTYHUB PAGE
 	String PROPERTY_HUB_DESCRIPTION_HEADING ="Explore valuable insights on suburbs & properties";
 	String PROPERTY_HUB_DESCRIPTION ="Find your perfect property and save it as a favourite, or explore whats nearby.";
@@ -40,7 +40,7 @@ public interface Copy {
 	//FORCE UPDATE SCREEN
 	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
 	public String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
-	
+
 	//FULL SCREEN MAPMAP POINTS OF INTEREST INDICATORS
 	String FULL_SCREEN_MAP_EDUCATION_CENTRE_INDICATOR = "NorthanMelbourneInstituteOfTAFE. ";
 	String FULL_SCREEN_MAP_SHOPPING_AMENITY_INDICATOR = "Penny Blue. ";
@@ -70,8 +70,8 @@ public interface Copy {
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 	
 	//WEB VIEW
-	public static final String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
-	
+	public static final String LOCATION_BAR_TEXT = "www.suncorp.com.au";
+
 	//SUBURB DETAILS PAGE
 	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
 	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
@@ -81,6 +81,7 @@ public interface Copy {
 	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
 	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
 	public static final String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
+
 	
 	//POLICY DETAILS PAGE
 	String POLICY_DETAILS_SCREEN_TITLE = "Policy Details";
