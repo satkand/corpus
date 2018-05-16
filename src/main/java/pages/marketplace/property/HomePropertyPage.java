@@ -49,6 +49,7 @@ public class HomePropertyPage extends BasePage {
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
 	private By featureLockedMsgLogInButton = By.id("android:id/button1");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
+
 	private By incomeProtectionTitleText = By.id("au.com.suncorp.marketplace:id/offerTitle");
 	private By propertyDetailsButton = By.id("au.com.suncorp.marketplace:id/propertyDetailsButton");
 	
@@ -376,12 +377,11 @@ public class HomePropertyPage extends BasePage {
 	public void scrollToJourneyBanner(){
 		scrollToElement("START YOUR JOURNEY", "text");
 	}
-	
+
 	public void scrollToSuppliedAsset(){
 		scrollToElement(emptyStatePropertyAsset, "true");
 	}
-
-
+	
 	public WebElement checkHomeJourneyBannerImage() {
 		return find(homeJourneyBannerImage);
 	}

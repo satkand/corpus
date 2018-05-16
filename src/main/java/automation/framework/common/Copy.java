@@ -13,7 +13,7 @@ public interface Copy {
 	String PIN_INSTRUCTION_TITLE = "Choose a PIN that's easy to remember, but not easy for others to guess.";
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
-	
+
 	//PROPERTYHUB PAGE
 	String PROPERTY_HUB_DESCRIPTION_HEADING ="Explore valuable insights on suburbs & properties";
 	String PROPERTY_HUB_DESCRIPTION ="Find your perfect property and save it as a favourite, or explore whats nearby.";
@@ -21,12 +21,12 @@ public interface Copy {
 	String PROPERTY_HUB_SEARCH_HINT = "Search address";
 	
 	//PROPERTY DETAILS PAGE
-	public String PROPERTY_DETAILS_THIS_IS_MY_PROPERTY_LABEL ="This is my property";
-	public String PROPERTY_DETAILS_BOTTOM_SHEET_TITLE ="My property";
-	public String PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT ="Owner/Occupier";
-	public String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
-	public String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
-
+	String PROPERTY_DETAILS_THIS_IS_MY_PROPERTY_LABEL ="This is my property";
+	String PROPERTY_DETAILS_BOTTOM_SHEET_TITLE ="My property";
+	String PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT ="Owner/Occupier";
+	String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
+	String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
+	
 	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
@@ -38,9 +38,8 @@ public interface Copy {
 	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
 	
 	//FORCE UPDATE SCREEN
-	public static final String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
-	public static final String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
-
+	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
+	public String FORCEUPDATE_DESCRIPTION ="Please update the app to the latest version to access your account";
 
 	//FULL SCREEN MAPMAP POINTS OF INTEREST INDICATORS
 	String FULL_SCREEN_MAP_EDUCATION_CENTRE_INDICATOR = "NorthanMelbourneInstituteOfTAFE. ";
@@ -71,8 +70,8 @@ public interface Copy {
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 	
 	//WEB VIEW
-	public static final String LOCATION_BAR_TEXT = "‎www.suncorp.com.au";
-	
+	public static final String LOCATION_BAR_TEXT = "www.suncorp.com.au";
+
 	//SUBURB DETAILS PAGE
 	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
 	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
@@ -82,6 +81,7 @@ public interface Copy {
 	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
 	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
 	public static final String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
+
 	
 	//POLICY DETAILS PAGE
 	String POLICY_DETAILS_SCREEN_TITLE = "Policy Details";
@@ -143,6 +143,7 @@ public interface Copy {
 	String EMPTY_DATE_ERROR_MSG = "Field is required";
 	String FUTURE_DATE_ERROR_MSG = "Invalid date input.\nPlease ensure you've entered the correct date";
 
+
 	// PORTFOLIO
 	String AVAILABLE_BALANCE_LABEL = "Available balance";	
 	String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
@@ -151,11 +152,11 @@ public interface Copy {
 	String ADD_SUPER_ACC_LENGTH_ERROR = "Must be between 7 – 9 characters";
 	
 
-	//MemberLoginPage
+	//MEMBER LOGIN PAGE
 
 	String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
 
-	//Reset Password
+	//RESET PASSWORD
 	public String RESET_PASSWORD_TITLE_TEXT = "Reset password";
 	public String RESET_PASSWORD_DESCRIPTION_TEXT = "Enter the email associated with your Suncorp account. We'll email you a link to a page where you can easily create a new password.";
 	public String RESET_PASSWORD_SHORT_EMAIL_ERROR = "Must be between 2 and 100 characters Please enter a valid email address";
@@ -165,5 +166,11 @@ public interface Copy {
 	public String RESET_PASSWORD_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
 	public String RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT = "You will shortly receive an email with reset instructions.";
 	public String RESET_PASSWORD_SUCCESS_SNACKBAR_BTN = "OPEN MAIL";
+<<<<<<< HEAD
 
+=======
+	
+	//LOGIN PAGE
+	public String LOGIN_INVALID_CREDENTIALS_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
+>>>>>>> origin/develop
 }

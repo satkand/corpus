@@ -9,10 +9,12 @@ import io.appium.java_client.AppiumDriver;
 
 public class PINOptionsPage extends BasePage{
 
-
 	//No Fingerprint enabled
+
 	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptEnablePinButton");
+	private By enableFingerPrintButton = By.id("au.com.suncorp.marketplace:id/enableFingerprintButton");
 	private By maybeLaterPinPromptButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
+
 	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePinPromptImage");
 	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePinPromptUserWelcome");
 	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
@@ -33,6 +35,10 @@ public class PINOptionsPage extends BasePage{
 	
 	public WebElement checkEnablePinButton(){
 		return find(enablePinButton,45);
+	}
+	
+	public WebElement checkFingerPrintButton(){
+		return find(enableFingerPrintButton);
 	}
 	
 	public WebElement checkMaybeLaterButton(){
