@@ -166,11 +166,8 @@ public interface Copy {
 	public String RESET_PASSWORD_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
 	public String RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT = "You will shortly receive an email with reset instructions.";
 	public String RESET_PASSWORD_SUCCESS_SNACKBAR_BTN = "OPEN MAIL";
-<<<<<<< HEAD
 
-=======
-	
 	//LOGIN PAGE
 	public String LOGIN_INVALID_CREDENTIALS_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
->>>>>>> origin/develop
+
 }
