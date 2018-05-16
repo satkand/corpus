@@ -2,41 +2,38 @@ package pages.marketplace.auth.pin;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
 public class PINOptionsPage extends BasePage{
 
-	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
-
 	//No Fingerprint enabled
 	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptEnablePinButton");
-//	private By maybeLaterPinPromptButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
+	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
+	private By enableFingerPrintButton = By.id("au.com.suncorp.marketplace:id/enableFingerprintButton");
 	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePinPromptImage");
 	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePinPromptUserWelcome");
 	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
 	
-	private By pinFingerprintPromptImage = By.id("au.com.suncorp.marketplace:id/enablePromptImage");
-
 	//Fingerprint enabled
 	private By promptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePromptUserWelcome");
 	private By promptDescription = By.id("au.com.suncorp.marketplace:id/enablePromptDescription");
 	private By promptImage = By.id("au.com.suncorp.marketplace:id/enablePromptImage");
-//	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
 	private By maybeLaterPromptButton = By.id("au.com.suncorp.marketplace:id/enablePromptDismissButton");
 
 	
 	public PINOptionsPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	//Methods for Fingerprint not enabled cases
 	
 	public WebElement checkEnablePinButton(){
 		return find(enablePinButton,45);
+	}
+	
+	public WebElement checkFingerPrintButton(){
+		return find(enableFingerPrintButton);
 	}
 	
 	public WebElement checkMaybeLaterButton(){

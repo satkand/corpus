@@ -157,17 +157,21 @@ public class LoginTest extends App {
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
 		Assert.assertNotNull(loginPage.checkLoadingIndicator(), "Login screen - Login indicator not displayed");
+		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 		Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(), "PIN Options Page - Title message not displayed");
 	}
 
 	//DMPM-163 - Scenario-3  - incorrect credentials: 401 Bad Username or Password
 
 	@Test (groups = {"DMPM-163", "DMPM-1137", "marketplace", "login", "priority-high"})
-	public void testLoginServerSideValidations() {
+	public void testInvalidCredentials() {
 		navigateToLoginScreen();
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidPassword"));
 		loginPage.tapLoginButton();
 		Assert.assertNotNull(loginPage.checkSnackbarText(), "Login Screen -  The snackbar not displayed");
+		Assert.assertEquals(loginPage.getSnackbarTextValue(), Copy.LOGIN_INVALID_CREDENTIALS_SNACKBAR_TEXT, "Login Screen - The text on the Snackbar is incorrect");
 		Assert.assertNotNull(loginPage.checkSnackbarButton(), "Login Screen - The button not displayed on the snackbar");
 		Assert.assertEquals(loginPage.getSnackbarTextValue(), utils.readTestData("copy", "loginPage", "snackbarTextIncorrectLogin"));
 		loginPage.tapSnackbarOkButton();
@@ -214,16 +218,25 @@ public class LoginTest extends App {
 		Assert.assertEquals(loginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "User is not navigated to the Reset Password");
 		Assert.assertEquals(loginPage.getResetPasswordEmailValue(), utils.readTestData("loginCredentials","validLoginCredentials", "login"), "Reset Password - Email does not match with the email entered in login page");
 		loginPage.tapResetPasswordBackButton();
-
+		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not navigated back to Login Page");
 		loginPage.tapBackButton();
 
 		//Navigate to Login Screen via Suncorp Insurance Credentials
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome Page - User is not navigated to the Welcome Page");
 		welcomePage.tapRegisterButton();
 		Assert.assertEquals(getStartedPage.getGetStartedPageTitleValue().replace("\n", " "), utils.readTestData("copy", "getStartedPage", "getStartedPageTitle"), "Get Started - User is not navigated to the Get Started Page");
-		getStartedPage.tapSuncorpBrandIcon();
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkSuncorpBrandExists(), "Select Brand List - Suncorp brand is not displayed");
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();
 		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
 		getStartedPage.tapSuncorpInsuranceButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
 		loginPage.tapForgotPassword();
 		Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
 		Assert.assertEquals(loginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "Reset Password title does not match");
@@ -312,16 +325,23 @@ public class LoginTest extends App {
 		Assert.assertEquals(loginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
 
 		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"), "Login Page - User is not navigated to the Log in page");
-		Assert.assertEquals(loginPage.getEmailFieldData(), utils.readTestData("loginCredentials", "validLoginCredentials","login"), "Login Page - Email value is not correct");
-		Assert.assertEquals(loginPage.getPasswordFieldValue(), "", "Login Page - Password value is not empty");
 		loginPage.tapBackButton();
-
+		
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome Page - User is not navigated to the Welcome Page");
 		welcomePage.tapRegisterButton();
 		Assert.assertEquals(getStartedPage.getGetStartedPageTitleValue().replace("\n", " "), utils.readTestData("copy", "getStartedPage", "getStartedPageTitle"), "Get Started - User is not navigated to the Get Started Page");
-		getStartedPage.tapSuncorpBrandIcon();
-		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkSuncorpBrandExists(), "Select Brand List - Suncorp brand is not displayed");
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();
+		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp Accounts option is not displayed");
 		getStartedPage.tapSuncorpInsuranceButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
+
 		loginPage.tapForgotPassword();
 		Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
 		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
