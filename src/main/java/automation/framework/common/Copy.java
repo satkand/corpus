@@ -143,15 +143,18 @@ public interface Copy {
 	String EMPTY_DATE_ERROR_MSG = "Field is required";
 	String FUTURE_DATE_ERROR_MSG = "Invalid date input.\nPlease ensure you've entered the correct date";
 
-	//MemberLoginPage
+	//MEMBER LOGIN PAGE
 	String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
+
 
 	
 	//FFI
 	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you dont have any transactions yet.";
 	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
 
-	//Reset Password
+
+	//RESET PASSWORD
+
 	public String RESET_PASSWORD_TITLE_TEXT = "Reset password";
 	public String RESET_PASSWORD_DESCRIPTION_TEXT = "Enter the email associated with your Suncorp account. We'll email you a link to a page where you can easily create a new password.";
 	public String RESET_PASSWORD_SHORT_EMAIL_ERROR = "Must be between 2 and 100 characters Please enter a valid email address";
@@ -161,5 +164,10 @@ public interface Copy {
 	public String RESET_PASSWORD_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
 	public String RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT = "You will shortly receive an email with reset instructions.";
 	public String RESET_PASSWORD_SUCCESS_SNACKBAR_BTN = "OPEN MAIL";
+
+
+	
+	//LOGIN PAGE
+	public String LOGIN_INVALID_CREDENTIALS_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
 
 }

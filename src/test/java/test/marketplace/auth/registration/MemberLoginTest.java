@@ -29,14 +29,24 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for(Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonMemberLoginCheckMethod(brandIcons);
 		}
 	}
 
 	private void commonMemberLoginCheckMethod(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 		Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"));
 		Assert.assertNotNull(memberLoginPage.checkCancelButton(), "Member Login - Cancel button not displayed");
 		Assert.assertNotNull(memberLoginPage.checkEmailField(), "Member Login - Email field not displayed");
@@ -53,16 +63,26 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for(Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonPasswordFieldRequirementsMethod(brandIcons);
 		}
 	}
 
 	private void commonPasswordFieldRequirementsMethod(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
-
-		memberLoginPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		Assert.assertNotNull(memberLoginPage.checkPasswordField(), "Member Login Page - Password field is not displayed");
+		memberLoginPage.enterPassword(brandIcon.get("password"));
 		Assert.assertEquals(memberLoginPage.getPasswordFieldValue(), utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd"), "Member Login Page - Data is not masked");
 		memberLoginPage.relaunchApp(-1, "Config");
 		Assert.assertEquals(memberLoginPage.getPasswordFieldValue(), "", "Member Login Page - Password field is not empty");
@@ -75,18 +95,31 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for(Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonMemberLoginInlineValidationMethod(brandIcons, "passwordField");
 		}
 
 		for(Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonMemberLoginInlineValidationMethod(brandIcons, "nextButton");
 		}
 	}
 
 	private void commonMemberLoginInlineValidationMethod(Object brandIcons, String tapOn) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 
 		String errorVal = "";
 		/** Tapping out of the Field **/
@@ -134,14 +167,24 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for(Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonMemberLoginValidationsHidingMethod(brandIcons);
 		}
 	}
 
 	private void commonMemberLoginValidationsHidingMethod(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 
 		String errorVal = "";
 		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "invalidCredentials", "emailMinLength"), "");
@@ -174,26 +217,33 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for(Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonSuccessfulMemberLoginMethod(brandIcons);
 		}
 	}
 
 	private void commonSuccessfulMemberLoginMethod(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-		if(welcomePage.checkWelcomeSuncorpImage() != null){
-			navigateToWelcomeToSuncorpPage();
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
 		}
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
 
-		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validMemberLogin", "login"), utils.readTestData("loginCredentials", "validMemberLogin", "pwd"));
+		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
 
 		Assert.assertNotNull(memberLoginPage.checkMobileRegisterPageTitle(), "Mobile Register - Almost there! Page not displayed");
 		Assert.assertNotNull(memberLoginPage.checkMobileRegisterPageDescription(), "Mobile Register - Description to the user not shown");
 		Assert.assertNotNull(memberLoginPage.checkMobileTextField(), "Mobile Register - Mobile number text field");
 		Assert.assertNotNull(memberLoginPage.checkRegiterWithMobileButton(), "Mobile Register - Register button not displayed");
-		Assert.assertNotNull(memberLoginPage.checkNoMarketingTermsText(), "Mobile Register - No Marketing terms text not displayed");
+//		Assert.assertNotNull(memberLoginPage.checkNoMarketingTermsText(), "Mobile Register - No Marketing terms text not displayed");
 		memberLoginPage.tapMobileTextField();
 		Assert.assertEquals(memberLoginPage.getMobileNumberTipText(), Copy.MOBILE_NUMBER_TIP, "Mobile Register - Mobile number tool tip text is incorrect");
 
@@ -219,16 +269,26 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for(Object brandIcons: brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonMobileNumberValidationsMethod(brandIcons);
 		}
 	}
 
 	private void commonMobileNumberValidationsMethod(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>) brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 
-		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validMemberLogin", "login"), utils.readTestData("loginCredentials", "validMemberLogin", "pwd"));
+		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
 		Assert.assertNotNull(memberLoginPage.checkMobileRegisterPageTitle(), "Mobile Register - Almost there! Page not displayed");
 
@@ -263,29 +323,39 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for (Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonBackCancelMethod(brandIcons);
 		}
 	}
 
 	private void commonBackCancelMethod(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>) brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 
-		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validMemberLogin", "login"), utils.readTestData("loginCredentials", "validMemberLogin", "pwd"));
+		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
 		Assert.assertNotNull(memberLoginPage.checkMobileRegisterPageTitle(), "Mobile Register - Almost there! Page not displayed");
 
 		memberLoginPage.tapBackBtn();
 		Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not navigated to the Get");
-		Assert.assertTrue(memberLoginPage.getEmailFieldValue().contains(utils.readTestData("loginCredentials", "validMemberLogin", "login")), "Member Login Page - Email value not present or do not match to entered value");
+		Assert.assertTrue(memberLoginPage.getEmailFieldValue().contains(brandIcon.get("email")), "Member Login Page - Email value not present or do not match to entered value");
 		Assert.assertEquals(memberLoginPage.getPasswordFieldValue(), "", "Member Login Page - Password field is not empty");
 
-		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validMemberLogin", "login"), utils.readTestData("loginCredentials", "validMemberLogin", "pwd"));
+		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
 		Assert.assertNotNull(memberLoginPage.checkMobileRegisterPageTitle(), "Mobile Register - Almost there! Page not displayed");
 
-		memberLoginPage.tapCancelButton();
+		memberLoginPage.tapMobileNumberCancelButton();
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started Page - User is not navigated to the Get Started Page");
 	}
 
@@ -295,23 +365,32 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for (Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonMobileValidationCorrectionMethod(brandIcons);
 		}
 	}
 
 	private void commonMobileValidationCorrectionMethod(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>) brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 
-		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validMemberLogin", "login"), utils.readTestData("loginCredentials", "validMemberLogin", "pwd"));
+		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
 		Assert.assertNotNull(memberLoginPage.checkMobileRegisterPageTitle(), "Mobile Register - Almost there! Page not displayed");
 
 		memberLoginPage.enterMobileNumber(utils.readTestData("registration", "failure", "mobileShort"));
 		memberLoginPage.tapRegisterButton();
 		errorVal = memberLoginPage.getMobileFieldError().replaceAll("\n\n", " ");
-		//TODO - Short mobile number error for number starting with '04' is to be checked with Sucharitha for new changes
 		Assert.assertEquals(errorVal, utils.readTestData("copy", "memberLogin", "shortMobileNumberError"), "Member Register - Error dislpayed is not correct");
 
 		memberLoginPage.enterMobileNumber(utils.readTestData("registration", "success", "mobile"));
@@ -326,16 +405,26 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for (Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonInvalidCredentialsMemberLoginMethod(brandIcons);
 		}
 	}
 
 	private void commonInvalidCredentialsMemberLoginMethod(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>) brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 
-		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validMemberLogin", "login"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidMemberLoginPwd"));
+		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("invalidPassword"));
 		memberLoginPage.tapNextButton();
 
 		Assert.assertNotNull(memberLoginPage.checkSnackbarDisplayed(), "Member Login - Snackbar is not displayed");
@@ -352,14 +441,27 @@ public class MemberLoginTest extends App {
 		navigateToWelcomeToSuncorpPage();
 		List brandElements = utils.readTestDataList("brands");
 		for (Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-			Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-			getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+			getStartedPage.tapBrandSelectDropDown();
+			Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+			Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+			getStartedPage.tapNextButton();
+			
+			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+				termsAndConditionsPage.tapAcceptButton();
+			}
 
 			// Test with valid credentials
 			memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 			memberLoginPage.tapNextButton();
 
+			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+				termsAndConditionsPage.tapAcceptButton();
+			}
 			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
 			pinOptionsPage.tapMaybeLater();
 			Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
@@ -369,10 +471,18 @@ public class MemberLoginTest extends App {
 
 			// Test with invalid credentials
 			navigateToWelcomeToSuncorpPage();
-			Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-			getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+			getStartedPage.tapBrandSelectDropDown();
+			Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+			Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+			getStartedPage.tapNextButton();
+			
+			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+				termsAndConditionsPage.tapAcceptButton();
+			}
+			Assert.assertNotNull(memberLoginPage.checkEmailField(), "Member Login Page - Email is not dipalyed");
 
-			memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidPassword"));
+			memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("invalidPassword"));
 			memberLoginPage.tapNextButton();
 
 			Assert.assertNotNull(memberLoginPage.checkSnackbarDisplayed(), "Member Login Page - Error Snackbar not displayed");
@@ -388,13 +498,24 @@ public class MemberLoginTest extends App {
 	public void testSuncorpInsuranceCredentials() {
 		navigateToWelcomeToSuncorpPage();
 
-		getStartedPage.tapSuncorpBrandIcon();
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkSuncorpBrandExists(), "Select Brand List - Suncorp brand is not displayed");
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();
+		
 		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
 		getStartedPage.tapSuncorpInsuranceButton();
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not navigated to the login page");
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
-
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 		Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
 		pinOptionsPage.tapMaybeLater();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
@@ -411,9 +532,19 @@ public class MemberLoginTest extends App {
 
 		List brandElements = utils.readTestDataList("brands");
 		for (Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-			Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-			getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+			getStartedPage.tapBrandSelectDropDown();
+			Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+			Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+			getStartedPage.tapNextButton();
+			
+			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+				termsAndConditionsPage.tapAcceptButton();
+			}
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted to the Login Page");
 			Assert.assertNotNull(loginPage.checkForgotPasswordButton(), "Login Page - Forgot Password button is not displayed");
 
@@ -453,6 +584,7 @@ public class MemberLoginTest extends App {
 			Assert.assertEquals(memberLoginPage.getResetPasswordEmailValue(), utils.readTestData("loginCredentials","validLoginCredentials", "login"), "Reset Password - Email does not match with the email entered in login page");
 			memberLoginPage.tapResetPasswordBackButton();
 
+			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted back to the Login Page");
 			memberLoginPage.tapCancelButton();
 		}
 	}
@@ -466,9 +598,19 @@ public class MemberLoginTest extends App {
 
 		List brandElements = utils.readTestDataList("brands");
 		for (Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-			Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-			getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+			getStartedPage.tapBrandSelectDropDown();
+			Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+			Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+			getStartedPage.tapNextButton();
+			
+			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+				termsAndConditionsPage.tapAcceptButton();
+			}
 			Assert.assertNotNull(memberLoginPage.checkForgotPasswordButton(), "Login Page - Forgot Password button is not displayed");
 			memberLoginPage.tapForgotPassword();
 
@@ -540,22 +682,32 @@ public class MemberLoginTest extends App {
 
 		List brandElements = utils.readTestDataList("brands");
 		for (Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-			Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - Member login icon not displayed");
-			getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+			getStartedPage.tapBrandSelectDropDown();
+			Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+			Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+			getStartedPage.tapNextButton();
+			
+			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+				termsAndConditionsPage.tapAcceptButton();
+			}
 			Assert.assertNotNull(memberLoginPage.checkForgotPasswordButton(), "Login Page - Forgot Password button is not displayed");
 			memberLoginPage.tapForgotPassword();
-			
+
 			Assert.assertNotNull(memberLoginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
 			memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
 			memberLoginPage.tapResetLinkButton();
-			
+
 			//TODO: Following code will part of later story which is not Manually Tested yet
-//			common.waitForSuccessLoadingSpinnerToDisappear();
-//			Assert.assertNotNull(memberLoginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
-//			Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
-//			Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
-			
+			//	common.waitForSuccessLoadingSpinnerToDisappear();
+			//	Assert.assertNotNull(memberLoginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
+			//	Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
+			//	Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
+
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted back to the Login Page");
 			memberLoginPage.tapCancelButton();
 		}

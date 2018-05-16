@@ -1,4 +1,4 @@
-{
+	{
     "appPackage": {
         "packageName": "au.com.suncorp.mobile",
         "platform": "aos"
@@ -7,7 +7,7 @@
 		"loginWithExistingPin" : {
 			"login": "pinenabled@sun.com",
 			"pwd": "Password1",
-			"pin": "2580"
+			"pin": "1357"
 		},
 							"backup_loginWithExistingPin" : {
 								"login": "b@b.com",
@@ -71,7 +71,7 @@
 	},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "a@b.c",
+			"login": "test5@test.com",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••"
 		},
@@ -86,10 +86,6 @@
 			"invalidPassword" : "1234567",
 			"invalidMemberLogin": "x@g.z",
 			"invalidMemberLoginPwd": "Pwd1"
-		},
-		"validMemberLogin": {
-			"login": "x@y.z",
-			"pwd": "Password1"
 		}
 	},
 	"propertyDimension" :{
@@ -1154,6 +1150,33 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
+	 "brands": [
+		{
+			"brandName": "AAMI",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "AAMI member login",
+			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
+		},
+		{
+			"brandName": "GIO",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "GIO member login",
+			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
+		},
+		{
+			"brandName": "Shannons",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "Shannons member login",
+			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
+		}
+	],
+	"bundleId": {
+		"value": "au.com.suncorp.marketplace:id/"
+	},
+	
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in",
@@ -1260,6 +1283,7 @@
 			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
 			"longSurnameErrorMsg":"Must be between 2 and 40 characters",
 			"longEmailErrorMsg":"Must be between 2 and 100 characters",
+			"longEmailErrorMsg2":"Must be between 2 and 100 characters Please enter a valid email address",
 			"longMobileErrorMsg":"Must be 10 digits",
 			"longPostcodeErrorMsg" : "Must be 4 digits",
 			"firstNameUserTip" : "Middle name not required",
@@ -1322,32 +1346,6 @@
 		"getStartedPage" : {
 			"getStartedPageTitle" : "Welcome to the Suncorp family"
 		}
-	},
-	"brands": [
-		{
-			"button": "aamiButton",
-			"brandIcon": "AAMI member login",
-			"resetPasswordDescription" : "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "apiaButton",
-			"brandIcon": "APIA member login",
-			"resetPasswordDescription" : "Enter the email associated with your APIA account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "gioButton",
-			"brandIcon": "GIO member login",
-			"resetPasswordDescription" : "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "shannonsButton",
-			"brandIcon": "Shannons member login",
-			"resetPasswordDescription" : "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
-		}
-	],
-	"bundleId": {
-		"value": "au.com.suncorp.marketplace:id/"
-
 	}
 }
 
