@@ -23,7 +23,7 @@ public class PropertyDetailsPage   extends BasePage{
 	private By thisIsMyPropertyLabel = By.id("au.com.suncorp.marketplace:id/thisIsMineText");
 	private By thisIsMyPropertyInfo = By.id("au.com.suncorp.marketplace:id/thisIsMineInfoButton");
 	private By thisIsMyPropertyToggleButton = By.id("au.com.suncorp.marketplace:id/propertyIsMineSwitch");
-	
+		
 	//my Property bottom sheet
 	private By myPropertyBottomSheetTitleLabel = By.id("au.com.suncorp.marketplace:id/productSelectionQuestionText");
 	private By myPropertyBottomSheetOwnerOccupierButton = By.id("au.com.suncorp.marketplace:id/ownerTypeButton");
@@ -91,6 +91,89 @@ public class PropertyDetailsPage   extends BasePage{
 	private By nearbyEducationTitle = By.id("au.com.suncorp.marketplace:id/nearbyEducationText");
 	private By nearbyEducationViewAllButton = By.id("au.com.suncorp.marketplace:id/nearbyEducationViewAllText");
 	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	
+	//disclaimers
+	private By estimatedPropertyValueDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Value disclaimer");
+	private By confidenceLevelDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Valuation Confidence disclaimer");
+	private By coreLogicDisclaimer = MobileBy.AccessibilityId("Open the Core Logic services disclaimer");
+	private By lastSaleDisclaimer = MobileBy.AccessibilityId("Open the property Last Sale information disclaimer");
+	private By confidenceLevelDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Confidence Indicator']");
+	private By confidenceLevelDisclaimerClose	= MobileBy.AccessibilityId("Navigate up");
+	private By coreLogicDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='CoreLogic']");
+	private By estimatedPropertyValueDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='Estimated property value']");
+	private By lastSaleDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Last sale']");
+	
+	public WebElement checkLastSaleDisclaimerScreenTitle() {
+		return find(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public String getLastSaleDisclaimerScreenTitle() {
+		return getText(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkEstimatedPropertyValueDisclaimerScreenTitle() {
+		return find(estimatedPropertyValueDisclaimerScreenTitle);
+	}
+	
+	public String getEstimatedPropertyValueDisclaimerScreenTitle() {
+		return getText(estimatedPropertyValueDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkConfidenceLevelDisclaimerScreenTitle() {
+		return find(confidenceLevelDisclaimerScreenTitle);
+	}
+	
+	public String getConfidenceLevelDisclaimerScreenTitle() {
+		return getText(confidenceLevelDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkDisclaimerClose() {
+		return find(confidenceLevelDisclaimerClose);
+	}
+	
+	public void tapDisclaimerClose(){
+		tapElement(confidenceLevelDisclaimerClose);
+	}
+	
+	public void tapEstimatedPropertyValueDisclaimer(){
+		tapElement(estimatedPropertyValueDisclaimer);
+	}
+	
+	public WebElement checkEstimatedPropertyValueDisclaimer() {
+		return find(estimatedPropertyValueDisclaimer);
+	}
+	
+	public void tapConfidenceLevelDisclaimer(){
+		tapElement(confidenceLevelDisclaimer);
+	}
+	
+	public WebElement checkConfidenceLevelDisclaimer() {
+		return find(confidenceLevelDisclaimer);
+	}
+	
+	public void tapCoreLogicDisclaimer(){
+		tapElement(coreLogicDisclaimer);
+	}
+	
+	public WebElement checkCoreLogicDisclaimerScreenTitle() {
+		return find(coreLogicDisclaimerScreenTitle);
+	}
+	
+	public String getCoreLogicDisclaimer() {
+		return getText(coreLogicDisclaimerScreenTitle);
+	}
+
+	public WebElement checkCoreLogicDisclaimer() {
+		return find(coreLogicDisclaimer);
+	}
+	
+	public void tapLastSaleDisclaimer(){
+		tapElement(lastSaleDisclaimer);
+	}
+	
+	public WebElement checkLastSaleDisclaimer() {
+		return find(lastSaleDisclaimer);
+	}
 	
 	public void scrollToProfessionaServicesButton(){
 		scrollToElement(professionaServicesButton, "true");

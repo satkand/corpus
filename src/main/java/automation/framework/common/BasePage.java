@@ -245,6 +245,18 @@ public class BasePage {
 		TouchAction ta = new TouchAction(driver);
 		ta.press(startX,startY).waitAction(Duration.ofMillis(4000)).moveTo(endX,endY).release().perform();
 	}
+	
+	protected boolean isTabSelected(By tabName) {
+		if (readValue(tabName) == null)
+			return false;
+		else
+			return true;
+	}
+	
+	protected int getItemCountbyName(String name){
+		List<WebElement> count = driver.findElementsByName(name);
+		return count.size();
+	}
 
 	//	protected void swipeDown(){
 	//		int screenHeight = driver.manage().window().getSize().getHeight();

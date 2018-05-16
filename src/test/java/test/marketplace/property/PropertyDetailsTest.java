@@ -471,6 +471,41 @@ public class PropertyDetailsTest extends App{
 		
 		
 	}
+	
+	@TestDetails(story1 = "DMPM-3702:DMPM-7931,DMPM-7933,DMPM-7953", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Property hub", "priority-minor" })
+	public void testViewVirtualPropertyScreenDisclaimers() {
+		navigateToVirtualPropertyDetails();
+		Assert.assertNotNull(propertyDetailsPage.checkEstimatedPropertyValueDisclaimer(), "Property Details page - Estimated property value disclaimer is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkCoreLogicDisclaimer(), "Property Details page - core logic disclaimer is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkConfidenceLevelDisclaimer(), "Property Details page - Confidence level disclaimer is not present");
+		
+		propertyDetailsPage.tapConfidenceLevelDisclaimer();
+		Assert.assertNotNull(propertyDetailsPage.checkConfidenceLevelDisclaimerScreenTitle(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkDisclaimerClose(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertEquals(propertyDetailsPage.getConfidenceLevelDisclaimerScreenTitle(),"Confidence Indicator","Property Details page - School 1 name is not matching");
+		propertyDetailsPage.tapDisclaimerClose();
+		
+		propertyDetailsPage.tapCoreLogicDisclaimer();
+		Assert.assertNotNull(propertyDetailsPage.checkCoreLogicDisclaimerScreenTitle(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkDisclaimerClose(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertEquals(propertyDetailsPage.getCoreLogicDisclaimer(),"CoreLogic","Property Details page - School 1 name is not matching");
+		propertyDetailsPage.tapDisclaimerClose();
+		
+		propertyDetailsPage.tapEstimatedPropertyValueDisclaimer();
+		Assert.assertNotNull(propertyDetailsPage.checkEstimatedPropertyValueDisclaimerScreenTitle(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkDisclaimerClose(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertEquals(propertyDetailsPage.getEstimatedPropertyValueDisclaimerScreenTitle(),"CoreLogic","Property Details page - School 1 name is not matching");
+		propertyDetailsPage.tapDisclaimerClose();
+		
+		propertyDetailsPage.tapLastSaleDisclaimer();
+		Assert.assertNotNull(propertyDetailsPage.checkLastSaleDisclaimerScreenTitle(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkDisclaimerClose(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertEquals(propertyDetailsPage.getLastSaleDisclaimerScreenTitle(),"CoreLogic","Property Details page - School 1 name is not matching");
+		propertyDetailsPage.tapDisclaimerClose();
+		
+	
+	}
 			
 	public void navigateToPropertyDetails(String navigationPath, String confidenceLevel) {
 		
@@ -490,5 +525,15 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 			
 		}
+	
+	public void navigateToVirtualPropertyDetails() {
+		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
+		landingPage.tapHomeTab();
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		homePropertyPage.scrollToVirtualAssetsCarousel();
+		homePropertyPage.tapVirtualAssetViewDetailsButton();
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
+		
+	}
 	
 }

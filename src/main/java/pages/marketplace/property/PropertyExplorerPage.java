@@ -112,5 +112,9 @@ public class PropertyExplorerPage  extends BasePage{
 	public WebElement checkPropertyExplorerSearchHint() {
 		return find(propertyExplorerSearchHintText);
 	}
+	
+	public WebElement checkPropertyHubSearchbox() {
+		return find(propertyExplorerSearchbox);
+	}
 
 }
