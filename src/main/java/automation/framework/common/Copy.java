@@ -6,10 +6,11 @@ public interface Copy {
 	String NAV_MENU_WELCOME_MESSAGE = "Welcome back!";
 	
 	//ENTER CURRENT PIN PAGE
-	String PIN_LOCK_ALERT_MESSAGE = "Your PIN is currently locked. Please re-authenticate with your password to setup a new PIN.";
+	String PIN_LOCK_ALERT_MESSAGE = "Your PIN is locked. Please set up a new one";
 	String REAUTHENTICATE_BUTTON_TEXT = "REAUTHENTICATE";
 	String INCORRECT_PIN_ERROR_MESSAGE= "Incorrect PIN, please try again.";
-	
+	String PIN_INSTRUCTION_MESSAGE = "Don't create a PIN that represents your name or date of birth as it puts your account at risk and increases your liability for unauthorised transactions.";
+	String PIN_INSTRUCTION_TITLE = "Choose a PIN that's easy to remember, but not easy for others to guess.";
 	//SETTINGS PAGE
 	public String SETTINGS_TITLE_TEXT ="Settings";
 	
