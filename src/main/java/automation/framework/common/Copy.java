@@ -21,12 +21,12 @@ public interface Copy {
 	String PROPERTY_HUB_SEARCH_HINT = "Search address";
 	
 	//PROPERTY DETAILS PAGE
-	public String PROPERTY_DETAILS_THIS_IS_MY_PROPERTY_LABEL ="This is my property";
-	public String PROPERTY_DETAILS_BOTTOM_SHEET_TITLE ="My property";
-	public String PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT ="Owner/Occupier";
-	public String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
-	public String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
-
+	String PROPERTY_DETAILS_THIS_IS_MY_PROPERTY_LABEL ="This is my property";
+	String PROPERTY_DETAILS_BOTTOM_SHEET_TITLE ="My property";
+	String PROPERTY_DETAILS_OWNER_OCCUPIER_BUTTON_TEXT ="Owner/Occupier";
+	String PROPERTY_DETAILS_RENTER_BUTTON_TEXT = "Renter";
+	String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
+	
 	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
