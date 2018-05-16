@@ -25,14 +25,6 @@ public class WebviewPage extends BasePage {
 	public void tapWebViewToolbarOprions() {
 		tapElement(webViewToolbarOprions);
 	}
-	private By webview = By.id("au.com.suncorp.marketplace:id/webview");
-	private By webviewCloseButton = MobileBy.AccessibilityId("Navigate up");
-
-	private By urlBar = By.id("com.android.chrome:id/url_bar");
-	
-	public WebElement checkUrlBar() {
-		return find(urlBar);
-	}
 	
 	public WebElement checkViewToolbarOptions() {
 		return find(webViewToolbarOprions);
@@ -45,6 +37,14 @@ public class WebviewPage extends BasePage {
 	
 	public WebElement checkWebViewAddToBookMarkButton() {
 		return find(webViewAddToBookMark);
+		}
+	private By webview = By.id("au.com.suncorp.marketplace:id/webview");
+	private By webviewCloseButton = MobileBy.AccessibilityId("Navigate up");
+
+	private By urlBar = By.id("com.android.chrome:id/url_bar");
+	
+	public WebElement checkUrlBar() {
+		return find(urlBar);
 	}
 	
 	public void tapWebViewAddToBookMarkButton() {
@@ -89,5 +89,6 @@ public class WebviewPage extends BasePage {
 	public void tapWebViewPopup() {
 		tapElement(webViewPopup);
 	}
+
 
 }

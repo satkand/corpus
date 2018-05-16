@@ -69,22 +69,25 @@ public class PropertyHubTest  extends App{
 	}
 	
 	private void navigateToPropertyHub() {
-		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
-		landingPage.tapHomeTab();
-		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		navigateToPropertyDimension();
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 	}
 
 	public void navigateToAddProperty() {
-		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
-		landingPage.tapHomeTab();
-		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		navigateToPropertyDimension();
 		homePropertyPage.tapAddAPropertyOrPolicyButton();
 		Assert.assertNotNull(homePropertyPage.checkAddPropertyActionSheetButton(), "Home Property Page - Property action sheet button is not present");
 		
 		homePropertyPage.tapAddPropertyActionSheetButton();
 		Assert.assertNotNull(propertyHubPage.checkPropertyHubPageTitle(), "Property Hub Page - Page title is not present");
+		
+	}
+	
+	public void navigateToPropertyDimension() {
+		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
+		landingPage.tapHomeTab();
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		
 	}
 }

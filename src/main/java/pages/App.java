@@ -65,8 +65,9 @@ import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
-import pages.marketplace.property.PropertyFullScreenMap;
+import pages.marketplace.property.WhatsNearbyPage;
 import pages.marketplace.property.PropertyHubPage;
+import pages.marketplace.property.SuburbDetailsPage;
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -119,14 +120,15 @@ public class App extends BaseTest {
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+	public WhatsNearbyPage whatsNearbyPage = null;
+	public ForceUpdatePage forceUpdatePage = null;
+	public SuburbDetailsPage suburbDetailsPage = null;
 	public PolicyDetailsPage policyDetailsPage = null;
 	public RiskDetailsPage riskDetailsPage = null;
 	public RenewPolicyPage renewPolicyPage = null;
 	public ClaimDetailsPage claimDetailsPage = null;
 	public ClaimIntroPage claimIntroPage =null;
 	public MakeAClaimPage makeAClaimPage =null;
-	public PropertyFullScreenMap propertyFullScreenMap = null;
-	public ForceUpdatePage forceUpdatePage = null;
 	public TermsAndConditionsPage termsAndConditionsPage = null;
 
 	String CONFIG_FILE=null;
@@ -191,9 +193,12 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
-		propertyFullScreenMap = new PropertyFullScreenMap(driver);
+		whatsNearbyPage = new WhatsNearbyPage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
 		articlesPage = new ArticlesPage(driver);
 		forceUpdatePage = new ForceUpdatePage(driver);
+		suburbDetailsPage = new SuburbDetailsPage(driver);
+		articlesPage = new ArticlesPage(driver);
 		policyDetailsPage = new PolicyDetailsPage(driver);
 		riskDetailsPage = new RiskDetailsPage(driver);
 		renewPolicyPage = new RenewPolicyPage(driver);
