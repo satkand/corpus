@@ -233,6 +233,11 @@ public class App extends BaseTest {
 		loginPage.enterLoginCredentials(login, pwd);
 		
 		loginPage.tapLoginButton();
+		
+		if(termsAndConditionsPage.checkAcceptButton() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
 		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
 		}
