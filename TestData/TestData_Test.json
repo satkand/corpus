@@ -328,7 +328,7 @@
 					{
 						"bsb": "484-799",
 						"accountNumber": "111111111",
-						"description": "Transaction account",
+						"description": "Everyday options",
 						"availableBalance": "$12,345.00"
 					}
 				]
@@ -418,14 +418,14 @@
 				{
 						"brand": "Suncorp",
           				"accountNumber": "123456789",
-          				"description": "Sun Super",
+          				"description": "Sun super",
           				"accountBalance": "$3,141,592.65",
           				"status": "Active"
 				},
 				{
 						"brand": "Apia",
           				"accountNumber": "564738291",
-          				"description": "Australian Everyday Customer Sunny Super",
+          				"description": "Australian everyday customer sunny super",
           				"accountBalance": "$4.20",
           				"status": "Active"
 				}]

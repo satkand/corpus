@@ -129,7 +129,9 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public List<String> fetchWealthProductTypeTextList() {
+		find(wealthProductAccountTypeLabel,30);
 		return getTextList(wealthProductAccountTypeLabel);
+		
 	}
 	
 	public List<String> fetchLifeProductTypeTextList() {

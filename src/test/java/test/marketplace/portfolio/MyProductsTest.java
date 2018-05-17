@@ -73,11 +73,12 @@ public class MyProductsTest extends App {
 		Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
 		
 		myProductsPage.tapBackButton();
-		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
-		
+		Assert.assertNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");	
+		myProductsPage.tapAddExistingProductButton();
+	
 		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is not present");
 		myProductsPage.tapAddSuperAccountButton();
-		Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
+		Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
 	
 	
 	}
