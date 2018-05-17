@@ -169,7 +169,7 @@ public class MyProductsTest extends App {
 		myProductsPage.tapRenewNowButton();
 		
 		// Check app navigates to policy details screen
-		Assert.assertNotNull(myProductsPage.checkPolicyDetailsTitle(),"My Products Page: Insurance products: Policy Details screen is not displayed");	
+		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.POLICY_DETAILS_SCREEN_TITLE),"My Products Page: Insurance products: Policy Details screen is not displayed");	
 		
 	}
 	
@@ -427,136 +427,13 @@ public class MyProductsTest extends App {
 
 		myProductsPage.tapViewPolicyButton(coverDescription);
 		
-		Assert.assertNotNull(myProductsPage.checkPolicyDetailsTitle(),"My Products Page: Insurance products: Policy Details screen is not displayed");
+		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.POLICY_DETAILS_SCREEN_TITLE),"My Products Page: Insurance products: Policy Details screen is not displayed");
 
 		
 	}
 	
-	// This function verifies adding bank account with inline validations
-	// DMPM-112 Android - Add Bank Account and Inline Validations
-	// DMPM-5901 Enforce sentence case for all product descriptions
-	@Test(groups = { "DMPM-112", "DMPM-468", "DMPM-469", "DMPM-470", "DMPM-471", "DMPM-472", "DMPM-473", "DMPM-474",
-			"DMPM-475", "DMPM-476", "marketplace", "portfolio", "priority-major" })
-	public void testErrorValidationsOnAddBankAccount() {
-
-		navigateToMyProductsScreen("emptylist", "loginEmptyProdList");
-		myProductsPage.tapAddExistingProductButton();
-		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(),"My Products screen - Add exisitng product screen title is not present");
-		myProductsPage.tapAddBankAccountButton();
-		Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
-		
-		myProductsPage.tapAccountNumberField();
-		Assert.assertTrue(common.isKeyboardShown(),"Keyboard is not displayed after tapping on Account Number field");
-		
-		// Check mandatory field error message on Account Number
-		myProductsPage.tapAddAccount();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "mandatoryError"),"My Products: Add Bank Account screen: MAccount Number field is mandatory error message is not displayed");
-		
-		// Check inline error message for invalid character while typing
-		myProductsPage.enterAccountNumber(utils.readTestData("portfolio","loginProdList","addBankAccount","inValidCharacterAccountNumber"));
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "invalidAccountNumber"),"My Products: Add Bank Account screen: Invalid characters error message not displayed");
-		
-		//Check inline error message for invalid character after tapping on Add Account button
-		myProductsPage.tapAddAccount();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "invalidAccountNumber"),"My Products: Add Bank Account screen: Invalid characters error message not displayed");
-
-		// check the inline error message for invalid character is still displayed when the user taps in the field
-		myProductsPage.tapAccountNumberField();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "invalidAccountNumber"),"My Products: Add Bank Account screen: Invalid characters error message not displayed");
-
-		
-		myProductsPage.clearAccountNumber();
-		
-		// Check inline error message for field length while typing
-		myProductsPage.enterAccountNumber(utils.readTestData("portfolio", "loginProdList", "addBankAccount", "moreThanMaxAccountNumber"));
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "lengthError"),"My Products: Add Bank Account screen: Account Number field max length error message not displayed.");
-		
-		// Check inline error message for field length is displayed on tapping Add Account button
-		myProductsPage.tapAddAccount();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "lengthError"),"My Products: Add Bank Account screen: Account Number field max length error message not displayed.");
-
-		// check the inline error message is still displayed when the user taps in the field
-		myProductsPage.tapAccountNumberField();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),utils.readTestData("copy", "portfolioError", "lengthError"),"My Products: Add Bank Account screen: Account Number field max length error message not displayed.");
-
-		myProductsPage.clearAccountNumber();
-		
-		// check the inline error message disappears when user types correct Account number
-		myProductsPage.enterAccountNumber(utils.readTestData("portfolio", "loginProdList", "addBankAccount", "validAccountNumber"));
-		Assert.assertNull(myProductsPage.checkAccountNumberError(),"My Products: Add Bank Account screen: Error message is still displayed");
-		
-
-	}
 	
 	
-	// This test case checks the error validations on adding Superannuation accounts
-	// DMPM-3420 Add superannuation product
-	@Test(groups = { "DMPM-3420", "DMPM-6854", "DMPM-6855", "DMPM-6856", "DMPM-6857", "DMPM-6858", "DMPM-6859", "DMPM-6860",
-			"DMPM-6861", "DMPM-6862", "DMPM-6863","marketplace", "portfolio", "priority-major" })
-	public void testErrorValidationsOnAddSuperAccount() {
-
-		navigateToMyProductsScreen("emptylist", "loginEmptyProdList");
-		myProductsPage.tapAddExistingProductButton();
-		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(),"My Products screen - Add exisitng product screen title is not present");
-		myProductsPage.tapAddSuperAccountButton();
-		Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
-		
-		myProductsPage.tapSuperAccountNumberField();
-		Assert.assertTrue(common.isKeyboardShown(),"Keyboard is not displayed after tapping on Account Number field");
-		
-		// Check mandatory field error message on Account Number
-		myProductsPage.tapAddSuperAccount();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(), Copy.ADD_SUPER_ACC_MANDATORY_ERROR,"My Products: Add Super Account screen: Account Number field is mandatory error message is not displayed");
-		
-		// Check inline error message for invalid character while typing
-		myProductsPage.enterSuperAccountNumber(utils.readTestData("portfolio","loginProdList","addSuperAccount","inValidCharacterAccountNumber"));
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
-		
-		//Check inline error message for invalid character after tapping on Add Account button
-		myProductsPage.tapAddSuperAccount();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
-
-		// check the inline error message for invalid character is still displayed when the user taps in the field
-		myProductsPage.tapSuperAccountNumberField();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
-
-		
-		myProductsPage.clearSuperAccountNumber();
-		
-		// Check inline error message for field length while typing
-		myProductsPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "moreThanMaxAccountNumber"));
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
-		
-		// Check inline error message for field length is displayed on tapping Add Account button
-		myProductsPage.tapAddSuperAccount();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
-
-		// check the inline error message is still displayed when the user taps in the field
-		myProductsPage.tapSuperAccountNumberField();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
-
-		myProductsPage.clearSuperAccountNumber();
-		
-		// Check inline error message for field length while typing
-		myProductsPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "lessThanMinAccountNumber"));
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
-				
-		// Check inline error message for field length is displayed on tapping Add Account button
-		myProductsPage.tapAddSuperAccount();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
-
-		// check the inline error message is still displayed when the user taps in the field
-		myProductsPage.tapSuperAccountNumberField();
-		Assert.assertEquals(myProductsPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
-
-		myProductsPage.clearSuperAccountNumber();
-
-		// check the inline error message disappears when user types correct Account number
-		myProductsPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "validAccountNumber"));
-		Assert.assertNull(myProductsPage.checkAccountNumberError(),"My Products: Add Super Account screen: Error message is still displayed");
-		
-
-	}
 	
 	// This function verifies the every day bank accounts
 	// DMPM-240 - Scenario 2 -Display bank account

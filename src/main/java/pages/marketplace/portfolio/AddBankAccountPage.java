@@ -17,6 +17,52 @@ public class AddBankAccountPage  extends BasePage  {
 	private By addBankAccountPlaceHolderText = By.id("au.com.suncorp.marketplace:id/accountNumberField");
 	private By addBankAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
 	private By addBankAccountForgotDetailaButton = By.id("au.com.suncorp.marketplace:id/addAccountHintText"); 
+	//Add Bank Account screen
+	private By accountNumberField = By.id("au.com.suncorp.marketplace:id/accountNumberField");
+	private By accountNumberError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
+	private By addSuperAccButton = By.id("au.com.suncorp.marketplace:id/addSuperButton");
+	private By superAccountNumberField = By.id("au.com.suncorp.marketplace:id/superNumberField");
+	
+	public void tapAccountNumberField(){
+		tapElement(accountNumberField);
+	}
+	
+	public void tapSuperAccountNumberField(){
+		tapElement(superAccountNumberField);
+	}
+	
+	public void enterAccountNumber(String accountNumber) {
+		typeValue(accountNumber,accountNumberField);
+	}
+	
+	public void enterSuperAccountNumber(String accountNumber) {
+		typeValue(accountNumber,superAccountNumberField);
+	}
+	
+	public String getAccountNumberError() {
+		return getText(accountNumberError).replace("\n", " ");
+	}
+	
+	public WebElement checkAccountNumberError(){
+		return find(accountNumberError);
+	}
+	
+	public void tapAddAccount() {
+		tapElement(addAccountButton);
+	}
+	
+	public void tapAddSuperAccount() {
+		tapElement(addSuperAccButton);
+	}
+	
+	public void clearAccountNumber() {
+		clearValue(accountNumberField);
+	}
+	
+	public void clearSuperAccountNumber() {
+		clearValue(superAccountNumberField);
+	}
 	
 	public WebElement checkAddBankAccountPageTitle(){
 		return find(addBankAccountPageTitle);

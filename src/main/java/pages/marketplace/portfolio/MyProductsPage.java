@@ -40,14 +40,11 @@ public class MyProductsPage extends BasePage {
 	//TODO DMPM-3713
 	private By productTypeImage = By.xpath(
 			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");
-	
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
 	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
 	private By availableBalanceLabel = By.id("au.com.suncorp.marketplace:id/availableBalanceLabel");
 	private By addSuperAccountButton = By.id("au.com.suncorp.marketplace:id/superTypeLabel");
-	private String addExistingProductButtonID = "au.com.suncorp.marketplace:id/addProductButton";
 	private By policyLayout = By.id("au.com.suncorp.marketplace:id/policyItemLayout");
-
 	private By riskText = null;
 	private String riskXpathPrefix = "//android.widget.TextView[@text = \'";
 	private String riskXpathSuffix = "\']";
@@ -75,16 +72,7 @@ public class MyProductsPage extends BasePage {
 	private By insuredPersonName = By.id("au.com.suncorp.marketplace:id/insuredPersonNames");
 	private By lifePolicyStatus = By.id("au.com.suncorp.marketplace:id/lifePolicyStatus");
 	
-	//policy details
-	private By policyDetailsTitle = By.xpath("//android.widget.TextView[@text='Policy Details']");
-	
-	//Add Bank Account screen
-	private By accountNumberField = By.id("au.com.suncorp.marketplace:id/accountNumberField");
-	private By accountNumberError = By.id("au.com.suncorp.marketplace:id/textinput_error");
-	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
-	private By addSuperAccButton = By.id("au.com.suncorp.marketplace:id/addSuperButton");
-	private By superAccountNumberField = By.id("au.com.suncorp.marketplace:id/superNumberField");
-	
+
 	// portfolio disclaimer
 	private By portfolioScreenDisclaimerTitle = By.xpath("//android.widget.TextView[@text = 'Disclaimer title']");
 	private By acceptButton = By.id("au.com.suncorp.marketplace:id/acceptButton");
@@ -414,54 +402,13 @@ public class MyProductsPage extends BasePage {
 		viewButton = By.xpath(viewDetailsXpath);
 		tapElement(viewButton);
 	}
-	
-	public WebElement checkPolicyDetailsTitle(){
-		return find(policyDetailsTitle);
-	}
-	
-	public void tapAccountNumberField(){
-		tapElement(accountNumberField);
-	}
-	
-	public void tapSuperAccountNumberField(){
-		tapElement(superAccountNumberField);
-	}
+
 	
 	public boolean checkKeyboardDisplayed() {
 		return isKeyboardPresent();
 	}
 	
-	public void enterAccountNumber(String accountNumber) {
-		typeValue(accountNumber,accountNumberField);
-	}
 	
-	public void enterSuperAccountNumber(String accountNumber) {
-		typeValue(accountNumber,superAccountNumberField);
-	}
-	
-	public String getAccountNumberError() {
-		return getText(accountNumberError).replace("\n", " ");
-	}
-	
-	public WebElement checkAccountNumberError(){
-		return find(accountNumberError);
-	}
-	
-	public void tapAddAccount() {
-		tapElement(addAccountButton);
-	}
-	
-	public void tapAddSuperAccount() {
-		tapElement(addSuperAccButton);
-	}
-	
-	public void clearAccountNumber() {
-		clearValue(accountNumberField);
-	}
-	
-	public void clearSuperAccountNumber() {
-		clearValue(superAccountNumberField);
-	}
 	
 	public void scrollToAddExistingProductButton() {
 
