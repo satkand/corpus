@@ -13,20 +13,15 @@ public class HomeProfessionalServicesTest extends App{
 	//4170 - Scenario 1 (TC-DMPM-4702),Scenario 2 (TC-DMPM-4703),Scenario 3 (TC-DMPM-4704),
 	//4416 - Scenario 2 (TC-DMPM-4707)
 	// navigating to home Professional Services screen
-	@Test (groups = {"DMPM-4170","DMPM-4702", "DMPM-4703", "DMPM-4704","DMPM-4416","DMPM-4707", "marketplace", "Home buying journey", "priority-minor"})
+	@TestDetails(story1 = "DMPM-4170:DMPM-4702,DMPM-4703,DMPM-4704", story2 = "DMPM-4416:DMPM-4707", priority = Priority.LOW)
+	@Test (groups = {"marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToProfessionalServicesScreen() {
 		navigateToProfessionalServices();
 		homeServicesPage.tapProfessionalServicesIntroCloseButton();
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "home Services Page - Home Services subtitle is not present");
 		Assert.assertEquals(homeServicesPage.getHomeServicesTitle(), utils.readTestData("copy", "professionalServices","homeServicesHeading"), "home Services Page - Home Services Description text is different to the expected text");
 	
-		Assert.assertNotNull(homeServicesPage.checkHomeServicesDescription(), "home Services Page - Home Services description is not present");
-		Assert.assertEquals(homeServicesPage.getHomeServicesDescription(), utils.readTestData("copy", "professionalServices","homeServicesDescription"), "home Services Page - Home Services Description text is different to the expected text");
-		Assert.assertNotNull(homeServicesPage.checkChooseServiceLabel(), "home Services Page - Home Services label is not present");
-		Assert.assertEquals(homeServicesPage.getChooseServiceLabel(), utils.readTestData("copy", "professionalServices","chooseServiceLabel"), "home Services Page - Home Services title description text is different to the expected text");
-		Assert.assertNotNull(homeServicesPage.checkHomeServicesImage(), "home Services Page - Home Services image is not present");
-		Assert.assertNotNull(homeServicesPage.checkChatBotButton(), "home Services Page - Home Services chat bot button is not present");
-		Assert.assertNotNull(homeServicesPage.checkViewServicesButton(), "home Services Page - View services button is not present");
+		checkProfessionalServicesScreenElements();
 
 		homeServicesPage.tapViewServicesButton();			
 		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "home Services Page - View services button is not present");
@@ -41,13 +36,8 @@ public class HomeProfessionalServicesTest extends App{
 	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
 	public void testProfessionalServicesIntroScreen() {
 		navigateToProfessionalServices();
-		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroCloseButton(), "Home Professtional services page - intro close button is not present");
-		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroImage(), "Home Professtional services page - intro image is not present");
-		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroDesc(), "Home Professtional services page - intro description is not present");
-		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroGotItButton(), "Home Professtional services page - intro GOT IT button is not present");
 		
-		Assert.assertEquals(homeServicesPage.getProfessionalServicesIntroTitle(), Copy.HOME_PROFESSIONAL_SERVICES_INTRO_TITLE,"Home Professtional services intro pop up -Title is not matching");
-		Assert.assertEquals(homeServicesPage.getProfessionalServicesIntroDesc(), Copy.HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION,"Home Professtional services intro pop up -description is not matching");
+		checkProfessionalServicesIntroScreenElements();
 		
 		homeServicesPage.tapProfessionalServicesIntroGotItButton();
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "Home Professtional services page - Title is not present");
@@ -123,5 +113,24 @@ public class HomeProfessionalServicesTest extends App{
 			
 	}
 			
+	private void checkProfessionalServicesScreenElements() {
+		Assert.assertNotNull(homeServicesPage.checkHomeServicesDescription(), "home Services Page - Home Services description is not present");
+		Assert.assertEquals(homeServicesPage.getHomeServicesDescription(), utils.readTestData("copy", "professionalServices","homeServicesDescription"), "home Services Page - Home Services Description text is different to the expected text");
+		Assert.assertNotNull(homeServicesPage.checkChooseServiceLabel(), "home Services Page - Home Services label is not present");
+		Assert.assertEquals(homeServicesPage.getChooseServiceLabel(), utils.readTestData("copy", "professionalServices","chooseServiceLabel"), "home Services Page - Home Services title description text is different to the expected text");
+		Assert.assertNotNull(homeServicesPage.checkHomeServicesImage(), "home Services Page - Home Services image is not present");
+		Assert.assertNotNull(homeServicesPage.checkChatBotButton(), "home Services Page - Home Services chat bot button is not present");
+		Assert.assertNotNull(homeServicesPage.checkViewServicesButton(), "home Services Page - View services button is not present");
+	}
+	
+	private void checkProfessionalServicesIntroScreenElements()  {
+		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroCloseButton(), "Home Professtional services page - intro close button is not present");
+		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroImage(), "Home Professtional services page - intro image is not present");
+		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroDesc(), "Home Professtional services page - intro description is not present");
+		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroGotItButton(), "Home Professtional services page - intro GOT IT button is not present");
+		Assert.assertEquals(homeServicesPage.getProfessionalServicesIntroTitle(), Copy.HOME_PROFESSIONAL_SERVICES_INTRO_TITLE,"Home Professtional services intro pop up -Title is not matching");
+		Assert.assertEquals(homeServicesPage.getProfessionalServicesIntroDesc(), Copy.HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION,"Home Professtional services intro pop up -description is not matching");
+		
+	}
 		
 }

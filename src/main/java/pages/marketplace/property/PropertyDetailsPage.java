@@ -382,7 +382,6 @@ public class PropertyDetailsPage   extends BasePage{
 	//Swiping image carousel left in property details
 	public void swipeImageCarouselLeft() {
 		swipeHorizontally(imageNumberText,backButton);
-		//scrollHorizontallyToElement();
 	}
 	
 	public void swipeFullScreenImageCarouselLeft() {
@@ -644,7 +643,6 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public void doubleTapOnPropertyImage() {
-		//doubleTapOnAnElement(fullScreenPropertyImage);
 		tapElement(fullScreenPropertyImage);
 		tapElement(fullScreenPropertyImage);
 	}
