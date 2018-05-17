@@ -89,11 +89,9 @@ public class MyProductsTest extends App {
 		
 		navigateToMyProductsScreen("emptylist","loginEmptyProdList");
 		myProductsPage.tapAddExistingProductButton();
-		common.moveAppToBackground();
-		Assert.assertNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");
-		Assert.assertNull(myProductsPage.checkAddInsurancePolicyButton(), "My Products screen - Insurance policy button on Bottom sheet label is still present");
-		Assert.assertNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Bank Account button is still present");
-		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products screen - title is not present");
+		loginAuthPage.relaunchApp(-1, "Config");
+		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");
+		Assert.assertNull(myProductsPage.checkMyProductsTitle(), "My products screen - title is not present");
 		
 	}
 	
