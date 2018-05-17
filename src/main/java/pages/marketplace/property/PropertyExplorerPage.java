@@ -91,6 +91,13 @@ public class PropertyExplorerPage  extends BasePage{
 	public void tapSuburbInsight() {
 		tapElement(suburbInsightTab);
 	}
+	
+	public void tapAndroidDeviceBackButton(){
+		for(int i=0;i<2;i++){
+			tapDeviceBackButton();
+		}
+		
+	}
 
 	public String getHomeJourneyTitle() {
 		return getText(homeJourneyPageTitle);

@@ -44,9 +44,9 @@ public class SuburbDetailsTest extends App {
 		Assert.assertEquals(suburbDetailsPage.getdemographicsText(),Copy.SUBURB_DETAILS_DEMOGRAPHICS_TEXT, "Suburb Details page - Theft RIsk value is not present");
 		Assert.assertEquals(suburbDetailsPage.getDisclaimerLabelText(),Copy.SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT, "Suburb Details page - Theft Risk value is not present");
 		suburbDetailsPage.tapDisclaimerButton();
-		Assert.assertEquals(suburbDetailsPage.checkDisclaimerPageTitle(),"Suburb Details page - Disclaimer page title is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkDisclaimerPageTitle(),"Suburb Details page - Disclaimer page title is not present");
 		Assert.assertEquals(suburbDetailsPage.getDisclaimerPageTitleText(),"Disclaimer", "Suburb Details page - Theft Risk value is not present");
-		Assert.assertEquals(suburbDetailsPage.checkDisclaimerBackButton(),"Suburb Details page - Disclaimer page back button is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkDisclaimerBackButton(),"Suburb Details page - Disclaimer page back button is not present");
 		
 		suburbDetailsPage.tapDisclaimerBackButton();
 		Assert.assertNotNull(suburbDetailsPage.checkDemographicsTitleText(), "Suburb Details page - Demographics title is not present");
@@ -98,6 +98,7 @@ public class SuburbDetailsTest extends App {
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
+		Assert.assertNotNull(propertyHubPage.checkSearchBar(), "Property Hub Page - Search bar is not present");
 		propertyExplorerPage.tapSuburbInsight();
 		
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchHintText(), "Enter suburb's name", "Suburb search hint is not matching");
@@ -117,6 +118,7 @@ public class SuburbDetailsTest extends App {
 		}
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Journey Page - Property Address is not shown");
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");

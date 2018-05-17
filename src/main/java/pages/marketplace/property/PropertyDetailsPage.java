@@ -18,7 +18,7 @@ public class PropertyDetailsPage   extends BasePage{
 	private By propertyAddress = By.id("au.com.suncorp.marketplace:id/propertyAddressLine1Text");
 	private By propertyStatePostCode = By.id("au.com.suncorp.marketplace:id/propertyAddressLine2Text");
 	private By propertyNumberOfBedrooms = By.id("au.com.suncorp.marketplace:id/bedroomNumberText");
-	private By propertyNumberOfBedroomsImage = By.id("au.com.suncorp.marketplace:id/bedroomImage");
+	private By propertyNumberOfBedroomsImage = By.id("au.com.suncorp.marketplace:id/bedroomNumberText");
 	
 	private By thisIsMyPropertyLabel = By.id("au.com.suncorp.marketplace:id/thisIsMineText");
 	private By thisIsMyPropertyInfo = By.id("au.com.suncorp.marketplace:id/thisIsMineInfoButton");
@@ -33,9 +33,9 @@ public class PropertyDetailsPage   extends BasePage{
 	private By attributeBar = By.id("au.com.suncorp.marketplace:id/attributesView");
 	
 	private By propertyNumberOfBathrooms = By.id("au.com.suncorp.marketplace:id/bathNumberText");
-	private By propertyNumberOfBathroomsImage = By.id("au.com.suncorp.marketplace:id/bathImage");
+	private By propertyNumberOfBathroomsImage = By.id("au.com.suncorp.marketplace:id/bathNumberText");
 	private By propertyNumberOfParkingSpaces = By.id("au.com.suncorp.marketplace:id/parkingNumberText");
-	private By propertyNumberOfParkingSpacesImage = By.id("au.com.suncorp.marketplace:id/parkingImage");
+	private By propertyNumberOfParkingSpacesImage = By.id("au.com.suncorp.marketplace:id/parkingNumberText");
 	private By propertyLandSize = By.id("au.com.suncorp.marketplace:id/landSizeNumberText");
 	private By propertyLandSizeImage = By.id("au.com.suncorp.marketplace:id/landSizeImage");
 	
@@ -107,7 +107,15 @@ public class PropertyDetailsPage   extends BasePage{
 		return find(lastSaleDisclaimerScreenTitle);
 	}
 	
+	public WebElement checkThisIsMyPropertyDisclaimerScreenTitle() {
+		return find(lastSaleDisclaimerScreenTitle);
+	}
+	
 	public String getLastSaleDisclaimerScreenTitle() {
+		return getText(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public String getThisIsMyPropertyDisclaimerScreenTitle() {
 		return getText(lastSaleDisclaimerScreenTitle);
 	}
 	
@@ -268,6 +276,10 @@ public class PropertyDetailsPage   extends BasePage{
 		return find(thisIsMyPropertyInfo);
 	}
 	
+	public void tapThisIsMyPropertyInfo(){
+		tapElement(thisIsMyPropertyInfo);
+	}
+	
 	public WebElement checkThisIsMyPropertyToggleButton() {
 		return find(thisIsMyPropertyToggleButton);
 	}
@@ -369,7 +381,8 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	//Swiping image carousel left in property details
 	public void swipeImageCarouselLeft() {
-		swipeHorizontally(favouriteButton,backButton);
+		swipeHorizontally(imageNumberText,backButton);
+		//scrollHorizontallyToElement();
 	}
 	
 	public void swipeFullScreenImageCarouselLeft() {
@@ -528,6 +541,10 @@ public class PropertyDetailsPage   extends BasePage{
 		return getText(propertyType);
 	}
 	
+	public void scrollToPropertyType() {
+		scrollToElement(propertyType, "true");
+	}
+	
 	public String getPropertyShowMoreInfo() {
 		return getText(propertyShowMoreInfo);
 	}	
@@ -565,7 +582,7 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkPropertyNumberOfBedroomsImage() {
-		return find(propertyNumberOfBedroomsImage,5);
+		return find(propertyNumberOfBedroomsImage,10);
 	}
 	
 	public WebElement checkPropertyNumberOfBathrooms() {

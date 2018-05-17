@@ -253,9 +253,9 @@ public class BasePage {
 			return true;
 	}
 	
-	protected int getItemCountbyName(String name){
-		List<WebElement> count = driver.findElementsByName(name);
-		return count.size();
+	protected List<WebElement> getItemCountbyID(By id){
+		List<WebElement> count = driver.findElements(id);
+		return count;
 	}
 
 	//	protected void swipeDown(){
@@ -563,13 +563,7 @@ public class BasePage {
 
 
 	public void tapDeviceBackButton(){
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_BACK);
 	}
 
 	public void tapEnterOnTheKeyboard(){

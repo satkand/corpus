@@ -149,8 +149,8 @@
 					"pwd": "Password1",
 					"addressLineText": "123 New Street, Brighton",
          			"suburbText":"NSW 3186",
-          			"productDescriptionText1": "Home and Contents protected until 10 October 2018",
-         			"productDescriptionText2": "Home loan next payment due 10 October 2018"
+          			"productDescriptionText1": "Home and Contents protected with Suncorp",
+         			"productDescriptionText2": "Landlord protected with APIA"
 			},
 			"withOutProducts": {
 					"login": "a@b.c",

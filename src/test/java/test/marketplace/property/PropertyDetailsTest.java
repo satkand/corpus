@@ -104,6 +104,8 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNotNull(propertyDetailsPage.checkSuburbInsightImage(), "Property Details Page -suburn insight image is not present");
 		
 		propertyDetailsPage.tapShowMeInsightButton();
+		Assert.assertNotNull(suburbDetailsPage.checkRiskAndHazardTitleText(), "Property Details Page -suburn insight image is not present");
+		
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 		Assert.assertNotNull(propertyDetailsPage.checkSuburbInsightTitleText(), "Property Details Page - Suburb Insight title text is not present");
 	}
@@ -116,7 +118,8 @@ public class PropertyDetailsTest extends App{
 				
 		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
-		Assert.assertNotNull(propertyDetailsPage.checkFavouriteButton(), "Property Details Page - Favorite button is not present");
+		//TODO : Removed as part of story DMPM-7240
+		//Assert.assertNotNull(propertyDetailsPage.checkFavouriteButton(), "Property Details Page - Favorite button is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkImageNumberText(), "Property Details Page - Image number text is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkBackButton(), "Property Details Page - back button is not present");
 		
@@ -200,7 +203,7 @@ public class PropertyDetailsTest extends App{
 		}	
 		
 		propertyDetailsPage.tapFullScreenCloseButton();
-		Assert.assertNotNull(propertyDetailsPage.checkFavouriteButton(), "Property Details Page - Favorite button is not present when coming back from full screen view");
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Favorite button is not present when coming back from full screen view");
 		
 	}
 	
@@ -283,7 +286,7 @@ public class PropertyDetailsTest extends App{
 		
 		int imageCount = Integer.parseInt(utils.readTestData("propertyDimension","propertyDetails","numberOfImages"));
 		int countContinue = 0;
-		 	for(int i=1;i<imageCount-4;i++) {
+		 	for(int i=1;i<3;i++) {
 				Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
 				propertyDetailsPage.doubleTapOnPropertyImage();
 				Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
@@ -322,15 +325,18 @@ public class PropertyDetailsTest extends App{
 		
 		Assert.assertNotNull(whatsNearbyPage.checkShoppingTab(), "Whats nearby Page - Shopping tab is not present");
 		whatsNearbyPage.tapShoppingTab();
+		//TODO
 //		Assert.assertNotNull(whatsNearbyPage.checkShoppingAmenityIndicator(), "Whats nearby Page - Shopping Amenity Indicator is not present");
 		
 		Assert.assertNotNull(whatsNearbyPage.checkTransportTab(), "Whats nearby Page - Transport tab is not present");
 		whatsNearbyPage.tapTransportTab();
-		Assert.assertNotNull(whatsNearbyPage.checkTransportAmenityIndicator(), "Whats nearby Page - transport Amenity Indicator is not present");
+		//TODO
+//		Assert.assertNotNull(whatsNearbyPage.checkTransportAmenityIndicator(), "Whats nearby Page - transport Amenity Indicator is not present");
 	
 		Assert.assertNotNull(whatsNearbyPage.checkEntertainmentTab(), "Whats nearby Page - Entertainment tab is not present");
 		whatsNearbyPage.tapEntertainmentTab();
-		Assert.assertNotNull(whatsNearbyPage.checkEntertainmentOutletIndicator(), "Whats nearby Page - Entertainment Amenity Indicator is not present");
+		//TODO
+//		Assert.assertNotNull(whatsNearbyPage.checkEntertainmentOutletIndicator(), "Whats nearby Page - Entertainment Amenity Indicator is not present");
 		
 		Assert.assertNotNull(whatsNearbyPage.checkHealthTab(), "Whats nearby Page - Health tab is not present");
 		whatsNearbyPage.tapHealthTab();
@@ -349,10 +355,13 @@ public class PropertyDetailsTest extends App{
 
 	}
 	
-	@TestDetails(story1 = "DMPM-3663:DMPM-5577,DMPM-5578,DMPM-5579,", priority = Priority.LOW)
+	//TODO : Removed as part of story DMPM-7240 for R3
+	// TODO: R3 Release
+/*	@TestDetails(story1 = "DMPM-3663:DMPM-5577,DMPM-5578,DMPM-5579,DMPM-7240", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Property Hub", "priority-minor" })
 	public void testDisplayOptionToSaveProperty() {
 		navigateToPropertyDetails("StartYourJourney","HighConfident");
+		
 		Assert.assertNotNull(propertyDetailsPage.checkThisIsMyPropertyLabel(), "Property details page - This is my property label is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkThisIsMyPropertyInfo(), "Property details page - This is my property info icon is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkThisIsMyPropertyToggleButton(), "Property details page - This is my property toggle button is not present");
@@ -372,7 +381,7 @@ public class PropertyDetailsTest extends App{
 		Assert.assertNull(propertyDetailsPage.checkMyPropertyBottomSheetTitleLabel(), "Property details page - This is my property label still presents after cancelling the bottom sheet");
 		Assert.assertFalse(propertyDetailsPage.isToggleButtonSelected(), "This is my property toggle button is selected even after dismissing the bottom sheet");
 		
-	}
+	}*/
 	
 	@TestDetails(story1 = "DMPM-4982:DMPM-5935,DMPM-5936", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
@@ -475,7 +484,10 @@ public class PropertyDetailsTest extends App{
 	@TestDetails(story1 = "DMPM-3702:DMPM-7931,DMPM-7933,DMPM-7953", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Property hub", "priority-minor" })
 	public void testViewVirtualPropertyScreenDisclaimers() {
-		navigateToVirtualPropertyDetails();
+		
+		//TODO: R3 Release
+		//navigateToVirtualPropertyDetails();
+		navigateToPropertyDetails("StartYourJourney","HighConfident");
 		Assert.assertNotNull(propertyDetailsPage.checkEstimatedPropertyValueDisclaimer(), "Property Details page - Estimated property value disclaimer is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkCoreLogicDisclaimer(), "Property Details page - core logic disclaimer is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkConfidenceLevelDisclaimer(), "Property Details page - Confidence level disclaimer is not present");
@@ -495,14 +507,21 @@ public class PropertyDetailsTest extends App{
 		propertyDetailsPage.tapEstimatedPropertyValueDisclaimer();
 		Assert.assertNotNull(propertyDetailsPage.checkEstimatedPropertyValueDisclaimerScreenTitle(), "Property Details page - Confidence disclaimer title is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkDisclaimerClose(), "Property Details page - Confidence disclaimer title is not present");
-		Assert.assertEquals(propertyDetailsPage.getEstimatedPropertyValueDisclaimerScreenTitle(),"CoreLogic","Property Details page - School 1 name is not matching");
+		Assert.assertEquals(propertyDetailsPage.getEstimatedPropertyValueDisclaimerScreenTitle(),"Estimated property value","Property Details page - School 1 name is not matching");
 		propertyDetailsPage.tapDisclaimerClose();
 		
 		propertyDetailsPage.tapLastSaleDisclaimer();
 		Assert.assertNotNull(propertyDetailsPage.checkLastSaleDisclaimerScreenTitle(), "Property Details page - Confidence disclaimer title is not present");
 		Assert.assertNotNull(propertyDetailsPage.checkDisclaimerClose(), "Property Details page - Confidence disclaimer title is not present");
-		Assert.assertEquals(propertyDetailsPage.getLastSaleDisclaimerScreenTitle(),"CoreLogic","Property Details page - School 1 name is not matching");
+		Assert.assertEquals(propertyDetailsPage.getLastSaleDisclaimerScreenTitle(),"Last sale","Property Details page - School 1 name is not matching");
 		propertyDetailsPage.tapDisclaimerClose();
+		
+		//TODO: R3 Release
+		/*propertyDetailsPage.tapThisIsMyPropertyInfo();
+		Assert.assertNotNull(propertyDetailsPage.checkThisIsMyPropertyDisclaimerScreenTitle(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkDisclaimerClose(), "Property Details page - Confidence disclaimer title is not present");
+		Assert.assertEquals(propertyDetailsPage.getThisIsMyPropertyDisclaimerScreenTitle(),"Last sale","Property Details page - School 1 name is not matching");
+		propertyDetailsPage.tapDisclaimerClose();*/
 		
 	
 	}
@@ -512,6 +531,7 @@ public class PropertyDetailsTest extends App{
 		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Journey Page - Property Address is not shown");
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");

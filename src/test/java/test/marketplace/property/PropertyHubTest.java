@@ -11,7 +11,9 @@ import automation.framework.common.TestDetails.Priority;
 import pages.App;
 
 public class PropertyHubTest  extends App{
-
+	
+	//TODO: R3 Release
+/*
 	@TestDetails(story1 = "DMPM-3720:DMPM-4473,DMPM-4474,DMPM-4475,DMPM-4476,DMPM-4477", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Property Hub", "priority-minor" })
 	public void testNavigateToPropertySearchFunctionFromAddProperty() {
@@ -47,7 +49,7 @@ public class PropertyHubTest  extends App{
 		propertyHubPage.tapBackButton();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 
-	}
+	}*/
 	
 	@TestDetails(story1 = "DMPM-4625:DMPM-5229,DMPM-5230", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
@@ -97,8 +99,6 @@ public class PropertyHubTest  extends App{
 		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyeButton(), "Suburb details page - Whats nearby button is not present");
 		
-		
-		
 	}
 	
 	//@TestDetails(story1 = "DMPM-4314:DMPM-7292,DMPM-7293,DMPM-7294,DMPM-7295", priority = Priority.LOW)
@@ -110,60 +110,49 @@ public class PropertyHubTest  extends App{
 		verifyPOICategoriesOnFulllScreenMap();
 		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardTitle(), "What's nearby Page - Property Card is displayed in Property tab");
 		
+		whatsNearbyPage.swipeTabsRight();
 		whatsNearbyPage.tapEducationTab();
 		Assert.assertTrue(whatsNearbyPage.isEducationTabSelected(), "Landing page - Home tab is not selected on landing page");
 			
 		tabName = whatsNearbyPage.getPlacesListCountLabel();
 		verifyShowMoreList();
-		verifyListCount(tabName,"Education");
+		verifyShowListName(tabName,"EDUCATION");
 		verifySortedList(tabName);
 		
 		whatsNearbyPage.tapShoppingTab();
-		Assert.assertTrue(whatsNearbyPage.isShoppingTabSelected(), "Landing page - Home tab is not selected on landing page");
-		
 		tabName = whatsNearbyPage.getPlacesListCountLabel();
 		verifyShowMoreList();
-		verifyListCount(tabName,"Shopping");
+		verifyShowListName(tabName,"SHOPPING");
 		verifySortedList(tabName);
 	
 		whatsNearbyPage.tapTransportTab();
-		Assert.assertTrue(whatsNearbyPage.isTransportTabSelected(), "Landing page - Home tab is not selected on landing page");
-		
 		tabName = whatsNearbyPage.getPlacesListCountLabel();
 		verifyShowMoreList();
-		verifyListCount(tabName, "Transport");
+		verifyShowListName(tabName, "TRANSPORT");
 		verifySortedList(tabName);
 		
 		whatsNearbyPage.tapEntertainmentTab();
-	    Assert.assertTrue(whatsNearbyPage.isEntertainmentTabSelected(), "Landing page - Home tab is not selected on landing page");
-		
 		tabName = whatsNearbyPage.getPlacesListCountLabel();
 		verifyShowMoreList();
-		verifyListCount(tabName,"Entertainment");
+		verifyShowListName(tabName,"ENTERTAINMENT");
 		verifySortedList(tabName);
 			
 		whatsNearbyPage.tapHealthTab();
-		Assert.assertTrue(whatsNearbyPage.isHealthTabSelected(), "Landing page - Home tab is not selected on landing page");
-		
 		tabName = whatsNearbyPage.getPlacesListCountLabel();
 		verifyShowMoreList();
-		verifyListCount(tabName,"Health");
+		verifyShowListName(tabName,"HEALTH");
 		verifySortedList(tabName);
 		
 		whatsNearbyPage.tapDiningTab();
-		Assert.assertTrue(whatsNearbyPage.isDiningTabSelected(), "Landing page - Home tab is not selected on landing page");
-		
 		tabName = whatsNearbyPage.getPlacesListCountLabel();
 		verifyShowMoreList();
-		verifyListCount(tabName, "Dining");
+		verifyShowListName(tabName, "DINING");
 		verifySortedList(tabName);
 		
 		whatsNearbyPage.tapOtherTab();
-		Assert.assertTrue(whatsNearbyPage.isOtherTabSelected(), "Landing page - Home tab is not selected on landing page");
-		
 		tabName = whatsNearbyPage.getPlacesListCountLabel();
 		verifyShowMoreList();
-		verifyListCount(tabName, "Other");
+		verifyShowListName(tabName, "OTHER");
 		verifySortedList(tabName);
 	}	
 	
@@ -171,7 +160,10 @@ public class PropertyHubTest  extends App{
 	@Test(groups = { "marketplace", "Feature Access Control ", "priority-minor" })
 	public void testGuestExperienceForPropertyHub() {
 		
-		navigateToPropertyHub();
+		navigateToPropertyDimension("Guest");
+		homePropertyPage.tapStartYourJourneyButton();
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
+		
 		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
 		propertyExplorerPage.tapSearch();
 		
@@ -183,6 +175,9 @@ public class PropertyHubTest  extends App{
 		
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgSignUpButton(), "Home Property Page - Sign Up button is not present");
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgLogInButton(), "Home Property Page - Log in button is not present");
+		
+		propertyExplorerPage.tapAndroidDeviceBackButton();
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		
 		propertyExplorerPage.tapSuburbInsight();
 		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
@@ -196,8 +191,7 @@ public class PropertyHubTest  extends App{
 		
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgSignUpButton(), "Home Property Page - Sign Up button is not present");
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgLogInButton(), "Home Property Page - Log in button is not present");
-		
-		
+	
 	}
 	
 	private void navigateToPropertyHub() {
@@ -213,11 +207,10 @@ public class PropertyHubTest  extends App{
 		
 		homePropertyPage.tapAddPropertyActionSheetButton();
 		Assert.assertNotNull(propertyHubPage.checkPropertyHubPageTitle(), "Property Hub Page - Page title is not present");
-		
 	}
 	
 	public void navigateToPropertyDimension(String user) {
-		if(user.equals("Guess")) {
+		if(user.equals("Guest")) {
 			welcomePage.tapGuestAccessButton();
 		}else {
 		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
@@ -225,11 +218,12 @@ public class PropertyHubTest  extends App{
 		
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
-		
 	}
 	
 	public void navigateToSearchPropertyDetailsMiniMap() {
 		navigateToPropertyDimension("NotAGuest");
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Journey Page - page title not shown");
+		
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
@@ -245,9 +239,11 @@ public class PropertyHubTest  extends App{
 		Assert.assertNotNull(whatsNearbyPage.checkEducationTab(), "Whats nearby Page - Education tab is not present");
 		Assert.assertNotNull(whatsNearbyPage.checkShoppingTab(), "Whats nearby Page - Shopping tab is not present");
 		Assert.assertNotNull(whatsNearbyPage.checkTransportTab(), "Whats nearby Page - Transport tab is not present");
+		whatsNearbyPage.swipeTabsLeft();
 		Assert.assertNotNull(whatsNearbyPage.checkEntertainmentTab(), "Whats nearby Page - Entertainment tab is not present");
 		Assert.assertNotNull(whatsNearbyPage.checkHealthTab(), "Whats nearby Page - Health tab is not present");
 		Assert.assertNotNull(whatsNearbyPage.checkDiningTab(), "Whats nearby Page - Dining tab is not present");
+		whatsNearbyPage.swipeTabsLeft();
 		Assert.assertNotNull(whatsNearbyPage.checkOtherTab(), "Whats nearby Page - Dining tab is not present");
 	}
 	
@@ -257,28 +253,16 @@ public class PropertyHubTest  extends App{
 		
 	}
 	
-	public void verifyListCount(String tabNameFullStr, String expectedTabName) {
+	public void verifyShowListName(String tabNameFullStr, String expectedTabName) {
+		Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"SHOW LIST", "Whats nearby Page - ITem count is not matching");
+		Assert.assertTrue(tabNameFullStr.contains(expectedTabName), "Whats nearby page - wrong tab name is displayed in "+expectedTabName+" actual name is: "+tabNameFullStr);
 		
-		String DisplayingnumberOfitemsInTheList;
-		Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"Show list", "Whats nearby Page - ITem count is not matching");
-		
-		whatsNearbyPage.tapPOIexpandableListButton();
-		int numberofItemsInTheList = whatsNearbyPage.getNumberOfItemsIntheList();
-		String ActualnumberOfitemsInTheList= Integer.toString(numberofItemsInTheList);
-		
-		Assert.assertTrue(numberofItemsInTheList<=20,"Whats nearby Page - POI count is exceeding the maximum value");
-		if(numberofItemsInTheList>=10) {
-			DisplayingnumberOfitemsInTheList= tabNameFullStr.substring(tabNameFullStr.length()-3, tabNameFullStr.length()-1);
-		}else{
-			DisplayingnumberOfitemsInTheList= tabNameFullStr.substring(tabNameFullStr.length()-2, tabNameFullStr.length()-1);
-		}
-		Assert.assertEquals(DisplayingnumberOfitemsInTheList, ActualnumberOfitemsInTheList, "Whats nearby Page - Item count is not matching to the displaying count");
-		Assert.assertEquals(tabNameFullStr, expectedTabName+" ("+ActualnumberOfitemsInTheList+")","Whats nearby Page - Places list count label displays wrong POI count");
 	}
 	
 	public void verifySortedList(String tabName) {
 		
 		boolean isListSorted=true;
+		whatsNearbyPage.tapPOIexpandableListButton();
 		List showList = whatsNearbyPage.getItemsList();
 		Integer[] intarray=new Integer[showList.size()];
 		
@@ -287,16 +271,15 @@ public class PropertyHubTest  extends App{
 		}
 		
 		for(int i=0;i<intarray.length-1;i++) {
-			System.out.println(intarray[i]);
 			if(intarray[i]>intarray[i+1]) {
 				isListSorted = false;
 			}
 		}
 		Assert.assertTrue(isListSorted, "Whats nearby Page - POI list is not sorted from distance in "+tabName+" tab ");
-		Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"Hide list", "Whats nearby Page - ITem count is not matching");
+		Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"HIDE LIST", "Whats nearby Page - ITem count is not matching");
 		
 		whatsNearbyPage.tapPOIexpandableListButton();
-		Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"Show list", "Whats nearby Page - ITem count is not matching");	
+		Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"SHOW LIST", "Whats nearby Page - ITem count is not matching");	
 	}
 	
 }

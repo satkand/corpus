@@ -24,7 +24,7 @@ public class WhatsNearbyPage extends BasePage{
 	private By fullScreenMapCloseButton = MobileBy.AccessibilityId("Navigate up");
 	private By fullScreenMapTitle= By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']//android.widget.TextView");
 	private By fullScreenMap= MobileBy.AccessibilityId("Google Map");
-	private By fullScreenMapPropertyPin= MobileBy.AccessibilityId("PROPERTY. ");
+	private By fullScreenMapPropertyPin= MobileBy.AccessibilityId("property_title. ");
 	
 	
 	private By propertyTab = By.xpath("//android.widget.TextView[@text='PROPERTY']");
@@ -51,19 +51,17 @@ public class WhatsNearbyPage extends BasePage{
 	private By propertyCardDetails = By.id("au.com.suncorp.marketplace:id/propertyCardDetail");
 	
 	//POI categories
-		private By placesListCountLabel = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListTitleText");
-		private By showListLabelButton = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListButtonText");
-		private By itemListdistance = By.id("au.com.suncorp.marketplace:id/educationNameText");
-		private String listItem = "au.com.suncorp.marketplace:id/educationNameText";
-		private By POIexpandableListButton = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListButtonText");
-		private By POIname = By.name("au.com.suncorp.marketplace:id/educationNameText");
+	private By placesListCountLabel = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListTitleText");
+	private By showListLabelButton = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListButtonText");
+	private By itemListdistance = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	private By listID = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	private By POIexpandableListButton = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListButtonText");
+	private By POIname = By.name("au.com.suncorp.marketplace:id/educationNameText");
 		
-		
-		
-		//route card
-		private By routeCardNameLabel = By.id("Research Primary School");
-		private By drivingButtonLabel = By.id("Driving 4 mins");
-		private By walkingButtonLabel = By.id("Walking 25 mins");
+	//route card
+	private By routeCardNameLabel = By.id("Research Primary School");
+	private By drivingButtonLabel = By.id("Driving 4 mins");
+	private By walkingButtonLabel = By.id("Walking 25 mins");
 		
 	private String tabBarID = "au.com.suncorp.marketplace:id/nearbyCategoryAppBarLayout";
 	
@@ -267,10 +265,6 @@ public class WhatsNearbyPage extends BasePage{
 		return getText(showListLabelButton);
 	}
 	
-	public int getNumberOfItemsIntheList() {
-		return getItemCountbyName(listItem);
-	}
-	
 	public List<String> getItemsList() {
 		String convertDistance = null;
 		List<String> names = new ArrayList<String>();
@@ -280,19 +274,17 @@ public class WhatsNearbyPage extends BasePage{
 				String POIDistance = itemListElements.get(i).getText().replace("(", "").replace(")", "");
 				convertDistance = POIDistance.substring(0, (itemListElements.get(i).getText().length()-4));
 				convertDistance = convertDistance.replace(".", "")+"00";
-				names.add(convertDistance);
+				names.add(convertDistance.substring(convertDistance.length()-4, convertDistance.length()));
 			}
 			else if(itemListElements.get(i).getText().contains("m")){
 				String POIDistance = itemListElements.get(i).getText().replace("(", "").replace(")", "");
 				convertDistance = POIDistance.substring(0, (itemListElements.get(i).getText().length()-3));
-				names.add(convertDistance);
+				names.add(convertDistance.substring(convertDistance.length()-3, convertDistance.length()));
 			}else{
 				String POIDistance = itemListElements.get(i).getText().replace("(", "").replace(")", "");
 				names.add(POIDistance);
 			}
-			
 		}
-		
 		return names;
 	}
 
@@ -326,4 +318,11 @@ public class WhatsNearbyPage extends BasePage{
 		tapElement(fullScreenGoogleLabel);
 	}
 	
+	public void swipeTabsLeft() {
+		scrollHorizontallyToElement("OTHER","text","au.com.suncorp.marketplace:id/nearbyCategoryLayout",2);
+	}
+	
+	public void swipeTabsRight() {
+		scrollHorizontallyToElement("EDUCATION","text","au.com.suncorp.marketplace:id/nearbyCategoryLayout",2);
+	}
 }

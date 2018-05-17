@@ -45,6 +45,7 @@ public class HomePropertyPage extends BasePage {
 	private String startYourJourneyButtonID = "au.com.suncorp.marketplace:id/startHomeJourneyButton";
 	//TODO - update the property asset address to empty state asset
 	private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='45 Super Long Long Name Street, Brighton']");
+	
 	private By featureLockedMsgTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By featureLockedTextCopy = By.id("android:id/message");
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
@@ -408,8 +409,7 @@ public class HomePropertyPage extends BasePage {
 	}
 
 	public void scrollToEmptyStatePropertyAsset() {
-		scrollToElement(emptyStatePropertyAsset, "true");
-
+		scrollToElement(emptyStatePropertyAsset);
 	}
 	
 	public void swipePropertyCarouselLeft() {

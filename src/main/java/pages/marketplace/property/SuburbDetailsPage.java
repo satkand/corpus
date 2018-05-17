@@ -36,8 +36,7 @@ public class SuburbDetailsPage extends BasePage{
 	
 	//disclaimer
 	private By disclaimerPageTitle = By.xpath("//android.widget.TextView[@text='Disclaimer']");
-	private By disclaimerBackButton = By.id("Navigate up");
-	
+	private By disclaimerBackButton = MobileBy.AccessibilityId("Navigate up");
 	
 	//google Map
 	private By staticMap=  MobileBy.AccessibilityId("Google Map");
@@ -87,7 +86,9 @@ public class SuburbDetailsPage extends BasePage{
 	}
 	
 	public void scrollUpToRiskAndHazardTitleText(){
-		swipeScreen("up");
+		for(int i=0;i<3;i++) {
+			swipeScreen("up");
+		}
 	}
 	
 	public WebElement checkDisclaimerLabelText() {

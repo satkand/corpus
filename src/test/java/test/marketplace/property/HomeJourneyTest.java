@@ -112,7 +112,7 @@ public class HomeJourneyTest extends App {
 		navigationMenu.tapSuncorpMenuItem();
 		landingPage.tapHomeTab();
 		//DMPM-856: Navigating to Home journey screen
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home Journey Page - Home tab is not selected");
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Home Journey Page - Hamburger Menu not shown");
 		
 	}
