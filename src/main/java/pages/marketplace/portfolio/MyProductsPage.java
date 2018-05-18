@@ -38,7 +38,6 @@ public class MyProductsPage extends BasePage {
 	//TODO DMPM-3713
 	private By productTypeImage = By.xpath(
 			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");
-	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
 	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
 	private By availableBalanceLabel = By.id("au.com.suncorp.marketplace:id/availableBalanceLabel");
 	private By policyLayout = By.id("au.com.suncorp.marketplace:id/policyItemLayout");
@@ -140,9 +139,6 @@ public class MyProductsPage extends BasePage {
 		return getTextList(wealthProductAccountNumber);
 	}
 	
-	public WebElement checkAccountDetailsTitle(){
-		return find(accountDetailsLabel);
-	}
 	public List<String> fetchAvailableBalanceTextList() {
 		find(availableBalance);
 		return getTextList(availableBalance);
@@ -168,10 +164,6 @@ public class MyProductsPage extends BasePage {
 	public List<String> fetchWealthProductCurrentBalanceTextList() {
 		find(wealthProductCurrentBalance);
 		return getTextList(wealthProductCurrentBalance);
-	}
-	
-	public String getAccountDetailsTitle() {
-		return getText(accountDetailsLabel);
 	}
 	
 	public WebElement checkProductTypeImage(){
