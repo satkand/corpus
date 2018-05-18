@@ -16,7 +16,6 @@ public class MyProductsPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
 	private By addExistingProductButton = By.id("au.com.suncorp.marketplace:id/addProductButton");
 	private By emptyStateImage = By.id("au.com.suncorp.marketplace:id/emptyStateImage");
 	private By emptyStateLabel = By.id("au.com.suncorp.marketplace:id/emptyStateMessageTitle");
@@ -280,14 +279,6 @@ public class MyProductsPage extends BasePage {
 	
 	public void tapAddExistingProductButton(){
 		tapElement(addExistingProductButton);
-	}
-	
-	public WebElement checkEnablePinButton() {
-		return find(maybeLaterButton);
-	}
-	
-	public void tapMaybeLaterButton(){
-		tapElement(maybeLaterButton);
 	}
 
 	public WebElement checkRisk(String riskName) {
