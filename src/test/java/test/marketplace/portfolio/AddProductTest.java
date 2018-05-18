@@ -104,7 +104,7 @@ public class AddProductTest extends App{
 
 			navigateToAddProductsScreen("emptylist", "loginEmptyProdList");
 			
-			myProductsPage.tapAddSuperAccountButton();
+			addProductPage.tapAddSuperAccountButton();
 			Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
 			
 			addBankAccountPage.tapSuperAccountNumberField();
