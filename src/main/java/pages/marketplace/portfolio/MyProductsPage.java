@@ -22,9 +22,7 @@ public class MyProductsPage extends BasePage {
 	private By emptyStateLabel = By.id("au.com.suncorp.marketplace:id/emptyStateMessageTitle");
 	private By emptyStateDescription = By.id("au.com.suncorp.marketplace:id/emptyStateMessageDescription");
 	private By findProductButton = By.id("au.com.suncorp.marketplace:id/browseProductCatalogueButton");
-	private By addExistingProductScreenTitle = By.xpath("//android.widget.TextView[@text='Add existing product']");
-	private By addInsurancePolicyButton = By.id("au.com.suncorp.marketplace:id/insuranceTypeLabel");
-	private By addBankAccountButton = By.id("au.com.suncorp.marketplace:id/bankingTypeLabel");
+
 	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='My products']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	//TODO DMPM-3713
@@ -43,7 +41,6 @@ public class MyProductsPage extends BasePage {
 	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
 	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
 	private By availableBalanceLabel = By.id("au.com.suncorp.marketplace:id/availableBalanceLabel");
-	private By addSuperAccountButton = By.id("au.com.suncorp.marketplace:id/superTypeLabel");
 	private By policyLayout = By.id("au.com.suncorp.marketplace:id/policyItemLayout");
 	private By riskText = null;
 	private String riskXpathPrefix = "//android.widget.TextView[@text = \'";
@@ -241,9 +238,7 @@ public class MyProductsPage extends BasePage {
 		return getText(currentBalanceLabel);
 	}
 	
-	public String getaddExistingProductScreenTitleText() {
-		return getText(addExistingProductScreenTitle);
-	}
+	
 	
 	public String getEmptyStateLabelText() {
 		return getText(emptyStateLabel);
@@ -257,17 +252,7 @@ public class MyProductsPage extends BasePage {
 		tapElement(backButton);
 	}
 	
-	public WebElement checkAddExistingProductScreenLabel(){
-		return find(addExistingProductScreenTitle);
-	}
 	
-	public WebElement checkAddInsurancePolicyButton(){
-		return find(addInsurancePolicyButton);
-	}
-	
-	public void tapAddInsurancePolicyButton(){
-		tapElement(addInsurancePolicyButton);
-	}
 	
 	public void tapViewDetails(){
 		tapElement(viewDetailsButton);
@@ -275,22 +260,6 @@ public class MyProductsPage extends BasePage {
 	
 	public WebElement checkViewDetailsButton(){
 		return find(viewDetailsButton);
-	}
-	
-	public WebElement checkAddBankAccountButton(){
-		return find(addBankAccountButton);
-	}
-	
-	public void tapAddBankAccountButton(){
-		tapElement(addBankAccountButton);
-	}
-	
-	public WebElement checkAddSuperAccountButton(){
-		return find(addSuperAccountButton);
-	}
-	
-	public void tapAddSuperAccountButton(){
-		tapElement(addSuperAccountButton);
 	}
 	
 	public WebElement checkMyProductsTitle(){

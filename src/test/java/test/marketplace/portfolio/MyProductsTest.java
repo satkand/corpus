@@ -44,11 +44,11 @@ public class MyProductsTest extends App {
 		
 		myProductsPage.tapAddExistingProductButton();
 		
-		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Bottom sheet label is not present");
-		Assert.assertEquals(myProductsPage.getaddExistingProductScreenTitleText(), utils.readTestData("copy", "portfolio","addExistingProductScreenLabel"));
-		Assert.assertNotNull(myProductsPage.checkAddInsurancePolicyButton(), "My Products screen - Insurance policy button on Bottom sheet label is not present");
-		Assert.assertNotNull(myProductsPage.checkAddBankAccountButton(), "My Products screen - Bank Account button is not present");
-		Assert.assertNotNull(myProductsPage.checkAddSuperAccountButton(), "My Products screen - Super Account button is not present");
+		Assert.assertNotNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Bottom sheet label is not present");
+		Assert.assertEquals(addProductPage.getaddExistingProductScreenTitleText(), utils.readTestData("copy", "portfolio","addExistingProductScreenLabel"));
+		Assert.assertNotNull(addProductPage.checkAddInsurancePolicyButton(), "My Products screen - Insurance policy button on Bottom sheet label is not present");
+		Assert.assertNotNull(addProductPage.checkAddBankAccountButton(), "My Products screen - Bank Account button is not present");
+		Assert.assertNotNull(addProductPage.checkAddSuperAccountButton(), "My Products screen - Super Account button is not present");
 
 	}
 	
@@ -61,23 +61,23 @@ public class MyProductsTest extends App {
 		
 		navigateToMyProductsScreen("emptylist","loginEmptyProdList");
 		myProductsPage.tapAddExistingProductButton();
-		myProductsPage.tapAddInsurancePolicyButton();
+		addProductPage.tapAddInsurancePolicyButton();
 		Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
 		
 		myProductsPage.tapBackButton();
-		Assert.assertNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");	
+		Assert.assertNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");	
 		myProductsPage.tapAddExistingProductButton();
-		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is not present");
+		Assert.assertNotNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is not present");
 		
-		myProductsPage.tapAddBankAccountButton();
+		addProductPage.tapAddBankAccountButton();
 		Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
 		
 		myProductsPage.tapBackButton();
-		Assert.assertNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");	
+		Assert.assertNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");	
 		myProductsPage.tapAddExistingProductButton();
 	
-		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is not present");
-		myProductsPage.tapAddSuperAccountButton();
+		Assert.assertNotNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is not present");
+		addProductPage.tapAddSuperAccountButton();
 		Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
 	
 	
@@ -90,7 +90,7 @@ public class MyProductsTest extends App {
 		navigateToMyProductsScreen("emptylist","loginEmptyProdList");
 		myProductsPage.tapAddExistingProductButton();
 		loginAuthPage.relaunchApp(-1, "Config");
-		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");
+		Assert.assertNotNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is still presented");
 		Assert.assertNull(myProductsPage.checkMyProductsTitle(), "My products screen - title is not present");
 		
 	}

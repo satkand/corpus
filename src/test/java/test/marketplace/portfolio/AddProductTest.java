@@ -14,7 +14,7 @@ public class AddProductTest extends App{
 
 	navigateToAddProductsScreen("prodUser","prodListUser");
 	
-	myProductsPage.tapAddInsurancePolicyButton();
+	addProductPage.tapAddInsurancePolicyButton();
 	
 	Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
 	
@@ -38,7 +38,7 @@ public class AddProductTest extends App{
 	public void testInlineErrorsAsItype(){
 		navigateToAddProductsScreen("prodUser","prodListUser");
 		
-		myProductsPage.tapAddInsurancePolicyButton();
+		addProductPage.tapAddInsurancePolicyButton();
 		
 		Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
 		
@@ -74,7 +74,7 @@ public class AddProductTest extends App{
 		
 		navigateToAddProductsScreen("prodUser","prodListUser");
 		
-		myProductsPage.tapAddInsurancePolicyButton();
+		addProductPage.tapAddInsurancePolicyButton();
 		
 		Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
 		
@@ -173,7 +173,7 @@ public class AddProductTest extends App{
 
 			navigateToAddProductsScreen("emptylist", "loginEmptyProdList");
 			
-			myProductsPage.tapAddBankAccountButton();
+			addProductPage.tapAddBankAccountButton();
 			Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
 			
 			addBankAccountPage.tapAccountNumberField();
@@ -267,7 +267,7 @@ public class AddProductTest extends App{
 		myProductsPage.scrollToAddExistingProductButton();
 		
 		myProductsPage.tapAddExistingProductButton();
-		Assert.assertNotNull(myProductsPage.checkAddExistingProductScreenLabel(),"My Products screen - Add exisitng product screen title is not present");
+		Assert.assertNotNull(addProductPage.checkAddExistingProductScreenLabel(),"My Products screen - Add exisitng product screen title is not present");
 		
 		
 	}
