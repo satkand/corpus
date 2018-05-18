@@ -8,7 +8,9 @@ import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
 public class PINOptionsPage extends BasePage{
-	
+
+	//No Fingerprint enabled
+
 	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptEnablePinButton");
 	private By enableFingerPrintButton = By.id("au.com.suncorp.marketplace:id/enableFingerprintButton");
 	private By maybeLaterPinPromptButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
