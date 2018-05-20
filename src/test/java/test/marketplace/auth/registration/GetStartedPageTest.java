@@ -12,9 +12,13 @@ public class GetStartedPageTest extends App{
 	String titleValue;
 	
 	private void navigateToWelcomeToSuncorpPage() {
-		welcomePage.checkWelcomeSuncorpImage();
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
+		
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome Screen - User is not navigated to the welcome screen");;
 		welcomePage.tapRegisterButton();
-		getStartedPage.checkGetStartedPageTitle();
+		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started Page - User is not navigated to the get started screen");
 	}
 
 	//DMPM-1420 - Scenario 1, 2, 3
@@ -25,24 +29,36 @@ public class GetStartedPageTest extends App{
 		titleValue = getStartedPage.getGetStartedPageTitleValue().replace("\n", " ");
 		Assert.assertEquals(titleValue, utils.readTestData("copy", "getStartedPage", "getStartedPageTitle") ,"Welcome to Suncorp family - Welcome title not correct");
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageSubheader(), "Welcome to Suncorp family - Welcome page subheader not displayed");
-		Assert.assertNotNull(getStartedPage.checkSuncorpBrandIcon(), "Welcome to Suncorp family - Suncorp brand icon not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandSelectDropDown(), "Welcome to Suncorp family - Select brand drop down is not displayed");
 
 		List brandElements = utils.readTestDataList("brands");
 		for(Object brandIcons : brandElements) {
 			HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-			Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Welcome to Suncorp family - "+brandIcon.get("brandIcon")+" brand icon not displayed");
+			getStartedPage.tapBrandSelectDropDown();
+			Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+			Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+			getStartedPage.dismissDropDownList();
 		}
+		
+		//Check if suncorp brand login option is shown
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkSuncorpBrandExists(), "Select Brand List - Suncorp brand is not displayed");
+		getStartedPage.dismissDropDownList();
 
-		Assert.assertNotNull(getStartedPage.checkNewAccountText(), "Welcome to Suncorp family - New account text not displayed");
+		Assert.assertNotNull(getStartedPage.checkNextButton(), "Welcome to Suncorp family - Next button is not displyed");
 		Assert.assertNotNull(getStartedPage.checkSetupNewAccountButton(), "Welcome to Suncorp family - Set Up New Account button not displayed");
 		getStartedPage.tapSetupNewAccount();
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 		Assert.assertNotNull(registrationPage.checkRegistrationPageTitle(), "Registration Page - User is not navigted to the Registration page");
 		registrationPage.tapCancelButton();
-		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Welcome to Suncorp family - User not navigated with get started page");
-		titleValue = getStartedPage.getGetStartedPageTitleValue().replace("\n", " ");
-		Assert.assertEquals(titleValue, utils.readTestData("copy", "getStartedPage", "getStartedPageTitle") ,"Welcome to Suncorp family - Get Started screen title not correct");
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome Screen - User not navigated to the Welcome screen");
+		welcomePage.tapRegisterButton();
+		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started Page - User is not navigated to the Get Started Screen");
 		getStartedPage.tapBackButton();
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - User is not navigated back to the Welcome Screen");
 	}
 
 	//DMPM-1420 - Scenario 4, 5, 6
@@ -63,11 +79,20 @@ public class GetStartedPageTest extends App{
 		// Testing navigation to AAMI, APIA, GIO and Shannons login pages
 		List brandElements = utils.readTestDataList("brands");
 		for(Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToWelcomeToSuncorpPage();
+			}
 			commonMemberLoginCheck(brandIcons);
 		}
 
+		navigateToWelcomeToSuncorpPage();
 		// Testing navigation to Suncorp login page
-		getStartedPage.tapSuncorpBrandIcon();
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkSuncorpBrandExists(), "Select Brand List - Suncorp brand is not displayed");
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();
+		
 		// Verify accounts options sheet and elements
 		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Welcome to Suncorp family - Suncorp accounts sheets not displayed");
 		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsHeading(), "Welcome to Suncorp family - Suncorp accounts sheets heading not displayed");
@@ -75,21 +100,36 @@ public class GetStartedPageTest extends App{
 		Assert.assertNotNull(getStartedPage.checkSuncorpInsurance(), "Welcome to Suncorp family - Suncorp insurance option not displayed");
 		Assert.assertNotNull(getStartedPage.checkSuncorpBothOption(), "Welcome to Suncorp family - Suncorp both option not displayed");
 
+		//Check Suncorp Banking button
 		getStartedPage.tapSuncorpBankingButton();
-		//	TODO: Add suitable transition state needed
-		//	Assert.assertNotNull(loginPage.checkLoginPageTitle(), "");
-
-		if(getStartedPage.checkSuncorpAccountOptionsSheet() == null) {
-			getStartedPage.tapSuncorpBrandIcon();	
-		}
-		getStartedPage.tapSuncorpInsuranceButton();
-		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not navigated to the Login Page");
-		loginPage.tapBackButton();
+		Assert.assertNotNull(memberLoginPage.checkSuncorpBankLoginTitle(), "Suncorp bank Login - User is not naviagetd to the Suncorp bank Login page");
+		memberLoginPage.tapSuncorpBankLoginBackButton();
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started -  User is not navigated back to the Get Started page");
 
-		if(getStartedPage.checkSuncorpAccountOptionsSheet() == null) {
-			getStartedPage.tapSuncorpBrandIcon();	
+		//Check Suncorp Insurance button
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkSuncorpBrandExists(), "Select Brand List - Suncorp brand is not displayed");
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();
+		
+		getStartedPage.tapSuncorpInsuranceButton();
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
 		}
+		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not navigated to the Login Page");
+		loginPage.tapBackButton();
+		Assert.assertNotNull(termsAndConditionsPage.checkTermsAndConditionsTitle(), "Terms and Conditions - User is not back on Terms and Conditions page");
+		termsAndConditionsPage.tapDeviceBackButton();
+		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started -  User is not navigated back to the Get Started page");
+		
+		//Check Suncorp Both button
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkSuncorpBrandExists(), "Select Brand List - Suncorp brand is not displayed");
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();	
+		
 		getStartedPage.tapSuncorpBothButton();
 		//	TODO: Add suitable transition state needed
 		//	Assert.assertNotNull(loginPage.checkLoginPageTitle(), "");
@@ -97,8 +137,15 @@ public class GetStartedPageTest extends App{
 
 	private void commonMemberLoginCheck(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-		Assert.assertNotNull(getStartedPage.checkMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value")), "Get Started Page - "+brandIcon.get("brandIcon")+" icon is not displayed");
-		getStartedPage.tapMemberBrandIcon(brandIcon.get("button"), utils.readTestData("bundleId", "value"));
+		getStartedPage.tapBrandSelectDropDown();
+		Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+		getStartedPage.tapNextButton();
+		
+		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 		Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - Title is not correct");
 		memberLoginPage.tapCancelButton();
 	}

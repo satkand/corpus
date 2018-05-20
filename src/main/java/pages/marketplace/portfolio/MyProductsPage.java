@@ -16,14 +16,12 @@ public class MyProductsPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
 	private By addExistingProductButton = By.id("au.com.suncorp.marketplace:id/addProductButton");
 	private By emptyStateImage = By.id("au.com.suncorp.marketplace:id/emptyStateImage");
-	private By emptyStateLabel = By.id("au.com.suncorp.marketplace:id/emptyStateMessageText");
+	private By emptyStateLabel = By.id("au.com.suncorp.marketplace:id/emptyStateMessageTitle");
+	private By emptyStateDescription = By.id("au.com.suncorp.marketplace:id/emptyStateMessageDescription");
 	private By findProductButton = By.id("au.com.suncorp.marketplace:id/browseProductCatalogueButton");
-	private By bottomSheetLabel = By.id("au.com.suncorp.marketplace:id/productSelectionQuestionText");
-	private By insurancePolicyBottomSheetButton = By.id("au.com.suncorp.marketplace:id/addInsuranceButton");
-	private By bankAccountBottomSheetButton = By.id("au.com.suncorp.marketplace:id/addBankAccountButton");
+
 	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='My products']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	//Newly added to operate on disclaimer page shown
@@ -42,12 +40,10 @@ public class MyProductsPage extends BasePage {
 	private By accountTypeLabel = By.id("au.com.suncorp.marketplace:id/accountTypeText");
 	//TODO DMPM-3713
 	private By productTypeImage = By.xpath(
-			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");//
-	private By accountDetailsLabel = By.xpath("//android.widget.TextView[@text='Account Details']");
+			"//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/bankAccountItemLayout']//android.widget.ImageView");
 	private By accountItemLayout = By.id("au.com.suncorp.marketplace:id/bankAccountItemLayout");
-	private String addExistingProductButtonID = "au.com.suncorp.marketplace:id/addProductButton";
+	private By availableBalanceLabel = By.id("au.com.suncorp.marketplace:id/availableBalanceLabel");
 	private By policyLayout = By.id("au.com.suncorp.marketplace:id/policyItemLayout");
-	
 	private By riskText = null;
 	private String riskXpathPrefix = "//android.widget.TextView[@text = \'";
 	private String riskXpathSuffix = "\']";
@@ -60,6 +56,10 @@ public class MyProductsPage extends BasePage {
 	private By policyStatus = null;
 	private By viewButton = null;
 	private String viewButtonXpathSuffix = "\']/parent::android.widget.LinearLayout/parent::android.widget.LinearLayout/following-sibling::android.widget.TextView[@text = \'VIEW DETAILS\']";
+	private By overduePaymentAmount = By.id("au.com.suncorp.marketplace:id/duePaymentAmountText");
+	private By nextPaymentAmount = By.id("au.com.suncorp.marketplace:id/nextPaymentAmountText");
+	private By nextPayementDueDate = By.id("au.com.suncorp.marketplace:id/nextPaymentDateText");
+	private By renewNowButton = By.id("au.com.suncorp.marketplace:id/renewNowButton");
 	
 	//wealth products
 	private By wealthProductAccountTypeLabel = By.id("au.com.suncorp.marketplace:id/wealthAccountTypeText");
@@ -68,7 +68,7 @@ public class MyProductsPage extends BasePage {
 	
 	//life products
 	private By lifeProductAccountTypeLabel = By.id("au.com.suncorp.marketplace:id/lifePolicyShortDescriptionText");
-	private By insuredPersonName = By.id("au.com.suncorp.marketplace:id/insuredPerson");
+	private By insuredPersonName = By.id("au.com.suncorp.marketplace:id/insuredPersonNames");
 	private By lifePolicyStatus = By.id("au.com.suncorp.marketplace:id/lifePolicyStatus");
 	
 	//policy details
@@ -92,6 +92,29 @@ public class MyProductsPage extends BasePage {
 	
 	public void tapProductDisclaimer() {
 		tapElement(closeDisclaimerBtn);
+
+	// portfolio disclaimer
+	private By portfolioScreenDisclaimerTitle = By.xpath("//android.widget.TextView[@text = 'Disclaimer title']");
+	private By acceptButton = By.id("au.com.suncorp.marketplace:id/acceptButton");
+	
+	public WebElement checkPortfolioDisclaimerScreenTitle() {
+		return find(portfolioScreenDisclaimerTitle);
+	}
+
+	public WebElement checkAcceptButton() {
+		return find(acceptButton);
+	}
+	
+	public WebElement checkRenewNowButton() {
+		return find(renewNowButton);
+	}
+	
+	public void tapRenewNowButton() {
+		tapElement(renewNowButton);
+	}
+	
+	public void tapAcceptButton() {
+		tapElement(acceptButton);
 	}
 	
 	public List<WebElement> fetchAccountItemLayoutList() {
@@ -114,10 +137,13 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public List<String> fetchWealthProductTypeTextList() {
+		find(wealthProductAccountTypeLabel,30);
 		return getTextList(wealthProductAccountTypeLabel);
+		
 	}
 	
 	public List<String> fetchLifeProductTypeTextList() {
+		find(lifeProductAccountTypeLabel,30);
 		return getTextList(lifeProductAccountTypeLabel);
 	}
 	
@@ -137,9 +163,6 @@ public class MyProductsPage extends BasePage {
 		return getTextList(wealthProductAccountNumber);
 	}
 	
-	public WebElement checkAccountDetailsTitle(){
-		return find(accountDetailsLabel);
-	}
 	public List<String> fetchAvailableBalanceTextList() {
 		find(availableBalance);
 		return getTextList(availableBalance);
@@ -150,13 +173,21 @@ public class MyProductsPage extends BasePage {
 		return getTextList(currentBalance);
 	}
 	
+	public List<String> fetchOverduePaymentAmount() {
+		return getTextList(overduePaymentAmount);
+	}
+	
+	public List<String> fetchNextPaymentAmount() {
+		return getTextList(nextPaymentAmount);
+	}
+	
+	public List<String> fetchNextPaymentDueDate() {
+		return getTextList(nextPayementDueDate);
+	}
+	
 	public List<String> fetchWealthProductCurrentBalanceTextList() {
 		find(wealthProductCurrentBalance);
 		return getTextList(wealthProductCurrentBalance);
-	}
-	
-	public String getAccountDetailsTitle() {
-		return getText(accountDetailsLabel);
 	}
 	
 	public WebElement checkProductTypeImage(){
@@ -169,6 +200,14 @@ public class MyProductsPage extends BasePage {
 	
 	public WebElement checkAvailableBalance(){
 		return find(availableBalance);
+	}
+	
+	public WebElement checkAvailableBalanceLabel(){
+		return find(availableBalanceLabel);
+	}
+	
+	public String getAvailableBalanceLabel(){
+		return getText(availableBalanceLabel);
 	}
 	
 	public WebElement checkCurrentBalance(){
@@ -215,29 +254,21 @@ public class MyProductsPage extends BasePage {
 		return getText(currentBalanceLabel);
 	}
 	
-	public String getBottomSheetTitleText() {
-		return getText(bottomSheetLabel);
-	}
+	
 	
 	public String getEmptyStateLabelText() {
 		return getText(emptyStateLabel);
+	}
+	
+	public String getEmptyStateDescriptionText() {
+		return getText(emptyStateDescription);
 	}
 	
 	public void tapBackButton(){
 		tapElement(backButton);
 	}
 	
-	public WebElement checkBottomSheetLabel(){
-		return find(bottomSheetLabel);
-	}
 	
-	public WebElement checkInsurancePolicyBottomSheetButton(){
-		return find(insurancePolicyBottomSheetButton);
-	}
-	
-	public void tapInsurancePolicyBottomSheetButton(){
-		tapElement(insurancePolicyBottomSheetButton);
-	}
 	
 	public void tapViewDetails(){
 		tapElement(viewDetailsButton);
@@ -245,14 +276,6 @@ public class MyProductsPage extends BasePage {
 	
 	public WebElement checkViewDetailsButton(){
 		return find(viewDetailsButton);
-	}
-	
-	public WebElement checkBankAccountBottomSheetButton(){
-		return find(bankAccountBottomSheetButton);
-	}
-	
-	public void tapBankAccountBottomSheetButton(){
-		tapElement(bankAccountBottomSheetButton);
 	}
 	
 	public WebElement checkMyProductsTitle(){
@@ -270,6 +293,10 @@ public class MyProductsPage extends BasePage {
 	public WebElement checkEmptyStateLabel(){
 		return find(emptyStateLabel);
 	}
+	
+	public WebElement checkEmptyStateDescription(){
+		return find(emptyStateDescription);
+	}
 
 	public WebElement checkFindProductButton(){
 		return find(findProductButton);
@@ -277,14 +304,6 @@ public class MyProductsPage extends BasePage {
 	
 	public void tapAddExistingProductButton(){
 		tapElement(addExistingProductButton);
-	}
-	
-	public WebElement checkEnablePinButton() {
-		return find(maybeLaterButton);
-	}
-	
-	public void tapMaybeLaterButton(){
-		tapElement(maybeLaterButton);
 	}
 
 	public WebElement checkRisk(String riskName) {
@@ -298,22 +317,24 @@ public class MyProductsPage extends BasePage {
 		riskText = By.xpath(riskXpath);
 		boolean policyRiskFound = false;
 		
-		if(find(riskText)== null)
+		if (find(riskText) == null) {
 			policyRiskFound = false;
-		else
-			policyRiskFound = true;
-		
-		while (find(riskText) == null && find(addExistingProductButton) == null) 
-		{
+
+			while (find(riskText) == null && find(addExistingProductButton) == null && policyRiskFound == false) {
+				swipeScreen("down");
+
+				if (find(riskText) == null)
+					policyRiskFound = false;
+				else
+					policyRiskFound = true;
+
+			}
 			swipeScreen("down");
-			
-			if(find(riskText)== null)
-				policyRiskFound = false;
-			else
-				policyRiskFound = true;
+			return policyRiskFound;
+		} else {
+			policyRiskFound = true;
+			return policyRiskFound;
 		}
-		
-		return policyRiskFound;
 	}
 	
 	public boolean checkPolicyDisplayed(By riskText)
@@ -326,10 +347,10 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public WebElement checkExpiryDateDesc(String riskName, String dateDesc) {
-		
+
 		String dateDescXpath = riskXpathPrefix + riskName + dateDescXpathSuffix1 + dateDesc + dateDescXpathSuffix2;
 		dateDescText = By.xpath(dateDescXpath); 
-		return find(dateDescText);
+		return find(dateDescText,10);
 		
 	}
 	
@@ -358,38 +379,13 @@ public class MyProductsPage extends BasePage {
 		viewButton = By.xpath(viewDetailsXpath);
 		tapElement(viewButton);
 	}
-	
-	public WebElement checkPolicyDetailsTitle(){
-		return find(policyDetailsTitle);
-	}
-	
-	public void tapAccountNumberField(){
-		tapElement(accountNumberField);
-	}
+
 	
 	public boolean checkKeyboardDisplayed() {
 		return isKeyboardPresent();
 	}
 	
-	public void enterAccountNumber(String accountNumber) {
-		typeValue(accountNumber,accountNumberField);
-	}
 	
-	public String getAccountNumberError() {
-		return getText(accountNumberError);
-	}
-	
-	public WebElement checkAccountNumberError(){
-		return find(accountNumberError);
-	}
-	
-	public void tapAddAccount() {
-		tapElement(addAccountButton);
-	}
-	
-	public void clearAccountNumber() {
-		clearValue(accountNumberField);
-	}
 	
 	public void scrollToAddExistingProductButton() {
 

@@ -60,6 +60,7 @@ import pages.marketplace.property.PropertyDetailsPage;
 import pages.marketplace.property.PropertyExplorerPage;
 import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AddProductPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
@@ -130,9 +131,9 @@ public class App extends BaseTest {
 	public ClaimIntroPage claimIntroPage =null;
 	public MakeAClaimPage makeAClaimPage =null;
 	public TermsAndConditionsPage termsAndConditionsPage = null;
+	public AddProductPage addProductPage = null;
 
 	String CONFIG_FILE=null;
-
 
 	@BeforeClass
 	public void initializeApp() {
@@ -208,6 +209,7 @@ public class App extends BaseTest {
 		categoryDetailsPage = new CategoryDetailsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		termsAndConditionsPage = new TermsAndConditionsPage(driver);
+		addProductPage = new AddProductPage(driver);
 	}
 	
 	@Parameters({ "stub" })
@@ -234,6 +236,11 @@ public class App extends BaseTest {
 		loginPage.enterLoginCredentials(login, pwd);
 		
 		loginPage.tapLoginButton();
+		
+		if(termsAndConditionsPage.checkAcceptButton() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
 		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
 		}
