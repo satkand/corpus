@@ -92,7 +92,7 @@ public interface Copy {
 	String PAYMENT_METHOD_LABEL ="Payment method";
 	String INSURED_AMOUNT_LABEL="Amount covered";
 	String COVER_TYPE_LABEL="Cover type";
-	String COVER_PERIOD_LABEL="Cover period";
+	String COVER_PERIOD_LABEL="Period of cover";
 	String OPTIONAL_COVER_LABEL="Optional";
 	String INCLUDED_COVER_LABEL="Included";
 	String DISCOUNTS_LABEL="Discounts";

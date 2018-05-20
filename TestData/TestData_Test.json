@@ -677,7 +677,7 @@
             			"instalmentDetails":
             			{
             			 "instalmentAmount":"$21.00",
-            			 "debitDayLabel":"paid on the 22nd"
+            			 "debitDayLabel":"paid on or around the 22nd"
             			},
             			"riskDetails":{
             			    "riskDescription1":"2017 Alfa Romeo Giulia",
@@ -685,11 +685,11 @@
 						"insuredAmount1":"$20,000.00",
 						"coverType1":"Comprehensive",
 						"coverPeriod1":"01 Oct 2017 - 01 Oct 2018",
-						 "riskDescription2":"2012 Nissan Patrol",
+						 "riskDescription2":"2011 Subaru Impreza",
 						"registrationNumber2":"DEF007",
 						"insuredAmount2":"$8,888.00",
 						"coverType2":"Third-Party, Fire & Theft",
-						"coverPeriod2":"12 Aug 2016 - 11 Aug 2017",
+						"coverPeriod2":"12 Aug 2016 - 12 Aug 2016",
 						"includedCoverDescription":"Lifetime new for old car replacement",
 						"optionalCoverDescription":"AAMI Roadside Assist",
 						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
@@ -738,8 +738,8 @@
             				"activeEndDate": "01 Oct 2018",
             				"cancellationPendingStartDate": "01 Oct 2017 - ",
             				"cancellationPendingEndDate": "01 Oct 2017",
-            				"futureActiveStartDate": "01 Oct 2017 - ",
-            				"futureActiveEndDate": "01 Oct 2018",
+            				"futureActiveStartDate": "01 Mar 2019 - ",
+            				"futureActiveEndDate": "01 Mar 2020",
             				"renewalStartDate": "01 Oct 2017 - ",
             				"renewalEndDate": "01 Oct 2018",
             				"renewalOverDueStartDate": "01 Oct 2017 - ",

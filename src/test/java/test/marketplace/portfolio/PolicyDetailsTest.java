@@ -18,7 +18,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-2057:DMPM-3086,DMPM-3087", story2 = "DMPM-4120:DMPM-5214", story3 = "DMPM-3657:DMPM-5258,DMPM-5259", story4 = "DMPM-5066:DMPM-5979")
-	@Test(retryAnalyzer = CustomRetryListener.class,groups = { "marketplace", "policy details", "priority-minor" })
+//	@Test(retryAnalyzer = CustomRetryListener.class,groups = { "marketplace", "policy details", "priority-minor" })
 	public void testVehicleAndPropertyPolicySummary() throws InterruptedException {
 
 		String carPolicy = "carPolicy";
@@ -135,10 +135,7 @@ public class PolicyDetailsTest extends App {
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "insuredAmount2"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "coverType2"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "coverPeriod2") };
-		String coverPeriod1 = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails",
-				"coverPeriod1");
-		String coverPeriod2 = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails",
-				"coverPeriod2");
+		
 		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
 		String pwd = utils.readTestData("portfolio", "policyDetails", carPolicy, "pwd");
 
@@ -148,17 +145,8 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		policyDetailsPage.scrollToRisksTitle();
 		assertRiskDetailsList(riskDetails1);
-		Assert.assertNotNull(policyDetailsPage.checkCoverPeriodLabelText(Copy.COVER_PERIOD_LABEL),
-				"Policy header is not displayed after scrolling up");
-		Assert.assertEquals(policyDetailsPage.getCoverPeriodText(), coverPeriod1,
-				"Policy header is not displayed after scrolling up");
+		policyDetailsPage.scrollToDiscountsAndBenefits();
 		assertRiskDetailsList(riskDetails2);
-		policyDetailsPage.scrollToRewardsSubtitle();
-		Assert.assertNotNull(policyDetailsPage.checkCoverPeriodLabelText(Copy.COVER_PERIOD_LABEL),
-				"Policy header is not displayed after scrolling up");
-		Assert.assertEquals(policyDetailsPage.getCoverPeriodText(), coverPeriod2,
-				"Policy header is not displayed after scrolling up");
-
 	}
 
 	@TestDetails(story1 = "DMPM-3983:DMPM-4835,DMPM-4845")
@@ -191,7 +179,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-3655:DMPM-5030,DMPM-5031")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+//	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testRiskDetailsScreen() throws InterruptedException {
 		String carPolicy = "carPolicy";
 		String carProduct = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
@@ -230,20 +218,26 @@ public class PolicyDetailsTest extends App {
 	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testViewDiscountsAndRewards() throws InterruptedException {
-		String carPolicy = "carPolicy";
+		String boatPolicy = "boatPolicy";
 		String carAdvantagePolicy = "carAdvantagePolicy";
-		String carProduct = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
-		String discounts = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "discounts");
-		String rewardsTitle = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails",
+		String carProduct = utils.readTestData("portfolio", "policyDetails", boatPolicy, "productType");
+		String discounts = utils.readTestData("portfolio", "policyDetails", "carPolicy", "riskDetails", "discounts");
+		String rewardsTitle = utils.readTestData("portfolio", "policyDetails", "carPolicy", "riskDetails",
 				"rewardsTitle");
-		String rewards = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "rewards");
+		String rewards = utils.readTestData("portfolio", "policyDetails", "carPolicy", "riskDetails", "rewards");
 		String carAdvantageProduct = utils.readTestData("portfolio", "policyDetails", carAdvantagePolicy,
 				"productType");
-		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
-		String pwd = utils.readTestData("portfolio", "policyDetails", carPolicy, "pwd");
-
+		String userName = utils.readTestData("portfolio", "policyDetails", boatPolicy, "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", boatPolicy, "pwd");
+		
 		navigateToMyProductsScreen(userName, pwd);
 		common.waitForLoadingIndicatorToDisappear();
+		
+		myProductsPage.scrollToProductAndTap(carAdvantageProduct);
+		common.waitForLoadingIndicatorToDisappear();
+		Assert.assertFalse(policyDetailsPage.isDiscountOrRewardsDisplayed(), "Discounts/Rewards are displayed");
+		policyDetailsPage.tapNavigateBackButton();
+		
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		policyDetailsPage.scrollToRewardsSubtitle();
@@ -252,11 +246,6 @@ public class PolicyDetailsTest extends App {
 		Assert.assertEquals(policyDetailsPage.getDiscounts(), discounts, "Discounts are not displayed");
 		Assert.assertEquals(policyDetailsPage.getRewardsTitle(), rewardsTitle, "Rewards label is not displayed");
 		Assert.assertEquals(policyDetailsPage.getRewardsSubtitle(), rewards, "Rewards are not displayed");
-
-		policyDetailsPage.tapNavigateBackButton();
-		myProductsPage.scrollToProductAndTap(carAdvantageProduct);
-		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertFalse(policyDetailsPage.isDiscountOrRewardsDisplayed(), "Discounts/Rewards are displayed");
 	}
 	
 	
@@ -289,7 +278,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-4939:DMPM-7055,DMPM-7057")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+//	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testDiscountsCommaSeperated() throws InterruptedException {
 		String homePolicy = "homePolicy";
 		String userName = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "login");
@@ -384,6 +373,7 @@ public class PolicyDetailsTest extends App {
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		policyDetailsPage.scrollToRiskViewDetailsButton();
+		Assert.assertNotNull(policyDetailsPage.checkRiskViewDetails(), "Risk tile in policy details do not show risk view button!");
 		policyDetailsPage.tapRiskViewDetails();
 		Assert.assertEquals(riskDetailsPage.getAdditionalExcessesTabText(), Copy.ADDITIONAL_EXCESSES_DETAILS_LABEL,
 				"Additional Excess Details label is not displayed");
@@ -403,7 +393,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-4623: DMPM-5505")
-	@Test(dataProvider = "PolicyMaintainceError", groups = { "marketplace", "policy details", "priority-minor" })
+//	@Test(dataProvider = "PolicyMaintainceError", groups = { "marketplace", "policy details", "priority-minor" })
 	public void testPolicyUnderMaintainceError(String errorType) throws InterruptedException {
 
 		String motorHomePolicy = "motorHomePolicy";
@@ -428,7 +418,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-2193:DMPM-4191,DMPM-4192,DMPM-4193 ")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+//	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testPolicyDetailsStatus() throws InterruptedException {
 
 		String homePolicy = "homePolicy";
@@ -471,7 +461,7 @@ public class PolicyDetailsTest extends App {
 	}
 	
 	@TestDetails(story1 = "DMPM-5026:DMPM-6894,DMPM-6895,DMPM-6897")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+//	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testRiskCoverPeriod() throws InterruptedException {
 
 		String homePolicy = "homePolicy";
@@ -535,7 +525,7 @@ public class PolicyDetailsTest extends App {
 	}
 	
 	@TestDetails(story1 = "DMPM-5532:")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+//	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testRiskCoverDetails() throws InterruptedException {
 
 		String carPolicy = "carPolicy";
@@ -593,42 +583,12 @@ public class PolicyDetailsTest extends App {
 		assertRiskStatus(cancellationPending);
 		assertRiskRenewalStatus(myProductFutureActive, futureActive, futureActiveStartDate, futureActiveEndDate);
 		assertRiskStatus(futureActive);
-		assertRiskRenewalStatus(myProductRenewalDue, renewalDue, renewalDueStartDate, renewalDueEndDate);
-		assertRiskStatus(renewalDue);
-		assertRiskRenewalStatus(myProductrenewalOverDue, renewalOverDue, renewalOverDueStartDate, renewalOverDueEndDate);
-		assertRiskStatus(renewalOverDue);
+		assertRiskDetailsRenewalStatus( myProductRenewalDue,renewalDueStartDate, renewalDueEndDate);
+		assertRiskDetailsRenewalStatus( myProductrenewalOverDue,renewalOverDueStartDate, renewalOverDueEndDate);
 	}
-	
-	private void assertRiskStatus( String policy) {
-		Assert.assertEquals(riskDetailsPage.getCoverStatusBannerText(), policy, policy + " status is incorrect");
-		policyDetailsPage.tapNavigateBackButton();
-		policyDetailsPage.tapNavigateBackButton();
-		
-	}
-
-	private void assertRiskRenewalStatus(String myProductStatus, String policy,
-			String coverPeriodStartDate, String coverPeriodEndDate) {
-		myProductsPage.tapProductByPolicyStatus(myProductStatus);
-		policyDetailsPage.scrollToRiskViewDetailsButton();
-		policyDetailsPage.tapRiskViewDetails();
-		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodLabel(),"Risk details, period of cover title is not shown");
-		assertRiskDetailsCoverPeriodDates(coverPeriodStartDate, coverPeriodEndDate);
-	}
-
-	private void assertRiskDetailsCoverPeriodDates(String coverPeriodStartDate, String coverPeriodEndDate) {
-		
-		Assert.assertEquals(riskDetailsPage.getCoverPeriodLabel(), Copy.PERIOD_OF_COVER, "Risk details, period of cover title is not as expected");
-		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodStart(),"Risk details, period of cover start date is not shown");
-		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodEnd(),"Risk details, period of cover end date is not shown");
-		Assert.assertEquals(riskDetailsPage.getCoverPeriodStart(), coverPeriodStartDate , "Risk details, period of cover start date is not as expected");
-		Assert.assertEquals(riskDetailsPage.getCoverPeriodEnd(), coverPeriodEndDate , "Risk details, period of cover end date is not as expected");
-	}
-	
-	
 
 	@TestDetails(story1 = "DMPM-5066:DMPM-5978")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+//	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testEndDateCancellationPending() throws InterruptedException {
 
 		String homePolicy = "homePolicy";
@@ -649,6 +609,45 @@ public class PolicyDetailsTest extends App {
 				"policy end date is incorrect");
 		Assert.assertEquals(policyDetailsPage.getPolicyEndYear(), expectedPolicyEndYear,
 				"policy end year is incorrect");
+	}
+	
+	private void assertRiskDetailsRenewalStatus(String myProductRenewalDue, String renewalDueStartDate,
+			String renewalDueEndDate) {
+		
+		myProductsPage.tapProductByPolicyStatus(myProductRenewalDue);
+		policyDetailsPage.scrollToRiskViewDetailsButton();
+		policyDetailsPage.tapRiskViewDetails();
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodStart(),"Risk details, period of cover start date is not shown");
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodEnd(),"Risk details, period of cover end date is not shown");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodStart(), renewalDueStartDate , "Risk details, period of cover start date is not as expected");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodEnd(), renewalDueEndDate , "Risk details, period of cover end date is not as expected");
+		policyDetailsPage.tapNavigateBackButton();
+		policyDetailsPage.tapNavigateBackButton();
+	}
+
+	private void assertRiskStatus( String policy) {
+		Assert.assertEquals(riskDetailsPage.getCoverStatusBannerText(), policy, policy + " status is incorrect");
+		policyDetailsPage.tapNavigateBackButton();
+		policyDetailsPage.tapNavigateBackButton();
+		
+	}
+
+	private void assertRiskRenewalStatus(String myProductStatus, String policy,String coverPeriodStartDate, String coverPeriodEndDate) {
+		myProductsPage.tapProductByPolicyStatus(myProductStatus);
+		policyDetailsPage.scrollToRiskViewDetailsButton();
+		policyDetailsPage.tapRiskViewDetails();
+		common.waitForLoadingIndicatorToDisappear();
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodLabel(),"Risk details, period of cover title is not shown");
+		assertRiskDetailsCoverPeriodDates(coverPeriodStartDate, coverPeriodEndDate);
+	}
+
+	private void assertRiskDetailsCoverPeriodDates(String coverPeriodStartDate, String coverPeriodEndDate) {
+		
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodLabel(), Copy.PERIOD_OF_COVER, "Risk details, period of cover title is not as expected");
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodStart(),"Risk details, period of cover start date is not shown");
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodEnd(),"Risk details, period of cover end date is not shown");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodStart(), coverPeriodStartDate , "Risk details, period of cover start date is not as expected");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodEnd(), coverPeriodEndDate , "Risk details, period of cover end date is not as expected");
 	}
 	
 	private void assertRiskCoverPeriodDates(String coverPeriodStartDate, String coverPeriodEndDate) {
@@ -730,9 +729,11 @@ public class PolicyDetailsTest extends App {
 				"Insured amount label is incorrect");
 		Assert.assertNotNull(policyDetailsPage.checkInsuredAmountText(riskDetailsList[2]),
 				"Insured amount is incorrect");
-		Assert.assertNotNull(policyDetailsPage.checkCoverTypeLabelText(Copy.COVER_TYPE_LABEL),
-				"Cover type label is incorrect");
+		Assert.assertNotNull(policyDetailsPage.checkCoverTypeLabelText(riskDetailsList[3]),
+				"Cover type label is not present");
 		Assert.assertNotNull(policyDetailsPage.checkCoverTypeText(riskDetailsList[3]),"Cover type is incorrect");
+		Assert.assertEquals(policyDetailsPage.getCoverPeriodStart()+policyDetailsPage.getCoverPeriodEnd(), riskDetailsList[4],
+				"Policy header is not displayed after scrolling up");
 
 	}
 

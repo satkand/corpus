@@ -24,6 +24,8 @@ public class PolicyDetailsPage extends BasePage {
 	private By policyEndYear = By.id("au.com.suncorp.marketplace:id/policyEndYearText");
 	private By policyBrandImage = By.id("au.com.suncorp.marketplace:id/policyBrandImage");
 	private By navigateBackButton = MobileBy.AccessibilityId("Navigate up");
+	//if above navgiate button don't have accessibility ID use this
+	private By navigateUpBtn = By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']");
 	private By debitDayLabel = By.id("au.com.suncorp.marketplace:id/debitDayLabel");
 	private By instalmentFrequency = By.id("au.com.suncorp.marketplace:id/instalmentFrequency");
 	private By instalmentAmount = By.id("au.com.suncorp.marketplace:id/instalmentAmount");
@@ -36,7 +38,8 @@ public class PolicyDetailsPage extends BasePage {
 			"new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/coverTypeLabel\").fromParent(new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/coverType\"))");
 	private By coverPeriod = MobileBy.AndroidUIAutomator(
 			"new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/coverPeriodLabel\").fromParent(new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/coverPeriod\"))");
-	private By risksTitle = By.id("au.com.suncorp.marketplace:id/risksTitle");
+	//private By risksTitle = By.id("au.com.suncorp.marketplace:id/risksTitle");
+	private By risksTitle = By.id("au.com.suncorp.marketplace:id/riskDescription");
 	private By rewardsSubtitle = By.id("au.com.suncorp.marketplace:id/rewardsSubtitle");
 	private By optionalCoverDescription = MobileBy.AndroidUIAutomator(
 			"new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverType\").fromParent(new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverDescription\")).instance(0)");
@@ -64,6 +67,9 @@ public class PolicyDetailsPage extends BasePage {
 	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
 	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
 	
+	public WebElement checkRiskViewDetails() {
+		return find(riskViewDetails);
+	}
 	public WebElement checkCoverPeriodLabel() {
 		return find(coverPeriodLabel);
 	}
@@ -150,10 +156,15 @@ public class PolicyDetailsPage extends BasePage {
 	}
 
 	public void tapNavigateBackButton() {
-
-		tapElement(navigateBackButton);
+		if (find(navigateBackButton,30)==null) {
+			tapElement(navigateUpBtn);
+		}
+		else {
+			tapElement(navigateBackButton);
+		}
+		
 	}
-
+	
 	public String getInstalmentFreqText() {
 
 		return getText(instalmentFrequency);
@@ -240,7 +251,7 @@ public class PolicyDetailsPage extends BasePage {
 
 	public void scrollToRewardsSubtitle() {
 
-		scrollToElement(rewardsSubtitleId, "id",5);
+		scrollToElement(rewardsSubtitleId, "id",25);
 	}
 	
 	public void scrollToDiscountsTitle() {
