@@ -143,7 +143,17 @@ public interface Copy {
 	String EMPTY_DATE_ERROR_MSG = "Field is required";
 	String FUTURE_DATE_ERROR_MSG = "Invalid date input.\nPlease ensure you've entered the correct date";
 
+
+	// PORTFOLIO
+	String AVAILABLE_BALANCE_LABEL = "Available balance";	
+	String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
+	String ADD_SUPER_ACC_SPECIAL_CHARS_ERROR = "Can only contain numerical digits  Must be between 7 – 9 characters";
+	String ADD_SUPER_ACC_MANDATORY_ERROR = "Field is required";
+	String ADD_SUPER_ACC_LENGTH_ERROR = "Must be between 7 – 9 characters";
+	
+
 	//MEMBER LOGIN PAGE
+
 	String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
 
 	//RESET PASSWORD
@@ -156,7 +166,8 @@ public interface Copy {
 	public String RESET_PASSWORD_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
 	public String RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT = "You will shortly receive an email with reset instructions.";
 	public String RESET_PASSWORD_SUCCESS_SNACKBAR_BTN = "OPEN MAIL";
-	
+
 	//LOGIN PAGE
 	public String LOGIN_INVALID_CREDENTIALS_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
+
 }
