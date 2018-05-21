@@ -157,10 +157,10 @@ public class PolicyDetailsPage extends BasePage {
 
 	public void tapNavigateBackButton() {
 		if (find(navigateBackButton,30)==null) {
-			tapElement(navigateUpBtn);
+			tapElement(navigateBackButton);
 		}
 		else {
-			tapElement(navigateBackButton);
+			tapElement(navigateUpBtn);
 		}
 		
 	}

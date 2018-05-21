@@ -92,6 +92,7 @@ public class MyProductsPage extends BasePage {
 	
 	public void tapProductDisclaimer() {
 		tapElement(closeDisclaimerBtn);
+	}
 
 	// portfolio disclaimer
 	private By portfolioScreenDisclaimerTitle = By.xpath("//android.widget.TextView[@text = 'Disclaimer title']");

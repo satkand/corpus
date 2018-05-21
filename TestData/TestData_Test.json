@@ -726,7 +726,7 @@
              				 "startDate": "01 October",
              				 "startYear":"2017",
              				 "endDate": "10 November",
-             				 "endYear":"2018, 11:59PM"
+             				 "endYear":"2018, 11:59 PM"
             			},
             			"instalmentDetails":
             			{
@@ -817,7 +817,7 @@
 				    "productType":"Boat insurance",
             			"instalmentDetails":
             			{
-            			 "instalmentAmount":"$112.40"
+            			 "instalmentAmount":"$58,000.34"
             			},
             			"riskDetails":{
             			
@@ -846,7 +846,7 @@
             			},
             			"policyEndorsementError":
             			{
-            			"login": "policyendorserror@sun.com",
+            			"login": "policyendorserror@sun.com", 
 				    "pwd": "Password1"
             			},
             			"riskDetails":{
@@ -861,7 +861,7 @@
 						"brand":"SUNCORP",
 						"productType":"Home and contents insurance",
 						"policyNumber":"HPS123456789",
-						"policyDescription":"Home and contents insurance",
+						"policyDescription":"Home insurance",
 							"instalmentDetails":
             			{
             			 "instalmentAmount":"$88.88"
@@ -871,9 +871,9 @@
              				 "startDate": "15 October",
              				 "startYear":"2017",
              				 "endDate": "25 August",
-             				 "endYear":"2018, 11:59PM",
+             				 "endYear":"2018, 11:59 PM",
              				 "endDateCancellationPending": "10 November",
-             				 "endYearCancellationPending":"2017, 11:59PM"
+             				 "endYearCancellationPending":"2018, 11:59 PM"
             			},
             				"policyStatus": 
             			{
