@@ -37,6 +37,18 @@ public class FolderViewPage extends BasePage {
 		return find(folderTitle);
 	}
 	
+	public WebElement checkFolderTitleXPath(String str) {
+		String t = "//android.widget.TextView[@text='"+str+"']";
+		By titleName = By.xpath(t);
+		return find(titleName);
+	}
+	
+	public String getTitleXPath(String str) {
+		String t = "//android.widget.TextView[@text='"+str+"']";
+		By titleName = By.xpath(t);
+		return getText(titleName);
+	}
+	
 	public WebElement checkMoveDocumentToFolderButton() {
 		return find(moveDocumentToFolderButton);
 	}

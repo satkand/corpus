@@ -55,7 +55,16 @@ public class HomeJourneyPage extends BasePage {
 	}
 	
 	public WebElement checkHomeJourneyPageTitle() {
-		return find(homeJourneyPageTitle);
+		String str = homeJourneyPageTitle.toString();
+		if(find(homeJourneyPageTitle)!=null) {
+			return find(homeJourneyPageTitle);
+		}else {
+			str = str.substring(str.length()-14, str.length()-2).toUpperCase();
+			String t = "//android.widget.TextView[@text='"+str+"']";
+			By titleName = By.xpath(t);
+			return find(titleName);
+		}
+		
 	}
 	
 	public WebElement checkBackButton() {

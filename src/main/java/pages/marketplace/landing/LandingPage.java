@@ -21,6 +21,7 @@ public class LandingPage extends BasePage {
 	private String naviScrollableId = "au.com.suncorp.marketplace:id/navigationTabLayout";
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='ONE SUNCORP']");
 	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
+	private By homeTabSmallSamsung = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='Property']");
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLES']");
 	private By financeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='FINANCE']");
 	private By healthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='HEALTH']");
@@ -59,11 +60,19 @@ public class LandingPage extends BasePage {
 	}
 
 	public WebElement checkHomeTab() {
-		return find(homeTab);
+		if(find(homeTabSmallSamsung)!=null) {
+			return find(homeTabSmallSamsung);
+		}else {
+			return find(homeTab);
+		}
 	}
 
 	public void tapHomeTab() {
-		tapElement(homeTab);
+		if(find(homeTabSmallSamsung)!=null) {
+			tapElement(homeTabSmallSamsung);
+		}else {
+			tapElement(homeTab);
+		}
 	}
 
 	public void tapPropertyTab() {
@@ -75,7 +84,11 @@ public class LandingPage extends BasePage {
 		return Boolean.parseBoolean(text);
 	}
 	public boolean isHomeTabSelected() {
-		return isSelected(homeTab);
+		if(find(homeTabSmallSamsung)!=null) {
+			return isSelected(homeTabSmallSamsung);
+		}else {
+			return isSelected(homeTab);
+		}
 	}
 
 	public WebElement checkVehiclesTab() {

@@ -200,6 +200,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public WebElement checkPropertyDetailsButton() {
+		scrollToElement(propertyDetailsButton);
 		return find(propertyDetailsButton);
 	}
 	
@@ -208,6 +209,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public WebElement checkPropertyDocumentsButton() {
+		scrollToElement(propertyDocumentsButton);
 		return find(propertyDocumentsButton);
 	}
 	
@@ -409,7 +411,7 @@ public class HomePropertyPage extends BasePage {
 	}
 
 	public void scrollToEmptyStatePropertyAsset() {
-		scrollToElement(emptyStatePropertyAsset);
+		scrollToElement(emptyStatePropertyAsset,"true");
 	}
 	
 	public void swipePropertyCarouselLeft() {

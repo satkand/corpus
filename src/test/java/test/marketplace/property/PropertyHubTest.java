@@ -67,8 +67,25 @@ public class PropertyHubTest  extends App{
 		Assert.assertNotNull(homePropertyPage.checkHomeProfessionalServicesButton(), "Home Property Page - Home professional services button is not present");
 		
 		homePropertyPage.tapHomeProfessionalServicesButton();
-		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "Web View Page - Web View URL bar is not present");
-		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Home professional services URL is not matching");
+		if(webviewPage.checkWebviewBrowserUrl()!=null) {
+			Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "Web View Page - Web View URL bar is not present");
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Home professional services URL is not matching");
+		}else if(webviewPage.checkUrlBar()!=null) {
+			Assert.assertNotNull(webviewPage.checkUrlBar(), "Web View Page - Web View URL bar is not present");
+			
+			if(!(whatsNearbyPage.getDeviceModel().equalsIgnoreCase("SM-G900F"))) {
+				webviewPage.tapWebViewToolbarOprions();
+				Assert.assertNotNull(webviewPage.checkWebViewOpenInChromeButton(), "Home Journey Page - Home Journey page title is not shown");
+				webviewPage.tapWebViewOpenInChromeButton();
+				Assert.assertEquals(webviewPage.getTextUrlBar(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Home professional services URL is not matching");
+			}else {
+				Assert.assertEquals(webviewPage.getTextUrlBar().replaceAll("[^a-zA-Z0-9]", "").toString(), Copy.LOCATION_BAR_TEXT_S5,"Home professional services URL is not matching");
+			}
+			
+		}else{
+			Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "Web View Page - Web View URL bar is not present");
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Home professional services URL is not matching");
+		}
 			
 	}
 	
@@ -196,6 +213,7 @@ public class PropertyHubTest  extends App{
 	
 	private void navigateToPropertyHub() {
 		navigateToPropertyDimension("NotAGuest");
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Property address line text is not present");
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 	}
@@ -278,8 +296,12 @@ public class PropertyHubTest  extends App{
 		Assert.assertTrue(isListSorted, "Whats nearby Page - POI list is not sorted from distance in "+tabName+" tab ");
 		Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"HIDE LIST", "Whats nearby Page - ITem count is not matching");
 		
-		whatsNearbyPage.tapPOIexpandableListButton();
-		Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"SHOW LIST", "Whats nearby Page - ITem count is not matching");	
+		
+		if(!(whatsNearbyPage.getDeviceVersion()<6.0)) {
+			whatsNearbyPage.tapPOIexpandableListButton();
+			Assert.assertEquals(whatsNearbyPage.getShowListLabelButton(),"SHOW LIST", "Whats nearby Page - ITem count is not matching");	
+		}
+		
 	}
 	
 }

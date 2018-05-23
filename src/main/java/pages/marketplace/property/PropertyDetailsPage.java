@@ -1,6 +1,7 @@
 package pages.marketplace.property;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -620,7 +621,6 @@ public class PropertyDetailsPage   extends BasePage{
 		tapElement(miniMap);
 	}
 	
-	
 	public WebElement checkMiniMapWhatsNewButton() {
 		return find(miniMapWhatsNearButton);
 	}
@@ -642,12 +642,11 @@ public class PropertyDetailsPage   extends BasePage{
 		swipeHorizontallyToRight();
 	}
 	
-	public void doubleTapOnPropertyImage() {
+	public void doubleTapOnPropertyImage() throws InterruptedException {
+		TimeUnit.SECONDS.sleep(3);
 		tapElement(fullScreenPropertyImage);
 		tapElement(fullScreenPropertyImage);
+		
 	}
-	
-	
-	
 	
 }

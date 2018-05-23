@@ -22,7 +22,7 @@ public class TermsAndConditionsPage extends BasePage {
 	}
 	
 	public WebElement checkAcceptButton() {
-		return find(acceptButton);
+		return find(acceptButton,20);
 	}
 	
 	public void tapAcceptButton() {

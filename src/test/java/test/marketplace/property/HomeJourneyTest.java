@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.Copy;
 import pages.App;
 
 public class HomeJourneyTest extends App {
@@ -69,34 +70,46 @@ public class HomeJourneyTest extends App {
 
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapPlanningReadMoreButton();
-		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "planningReadMoreButtonLink"), "Planning card page - browser url is not valid");
-		webviewPage.tapWebviewChromeCloseButton();
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
-
-		// swipe to the next card
-		common.swipeLeft();
-		// Tapping on read more button and verifying that the correct page(url) is opened
-		homeJourneyPage.tapHouseHuntingReadMoreButton();
-		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "houseHuntingReadMoreButtonLink"), "House Hunting card page - browser url is not valid");
-		webviewPage.tapWebviewChromeCloseButton();
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
-
-		// swipe to the next card
-		common.swipeLeft();
-		// Tapping on read more button and verifying that the correct page(url) is opened
-		homeJourneyPage.tapGettingReadyReadMoreButton();
-		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "gettingReadyReadMoreButtonLink"), "Getting Ready card page - browser url is not valid");
-		webviewPage.tapWebviewChromeCloseButton();
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
+		
+		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "planningReadMoreButtonLink"),"Planning");
+		
 		
 		// swipe to the next card
 		common.swipeLeft();
 		// Tapping on read more button and verifying that the correct page(url) is opened
+		homeJourneyPage.tapHouseHuntingReadMoreButton();
+		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "houseHuntingReadMoreButtonLink"),"House Hunting");
+		
+		// swipe to the next card
+		common.swipeLeft();
+		// Tapping on read more button and verifying that the correct page(url) is opened
+		homeJourneyPage.tapGettingReadyReadMoreButton();
+		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "gettingReadyReadMoreButtonLink"),"Getting Ready");
+
+		// swipe to the next card
+		common.swipeLeft();
+		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapMovingInReadMoreButton();
-		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "movingInReadMoreButtonLink"), "Moving In card page - browser url is not valid");
-		webviewPage.tapWebviewChromeCloseButton();
+		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "movingInReadMoreButtonLink"),"Moving In");
+	}
+	
+	private void verifyBrowserURL(String expectedStr, String card) {
+		if(webviewPage.checkWebviewBrowserUrl()!=null) {
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), expectedStr, card+" page - browser url is not valid");
+
+		}
+		if(webviewPage.checkUrlBar()!=null) {
+			if(!(whatsNearbyPage.getDeviceModel().equalsIgnoreCase("SM-G900F"))) {
+				Assert.assertEquals(webviewPage.getTextUrlBar(), expectedStr, card+" page - browser url is not valid");
+			}else {
+				Assert.assertEquals(webviewPage.getTextUrlBar().replaceAll("[^a-zA-Z0-9]", "").toString(), Copy.LOCATION_BAR_TEXT_S5,"Home professional services URL is not matching");
+			}
+					
+		}
+		webviewPage.tapDeviceBackButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 	}
+	
 	
 	@Test (groups = {"DMPM-797", "DMPM-855", "DMPM-856","DMPM-6057","DMPM-6762", "marketplace", "Home buying journey", "priority-minor"})
 	
