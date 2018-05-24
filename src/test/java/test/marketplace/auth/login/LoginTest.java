@@ -157,7 +157,8 @@ public class LoginTest extends App {
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
 		Assert.assertNotNull(loginPage.checkLoadingIndicator(), "Login screen - Login indicator not displayed");
-		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null){
+		
+		if(termsAndConditionsPage.checkAcceptButton() != null){
 			termsAndConditionsPage.tapAcceptButton();
 		}
 		Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(), "PIN Options Page - Title message not displayed");
@@ -233,7 +234,7 @@ public class LoginTest extends App {
 		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
 		getStartedPage.tapSuncorpInsuranceButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+		if(termsAndConditionsPage.checkAcceptButton() != null){
 			termsAndConditionsPage.tapAcceptButton();
 		}
 		
@@ -310,13 +311,13 @@ public class LoginTest extends App {
 
 	// DMPM-3729 Scenario 8
 	// DMPM-3827 Scenario 1, 2
-	@Test (groups = {"DMPM-3729", "DMPM-4785", "DMPM-3827", "DMPM-6109", "DMPM-6110", "marketplace", "login", "priority-high"})
+	@Test (groups = {"DMPM-3729", "DMPM-4785", "DMPM-3827", "DMPM-6109", "DMPM-6110", "marketplace", "login", "priority-high"}, priority = 10)
 	public void testSuccessfulSendEmailLink() {
 		navigateToLoginScreen();
 
 		loginPage.tapForgotPassword();
 		Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
-		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
+		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login2"));
 		loginPage.tapResetLinkButton();
 
 		common.waitForSuccessLoadingSpinnerToDisappear();
@@ -338,7 +339,7 @@ public class LoginTest extends App {
 		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp Accounts option is not displayed");
 		getStartedPage.tapSuncorpInsuranceButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+		if(termsAndConditionsPage.checkAcceptButton() != null){
 			termsAndConditionsPage.tapAcceptButton();
 		}
 
@@ -356,13 +357,13 @@ public class LoginTest extends App {
 	}
 
 	// DMPM-3827 Scenario 3
-	@Test (groups = {"DMPM-3729", "DMPM-6111", "marketplace", "login", "priority-high"})
+	@Test (groups = {"DMPM-3729", "DMPM-6111", "marketplace", "login", "priority-high"}, priority = 9)
 	public void testTapOpenMailButton(){
 		navigateToLoginScreen();
 
 		loginPage.tapForgotPassword();
 		Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
-		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
+		loginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login2"));
 		loginPage.tapResetLinkButton();
 		
 		common.waitForSuccessLoadingSpinnerToDisappear();
@@ -383,12 +384,16 @@ public class LoginTest extends App {
 	}
 	
 	//DMPM-69 Scenario 1, 2, 3, 4
-	@Test (groups = {"DMPM-69", "DMPM-3510", "DMPM-3511", "DMPM-3512", "DMPM-3513", "marketplace", "login", "priority-high"})
+	@Test (groups = {"DMPM-69", "DMPM-3510", "DMPM-3511", "DMPM-3512", "DMPM-3513", "marketplace", "login", "priority-high"}, priority = 8)
 	public void testSoftLogoutBehaviour(){
 		navigateToLoginScreen();
 
-		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login1"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
+		
+		if(termsAndConditionsPage.checkAcceptButton() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
 		
 		//Soft log out by tapping on the log out button
 		Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "Login Page - User is not navigated to the Enable PIN page");

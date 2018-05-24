@@ -45,7 +45,11 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public WebElement checkPinPromptUserWelcome(){
-		return find(pinPromptUserWelcome, 30);
+		if (find(pinPromptImage) != null) {
+			return find(pinPromptUserWelcome, 30);
+		}
+		else 
+			return find(promptUserWelcome, 30);
 	}
 	
 	public WebElement checkPinPromptDescription(){
@@ -57,7 +61,11 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public void tapMaybeLater(){
-		tapElement(maybeLaterButton);
+		if (find(pinPromptImage) != null) {
+			tapElement(maybeLaterButton);
+		}
+		else 
+			tapElement(maybeLaterPromptButton);
 	}
 	
 	//Methods for Fingerprint enabled cases
@@ -76,9 +84,5 @@ public class PINOptionsPage extends BasePage{
 	
 	public WebElement checkMaybeLaterPromptButton(){
 		return find(maybeLaterPromptButton);
-	}
-	
-	public void tapPromptMaybeLater(){
-		tapElement(maybeLaterPromptButton);
 	}
 }

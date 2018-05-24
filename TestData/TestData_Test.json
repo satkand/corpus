@@ -69,9 +69,12 @@
 			"validPINEntry2" : "2580"
 		}
 	},
+	"_comment": "The login and login1 values have to be changed before run",
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "test5@test.com",
+			"login": "test@account.com",
+			"login1": "test1@account.com",
+			"login2": "sb@sb.sb",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••"
 		},
