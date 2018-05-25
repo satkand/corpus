@@ -49,7 +49,7 @@ public class PolicyDetailsTest extends App {
 		assertPolicySummaryValues(homePolicy);
 	}
 
-	@TestDetails(story1 = "DMPM-3647:DMPM-4600,DMPM-4603,DMPM-4604", story2 = "DMPM-3659:DMPM-5131", story3 = "DMPM-3647:DMPM-4599")
+	@TestDetails(story1 = "DMPM-3647:DMPM-4600,DMPM-4603,DMPM-4604;DMPM-4599", story2 = "DMPM-3659:DMPM-5131")
 	@Test(retryAnalyzer = CustomRetryListener.class,groups = { "marketplace", "policy details", "priority-minor" })
 	public void testInstalmentAndPayments() throws InterruptedException {
 
@@ -232,11 +232,13 @@ public class PolicyDetailsTest extends App {
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		//DMPM-6151:DMPM-7074
-		Assert.assertNotNull(policyDetailsPage.scrollToRiskViewDetailsButton(), "View details button is not displayed");
+		policyDetailsPage.scrollToRiskViewDetailsButton();
+		Assert.assertNotNull(policyDetailsPage.checkRiskViewDetails(), "View details button is not displayed");
 		CoverTypeTitle = policyDetailsPage.getCoverTypeTextUsingId();
 		//DMPM-5751:DMPM-7544
 		assertRiskTileElements(riskDetails);
 		//DMPM-6151:DMPM-7074 Continued
+		policyDetailsPage.scrollToRiskViewDetailsButton();
 		policyDetailsPage.tapRiskViewDetails();
 		assertRiskDetails(riskDetails,CoverTypeTitle);
 		riskDetailsPage.tapNavigateBackButton();
@@ -704,7 +706,7 @@ public class PolicyDetailsTest extends App {
 		loginToApp(username, pasword);
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapProductsMenuItem();
-		if(myProductsPage.checkProductDisclaimer()!=null && myProductsPage.checkProductDisclaimerTitle()!=null){
+		if(myProductsPage.checkProductDisclaimerTitle()!=null){
 			myProductsPage.tapProductDisclaimer();
 		}
 		myProductsPage.checkMyProductsTitle();

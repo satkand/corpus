@@ -45,7 +45,10 @@ public class RiskDetailsPage extends BasePage {
 	private By riskCoverPeriodTitle = By.id("au.com.suncorp.marketplace:id/riskCoverPeriodTitle");
 	private By riskCoverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
 	private By riskCoverPeriodEnd  = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
-	
+	private By coverStatusBannerText = By.id("au.com.suncorp.marketplace:id/coverStatusBannerText");
+	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
+	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
+	//private By riskCoverType = By.id("au.com.suncorp.marketplace:id/riskCoverType");
 	
 	//risk cover period related ---Start
 	public WebElement checkRiskCoverPeriodTitle() {
@@ -77,11 +80,8 @@ public class RiskDetailsPage extends BasePage {
 	}
 	public String getRiskCoverTypeText() {
 		return getText(riskCoverType);
-	private By coverStatusBannerText = By.id("au.com.suncorp.marketplace:id/coverStatusBannerText");
-	private By riskCoverPeriodTitle = By.id("au.com.suncorp.marketplace:id/riskCoverPeriodTitle");
-	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
-	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
-	private By riskCoverType =By.id("au.com.suncorp.marketplace:id/riskCoverType");
+	}
+	
 	public WebElement checkCoverStatusBannerText() {
 		return find(coverStatusBannerText);
 	}

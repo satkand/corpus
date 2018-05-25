@@ -110,6 +110,11 @@ public class PolicyDetailsPage extends BasePage {
 	public WebElement checkRiskViewDetails() {
 		return find(riskViewDetails);
 	}
+	
+	public WebElement checkRiskViewOnlyDetails() {
+		return find(riskViewOnlyDetails);
+	}
+	
 	public WebElement checkCoverPeriodLabel() {
 		return find(coverPeriodLabel);
 	}

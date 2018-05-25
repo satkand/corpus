@@ -26,7 +26,7 @@ public class MyProductsPage extends BasePage {
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	//Newly added to operate on disclaimer page shown
 	private By productDisclaimer = By.id("au.com.suncorp.marketplace:id/productDisclaimerText");
-	private By disclaimerTitle = By.xpath("//android.widget.TextView[@text='Disclaimer title']");
+	private By disclaimerTitle = By.xpath("//android.widget.TextView[@text='Disclaimer']");
 	private By closeDisclaimerBtn = By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']");
 	//TODO DMPM-3713
 	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");
@@ -399,6 +399,8 @@ public class MyProductsPage extends BasePage {
 		 tapElement(scrollToElement(productType, "text"));
 		
 	}
+	
+	
 	
 	public void tapProductByInstance(int instance) {
 

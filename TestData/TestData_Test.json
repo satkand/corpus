@@ -718,7 +718,7 @@
 		                "pwd": "Password1",
 		         		"status":"ACTIVE",
 						"brand":"AAMI",
-						"productType":"Car insurance",
+						"productType":"Car Insurance",
 						"policyNumber":"MPA123456313",
 						"policyDescription":"Car insurance",
           				"periodOfCover": 
@@ -804,7 +804,7 @@
 				{
 				    "login": "policydetails@sun.com",
 		            "pwd": "Password1",
-				    "productType":"Car advantage insurance",
+				    "productType":"Car Advantage Insurance",
             			"paymentDetails":
             			{
             			"bankAccountDetails":"Savings Account ending in 9999"
@@ -814,7 +814,7 @@
 				{   
 				     "login": "policydetails@sun.com",
 		             "pwd": "Password1",
-				    "productType":"Boat insurance",
+				    "productType":"Boat Insurance",
             			"instalmentDetails":
             			{
             			 "instalmentAmount":"$58,000.34"
@@ -834,7 +834,7 @@
 				{   
 				    "login": "policydetails@sun.com",
 				    "pwd": "Password1",
-				    "productType":"Motorhome insurance",
+				    "productType":"Motorhome Insurance",
             			"instalmentDetails":
             			{
             			 "instalmentAmount":"$112.14"
@@ -859,7 +859,7 @@
 		                "pwd": "Password1",
 						"status":"ACTIVE",
 						"brand":"SUNCORP",
-						"productType":"Home and contents insurance",
+						"productType":"Home And Contents Insurance",
 						"policyNumber":"HPS123457790",
 						"policyDescription":"Home insurance",
 							"instalmentDetails":
