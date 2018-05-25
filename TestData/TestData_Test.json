@@ -719,7 +719,7 @@
 		         		"status":"ACTIVE",
 						"brand":"AAMI",
 						"productType":"Car insurance",
-						"policyNumber":"MPA123456789",
+						"policyNumber":"MPA123456313",
 						"policyDescription":"Car insurance",
           				"periodOfCover": 
             			{
@@ -770,7 +770,7 @@
             			},
             			"vehiclePolicyStatus": 
             			{
-            			        "login": "vehiclepolicystatus@sun.com",
+            			        "login": "policystatusvehicles@sun.com",
 		                     "pwd": "Password1",
              				 "active": "Active",
              				 "cancellationPending":"Cancellation pending",
@@ -860,7 +860,7 @@
 						"status":"ACTIVE",
 						"brand":"SUNCORP",
 						"productType":"Home and contents insurance",
-						"policyNumber":"HPS123456789",
+						"policyNumber":"HPS123457790",
 						"policyDescription":"Home insurance",
 							"instalmentDetails":
             			{
@@ -873,13 +873,13 @@
              				 "endDate": "25 August",
              				 "endYear":"2018, 11:59 PM",
              				 "endDateCancellationPending": "10 November",
-             				 "endYearCancellationPending":"2018, 11:59 PM"
+             				 "endYearCancellationPending":"2017, 11:59 PM"
             			},
             				"policyStatus": 
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "Active",
+             				 "active": "ACTIVE",
              				 "cancellationPending":"Cancellation pending",
              				 "futureActive": "Policy commencing",
              				 "renewalDue":"Renewal due",
