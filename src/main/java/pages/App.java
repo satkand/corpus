@@ -32,6 +32,7 @@ import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.FAPISettingsPage;
+import pages.marketplace.common.ForceUpdatePage;
 import pages.marketplace.common.GalleryPage;
 import pages.marketplace.common.WebviewPage;
 import pages.marketplace.digitalVault.ChooseFolderPage;
@@ -59,13 +60,15 @@ import pages.marketplace.property.PropertyDetailsPage;
 import pages.marketplace.property.PropertyExplorerPage;
 import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AddProductPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
-import pages.marketplace.property.PropertyFullScreenMap;
+import pages.marketplace.property.WhatsNearbyPage;
 import pages.marketplace.property.PropertyHubPage;
+import pages.marketplace.property.SuburbDetailsPage;
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -118,14 +121,17 @@ public class App extends BaseTest {
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+	public WhatsNearbyPage whatsNearbyPage = null;
+	public ForceUpdatePage forceUpdatePage = null;
+	public SuburbDetailsPage suburbDetailsPage = null;
 	public PolicyDetailsPage policyDetailsPage = null;
 	public RiskDetailsPage riskDetailsPage = null;
 	public RenewPolicyPage renewPolicyPage = null;
 	public ClaimDetailsPage claimDetailsPage = null;
 	public ClaimIntroPage claimIntroPage =null;
 	public MakeAClaimPage makeAClaimPage =null;
-	public PropertyFullScreenMap propertyFullScreenMap = null;
 	public TermsAndConditionsPage termsAndConditionsPage = null;
+	public AddProductPage addProductPage = null;
 
 	String CONFIG_FILE=null;
 
@@ -188,7 +194,11 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
-		propertyFullScreenMap = new PropertyFullScreenMap(driver);
+		whatsNearbyPage = new WhatsNearbyPage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
+		articlesPage = new ArticlesPage(driver);
+		forceUpdatePage = new ForceUpdatePage(driver);
+		suburbDetailsPage = new SuburbDetailsPage(driver);
 		articlesPage = new ArticlesPage(driver);
 		policyDetailsPage = new PolicyDetailsPage(driver);
 		riskDetailsPage = new RiskDetailsPage(driver);
@@ -199,6 +209,7 @@ public class App extends BaseTest {
 		categoryDetailsPage = new CategoryDetailsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		termsAndConditionsPage = new TermsAndConditionsPage(driver);
+		addProductPage = new AddProductPage(driver);
 	}
 	
 	@Parameters({ "stub" })
@@ -225,6 +236,11 @@ public class App extends BaseTest {
 		loginPage.enterLoginCredentials(login, pwd);
 		
 		loginPage.tapLoginButton();
+		
+		if(termsAndConditionsPage.checkAcceptButton() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
 		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
 		}

@@ -12,7 +12,7 @@ public class AddPolicyPage extends BasePage {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	private By addPolicyPageTitle = By.xpath("//android.widget.TextView[@text='Add policy']");
+	private By addPolicyPageTitle = By.xpath("//android.widget.TextView[@text='Add insurance policy']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	private By policyNumberTextBox = By.id("au.com.suncorp.marketplace:id/policyNumberField");
 	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addPolicyButton");

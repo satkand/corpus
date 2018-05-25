@@ -23,7 +23,7 @@ public class PolicyDetailsTest extends App {
 
 		String carPolicy = "carPolicy";
 		String homePolicy = "homePolicy";
-
+		
 		String car = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
 		String home = utils.readTestData("portfolio", "policyDetails", homePolicy, "productType");
 		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
@@ -32,7 +32,7 @@ public class PolicyDetailsTest extends App {
 		navigateToMyProductsScreen(userName, pwd);
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.scrollToProductAndTap(car);
-		Assert.assertNotNull(common.checkLoadingIndicator(), "Loading Indicator is not displayed");
+		//Assert.assertNotNull(common.checkLoadingIndicator(), "Loading Indicator is not displayed");
 		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNull(common.checkLoadingIndicator(), "Loading Indicator is displayed");
 		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.POLICY_DETAILS_SCREEN_TITLE),
@@ -117,7 +117,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-3649:DMPM-4272")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testViewListOfVehicleRisk() throws InterruptedException {
 
 		String carPolicy = "carPolicy";
@@ -135,10 +135,7 @@ public class PolicyDetailsTest extends App {
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "insuredAmount2"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "coverType2"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "coverPeriod2") };
-		String coverPeriod1 = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails",
-				"coverPeriod1");
-		String coverPeriod2 = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails",
-				"coverPeriod2");
+		
 		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
 		String pwd = utils.readTestData("portfolio", "policyDetails", carPolicy, "pwd");
 
@@ -148,17 +145,11 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		policyDetailsPage.scrollToRisksTitle();
 		assertRiskDetailsList(riskDetails1);
-		Assert.assertNotNull(policyDetailsPage.checkCoverPeriodLabelText(Copy.COVER_PERIOD_LABEL),
-				"Policy header is not displayed after scrolling up");
-		Assert.assertEquals(policyDetailsPage.getCoverPeriodText(), coverPeriod1,
-				"Policy header is not displayed after scrolling up");
+		if(policyDetailsPage.checkDiscountsAndBenefitsTitle()==null) {
+			policyDetailsPage.scrollToDiscountsAndBenefits();
+		}
+		policyDetailsPage.scrollToDiscountsAndBenefits();
 		assertRiskDetailsList(riskDetails2);
-		policyDetailsPage.scrollToRewardsSubtitle();
-		Assert.assertNotNull(policyDetailsPage.checkCoverPeriodLabelText(Copy.COVER_PERIOD_LABEL),
-				"Policy header is not displayed after scrolling up");
-		Assert.assertEquals(policyDetailsPage.getCoverPeriodText(), coverPeriod2,
-				"Policy header is not displayed after scrolling up");
-
 	}
 
 	@TestDetails(story1 = "DMPM-3983:DMPM-4835,DMPM-4845")
@@ -201,14 +192,7 @@ public class PolicyDetailsTest extends App {
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "registrationNumber1"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "insuredAmount1"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "coverType1"),
-				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "riskCoverPeriod",
-						"startDate"),
-				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "riskCoverPeriod",
-						"startYear"),
-				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "riskCoverPeriod",
-						"endDate"),
-				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "riskCoverPeriod",
-						"endYear"),
+				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "coverPeriod1"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "optionalCoverDescription"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "includedCoverDescription"),
 				utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "parkingAddress") };
@@ -219,7 +203,8 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertNotNull(policyDetailsPage.scrollToRiskViewDetailsButton(), "View details button is not displayed");
+		policyDetailsPage.scrollToRiskViewDetailsButton();
+		//Assert.assertNotNull(policyDetailsPage.scrollToRiskViewDetailsButton(), "View details button is not displayed");
 		policyDetailsPage.tapRiskViewDetails();
 		assertRiskDetailsScreen(riskDetails);
 		riskDetailsPage.tapNavigateBackButton();
@@ -263,20 +248,26 @@ public class PolicyDetailsTest extends App {
 	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })	
 	public void testViewDiscountsAndRewards() throws InterruptedException {
-		String carPolicy = "carPolicy";
+		String boatPolicy = "boatPolicy";
 		String carAdvantagePolicy = "carAdvantagePolicy";
-		String carProduct = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
-		String discounts = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "discounts");
-		String rewardsTitle = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails",
+		String carProduct = utils.readTestData("portfolio", "policyDetails", boatPolicy, "productType");
+		String discounts = utils.readTestData("portfolio", "policyDetails", "carPolicy", "riskDetails", "discounts");
+		String rewardsTitle = utils.readTestData("portfolio", "policyDetails", "carPolicy", "riskDetails",
 				"rewardsTitle");
-		String rewards = utils.readTestData("portfolio", "policyDetails", carPolicy, "riskDetails", "rewards");
+		String rewards = utils.readTestData("portfolio", "policyDetails", "carPolicy", "riskDetails", "rewards");
 		String carAdvantageProduct = utils.readTestData("portfolio", "policyDetails", carAdvantagePolicy,
 				"productType");
-		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
-		String pwd = utils.readTestData("portfolio", "policyDetails", carPolicy, "pwd");
-
+		String userName = utils.readTestData("portfolio", "policyDetails", boatPolicy, "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", boatPolicy, "pwd");
+		
 		navigateToMyProductsScreen(userName, pwd);
 		common.waitForLoadingIndicatorToDisappear();
+		
+		myProductsPage.scrollToProductAndTap(carAdvantageProduct);
+		common.waitForLoadingIndicatorToDisappear();
+		Assert.assertFalse(policyDetailsPage.isDiscountOrRewardsDisplayed(), "Discounts/Rewards are displayed");
+		policyDetailsPage.tapNavigateBackButton();
+		
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		policyDetailsPage.scrollToRewardsSubtitle();
@@ -285,13 +276,88 @@ public class PolicyDetailsTest extends App {
 		Assert.assertEquals(policyDetailsPage.getDiscounts(), discounts, "Discounts are not displayed");
 		Assert.assertEquals(policyDetailsPage.getRewardsTitle(), rewardsTitle, "Rewards label is not displayed");
 		Assert.assertEquals(policyDetailsPage.getRewardsSubtitle(), rewards, "Rewards are not displayed");
+	}
+	
+	
+	@TestDetails(story1 = "DMPM-5523:DMPM7433,DMPM-7446")
+	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	public void testDisplayRewards() throws InterruptedException {
+		String carPolicy = "carPolicy";
+		String motorHomePolicy = "motorHomePolicy";
+		String carProduct = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
+		String motorHomeProduct = utils.readTestData("portfolio", "policyDetails", motorHomePolicy,
+				"productType");
+		String rewardsTitle = utils.readTestData("portfolio", "policyDetails", motorHomePolicy, "riskDetails",
+				"rewardsTitle");
+		String rewards = utils.readTestData("portfolio", "policyDetails", motorHomePolicy, "riskDetails", "rewards");
+		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", carPolicy, "pwd");
 
-		policyDetailsPage.tapNavigateBackButton();
-		myProductsPage.scrollToProductAndTap(carAdvantageProduct);
+		navigateToMyProductsScreen(userName, pwd);
 		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertFalse(policyDetailsPage.isDiscountOrRewardsDisplayed(), "Discounts/Rewards are displayed");
+		myProductsPage.scrollToProductAndTap(carProduct);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToRewardsSubtitle();
+		Assert.assertFalse(policyDetailsPage.isDiscountOrRewardsDisplayed(), "Rewards are displayed");
+		policyDetailsPage.tapNavigateBackButton();
+		myProductsPage.scrollToProductAndTap(motorHomeProduct);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToRewardsSubtitle();
+		Assert.assertEquals(policyDetailsPage.getRewardsTitle(), rewardsTitle, "Rewards label is not displayed");
+		Assert.assertEquals(policyDetailsPage.getRewardsSubtitle(), rewards, "Rewards are not displayed");
 	}
 
+	@TestDetails(story1 = "DMPM-4939:DMPM-7055,DMPM-7057")
+	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	public void testDiscountsCommaSeperated() throws InterruptedException {
+		String homePolicy = "homePolicy";
+		String userName = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "pwd");
+		
+		
+		String myProductCancellationPending = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "cancellationPending");
+		String myProductrenewalOverDue = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "renewalOverDue");
+		String myProductFutureActive = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "futureActive");
+		
+		String discounts2 = utils.readTestData("portfolio", "policyDetails", homePolicy,"Discounts&Benefits","discounts2");
+		String discounts3 = utils.readTestData("portfolio", "policyDetails", homePolicy,"Discounts&Benefits","discounts3");
+		
+
+		navigateToMyProductsScreen(userName, pwd);
+		common.waitForLoadingIndicatorToDisappear();
+		myProductsPage.scrollToProductAndTap(myProductCancellationPending);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToDiscountsTitle();
+		Assert.assertEquals(policyDetailsPage.getDiscountsTitle(), Copy.DISCOUNTS_LABEL,"Discounts label is incorrect");
+		Assert.assertEquals(policyDetailsPage.getDiscounts(), discounts3, "Discounts are not displayed");
+		String notCommaSeperated = policyDetailsPage.getDiscounts();
+		
+		//DMPM-7057: Verify that a single discount is not containing any comma
+		Assert.assertFalse(notCommaSeperated.contains(","), "Discounts are comma seperated");
+		
+		//DMPM-7055: Verify that  discount is not present
+		policyDetailsPage.tapNavigateBackButton();
+		myProductsPage.scrollToProductAndTap(myProductFutureActive);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToDiscountsAndBenefits();
+		Assert.assertNull(policyDetailsPage.checkDiscountsTitle(),"Discounts label should not be present");
+		policyDetailsPage.tapNavigateBackButton();
+		
+		//DMPM-7055: Verify that  discount is present and contains comma seperated multiple discounts
+		myProductsPage.scrollToProductAndTap(myProductrenewalOverDue);
+		common.waitForLoadingIndicatorToDisappear();
+		policyDetailsPage.scrollToDiscountsTitle();
+		Assert.assertEquals(policyDetailsPage.getDiscountsTitle(), Copy.DISCOUNTS_LABEL,"Discounts label is incorrect");
+		Assert.assertEquals(policyDetailsPage.getDiscounts(), discounts2, "Discounts are not displayed");
+		String commaSeperated = policyDetailsPage.getDiscounts();
+		Assert.assertTrue(commaSeperated.contains(","),"Discounts are not comma seperated");
+		
+		
+	}
+	
 	@TestDetails(story1 = "DMPM-4392:DMPM-5805,DMPM-5806")
 	@Test(groups = { "marketplace", "policy details", "priority-minor" })
 	public void testExcessInformation() throws InterruptedException {
@@ -337,6 +403,7 @@ public class PolicyDetailsTest extends App {
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		policyDetailsPage.scrollToRiskViewDetailsButton();
+		Assert.assertNotNull(policyDetailsPage.checkRiskViewDetails(), "Risk tile in policy details do not show risk view button!");
 		policyDetailsPage.tapRiskViewDetails();
 		Assert.assertEquals(riskDetailsPage.getAdditionalExcessesTabText(), Copy.ADDITIONAL_EXCESSES_DETAILS_LABEL,
 				"Additional Excess Details label is not displayed");
@@ -410,15 +477,152 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.tapProductByPolicyStatus(myProductActivePolicy);
 		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus(), activePolicy,
+		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus().toUpperCase(), activePolicy,
 				"Policy active status is incorrect");
 		assertPolicyRenewalStatus(myProductCancellationPending, cancellationPending);
 		assertPolicyRenewalStatus(myProductFutureActive, futureActive);
 		assertPolicyRenewalStatus(myProductRenewalDue, renewalDue);
 		assertPolicyRenewalStatus(myProductrenewalOverDue, renewalOverDue);
-		policyDetailsPage.tapRenewNowButton();
-		Assert.assertNotNull(renewPolicyPage.checkRenewPolicyScreenTitle(Copy.RENEW_POLICY_SCREEN_TITLE),
-				"Not on renew policy screen");
+		policyDetailsPage.tapNavigateBackButton();
+		/*
+		 * Below Code not applicable to this script,as it should be automated as part of 
+		 * DMPM-6320 and related cases
+		 */
+		
+		/*
+		 * policyDetailsPage.tapRenewNowButton();
+		 * Assert.assertNotNull(renewPolicyPage.checkRenewPolicyScreenTitle(Copy.RENEW_POLICY_SCREEN_TITLE),
+		 * "Not on renew policy screen");
+		 */
+			
+		
+	}
+	
+	@TestDetails(story1 = "DMPM-5026:DMPM-6894,DMPM-6895,DMPM-6897")
+	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	public void testRiskCoverPeriod() throws InterruptedException {
+
+		String homePolicy = "homePolicy";
+		String userName = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "pwd");
+		
+		String activePolicy = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "active");
+		String activeStartDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover", "activeStartDate");
+		String activeEndDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover", "activeEndDate");
+
+		String cancellationPending = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus",
+				"cancellationPending");
+		String cancellationPendingStartDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover", 
+				"cancellationPendingStartDate");
+		String cancellationPendingEndDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover", 
+				"cancellationPendingEndDate");
+		
+		String futureActive = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus",
+				"futureActive");
+		String futureActiveStartDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover", 
+				"futureActiveStartDate");
+		String futureActiveEndDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover",
+				"futureActiveEndDate");
+		
+		String renewalDue = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "renewalDue");
+		String renewalDueStartDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover", 
+				"renewalStartDate");
+		String renewalDueEndDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover", 
+				"renewalEndDate");
+		
+		String renewalOverDue = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus",
+				"renewalOverDue");
+		String renewalOverDueStartDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover",
+				"renewalOverDueStartDate");
+		String renewalOverDueEndDate = utils.readTestData("portfolio", "policyDetails", homePolicy, "PeriodOfCover", 
+				"renewalOverDueEndDate");
+		
+		String myProductActivePolicy = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "active");
+		String myProductCancellationPending = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "cancellationPending");
+		String myProductFutureActive = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "futureActive");
+		String myProductRenewalDue = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "renewalDue");
+		String myProductrenewalOverDue = utils.readTestData("portfolio", "policyDetails", homePolicy,
+				"myProductPolicyStatus", "renewalOverDue");
+
+		navigateToMyProductsScreen(userName, pwd);
+		common.waitForLoadingIndicatorToDisappear();
+		myProductsPage.tapProductByPolicyStatus(myProductActivePolicy);
+		common.waitForLoadingIndicatorToDisappear();
+		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus().toUpperCase(), activePolicy,
+				"Policy active status is incorrect");
+		assertRiskCoverPeriodDates(activeStartDate, activeEndDate);
+		assertPolicyRenewalStatus(myProductCancellationPending, cancellationPending, cancellationPendingStartDate, cancellationPendingEndDate);
+		assertPolicyRenewalStatus(myProductFutureActive, futureActive, futureActiveStartDate, futureActiveEndDate);
+		assertPolicyRenewalStatus(myProductRenewalDue, renewalDue, renewalDueStartDate, renewalDueEndDate);
+		assertPolicyRenewalStatus(myProductrenewalOverDue, renewalOverDue, renewalOverDueStartDate, renewalOverDueEndDate);
+		
+	}
+	
+	@TestDetails(story1 = "DMPM-5532:DMPM-7453,DMPM-7454,DMPM-7456")
+	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	public void testRiskCoverDetails() throws InterruptedException {
+
+		String carPolicy = "carPolicy";
+		String userName = utils.readTestData("portfolio", "policyDetails", carPolicy, "vehiclePolicyStatus", "login");
+		String pwd = utils.readTestData("portfolio", "policyDetails", carPolicy, "vehiclePolicyStatus", "pwd");
+		
+		String activePolicy = utils.readTestData("portfolio", "policyDetails", carPolicy, "vehiclePolicyStatus", "active");
+		String activeStartDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover", "activeStartDate");
+		String activeEndDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover", "activeEndDate");
+
+		String cancellationPending = utils.readTestData("portfolio", "policyDetails", carPolicy, "vehiclePolicyStatus",
+				"cancellationPending");
+		String cancellationPendingStartDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover", 
+				"cancellationPendingStartDate");
+		String cancellationPendingEndDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover", 
+				"cancellationPendingEndDate");
+		
+		String futureActive = utils.readTestData("portfolio", "policyDetails", carPolicy, "vehiclePolicyStatus",
+				"futureActive");
+		String futureActiveStartDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover", 
+				"futureActiveStartDate");
+		String futureActiveEndDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover",
+				"futureActiveEndDate");
+		
+		String renewalDue = utils.readTestData("portfolio", "policyDetails", carPolicy, "vehiclePolicyStatus", "renewalDue");
+		String renewalDueStartDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover", 
+				"renewalStartDate");
+		String renewalDueEndDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover", 
+				"renewalEndDate");
+		
+		String renewalOverDue = utils.readTestData("portfolio", "policyDetails", carPolicy, "vehiclePolicyStatus",
+				"renewalOverDue");
+		String renewalOverDueStartDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover",
+				"renewalOverDueStartDate");
+		String renewalOverDueEndDate = utils.readTestData("portfolio", "policyDetails", carPolicy, "PeriodOfCover", 
+				"renewalOverDueEndDate");
+		
+		String myProductActivePolicy = utils.readTestData("portfolio", "policyDetails", carPolicy,
+				"myVehiclePolicyStatus", "active");
+		String myProductCancellationPending = utils.readTestData("portfolio", "policyDetails", carPolicy,
+				"myVehiclePolicyStatus", "cancellationPending");
+		String myProductFutureActive = utils.readTestData("portfolio", "policyDetails", carPolicy,
+				"myVehiclePolicyStatus", "futureActive");
+		String myProductRenewalDue = utils.readTestData("portfolio", "policyDetails", carPolicy,
+				"myVehiclePolicyStatus", "renewalDue");
+		String myProductrenewalOverDue = utils.readTestData("portfolio", "policyDetails", carPolicy,
+				"myVehiclePolicyStatus", "renewalOverDue");
+
+		navigateToMyProductsScreen(userName, pwd);
+		common.waitForLoadingIndicatorToDisappear();
+		assertRiskRenewalStatus(myProductActivePolicy, activePolicy, activeStartDate, activeEndDate);
+		policyDetailsPage.tapNavigateBackButton();
+		policyDetailsPage.tapNavigateBackButton();
+		assertRiskRenewalStatus(myProductCancellationPending, cancellationPending, cancellationPendingStartDate, cancellationPendingEndDate);
+		assertRiskStatus(cancellationPending);
+		assertRiskRenewalStatus(myProductFutureActive, futureActive, futureActiveStartDate, futureActiveEndDate);
+		assertRiskStatus(futureActive);
+		assertRiskDetailsRenewalStatus( myProductRenewalDue,renewalDueStartDate, renewalDueEndDate);
+		assertRiskDetailsRenewalStatus( myProductrenewalOverDue,renewalOverDueStartDate, renewalOverDueEndDate);
 	}
 
 	@TestDetails(story1 = "DMPM-5066:DMPM-5978")
@@ -444,6 +648,56 @@ public class PolicyDetailsTest extends App {
 		Assert.assertEquals(policyDetailsPage.getPolicyEndYear(), expectedPolicyEndYear,
 				"policy end year is incorrect");
 	}
+	
+	private void assertRiskDetailsRenewalStatus(String myProductRenewalDue, String renewalDueStartDate,
+			String renewalDueEndDate) {
+		
+		myProductsPage.tapProductByPolicyStatus(myProductRenewalDue);
+		policyDetailsPage.scrollToRiskViewOnlyButton();
+		policyDetailsPage.tapRiskViewOnlyDetails();
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodStart(),"Risk details, period of cover start date is not shown");
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodEnd(),"Risk details, period of cover end date is not shown");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodStart(), renewalDueStartDate , "Risk details, period of cover start date is not as expected");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodEnd(), renewalDueEndDate , "Risk details, period of cover end date is not as expected");
+		policyDetailsPage.tapNavigateBackButton();
+		policyDetailsPage.tapNavigateBackButton();
+	}
+
+	private void assertRiskStatus( String policy) {
+		Assert.assertEquals(riskDetailsPage.getCoverStatusBannerText(), policy, policy + " status is incorrect");
+		policyDetailsPage.tapNavigateBackButton();
+		policyDetailsPage.tapNavigateBackButton();
+		
+	}
+
+	private void assertRiskRenewalStatus(String myProductStatus, String policy,String coverPeriodStartDate, String coverPeriodEndDate) {
+		myProductsPage.tapProductByPolicyStatus(myProductStatus);
+		policyDetailsPage.scrollToRiskViewDetailsButton();
+		policyDetailsPage.tapRiskViewDetails();
+		common.waitForLoadingIndicatorToDisappear();
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodLabel(),"Risk details, period of cover title is not shown");
+		assertRiskDetailsCoverPeriodDates(coverPeriodStartDate, coverPeriodEndDate);
+	}
+
+	private void assertRiskDetailsCoverPeriodDates(String coverPeriodStartDate, String coverPeriodEndDate) {
+		
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodLabel(), Copy.PERIOD_OF_COVER, "Risk details, period of cover title is not as expected");
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodStart(),"Risk details, period of cover start date is not shown");
+		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodEnd(),"Risk details, period of cover end date is not shown");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodStart(), coverPeriodStartDate , "Risk details, period of cover start date is not as expected");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodEnd(), coverPeriodEndDate , "Risk details, period of cover end date is not as expected");
+	}
+	
+	private void assertRiskCoverPeriodDates(String coverPeriodStartDate, String coverPeriodEndDate) {
+		policyDetailsPage.scrollToRiskViewOnlyButton();
+		Assert.assertNotNull(policyDetailsPage.checkRiskViewOnlyButton(), "View details button is not displayed");
+		Assert.assertNotNull(policyDetailsPage.checkCoverPeriodLabel(),"Risk details, period of cover title is not shown");
+		Assert.assertEquals(policyDetailsPage.getCoverPeriodLabel(), Copy.PERIOD_OF_COVER, "Risk details, period of cover title is not as expected");
+		Assert.assertNotNull(policyDetailsPage.checkCoverPeriodStart(),"Risk details, period of cover start date is not shown");
+		Assert.assertNotNull(policyDetailsPage.checkCoverPeriodEnd(),"Risk details, period of cover end date is not shown");
+		Assert.assertEquals(policyDetailsPage.getCoverPeriodStart(), coverPeriodStartDate , "Risk details, period of cover start date is not as expected");
+		Assert.assertEquals(policyDetailsPage.getCoverPeriodEnd(), coverPeriodEndDate , "Risk details, period of cover end date is not as expected");
+	}
 
 	private void navigateToMyProductsScreen(String username, String pasword) {
 		
@@ -463,7 +717,14 @@ public class PolicyDetailsTest extends App {
 		myProductsPage.tapProductByPolicyStatus(myProductPolicyStatus);
 		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertEquals(policyDetailsPage.getPolicyRenewalStatus(), policy, policy + " status is incorrect");
-
+	}
+	
+	private void assertPolicyRenewalStatus(String myProductPolicyStatus, String policy, String coverPeriodStartDate, String coverPeriodEndDate) {
+		policyDetailsPage.tapNavigateBackButton();
+		myProductsPage.tapProductByPolicyStatus(myProductPolicyStatus);
+		common.waitForLoadingIndicatorToDisappear();
+		Assert.assertEquals(policyDetailsPage.getPolicyRenewalStatus(), policy, policy + " status is incorrect");
+		assertRiskCoverPeriodDates(coverPeriodStartDate, coverPeriodEndDate);
 	}
 
 	private void assertPolicySummaryValues(String policy) {
@@ -484,13 +745,22 @@ public class PolicyDetailsTest extends App {
 		Assert.assertEquals(policyDetailsPage.getPolicyNumberText(), expectedPolicyNumber,"policy number is incorrect");
 		Assert.assertEquals(policyDetailsPage.getPolicyStartDate(), expectedPolicyStartDate,"policy start date is incorrect");
 		Assert.assertEquals(policyDetailsPage.getpolicyStartYear(), expectedPolicyStartYear,"policy start year is incorrect");
+		
+		if(policyDetailsPage.checkPolicyEndDate()==null) {
+			policyDetailsPage.scrollToPolicyEndDate();
+		}
 		Assert.assertEquals(policyDetailsPage.getPolicyEndDate(), expectedPolicyEndDate,"policy end date is incorrect");
+		
+		if(policyDetailsPage.checkPolicyEndYear()==null) {
+			policyDetailsPage.scrollToPolicyEndYear();
+		}
 		Assert.assertEquals(policyDetailsPage.getPolicyEndYear(), expectedPolicyEndYear,"policy end year is incorrect");
 
 	}
 
 	private void assertInstalmentDetails(String expectedInstalmentFrequency, String expectedInstalmentAmount) {
-
+		policyDetailsPage.scrollToInstallmentFrequncy();
+		Assert.assertNotNull(policyDetailsPage.checkInstallmentFreuency(),"Policy details, installment frequency not displayed");
 		Assert.assertEquals(policyDetailsPage.getInstalmentFreqText(), expectedInstalmentFrequency,
 				"Instalment Frequency Label is incorrect");
 		Assert.assertEquals(policyDetailsPage.getInstalmentAmt(), expectedInstalmentAmount,
@@ -508,9 +778,14 @@ public class PolicyDetailsTest extends App {
 				"Insured amount label is incorrect");
 		Assert.assertNotNull(policyDetailsPage.checkInsuredAmountText(riskDetailsList[2]),
 				"Insured amount is incorrect");
-		Assert.assertNotNull(policyDetailsPage.checkCoverTypeLabelText(Copy.COVER_TYPE_LABEL),
-				"Cover type label is incorrect");
+		Assert.assertNotNull(policyDetailsPage.checkCoverTypeLabelText(riskDetailsList[3]),
+				"Cover type label is not present");
 		Assert.assertNotNull(policyDetailsPage.checkCoverTypeText(riskDetailsList[3]),"Cover type is incorrect");
+		if (policyDetailsPage.checkCoverPeriodEnd()==null) {
+			policyDetailsPage.scrollToCoverPeriod();
+		}
+		Assert.assertEquals(policyDetailsPage.getCoverPeriodStart()+policyDetailsPage.getCoverPeriodEnd(), riskDetailsList[4],
+				"Policy header is not displayed after scrolling up");
 
 	}
 
@@ -522,27 +797,24 @@ public class PolicyDetailsTest extends App {
 		Assert.assertNotNull(riskDetailsPage.checkInsuredAmountLabelText(Copy.INSURED_AMOUNT_LABEL),
 				"Insured amount is incorrect");
 		Assert.assertEquals(riskDetailsPage.getInsuredAmountText(), riskDetails[2], "Insured amount is incorrect");
-		Assert.assertNotNull(riskDetailsPage.checkCoverTypeLabelText(Copy.COVER_TYPE_LABEL),
+		Assert.assertNotNull(riskDetailsPage.checkCoverTypeLabelText(riskDetails[3]),
 				"Cover type label is incorrect");
-		Assert.assertEquals(riskDetailsPage.getCoverTypeText(), riskDetails[3], "Cover type text is incorrect");
+		Assert.assertEquals(riskDetailsPage.getRiskCoverType(riskDetails[3]), riskDetails[3], "Cover type text is incorrect");
 		Assert.assertNotNull(policyDetailsPage.checkCoverPeriodLabelText(Copy.COVER_PERIOD_LABEL),
 				"Cover period label is incorrect");
-		Assert.assertEquals(riskDetailsPage.getRiskStartDateText(), riskDetails[4], "Risk start date is incorrect");
-		Assert.assertEquals(riskDetailsPage.getRiskStartYearText(), riskDetails[5], "Risk start year");
-		Assert.assertEquals(riskDetailsPage.getRiskEndDateText(), riskDetails[6], "Risk end date is incorrect");
-		Assert.assertEquals(riskDetailsPage.getRiskEndYearText(), riskDetails[7], "Risk end year is incorrect");
+		Assert.assertEquals(riskDetailsPage.getCoverPeriodStart()+riskDetailsPage.getCoverPeriodEnd(), riskDetails[4], "Risk start date is incorrect");
 		riskDetailsPage.scrollToMotorRiskParking();
 		Assert.assertEquals(riskDetailsPage.getOptionalCoverLabel(), Copy.OPTIONAL_COVER_LABEL,
 				"Optional cover label is incorrect");
-		Assert.assertEquals(riskDetailsPage.getOptionalCoverDescription(), riskDetails[8],
+		Assert.assertEquals(riskDetailsPage.getOptionalCoverDescription(), riskDetails[5],
 				"Optional cover description is incorrect");
 		Assert.assertEquals(riskDetailsPage.getIncludedCoverLabel(), Copy.INCLUDED_COVER_LABEL,
 				"Included cover label is incorrect");
-		Assert.assertEquals(riskDetailsPage.getIncludedCoverDescription(), riskDetails[9],
+		Assert.assertEquals(riskDetailsPage.getIncludedCoverDescription(), riskDetails[6],
 				"Included cover description");
 		Assert.assertEquals(riskDetailsPage.getMotorRiskParkingLabel(), Copy.PARKING_ADDRESS_LABEL,
 				"Parking label is incorrect");
-		Assert.assertEquals(riskDetailsPage.getMotorRiskParkingDescription(), riskDetails[10],
+		Assert.assertEquals(riskDetailsPage.getMotorRiskParkingDescription(), riskDetails[7],
 				"Parking description is incorrect");
 
 	}
