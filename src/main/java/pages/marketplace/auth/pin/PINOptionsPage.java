@@ -23,7 +23,8 @@ public class PINOptionsPage extends BasePage{
 	private By promptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePromptUserWelcome");
 	private By promptDescription = By.id("au.com.suncorp.marketplace:id/enablePromptDescription");
 	private By promptImage = By.id("au.com.suncorp.marketplace:id/enablePromptImage");
-//	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
+	//private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
+	private By enableFingerPrintBtn = By.id("au.com.suncorp.marketplace:id/enableFingerprintButton");
 	private By maybeLaterPromptButton = By.id("au.com.suncorp.marketplace:id/enablePromptDismissButton");
 	
 	public PINOptionsPage(AppiumDriver driver) {
@@ -34,7 +35,7 @@ public class PINOptionsPage extends BasePage{
 	//Methods for Fingerprint not enabled cases
 	
 	public WebElement checkEnablePinButton(){
-		return find(enablePinButton,45);
+		return find(enablePinButton);
 	}
 	
 	public WebElement checkFingerPrintButton(){
@@ -85,5 +86,9 @@ public class PINOptionsPage extends BasePage{
 	
 	public void tapPromptMaybeLater(){
 		tapElement(maybeLaterPromptButton);
+	}
+	
+	public WebElement checkEnableFingerprintBtn() {
+		return find (enableFingerPrintBtn,2);
 	}
 }
