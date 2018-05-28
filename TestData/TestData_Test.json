@@ -298,7 +298,7 @@
 				"pwd": "Password1"
 			},
 		"loginProdList":{
-				"login": "a@b.c",
+				"login": "everydayAccounts@sun.com",
 				"pwd": "Password1",
 				"addPolicy":{
 					"enterPolicyNumber": "12345678-aA",
@@ -439,8 +439,8 @@
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 1",
-             				 "endDate1":"10 Nov 2017",
-             				 "endDateDescription1":"Cancellation Date"
+             				 "endDate1":"10 Dec 2017",
+             				 "endDateDescription1":"Renewal due"
              				 
             			}
 				},
@@ -452,8 +452,8 @@
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 2",
-             				 "endDate1":"10 Nov 2017",
-             				 "endDateDescription1":"Cancellation Date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Expiry date"
             			}
 				},
 				"policy3": 
@@ -463,8 +463,8 @@
 						"status":"Renewal due",
           				"risks":{
              				 "description1": "Single Risk, Single Cover Policy 3",
-             				 "endDate1":"10 Nov 2017",
-             				 "endDateDescription1":"Start date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Renewal due"
             			}
 				},
 				"policy4": 
@@ -475,8 +475,8 @@
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 4",
-             				 "endDate1":"10 Nov 2017",
-             				 "endDateDescription1":"Start date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Expiry date"
             			}
 				},
 				"policy5": 

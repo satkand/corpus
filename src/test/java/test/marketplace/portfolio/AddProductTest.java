@@ -12,7 +12,7 @@ public class AddProductTest extends App{
 	@Test (groups = {"DMPM-1011", "DMPM-1247", "DMPM-1249" ,"marketplace", "portfolio", "priority-minor"})
 	public void testAddingAPolicy(){
 
-	navigateToAddProductsScreen("prodUser","prodListUser");
+	navigateToAddProductsScreen("prodUser","loginProdList");
 	
 	addProductPage.tapAddInsurancePolicyButton();
 	
@@ -36,12 +36,14 @@ public class AddProductTest extends App{
 	/*344 - Scenario 1 - DMPM-462* and Scenario 3 - DMPM-464*/
 	@Test (groups = {"DMPM-344", "DMPM-462","DMPM-464", "marketplace", "portfolio", "priority-minor"})
 	public void testInlineErrorsAsItype(){
-		navigateToAddProductsScreen("prodUser","prodListUser");
+		navigateToAddProductsScreen("prodUser","loginProdList");
 		
 		addProductPage.tapAddInsurancePolicyButton();
 		
 		Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
-		
+	
+		Assert.assertNotNull(addPolicyPage.checkForgotMyDetailsButton(),"Add policy screen - Forgotten my details button is not present");
+
 		addPolicyPage.tapPolicyNumberTextBox();
 		addPolicyPage.enterPolicyNumber(utils.readTestData("portfolio","loginProdList", "addPolicy", "policyNumberExceedsMaxLimit"));
 		
@@ -72,12 +74,13 @@ public class AddProductTest extends App{
 	@Test (groups = {"DMPM-344", "DMPM-463", "DMPM-465","DMPM-108", "DMPM-459", "marketplace", "portfolio", "priority-minor"})
 	public void testInlineErrorMessagesOnTapOut(){
 		
-		navigateToAddProductsScreen("prodUser","prodListUser");
+		navigateToAddProductsScreen("prodUser","loginProdList");
 		
 		addProductPage.tapAddInsurancePolicyButton();
 		
 		Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
-		
+		Assert.assertNotNull(addPolicyPage.checkForgotMyDetailsButton(),"Add policy screen - Forgotten my details button is not present");
+
 	
 		addPolicyPage.tapAddAccountButton();
 		
@@ -106,6 +109,7 @@ public class AddProductTest extends App{
 			
 			addProductPage.tapAddSuperAccountButton();
 			Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
+
 			
 			addBankAccountPage.tapSuperAccountNumberField();
 			Assert.assertTrue(common.isKeyboardShown(),"Keyboard is not displayed after tapping on Account Number field");
@@ -175,7 +179,7 @@ public class AddProductTest extends App{
 			
 			addProductPage.tapAddBankAccountButton();
 			Assert.assertNotNull(addBankAccountPage.checkAddBankAccountPageTitle(), "My Products screen - Add Bank Account page title is not present");
-			
+
 			addBankAccountPage.tapAccountNumberField();
 			Assert.assertTrue(common.isKeyboardShown(),"Keyboard is not displayed after tapping on Account Number field");
 			
