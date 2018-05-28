@@ -131,13 +131,18 @@ public class HomeJourneyTest extends App {
 	}
 	
 	private void navigateToHomeJourneyviaMenu() {
-		welcomePage.tapGuestAccessButton();
+		//TODO: R3 Release (just remove the login and uncomment tapGuestAccessButton().
+		//welcomePage.tapGuestAccessButton();
+		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
 		navigationMenu.tapSplitMenuIcon();
 	
 }
 
 	private void navigateToHomePropertyTab() {
-		welcomePage.tapGuestAccessButton();
+		//TODO: R3 Release (just remove the login and uncomment tapGuestAccessButton().
+		//welcomePage.tapGuestAccessButton();
+		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
+		
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		homePropertyPage.scrollToJourneyBanner();

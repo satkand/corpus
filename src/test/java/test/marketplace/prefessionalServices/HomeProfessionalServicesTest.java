@@ -79,7 +79,10 @@ public class HomeProfessionalServicesTest extends App{
 		homePropertyPage.tapStartYourJourneyButton();
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
 		
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 			
 		propertyDetailsPage.scrollToProfessionaServicesButton();
@@ -94,7 +97,7 @@ public class HomeProfessionalServicesTest extends App{
 			webviewPage.tapDeviceBackButton();
 			
 		}else {
-			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+			Assert.assertEquals(webviewPage.getWebViewLocationBar(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
 			
 		}
 	}

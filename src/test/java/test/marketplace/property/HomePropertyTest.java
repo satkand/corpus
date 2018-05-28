@@ -15,7 +15,8 @@ import pages.App;
 
 public class HomePropertyTest extends App {
 	
-	@Test (groups = {"DMPM-86", "DMPM-857", "marketplace", "Home buying journey", "priority-minor"})
+	//TODO : R3 Release
+/*	@Test (groups = {"DMPM-86", "DMPM-857", "marketplace", "Home buying journey", "priority-minor"})
 	public void testHomePropertyPageElements() {
 		navigateToHomePropertyTab("guest");
 		
@@ -24,7 +25,7 @@ public class HomePropertyTest extends App {
 		Assert.assertEquals(homePropertyPage.getHomeJourneyBannerHeading(), utils.readTestData("copy", "homePropertyPage", "homeJourneyBannerHeading"), "Home Property Page - Home Journey Banner Heading text is not shown as expected");
 		Assert.assertEquals(homePropertyPage.getHomeJourneyBannerDescription(), utils.readTestData("copy", "homePropertyPage", "homeJourneyBannerDescription"), "Home Property Page - Home Journey Banner Description text is not shown as expected");
 		Assert.assertNotNull(homePropertyPage.checkStartYourJourneyButton(), "Home Property Page - Start your Journey button not shown on home tab");
-	}
+	}*/
 	
 	// 86 - scenario
 	// 503 - Scenario 1
@@ -301,7 +302,7 @@ public class HomePropertyTest extends App {
 	}
 	
 	@TestDetails(story1 = "DMPM-1263:DMPM-6016,DMPM-6017,DMPM-6018,DMPM-6019", priority = Priority.LOW)
-	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "Property Hub", "priority-minor" })
+	@Test(/*retryAnalyzer = CustomRetryListener.class,*/ groups = { "marketplace", "Property Hub", "priority-minor" })
 	public void testVirtualAssetsPropertyCardInFullscreenMapView() {
 		navigateToHomePropertyTab("noProperties");
 		//TODO : R3 Release
@@ -317,7 +318,10 @@ public class HomePropertyTest extends App {
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property details page - User is not navigated to Property details screen when clicks on View Details button in virtual property tile");
 		
 		String propertyAddress = propertyDetailsPage.getPropertyAddress()+", "+propertyDetailsPage.getPropertyStatePostCode().replace(",", "");

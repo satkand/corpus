@@ -92,6 +92,7 @@ public class PropertyDetailsPage   extends BasePage{
 	private By nearbyEducationTitle = By.id("au.com.suncorp.marketplace:id/nearbyEducationText");
 	private By nearbyEducationViewAllButton = By.id("au.com.suncorp.marketplace:id/nearbyEducationViewAllText");
 	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	private By nearbyEducationCentresS5andPixel = By.id("au.com.suncorp.marketplace:id/nearbyEducationName");
 	
 	//disclaimers
 	private By estimatedPropertyValueDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Value disclaimer");
@@ -213,11 +214,22 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkNearbyEducationCentres() {
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			return find(nearbyEducationCentresS5andPixel);
+		}
 		return find(nearbyEducationCentres);
 	}
 	
 	public List<WebElement> fetchNearbyEducationCentres() {
-		List<WebElement> elements = finds(nearbyEducationCentres);
+		List<WebElement> elements;
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			elements = finds(nearbyEducationCentresS5andPixel);
+		}else {
+			elements = finds(nearbyEducationCentres);
+		}
+		
 		return elements;
 	}
 	

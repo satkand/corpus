@@ -1,5 +1,7 @@
 package pages.marketplace.property;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -14,7 +16,7 @@ public class SuburbDetailsPage extends BasePage{
 	}
 	
 	private By disclaimerLabelText = By.xpath("//android.widget.TextView[@text='Disclaimer']");
-	private By suburbName = By.xpath("//android.widget.TextView[@text='Sunnydale, SA 5353']");
+	private By suburbName = By.xpath("//android.widget.TextView[@text='Eltham, VIC 3095']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private By riskAndHazardTitleText = By.id("au.com.suncorp.marketplace:id/risksAndHazardsTitle");
@@ -86,7 +88,7 @@ public class SuburbDetailsPage extends BasePage{
 	}
 	
 	public void scrollUpToRiskAndHazardTitleText(){
-		for(int i=0;i<3;i++) {
+		for(int i=0;i<5;i++) {
 			swipeScreen("up");
 		}
 	}
@@ -117,6 +119,11 @@ public class SuburbDetailsPage extends BasePage{
 
 	public void tapBackButton() {
 		tapElement(backButton);
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public WebElement checkRiskAndHazardTitleText() {
@@ -192,6 +199,7 @@ public class SuburbDetailsPage extends BasePage{
 	}
 	
 	public WebElement checkDemographicsText() {
+		scrollToElement(demographicsText);
 		return find(demographicsText);
 	}
 	
