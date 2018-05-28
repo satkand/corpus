@@ -12,6 +12,7 @@ public class DummyPageWithLinks extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
+	//TODO Remove this page
 	private By pinSetupOption = By.id("au.com.suncorp.marketplace:id/tempPinSetupNavigation");
 	private By loginAsButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	

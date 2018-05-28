@@ -22,12 +22,17 @@ import pages.marketplace.auth.pin.PINSetupPage;
 import pages.marketplace.auth.registration.GetStartedPage;
 import pages.marketplace.auth.registration.MemberLoginPage;
 import pages.marketplace.auth.registration.RegistrationPage;
+import pages.marketplace.auth.registration.TermsAndConditionsPage;
 import pages.marketplace.chatbot.ChatbotPage;
+import pages.marketplace.claimdetails.ClaimDetailsPage;
+import pages.marketplace.claimdetails.ClaimIntroPage;
+import pages.marketplace.claimdetails.MakeAClaimPage;
 import pages.marketplace.common.CameraPage;
 import pages.marketplace.common.CommonPage;
 import pages.marketplace.common.ConfigPage;
 import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.FAPISettingsPage;
+import pages.marketplace.common.ForceUpdatePage;
 import pages.marketplace.common.GalleryPage;
 import pages.marketplace.common.WebviewPage;
 import pages.marketplace.digitalVault.ChooseFolderPage;
@@ -45,6 +50,9 @@ import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
 import pages.marketplace.portfolio.MyProductsPage;
 import pages.marketplace.productCatalogue.PCHomePage;
+import pages.marketplace.portfolio.PolicyDetailsPage;
+import pages.marketplace.portfolio.RenewPolicyPage;
+import pages.marketplace.portfolio.RiskDetailsPage;
 import pages.marketplace.professionalServices.HomeProfessionalServicesPage;
 import pages.marketplace.property.HomeJourneyPage;
 import pages.marketplace.property.HomePropertyPage;
@@ -52,12 +60,17 @@ import pages.marketplace.property.PropertyDetailsPage;
 import pages.marketplace.property.PropertyExplorerPage;
 import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AddProductPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 import pages.marketplace.wealth.VendorDetailPage;
+import pages.marketplace.property.WhatsNearbyPage;
+import pages.marketplace.property.PropertyHubPage;
+import pages.marketplace.property.SuburbDetailsPage;
+
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -105,12 +118,25 @@ public class App extends BaseTest {
 	public PropertyExplorerPage propertyExplorerPage = null;
 	public PropertyDetailsPage propertyDetailsPage = null;
 	public HomeProfessionalServicesPage homeServicesPage = null;
+	public PropertyHubPage propertyHubPage = null;
 	public ArticlesPage articlesPage = null;
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 	public VendorDetailPage vendorDetailPage = null;
-	
+	public WhatsNearbyPage whatsNearbyPage = null;
+	public ForceUpdatePage forceUpdatePage = null;
+	public SuburbDetailsPage suburbDetailsPage = null;
+	public PolicyDetailsPage policyDetailsPage = null;
+	public RiskDetailsPage riskDetailsPage = null;
+	public RenewPolicyPage renewPolicyPage = null;
+	public ClaimDetailsPage claimDetailsPage = null;
+	public ClaimIntroPage claimIntroPage =null;
+	public MakeAClaimPage makeAClaimPage =null;
+	public TermsAndConditionsPage termsAndConditionsPage = null;
+	public AddProductPage addProductPage = null;
+
+
 	String CONFIG_FILE=null;
 
 	@BeforeClass
@@ -172,9 +198,24 @@ public class App extends BaseTest {
 		webviewPage = new WebviewPage(driver);
 		homeServicesPage = new HomeProfessionalServicesPage(driver);
 		memberLoginPage = new MemberLoginPage(driver);
+		whatsNearbyPage = new WhatsNearbyPage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
 		articlesPage = new ArticlesPage(driver);
+		forceUpdatePage = new ForceUpdatePage(driver);
+		suburbDetailsPage = new SuburbDetailsPage(driver);
+		articlesPage = new ArticlesPage(driver);
+		policyDetailsPage = new PolicyDetailsPage(driver);
+		riskDetailsPage = new RiskDetailsPage(driver);
+		renewPolicyPage = new RenewPolicyPage(driver);
+		claimDetailsPage = new ClaimDetailsPage(driver);
+		claimIntroPage = new ClaimIntroPage(driver);
+		makeAClaimPage = new MakeAClaimPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
 		vendorDetailPage = new VendorDetailPage(driver);
+		propertyHubPage = new PropertyHubPage(driver);
+		termsAndConditionsPage = new TermsAndConditionsPage(driver);
+		addProductPage = new AddProductPage(driver);
+
 	}
 	
 	@Parameters({ "stub" })
@@ -201,8 +242,17 @@ public class App extends BaseTest {
 		loginPage.enterLoginCredentials(login, pwd);
 		
 		loginPage.tapLoginButton();
+		
+		if(termsAndConditionsPage.checkAcceptButton() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
 		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
+		}
+		
+		else if (pinOptionsPage.checkEnableFingerprintBtn() != null && args.length < 1) {
+			pinOptionsPage.tapPromptMaybeLater();
 		}
 	}
 	

@@ -20,19 +20,15 @@ public class ChangePINTest extends App {
 		String pin = utils.readTestData("PIN", "loginForConfirmCurrentPin", "pin");
 
 		navigateToSettingsWithPinTrue(username, pwd);
-
 		Assert.assertNotNull(settingsPage.checkChangePinLink(), "Change PIN option is not displayed");
-
 		settingsPage.tapChangePinLink();
-
 		Assert.assertNotNull(enterCurrentPINPage.checkEnterExistingPinLabel(),
 				"Enter existing pin label not displayed");
 		Assert.assertNotNull(enterCurrentPINPage.checkPinField(), "Pin field is not displayed");
 		Assert.assertNotNull(enterCurrentPINPage.checkForgotPinButton(), "Forgot pin button is not displayed");
-
 		enterPIN(pin);
-
-		Assert.assertNotNull(common.checkLoadingSpinner(), "Loading Spinner not displayed");
+		Assert.assertNotNull(common.checkLoadingIndicator(), "Loading Spinner not displayed");
+		enterCurrentPINPage.tapOkButton();
 		Assert.assertNotNull(pinSetupPage.checkEnterPINLabel(), "Re-enter pin label is not displayed");
 
 	}
@@ -76,14 +72,10 @@ public class ChangePINTest extends App {
 		settingsPage.tapChangePinLink();
 		enterPIN(pin);
 		enterCurrentPINPage.checkPinLockedMessage();
-
 		Assert.assertTrue(enterCurrentPINPage.getPinLockedMessage().equals(Copy.PIN_LOCK_ALERT_MESSAGE),
 				"Pin Locked Message is incorrect");
-		Assert.assertTrue(enterCurrentPINPage.getReAuthenticateButtonText().equals(Copy.REAUTHENTICATE_BUTTON_TEXT),
-				"Either Reauthenticate button is not displayed or button text is incorrect");
-
-		enterCurrentPINPage.tapReAuthenticateButton();
-
+		enterCurrentPINPage.tapOkButton();
+		
 		Assert.assertNotNull(forgotPINPage.checkForgottenPINPageTitle(), "Not on forgotten pin page");
 
 	}
@@ -106,13 +98,11 @@ public class ChangePINTest extends App {
 		forgotPINPage.checkForgottenPINPageTitle();
 		forgotPINPage.enterPassword(pwd);
 		forgotPINPage.tapNextButton();
-
+		enterCurrentPINPage.tapOkButton();
 		Assert.assertNotNull(pinSetupPage.checkEnterPINLabel(), "Enter new pin screen is not displayed");
-
 		enterPIN(validPin);
 		pinSetupPage.checkReEnterPINLabel();
 		pinSetupPage.tapCancelButton();
-
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "Not on setttings page");
 	}
 
@@ -123,7 +113,7 @@ public class ChangePINTest extends App {
 		String username = utils.readTestData("PIN", "loginWithPinLocked", "login");
 		String pwd = utils.readTestData("PIN", "loginWithPinLocked", "pwd");
 		String invalidPin = utils.readTestData("PIN", "loginWithPinLocked", "pin");
-
+		
 		navigateToSettingsWithPinTrue(username, pwd);
 		settingsPage.checkChangePinLink();
 		settingsPage.tapChangePinLink();
@@ -132,7 +122,6 @@ public class ChangePINTest extends App {
 		enterCurrentPINPage.tapReAuthenticateButton();
 		forgotPINPage.checkForgottenPINPageTitle();
 		common.tapBackNavigateButton();
-
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "Not on setttings page");
 		Assert.assertFalse(settingsPage.isPinToggleEnabled(), "Pin toggle is enabled");
 
@@ -156,11 +145,11 @@ public class ChangePINTest extends App {
 		forgotPINPage.checkForgottenPINPageTitle();
 		forgotPINPage.enterPassword(pwd);
 		forgotPINPage.tapNextButton();
+		enterCurrentPINPage.tapOkButton();
 		pinSetupPage.checkEnterPINLabel();
 		enterPIN(validPin);
 		pinSetupPage.checkReEnterPINLabel();
 		enterPIN(validPin);
-
 		Assert.assertNotNull(pinSetupPage.checkPINSuccessfullySetMessage(),
 				"Pin successfully set message is not displayed");
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "Not on setttings page");
@@ -186,7 +175,7 @@ public class ChangePINTest extends App {
 			enterPIN(pin);
 
 			if (i != count - 1) {
-				common.waitForLoadingSpinnerToDisappear();
+				common.waitForLoadingIndicatorToDisappear();
 				if (i == 0) {
 
 					Assert.assertTrue(

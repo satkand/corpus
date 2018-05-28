@@ -2,11 +2,9 @@ package pages.marketplace.settings;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import automation.framework.common.BasePage;
 import automation.framework.common.Copy;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 
 public class SettingsPage  extends BasePage {
 
@@ -27,7 +25,7 @@ public class SettingsPage  extends BasePage {
 		return find(enablePinToggle);
 	}
 	
-	public void tapEnablePinToggle() {
+	public void tapEnablePinToggle() {	
 		tapElement(enablePinToggle);
 	}
 	
@@ -42,7 +40,4 @@ public class SettingsPage  extends BasePage {
 	public void tapChangePinLink() {
 		tapElement(changePinLink);
 	}
-	
-	
-	
 }
