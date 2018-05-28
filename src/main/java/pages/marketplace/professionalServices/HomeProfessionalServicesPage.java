@@ -12,6 +12,7 @@ public class HomeProfessionalServicesPage  extends BasePage{
 		super(driver);
 	}
 	
+	//Professional services main page elements
 	private By professionalServicesPageTitle = By.xpath("//android.widget.TextView[@text='Professional Services']");
 	private By homeServicesTitle = By.id("au.com.suncorp.marketplace:id/homeServicesTitle");
 	private By homeServicesImage = By.id("au.com.suncorp.marketplace:id/homeServicesImage");
@@ -19,6 +20,49 @@ public class HomeProfessionalServicesPage  extends BasePage{
 	private By viewServicesButton = By.id("au.com.suncorp.marketplace:id/viewHomeServicesButton");
 	private By chooseServiceLabel = By.id("au.com.suncorp.marketplace:id/chooseServiceText");
 	private By homeServicesDescription = By.id("au.com.suncorp.marketplace:id/homeServicesDescription");
+	
+	//ProfessionalServices intro
+	private By professionalServicesIntroCloseButton = By.id("au.com.suncorp.marketplace:id/closeButton");
+	private By professionalServicesIntroImage = By.id("au.com.suncorp.marketplace:id/dialogImage");
+	private By professionalServicesIntroDesc = By.id("au.com.suncorp.marketplace:id/dialogMessage");
+	private By professionalServicesIntroTitle = By.id("au.com.suncorp.marketplace:id/dialogTitle");
+	private By professionalServicesIntroGotItButton = By.id("au.com.suncorp.marketplace:id/dismissButton");
+	
+	public WebElement checkProfessionalServicesIntroCloseButton() {
+		return find(professionalServicesIntroCloseButton);
+	}
+	
+	public String getProfessionalServicesIntroDesc() {
+		return getText(professionalServicesIntroDesc);
+	}
+	
+	public String getProfessionalServicesIntroTitle() {
+		return getText(professionalServicesIntroTitle);
+	}
+	
+	public void tapProfessionalServicesIntroGotItButton() {
+		tapElement(professionalServicesIntroGotItButton);
+	}
+	
+	public void tapProfessionalServicesIntroCloseButton() {
+		tapElement(professionalServicesIntroCloseButton);
+	}
+	
+	public WebElement checkProfessionalServicesIntroImage() {
+		return find(professionalServicesIntroImage);
+	}
+	
+	public WebElement checkProfessionalServicesIntroDesc() {
+		return find(professionalServicesIntroDesc);
+	}
+	
+	public WebElement checkProfessionalServicesIntroTitle() {
+		return find(professionalServicesIntroTitle);
+	}
+	
+	public WebElement checkProfessionalServicesIntroGotItButton() {
+		return find(professionalServicesIntroGotItButton);
+	}
 	
 	public WebElement checkHomeServicesDescription() {
 		return find(homeServicesDescription);
@@ -68,5 +112,8 @@ public class HomeProfessionalServicesPage  extends BasePage{
 		tapElement(viewServicesButton);
 	}
 	
+	public void restartConfig() throws Throwable {
+		restartSuncorpConfigApp();
+	}
 
 }

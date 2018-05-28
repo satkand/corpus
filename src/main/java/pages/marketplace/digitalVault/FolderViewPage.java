@@ -42,6 +42,7 @@ public class FolderViewPage extends BasePage {
 	}
 	
 	public String getTitle() {
+		find(folderTitle);//Added to give a delay before tapping this element
 		return getText(folderTitle);
 	}
 	
