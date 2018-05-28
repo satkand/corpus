@@ -153,7 +153,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-3983:DMPM-4835,DMPM-4845")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testOptionalAndIncludedCover() throws InterruptedException {
 
 		String carPolicy = "carPolicy";
@@ -182,7 +182,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-3655:DMPM-5030,DMPM-5031")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testRiskDetailsScreen() throws InterruptedException {
 		String carPolicy = "carPolicy";
 		String carProduct = utils.readTestData("portfolio", "policyDetails", carPolicy, "productType");
@@ -213,7 +213,7 @@ public class PolicyDetailsTest extends App {
 	}
 	
 	@TestDetails(story1 = "DMPM-6151:DMPM-7074", story2 = "DMPM-5751:DMPM-7544")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testRiskDetailsCoverPeriod() throws InterruptedException {
 		String carPolicy = "carPolicy";
 		String CoverTypeTitle;
@@ -232,13 +232,13 @@ public class PolicyDetailsTest extends App {
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		//DMPM-6151:DMPM-7074
-		policyDetailsPage.scrollToRiskViewDetailsButton();
-		Assert.assertNotNull(policyDetailsPage.checkRiskViewDetails(), "View details button is not displayed");
+		policyDetailsPage.scrollToRisksTitle();
 		CoverTypeTitle = policyDetailsPage.getCoverTypeTextUsingId();
 		//DMPM-5751:DMPM-7544
 		assertRiskTileElements(riskDetails);
 		//DMPM-6151:DMPM-7074 Continued
 		policyDetailsPage.scrollToRiskViewDetailsButton();
+		Assert.assertNotNull(policyDetailsPage.checkRiskViewDetails(), "View details button is not displayed");
 		policyDetailsPage.tapRiskViewDetails();
 		assertRiskDetails(riskDetails,CoverTypeTitle);
 		riskDetailsPage.tapNavigateBackButton();
@@ -248,7 +248,7 @@ public class PolicyDetailsTest extends App {
 
 	
 	@TestDetails(story1 = "DMPM-3651:DMPM-3851,DMPM-3852")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })	
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })	
 	public void testViewDiscountsAndRewards() throws InterruptedException {
 		String boatPolicy = "boatPolicy";
 		String carAdvantagePolicy = "carAdvantagePolicy";
@@ -282,7 +282,7 @@ public class PolicyDetailsTest extends App {
 	
 	
 	@TestDetails(story1 = "DMPM-5523:DMPM7433,DMPM-7446")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testDisplayRewards() throws InterruptedException {
 		String carPolicy = "carPolicy";
 		String motorHomePolicy = "motorHomePolicy";
@@ -310,7 +310,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-4939:DMPM-7055,DMPM-7057")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testDiscountsCommaSeperated() throws InterruptedException {
 		String homePolicy = "homePolicy";
 		String userName = utils.readTestData("portfolio", "policyDetails", homePolicy, "policyStatus", "login");
@@ -361,7 +361,7 @@ public class PolicyDetailsTest extends App {
 	}
 	
 	@TestDetails(story1 = "DMPM-4392:DMPM-5805,DMPM-5806")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testExcessInformation() throws InterruptedException {
 
 		String carPolicy = "carPolicy";
@@ -386,7 +386,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-4392:DMPM-5808,DMPM-5813", story2 = "DMPM-7199:DMPM-7920")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testAdditionalExcessInformation() throws InterruptedException {
 
 		String boatPolicy = "boatPolicy";
@@ -425,7 +425,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-4623: DMPM-5505")
-	@Test(dataProvider = "PolicyMaintainceError", groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, dataProvider = "PolicyMaintainceError", groups = { "marketplace", "policy details", "priority-minor" })
 	public void testPolicyUnderMaintainceError(String errorType) throws InterruptedException {
 
 		String motorHomePolicy = "motorHomePolicy";
@@ -450,7 +450,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-2193:DMPM-4191,DMPM-4192,DMPM-4193 ")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testPolicyDetailsStatus() throws InterruptedException {
 
 		String homePolicy = "homePolicy";
@@ -501,7 +501,7 @@ public class PolicyDetailsTest extends App {
 	}
 	
 	@TestDetails(story1 = "DMPM-5026:DMPM-6894,DMPM-6895,DMPM-6897")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testRiskCoverPeriod() throws InterruptedException {
 
 		String homePolicy = "homePolicy";
@@ -565,7 +565,7 @@ public class PolicyDetailsTest extends App {
 	}
 	
 	@TestDetails(story1 = "DMPM-5532:DMPM-7453,DMPM-7454,DMPM-7456")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testRiskCoverDetails() throws InterruptedException {
 
 		String carPolicy = "carPolicy";
@@ -628,7 +628,7 @@ public class PolicyDetailsTest extends App {
 	}
 
 	@TestDetails(story1 = "DMPM-5066:DMPM-5978")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testEndDateCancellationPending() throws InterruptedException {
 
 		String homePolicy = "homePolicy";
