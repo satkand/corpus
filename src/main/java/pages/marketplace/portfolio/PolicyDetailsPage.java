@@ -1,5 +1,8 @@
 package pages.marketplace.portfolio;
 
+import javax.xml.bind.ParseConversionEvent;
+
+import org.apache.xml.serializer.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -71,6 +74,12 @@ public class PolicyDetailsPage extends BasePage {
 	private By riskDescription = By.id("au.com.suncorp.marketplace:id/riskDescription");
 	private By riskIcon = By.id("au.com.suncorp.marketplace:id/riskIcon");
 	private By registrationNumber = By.id("au.com.suncorp.marketplace:id/registrationNumber");
+	private By discountsAndBenefitsTitle = By.id("au.com.suncorp.marketplace:id/discountsAndBenefitsTitle");
+	private String discountsAndBenefitsTitleId = "au.com.suncorp.marketplace:id/discountsAndBenefitsTitle";
+	private By coverPeriodLabel = By.id("au.com.suncorp.marketplace:id/coverPeriodLabel");
+	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
+	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
+	private String coverPeriodEndId = "au.com.suncorp.marketplace:id/coverPeriodEnd";
 	
 	public WebElement checkPolicyRiskDescription() {
 		return find(riskDescription);
@@ -99,13 +108,6 @@ public class PolicyDetailsPage extends BasePage {
 	public String getCoverTypeTextUsingId() {
 		return getText(coverTypeText);
 	}
-	
-	private By discountsAndBenefitsTitle = By.id("au.com.suncorp.marketplace:id/discountsAndBenefitsTitle");
-	private String discountsAndBenefitsTitleId = "au.com.suncorp.marketplace:id/discountsAndBenefitsTitle";
-	private By coverPeriodLabel = By.id("au.com.suncorp.marketplace:id/coverPeriodLabel");
-	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
-	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
-	private String coverPeriodEndId = "au.com.suncorp.marketplace:id/coverPeriodEnd";
 	
 	public WebElement checkRiskViewDetails() {
 		return find(riskViewDetails);
@@ -139,8 +141,8 @@ public class PolicyDetailsPage extends BasePage {
 		return getText(coverPeriodEnd);
 	}
 	
-	public void scrollToCoverPeriod() {
-			if (getScreenHeight()>1920) {
+	public void scrollToCoverPeriod(String screenHeight) {
+			if (getScreenHeight()>Integer.parseInt(screenHeight)) {
 				scrollToElement(coverPeriodEndId, "id");
 			}
 			else {
@@ -154,8 +156,9 @@ public class PolicyDetailsPage extends BasePage {
 		return find(discountsAndBenefitsTitle,3);
 	}
 	
-	public void scrollToDiscountsAndBenefits() {
-		if (getScreenHeight()>1920) {
+	public void scrollToDiscountsAndBenefits(String screenHeight) {
+		
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
 			
 			scrollToElement(discountsAndBenefitsTitleId, "id");
 		}
@@ -226,8 +229,8 @@ public class PolicyDetailsPage extends BasePage {
 		return find(policyEndDate);
 	}
 	
-	public void scrollToPolicyEndDate() {
-		if (getScreenHeight()>1920) {
+	public void scrollToPolicyEndDate(String screenHeight) {
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
 			scrollToElement(policyEndDateId, "id");
 		}
 		else {
@@ -235,8 +238,8 @@ public class PolicyDetailsPage extends BasePage {
 		}
 	}
 	
-	public void scrollToPolicyEndYear() {
-		if (getScreenHeight()>1920) {
+	public void scrollToPolicyEndYear(String screenHeight) {
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
 			scrollToElement(policyEndYearId, "id");
 		}
 		else {
@@ -255,7 +258,7 @@ public class PolicyDetailsPage extends BasePage {
 	}
 
 	public void tapNavigateBackButton() {
-		if (find(navigateBackButton,30)==null) {
+		if (find(navigateBackButton,30)!=null) {
 			tapElement(navigateBackButton);
 		}
 		else {
@@ -275,8 +278,8 @@ public class PolicyDetailsPage extends BasePage {
 		return find(instalmentFrequency);
 	}
 	
-	public void scrollToInstallmentFrequncy() {
-		if (getScreenHeight()>1920) {
+	public void scrollToInstallmentFrequncy(String screenHeight) {
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
 			scrollToElement(instalmentFrequencyId, "id");
 		}
 		else {
@@ -350,8 +353,8 @@ public class PolicyDetailsPage extends BasePage {
 		return scrollAndGetElementText(paymentMethodAccount, 1);
 	}
 
-	public void scrollToRiskViewDetailsButton() {
-			if (getScreenHeight()>1920) {
+	public void scrollToRiskViewDetailsButton(String screenHeight) {
+			if (getScreenHeight()>Integer.parseInt(screenHeight)) {
 				scrollToElement(riskViewDetailsId, "id");
 			}
 			else {
@@ -363,8 +366,8 @@ public class PolicyDetailsPage extends BasePage {
 	public WebElement checkRiskViewOnlyButton() {
 		return find(riskViewOnlyDetails);
 	}
-	public void scrollToRiskViewOnlyButton() {
-		if (getScreenHeight()>1920) {
+	public void scrollToRiskViewOnlyButton(String screenHeight) {
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
 			scrollToElement(riskViewOnlyDetailsId, "id");
 		}
 		else {
@@ -377,8 +380,8 @@ public class PolicyDetailsPage extends BasePage {
 		scrollToElement(risksTitle, "id");
 	}
 
-	public void scrollToRewardsSubtitle() {
-		if (getScreenHeight()>1920) {
+	public void scrollToRewardsSubtitle(String screenHeight) {
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
 			scrollToElement(rewardsSubtitleId, "id",25);
 		}
 		else {
