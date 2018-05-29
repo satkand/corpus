@@ -294,17 +294,11 @@
 	},
 	"portfolio" :{
 		"loginEmptyProdList":{
-				"login": "a@b.c",
-				"pwd": "Password1",
-				"addBankAccount":{
-					"validAccountNumber": "12345678-aA",
-					"inValidCharacterAccountNumber": "#$",
-					"moreThanMaxAccountNumber": "AWRTE1234567890123456789012345TH"
-					
-				}
+				"login": "noProducts@sun.com",
+				"pwd": "Password1"
 			},
 		"loginProdList":{
-				"login": "a@b.c",
+				"login": "everydayAccounts@sun.com",
 				"pwd": "Password1",
 				"addPolicy":{
 					"enterPolicyNumber": "12345678-aA",
@@ -312,313 +306,377 @@
 					"policyNumberInvalidChars": "#$% &",
 					"minimumChar": "1"
 				},
-				"bankingProducts": [
+				"addBankAccount":{
+					"validAccountNumber": "12345-aAg",
+					"inValidCharacterAccountNumber": "#$",
+					"moreThanMaxAccountNumber": "AWRTE1234567890123456789012345TH"
+					
+				},
+				"addSuperAccount":{
+					"validAccountNumber": "1234454",
+					"inValidCharacterAccountNumber": "#$",
+					"moreThanMaxAccountNumber": "1234567890",
+					"lessThanMinAccountNumber":"12345"
+					
+				}
+			},
+		"bankingProducts": {
+			"everyDayAccount": {
+				"login": "everydayAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
+					{
+						"bsb": "484-799",
+						"accountNumber": "111111111",
+						"description": "Everyday options",
+						"availableBalance": "$12,345.00"
+					}
+				]
+			},
+			"termDepositAccount": {
+				"login": "termDepositAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
+					{
+						"bsb": "484-799",
+						"accountNumber": "222222222",
+						"description": "Savings account",
+						"currentBalance": "$100,000.25"
+					},
+					{
+						"bsb": "484-799",
+						"accountNumber": "333333333",
+						"description": "Term deposit",
+						"currentBalance": "$187,000.25"
+					}
+				]
+			},
+			"lifeProductAccount": {
+				"login": "lifeProductsAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
+					{
+						"accountNumber": "M374298342",
+						"description": "Life insurance",
+						"insuredPersonsname1": "Bob Smith",
+						"policyStatus":"Policy Active",
+						"insuredPersonsname2": "Andy Smith"		
+					},
+					{
+          				"accountNumber": "038492834",
+          				"description": "Accidental death insurance",
+          				"insuredPersonsname1": "John Doe",
+          				"policyStatus":"Policy Active",
+						"insuredPersonsname2": ""	
+					}
+				]
+			},
+			"lineOfCreditAccount": {
+				"login": "creditLineAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
+					{
+						"bsb": "484-799",
+						"accountNumber": "111111111",
+						"description": "Small business line of credit",
+						"currentBalance": "$10,000.00",
+						"availableBalance": "$12,345.00"
+					}
+				]
+			},
+			"loanAccount": {
+				"login": "loanProductsAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
 					{
 						"brand": "Suncorp",
-         					"bsb":"123-456",
-          					"accountNumber": "111111111",
-          					"description": "Holidays Savings Accounts",
-          					"currentBalance": "$123,456.25",
-          					"availableBalance": "$12,345.00"
+						"type": "Home Loan",
+						"bsb": "484-799",
+						"accountNumber": "444444444",
+						"description": "Standard home loan",
+						"currentBalance": "-$123,456.25",
+						"arrearsAmount": "$513.00"
 					},
 					{
 						"brand": "Suncorp",
-          					"bsb":"946-692",
-          					"accountNumber": "222222222",
-          					"description": "Everyday Options",
-          					"currentBalance": "-$123,456.25",
-          					"availableBalance": "-$12,345.00"
-					}]
-			},
+						"type": "Personal Loan",
+						"bsb": "484-799",
+						"accountNumber": "555555555",
+						"description": "Secured personal loan",
+						"currentBalance": "-$123,456.25",
+						"nextPaymentdate": "30 Jun 2018",
+						"nextPaymentamount": "$256.50",
+						"arrearsAmount": ""
+					}				]
+			}
+		},
 		"wealthProducts": {
 		"user1":{
-				"login": "a@b.c",
+				"login": "wealthProductsAccount@sun.com",
 				"pwd": "Password1",
 				"products": [
 				{
 						"brand": "Suncorp",
           				"accountNumber": "123456789",
-          				"description": "Sun Super",
+          				"description": "Sun super",
           				"accountBalance": "$3,141,592.65",
           				"status": "Active"
 				},
 				{
 						"brand": "Apia",
           				"accountNumber": "564738291",
-          				"description": "Australian Everyday Customer Sunny Super",
+          				"description": "Australian everyday customer sunny super",
           				"accountBalance": "$4.20",
           				"status": "Active"
 				}]
 			}},
-		"lifeProducts" : {
-        "user1":{
-        "login": "a@b.c",
-		"pwd": "Password1",
-		"products":[
-		{
-          "brand": "Suncorp",
-          "policyStatus": "Policy Active",
-          "description": "Life Insurance",
-          "insuredPersonsname1": "Bob Smith",
-          "insuredPersonsname2": "Andy Smith"
-           
-        },
-       {
-          "brand": "AAMI",
-          "policyStatus": "Policy Active",
-          "description": "Accidental Injury Plan",
-          "insuredPersonsname1": "Alex Sim",
-          "insuredPersonsname2": ""
-         
-        }]
-        }},
 		"insuranceProducts" : {
 				"policy1": 
 				{
-						"login": "a@b.c",
+						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
 						"status":"Renewal due",
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 1",
-             				 "endDate1":"10 November 2017",
-             				 "endDateDescription1":"Cancellation Date"
+             				 "endDate1":"10 Dec 2017",
+             				 "endDateDescription1":"Renewal due"
              				 
             			}
 				},
 				"policy2": 
 				{
-						"login": "a@b.c",
+						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
 						"status":"Renewal overdue",
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 2",
-             				 "endDate1":"10 November 2017",
-             				 "endDateDescription1":"Cancellation Date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Expiry date"
             			}
 				},
 				"policy3": 
 				{
-						"login": "a@b.c",
+						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
 						"status":"Renewal due",
           				"risks":{
              				 "description1": "Single Risk, Single Cover Policy 3",
-             				 "endDate1":"10 November 2017",
-             				 "endDateDescription1":"Start Date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Renewal due"
             			}
 				},
 				"policy4": 
 				{
-						"login": "a@b.c",
+						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
 						"status":"Renewal overdue",
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 4",
-             				 "endDate1":"10 November 2017",
-             				 "endDateDescription1":"Start Date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Expiry date"
             			}
 				},
 				"policy5": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             					"description1": "Multi Risk, Multi Cover 1",
-             				"endDate1":"10 October 2017",
+             				"endDate1":"10 Oct 2017",
              				"endDateDescription1":"Amendment date",
              				"description2": "Multi Risk, Multi Cover 2",
-             				"endDate2":"25 July 2018",
+             				"endDate2":"25 Jul 2018",
              				"endDateDescription2":"Expires"
             			}
 				},
 				"policy6": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             				{
             					"description1": "Multi Risk, Multi Cover 3",
-            					"endDate1":"10 June 2017",
+            					"endDate1":"10 Jun 2017",
              				"endDateDescription1":"Amendment date",
             					"description2": "Multi Risk, Multi Cover 4",
-            					"endDate2":"25 July 2018",
+            					"endDate2":"25 Jul 2018",
              				"endDateDescription2":"Expires"
             				}
 				},
 				"policy7": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 5",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Amendment date",
             				"description2": "Multi Risk, Multi Cover 6",
-            				"endDate2":"10 January 2017",
+            				"endDate2":"10 Jan 2017",
              			"endDateDescription2":"Amendment date"
             			}
 				},
 				"policy8": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 7",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Amendment date",
             				"description2": "Multi Risk, Multi Cover 8",
-            				"endDate2":"10 February 2017",
+            				"endDate2":"10 Feb 2017",
              			"endDateDescription2":"Amendment date"
             			}
 				},
 				"policy9": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 1",
-            				"endDate1":"10 November 2017",
+            				"endDate1":"10 Nov 2017",
              			"endDateDescription1":"Cancellation Date",
             				"description2": "Multi Risk, Single Cover 2",
-            				"endDate2":"25 July 2018",
+            				"endDate2":"25 Jul 2018",
              			"endDateDescription2":"Expires"
             			}
 				},
 				"policy10": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 3",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Cancellation Date",            			
             				"description2": "Multi Risk, Single Cover 4",
-            				"endDate2":"10 March 2017",
+            				"endDate2":"10 Mar 2017",
              			"endDateDescription2":"Cancellation Date"
             			}
 				},
 				"policy11": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Cancellation pending",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 1",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Cancellation Date"
             			}
 				},
 				"policy12": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Cancellation pending",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 9",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Cancellation Date",
             				"description2": "Multi Risk, Multi Cover 10",
-            				"endDate2":"25 July 2018",
+            				"endDate2":"25 Jul 2018",
              			"endDateDescription2":"Expires"
             			}
 				},
 				"policy13": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Cancellation pending",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 11",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Cancellation Date",
             				"description2": "Multi Risk, Multi Cover 12",
-            				"endDate2":"10 January 2017",
+            				"endDate2":"10 Jan 2017",
              			"endDateDescription2":"Cancellation Date"
             			}
 				},
 				"policy14": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 5",
-            				"endDate1":"10 November 2017",
+            				"endDate1":"10 Nov 2017",
              			"endDateDescription1":"Start date",	
             				"description2": "Multi Risk, Single Cover 6",
-            				"endDate2":"25 July 2018",
+            				"endDate2":"25 Jul 2018",
              			"endDateDescription2":"Expires"
             			}
 				},
 				"policy15": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 7",
-            				"endDate1":"10 November 2019",
+            				"endDate1":"10 Nov 2019",
              			"endDateDescription1":"Start date",
             				"description2": "Multi Risk, Single Cover 8",
-            				"endDate2":"10 October 2019",
+            				"endDate2":"10 Oct 2019",
              			"endDateDescription2":"Start date"
             			}
 				},
 				"policy16": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 2",
-            				"endDate1":"10 October 2019",
+            				"endDate1":"10 Oct 2019",
              			"endDateDescription1":"Start date"
             			}
 				},
 				"policy17": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 13",
-            				"endDate1":"10 October 2018",
+            				"endDate1":"10 Oct 2018",
              			"endDateDescription1":"Start date",
             				"description2": "Multi Risk, Multi Cover 14",
-            				"endDate2":"25 July 2018",
+            				"endDate2":"25 Jul 2018",
              			"endDateDescription2":"Expires"
             			}
 				},
 				"policy18": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 15",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Start date",            			
             				"description2": "Multi Risk, Multi Cover 16",
             				"endDate2":"10 May 2017",
@@ -627,19 +685,19 @@
 				},
 				"policy19": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Active",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 3",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Amendment date"
             			}
 				},
 				"policy20": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Active",
           				"risks": 
@@ -1200,8 +1258,8 @@
 			"invalidPostcodeMessage":"Please enter a valid australian postcode"
 		},
 		"portfolio": {
-			"emptyStateLabel": "Looks like you haven't added any products yet.",
-			"bottomSheetLabel": "What type of product?",
+			"emptyStateLabel": "No products listed here yet",
+			"addExistingProductScreenLabel": "Add existing product",
 			"availableBalanceLable": "Available balance",
 			"currentBalanceLabel": "Current balance",
 			"accountDetailsLabel": "Account Details",
@@ -1219,7 +1277,7 @@
 			"pinSuccessfullySetMessage": "PIN set up"
 		},		
 		"pinReAuthPasswordPage" : {
-			"forgottenPINPageTitle": "Forgotten password?",
+			"forgottenPINPageTitle": "Forgotten PIN",
 			"pinReAuthPasswordLabel": "Please enter your password to reset your PIN",
 			"passwordRequiredError" : "Field is required"
 		},
@@ -1333,8 +1391,8 @@
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
 		},
 		"portfolioError":{
-			"invalidAccountNumber":"Can only contain letters, numbers, and '-'",
-			"lengthError":"Must be between 1 – 30 characters",
+			"invalidAccountNumber":"Must be 9 characters  Can only contain numerical digits",
+			"lengthError":"Must be 9 characters",
 			"mandatoryError":"Field is required"
 			},
 		"memberLogin" : {

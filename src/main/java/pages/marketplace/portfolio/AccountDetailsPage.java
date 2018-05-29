@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class AccountDetailsPage   extends BasePage{
 
@@ -12,8 +13,8 @@ public class AccountDetailsPage   extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 	
-	private By accountDetailsTitle = By.xpath("//android.widget.TextView[@text='Account Details']");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/accountDetailsBackButton");
+	private By accountDetailsTitle = By.xpath("//android.widget.TextView[@text='Account details']");
+	private By backButton = MobileBy.AccessibilityId("Navigate up");
 
 		
 		public WebElement checkAccountDetailsTitle(){
