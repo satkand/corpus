@@ -66,9 +66,11 @@ import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
+import pages.marketplace.wealth.VendorDetailPage;
 import pages.marketplace.property.WhatsNearbyPage;
 import pages.marketplace.property.PropertyHubPage;
 import pages.marketplace.property.SuburbDetailsPage;
+
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -121,6 +123,7 @@ public class App extends BaseTest {
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+	public VendorDetailPage vendorDetailPage = null;
 	public WhatsNearbyPage whatsNearbyPage = null;
 	public ForceUpdatePage forceUpdatePage = null;
 	public SuburbDetailsPage suburbDetailsPage = null;
@@ -132,6 +135,7 @@ public class App extends BaseTest {
 	public MakeAClaimPage makeAClaimPage =null;
 	public TermsAndConditionsPage termsAndConditionsPage = null;
 	public AddProductPage addProductPage = null;
+
 
 	String CONFIG_FILE=null;
 
@@ -207,9 +211,11 @@ public class App extends BaseTest {
 		claimIntroPage = new ClaimIntroPage(driver);
 		makeAClaimPage = new MakeAClaimPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
+		vendorDetailPage = new VendorDetailPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		termsAndConditionsPage = new TermsAndConditionsPage(driver);
 		addProductPage = new AddProductPage(driver);
+
 	}
 	
 	@Parameters({ "stub" })

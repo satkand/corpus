@@ -1227,7 +1227,12 @@
 			"login" : "digi@v.com",
 			"pwd" : "Password1",
 			"month" : "February 2018",
-			"zeroSpending" : "$0.00"
+			"zeroSpending" : "$0.00",
+			"searchString" : "sto",
+			"resultString1" : "Store abc",
+			"resultString2" : "Housing store",
+			"resultString3" : "Stowed",
+
 		},
 		"hasNoData" : {
 			"month" : "April 2018"

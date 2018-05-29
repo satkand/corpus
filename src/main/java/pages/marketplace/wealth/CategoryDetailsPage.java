@@ -27,7 +27,8 @@ public class CategoryDetailsPage extends BasePage {
 	private By loadingIndicator = By.id("loadingIndicator");
 	private By closeButton =MobileBy.AccessibilityId("Navigate up");
 	private By transactionErrorMsg = By.id("au.com.suncorp.marketplace:id/missingTransactionsHeading");
-	private By vendorAmount = By.xpath("//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/vendorAmount']");
+	private By vendorAmount = By.id("au.com.suncorp.marketplace:id/vendorAmount");
+	private By vendorName = By.id("au.com.suncorp.marketplace:id/vendorName");
 	
 	public WebElement checkMonthPicker() {
 		return find(monthPicker);
@@ -100,14 +101,35 @@ public class CategoryDetailsPage extends BasePage {
 		return find(transactionErrorMsg);
 	}
 	
+	public String getTransactionErrorMsg() {
+		return getText(transactionErrorMsg);
+	}
+	
 	public boolean checkIfVendorsAreSorted() {
 		List<WebElement> vendorAmountList = finds(vendorAmount);
-		System.out.println(vendorAmountList.get(1).getText().substring(1));
-		System.out.println(Float.parseFloat(vendorAmountList.get(0).getText().substring(1)));
 		if(Float.parseFloat(vendorAmountList.get(0).getText().substring(1)) > Float.parseFloat(vendorAmountList.get(1).getText().substring(1)) && 
 				Float.parseFloat(vendorAmountList.get(1).getText().substring(1)) > Float.parseFloat(vendorAmountList.get(2).getText().substring(1))) {
 			return true;
 		}else
 			return false;
 	}
+	
+	public boolean checkVendorNames() {
+		scrollToElement(transactionList);
+		if(finds(vendorName).size() > 0) {
+			return true;
+		}else
+			return false;
+	}
+	
+	
+	
+	public boolean checkVendorAmount() {
+		scrollToElement(transactionList);
+		if(finds(vendorAmount).size() > 0) {
+			return true;
+		}else
+			return false;
+	}
+	
 }
