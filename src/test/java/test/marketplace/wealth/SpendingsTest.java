@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automation.framework.common.Copy;
+import automation.framework.common.TestDetails;
 import pages.App;
 
 public class SpendingsTest extends App {
@@ -230,8 +231,9 @@ public class SpendingsTest extends App {
 	//2480 - Scenario 1
 	//2905 - Scenario 1
 	//2260 - Scenario 1
-	@Test (groups = {"DMPM-4034", "DMPM-5818", "DMPM-5819","DMPM-5820","DMPM-5821","DMPM-5822","DMPM-5823","DMPM-5921", "DMPM-2480", 
-			"DMPM-2905", "DMPM-2260","marketplace", "FFI", "priority-minor"})
+	@TestDetails(story1 = "DMPM-4034:DMPM-5818,DMPM-5819,DMPM-5820,DMPM-5821,DMPM-5822,DMPM-5823", story2 = "DMPM-5921", story3 = "DMPM-2480",
+			story4 = "DMPM-2905",story5 = "DMPM-2260:DMPM-4959,DMPM-5273")
+	@Test (groups = { "marketplace", "FFI", "priority-minor"})
 	public void testDatePickerInCategoryDetailsScreen() {
 		
 		navigateToCategoryDetailScreen();	
