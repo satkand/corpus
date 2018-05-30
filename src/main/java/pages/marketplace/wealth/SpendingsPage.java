@@ -75,7 +75,8 @@ public class SpendingsPage extends BasePage {
 	
 	
 	private By topMostCategory = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/spendingItem'][1]");
-	
+	private By topMostCategoryName = By.id("au.com.suncorp.marketplace:id/nameText");
+	private By snackBar = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	
 	public WebElement checkSpendingPageTitle() {
 		return find(spendingPageTitle,30);
@@ -273,8 +274,16 @@ public class SpendingsPage extends BasePage {
 		return getText(emptyTransactionsHintMessage);
 	}
 	
+	public String getTopMostCategory() {
+		return getText(topMostCategoryName);
+	}
+	
 	public void tapTopmostCategory() {
 		tapElement(topMostCategory);
+	}
+	
+	public String getSnackBarText() {
+		return getText(snackBar);
 	}
 }
 

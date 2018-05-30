@@ -69,7 +69,13 @@
 			"validPINEntry2" : "2580"
 		}
 	},
+<<<<<<< HEAD
 	"_comment": "The login and login1 values have to be changed before run",
+=======
+	"screenSize" : {
+			"deviceScreenHeight": "1920"
+		},
+>>>>>>> develop
 	"loginCredentials": {
 		"validLoginCredentials": {
 			"login": "test@account.com",
@@ -301,7 +307,7 @@
 				"pwd": "Password1"
 			},
 		"loginProdList":{
-				"login": "a@b.c",
+				"login": "everydayAccounts@sun.com",
 				"pwd": "Password1",
 				"addPolicy":{
 					"enterPolicyNumber": "12345678-aA",
@@ -442,8 +448,8 @@
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 1",
-             				 "endDate1":"10 Nov 2017",
-             				 "endDateDescription1":"Cancellation Date"
+             				 "endDate1":"10 Dec 2017",
+             				 "endDateDescription1":"Renewal due"
              				 
             			}
 				},
@@ -455,8 +461,8 @@
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 2",
-             				 "endDate1":"10 Nov 2017",
-             				 "endDateDescription1":"Cancellation Date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Expiry date"
             			}
 				},
 				"policy3": 
@@ -466,8 +472,8 @@
 						"status":"Renewal due",
           				"risks":{
              				 "description1": "Single Risk, Single Cover Policy 3",
-             				 "endDate1":"10 Nov 2017",
-             				 "endDateDescription1":"Start date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Renewal due"
             			}
 				},
 				"policy4": 
@@ -478,8 +484,8 @@
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 4",
-             				 "endDate1":"10 Nov 2017",
-             				 "endDateDescription1":"Start date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Expiry date"
             			}
 				},
 				"policy5": 
@@ -721,20 +727,20 @@
 		                "pwd": "Password1",
 		         		"status":"ACTIVE",
 						"brand":"AAMI",
-						"productType":"Car insurance",
-						"policyNumber":"MPA123456789",
+						"productType":"Car Insurance",
+						"policyNumber":"MPA123456313",
 						"policyDescription":"Car insurance",
           				"periodOfCover": 
             			{
              				 "startDate": "01 October",
              				 "startYear":"2017",
              				 "endDate": "10 November",
-             				 "endYear":"2018, 11:59PM"
+             				 "endYear":"2018, 11:59 PM"
             			},
             			"instalmentDetails":
             			{
             			 "instalmentAmount":"$21.00",
-            			 "debitDayLabel":"paid on the 22nd"
+            			 "debitDayLabel":"paid on or around the 22nd"
             			},
             			"riskDetails":{
             			    "riskDescription1":"2017 Alfa Romeo Giulia",
@@ -742,11 +748,11 @@
 						"insuredAmount1":"$20,000.00",
 						"coverType1":"Comprehensive",
 						"coverPeriod1":"01 Oct 2017 - 01 Oct 2018",
-						 "riskDescription2":"2012 Nissan Patrol",
+						 "riskDescription2":"2011 Subaru Impreza",
 						"registrationNumber2":"DEF007",
 						"insuredAmount2":"$8,888.00",
 						"coverType2":"Third-Party, Fire & Theft",
-						"coverPeriod2":"12 Aug 2016 - 11 Aug 2017",
+						"coverPeriod2":"12 Aug 2016 - 12 Aug 2016",
 						"includedCoverDescription":"Lifetime new for old car replacement",
 						"optionalCoverDescription":"AAMI Roadside Assist",
 						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
@@ -770,13 +776,44 @@
             			"paymentDetails":
             			{
             			"creditCardDetails":"VISA ending in 5123"
+            			},
+            			"vehiclePolicyStatus": 
+            			{
+            			        "login": "policystatusvehicles@sun.com",
+		                     "pwd": "Password1",
+             				 "active": "Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy commencing",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            			"myVehiclePolicyStatus": 
+            			{
+             				"active": "Policy Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy Future Activation",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            			"PeriodOfCover":
+            			{
+            				"activeStartDate": "01 Oct 2017 - ",
+            				"activeEndDate": "01 Oct 2018",
+            				"cancellationPendingStartDate": "01 Oct 2017 - ",
+            				"cancellationPendingEndDate": "01 Oct 2017",
+            				"futureActiveStartDate": "01 Mar 2019 - ",
+            				"futureActiveEndDate": "01 Mar 2020",
+            				"renewalStartDate": "01 Oct 2017 - ",
+            				"renewalEndDate": "01 Oct 2018",
+            				"renewalOverDueStartDate": "01 Oct 2017 - ",
+            				"renewalOverDueEndDate": "01 Oct 2018"
             			}
 				},
 				"carAdvantagePolicy": 
 				{
 				    "login": "policydetails@sun.com",
 		            "pwd": "Password1",
-				    "productType":"Car advantage insurance",
+				    "productType":"Car Advantage Insurance",
             			"paymentDetails":
             			{
             			"bankAccountDetails":"Savings Account ending in 9999"
@@ -786,10 +823,10 @@
 				{   
 				     "login": "policydetails@sun.com",
 		             "pwd": "Password1",
-				    "productType":"Boat insurance",
+				    "productType":"Boat Insurance",
             			"instalmentDetails":
             			{
-            			 "instalmentAmount":"$112.40"
+            			 "instalmentAmount":"$58,000.34"
             			},
             			"riskDetails":{
             			
@@ -806,7 +843,7 @@
 				{   
 				    "login": "policydetails@sun.com",
 				    "pwd": "Password1",
-				    "productType":"Motorhome insurance",
+				    "productType":"Motorhome Insurance",
             			"instalmentDetails":
             			{
             			 "instalmentAmount":"$112.14"
@@ -818,9 +855,12 @@
             			},
             			"policyEndorsementError":
             			{
-            			"login": "policyendorserror@sun.com",
+            			"login": "policyendorserror@sun.com", 
 				    "pwd": "Password1"
-            			}
+            			},
+            			"riskDetails":{
+						"rewardsTitle":"Round the world reward",
+						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
 				},
 				"homePolicy": 
 				{
@@ -828,9 +868,9 @@
 		                "pwd": "Password1",
 						"status":"ACTIVE",
 						"brand":"SUNCORP",
-						"productType":"Home and contents insurance",
-						"policyNumber":"HPS123456789",
-						"policyDescription":"Home and contents insurance",
+						"productType":"Home And Contents Insurance",
+						"policyNumber":"HPS123457790",
+						"policyDescription":"Home insurance",
 							"instalmentDetails":
             			{
             			 "instalmentAmount":"$88.88"
@@ -840,9 +880,9 @@
              				 "startDate": "15 October",
              				 "startYear":"2017",
              				 "endDate": "25 August",
-             				 "endYear":"2018, 11:59PM",
+             				 "endYear":"2018, 11:59 PM",
              				 "endDateCancellationPending": "10 November",
-             				 "endYearCancellationPending":"2017, 11:59PM"
+             				 "endYearCancellationPending":"2017, 11:59 PM"
             			},
             				"policyStatus": 
             			{
@@ -850,10 +890,11 @@
 		                     "pwd": "Password1",
              				 "active": "ACTIVE",
              				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Future active",
+             				 "futureActive": "Policy commencing",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
+            			
             				"myProductPolicyStatus": 
             			{
              				"active": "Policy Active",
@@ -861,6 +902,25 @@
              				 "futureActive": "Policy Future Activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
+            			},
+            				"Discounts&Benefits":
+            			{
+            				"discounts1": "Multi-Policy,Staff",
+            				"discounts2": "Multi-Policy, Staff, Top-Bloke",
+            				"discounts3": "Multi-Policy"
+            			},
+            				"PeriodOfCover":
+            			{
+            				"activeStartDate": "01 Oct 2017 - ",
+            				"activeEndDate": "01 Oct 2018",
+            				"cancellationPendingStartDate": "01 Oct 2017 - ",
+            				"cancellationPendingEndDate": "01 Oct 2018",
+            				"futureActiveStartDate": "01 Oct 2017 - ",
+            				"futureActiveEndDate": "01 Oct 2018",
+            				"renewalStartDate": "01 Oct 2017 - ",
+            				"renewalEndDate": "01 Oct 2018",
+            				"renewalOverDueStartDate": "01 Oct 2017 - ",
+            				"renewalOverDueEndDate": "01 Oct 2018"
             			}
 				}
 		}
@@ -1230,7 +1290,12 @@
 			"login" : "digi@v.com",
 			"pwd" : "Password1",
 			"month" : "February 2018",
-			"zeroSpending" : "$0.00"
+			"zeroSpending" : "$0.00",
+			"searchString" : "sto",
+			"resultString1" : "Store abc",
+			"resultString2" : "Housing store",
+			"resultString3" : "Stowed",
+
 		},
 		"hasNoData" : {
 			"month" : "April 2018"
