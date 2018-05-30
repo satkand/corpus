@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -139,12 +140,22 @@ public class App extends BaseTest {
 
 	String CONFIG_FILE=null;
 
+	@Parameters({ "stub" })
 	@BeforeClass
-	public void initializeApp() {
+	public void initializeApp(@Optional("false") String stub) {
 	
 		 utils = new AutoUtilities();
-		// Autoutilites file path
-		String JSONFilePath = "/TestData/TestData_Test.json";
+		 String JSONFilePath = null;
+		 
+		 if(stub.equalsIgnoreCase("true")) {
+				// Autoutilites file path
+				JSONFilePath = "/TestData/TestData_Stub.json";
+		 } else {
+				JSONFilePath = "/TestData/TestData_Test.json";
+		 }
+
+		 System.out.println(":::::::::::::::::::"+JSONFilePath);
+		 
 		CONFIG_FILE = System.getProperty("user.dir")+"/Config/config.properties";
 		utils.loadTestData(JSONFilePath);
 		
@@ -242,16 +253,17 @@ public class App extends BaseTest {
 		loginPage.enterLoginCredentials(login, pwd);
 		
 		loginPage.tapLoginButton();
+		loginPage.waitForLoadingIndicatorToDismiss();
 		
 		if(termsAndConditionsPage.checkAcceptButton() != null) {
 			termsAndConditionsPage.tapAcceptButton();
 		}
 		
-		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
+		if(pinOptionsPage.checkMaybeLaterButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
-		}
-		
-		else if (pinOptionsPage.checkEnableFingerprintBtn() != null && args.length < 1) {
+		} else if(pinOptionsPage.checkMaybeLaterPromptButton() != null && args.length < 1) {
+			pinOptionsPage.tapPromptMaybeLater();
+		} else if (pinOptionsPage.checkEnableFingerprintBtn() != null && args.length < 1) {
 			pinOptionsPage.tapPromptMaybeLater();
 		}
 	}
