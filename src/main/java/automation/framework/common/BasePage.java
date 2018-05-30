@@ -1,5 +1,8 @@
 package automation.framework.common;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.time.Duration;
@@ -15,6 +18,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,6 +33,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.android.StartsActivity;
+//import src.main.java.auto.common.String;
 
 public class BasePage {
 
@@ -148,10 +154,10 @@ public class BasePage {
 		driver.runAppInBackground(duration);
 	}
 
-	protected void longPressOnAnElement(WebElement element) {
+	protected void longPressOnAnElement(By locator) {
 
 		TouchAction ta = new TouchAction(driver);
-		ta.longPress(element).release().perform();
+		ta.longPress(find(locator)).release().perform();
 
 		/* [OR]
 		TouchAction ta = new TouchAction(driver);
@@ -163,7 +169,8 @@ public class BasePage {
 		 */
 	}
 
-	protected void tapByOffsetFromStart(WebElement element, int offsetX, int offsetY) {
+	protected void tapByOffsetFromStart(By locator, int offsetX, int offsetY) {
+		WebElement element = find(locator);
 		Point location = element.getLocation();
 
 		final int finalXLocation = location.getX() + offsetX;
@@ -177,8 +184,9 @@ public class BasePage {
 		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 
-	protected void tapByOffsetFromEnd(WebElement element, int offsetX, int offsetY) {
+	protected void tapByOffsetFromEnd(By locator, int offsetX, int offsetY) {
 
+		WebElement element = find(locator);
 		Point location = element.getLocation();
 		int width = element.getSize().getWidth();
 
@@ -265,7 +273,7 @@ public class BasePage {
 				swipeAction(100, y - 80, 80, y - 700);
 				break;
 			case "DEEPDOWN":
-				swipeAction(100, y - 80, 80, y - 1400);
+				swipeAction(100, y - 80, 80, y - 1200);
 				break;
 			case "LEFT":
 				swipeAction(50, y / 2, x - 10, y / 2);
@@ -285,7 +293,7 @@ public class BasePage {
 
 	protected void scrollToElement(By locator, String... args) {
 		int numOfSwipes = 0;
-		while (find(locator,7) == null && numOfSwipes <= 35) {
+		while (find(locator,7) == null && numOfSwipes <= 15) {
 			if(args.length < 1) {
 				swipeScreen("down");
 			} else {
@@ -398,6 +406,11 @@ public class BasePage {
 
 	protected String getText(By locator) {
 		return find(locator).getText();
+	}
+
+	
+	protected String getText(WebElement element) {
+		return element.getText();
 	}
 
 	protected List<String> getTextList(By locator) {
@@ -611,25 +624,27 @@ public class BasePage {
 		return element;
 	}
 
-	protected WebElement findByUIAutomator(String locatorString, String locatorType) {
+	protected WebElement findByUIAutomator(String locatorString, String locatorType,int... args) {
 
 		WebElement webElement = null;
+		
+		int timeout = (args.length > 0 ? args[0] : 15);
 
 		switch (locatorType) {
 
 		case "text":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", locatorString)),timeout);
 			break;
 
 		case "id":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().resourceId(\"%s\")", locatorString)),timeout);
 			break;
 
 		case "desc":
 			webElement = find(
-					MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)));
+					MobileBy.AndroidUIAutomator(String.format("new UiSelector().description(\"%s\")", locatorString)),timeout);
 			break;
 
 		}
@@ -637,32 +652,21 @@ public class BasePage {
 		return webElement;
 	}
 
-
-	public void waitForElementToDisappear(By locator) {
-
-		WebElement element  = find(locator);
-
+	public void waitForElementToDisappear(By locator,int... args) {
+		
+		int timeout = (args.length > 0 ? args[0] : 15);
+		
+		WebElement element  = find(locator,2);
+		
 		if (element != null) {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(
-					locator)
-					);
+		      WebDriverWait wait = new WebDriverWait(driver, timeout);
+		      wait.until(ExpectedConditions.invisibilityOfElementLocated(
+		    		  locator)
+		            );
+
 		}
 
 	}	
-	
-	public void waitForElementToAppear(By locator) {
-
-		WebElement element  = find(locator);
-
-		if (element != null) {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(
-					locator)
-					);
-		}
-
-	}
 
 
 	protected void waitForLoadingIndicatorToDismiss(By locator) {
@@ -673,20 +677,8 @@ public class BasePage {
 		}
 	}
 
-	public void waitForElementToDisappear(By locator,int timeout) {
-
-		//	WebElement element  = find(locator);
-
-		if (find(locator,5) != null) {
-			WebDriverWait wait = new WebDriverWait(driver, timeout);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(
-					locator)
-					);
-		}
-
-	}
-
 	public Map<String,Object> getAppiumSessionDetails() {
+
 		return driver.getSessionDetails();
 	}
 
@@ -729,12 +721,71 @@ public class BasePage {
 
 	}
 
+	public String scrollAndGetElementText(By locator,int maxSwipes,int... args ) {
+		
+		int timeout = (args.length > 0 ? args[0] : 2);
+		
+
+		WebElement element = find(locator, timeout);
+
+		for (int i = 0; i < maxSwipes; i++) {
+
+			if (element == null) {
+
+				swipeScreen("DOWN");
+
+			} else {
+
+
+				break;
+
+			}
+
+			element = find(locator, timeout);
+
+		}
+
+		return getText(element);
+
+	}
+	
+	public WebElement scrollToElementByText(String text, int maxSwipes, int... args) {
+		
+		int timeout = (args.length > 0 ? args[0] : 2);
+		
+		WebElement element = findByUIAutomator(text, "text", timeout);
+
+		for (int i = 0; i < maxSwipes; i++) {
+
+			if (element == null) {
+
+				swipeScreen("DOWN");
+
+			} else {
+				break;
+			}
+
+			element = findByUIAutomator(text, "text", timeout);
+		}
+
+		return element;
+		
+	}
+		
+		
+
 	public void doubleTapOnAnElement(By locator) {
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.tap(find(locator)).tap(find(locator)).perform();
 		
 	}
 	
+	protected String getAttribute(By locator, String attribute) {
+	
+			WebElement element = find(locator);
+			String text = element.getAttribute(attribute);
+			return text;
+		}
 
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
@@ -1552,6 +1603,29 @@ public class BasePage {
 		By suncorpApp = By.xpath("//android.widget.TextView[@text='Config']");
 		find(suncorpApp);
 		tapElement(suncorpApp);
+	}
+	
+	protected void restartSuncorpConfigApp() throws Throwable {
+	
+		File appDir = new File("resources");
+		File app = null;
+		File[] listOfFiles = appDir.listFiles();
+		for (int i = 0; i < listOfFiles.length; i++) {
+			if (listOfFiles[i].getName().contains("Marketplace")) {
+				app = listOfFiles[i];
+				break;
+			}
+
+		}
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("deviceName", "Samsung");
+		capabilities.setCapability("automationName", "UIAutomator2");
+		capabilities.setCapability("app", app.getAbsolutePath());
+		capabilities.setCapability("appPackage", "au.com.suncorp.marketplace");
+		capabilities.setCapability("appWaitActivity", "*");
+		capabilities.setCapability("app", app.getAbsolutePath());
+		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 	}
 	
 	protected void closeAndLaunchApp() {

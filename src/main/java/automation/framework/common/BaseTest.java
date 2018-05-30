@@ -37,8 +37,8 @@ public class BaseTest {
 	public void setup() throws IOException, InterruptedException {
 
 		// Start the Appium Server
-		stopAppiumServer();
-		startAppiumServer();
+		//stopAppiumServer();
+		//startAppiumServer();
 
 		// Pick the app and Companion App
 		app = selectApp();
@@ -51,7 +51,7 @@ public class BaseTest {
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("appPackage", "au.com.suncorp.marketplace");
 		capabilities.setCapability("appWaitActivity", "*");
-		capabilities.setCapability("udid", "ce02182268cc7a3e05");
+		//capabilities.setCapability("udid", "FA79X1A02210");
 		//capabilities.setCapability("fullReset", false);
 		//capabilities.setCapability("noReset", true);
 		//capabilities.setCapability("newCommandTimeout", 300);
@@ -117,7 +117,7 @@ public class BaseTest {
 	}
 
 	@AfterSuite(alwaysRun = true)
-	private void teardown() throws IOException {
+	public void teardown() throws IOException {
 		driver.removeApp("au.com.suncorp.marketplace");
 		//au.com.suncorp.suncorpgroup.marketplace
 		driver.quit();
