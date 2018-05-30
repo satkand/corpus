@@ -89,7 +89,6 @@ public class VehiclesTest extends App {
 
 
 	/*
-
 	 * Story: DMPM-5582
 	 * Test case: DMPM-6034 - Display background image - Vehicle Dimension
 	 */
@@ -158,6 +157,31 @@ public class VehiclesTest extends App {
 		
 	}
 	
+	/*
+	 * Story: DMPM-5367
+	 * Test Case: DMPM-6286- Android-Derived assets details UI for Vehicles
+	 */
+	@TestDetails(story1 = "DMPM-5367:DMPM-6286")
+	@Test(groups = {"marketplace", "Vehicle dimension", "priority-high"})
+	public void testVehiclesDerivedAssetDetails() {
+		//Step 1: Login to App and then navigate Vehicles Dimension
+		navigateToVehiclesTab("hasVehicles");
+		
+		//Step 2: Scroll to Derived Asset
+		Assert.assertNotNull(vehiclesPage.scrollToDerivedAsset(), "Asset details view not found");
+		
+		
+		//Step 2: Tap Derived Asset
+		vehiclesPage.tapPolicyViewDocumentsBtn();
+
+		//Step 3: Validate Asset details UI elements
+		verifyAssetDetailsVehicleImage();
+		verifyAssetDetailsVehicleCameraImage();
+		verifyAssetDetailsVehicleDescription();
+		verifyAssetDetailsVehicleMakeAClaim();
+		verifyAssetDetailsVehicleAddDocuments();
+	}
+	
 	private void verifyAlertTitle() {
 		Assert.assertNotNull(vehiclesPage.checkFeatureLockAlertTitle(), "Feature locked alert message not shown");
 		vehiclesPage.dismissFeatureLockedAlert();
@@ -211,7 +235,27 @@ public class VehiclesTest extends App {
 		Assert.assertNotNull(vehiclesPage.checkAddVehiclePolicyActionTxt(), "Add a policy action button not shown");
 		Assert.assertEquals(vehiclesPage.getAddVehiclePolicyActionTxt(), Copy.ADD_A_VEHICLE_POLICY,"Add a vehicles Tile button text is not as expected");
 	}
+	
+	private void verifyAssetDetailsVehicleImage() {
+		Assert.assertNotNull(vehiclesPage.checkPolicyVehicleTypeImage(), "Vehicles asset's vehicle type image not shown");
+	}
 
+	private void verifyAssetDetailsVehicleCameraImage() {
+		Assert.assertNotNull(vehiclesPage.checkVehicleTakePhotoImage(), "Vehicles asset's vehicle type camera icon not shown");
+	}
+
+	private void verifyAssetDetailsVehicleDescription() {
+		Assert.assertNotNull(vehiclesPage.checkVehicleDescriptionText(), "Vehicles asset's vehicle description not shown");
+	}
+
+	private void verifyAssetDetailsVehicleMakeAClaim() {
+		Assert.assertNotNull(vehiclesPage.checkVehicleMakeClaimBtn(), "Vehicles asset's make claim button not shown");
+	}
+
+	private void verifyAssetDetailsVehicleAddDocuments() {
+		Assert.assertNotNull(vehiclesPage.checkVehicleAddDocumentsBtn(), "Vehicles asset's add document button not shown");
+	}
+	
 	private void verifyVehiclesTileBtn() {
 		if(vehiclesPage.isVehiclesServicesBtnDisplayed()==null) {
 			vehiclesPage.scrollToVechilesTileBtn();

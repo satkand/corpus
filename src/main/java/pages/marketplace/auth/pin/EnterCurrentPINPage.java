@@ -7,26 +7,25 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class EnterCurrentPINPage extends BasePage {
 
 	public EnterCurrentPINPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
-	private By enterExistingPinLabel = By.id("au.com.suncorp.marketplace:id/activate_pin_title");
+	private By enterExistingPinLabel = By.id("au.com.suncorp.marketplace:id/activatePinTitle");
 	private By pinField = By.id("au.com.suncorp.marketplace:id/pinImage1");
 	private By forgotPinButton = By.id("au.com.suncorp.marketplace:id/customKeypadForgotPinButton");
 	private By PINLockAlertMessage = By.id("android:id/message");
 	private By reAuthenticateButton = By.id("android:id/button1");
 	private By incorrectPINErrorMessage = By.id("au.com.suncorp.marketplace:id/pinIncorrectErrorText");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/reauthCancelButton");
-	
-	private By buttonOne = By.id("au.com.suncorp.marketplace:id/customKeypadButton1");
-	private By buttonThree = By.id("au.com.suncorp.marketplace:id/customKeypadButton3");
-	private By buttonFive = By.id("au.com.suncorp.marketplace:id/customKeypadButton5");
-	private By buttonSeven = By.id("au.com.suncorp.marketplace:id/customKeypadButton7");
+	private By pinButton = null;
+	private By backButton = MobileBy.AccessibilityId("Back");
+	private By okButton = By.id("android:id/button1");
+	private By pinInstructionTitile = By.id("au.com.suncorp.marketplace:id/pinInstructionTitle");
+	private By pinInstructionMessage = By.id("au.com.suncorp.marketplace:id/pinInstructionMessage");
 
 	public WebElement checkEnterExistingPinLabel() {
 		return find(enterExistingPinLabel, 20);
@@ -62,6 +61,13 @@ public class EnterCurrentPINPage extends BasePage {
 		tapElement(backButton);
 	}
 	
+	public void tapOkButton() {
+		tapElement(okButton);
+	}
+	
+	public WebElement checkOkButton() {
+		return find(okButton);
+	}
 	
 	
 	public WebElement checkPinLockedMessage() {
@@ -84,10 +90,21 @@ public class EnterCurrentPINPage extends BasePage {
 		return getText(incorrectPINErrorMessage);
 	}
 	
-	public void enterPIN(){
-		tapElement(buttonOne);
-		tapElement(buttonThree);
-		tapElement(buttonFive);
-		tapElement(buttonSeven);
+	public void enterPIN(String PIN){
+		for(int i=0; i<4 ;i++) {
+			char digit = PIN.charAt(i);
+			String elementAddition = "customKeypadButton"+digit;
+			pinButton = By.id("au.com.suncorp.marketplace:id/"+elementAddition);
+			tapElement(pinButton);
+		}
+	}
+
+	public String getPinInstructionTitileText() {
+
+		return getText(pinInstructionTitile);
+	}
+	public String getPinInstructionMessageText() {
+
+		return getText(pinInstructionMessage);
 	}
 }

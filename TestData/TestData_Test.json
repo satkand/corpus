@@ -1,13 +1,13 @@
-{
+	{
     "appPackage": {
         "packageName": "au.com.suncorp.mobile",
         "platform": "aos"
     },
 	"PIN" :{
 		"loginWithExistingPin" : {
-			"login": "thisloginhaspin@haspin.com",
+			"login": "pinenabled@sun.com",
 			"pwd": "Password1",
-			"pin": "2580"
+			"pin": "1357"
 		},
 							"backup_loginWithExistingPin" : {
 								"login": "b@b.com",
@@ -31,19 +31,37 @@
 		},
 		"loginWithPinLocked" : {
 			"login": "pinlocked@sun.com",
-			"pwd": "Test123",
+			"pwd": "Password1",
 			"pin": "1234"
+		},
+		"loginLockPinAndSetup" : {
+			"login": "lockandsetup@sun.com",
+			"pwd": "Password1",
+			"pin": "2580",
+			"invalidPin":"1234"
+		},
+		"cancelForgotPIN" : {
+			"login": "cancelforgotpin@sun.com",
+			"pwd": "Password1",
+			"pin": "2580",
+			"invalidPin":"1234"
+		},
+		"cancelPINSetup" : {
+			"login": "cancelpinsetup@sun.com",
+			"pwd": "Password1",
+			"pin": "2580",
+			"invalidPin":"1234"
 		},
 		"loginForPinLockedSetupFlow" : {
 			"login": "pinsetup@sun.com",
-			"pwd": "Test123",
+			"pwd": "Password1",
 			"invalidPin": "1234",
 			"validPin":"2580"
 		},
 		"loginForConfirmCurrentPin" : {
-			"login": "ss@sun.com",
+			"login": "loginpinenabled@sun.com",
 			"pwd": "Password1",
-			"pin": "2121"
+			"pin": "2580"
 		},
 		"pinEntries" :{
 			"invalidPINEntries" : ["0123", "1234", "2345", "3456", "4567", "5678", "6789", "7890", "1111", "2222", "3333", "5555", "6666", "7777", "8888", "9999", "0000", "0987", "9876", "8765", "7654", "6543", "5432", "4321", "3210"],
@@ -51,9 +69,12 @@
 			"validPINEntry2" : "2580"
 		}
 	},
+	"screenSize" : {
+			"deviceScreenHeight": "1920"
+		},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "a@b.c",
+			"login": "test5@test.com",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••"
 		},
@@ -68,10 +89,6 @@
 			"invalidPassword" : "1234567",
 			"invalidMemberLogin": "x@g.z",
 			"invalidMemberLoginPwd": "Pwd1"
-		},
-		"validMemberLogin": {
-			"login": "x@y.z",
-			"pwd": "Password1"
 		}
 	},
 	"propertyDimension" :{
@@ -96,6 +113,9 @@
 		"propertyDetailsHighConfidence":{
 					"confidenceLevel":"High confidence",
 					"numberOfImages":"2",
+					"nearbySchool1":"Eltham Woods Preschool (694m)",
+					"nearbySchool2":"Little Scooters Early Learning Centre & Kindergarten (703m)",
+					"nearbySchool3":"Research Primary School (843m)",
 					"estimatedMarketValue": "$1,456,100,000 - $1,895,275,000"
 		},
 		"propertyExplorer":{
@@ -104,6 +124,14 @@
 					"clearSearchText":"1234567890ABCD#$%^",
 					"enterAdress":"1",
 					"highConfidenceAddress":"2"
+		},
+		"suburbInsight":{
+					"login":"a@b.c",
+					"pwd":"Password1",
+					"suburbSearchText":"3978",
+					"floodRiskValue" : "Low",
+					"bushFireValue" : "Medium",
+					"theifRiskValue" : "High"
 		},
 		"propertyHub":{
 					"login":"a@b.c",
@@ -154,19 +182,126 @@
 				}
 			]}
 		},
+	"claimDetails" :{
+		         "login": "a@b.c",
+				"pwd": "Password1",
+					"property":{
+					
+				        "claimLodged":{
+				          "claimNumber":"H00000001",
+				          "insuranceType":"Home Insurance",
+				          "homeRiskAddress":"Insured address",
+				          "homeRiskAddrPrimaryDesc":"530 Collins St, Melbourne",
+				          "homeRiskAddrSecondaryDesc":"VIC 3000",
+				          "whatHappened":"Natural Hazard",
+				          "accidentType":"Hail",
+				          "eventDate" :"Sunday 5 Jul 2015",
+				          "claimStageLabel" :"Stage 1 of 4",
+				          "claimStageValue" :"Claim lodged"
+				        },
+				        "claimInProgress":{
+				          "claimNumber":"H00000002",
+				          "claimStageLabel" :"Stage 2 of 4",
+				          "claimStageValue" :"Claim in progress"
+				        },
+				         "assessmentComplete":{
+				          "claimNumber":"H00000003",
+				          "claimStageLabel" :"Stage 3 of 4",
+				          "claimStageValue" :"Assessment complete",
+				          "excess":{
+				          "yourOutstandingExcess":"$3,000.00",
+				          "excessRecieved":"$976.55",
+				          "totalExcess":"$3,976.55"
+				           } 
+				        },
+				          "claimSettledAsAdvised":{
+				          "claimNumber":"H00000004",
+				          "claimStageLabel" :"Stage 4 of 4",
+				          "claimStageValue" :"Claim settled as advised"
+				        }	  	     
+				},
+				"vehicle":{
+					
+				        "claimLodged":{
+				          "claimNumber":"M00000001",
+				          "insuranceType":"Boat Insurance",
+				          "vehicleRisk":"Insured vehicle",
+				          "vehicleRiskPrimaryDesc":"2015 Boaty McBoatface",
+				          "vehicleRiskSecondaryDesc":"P1R4T3",
+				          "whatHappened":"Damage Whilst Boating",
+				          "accidentType":"Kraken attack",
+				          "eventDate" :"Sunday 5 Jul 2015",
+				          "claimStageLabel" :"Stage 1 of 4",
+				          "claimStageValue" :"Claim lodged",
+				          "excess":{
+				            "yourTotalExccess":"$500.00",
+				            "zeroExcess":{
+				            "claimNumber":"M00000005",
+				            "yourTotalExccess":"$0.00"
+				            }   
+				          }
+				          
+				        },
+				        "damageReview":{
+				          "claimNumber":"M00000002",
+				          "claimStageLabel" :"Stage 2 of 4",
+				          "claimStageValue" :"Damage review"
+				        },
+				         "repair":{
+				          "claimNumber":"M00000003",
+				          "claimStageLabel" :"Stage 3 of 4",
+				          "claimStageValue" :"Repair",
+				          "excess":{
+				          "referenceNumber":"PRN12345678901234",
+				          "paidExcess":"$888.88"
+				           }   
+				        },
+				          "claimCompleted":{
+				          "claimNumber":"M00000004",
+				          "claimStageLabel" :"Stage 4 of 4",
+				          "claimStageValue" :"Claim completed"
+				        }	  	     
+				}
+				
+		},
+	"claimLodgement" :{
+		         "login": "a@b.c",
+				"pwd": "Password1",
+				"property":{
+				"home&Building":{
+				"policyDescription":"Home & building insurance",
+		         "brand1":"AAMI",
+		         "brand2":"Apia",
+		         "brand3":"Bingle",
+		         "brand4":"GIO",
+		         "brand5":"Shannons",
+		         "brand6":"Suncorp",
+		         "homeRiskAddress":"23 The Grove, Doncaster VIC 3224"
+				}
+	},
+	"vehicle":{
+				"car":{
+				"policyDescription":"Comprehensive car insurance",
+		         "brand1":"AAMI",
+		         "brand2":"Apia",
+		         "brand3":"Bingle",
+		         "brand4":"GIO",
+		         "brand5":"Shannons",
+		         "brand6":"Suncorp",
+		         "vehicleDescription":"2012 SUZUKI SWIFT GLX FZ 5D HATCHBACK 4 SP AUTOMATION TESTING TWO LINES",
+		         "vehicleRegistration":"ABC 123",
+		         "validIncidentDate":"22-4-2018",
+		         "futureIncidentDate":"20-8-2018"
+				}
+		   }
+	},
 	"portfolio" :{
 		"loginEmptyProdList":{
-				"login": "a@b.c",
-				"pwd": "Password1",
-				"addBankAccount":{
-					"validAccountNumber": "12345678-aA",
-					"inValidCharacterAccountNumber": "#$",
-					"moreThanMaxAccountNumber": "AWRTE1234567890123456789012345TH"
-					
-				}
+				"login": "noProducts@sun.com",
+				"pwd": "Password1"
 			},
 		"loginProdList":{
-				"login": "a@b.c",
+				"login": "everydayAccounts@sun.com",
 				"pwd": "Password1",
 				"addPolicy":{
 					"enterPolicyNumber": "12345678-aA",
@@ -174,313 +309,377 @@
 					"policyNumberInvalidChars": "#$% &",
 					"minimumChar": "1"
 				},
-				"bankingProducts": [
+				"addBankAccount":{
+					"validAccountNumber": "12345-aAg",
+					"inValidCharacterAccountNumber": "#$",
+					"moreThanMaxAccountNumber": "AWRTE1234567890123456789012345TH"
+					
+				},
+				"addSuperAccount":{
+					"validAccountNumber": "1234454",
+					"inValidCharacterAccountNumber": "#$",
+					"moreThanMaxAccountNumber": "1234567890",
+					"lessThanMinAccountNumber":"12345"
+					
+				}
+			},
+		"bankingProducts": {
+			"everyDayAccount": {
+				"login": "everydayAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
+					{
+						"bsb": "484-799",
+						"accountNumber": "111111111",
+						"description": "Everyday options",
+						"availableBalance": "$12,345.00"
+					}
+				]
+			},
+			"termDepositAccount": {
+				"login": "termDepositAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
+					{
+						"bsb": "484-799",
+						"accountNumber": "222222222",
+						"description": "Savings account",
+						"currentBalance": "$100,000.25"
+					},
+					{
+						"bsb": "484-799",
+						"accountNumber": "333333333",
+						"description": "Term deposit",
+						"currentBalance": "$187,000.25"
+					}
+				]
+			},
+			"lifeProductAccount": {
+				"login": "lifeProductsAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
+					{
+						"accountNumber": "M374298342",
+						"description": "Life insurance",
+						"insuredPersonsname1": "Bob Smith",
+						"policyStatus":"Policy Active",
+						"insuredPersonsname2": "Andy Smith"		
+					},
+					{
+          				"accountNumber": "038492834",
+          				"description": "Accidental death insurance",
+          				"insuredPersonsname1": "John Doe",
+          				"policyStatus":"Policy Active",
+						"insuredPersonsname2": ""	
+					}
+				]
+			},
+			"lineOfCreditAccount": {
+				"login": "creditLineAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
+					{
+						"bsb": "484-799",
+						"accountNumber": "111111111",
+						"description": "Small business line of credit",
+						"currentBalance": "$10,000.00",
+						"availableBalance": "$12,345.00"
+					}
+				]
+			},
+			"loanAccount": {
+				"login": "loanProductsAccounts@sun.com",
+				"pwd": "Password1",
+				"products": [
 					{
 						"brand": "Suncorp",
-         					"bsb":"123-456",
-          					"accountNumber": "111111111",
-          					"description": "Holidays Savings Accounts",
-          					"currentBalance": "$123,456.25",
-          					"availableBalance": "$12,345.00"
+						"type": "Home Loan",
+						"bsb": "484-799",
+						"accountNumber": "444444444",
+						"description": "Standard home loan",
+						"currentBalance": "-$123,456.25",
+						"arrearsAmount": "$513.00"
 					},
 					{
 						"brand": "Suncorp",
-          					"bsb":"946-692",
-          					"accountNumber": "222222222",
-          					"description": "Everyday Options",
-          					"currentBalance": "-$123,456.25",
-          					"availableBalance": "-$12,345.00"
-					}]
-			},
+						"type": "Personal Loan",
+						"bsb": "484-799",
+						"accountNumber": "555555555",
+						"description": "Secured personal loan",
+						"currentBalance": "-$123,456.25",
+						"nextPaymentdate": "30 Jun 2018",
+						"nextPaymentamount": "$256.50",
+						"arrearsAmount": ""
+					}				]
+			}
+		},
 		"wealthProducts": {
 		"user1":{
-				"login": "a@b.c",
+				"login": "wealthProductsAccount@sun.com",
 				"pwd": "Password1",
 				"products": [
 				{
 						"brand": "Suncorp",
           				"accountNumber": "123456789",
-          				"description": "Sun Super",
+          				"description": "Sun super",
           				"accountBalance": "$3,141,592.65",
           				"status": "Active"
 				},
 				{
 						"brand": "Apia",
           				"accountNumber": "564738291",
-          				"description": "Australian Everyday Customer Sunny Super",
+          				"description": "Australian everyday customer sunny super",
           				"accountBalance": "$4.20",
           				"status": "Active"
 				}]
 			}},
-		"lifeProducts" : {
-        "user1":{
-        "login": "a@b.c",
-		"pwd": "Password1",
-		"products":[
-		{
-          "brand": "Suncorp",
-          "policyStatus": "Policy Active",
-          "description": "Life Insurance",
-          "insuredPersonsname1": "Bob Smith",
-          "insuredPersonsname2": "Andy Smith"
-           
-        },
-       {
-          "brand": "AAMI",
-          "policyStatus": "Policy Active",
-          "description": "Accidental Injury Plan",
-          "insuredPersonsname1": "Alex Sim",
-          "insuredPersonsname2": ""
-         
-        }]
-        }},
 		"insuranceProducts" : {
 				"policy1": 
 				{
-						"login": "a@b.c",
+						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
 						"status":"Renewal due",
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 1",
-             				 "endDate1":"10 November 2017",
-             				 "endDateDescription1":"Cancellation Date"
+             				 "endDate1":"10 Dec 2017",
+             				 "endDateDescription1":"Renewal due"
              				 
             			}
 				},
 				"policy2": 
 				{
-						"login": "a@b.c",
+						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
 						"status":"Renewal overdue",
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 2",
-             				 "endDate1":"10 November 2017",
-             				 "endDateDescription1":"Cancellation Date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Expiry date"
             			}
 				},
 				"policy3": 
 				{
-						"login": "a@b.c",
+						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
 						"status":"Renewal due",
           				"risks":{
              				 "description1": "Single Risk, Single Cover Policy 3",
-             				 "endDate1":"10 November 2017",
-             				 "endDateDescription1":"Start Date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Renewal due"
             			}
 				},
 				"policy4": 
 				{
-						"login": "a@b.c",
+						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
 						"status":"Renewal overdue",
           				"risks": 
             			{
              				 "description1": "Single Risk, Single Cover Policy 4",
-             				 "endDate1":"10 November 2017",
-             				 "endDateDescription1":"Start Date"
+             				 "endDate1":"13 Nov 2017",
+             				 "endDateDescription1":"Expiry date"
             			}
 				},
 				"policy5": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             					"description1": "Multi Risk, Multi Cover 1",
-             				"endDate1":"10 October 2017",
+             				"endDate1":"10 Oct 2017",
              				"endDateDescription1":"Amendment date",
              				"description2": "Multi Risk, Multi Cover 2",
-             				"endDate2":"25 July 2018",
+             				"endDate2":"25 Jul 2018",
              				"endDateDescription2":"Expires"
             			}
 				},
 				"policy6": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             				{
             					"description1": "Multi Risk, Multi Cover 3",
-            					"endDate1":"10 June 2017",
+            					"endDate1":"10 Jun 2017",
              				"endDateDescription1":"Amendment date",
             					"description2": "Multi Risk, Multi Cover 4",
-            					"endDate2":"25 July 2018",
+            					"endDate2":"25 Jul 2018",
              				"endDateDescription2":"Expires"
             				}
 				},
 				"policy7": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 5",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Amendment date",
             				"description2": "Multi Risk, Multi Cover 6",
-            				"endDate2":"10 January 2017",
+            				"endDate2":"10 Jan 2017",
              			"endDateDescription2":"Amendment date"
             			}
 				},
 				"policy8": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 7",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Amendment date",
             				"description2": "Multi Risk, Multi Cover 8",
-            				"endDate2":"10 February 2017",
+            				"endDate2":"10 Feb 2017",
              			"endDateDescription2":"Amendment date"
             			}
 				},
 				"policy9": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 1",
-            				"endDate1":"10 November 2017",
+            				"endDate1":"10 Nov 2017",
              			"endDateDescription1":"Cancellation Date",
             				"description2": "Multi Risk, Single Cover 2",
-            				"endDate2":"25 July 2018",
+            				"endDate2":"25 Jul 2018",
              			"endDateDescription2":"Expires"
             			}
 				},
 				"policy10": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Policy Active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 3",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Cancellation Date",            			
             				"description2": "Multi Risk, Single Cover 4",
-            				"endDate2":"10 March 2017",
+            				"endDate2":"10 Mar 2017",
              			"endDateDescription2":"Cancellation Date"
             			}
 				},
 				"policy11": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Cancellation pending",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 1",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Cancellation Date"
             			}
 				},
 				"policy12": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status":"Cancellation pending",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 9",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Cancellation Date",
             				"description2": "Multi Risk, Multi Cover 10",
-            				"endDate2":"25 July 2018",
+            				"endDate2":"25 Jul 2018",
              			"endDateDescription2":"Expires"
             			}
 				},
 				"policy13": 
 				{
-						"login": "a@b.c",
+						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Cancellation pending",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 11",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Cancellation Date",
             				"description2": "Multi Risk, Multi Cover 12",
-            				"endDate2":"10 January 2017",
+            				"endDate2":"10 Jan 2017",
              			"endDateDescription2":"Cancellation Date"
             			}
 				},
 				"policy14": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 5",
-            				"endDate1":"10 November 2017",
+            				"endDate1":"10 Nov 2017",
              			"endDateDescription1":"Start date",	
             				"description2": "Multi Risk, Single Cover 6",
-            				"endDate2":"25 July 2018",
+            				"endDate2":"25 Jul 2018",
              			"endDateDescription2":"Expires"
             			}
 				},
 				"policy15": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 7",
-            				"endDate1":"10 November 2019",
+            				"endDate1":"10 Nov 2019",
              			"endDateDescription1":"Start date",
             				"description2": "Multi Risk, Single Cover 8",
-            				"endDate2":"10 October 2019",
+            				"endDate2":"10 Oct 2019",
              			"endDateDescription2":"Start date"
             			}
 				},
 				"policy16": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 2",
-            				"endDate1":"10 October 2019",
+            				"endDate1":"10 Oct 2019",
              			"endDateDescription1":"Start date"
             			}
 				},
 				"policy17": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 13",
-            				"endDate1":"10 October 2018",
+            				"endDate1":"10 Oct 2018",
              			"endDateDescription1":"Start date",
             				"description2": "Multi Risk, Multi Cover 14",
-            				"endDate2":"25 July 2018",
+            				"endDate2":"25 Jul 2018",
              			"endDateDescription2":"Expires"
             			}
 				},
 				"policy18": 
 				{
-						"login": "a@b.c",
+						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Future Activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 15",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Start date",            			
             				"description2": "Multi Risk, Multi Cover 16",
             				"endDate2":"10 May 2017",
@@ -489,19 +688,19 @@
 				},
 				"policy19": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Active",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 3",
-            				"endDate1":"10 October 2017",
+            				"endDate1":"10 Oct 2017",
              			"endDateDescription1":"Amendment date"
             			}
 				},
 				"policy20": 
 				{
-						"login": "a@b.c",
+						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
 						"status": "Policy Active",
           				"risks": 
@@ -513,6 +712,211 @@
 				}
 				
 
+		},
+		"policyDetails" : {
+		
+		"carPolicy": 
+				{
+				        "login": "policydetails@sun.com",
+		                "pwd": "Password1",
+		         		"status":"ACTIVE",
+						"brand":"AAMI",
+						"productType":"Car Insurance",
+						"policyNumber":"MPA123456313",
+						"policyDescription":"Car insurance",
+          				"periodOfCover": 
+            			{
+             				 "startDate": "01 October",
+             				 "startYear":"2017",
+             				 "endDate": "10 November",
+             				 "endYear":"2018, 11:59 PM"
+            			},
+            			"instalmentDetails":
+            			{
+            			 "instalmentAmount":"$21.00",
+            			 "debitDayLabel":"paid on or around the 22nd"
+            			},
+            			"riskDetails":{
+            			    "riskDescription1":"2017 Alfa Romeo Giulia",
+						"registrationNumber1":"ABC123",
+						"insuredAmount1":"$20,000.00",
+						"coverType1":"Comprehensive",
+						"coverPeriod1":"01 Oct 2017 - 01 Oct 2018",
+						 "riskDescription2":"2011 Subaru Impreza",
+						"registrationNumber2":"DEF007",
+						"insuredAmount2":"$8,888.00",
+						"coverType2":"Third-Party, Fire & Theft",
+						"coverPeriod2":"12 Aug 2016 - 12 Aug 2016",
+						"includedCoverDescription":"Lifetime new for old car replacement",
+						"optionalCoverDescription":"AAMI Roadside Assist",
+						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
+						"discounts":"Multi-Policy, Staff",
+						"rewardsTitle":"AAMI Safe driver rewards",
+						"rewards":"Sapphire with $45.50 credit available for your next renewal",
+						"riskCoverPeriod": 
+            			 {
+             				 "startDate": "01 October",
+             				 "startYear":"2017",
+             				 "endDate": "01 October",
+             				 "endYear":"2018, 11:59PM"
+            			 },
+            			 "excessDetails": 
+            			 {
+            			 	     "excessType": "Standard Excess",
+             				 "excessAmount":"$100.00"
+            			 }
+            			 
+            			},
+            			"paymentDetails":
+            			{
+            			"creditCardDetails":"VISA ending in 5123"
+            			},
+            			"vehiclePolicyStatus": 
+            			{
+            			        "login": "policystatusvehicles@sun.com",
+		                     "pwd": "Password1",
+             				 "active": "Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy commencing",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            			"myVehiclePolicyStatus": 
+            			{
+             				"active": "Policy Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy Future Activation",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            			"PeriodOfCover":
+            			{
+            				"activeStartDate": "01 Oct 2017 - ",
+            				"activeEndDate": "01 Oct 2018",
+            				"cancellationPendingStartDate": "01 Oct 2017 - ",
+            				"cancellationPendingEndDate": "01 Oct 2017",
+            				"futureActiveStartDate": "01 Mar 2019 - ",
+            				"futureActiveEndDate": "01 Mar 2020",
+            				"renewalStartDate": "01 Oct 2017 - ",
+            				"renewalEndDate": "01 Oct 2018",
+            				"renewalOverDueStartDate": "01 Oct 2017 - ",
+            				"renewalOverDueEndDate": "01 Oct 2018"
+            			}
+				},
+				"carAdvantagePolicy": 
+				{
+				    "login": "policydetails@sun.com",
+		            "pwd": "Password1",
+				    "productType":"Car Advantage Insurance",
+            			"paymentDetails":
+            			{
+            			"bankAccountDetails":"Savings Account ending in 9999"
+            			}
+				},
+				"boatPolicy": 
+				{   
+				     "login": "policydetails@sun.com",
+		             "pwd": "Password1",
+				    "productType":"Boat Insurance",
+            			"instalmentDetails":
+            			{
+            			 "instalmentAmount":"$58,000.34"
+            			},
+            			"riskDetails":{
+            			
+            			 "additionalExcessDetails": 
+            			 {
+            			 	     "additionalExcessDescription": "Age excess",
+             				 "additionalExcessListedDriver":"$400.00 - Listed driver",
+             				 "additionalExcessUnListedDriver":"$1,400.00 - Unlisted driver"
+            			 }
+            			 
+            			}
+				},
+				"motorHomePolicy": 
+				{   
+				    "login": "policydetails@sun.com",
+				    "pwd": "Password1",
+				    "productType":"Motorhome Insurance",
+            			"instalmentDetails":
+            			{
+            			 "instalmentAmount":"$112.14"
+            			},
+            			"policyLockedOrInReferralError":
+            			{
+            			"login": "policylocked@sun.com",
+				    "pwd": "Password1"
+            			},
+            			"policyEndorsementError":
+            			{
+            			"login": "policyendorserror@sun.com", 
+				    "pwd": "Password1"
+            			},
+            			"riskDetails":{
+						"rewardsTitle":"Round the world reward",
+						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
+				},
+				"homePolicy": 
+				{
+						"login": "policydetails@sun.com",
+		                "pwd": "Password1",
+						"status":"ACTIVE",
+						"brand":"SUNCORP",
+						"productType":"Home And Contents Insurance",
+						"policyNumber":"HPS123457790",
+						"policyDescription":"Home insurance",
+							"instalmentDetails":
+            			{
+            			 "instalmentAmount":"$88.88"
+            			},
+          				"periodOfCover": 
+            			{
+             				 "startDate": "15 October",
+             				 "startYear":"2017",
+             				 "endDate": "25 August",
+             				 "endYear":"2018, 11:59 PM",
+             				 "endDateCancellationPending": "10 November",
+             				 "endYearCancellationPending":"2017, 11:59 PM"
+            			},
+            				"policyStatus": 
+            			{
+            			        "login": "policystatus@sun.com",
+		                     "pwd": "Password1",
+             				 "active": "ACTIVE",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy commencing",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            			
+            				"myProductPolicyStatus": 
+            			{
+             				"active": "Policy Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy Future Activation",
+             				 "renewalDue":"Renewal due",
+             				 "renewalOverDue":"Renewal overdue"
+            			},
+            				"Discounts&Benefits":
+            			{
+            				"discounts1": "Multi-Policy,Staff",
+            				"discounts2": "Multi-Policy, Staff, Top-Bloke",
+            				"discounts3": "Multi-Policy"
+            			},
+            				"PeriodOfCover":
+            			{
+            				"activeStartDate": "01 Oct 2017 - ",
+            				"activeEndDate": "01 Oct 2018",
+            				"cancellationPendingStartDate": "01 Oct 2017 - ",
+            				"cancellationPendingEndDate": "01 Oct 2018",
+            				"futureActiveStartDate": "01 Oct 2017 - ",
+            				"futureActiveEndDate": "01 Oct 2018",
+            				"renewalStartDate": "01 Oct 2017 - ",
+            				"renewalEndDate": "01 Oct 2018",
+            				"renewalOverDueStartDate": "01 Oct 2017 - ",
+            				"renewalOverDueEndDate": "01 Oct 2018"
+            			}
+				}
 		}
 	},
 	"noSuncorpBankAccounts" :{
@@ -880,7 +1284,12 @@
 			"login" : "digi@v.com",
 			"pwd" : "Password1",
 			"month" : "February 2018",
-			"zeroSpending" : "$0.00"
+			"zeroSpending" : "$0.00",
+			"searchString" : "sto",
+			"resultString1" : "Store abc",
+			"resultString2" : "Housing store",
+			"resultString3" : "Stowed",
+
 		},
 		"hasNoData" : {
 			"month" : "April 2018"
@@ -942,6 +1351,33 @@
 			"responses": "Sorry, I don’t understand. Could you please reword your question."
 		}
 	},
+	 "brands": [
+		{
+			"brandName": "AAMI",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "AAMI member login",
+			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
+		},
+		{
+			"brandName": "GIO",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "GIO member login",
+			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
+		},
+		{
+			"brandName": "Shannons",
+			"email": "x@y.z",
+			"password" : "Password1",
+			"brandIcon": "Shannons member login",
+			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
+		}
+	],
+	"bundleId": {
+		"value": "au.com.suncorp.marketplace:id/"
+	},
+	
 	"copy" : {
 		"loginPage": {
 			"loginPageTitle": "Log in",
@@ -965,8 +1401,8 @@
 			"invalidPostcodeMessage":"Please enter a valid australian postcode"
 		},
 		"portfolio": {
-			"emptyStateLabel": "Looks like you haven't added any products yet.",
-			"bottomSheetLabel": "What type of product?",
+			"emptyStateLabel": "No products listed here yet",
+			"addExistingProductScreenLabel": "Add existing product",
 			"availableBalanceLable": "Available balance",
 			"currentBalanceLabel": "Current balance",
 			"accountDetailsLabel": "Account Details",
@@ -984,7 +1420,7 @@
 			"pinSuccessfullySetMessage": "PIN set up"
 		},		
 		"pinReAuthPasswordPage" : {
-			"forgottenPINPageTitle": "Forgotten password?",
+			"forgottenPINPageTitle": "Forgotten PIN",
 			"pinReAuthPasswordLabel": "Please enter your password to reset your PIN",
 			"passwordRequiredError" : "Field is required"
 		},
@@ -1048,6 +1484,7 @@
 			"longFirstNameErrorMsg" : "Must be between 1 and 30 characters",
 			"longSurnameErrorMsg":"Must be between 2 and 40 characters",
 			"longEmailErrorMsg":"Must be between 2 and 100 characters",
+			"longEmailErrorMsg2":"Must be between 2 and 100 characters Please enter a valid email address",
 			"longMobileErrorMsg":"Must be 10 digits",
 			"longPostcodeErrorMsg" : "Must be 4 digits",
 			"firstNameUserTip" : "Middle name not required",
@@ -1097,8 +1534,8 @@
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
 		},
 		"portfolioError":{
-			"invalidAccountNumber":"Can only contain letters, numbers, and '-'",
-			"lengthError":"Must be between 1 – 30 characters",
+			"invalidAccountNumber":"Must be 9 characters  Can only contain numerical digits",
+			"lengthError":"Must be 9 characters",
 			"mandatoryError":"Field is required"
 			},
 		"memberLogin" : {
@@ -1110,32 +1547,6 @@
 		"getStartedPage" : {
 			"getStartedPageTitle" : "Welcome to the Suncorp family"
 		}
-	},
-	"brands": [
-		{
-			"button": "aamiButton",
-			"brandIcon": "AAMI member login",
-			"resetPasswordDescription" : "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "apiaButton",
-			"brandIcon": "APIA member login",
-			"resetPasswordDescription" : "Enter the email associated with your APIA account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "gioButton",
-			"brandIcon": "GIO member login",
-			"resetPasswordDescription" : "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
-		},
-		{
-			"button": "shannonsButton",
-			"brandIcon": "Shannons member login",
-			"resetPasswordDescription" : "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
-		}
-	],
-	"bundleId": {
-		"value": "au.com.suncorp.marketplace:id/"
-
 	}
 }
 

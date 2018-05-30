@@ -4,26 +4,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class GetStartedPage extends BasePage {
 
 	public GetStartedPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	private By getStartedPageTitle = By.id("au.com.suncorp.marketplace:id/headingText");
 	private By getStartedPageSubheader = By.id("au.com.suncorp.marketplace:id/subHeadingText");
-	private By suncorpBrandIcon = By.id("au.com.suncorp.marketplace:id/suncorpButton");
-	private By newAccountText = By.id("au.com.suncorp.marketplace:id/newAccountText");
 	private By suncorpAccountOptions = By.id("au.com.suncorp.marketplace:id/suncorpBottomSheet");
 	private By suncorpAccountOptionsHeading = By.id("au.com.suncorp.marketplace:id/suncorpAccountQuestionText");
 	private By suncorpBankingOption = By.id("au.com.suncorp.marketplace:id/bankingBottomSheetButton");
 	private By suncorpInsuranceOption = By.id("au.com.suncorp.marketplace:id/insuranceBottomSheetButton");
 	private By suncorpBothOption = By.id("au.com.suncorp.marketplace:id/bothBottomSheetButton");
-	private By brandIcon = null;
 	
-	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By brandSelectDropDown = By.id("au.com.suncorp.marketplace:id/spinnerLayout");
+	private By brandSelectListTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
+	private By getStartedNextButton = By.id("au.com.suncorp.marketplace:id/nextButton");
+	private By seletBrand = null;
+	private By suncorpBrand = By.xpath("//android.widget.TextView[@text='Suncorp']");
+	
+	private By backButton = MobileBy.AccessibilityId("Back");
 	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");	
 	private String registerWithSupportedGroupButtonsuffix = "au.com.suncorp.marketplace:id/";
 	private By registerWithSupportedGroupButton;
@@ -62,18 +65,6 @@ public class GetStartedPage extends BasePage {
 		tapElement(registerWithSupportedGroupButton);
 	}
 
-	public WebElement checkSuncorpBrandIcon() {
-		return find(suncorpBrandIcon);
-	}
-
-	public void tapSuncorpBrandIcon() {
-		tapElement(suncorpBrandIcon);
-	}
-
-	public WebElement checkNewAccountText() {
-		return find(newAccountText);
-	}
-
 	public WebElement checkBackButton() {
 		return find(backButton);
 	}
@@ -109,14 +100,47 @@ public class GetStartedPage extends BasePage {
 	public void tapSuncorpBothButton() {
 		tapElement(suncorpBothOption);
 	}
-
-	public WebElement checkMemberBrandIcon(String currentBrand, String commonBundleId) {
-		brandIcon = By.id(commonBundleId+currentBrand);
-		return find(brandIcon);
+	
+	public WebElement checkBrandSelectDropDown() {
+		return find(brandSelectDropDown);
+	}
+	
+	public void tapBrandSelectDropDown() {
+		tapElement(brandSelectDropDown);
+	}
+	
+	public WebElement checkSelectBrandAlert() {
+		return find(brandSelectListTitle);
+	}
+	
+	public WebElement checkBrandExists(String brandName) {
+		seletBrand = By.xpath("//android.widget.TextView[@text='"+brandName+"']");
+		return find(seletBrand);
+	}
+	
+	public void tapBrandFromList(String brandName) {
+		seletBrand = By.xpath("//android.widget.TextView[@text='"+brandName+"']");
+		tapElement(seletBrand);
+	}
+	
+	public WebElement checkNextButton() {
+		return find(getStartedNextButton);
+	}
+	
+	public void tapNextButton() {
+		tapElement(getStartedNextButton);
+	}
+	
+	public WebElement checkSuncorpBrandExists() {
+		return find(suncorpBrand);
+	}
+	
+	public void tapSuncorpBrand(){
+		tapElement(suncorpBrand);
+	}
+	
+	public void dismissDropDownList() {
+		tapOnBottomRightCorner();
 	}
 
-	public void tapMemberBrandIcon(String currentBrand, String commonBundleId) {
-		brandIcon = By.id(commonBundleId+currentBrand);
-		tapElement(brandIcon);
-	}
 }
