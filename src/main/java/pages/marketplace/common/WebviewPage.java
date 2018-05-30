@@ -23,8 +23,6 @@ public class WebviewPage extends BasePage {
 	
 	private By webview = By.id("au.com.suncorp.marketplace:id/webview");
 	private By webviewCloseButton = MobileBy.AccessibilityId("Navigate up");
-
-	//private By urlBar = By.id("com.android.chrome:id/url_bar");
 	
 	private By webviewBrowserUrl_samsung = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
 	private By webviewBrowserUrl_google = By.id("com.android.chrome:id/url_bar");

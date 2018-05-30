@@ -132,7 +132,6 @@ public class ChatbotPage extends BasePage {
 		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
 				|| getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("LGE")) {
 			phNo = getText(phNo_dailpad).replace(" ", "").replace("-", "");
-			System.out.println(":::::PH NO SHOWN IS :::"+getText(phNo_dailpad)+"::::After Conversion"+ phNo);
 			if(phNo.equalsIgnoreCase(phNo_google)) {
 				phNoElement = find(phNo_dailpad);
 			}
