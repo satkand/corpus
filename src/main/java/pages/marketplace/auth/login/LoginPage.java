@@ -158,6 +158,10 @@ public class LoginPage extends BasePage{
 		return find(loadingIndicator, 30);
 	}
 	
+	public void waitForLoadingIndicatorToDismiss() {
+		waitForElementToDisappear(loadingIndicator, 30);;
+	}
+	
 	public String getEmailFieldData() {
 		return getText(emailField);
 	}
