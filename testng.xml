@@ -3,8 +3,13 @@
 <suite name="allSuites">
 
   <suite-files>
+<<<<<<< HEAD
     <suite-file path="testng_withstub.xml" />
     <suite-file path="testng_withoutstub.xml" />
+=======
+    <suite-file path="testng_STUB.xml" />
+    <suite-file path="testng_SYST.xml" />
+>>>>>>> a9545e8c26aba06aea258af28258eaa47f626a24
   </suite-files>
   
 </suite>

@@ -148,10 +148,10 @@ public class BasePage {
 		driver.runAppInBackground(duration);
 	}
 
-	protected void longPressOnAnElement(By locator) {
+	protected void longPressOnAnElement(WebElement element) {
 
 		TouchAction ta = new TouchAction(driver);
-		ta.longPress(find(locator)).release().perform();
+		ta.longPress(element).release().perform();
 
 		/* [OR]
 		TouchAction ta = new TouchAction(driver);
@@ -163,8 +163,7 @@ public class BasePage {
 		 */
 	}
 
-	protected void tapByOffsetFromStart(By locator, int offsetX, int offsetY) {
-		WebElement element = find(locator);
+	protected void tapByOffsetFromStart(WebElement element, int offsetX, int offsetY) {
 		Point location = element.getLocation();
 
 		final int finalXLocation = location.getX() + offsetX;
@@ -178,9 +177,8 @@ public class BasePage {
 		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 
-	protected void tapByOffsetFromEnd(By locator, int offsetX, int offsetY) {
+	protected void tapByOffsetFromEnd(WebElement element, int offsetX, int offsetY) {
 
-		WebElement element = find(locator);
 		Point location = element.getLocation();
 		int width = element.getSize().getWidth();
 
@@ -689,7 +687,6 @@ public class BasePage {
 	}
 
 	public Map<String,Object> getAppiumSessionDetails() {
-
 		return driver.getSessionDetails();
 	}
 
