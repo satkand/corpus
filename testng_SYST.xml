@@ -6,38 +6,35 @@
  		<parameter name="stub" value="false"></parameter>
  		
  		<packages> 		
-   			<package name="test.marketplace.auth.registration"/>
+<!--    			<package name="test.marketplace.auth.registration"/> -->
   			<package name="test.marketplace.auth.pin"/>
   			
- 			<package name="test.marketplace.digitalVault"/>
+<!--  			<package name="test.marketplace.digitalVault"/> -->
  			
- 			<package name="test.marketplace.landing"/>
+<!--  			<package name="test.marketplace.landing"/> -->
  			
  			
-  			<package name="test.marketplace.professionalServices"/>
+<!--   			<package name="test.marketplace.professionalServices"/> -->
   			
-  			<package name="test.marketplace.productCatalogue"/>
+<!--   			<package name="test.marketplace.productCatalogue"/> -->
   			
-  			<package name="test.marketplace.property"/>
+<!--   			<package name="test.marketplace.property"/> -->
   			
- 			<package name="test.marketplace.wealth"/>
+<!--  			<package name="test.marketplace.wealth"/> -->
  			
- 			<package name="test.marketplace.articles"/>
- 			<package name="test.marketplace.claimdetails"/>
- 			<package name="test.marketplace.offers"/>
- 			<package name="test.marketplace.settings"/>
+<!--  			<package name="test.marketplace.articles"/> -->
+<!--  			<package name="test.marketplace.claimdetails"/> -->
+<!--  			<package name="test.marketplace.offers"/> -->
+<!--  			<package name="test.marketplace.settings"/> -->
  			
  			
 		</packages>
 		
-		<classes>
-			<class name="test.marketplace.auth.registration.GetStartedPageTest"/>
-			<class name="test.marketplace.auth.registration.RegistrationTest"/>
-		</classes>
+<!-- 		<classes> -->
+<!-- 			<class name="test.marketplace.auth.registration.GetStartedPageTest"/> -->
+<!-- 			<class name="test.marketplace.auth.registration.RegistrationTest"/> -->
+<!-- 		</classes> -->
 		
-		<packages>
-
- 		</packages>
 	</test>
 
 </suite>
