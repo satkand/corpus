@@ -78,7 +78,7 @@ public class RegistrationPage extends BasePage {
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By okButtonDuplicateEmailPopUp = By.id("android:id/button2");
-	private By anotherEmailButtonDuplicateEmailPopUp = By.id("android:id/button1");
+	private By loginWithThisEmailButton = By.id("android:id/button1");
 	private By duplicateEmailPopUpTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By duplicateEmailPopUpText = By.id("android:id/message");
 
@@ -445,15 +445,15 @@ public class RegistrationPage extends BasePage {
 	}
 	
 	public String getDuplicateEmailPopUpAnotherLoginButtonLabel() {
-		return getText(anotherEmailButtonDuplicateEmailPopUp);
+		return getText(loginWithThisEmailButton);
 	}
 	
 	public void tapOkButton() {
 		tapElement(okButtonDuplicateEmailPopUp);
 	}
 	
-	public void tapAnotherLoginButton() {
-		tapElement(anotherEmailButtonDuplicateEmailPopUp);
+	public void tapLoginWithThisEmailButton() {
+		tapElement(loginWithThisEmailButton);
 	}
 	
 	public WebElement checkRegisterPage3Title() {

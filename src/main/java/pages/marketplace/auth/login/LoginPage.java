@@ -251,8 +251,8 @@ public class LoginPage extends BasePage{
 		 tapElement(firstOption);
 	}
 	
-	public String getActivityValue(){
-		return ((AndroidDriver<MobileElement>) driver).currentActivity();
+	public String getSuncorpActivityValue(){
+		return getActivityValue();
 	}
 	
 	public void restartApp() {

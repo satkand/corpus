@@ -154,7 +154,7 @@ public class LoginTest extends App {
 	@Test (groups = {"DMPM-43", "DMPM-163", "DMPM-1135", "DMPM-1136", "marketplace", "login", "priority-high"})
 	public void testValidCredentials() {
 		navigateToLoginScreen();
-		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login1"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
 		Assert.assertNotNull(loginPage.checkLoadingIndicator(), "Login screen - Login indicator not displayed");
 		
@@ -185,7 +185,7 @@ public class LoginTest extends App {
 		navigateToLoginScreen();
 
 		Assert.assertNotNull(loginPage.checkForgotPasswordButton(), "Login Page - Forgot Password button is not displayed");
-
+		
 		loginPage.tapForgotPassword();
 		Assert.assertNotNull(loginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password page");
 		Assert.assertEquals(loginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "Reset Password title does not match");
@@ -248,7 +248,7 @@ public class LoginTest extends App {
 	}
 
 	// DMPM-3729 Scenario 3, 4, 5, 6, 7
-	@Test (groups = {"DMPM-3729", "DMPM-4773", "DMPM-4774", "DMPM-4776", "DMPM-4777", "DMPM-4778 ", "marketplace", "login", "priority-medium"})
+	@Test (groups = {"DMPM-3729", "DMPM-4773", "DMPM-4774", "DMPM-4776", "DMPM-4777", "DMPM-4778 ", "marketplace", "login", "priority-medium"}, priority = 7)
 	public void testResetPasswordEmailValidations() {
 		String errorVal = "";
 		navigateToLoginScreen();
@@ -376,11 +376,11 @@ public class LoginTest extends App {
 		if(loginPage.checkEmailOptionPanel()!=null) {
 			Assert.assertNotNull(loginPage.checkFirstEmailPanelOption(), "Email app option is not displayed");
 			loginPage.tapFirstEmailOption();
-			Assert.assertFalse(loginPage.getActivityValue().contains("ChooserActivity"), "User is not navigated out of the app");
+			Assert.assertFalse(loginPage.getSuncorpActivityValue().contains("ChooserActivity"), "User is not navigated out of the app");
 		}
 		//For google phones with GMAIL as default app
 		Assert.assertNull(loginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar still displayed");
-		Assert.assertFalse(loginPage.getActivityValue().contains("ChooserActivity"), "User is not navigated out of the app");
+		Assert.assertFalse(loginPage.getSuncorpActivityValue().contains("ChooserActivity"), "User is not navigated out of the app");
 	}
 	
 	//DMPM-69 Scenario 1, 2, 3, 4

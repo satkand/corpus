@@ -444,7 +444,8 @@ public class MemberLoginTest extends App {
 			checkForTermsAndConditions();
 
 			// Test with valid credentials
-			memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+			//TODO: Login credentials has to be changed when running on SYST
+			memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "memberLoginEmail"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 			memberLoginPage.tapNextButton();
 
 			checkForTermsAndConditions();
@@ -467,7 +468,7 @@ public class MemberLoginTest extends App {
 			checkForTermsAndConditions();
 			Assert.assertNotNull(memberLoginPage.checkEmailField(), "Member Login Page - Email is not dipalyed");
 
-			memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("invalidPassword"));
+			memberLoginPage.enterLoginCredentials(brandIcon.get("email"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidPassword"));
 			memberLoginPage.tapNextButton();
 
 			Assert.assertNotNull(memberLoginPage.checkSnackbarDisplayed(), "Member Login Page - Error Snackbar not displayed");
@@ -494,7 +495,8 @@ public class MemberLoginTest extends App {
 		
 		checkForTermsAndConditions();
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not navigated to the login page");
-		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+		//TODO: Login credentials has to be changed when running on SYST
+		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "memberLoginEmail"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
 		
 		checkForTermsAndConditions();
@@ -557,11 +559,11 @@ public class MemberLoginTest extends App {
 
 			//Valid email value
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted back to the Login Page");
-			memberLoginPage.enterEmail(utils.readTestData("loginCredentials","validLoginCredentials", "login"));
+			memberLoginPage.enterEmail(brandIcon.get("resetPasswordEmail"));
 			memberLoginPage.tapDeviceBackButton();
 			memberLoginPage.tapForgotPassword();
 			Assert.assertEquals(memberLoginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "User is not navigated to the Reset Password");
-			Assert.assertEquals(memberLoginPage.getResetPasswordEmailValue(), utils.readTestData("loginCredentials","validLoginCredentials", "login"), "Reset Password - Email does not match with the email entered in login page");
+			Assert.assertEquals(memberLoginPage.getResetPasswordEmailValue(), brandIcon.get("resetPasswordEmail"), "Reset Password - Email does not match with the email entered in login page");
 			memberLoginPage.tapResetPasswordBackButton();
 
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted back to the Login Page");
@@ -675,14 +677,14 @@ public class MemberLoginTest extends App {
 			memberLoginPage.tapForgotPassword();
 
 			Assert.assertNotNull(memberLoginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
-			memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
+			memberLoginPage.enterEmail(brandIcon.get("resetPasswordEmail"));
 			memberLoginPage.tapResetLinkButton();
 
 			//TODO: Following code will part of later story which is not Manually Tested yet
-			//	common.waitForSuccessLoadingSpinnerToDisappear();
-			//	Assert.assertNotNull(memberLoginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
-			//	Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
-			//	Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
+			common.waitForSuccessLoadingSpinnerToDisappear();
+			Assert.assertNotNull(memberLoginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
+			Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
+			Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
 
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted back to the Login Page");
 			memberLoginPage.tapCancelButton();

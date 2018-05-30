@@ -76,10 +76,6 @@ public class LoginAuthPage extends BasePage{
 		tapElement(passwordReauthField);
 	}
 	
-//	public void tapReauthPasswordLoginBtn() {
-//		tapElement(reauthPasswordLogin);
-//	}
-	
 	public WebElement checkPasswordInlineError() {
 		return find(passwordInlineError);
 	}
