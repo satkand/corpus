@@ -68,7 +68,6 @@ import pages.marketplace.wealth.ConnectedAccountsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 import pages.marketplace.wealth.VendorDetailPage;
-
 import pages.marketplace.property.WhatsNearbyPage;
 import pages.marketplace.property.PropertyHubPage;
 import pages.marketplace.property.SuburbDetailsPage;
@@ -127,6 +126,7 @@ public class App extends BaseTest {
 	public MemberLoginPage memberLoginPage = null;
 	public VendorDetailPage vendorDetailPage = null;
 	public ConnectedAccountsPage connectedAccountsPage = null;
+
 	public WhatsNearbyPage whatsNearbyPage = null;
 	public ForceUpdatePage forceUpdatePage = null;
 	public SuburbDetailsPage suburbDetailsPage = null;

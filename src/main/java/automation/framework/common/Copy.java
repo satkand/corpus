@@ -92,7 +92,7 @@ public interface Copy {
 	String PAYMENT_METHOD_LABEL ="Payment method";
 	String INSURED_AMOUNT_LABEL="Amount covered";
 	String COVER_TYPE_LABEL="Cover type";
-	String COVER_PERIOD_LABEL="Cover period";
+	String COVER_PERIOD_LABEL="Period of cover";
 	String OPTIONAL_COVER_LABEL="Optional";
 	String INCLUDED_COVER_LABEL="Included";
 	String DISCOUNTS_LABEL="Discounts";
@@ -102,7 +102,6 @@ public interface Copy {
 	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE ADDITIONAL EXCESSES";
 	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please come back and try again later.";
 	String POLICY_MAINTAINCE_TITLE="Policy under maintenance";
-	
 	//RENEW POLICY
 	String RENEW_POLICY_SCREEN_TITLE = "Renew Policy";
 	
