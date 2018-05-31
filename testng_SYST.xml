@@ -7,7 +7,7 @@
  		
  		<packages> 		
 <!--    			<package name="test.marketplace.auth.registration"/> -->
-  			<package name="test.marketplace.auth.pin"/>
+  			<!-- <package name="test.marketplace.auth.pin"/> -->
   			
 <!--  			<package name="test.marketplace.digitalVault"/> -->
  			
@@ -22,9 +22,9 @@
   			
 <!--  			<package name="test.marketplace.wealth"/> -->
  			
-<!--  			<package name="test.marketplace.articles"/> -->
-<!--  			<package name="test.marketplace.claimdetails"/> -->
-<!--  			<package name="test.marketplace.offers"/> -->
+ 			<package name="test.marketplace.articles"/>
+ 			<package name="test.marketplace.claimdetails"/>
+ 			<package name="test.marketplace.offers"/>
 <!--  			<package name="test.marketplace.settings"/> -->
  			
  			
