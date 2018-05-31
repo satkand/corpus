@@ -2,19 +2,15 @@ package pages.marketplace.auth.pin;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
 
 public class PINOptionsPage extends BasePage{
 
 	//No Fingerprint enabled
-
 	private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptEnablePinButton");
+	private By maybeLaterButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
 	private By enableFingerPrintButton = By.id("au.com.suncorp.marketplace:id/enableFingerprintButton");
-	private By maybeLaterPinPromptButton = By.id("au.com.suncorp.marketplace:id/enablePinPromptDismissButton");
-
 	private By pinPromptImage = By.id("au.com.suncorp.marketplace:id/enablePinPromptImage");
 	private By pinPromptUserWelcome = By.id("au.com.suncorp.marketplace:id/enablePinPromptUserWelcome");
 	private By pinPromptDescription = By.id("au.com.suncorp.marketplace:id/enablePinPromptDescription");
@@ -26,10 +22,10 @@ public class PINOptionsPage extends BasePage{
 	//private By enablePinButton = By.id("au.com.suncorp.marketplace:id/enablePinButton");
 	private By enableFingerPrintBtn = By.id("au.com.suncorp.marketplace:id/enableFingerprintButton");
 	private By maybeLaterPromptButton = By.id("au.com.suncorp.marketplace:id/enablePromptDismissButton");
+
 	
 	public PINOptionsPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	//Methods for Fingerprint not enabled cases
@@ -43,7 +39,7 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public WebElement checkMaybeLaterButton(){
-		return find(maybeLaterPinPromptButton);
+		return find(maybeLaterButton);
 	}
 	
 	public WebElement checkPinPromptImage(){
@@ -51,7 +47,11 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public WebElement checkPinPromptUserWelcome(){
-		return find(pinPromptUserWelcome, 30);
+		if (find(pinPromptImage) != null) {
+			return find(pinPromptUserWelcome, 30);
+		}
+		else 
+			return find(promptUserWelcome, 30);
 	}
 	
 	public WebElement checkPinPromptDescription(){
@@ -63,7 +63,11 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public void tapMaybeLater(){
-		tapElement(maybeLaterPinPromptButton);
+		if (find(pinPromptImage) != null) {
+			tapElement(maybeLaterButton);
+		}
+		else 
+			tapElement(maybeLaterPromptButton);
 	}
 	
 	//Methods for Fingerprint enabled cases

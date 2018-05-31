@@ -26,7 +26,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.base.Function;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-
+import io.appium.java_client.MobileElement;
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
 
@@ -1624,8 +1624,21 @@ public class BasePage {
 		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 	}
 	
+	// Added by Gitin George
 	protected void closeAndLaunchApp() {
 		driver.closeApp();
 		driver.launchApp();
+	}
+	
+	/**
+	* This method to get the current activity on the device
+	* can be used when user is navigating out of the app
+	* 
+	* @author Gitin George
+	* @param
+	* @return String
+	*/
+	public String getActivityValue(){
+		return ((AndroidDriver<MobileElement>) driver).currentActivity();
 	}
 }

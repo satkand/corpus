@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import automation.framework.common.Copy;
 import pages.App;
 
 public class RegistrationTest extends App{
@@ -21,7 +23,8 @@ public class RegistrationTest extends App{
 					utils.readTestData("registration", "success", "mobile"));
 			registrationPage.tapNextButton();
 			registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
-			Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(),"Pin enable screen is not displayed");	
+			common.waitForLoadingIndicatorToDisappear();
+			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(),"Pin enable screen is not displayed");
 	}
 	
 	@Test(groups = {"DMPM-185", "DMPM-375", "marketplace", "Registration", "priority-major"})
@@ -639,7 +642,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpOkButtonLabel(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpOkButtonText"),
 				"Duplicate email alert pop up title is not correct");
 
-		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpAnotherLoginButtonLabel(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpUseAnotherEmailButtonText"),
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpAnotherLoginButtonLabel().toUpperCase(), Copy.DUPLICTE_EMAIL_POPUP_USE_ANOTHER_EMAIL_BUTTON_TEXT,
 				"Duplicate email alert pop up title is not correct");
 
 		registrationPage.tapOkButton();
@@ -651,14 +654,12 @@ public class RegistrationTest extends App{
 
 		Assert.assertNotNull(registrationPage.checkDuplicateEmailPopUpTitle(),"Duplicate email alert pop up is not displayed on registration.");
 
-		registrationPage.tapAnotherLoginButton();
+		registrationPage.tapLoginWithThisEmailButton();
 
 		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"),
 				"Login page title is not shown as expected");
-
-		Assert.assertEquals(loginPage.getEmailFieldData(), utils.readTestData("loginCredentials", "validLoginCredentials","login"),
-				"Email field is not pre populated with email as expected");
-
+		
+		Assert.assertNotNull(loginPage.getEmailFieldData().contains(utils.readTestData("loginCredentials", "validLoginCredentials","login")), "Email field is not pre populated with email as expected");
 	}
 
 	private void navigateToRegistrationPage() {

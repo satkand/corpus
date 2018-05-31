@@ -69,12 +69,17 @@
 			"validPINEntry2" : "2580"
 		}
 	},
+
+	"_comment": "The login and login1 values have to be changed before run",
 	"screenSize" : {
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "test5@test.com",
+			"login": "test@account.com",
+			"login1": "test1@account.com",
+			"login2": "sb@sb.sb",
+			"memberLoginEmail" : "a@b.c",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
 			"userName": ""
@@ -1388,6 +1393,7 @@
 		{
 			"brandName": "AAMI",
 			"email": "x@y.z",
+			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "AAMI member login",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
@@ -1395,6 +1401,7 @@
 		{
 			"brandName": "GIO",
 			"email": "x@y.z",
+			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "GIO member login",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
@@ -1402,6 +1409,7 @@
 		{
 			"brandName": "Shannons",
 			"email": "x@y.z",
+			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "Shannons member login",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."

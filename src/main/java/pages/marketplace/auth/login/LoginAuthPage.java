@@ -19,7 +19,8 @@ public class LoginAuthPage extends BasePage{
 	private By passwordReauthField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By forgotPasswordReauthButton = By.id("au.com.suncorp.marketplace:id/forgotPasswordButton");
 	private By backButtonReauthPassword = By.id("au.com.suncorp.marketplace:id/backButton");
-	private By reauthPasswordLogin = By.id("au.com.suncorp.marketplace:id/loginButton");
+	private By reauthPasswordLoginBtn = By.id("au.com.suncorp.marketplace:id/loginButton");
+//	private By reauthPasswordLogin = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By passwordInlineError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	
 	public LoginAuthPage(AppiumDriver driver) {
@@ -75,16 +76,16 @@ public class LoginAuthPage extends BasePage{
 		tapElement(passwordReauthField);
 	}
 	
-	public void tapReauthPasswordLoginBtn() {
-		tapElement(reauthPasswordLogin);
-	}
-	
 	public WebElement checkPasswordInlineError() {
 		return find(passwordInlineError);
 	}
 	
 	public String getPasswordInlineErrorVal() {
 		return getText(passwordInlineError);
+	}
+	
+	public void tapReauthPasswordLoginBtn() {
+		tapElement(reauthPasswordLoginBtn);
 	}
 	
 	public void restartApp() {

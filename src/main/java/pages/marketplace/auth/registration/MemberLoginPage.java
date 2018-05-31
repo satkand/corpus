@@ -21,7 +21,6 @@ public class MemberLoginPage extends BasePage {
 	private By noCredentialsButton = By.id("au.com.suncorp.marketplace:id/noCredentialsButton");
 	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	private By incorrectEmailSnackbar = By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.FrameLayout");
 	private By incorrectEmailSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By incorrectEmailSnackBarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
 	
@@ -212,11 +211,10 @@ public class MemberLoginPage extends BasePage {
 	}
 	
 	public WebElement checkSnackbarDisplayed() {
-		return find(incorrectEmailSnackbar);
+		return find(incorrectEmailSnackbarText);
 	}
 	
 	public String getSnackbarText() {
-		find(incorrectEmailSnackbarText);
 		return getText(incorrectEmailSnackbarText);
 	}
 	
