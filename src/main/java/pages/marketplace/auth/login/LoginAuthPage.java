@@ -2,10 +2,8 @@ package pages.marketplace.auth.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 
 public class LoginAuthPage extends BasePage{
 
@@ -14,8 +12,8 @@ public class LoginAuthPage extends BasePage{
 	private By changeAccountButton = By.id("au.com.suncorp.marketplace:id/changeUserButton");
 	
 	//Reauth with password
-	private By userImagePasswordReauth = By.id("au.com.suncorp.marketplace:id/profilePicture");
-	private By userNamePasswordReauth = By.id("au.com.suncorp.marketplace:id/userNameText");
+//	private By userImagePasswordReauth = By.id("au.com.suncorp.marketplace:id/profilePicture");
+//	private By userNamePasswordReauth = By.id("au.com.suncorp.marketplace:id/userNameText");
 	private By passwordReauthField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By forgotPasswordReauthButton = By.id("au.com.suncorp.marketplace:id/forgotPasswordButton");
 	private By backButtonReauthPassword = By.id("au.com.suncorp.marketplace:id/backButton");
@@ -25,7 +23,6 @@ public class LoginAuthPage extends BasePage{
 	
 	public LoginAuthPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	public WebElement checkChangeAccountButton(){
@@ -70,6 +67,19 @@ public class LoginAuthPage extends BasePage{
 	
 	public String getPasswordFieldVal() {
 		return getText(passwordReauthField);
+	}
+	
+	public Boolean getPasswordFieldMaskedVal(String maskedValue) {
+		Boolean status;
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if (osVersion >= 7.0) {
+			status = getText(passwordReauthField).equals(maskedValue);
+		}
+		else { 
+			status = getText(passwordReauthField).equals("");
+		}
+		
+		return status;
 	}
 	
 	public void tapPasswordField() {

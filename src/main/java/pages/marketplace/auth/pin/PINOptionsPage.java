@@ -48,10 +48,10 @@ public class PINOptionsPage extends BasePage{
 	
 	public WebElement checkPinPromptUserWelcome(){
 		if (find(pinPromptImage) != null) {
-			return find(pinPromptUserWelcome, 30);
+			return find(pinPromptUserWelcome, 40);
 		}
 		else 
-			return find(promptUserWelcome, 30);
+			return find(promptUserWelcome, 40);
 	}
 	
 	public WebElement checkPinPromptDescription(){

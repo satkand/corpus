@@ -42,11 +42,12 @@ public class LoginTest extends App {
 	@Test (groups = {"DMPM-43", "DMPM-211", "marketplace", "login", "priority-minor"})
 	public void testClearPasswordField() {
 		navigateToLoginScreen();
-		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidPassword"));
+		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+		Assert.assertTrue(loginPage.getPasswordFieldMaskedVal(utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd")), "Login Page - The password entered is not masked");
 		//Putting the app in background indefinitely and launching it using currentActivity method
 		loginPage.relaunchApp(-1, "Config");
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login screen - page title is not shown");
-		Assert.assertEquals(loginPage.getPasswordFieldValue(), "", "VLogin screen - Password field is not empty");
+		Assert.assertEquals(loginPage.getPasswordFieldValue(), "", "Login screen - Password field is not empty");
 	}
 
 	//DMPM-43 - Scenario-4,5
@@ -180,7 +181,7 @@ public class LoginTest extends App {
 	}
 
 	// DMMPM-3729 Scenario 1, 2
-	@Test (groups = {"DMPM-3729", "DMPM-4767", "DMPM-4770", "marketplace", "login", "priority-high"})
+	@Test (groups = {"DMPM-3729", "DMPM-4767", "DMPM-4770", "marketplace", "login", "priority-high"}, priority = 9)
 	public void testForgotSuncorpLoginPassword() {
 		navigateToLoginScreen();
 
@@ -248,7 +249,7 @@ public class LoginTest extends App {
 	}
 
 	// DMPM-3729 Scenario 3, 4, 5, 6, 7
-	@Test (groups = {"DMPM-3729", "DMPM-4773", "DMPM-4774", "DMPM-4776", "DMPM-4777", "DMPM-4778 ", "marketplace", "login", "priority-medium"}, priority = 7)
+	@Test (groups = {"DMPM-3729", "DMPM-4773", "DMPM-4774", "DMPM-4776", "DMPM-4777", "DMPM-4778 ", "marketplace", "login", "priority-medium"}, priority = 10)
 	public void testResetPasswordEmailValidations() {
 		String errorVal = "";
 		navigateToLoginScreen();
@@ -311,7 +312,7 @@ public class LoginTest extends App {
 
 	// DMPM-3729 Scenario 8
 	// DMPM-3827 Scenario 1, 2
-	@Test (groups = {"DMPM-3729", "DMPM-4785", "DMPM-3827", "DMPM-6109", "DMPM-6110", "marketplace", "login", "priority-high"}, priority = 10)
+	@Test (groups = {"DMPM-3729", "DMPM-4785", "DMPM-3827", "DMPM-6109", "DMPM-6110", "marketplace", "login", "priority-high"}, priority = 12)
 	public void testSuccessfulSendEmailLink() {
 		navigateToLoginScreen();
 
@@ -357,7 +358,7 @@ public class LoginTest extends App {
 	}
 
 	// DMPM-3827 Scenario 3
-	@Test (groups = {"DMPM-3729", "DMPM-6111", "marketplace", "login", "priority-high"}, priority = 9)
+	@Test (groups = {"DMPM-3729", "DMPM-6111", "marketplace", "login", "priority-high"}, priority = 11)
 	public void testTapOpenMailButton(){
 		navigateToLoginScreen();
 
