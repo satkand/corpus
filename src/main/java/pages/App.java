@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -60,14 +61,17 @@ import pages.marketplace.property.PropertyDetailsPage;
 import pages.marketplace.property.PropertyExplorerPage;
 import pages.marketplace.settings.SettingsPage;
 import pages.marketplace.portfolio.AddPolicyPage;
+import pages.marketplace.portfolio.AddProductPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
+import pages.marketplace.wealth.VendorDetailPage;
 import pages.marketplace.property.WhatsNearbyPage;
 import pages.marketplace.property.PropertyHubPage;
 import pages.marketplace.property.SuburbDetailsPage;
+
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -120,6 +124,7 @@ public class App extends BaseTest {
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+	public VendorDetailPage vendorDetailPage = null;
 	public WhatsNearbyPage whatsNearbyPage = null;
 	public ForceUpdatePage forceUpdatePage = null;
 	public SuburbDetailsPage suburbDetailsPage = null;
@@ -130,16 +135,28 @@ public class App extends BaseTest {
 	public ClaimIntroPage claimIntroPage =null;
 	public MakeAClaimPage makeAClaimPage =null;
 	public TermsAndConditionsPage termsAndConditionsPage = null;
+	public AddProductPage addProductPage = null;
+
+
 
 	String CONFIG_FILE=null;
 
-
+	@Parameters({ "stub" })
 	@BeforeClass
-	public void initializeApp() {
+	public void initializeApp(@Optional("false") String stub) {
 	
 		 utils = new AutoUtilities();
-		// Autoutilites file path
-		String JSONFilePath = "/TestData/TestData_Test.json";
+		 String JSONFilePath = null;
+		 
+		 if(stub.equalsIgnoreCase("true")) {
+				// Autoutilites file path
+				JSONFilePath = "/TestData/TestData_Stub.json";
+		 } else {
+				JSONFilePath = "/TestData/TestData_Test.json";
+		 }
+
+		 System.out.println(":::::::::::::::::::"+JSONFilePath);
+		 
 		CONFIG_FILE = System.getProperty("user.dir")+"/Config/config.properties";
 		utils.loadTestData(JSONFilePath);
 		
@@ -206,8 +223,11 @@ public class App extends BaseTest {
 		claimIntroPage = new ClaimIntroPage(driver);
 		makeAClaimPage = new MakeAClaimPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
+		vendorDetailPage = new VendorDetailPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		termsAndConditionsPage = new TermsAndConditionsPage(driver);
+		addProductPage = new AddProductPage(driver);
+
 	}
 	
 	@Parameters({ "stub" })
@@ -234,8 +254,18 @@ public class App extends BaseTest {
 		loginPage.enterLoginCredentials(login, pwd);
 		
 		loginPage.tapLoginButton();
-		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
+		loginPage.waitForLoadingIndicatorToDismiss();
+		
+		if(termsAndConditionsPage.checkAcceptButton() != null) {
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
+		if(pinOptionsPage.checkMaybeLaterButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
+		} else if(pinOptionsPage.checkMaybeLaterPromptButton() != null && args.length < 1) {
+			pinOptionsPage.tapPromptMaybeLater();
+		} else if (pinOptionsPage.checkEnableFingerprintBtn() != null && args.length < 1) {
+			pinOptionsPage.tapPromptMaybeLater();
 		}
 	}
 	

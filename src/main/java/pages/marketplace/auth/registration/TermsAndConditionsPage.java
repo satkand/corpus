@@ -13,14 +13,23 @@ public class TermsAndConditionsPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
+	private By termsAndConditionsTitle = By.id("au.com.suncorp.marketplace:id/registrationTermsAndConditionsTitle");
+	private By loginTermsAndConditionsTitle = By.id("au.com.suncorp.marketplace:id/loginTermsAndConditionsTitle");
 	private By acceptButton = By.id("au.com.suncorp.marketplace:id/acceptButton");
 	
+	public WebElement checkTermsAndConditionsTitle() {
+		return find(termsAndConditionsTitle);
+	}
+	
 	public WebElement checkAcceptButton() {
-		return find(acceptButton);
+		return find(acceptButton,45);
 	}
 	
 	public void tapAcceptButton() {
 		tapElement(acceptButton);
 	}
-
+	
+	public WebElement checkLoginTermsAndConditionsTitle() {
+		return find(loginTermsAndConditionsTitle);
+	}
 }

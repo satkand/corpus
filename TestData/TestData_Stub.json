@@ -69,17 +69,12 @@
 			"validPINEntry2" : "2580"
 		}
 	},
-
-	"_comment": "The login and login1 values have to be changed before run",
 	"screenSize" : {
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "test@account.com",
-			"login1": "test1@account.com",
-			"login2": "sb@sb.sb",
-			"memberLoginEmail" : "a@b.c",
+			"login": "test5@test.com",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
 			"userName": ""
@@ -99,20 +94,20 @@
 	},
 	"propertyDimension" :{
 		"propertyDetails":{
-					"address": "1 LYONS RISE ",
-					"stateAndSuburb": "ELTHAM, VIC 3095",
-					"bedRooms": "4",
-					"bathrooms": "2",
-					"parkingSpaces": "4",
-					"landSize": "780 m²",
-					"propertyType": "Land: Res House",
+					"address": "1018/40 Rossana Road",
+					"stateAndSuburb": "North Heidelberg VIC 3084",
+					"bedRooms": "2",
+					"bathrooms": "1",
+					"parkingSpaces": "1",
+					"landSize": "289 m²",
+					"propertyType": "House - Duplex",
 					"roofType": "Tiled (Terra Cotta or Cement)",
 					"wallMaterial": "Brick",
-					"salePrice": "$600,000",
-					"saleDate": "2013-12-13",
-					"confidenceLevel":"High confidence",
-					"estimatedMarketValue": "$870,000 - $1,100,000",
-					"numberOfImages":"26",
+					"salePrice": "$1,000,000",
+					"saleDate": "30 Feb 2018",
+					"confidenceLevel":"Medium confidence",
+					"estimatedMarketValue": "$1,100,000 - $1,275,000",
+					"numberOfImages":"7",
 					"buildYear": "1966"
 					
 		},
@@ -122,7 +117,7 @@
 					"nearbySchool1":"Eltham Woods Preschool (694m)",
 					"nearbySchool2":"Little Scooters Early Learning Centre & Kindergarten (703m)",
 					"nearbySchool3":"Research Primary School (843m)",
-					"estimatedMarketValue": "$870,000 - $1,100,000"
+					"estimatedMarketValue": "$1,456,100,000 - $1,895,275,000"
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
@@ -135,9 +130,9 @@
 					"login":"a@b.c",
 					"pwd":"Password1",
 					"suburbSearchText":"3978",
-					"floodRiskValue" : "Very Low",
-					"bushFireValue" : "Very Low",
-					"theifRiskValue" : "Low"
+					"floodRiskValue" : "Low",
+					"bushFireValue" : "Medium",
+					"theifRiskValue" : "High"
 		},
 		"propertyHub":{
 					"login":"a@b.c",
@@ -1393,7 +1388,6 @@
 		{
 			"brandName": "AAMI",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "AAMI member login",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
@@ -1401,7 +1395,6 @@
 		{
 			"brandName": "GIO",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "GIO member login",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
@@ -1409,7 +1402,6 @@
 		{
 			"brandName": "Shannons",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "Shannons member login",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
@@ -1471,7 +1463,7 @@
 		},
 		"propertyExplorer":{
 			"propertyInsightSearchHintText": "Enter address",
-			"estimatedMarketValue": "Estimated property value",
+			"estimatedMarketValue": "Estimated market value",
 			"suburbInsightSearchHintText": "Enter suburb's name"
 		},
 		"spendingsPage": {
