@@ -788,6 +788,13 @@ public class BasePage {
 			String text = element.getAttribute(attribute);
 			return text;
 		}
+	
+	public By findElementUsingXpathText(String text) {
+		String t = "//android.widget.TextView[@text='"+text+"']";
+		By locator = By.xpath(t);
+		return locator;
+		
+	}
 
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.
