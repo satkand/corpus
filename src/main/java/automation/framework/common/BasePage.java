@@ -791,6 +791,12 @@ public class BasePage {
 			String text = element.getAttribute(attribute);
 			return text;
 		}
+	
+	protected By findElementUsingXpathText(String text) {
+			String xpath = "//android.widget.RadioButton[@text='" + text + "']";
+			By locator = By.xpath(xpath);
+			return locator;
+		}
 
 //	/**
 //	 * This method is specifically to use when needed to set PIN in an app.

@@ -122,7 +122,7 @@ public class HomePropertyTest extends App {
 		
  		navigateToHomePropertyTab("withOutProducts");
  		
-		homePropertyPage.scrollToEmptyStatePropertyAsset();
+		homePropertyPage.scrollToEmptyStatePropertyAsset(utils.readTestData("propertyDimension", "propertyProducts","withOutProducts","addressLineText"));
 		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Address Line is not present");
 		Assert.assertNotNull(homePropertyPage.checksuburbText(), "Home Property Page - Suburb is not present");
 	
@@ -181,7 +181,7 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 		
-		homePropertyPage.scrollToSuppliedAsset();;
+		homePropertyPage.scrollToSuppliedAsset(utils.readTestData("propertyDimension", "propertyProducts","withOutProducts","addressLineText"));;
 		homePropertyPage.tapPropertyDetailsButton();
 		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
