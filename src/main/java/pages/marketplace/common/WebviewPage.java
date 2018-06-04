@@ -28,7 +28,6 @@ public class WebviewPage extends BasePage {
 	private By webviewBrowserUrl_google= By.id("com.android.chrome:id/url_bar");
 	private By webviewRefreshButton = MobileBy.AccessibilityId("Refresh page");
 	
-	
 	public void tapWebViewToolbarOprions() {
 		tapElement(webViewToolbarOprions);
 	}
@@ -61,6 +60,7 @@ public class WebviewPage extends BasePage {
 	
 	public WebElement checkUrlBar() {
 		return find(urlBar);
+
 	}
 	
 	public String getTextUrlBar() {
@@ -81,8 +81,6 @@ public class WebviewPage extends BasePage {
 	
 	public WebElement checkWebviewBrowserUrl() {
 		WebElement browserUrl = null;
-		System.out.println("DEVICE IS :::"+getDeviceAttribute("deviceManufacturer"));
-		System.out.println("DEVICE MODEL IS :::"+getDeviceAttribute("deviceModel"));
 		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
 			if(getDeviceAttribute("deviceModel").equalsIgnoreCase("SM-G935F")) {
 				browserUrl = find(webviewBrowserUrl);
@@ -101,7 +99,17 @@ public class WebviewPage extends BasePage {
 			tapWebViewOpenInChromeButton();
 			browserUrl = find(webviewBrowserUrl_google);
 			}
-		
+
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			browserUrl = find(webviewBrowserUrl_samsung);
+		}
+		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			browserUrl = find(webviewBrowserUrl_google);
+		} else {
+			browserUrl = find(webviewBrowserUrl_samsung);
+
+		}
 		}
 		return browserUrl;
 	}
@@ -134,7 +142,34 @@ public class WebviewPage extends BasePage {
 			}
 		
 		}
+
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			browserUrlText = getText(webviewBrowserUrl_samsung);
+		}
+		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			browserUrlText = getText(webviewBrowserUrl_google);
+		} else {
+			browserUrlText = getText(webviewBrowserUrl_samsung);
+		}
 		return browserUrlText;
+	}
+	
+	public String getExpectedBrowserUrl(String expectedValue) {
+
+		if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			if(expectedValue.endsWith("/")) {
+				expectedValue = expectedValue.substring(0, expectedValue.length()-1);
+			}
+		}
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")) {
+			if(!expectedValue.endsWith("/")) {
+				expectedValue = expectedValue+"/";
+			}
+		}
+		return expectedValue;
+
 	}
 	
 	public void tapWebviewChromeCloseButton() {

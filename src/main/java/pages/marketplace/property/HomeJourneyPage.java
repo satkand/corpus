@@ -14,6 +14,7 @@ public class HomeJourneyPage extends BasePage {
 	}
 	
 	private By homeJourneyPageTitle = By.xpath("//android.widget.TextView[@text='Home journey']");
+	private By homeJourneyPageTitleS5 = By.xpath("//android.widget.TextView[@text='HOME JOURNEY']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private By journeyTitleText = By.id("au.com.suncorp.marketplace:id/journeyTitleText");
@@ -55,14 +56,10 @@ public class HomeJourneyPage extends BasePage {
 	}
 	
 	public WebElement checkHomeJourneyPageTitle() {
-		String str = homeJourneyPageTitle.toString();
 		if(find(homeJourneyPageTitle)!=null) {
 			return find(homeJourneyPageTitle);
 		}else {
-			str = str.substring(str.length()-14, str.length()-2).toUpperCase();
-			String t = "//android.widget.TextView[@text='"+str+"']";
-			By titleName = By.xpath(t);
-			return find(titleName);
+			return find(homeJourneyPageTitleS5);
 		}
 		
 	}

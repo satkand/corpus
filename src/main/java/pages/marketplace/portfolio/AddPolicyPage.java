@@ -16,7 +16,7 @@ public class AddPolicyPage extends BasePage {
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	private By policyNumberTextBox = By.id("au.com.suncorp.marketplace:id/policyNumberField");
 	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addPolicyButton");
-	private By forgotMyDetailsButton = By.id("au.com.suncorp.marketplace:id/forgottenDetailsTextButton");
+	private By forgotMyDetailsButton = By.id("au.com.suncorp.marketplace:id/findMyPolicyButton");
 	private By supportedbrandsTextLabel = By.id("au.com.suncorp.marketplace:id/supportedBrandsText");
 	private By supportedbrandsImage = By.id("au.com.suncorp.marketplace:id/brandsGroupImage");
 	private By successMessage = By.id("au.com.suncorp.marketplace:id/dialogMessage");

@@ -110,7 +110,7 @@ public class SuburbDetailsTest extends App {
 		//propertyExplorerPage.tapSearch();
 		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
 		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
-		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(), "Suburb Details Page - Suburb details title is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(utils.readTestData("propertyDimension","propertyDetails","stateAndSuburb")), "Suburb Details Page - Suburb details title is not present");
 		
 	}
 	

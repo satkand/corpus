@@ -16,7 +16,6 @@ public class SuburbDetailsPage extends BasePage{
 	}
 	
 	private By disclaimerLabelText = By.xpath("//android.widget.TextView[@text='Disclaimer']");
-	private By suburbName = By.xpath("//android.widget.TextView[@text='Eltham, VIC 3095']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private By riskAndHazardTitleText = By.id("au.com.suncorp.marketplace:id/risksAndHazardsTitle");
@@ -105,12 +104,13 @@ public class SuburbDetailsPage extends BasePage{
 		return getText(disclaimerLabelText);
 	}
 	
-	public WebElement checkSuburbNameText() {
-		return find(suburbName);
+	public WebElement checkSuburbNameText(String XpathText) {
+		return find(findElementUsingXpathText(XpathText));
+		
 	}
 	
-	public String getSuburbNameText() {
-		return getText(suburbName);
+	public String getSuburbNameText(String XpathText) {
+		return getText(findElementUsingXpathText(XpathText));
 	}
 	
 	public WebElement checkBackButton() {

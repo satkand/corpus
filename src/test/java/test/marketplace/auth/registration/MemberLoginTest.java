@@ -21,6 +21,12 @@ public class MemberLoginTest extends App {
 		welcomePage.tapRegisterButton();
 		getStartedPage.checkGetStartedPageTitle();
 	}
+	
+	private void checkForTermsAndConditions() {
+		if(termsAndConditionsPage.checkAcceptButton() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
+	}
 
 	// DMPM-1493 Scenario 1
 	// DMPM-2730 Scenario 1
@@ -44,9 +50,8 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
+		
 		Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"));
 		Assert.assertNotNull(memberLoginPage.checkCancelButton(), "Member Login - Cancel button not displayed");
 		Assert.assertNotNull(memberLoginPage.checkEmailField(), "Member Login - Email field not displayed");
@@ -78,9 +83,8 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
+		
 		Assert.assertNotNull(memberLoginPage.checkPasswordField(), "Member Login Page - Password field is not displayed");
 		memberLoginPage.enterPassword(brandIcon.get("password"));
 		Assert.assertEquals(memberLoginPage.getPasswordFieldValue(), utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd"), "Member Login Page - Data is not masked");
@@ -117,9 +121,7 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 
 		String errorVal = "";
 		/** Tapping out of the Field **/
@@ -182,9 +184,7 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 
 		String errorVal = "";
 		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "invalidCredentials", "emailMinLength"), "");
@@ -232,9 +232,7 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 
 		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
@@ -284,9 +282,7 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 
 		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
@@ -338,9 +334,7 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 
 		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
@@ -380,9 +374,7 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 
 		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("password"));
 		memberLoginPage.tapNextButton();
@@ -420,9 +412,7 @@ public class MemberLoginTest extends App {
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 
 		memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("invalidPassword"));
 		memberLoginPage.tapNextButton();
@@ -451,17 +441,15 @@ public class MemberLoginTest extends App {
 			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 			getStartedPage.tapNextButton();
 			
-			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-				termsAndConditionsPage.tapAcceptButton();
-			}
+			checkForTermsAndConditions();
 
 			// Test with valid credentials
-			memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+			//TODO: Login credentials has to be changed when running on SYST
+			memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "memberLoginEmail"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 			memberLoginPage.tapNextButton();
 
-			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-				termsAndConditionsPage.tapAcceptButton();
-			}
+			checkForTermsAndConditions();
+			
 			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
 			pinOptionsPage.tapMaybeLater();
 			Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
@@ -477,12 +465,10 @@ public class MemberLoginTest extends App {
 			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 			getStartedPage.tapNextButton();
 			
-			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-				termsAndConditionsPage.tapAcceptButton();
-			}
+			checkForTermsAndConditions();
 			Assert.assertNotNull(memberLoginPage.checkEmailField(), "Member Login Page - Email is not dipalyed");
 
-			memberLoginPage.enterLoginCredentials(brandIcon.get("email"), brandIcon.get("invalidPassword"));
+			memberLoginPage.enterLoginCredentials(brandIcon.get("email"), utils.readTestData("loginCredentials", "invalidCredentials", "invalidPassword"));
 			memberLoginPage.tapNextButton();
 
 			Assert.assertNotNull(memberLoginPage.checkSnackbarDisplayed(), "Member Login Page - Error Snackbar not displayed");
@@ -506,16 +492,14 @@ public class MemberLoginTest extends App {
 		
 		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
 		getStartedPage.tapSuncorpInsuranceButton();
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		
+		checkForTermsAndConditions();
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not navigated to the login page");
-		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+		//TODO: Login credentials has to be changed when running on SYST
+		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "memberLoginEmail"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
 		
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 		Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
 		pinOptionsPage.tapMaybeLater();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
@@ -542,9 +526,7 @@ public class MemberLoginTest extends App {
 			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 			getStartedPage.tapNextButton();
 			
-			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-				termsAndConditionsPage.tapAcceptButton();
-			}
+			checkForTermsAndConditions();
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted to the Login Page");
 			Assert.assertNotNull(loginPage.checkForgotPasswordButton(), "Login Page - Forgot Password button is not displayed");
 
@@ -577,11 +559,11 @@ public class MemberLoginTest extends App {
 
 			//Valid email value
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted back to the Login Page");
-			memberLoginPage.enterEmail(utils.readTestData("loginCredentials","validLoginCredentials", "login"));
+			memberLoginPage.enterEmail(brandIcon.get("resetPasswordEmail"));
 			memberLoginPage.tapDeviceBackButton();
 			memberLoginPage.tapForgotPassword();
 			Assert.assertEquals(memberLoginPage.getResetPasswordTitle(), Copy.RESET_PASSWORD_TITLE_TEXT, "User is not navigated to the Reset Password");
-			Assert.assertEquals(memberLoginPage.getResetPasswordEmailValue(), utils.readTestData("loginCredentials","validLoginCredentials", "login"), "Reset Password - Email does not match with the email entered in login page");
+			Assert.assertEquals(memberLoginPage.getResetPasswordEmailValue(), brandIcon.get("resetPasswordEmail"), "Reset Password - Email does not match with the email entered in login page");
 			memberLoginPage.tapResetPasswordBackButton();
 
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted back to the Login Page");
@@ -608,9 +590,7 @@ public class MemberLoginTest extends App {
 			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 			getStartedPage.tapNextButton();
 			
-			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-				termsAndConditionsPage.tapAcceptButton();
-			}
+			checkForTermsAndConditions();
 			Assert.assertNotNull(memberLoginPage.checkForgotPasswordButton(), "Login Page - Forgot Password button is not displayed");
 			memberLoginPage.tapForgotPassword();
 
@@ -692,21 +672,19 @@ public class MemberLoginTest extends App {
 			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 			getStartedPage.tapNextButton();
 			
-			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
-				termsAndConditionsPage.tapAcceptButton();
-			}
+			checkForTermsAndConditions();
 			Assert.assertNotNull(memberLoginPage.checkForgotPasswordButton(), "Login Page - Forgot Password button is not displayed");
 			memberLoginPage.tapForgotPassword();
 
 			Assert.assertNotNull(memberLoginPage.checkResetPasswordTitle(), "Reset Password - User is not navigated to the Reset Password screen");
-			memberLoginPage.enterEmail(utils.readTestData("loginCredentials", "validLoginCredentials","login"));
+			memberLoginPage.enterEmail(brandIcon.get("resetPasswordEmail"));
 			memberLoginPage.tapResetLinkButton();
 
 			//TODO: Following code will part of later story which is not Manually Tested yet
-			//	common.waitForSuccessLoadingSpinnerToDisappear();
-			//	Assert.assertNotNull(memberLoginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
-			//	Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
-			//	Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
+			common.waitForSuccessLoadingSpinnerToDisappear();
+			Assert.assertNotNull(memberLoginPage.checkResetPasswordSuccessSnackbar(), "Reset Password - Snackbar is not displayed after successfully sending the reset link");
+			Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarText(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_TEXT, "Reset Password - Text on the snackbar is not correct");
+			Assert.assertEquals(memberLoginPage.getResetPasswordSuccessSnackbarBtn(), Copy.RESET_PASSWORD_SUCCESS_SNACKBAR_BTN, "Reset Password - Button on the snackbar is not correct");
 
 			Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - User is not naviagted back to the Login Page");
 			memberLoginPage.tapCancelButton();

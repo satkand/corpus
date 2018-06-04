@@ -101,8 +101,8 @@ public class PropertyExplorerPage  extends BasePage{
 		tapElement(suburbInsightTab);
 	}
 	
-	public void tapAndroidDeviceBackButton(){
-		for(int i=0;i<2;i++){
+	public void tapAndroidDeviceBackButton(int count){
+		for(int i=0;i<count;i++){
 			tapDeviceBackButton();
 		}
 		

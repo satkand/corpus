@@ -93,24 +93,6 @@ public class HomeJourneyTest extends App {
 		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "movingInReadMoreButtonLink"),"Moving In");
 	}
 	
-	private void verifyBrowserURL(String expectedStr, String card) {
-		if(webviewPage.checkWebviewBrowserUrl()!=null) {
-			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), expectedStr, card+" page - browser url is not valid");
-
-		}
-		if(webviewPage.checkUrlBar()!=null) {
-			if(!(whatsNearbyPage.getDeviceModel().equalsIgnoreCase("SM-G900F"))) {
-				Assert.assertEquals(webviewPage.getTextUrlBar(), expectedStr, card+" page - browser url is not valid");
-			}else {
-				Assert.assertEquals(webviewPage.getTextUrlBar().replaceAll("[^a-zA-Z0-9]", "").toString(), Copy.LOCATION_BAR_TEXT_S5,"Home professional services URL is not matching");
-			}
-					
-		}
-		webviewPage.tapDeviceBackButton();
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
-	}
-	
-	
 	@Test (groups = {"DMPM-797", "DMPM-855", "DMPM-856","DMPM-6057","DMPM-6762", "marketplace", "Home buying journey", "priority-minor"})
 	
 	//DMPM-797 - Scenario 1 & 2
@@ -128,6 +110,23 @@ public class HomeJourneyTest extends App {
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home Journey Page - Home tab is not selected");
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Home Journey Page - Hamburger Menu not shown");
 		
+	}
+	
+	private void verifyBrowserURL(String expectedStr, String card) {
+		if(webviewPage.checkWebviewBrowserUrl()!=null) {
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), expectedStr, card+" page - browser url is not valid");
+
+		}
+		if(webviewPage.checkUrlBar()!=null) {
+			if(!(whatsNearbyPage.getDeviceModel().equalsIgnoreCase("SM-G900F"))) {
+				Assert.assertEquals(webviewPage.getTextUrlBar(), expectedStr, card+" page - browser url is not valid");
+			}else {
+				Assert.assertEquals(webviewPage.getTextUrlBar().replaceAll("[^a-zA-Z0-9]", "").toString(), Copy.LOCATION_BAR_TEXT_S5,"Home professional services URL is not matching");
+			}
+					
+		}
+		webviewPage.tapDeviceBackButton();
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 	}
 	
 	private void navigateToHomeJourneyviaMenu() {
