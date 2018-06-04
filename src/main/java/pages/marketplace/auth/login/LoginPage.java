@@ -121,7 +121,7 @@ public class LoginPage extends BasePage{
 	public WebElement checkEmailFieldError(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(emailFieldError,30);
 		}
 		else { 
@@ -132,7 +132,7 @@ public class LoginPage extends BasePage{
 	public String getEmailFieldErrorValue() {
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(emailFieldError);
 		}
 		else { 
@@ -143,7 +143,7 @@ public class LoginPage extends BasePage{
 	public WebElement checkPasswordFieldError(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(passwordFieldError,30);
 		}
 		else { 
@@ -154,7 +154,7 @@ public class LoginPage extends BasePage{
 	public String getPasswordFieldErrorValue() {
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(passwordFieldError);
 		}
 		else { 
@@ -165,7 +165,7 @@ public class LoginPage extends BasePage{
 	public Boolean getPasswordFieldMaskedVal(String maskedValue) {
 		Boolean status;
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			status = getText(passwordField).equals(maskedValue);
 		}
 		else { 

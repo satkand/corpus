@@ -210,7 +210,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkFirstNameErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(firstNameErrorMsg,30);
 		}
 		else { 
@@ -221,7 +221,7 @@ public class RegistrationPage extends BasePage {
 	public String getFirstNameErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(firstNameErrorMsg);
 		}
 		else { 
@@ -232,7 +232,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkSurnameErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(surnameErrorMsg,30);
 		}
 		else { 
@@ -243,7 +243,7 @@ public class RegistrationPage extends BasePage {
 	public String getSurnameErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(surnameErrorMsg);
 		}
 		else { 
@@ -254,7 +254,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkDOBErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(dobErrorMsg,30);
 		}
 		else { 
@@ -265,7 +265,7 @@ public class RegistrationPage extends BasePage {
 	public String getDOBErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(dobErrorMsg);
 		}
 		else { 
@@ -276,7 +276,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkPostCodeErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(postcodeErrorMsg,30);
 		}
 		else { 
@@ -287,7 +287,7 @@ public class RegistrationPage extends BasePage {
 	public String getPostCodeErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(postcodeErrorMsg);
 		}
 		else { 
@@ -298,7 +298,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkFirstNameUserTip(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(firstNameUserTip,30);
 		}
 		else { 
@@ -309,7 +309,7 @@ public class RegistrationPage extends BasePage {
 	public String getFirstNameUserTip(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(firstNameUserTip);
 		}
 		else { 
@@ -320,7 +320,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkMobileNumberUserTip(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(mobileNumberUserTip,30);
 		}
 		else { 
@@ -331,7 +331,7 @@ public class RegistrationPage extends BasePage {
 	public String getMobileNumberUserTip(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(mobileNumberUserTip);
 		}
 		else { 
@@ -342,7 +342,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkEmailErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(invalidEmailErrorMsg,30);
 		}
 		else { 
@@ -353,7 +353,7 @@ public class RegistrationPage extends BasePage {
 	public String getInvalidEmailErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(invalidEmailErrorMsg);
 		}
 		else { 
@@ -364,7 +364,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkMobileErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(invalidMobileErrorMsg,30);
 		}
 		else { 
@@ -375,7 +375,7 @@ public class RegistrationPage extends BasePage {
 	public String getInvalidMobileErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(invalidMobileErrorMsg);
 		}
 		else { 
@@ -398,10 +398,10 @@ public class RegistrationPage extends BasePage {
 	public boolean checkPasswordRequirements(String errorMsg) {
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0 && getText(passwordErrorMsg).contains(errorMsg)) {
+		if (osVersion >= 6.0 && getText(passwordErrorMsg).contains(errorMsg)) {
 			return true;
 		}
-		else if (osVersion <= 7.0 && getText(passwordErrorMsgOldDevice).contains(errorMsg)){ 
+		else if (osVersion <= 6.0 && getText(passwordErrorMsgOldDevice).contains(errorMsg)){ 
 			return true;
 		}
 		else return false;
@@ -410,7 +410,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkPasswordErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(passwordErrorMsg,30);
 		}
 		else { 
@@ -421,7 +421,7 @@ public class RegistrationPage extends BasePage {
 	public String getPasswordErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(passwordErrorMsg);
 		}
 		else { 
@@ -432,7 +432,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkConfirmPasswordErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(confirmPasswordErrorMsg,30);
 		}
 		else { 
@@ -443,7 +443,7 @@ public class RegistrationPage extends BasePage {
 	public String getConfirmPasswordErrorMsg(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return getText(confirmPasswordErrorMsg);
 		}
 		else { 
@@ -515,7 +515,7 @@ public class RegistrationPage extends BasePage {
 	public WebElement checkYearPicker(){
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 7.0) {
+		if (osVersion >= 6.0) {
 			return find(yearPicker,30);
 		}
 		else { 
