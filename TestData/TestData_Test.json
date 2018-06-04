@@ -775,17 +775,17 @@
             			{
             			        "login": "policystatusvehicles@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			"myVehiclePolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -882,18 +882,18 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "ACTIVE",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "POLICY ACTIVE",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			
             				"myProductPolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},

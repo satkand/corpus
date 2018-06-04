@@ -489,7 +489,7 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.tapProductByPolicyStatus(myProductActivePolicy);
 		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus().toUpperCase(), activePolicy,
+		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus(), activePolicy,
 				"Policy active status is incorrect");
 		assertPolicyRenewalStatus(myProductCancellationPending, cancellationPending);
 		assertPolicyRenewalStatus(myProductFutureActive, futureActive);
