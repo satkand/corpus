@@ -6,6 +6,8 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.Copy;
+import automation.framework.common.TestDetails;
 import pages.App;
 
 public class SpendingsTest extends App {
@@ -226,7 +228,12 @@ public class SpendingsTest extends App {
 	
 	// 4034 - Scenario 1-6
 	//5921 - Scenario 1-6
-	@Test (groups = {"DMPM-4034", "DMPM-5818", "DMPM-5819","DMPM-5820","DMPM-5821","DMPM-5822","DMPM-5823","DMPM-5921", "marketplace", "FFI", "priority-minor"})
+	//2480 - Scenario 1
+	//2905 - Scenario 1
+	//2260 - Scenario 1
+	@TestDetails(story1 = "DMPM-4034:DMPM-5818,DMPM-5819,DMPM-5820,DMPM-5821,DMPM-5822,DMPM-5823", story2 = "DMPM-5921", story3 = "DMPM-2480",
+			story4 = "DMPM-2905",story5 = "DMPM-2260:DMPM-4959,DMPM-5273")
+	@Test (groups = { "marketplace", "FFI", "priority-minor"})
 	public void testDatePickerInCategoryDetailsScreen() {
 		
 		navigateToCategoryDetailScreen();	
@@ -248,6 +255,9 @@ public class SpendingsTest extends App {
 		Assert.assertTrue(categoryDetailsPage.checkIfVendorsAreSorted(),"Top vendors are not sorted by the spending amount");
 		Assert.assertNotNull(categoryDetailsPage.checkTransactionList(), "Transaction list not seen");
 		 
+		Assert.assertTrue(categoryDetailsPage.checkVendorNames(), "Vendor names not present");
+		Assert.assertTrue(categoryDetailsPage.checkVendorAmount(), "Vendor amount not present");
+		
 		//Check when there are no transcations
 		categoryDetailsPage.scrollUp();
 		categoryDetailsPage.checkMonthPicker();
@@ -256,7 +266,7 @@ public class SpendingsTest extends App {
 		Assert.assertNull(categoryDetailsPage.checkTop3VendorTitle(), "Top 3 vendor title not seen");
 		Assert.assertNull(categoryDetailsPage.checkTop3VendorsList(), "Top 3 vendor list not seen");
 		Assert.assertNotNull(categoryDetailsPage.checkTransactionErrorMsg(), "Transaction error msg not seen");
-		
+		Assert.assertEquals(categoryDetailsPage.getTransactionErrorMsg(), Copy.FFI_EMPTY_TRANSACTIONS);
 		categoryDetailsPage.tapCloseButton();
 		Assert.assertNotNull(spendingsPage.checkSpendingPageTitle(), "Did not navigate to spending screen");
 		Assert.assertEquals(spendingsPage.getSpendingsTotalAmount(), utils.readTestData("ffi", "hasData", "zeroSpending"));
@@ -264,6 +274,94 @@ public class SpendingsTest extends App {
 		
 	}
 	
+
+	// 3980 - Scenario 1-6
+	//5922 - Scenario 1-6
+	//6311 - Scenario 1
+	//182 - Scenario 1
+	@Test (groups = {"DMPM-3980", "DMPM-5809", "DMPM-5810","DMPM-5811","DMPM-5812","DMPM-5815","DMPM-5816","DMPM-5922", "DMPM-6311", "DMPM-182", "marketplace", "FFI", "priority-minor"})
+	public void testDatePickerInVendorDetailsScreen() {
+		
+		String vendorNavigatedTo = navigateToVendorDetailScreen();	
+		Assert.assertNotNull(categoryDetailsPage.checkMonthPicker(), "Month picker not seen");
+		categoryDetailsPage.tapMonthPicker();
+		Assert.assertNotNull(categoryDetailsPage.checkMonthsOptionInPicker(), "List of months not seen");
+		vendorDetailPage.tapAvgSpend();
+		Assert.assertNull(categoryDetailsPage.checkMonthsOptionInPicker(), "List of months still seen");
+		categoryDetailsPage.tapMonthPicker();
+		categoryDetailsPage.tapDeviceBackButton();
+		Assert.assertNull(categoryDetailsPage.checkMonthsOptionInPicker(), "List of months still seen");
+		
+		categoryDetailsPage.selectMonth(utils.readTestData("ffi", "hasData", "month"));
+		Assert.assertNotNull(categoryDetailsPage.checkSpendingsTotalAmount(), "Total spent amount not seen");
+		Assert.assertNotEquals(categoryDetailsPage.getSpendingsTotalAmount(), utils.readTestData("ffi", "hasData", "zeroSpending"));
+		vendorDetailPage.scrollDown();
+		Assert.assertNotNull(vendorDetailPage.checkAvgSpend(), "Avg spend details not seen");
+		Assert.assertNotNull(vendorDetailPage.checkAvgTransFreq(), "Avg transaction freq not seen");
+		Assert.assertNotNull(vendorDetailPage.checkTransactionList(), "Transaction list not seen");
+		
+		Assert.assertTrue(vendorDetailPage.checkVendorNames(vendorNavigatedTo), "Vendor names not present");
+		Assert.assertTrue(vendorDetailPage.checkVendorAmount(), "Vendor amount not present");
+		
+		
+		//Check when there are no transcations
+		categoryDetailsPage.scrollUp();
+		categoryDetailsPage.checkMonthPicker();
+		categoryDetailsPage.selectMonth(utils.readTestData("ffi", "hasNoData", "month"));
+		Assert.assertEquals(categoryDetailsPage.getSpendingsTotalAmount(), utils.readTestData("ffi", "hasData", "zeroSpending"));
+		Assert.assertNull(vendorDetailPage.checkAvgSpend(), "TAvg spend details not seen");
+		Assert.assertNull(vendorDetailPage.checkAvgTransFreq(), "Avg transaction freq not seen");
+		Assert.assertNotNull(categoryDetailsPage.checkTransactionErrorMsg(), "Transaction error msg not seen");
+		Assert.assertEquals(categoryDetailsPage.getTransactionErrorMsg(), Copy.FFI_EMPTY_TRANSACTIONS);
+		categoryDetailsPage.tapCloseButton();
+		Assert.assertNotNull(spendingsPage.checkSpendingPageTitle(), "Did not navigate to spending screen");
+		Assert.assertEquals(spendingsPage.getSpendingsTotalAmount(), utils.readTestData("ffi", "hasData", "zeroSpending"));
+	
+		
+		
+	}
+	
+	//DMPM-496
+	@Test (groups = {"DMPM-496",  "marketplace", "FFI", "priority-minor"})
+	public void testDisclaimer() {
+		navigateToSpendingsScreen();
+		Assert.assertEquals(spendingsPage.getSnackBarText(), Copy.FFI_DISCLAIMER);
+	}
+	
+	//DMPM-2520 - Scneario 1-6
+		@Test (groups = {"DMPM-2520", "DMPM-6653","DMPM-6657","DMPM-6658","DMPM-6659","DMPM-6660","DMPM-6661", "marketplace", "FFI", "priority-minor"})
+		public void testSearchThroughVendorList() {
+			navigateToSpendingsScreen();
+			categoryDetailsPage.selectMonth(utils.readTestData("ffi", "hasData", "month"));
+			
+			spendingsPage.tapVendorTab();
+			Assert.assertNotNull(vendorDetailPage.checkSearchField(), "Search field not present");
+			vendorDetailPage.tapSearchField();
+			Assert.assertNotNull(vendorDetailPage.checkVendorSearchScreenTitle(), "Vendor Search screen title not present");
+			Assert.assertTrue(common.isKeyboardShown(), "Keyboard not seen");
+			Assert.assertNotNull(vendorDetailPage.checkCloseButton(), "Close button not present");
+			Assert.assertNotNull(vendorDetailPage.checkVendorSearchList(), "No vendor list seen");
+			vendorDetailPage.tapCloseButton();
+			Assert.assertNotNull(spendingsPage.checkSpendingPageTitle(), "Spending page title not seen");
+			
+			vendorDetailPage.tapSearchField();
+			vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString"));
+			Assert.assertTrue(vendorDetailPage.verifySearch(utils.readTestData("ffi", "hasData", "resultString1"),
+					utils.readTestData("ffi", "hasData", "resultString2"), utils.readTestData("ffi", "hasData", "resultString3")), "Search not as expected");
+			vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString4Letter"));
+			Assert.assertTrue(vendorDetailPage.verifySearch4Letter(utils.readTestData("ffi", "hasData", "resultString1"),
+					utils.readTestData("ffi", "hasData", "resultString2"), utils.readTestData("ffi", "hasData", "resultString3")), "Search not as expected");
+			vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString5Letter"));
+			Assert.assertNotNull(vendorDetailPage.checkSearchErrorMsg(), "Error msg not seen");
+			
+			//3 times backspace to remove 3 characters and unfilter list
+			vendorDetailPage.tapBackspace();
+			vendorDetailPage.tapBackspace();
+			vendorDetailPage.tapBackspace();
+			
+			Assert.assertTrue(vendorDetailPage.verifySearchItems(), "Search list did not unfilter");
+		}
+
 	
 	private void verifyEmptyTransactionsMessage(List months) {
 		for (Object month : months) {
@@ -276,6 +374,17 @@ public class SpendingsTest extends App {
 		}
 	}
 
+	private String navigateToVendorDetailScreen() {
+		navigateToSpendingsScreen();
+		Assert.assertNotNull(spendingsPage.checkMonthPicker(), "Month picker not seen");
+		spendingsPage.selectMonth(utils.readTestData("ffi", "hasData", "month"));
+		spendingsPage.tapVendorTab();
+		String chosenVendorName = spendingsPage.getTopMostCategory();
+		spendingsPage.tapTopmostCategory();
+		return chosenVendorName;
+		
+	}
+	
 	private void navigateToCategoryDetailScreen() {
 		navigateToSpendingsScreen();
 		Assert.assertNotNull(spendingsPage.checkMonthPicker(), "Month picker not seen");

@@ -24,10 +24,8 @@ public class RiskDetailsPage extends BasePage {
 	private By riskStartYearText = By.id("au.com.suncorp.marketplace:id/riskStartYearText");
 	private By riskEndDateText = By.id("au.com.suncorp.marketplace:id/riskEndDateText");
 	private By riskEndYearText = By.id("au.com.suncorp.marketplace:id/riskEndYearText");
-	private By optionalCoverDescription = MobileBy.AndroidUIAutomator(
-			"new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverType\").fromParent(new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverDescription\")).instance(0)");
-	private By includedCoverDescription = MobileBy.AndroidUIAutomator(
-			"new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverType\").fromParent(new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverDescription\")).instance(1)");
+	private By optionalCoverDescription = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverDescription\").instance(0)");
+	private By includedCoverDescription = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverDescription\").instance(1)");
 	private By includedCoverLabel = MobileBy.AndroidUIAutomator(
 			"new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/optionalCoverType\").instance(1)");
 	private By optionalCoverLabel = MobileBy.AndroidUIAutomator(
@@ -43,6 +41,54 @@ public class RiskDetailsPage extends BasePage {
 	private By additionalexcessDescription = By.id("au.com.suncorp.marketplace:id/excessDescription");
 	private By additionalExcessListedDriver =By.id("au.com.suncorp.marketplace:id/listedDriverExcessValue");
 	private By additionalExcessUnListedDriver =By.id("au.com.suncorp.marketplace:id/unlistedDriverExcessValue");
+	private By riskCoverType = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/suncorpToolbar\").fromParent(new UiSelector().className(\"android.widget.TextView\"))");
+	private By riskCoverPeriodTitle = By.id("au.com.suncorp.marketplace:id/riskCoverPeriodTitle");
+	private By riskCoverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
+	private By riskCoverPeriodEnd  = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
+	private By coverStatusBannerText = By.id("au.com.suncorp.marketplace:id/coverStatusBannerText");
+	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
+	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
+	//private By riskCoverType = By.id("au.com.suncorp.marketplace:id/riskCoverType");
+	
+	//risk cover period related ---Start
+	public WebElement checkRiskCoverPeriodTitle() {
+		return find(riskCoverPeriodTitle);
+	}
+	
+	public WebElement checkRiskCoverPeriodStart() {
+		return find(riskCoverPeriodStart);
+	}
+	
+	public WebElement checkRiskCoverPeriodEnd() {
+		return find(riskCoverPeriodEnd);
+	}
+	
+	public String getRiskCoverPeriodTitle() {
+		return getText(riskCoverPeriodTitle);
+	}
+	
+	public String getRiskCoverPeriodStart() {
+		return getText(riskCoverPeriodStart);
+	}
+	
+	public String getRiskCoverPeriodEnd() {
+		return getText(riskCoverPeriodEnd);
+	}
+	//risk cover period related ---End
+	public WebElement checkRiskCoverType() {
+		 return find(riskCoverType);
+	}
+	public String getRiskCoverTypeText() {
+		return getText(riskCoverType);
+	}
+	
+	public WebElement checkCoverStatusBannerText() {
+		return find(coverStatusBannerText);
+	}
+	
+	public String getCoverStatusBannerText() {
+		return getText(coverStatusBannerText);
+	}
 	
 	public String getRiskStartDateText() {
 
@@ -194,6 +240,39 @@ public class RiskDetailsPage extends BasePage {
 	public String getAdditionalExcessUnListedDriver() {
 
 		return getText(additionalExcessUnListedDriver);
+	}
+
+	public WebElement checkCoverPeriodLabel() {
+		
+		return find(riskCoverPeriodTitle);
+	}
+
+	public String getCoverPeriodLabel() {
+		
+		return getText(riskCoverPeriodTitle);
+	}
+
+	public WebElement checkCoverPeriodStart() {
+		return find(coverPeriodStart);
+	}
+
+	public String getCoverPeriodStart() {
+		return getText(coverPeriodStart);
+	}
+
+	public WebElement checkCoverPeriodEnd() {
+		return find(coverPeriodEnd);
+	}
+
+	public String getCoverPeriodEnd() {
+		return getText(coverPeriodEnd);
+	}
+	
+	public String getRiskCoverType(String text) {
+		
+		WebElement element = scrollToElementByText(text, 1);
+		return getText(element);
+		
 	}
 	
 }

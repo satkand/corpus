@@ -27,7 +27,6 @@ public class WebviewPage extends BasePage {
 	private By webviewBrowserUrl_samsung = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
 	private By webviewBrowserUrl_google= By.id("com.android.chrome:id/url_bar");
 	
-	
 	public void tapWebViewToolbarOprions() {
 		tapElement(webViewToolbarOprions);
 	}
@@ -84,7 +83,15 @@ public class WebviewPage extends BasePage {
 		|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
 			tapWebViewToolbarOprions();
 			tapWebViewOpenInChromeButton();
-		browserUrl = find(webviewBrowserUrl_google);
+			browserUrl = find(webviewBrowserUrl_google);
+
+		}
+		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			browserUrl = find(webviewBrowserUrl_google);
+		} else {
+			browserUrl = find(webviewBrowserUrl_samsung);
+
 		}
 		return browserUrl;
 	}
@@ -98,7 +105,34 @@ public class WebviewPage extends BasePage {
 		|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
 		browserUrlText = getText(webviewBrowserUrl_google);
 		}
+
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			browserUrlText = getText(webviewBrowserUrl_samsung);
+		}
+		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			browserUrlText = getText(webviewBrowserUrl_google);
+		} else {
+			browserUrlText = getText(webviewBrowserUrl_samsung);
+		}
 		return browserUrlText;
+	}
+	
+	public String getExpectedBrowserUrl(String expectedValue) {
+
+		if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			if(expectedValue.endsWith("/")) {
+				expectedValue = expectedValue.substring(0, expectedValue.length()-1);
+			}
+		}
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")) {
+			if(!expectedValue.endsWith("/")) {
+				expectedValue = expectedValue+"/";
+			}
+		}
+		return expectedValue;
+
 	}
 	
 	public void tapWebviewChromeCloseButton() {
