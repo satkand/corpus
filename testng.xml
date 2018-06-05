@@ -3,7 +3,7 @@
 <suite name="allSuites">
 
   <suite-files>
-    <suite-file path="testng_STUB.xml" />
+<!--     <suite-file path="testng_STUB.xml" /> -->
     <suite-file path="testng_SYST.xml" />
   </suite-files>
   
