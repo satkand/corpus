@@ -175,4 +175,7 @@ public interface Copy {
 	//FFI
 	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you dont have any transactions yet.";
 	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
+	
+	//Forgot Pin Page
+	String PASSWORD_REQUIRED_ERROR = "Field is required";
 }

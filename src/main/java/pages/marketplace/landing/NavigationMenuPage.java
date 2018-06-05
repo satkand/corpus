@@ -25,7 +25,7 @@ public class NavigationMenuPage extends BasePage {
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By devSettings = By.xpath("//android.widget.CheckedTextView[@text='Dev Settings']");
     private String devSettingsText ="Dev Settings";
-	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
+	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Log out']");
 
 	public void tapProffessionalServicesMenuItem() {
 		 tapElement(proffessionalServicesMenuItem);

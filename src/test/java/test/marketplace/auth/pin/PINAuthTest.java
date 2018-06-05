@@ -8,10 +8,11 @@ import automation.framework.common.TestDetails;
 import pages.App;
 
 public class PINAuthTest extends App{
-
-	@TestDetails(story1 = "DMPM-58:DMPM-2286,DMPM-2288,DMPM-2292",story2 = "DMPM-3503:4532,4533,4534")
+	
+    @TestDetails(story1 = "DMPM-58:DMPM-2286,DMPM-2288,DMPM-2292",story2 = "DMPM-3503:4532,4533,4534")
 	@Test (groups = { "marketplace", "pin", "priority-minor"})
 	public void testLoginUsingPin() {
+		
 		String userName = utils.readTestData("PIN", "loginWithExistingPin", "login");
 		String pwd = utils.readTestData("PIN", "loginWithExistingPin", "pwd");
 		String validpin = utils.readTestData("PIN","loginWithExistingPin", "pin");
@@ -21,9 +22,10 @@ public class PINAuthTest extends App{
 		Assert.assertNotNull(pinAuthPage.checkPinField(), "Pin field - is not shown");
 		Assert.assertNotNull(pinAuthPage.checkBackButton(), "Pin field - is not shown");
 		enterPIN(validpin);
-		Assert.assertNotNull(landingPage.checkVehiclesTab(), "Landing page - is not shown");
+		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing page - is not shown");
 	}
-    @TestDetails(story1 = "DMPM-58:DMPM-2304")
+	
+   @TestDetails(story1 = "DMPM-58:DMPM-2304")
 	@Test (groups = {"marketplace", "pin", "priority-minor"})
 	public void cancelReauthUsingPin() {
 		String userName = utils.readTestData("PIN", "loginWithExistingPin", "login");
@@ -56,9 +58,10 @@ public class PINAuthTest extends App{
 		enterPIN(validpin);
 		enterPIN(validpin);
 		Assert.assertNotNull(pinSetupPage.checkPINSuccessfullySetMessage(),"Pin successfully set message is not displayed");
-		Assert.assertNotNull(landingPage.checkVehiclesTab(), "Landing page - is not shown");
+		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing page - is not shown");
 		
 	}
+	
 	
 	@TestDetails(story1 = "DMPM-3503:DMPM-4546")
 	@Test (groups = { "marketplace", "pin", "priority-minor"})
@@ -76,7 +79,8 @@ public class PINAuthTest extends App{
 		Assert.assertNotNull(loginAuthPage.checkChangeAccountButton(),"Not on reauth welcome page");
 		
 	}
-	
+
+
 	@TestDetails(story1 = "DMPM-3503:DMPM-4535,DMPM-4545,DMPM-4547")
 	@Test (groups = { "marketplace", "pin", "priority-minor"})
 	public void testCancellingPinLockedSetup() {
@@ -93,7 +97,7 @@ public class PINAuthTest extends App{
 		forgotPINPage.tapNextButton();
 		pinSetupPage.tapOkbutton();
 		pinSetupPage.tapCancelButton();
-		Assert.assertNotNull(landingPage.checkVehiclesTab(), "Landing page - is not shown");
+		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing page - is not shown");
 		
 	}
 	
@@ -121,7 +125,7 @@ public class PINAuthTest extends App{
 		enterPIN(pin);
 		enterPIN(pin);
 		pinSetupPage.checkPINSuccessfullySetMessage();
-		landingPage.checkVehiclesTab();
+		landingPage.checkLandingPageTitle();
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Settings menu item is not shown");
 		navigationMenu.tapLockMenuOption();	
