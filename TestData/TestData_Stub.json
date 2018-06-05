@@ -1287,7 +1287,7 @@
 			"searchString" : "sto",
 			"resultString1" : "Store abc",
 			"resultString2" : "Housing store",
-			"resultString3" : "Stowed",
+			"resultString3" : "Stowed"
 
 		},
 		"hasNoData" : {
@@ -1340,7 +1340,7 @@
 			"pwd": "Password1",
 			"input" : "suncorp",
 			"websiteText" : "Suncorp Group website",
-			"websiteURL" : "https://www.suncorp.com.au/",
+			"websiteURL" : "https://www.suncorp.com.au/"
 		},
 		"phNo": {
 			"login": "a@b.c",
@@ -1369,20 +1369,20 @@
 		},
 		"horizontal_selectable_List_suggestedQuestions": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_readOnly_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options_singleItem": {
 			"login": "a@b.c",
-			"pwd": "Password1",
-		},
+			"pwd": "Password1"
+		}
 	},
 	 "brands": [
 		{
