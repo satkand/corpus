@@ -723,7 +723,7 @@
 						"brand":"AAMI",
 						"productType":"Car Insurance",
 						"policyNumber":"MPA123456313",
-						"policyDescription":"Car insurance",
+						"policyDescription":"Car Insurance",
           				"periodOfCover": 
             			{
              				 "startDate": "01 October",
@@ -752,7 +752,7 @@
 						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
 						"discounts":"Multi-Policy, Staff",
 						"rewardsTitle":"AAMI Safe driver rewards",
-						"rewards":"Sapphire with $45.50 credit available for your next renewal",
+						"rewards":"Sapphire with $45.50 credit",
 						"riskCoverPeriod": 
             			 {
              				 "startDate": "01 October",
@@ -854,7 +854,7 @@
             			},
             			"riskDetails":{
 						"rewardsTitle":"Round the world reward",
-						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
+						"rewards":"Platinum with $1,000.01 credit"}
 				},
 				"homePolicy": 
 				{
@@ -864,7 +864,7 @@
 						"brand":"SUNCORP",
 						"productType":"Home And Contents Insurance",
 						"policyNumber":"HPS123457790",
-						"policyDescription":"Home insurance",
+						"policyDescription":"Home Insurance",
 							"instalmentDetails":
             			{
             			 "instalmentAmount":"$88.88"
@@ -882,7 +882,7 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "POLICY ACTIVE",
+             				 "active": "Policy active",
              				 "cancellationPending":"Policy cancellation pending",
              				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
@@ -1288,7 +1288,7 @@
 			"searchString" : "sto",
 			"resultString1" : "Store abc",
 			"resultString2" : "Housing store",
-			"resultString3" : "Stowed",
+			"resultString3" : "Stowed"
 
 		},
 		"hasNoData" : {

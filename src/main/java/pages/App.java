@@ -200,7 +200,6 @@ public class App extends BaseTest {
 		memberLoginPage = new MemberLoginPage(driver);
 		whatsNearbyPage = new WhatsNearbyPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
-		articlesPage = new ArticlesPage(driver);
 		forceUpdatePage = new ForceUpdatePage(driver);
 		suburbDetailsPage = new SuburbDetailsPage(driver);
 		articlesPage = new ArticlesPage(driver);

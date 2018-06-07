@@ -84,7 +84,7 @@ public interface Copy {
 
 	
 	//POLICY DETAILS PAGE
-	String POLICY_DETAILS_SCREEN_TITLE = "Policy Details";
+	String POLICY_DETAILS_SCREEN_TITLE = "Policy details";
 	String INSTALMENT_FREUENCY_MONTHLY_LABEL ="Monthly instalment";
 	String INSTALMENT_FREUENCY_QUARTERLY_LABEL ="Quarterly instalment";
 	String INSTALMENT_FREUENCY_HALF_YEARLY_LABEL ="Half-yearly instalment";
@@ -98,10 +98,10 @@ public interface Copy {
 	String DISCOUNTS_LABEL="Discounts";
 	//Risk Details Page
 	String PARKING_ADDRESS_LABEL="Parking address";
-	String ADDITIONAL_EXCESSES_DETAILS_LABEL="ADDITIONAL EXCESS DETAILS MAY APPLY";
+	String ADDITIONAL_EXCESSES_DETAILS_LABEL="OTHER EXCESSES MAY ALSO APPLY";
 	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE ADDITIONAL EXCESSES";
 	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please come back and try again later.";
-	String POLICY_MAINTAINCE_TITLE="Policy under maintenance";
+	String POLICY_MAINTAINCE_TITLE="Policy details is undergoing maintenance";
 	//RENEW POLICY
 	String RENEW_POLICY_SCREEN_TITLE = "Renew Policy";
 	
