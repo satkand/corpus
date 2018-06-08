@@ -101,8 +101,8 @@ public interface Copy {
 	//Risk Details Page
 	String PARKING_ADDRESS_LABEL="Parking address";
 	String ADDITIONAL_EXCESSES_DETAILS_LABEL="OTHER EXCESSES MAY ALSO APPLY";
-	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE ADDITIONAL EXCESSES";
-	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please come back and try again later.";
+	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE OTHER EXCESSES";
+	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please try again later.";
 	String POLICY_MAINTAINCE_TITLE="Policy details is undergoing maintenance";
 	//RENEW POLICY
 	String RENEW_POLICY_SCREEN_TITLE = "Renew Policy";

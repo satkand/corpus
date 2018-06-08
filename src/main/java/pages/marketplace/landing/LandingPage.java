@@ -92,7 +92,6 @@ public class LandingPage extends BasePage {
 		
 	}
 
-
 	public WebElement checkWealthTab() {
 		return find(financeTab);
 	}
