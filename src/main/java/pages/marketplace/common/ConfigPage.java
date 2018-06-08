@@ -43,7 +43,7 @@ public class ConfigPage extends BasePage {
 		tapElement(envSelector);
 	}
 	
-	public void dismissConfigPage(String stub,String configFile) {
+	public void dismissConfigPage(String endPoint, String configFile) {
 	    
 		if (find(configPageTitle, 30) != null) {
 			// Added this just to add some delay before checking for keyboard
@@ -57,12 +57,12 @@ public class ConfigPage extends BasePage {
 			}
 			
 			// Uncomment the below line if Stub Server is to be connect
-			if (!stub.equalsIgnoreCase("false")) {
+			if (endPoint.equalsIgnoreCase("stub")) {
 				//String env = lookupProperty(configFile,"env"); 
 					 
 				//tapEnvSelector();
 				//tapElement(findByUIAutomator(env, "text"));
-				ConnectToStubSever(stub,configFile);
+				ConnectToStubSever(endPoint,configFile);
 			}
 			// for(int i=0; i<=2; i++) {
 			// swipeScreen("down");
@@ -78,11 +78,10 @@ public class ConfigPage extends BasePage {
 	// Connect to the Stub Server
     // Fetch the current IP address and edit the fields appropriately
     
-	public void ConnectToStubSever(String stub,String configFile) {
+	public void ConnectToStubSever(String endPoint, String configFile) {
 		InetAddress IP = null;
 		try {
 			IP = InetAddress.getLocalHost();
-			System.out.println("IPPPPPPPP:::::::::::::"+IP);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -98,7 +97,6 @@ public class ConfigPage extends BasePage {
 		// TODO: This hardcoding needs to removed, once we figure out a way to get the second ip from the list of ips on the mac mini
 		String baseURL = lookupProperty(configFile,"baseURL"); ;//IP.getHostAddress()+":4567/";
 		String accountNum = lookupProperty(configFile,"accountNum");
-		System.out.println("stub:::"+stub+"::::::global");
 		typeValue(baseURL, globalBaseURL);
 		tapElement(applyGlobalBaseUrlButton);
 		if(!(isKeyboardPresent() == true)) {
@@ -106,24 +104,21 @@ public class ConfigPage extends BasePage {
 		}
 
 		//baseURL = "http://"+IP.getHostAddress()+":4567/";
-		if(stub.equalsIgnoreCase("banking") && find(bankingBaseUrl, 30) != null) {
-			System.out.println("stub:::"+stub+"::::::banking");
+		if(endPoint.equalsIgnoreCase("banking") && find(bankingBaseUrl, 30) != null) {
 			clearValue(bankingBaseUrl);
 			typeValue(baseURL+"marketplace/api/", bankingBaseUrl);
 			if(isKeyboardDisplayed()) {
 				dismissKeyboard();
 			}
 		}	
-		if(stub.equalsIgnoreCase("portfolio") && find(portfolioBaseUrl, 30) != null) {
-			System.out.println("stub:::"+stub+"::::::portfolio");
+		if(endPoint.equalsIgnoreCase("portfolio") && find(portfolioBaseUrl, 30) != null) {
 			clearValue(portfolioBaseUrl);
 			typeValue(baseURL, portfolioBaseUrl);
 			if(isKeyboardDisplayed()) {
 				dismissKeyboard();
 			}
 		}
-		if(stub.equalsIgnoreCase("spendings") && find(spendingUrl, 30) != null) {
-			System.out.println("stub:::"+stub+"::::::spendings");
+		if(endPoint.equalsIgnoreCase("spendings") && find(spendingUrl, 30) != null) {
 	//		clearValue(spendingUrl);
 	//		typeValue(baseURL, spendingUrl);
 			typeValue(accountNum, spendingAccNumbers);
@@ -131,16 +126,14 @@ public class ConfigPage extends BasePage {
 				dismissKeyboard();
 			}
 		}
-		if(stub.equalsIgnoreCase("vehicles") && find(vehiclesBaseUrl, 30) != null) {
-			System.out.println("stub:::"+stub+"::::::vehicles");
+		if(endPoint.equalsIgnoreCase("vehicles") && find(vehiclesBaseUrl, 30) != null) {
 			clearValue(vehiclesBaseUrl);
 			typeValue(baseURL, vehiclesBaseUrl);
 			if(isKeyboardDisplayed()) {
 				dismissKeyboard();
 			}
 		}
-		if(stub.equalsIgnoreCase("memberLogin")) {
-			System.out.println("stub:::"+stub+"::::::memberLogin");
+		if(endPoint.equalsIgnoreCase("memberLogin")) {
 			clearValue(globalBaseURL);
 			//mac mini
 			//typeValue("192.168.213.98:4567", globalBaseURL);

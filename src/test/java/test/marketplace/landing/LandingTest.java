@@ -49,6 +49,6 @@ public class LandingTest extends App {
 		/*
 		welcomePage.tapGuestAccessButton();
 		*/
-		loginToApp(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+		loginToApp(utils.readTestData("loginCredentials", "defaultLoginCredentials", "login"), utils.readTestData("loginCredentials", "defaultLoginCredentials", "pwd"));
 	}
 }

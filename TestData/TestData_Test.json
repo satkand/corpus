@@ -75,6 +75,11 @@
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
+		"defaultLoginCredentials": {
+			"login": "tub@tub.com",
+			"pwd": "Password1",
+			"userName": ""
+		},
 		"validLoginCredentials": {
 			"login": "test@account.com",
 			"login1": "test1@account.com",

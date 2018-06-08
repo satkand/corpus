@@ -73,6 +73,11 @@
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
+		"defaultLoginCredentials": {
+			"login": "a@b.c",
+			"pwd": "Password1",
+			"userName": ""
+		},
 		"validLoginCredentials": {
 			"login": "test5@test.com",
 			"pwd": "Password1",
