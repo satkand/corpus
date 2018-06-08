@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class PINSetupPage extends BasePage {
 	
@@ -15,8 +16,8 @@ public class PINSetupPage extends BasePage {
 
 	private By enterPINLabel = By.id("au.com.suncorp.marketplace:id/enterPinMessage");
 	private By reEnterPINLabel = By.id("au.com.suncorp.marketplace:id/reenterPinMessage");
-	private By cancelButton = By.id("au.com.suncorp.marketplace:id/pinSetupCancelButton");
-	
+	//private By cancelButton = By.id("au.com.suncorp.marketplace:id/pinSetupCancelButton");
+	private By cancelButton = MobileBy.AccessibilityId("Cancel");
 	private By invalidPINAlertMessage = By.id("android:id/message");
 	private By invalidPINAlertOKButton = By.id("android:id/button1");
 
@@ -25,6 +26,12 @@ public class PINSetupPage extends BasePage {
 	private By pinSuccessfullySetNotification = By.id("au.com.suncorp.marketplace:id/successAlertDialog");
 	private By pinSuccessfullySetMessage = By.id("au.com.suncorp.marketplace:id/dialogMessage");
 	
+	private By pinInstructionAlert = By.id("au.com.suncorp.marketplace:id/pinInstructionDialog");
+	private By pinInstructionAlertButton = By.id("android:id/button1");
+	
+	private By pinButton = null;
+	private By okButton = By.id("android:id/button1");
+
 	public WebElement checkEnterPINLabel() {
 		return find(enterPINLabel);
 	}
@@ -83,5 +90,25 @@ public class PINSetupPage extends BasePage {
 	
 	public String getPINSuccessfullySetMessage() {
 		return getText(pinSuccessfullySetMessage);
+	}
+	
+	public void enterPIN(String PIN){
+		for(int i=0; i<4 ;i++) {
+			char digit = PIN.charAt(i);
+			String elementAddition = "customKeypadButton"+digit;
+			pinButton = By.id("au.com.suncorp.marketplace:id/"+elementAddition);
+			tapElement(pinButton); 
+		}
+	}
+	
+	public WebElement checkPinInstructionAlert() {
+		return find(pinInstructionAlert);
+	}
+	
+	public void tapOkButton() {
+		tapElement(pinInstructionAlertButton);
+	}
+	public void tapOkbutton() {
+		tapElement(okButton);
 	}
 }

@@ -1,5 +1,7 @@
 package pages.marketplace.property;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -16,13 +18,27 @@ public class PropertyDetailsPage   extends BasePage{
 	private By propertyAddress = By.id("au.com.suncorp.marketplace:id/propertyAddressLine1Text");
 	private By propertyStatePostCode = By.id("au.com.suncorp.marketplace:id/propertyAddressLine2Text");
 	private By propertyNumberOfBedrooms = By.id("au.com.suncorp.marketplace:id/bedroomNumberText");
-	private By propertyNumberOfBedroomsImage = By.id("au.com.suncorp.marketplace:id/bedroomImage");
+	private By propertyNumberOfBedroomsImage = By.id("au.com.suncorp.marketplace:id/bedroomNumberText");
+	
+	private By thisIsMyPropertyLabel = By.id("au.com.suncorp.marketplace:id/thisIsMineText");
+	private By thisIsMyPropertyInfo = By.id("au.com.suncorp.marketplace:id/thisIsMineInfoButton");
+	private By thisIsMyPropertyToggleButton = By.id("au.com.suncorp.marketplace:id/propertyIsMineSwitch");
+		
+	//my Property bottom sheet
+	private By myPropertyBottomSheetTitleLabel = By.id("au.com.suncorp.marketplace:id/productSelectionQuestionText");
+	private By myPropertyBottomSheetOwnerOccupierButton = By.id("au.com.suncorp.marketplace:id/ownerTypeButton");
+	private By myPropertyBottomSheetRenterButton = By.id("au.com.suncorp.marketplace:id/tenantTypeButton");
+	private By myPropertyBottomSheetLandLordButton = By.id("au.com.suncorp.marketplace:id/landlordTypeButton");
+	private By outsideOfMyPropertyBottomSheet = By.id("au.com.suncorp.marketplace:id/touch_outside");
+	private By attributeBar = By.id("au.com.suncorp.marketplace:id/attributesView");
 	
 	private By propertyNumberOfBathrooms = By.id("au.com.suncorp.marketplace:id/bathNumberText");
-	private By propertyNumberOfBathroomsImage = By.id("au.com.suncorp.marketplace:id/bathImage");
+	private By propertyNumberOfBathroomsImage = By.id("au.com.suncorp.marketplace:id/bathNumberText");
 	private By propertyNumberOfParkingSpaces = By.id("au.com.suncorp.marketplace:id/parkingNumberText");
-	private By propertyNumberOfParkingSpacesImage = By.id("au.com.suncorp.marketplace:id/parkingImage");
+	private By propertyNumberOfParkingSpacesImage = By.id("au.com.suncorp.marketplace:id/parkingNumberText");
 	private By propertyLandSize = By.id("au.com.suncorp.marketplace:id/landSizeNumberText");
+	private By propertyLandSizeImage = By.id("au.com.suncorp.marketplace:id/landSizeImage");
+	
 	private By propertyType = By.id("au.com.suncorp.marketplace:id/propertyTypeText");
 	private By propertyShowMoreInfo = By.id("au.com.suncorp.marketplace:id/viewExtraInfoTitleText");
 	private By propertyShowMoreDownArrow = By.id("au.com.suncorp.marketplace:id/extraInfoButton");
@@ -66,6 +82,223 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	private By derivedAssetText = By.xpath("//android.widget.TextView[@text='derived']");
 	private By suppliedAssetText = By.xpath("//android.widget.TextView[@text='supplied']");
+	private By imageLoadingIndicator = By.xpath("au.com.suncorp.marketplace:id/loadingIndicator");
+	
+	private By professionalServicesImage = By.id("au.com.suncorp.marketplace:id/professionalServicesImage");
+	private By professionaServicesButton = By.id("au.com.suncorp.marketplace:id/propertyViewProfessionalServicesButton");
+	
+	//EDUCATION CENTRES
+	private By nearbyEducationTitle = By.id("au.com.suncorp.marketplace:id/nearbyEducationText");
+	private By nearbyEducationViewAllButton = By.id("au.com.suncorp.marketplace:id/nearbyEducationViewAllText");
+	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	
+	//disclaimers
+	private By estimatedPropertyValueDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Value disclaimer");
+	private By confidenceLevelDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Valuation Confidence disclaimer");
+	private By coreLogicDisclaimer = MobileBy.AccessibilityId("Open the Core Logic services disclaimer");
+	private By lastSaleDisclaimer = MobileBy.AccessibilityId("Open the property Last Sale information disclaimer");
+	private By confidenceLevelDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Confidence Indicator']");
+	private By confidenceLevelDisclaimerClose	= MobileBy.AccessibilityId("Navigate up");
+	private By coreLogicDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='CoreLogic']");
+	private By estimatedPropertyValueDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='Estimated property value']");
+	private By lastSaleDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Last sale']");
+	
+	public WebElement checkLastSaleDisclaimerScreenTitle() {
+		return find(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkThisIsMyPropertyDisclaimerScreenTitle() {
+		return find(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public String getLastSaleDisclaimerScreenTitle() {
+		return getText(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public String getThisIsMyPropertyDisclaimerScreenTitle() {
+		return getText(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkEstimatedPropertyValueDisclaimerScreenTitle() {
+		return find(estimatedPropertyValueDisclaimerScreenTitle);
+	}
+	
+	public String getEstimatedPropertyValueDisclaimerScreenTitle() {
+		return getText(estimatedPropertyValueDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkConfidenceLevelDisclaimerScreenTitle() {
+		return find(confidenceLevelDisclaimerScreenTitle);
+	}
+	
+	public String getConfidenceLevelDisclaimerScreenTitle() {
+		return getText(confidenceLevelDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkDisclaimerClose() {
+		return find(confidenceLevelDisclaimerClose);
+	}
+	
+	public void tapDisclaimerClose(){
+		tapElement(confidenceLevelDisclaimerClose);
+	}
+	
+	public void tapEstimatedPropertyValueDisclaimer(){
+		tapElement(estimatedPropertyValueDisclaimer);
+	}
+	
+	public WebElement checkEstimatedPropertyValueDisclaimer() {
+		return find(estimatedPropertyValueDisclaimer);
+	}
+	
+	public void tapConfidenceLevelDisclaimer(){
+		tapElement(confidenceLevelDisclaimer);
+	}
+	
+	public WebElement checkConfidenceLevelDisclaimer() {
+		return find(confidenceLevelDisclaimer);
+	}
+	
+	public void tapCoreLogicDisclaimer(){
+		tapElement(coreLogicDisclaimer);
+	}
+	
+	public WebElement checkCoreLogicDisclaimerScreenTitle() {
+		return find(coreLogicDisclaimerScreenTitle);
+	}
+	
+	public String getCoreLogicDisclaimer() {
+		return getText(coreLogicDisclaimerScreenTitle);
+	}
+
+	public WebElement checkCoreLogicDisclaimer() {
+		return find(coreLogicDisclaimer);
+	}
+	
+	public void tapLastSaleDisclaimer(){
+		tapElement(lastSaleDisclaimer);
+	}
+	
+	public WebElement checkLastSaleDisclaimer() {
+		return find(lastSaleDisclaimer);
+	}
+	
+	public void scrollToProfessionaServicesButton(){
+		scrollToElement(professionaServicesButton, "true");
+	}
+	
+	public void tapProfessionaServicesButton(){
+		tapElement(professionaServicesButton);
+	}
+	
+	public WebElement checkNearbyEducationTitle() {
+		return find(nearbyEducationTitle);
+	}
+	
+	public void tapNearbyEducationViewAllButton(){
+		tapElement(nearbyEducationViewAllButton);
+	}
+	
+	public String getnearbyEducationTitle() {
+		return getText(nearbyEducationTitle);
+	}
+	
+	public WebElement checkNearbyEducationViewAllButton() {
+		return find(nearbyEducationViewAllButton);
+	}
+	
+	public String getnearbyEducationViewAllButton() {
+		return getText(nearbyEducationViewAllButton);
+	}
+	
+	public WebElement checkNearbyEducationCentres() {
+		return find(nearbyEducationCentres);
+	}
+	
+	public List<WebElement> fetchNearbyEducationCentres() {
+		List<WebElement> elements = finds(nearbyEducationCentres);
+		return elements;
+	}
+	
+	public void scrollToProfessionalServicesImage(){
+		scrollToElement(professionalServicesImage, "true");
+	}
+	
+	public WebElement checkMyPropertyBottomSheetTitleLabel() {
+		return find(myPropertyBottomSheetTitleLabel);
+	}
+	
+	public WebElement checkPropertyLandSizeImage() {
+		return find(propertyLandSizeImage,3);
+	}
+	
+	public WebElement checkAttributeBar() {
+		return find(attributeBar,3);
+	}
+	
+	public WebElement checkMyPropertyBottomSheetOwnerOccupierButton() {
+		return find(myPropertyBottomSheetOwnerOccupierButton);
+	}
+	
+	public WebElement checkMyPropertyBottomSheetRenterButton() {
+		return find(myPropertyBottomSheetRenterButton);
+	}
+	
+	public String getMyPropertyBottomSheetOwnerOccupierButton() {
+		return getText(myPropertyBottomSheetOwnerOccupierButton);
+	}
+	
+	public String getMyPropertyBottomSheetRenterButton() {
+		return getText(myPropertyBottomSheetRenterButton);
+	}
+	
+	public String getMyPropertyBottomSheetLandLordButton() {
+		return getText(myPropertyBottomSheetLandLordButton);
+	}
+	
+	public WebElement checkMyPropertyBottomSheetLandLordButton() {
+		return find(myPropertyBottomSheetLandLordButton);
+	}
+	
+	public void tapOutsideOfMyPropertyBottomSheet(){
+		tapElement(outsideOfMyPropertyBottomSheet);
+	}
+	
+	public String getMyPropertyBottomSheetTitleLabel() {
+		return getText(myPropertyBottomSheetTitleLabel);
+	}
+	
+	public WebElement checkThisIsMyPropertyLabel() {
+		return find(thisIsMyPropertyLabel);
+	}
+	
+	public WebElement checkThisIsMyPropertyInfo() {
+		return find(thisIsMyPropertyInfo);
+	}
+	
+	public void tapThisIsMyPropertyInfo(){
+		tapElement(thisIsMyPropertyInfo);
+	}
+	
+	public WebElement checkThisIsMyPropertyToggleButton() {
+		return find(thisIsMyPropertyToggleButton);
+	}
+	
+	public void tapThisIsMyPropertyToggleButton(){
+		tapElement(thisIsMyPropertyToggleButton);
+	}
+	
+	public boolean isToggleButtonSelected(){
+		return isSelected(thisIsMyPropertyToggleButton);
+	}
+	
+	public String getThisIsMyPropertyLabel() {
+		return getText(thisIsMyPropertyLabel);
+	}
+	
+	public void waitForFullScreenLoadingIndicatorToDisappear() {
+		waitForElementToDisappear(imageLoadingIndicator);
+	}
 	
 	public WebElement checkDerivedAssetText() {
 		return find(derivedAssetText);
@@ -148,11 +381,21 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	//Swiping image carousel left in property details
 	public void swipeImageCarouselLeft() {
-		swipeHorizontally(favouriteButton,backButton);
+		swipeHorizontally(imageNumberText,backButton);
 	}
 	
 	public void swipeFullScreenImageCarouselLeft() {
 		swipeHorizontallyToLeft();
+	}
+	
+	public void swipeFullScreenImageCarouselLeftMultipleTimes() {
+			swipeHorizontallyToLeft();
+			swipeHorizontallyToLeft();
+	}
+	
+	public void swipeFullScreenImageCarouselRightMultipleTimes() {
+		swipeHorizontallyToRight();
+		swipeHorizontallyToRight();
 	}
 	
 	public void swipeFullScreenImageCarouselRight() {
@@ -268,10 +511,12 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public String getPropertyAddress() {
+		find(propertyImage);
 		return getText(propertyAddress);
 	}
 	
 	public String getPropertyStatePostCode() {
+		find(propertyImage);
 		return getText(propertyStatePostCode);
 	}
 	
@@ -295,12 +540,16 @@ public class PropertyDetailsPage   extends BasePage{
 		return getText(propertyType);
 	}
 	
+	public void scrollToPropertyType() {
+		scrollToElement(propertyType, "true");
+	}
+	
 	public String getPropertyShowMoreInfo() {
 		return getText(propertyShowMoreInfo);
 	}	
 	
 	public WebElement checkPropertyNumberOfParkingSpacesImage() {
-		return find(propertyNumberOfParkingSpacesImage);
+		return find(propertyNumberOfParkingSpacesImage,3);
 	}
 	
 	public WebElement checkPropertyLandSize() {
@@ -316,11 +565,11 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkPropertyNumberOfBathroomsImage() {
-		return find(propertyNumberOfBathroomsImage);
+		return find(propertyNumberOfBathroomsImage,3);
 	}
 	
 	public WebElement checkPropertyNumberOfParkingSpaces() {
-		return find(propertyNumberOfParkingSpaces);
+		return find(propertyNumberOfParkingSpaces,3);
 	}
 	
 	public WebElement checkPropertyStatePostCode() {
@@ -328,15 +577,15 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkPropertyNumberOfBedrooms() {
-		return find(propertyNumberOfBedrooms);
+		return find(propertyNumberOfBedrooms,3);
 	}
 	
 	public WebElement checkPropertyNumberOfBedroomsImage() {
-		return find(propertyNumberOfBedroomsImage);
+		return find(propertyNumberOfBedroomsImage,10);
 	}
 	
 	public WebElement checkPropertyNumberOfBathrooms() {
-		return find(propertyNumberOfBathrooms);
+		return find(propertyNumberOfBathrooms,3);
 	}
 	
 	public WebElement checkPropertyAddress() {
@@ -352,16 +601,25 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public void scrollToShowMeInsightButton() {
-		scrollToElement(showMeInsightButton, "true");
+		scrollToElement("SHOW ME INSIGHTS", "text");
 	}
 	
 	public void tapShowMeInsightButton(){
 		tapElement(showMeInsightButton);
 	}
 	
+	public WebElement checkShowMeInsightButton() {
+		return find(showMeInsightButton);
+	}
+	
 	public WebElement checkMiniMap() {
 		return find(miniMap);
 	}
+	
+	public void tapMiniMap(){
+		tapElement(miniMap);
+	}
+	
 	
 	public WebElement checkMiniMapWhatsNewButton() {
 		return find(miniMapWhatsNearButton);
@@ -374,10 +632,22 @@ public class PropertyDetailsPage   extends BasePage{
 	public void scrollToWhatsNearButton() {
 		scrollToElement(miniMapWhatsNearButton, "true");
 	}
+	
+	public void tapMiniMapWhatsNearbyButton(){
+		tapElement(miniMapWhatsNearButton);
+	}
 
 	//Swiping image carousel right in property details
 	public void swipeImageCarouselRight() {
 		swipeHorizontallyToRight();
 	}
+	
+	public void doubleTapOnPropertyImage() {
+		tapElement(fullScreenPropertyImage);
+		tapElement(fullScreenPropertyImage);
+	}
+	
+	
+	
 	
 }

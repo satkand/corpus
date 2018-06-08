@@ -9,7 +9,8 @@ import pages.App;
 public class HomeJourneyTest extends App {
 	
 	// 503 - Scenario 2
-	@Test (groups = {"DMPM-503", "DMPM-972", "marketplace", "Home buying journey", "priority-minor"})
+	//4850 - Scenario 1
+	@Test (groups = {"DMPM-503", "DMPM-972","DMPM-4850", "marketplace", "Home buying journey", "priority-minor"})
 	public void testHomeJourneyPageElements() {
 		navigateToHomePropertyTab();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
@@ -69,7 +70,7 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapPlanningReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "planningReadMoreButtonLink"), "Planning card page - browser url is not valid");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 
 		// swipe to the next card
@@ -77,7 +78,7 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapHouseHuntingReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "houseHuntingReadMoreButtonLink"), "House Hunting card page - browser url is not valid");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 
 		// swipe to the next card
@@ -85,7 +86,7 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapGettingReadyReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "gettingReadyReadMoreButtonLink"), "Getting Ready card page - browser url is not valid");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 		
 		// swipe to the next card
@@ -93,22 +94,25 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapMovingInReadMoreButton();
 		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), utils.readTestData("copy", "homeJourneyPage", "movingInReadMoreButtonLink"), "Moving In card page - browser url is not valid");
-		webviewPage.tapWebviewCloseButton();
+		webviewPage.tapWebviewChromeCloseButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
 	}
 	
-	@Test (groups = {"DMPM-797", "DMPM-855", "DMPM-856", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-797", "DMPM-855", "DMPM-856","DMPM-6057","DMPM-6762", "marketplace", "Home buying journey", "priority-minor"})
 	
 	//DMPM-797 - Scenario 1 & 2
 	//DMPM-855: Navigating to Home journey option in Menu
+	//"DMPM-6057","DMPM-6762",
 	public void testHomeJourneyviaMenu()
 	{
 		navigateToHomeJourneyviaMenu();
-		Assert.assertNotNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
-		navigationMenu.tapHomeJourneyMenuItem();
+		Assert.assertNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), " Navigation Draw - One suncorp menu option not shown");
 		
+		navigationMenu.tapSuncorpMenuItem();
+		landingPage.tapHomeTab();
 		//DMPM-856: Navigating to Home journey screen
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home Journey Page - Home tab is not selected");
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Home Journey Page - Hamburger Menu not shown");
 		
 	}
@@ -118,6 +122,7 @@ public class HomeJourneyTest extends App {
 		navigationMenu.tapSplitMenuIcon();
 	
 }
+
 	private void navigateToHomePropertyTab() {
 		welcomePage.tapGuestAccessButton();
 		landingPage.tapHomeTab();

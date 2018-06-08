@@ -31,8 +31,8 @@ public class OffersOverviewTab extends App {
 		navigateToOverviewScreen();
 		if (!(offersPage.checkOfferTitle().isDisplayed() && offersPage.checkCallToActionButton().isDisplayed())) {
 				//&& offersPage.checkBackgroundImage().isDisplayed())) {
-			Assert.assertNotNull(landingPage.checkWealthTab(), " Offers flow - Navigation to different tab failed");
-			landingPage.tapWealthTab();
+			Assert.assertNotNull(landingPage.checkFinanceTab(), " Offers flow - Navigation to different tab failed");
+			landingPage.tapFinanceTab();
 			Assert.assertNotNull(landingPage.checkSuncorpTab(),
 					" Offers flow - Navigation back to Overview tab failed");
 			landingPage.tapSuncorpTab();
@@ -58,6 +58,15 @@ public class OffersOverviewTab extends App {
 
 	}
 
+	@Test(groups = { "DMPM-1198", "marketplace", "Offers", "priority-minor" })
+	public void testRedirectToExternalURL() {
+		navigateToOverviewScreen();
+		Assert.assertNotNull(offersPage.checkCallToActionButton(), "Suncorp Page Offers - No offer banner");
+		offersPage.tapCallToActionButton();
+		Assert.assertNotNull(offersPage.checkChromeToolBar(), "Did not open chrome Browser");
+	}
+	
+	
 	private void navigateToOverviewScreen() {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(landingPage.isSuncorpTabSelected(),

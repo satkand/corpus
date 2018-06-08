@@ -1,31 +1,33 @@
 package pages.marketplace.auth.registration;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
+import automation.framework.utils.AutoUtilities;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class MemberLoginPage extends BasePage {
+	
+	AutoUtilities utils = new AutoUtilities();
 
 	public MemberLoginPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	private By pageTitle = By.id("au.com.suncorp.marketplace:id/screenTitleText");
-	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	private By cancelButton = MobileBy.AccessibilityId("Cancel");
 	private By emailTextField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
 	private By passwordTextField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By nextButton = By.id("au.com.suncorp.marketplace:id/nextButton");
 	private By forgotPasswordButton = By.id("au.com.suncorp.marketplace:id/forgotPasswordButton");
 	private By noCredentialsButton = By.id("au.com.suncorp.marketplace:id/noCredentialsButton");
 	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By emailFieldErrorOldDevice = By.xpath("//android.widget.LinearLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	private By incorrectEmailSnackbar = By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.FrameLayout");
+	private By passwordFieldErrorOldDevice = By.xpath("//android.widget.LinearLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By incorrectEmailSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By incorrectEmailSnackBarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
-
 	
 	//Mobile registration page elements
 	private By mobileRegisterPageTitle = By.xpath("//android.widget.TextView[@text='Almost there!']");
@@ -35,7 +37,22 @@ public class MemberLoginPage extends BasePage {
 	private By noMarketingTermsText = By.id("au.com.suncorp.marketplace:id/noMarketingTermsText");
 	private By registrationTermsText = By.id("au.com.suncorp.marketplace:id/registrationTermsText");
 	private By mobileNumberError  = By.id("au.com.suncorp.marketplace:id/textinput_error");
-
+	private By mobileNumberTip = MobileBy.AndroidUIAutomator("new UiSelector().text(\"Use 04XXXXXXXX format\")");
+	private By mobileNumberCancelButton = MobileBy.AccessibilityId("Cancel");
+	
+	//Member Login Reset Password
+	private By resetPasswordTitle = By.id("au.com.suncorp.marketplace:id/resetPasswordTitleText");
+	private By resetPasswordDescription = By.id("au.com.suncorp.marketplace:id/resetPasswordSubtitleText");
+	private By resetPasswordEmailField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
+	private By resetLinkButton = By.id("au.com.suncorp.marketplace:id/sendResetLinkButton");
+	private By resetPasswordBackButton = MobileBy.AccessibilityId("Back");
+	private By resetPasswordEmailFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By resetPasswordSuccessSnackbar = By.id("au.com.suncorp.marketplace:id/snackbar_text");
+	private By resetPasswordSuccessSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
+	
+	//Suncorp Bank Login elements
+	private By suncorpBankLoginTitle = By.id("au.com.suncorp.marketplace:id/bankingLoginTitle");
+	private By suncorpBankLoginBackButton = MobileBy.AccessibilityId("Back");
 	
 	public String getPageTitle() {
 		find(pageTitle, 30);
@@ -65,13 +82,27 @@ public class MemberLoginPage extends BasePage {
 	public String getEmailFieldValue() {
 		return getText(emailTextField);
 	}
-
-	public String getEmailFieldErrorValue() {
-		return getText(emailFieldError);
-	}
 	
 	public WebElement checkEmailFieldError(){
-		return find(emailFieldError, 5);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(emailFieldError,30);
+		}
+		else { 
+			return find(emailFieldErrorOldDevice,30);
+		}
+	}
+	
+	public String getEmailFieldErrorValue(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(emailFieldError);
+		}
+		else { 
+			return getText(emailFieldErrorOldDevice);
+		}
 	}
 	
 	public WebElement checkPasswordField() {
@@ -87,11 +118,25 @@ public class MemberLoginPage extends BasePage {
 	}
 	
 	public WebElement checkPasswordFieldError(){
-		return find(passwordFieldError, 5);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(passwordFieldError,30);
+		}
+		else { 
+			return find(passwordFieldErrorOldDevice,30);
+		}
 	}
 	
-	public String getPasswordFieldErrorValue() {
-		return getText(passwordFieldError);
+	public String getPasswordFieldErrorValue(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(passwordFieldError);
+		}
+		else { 
+			return getText(passwordFieldErrorOldDevice);
+		}
 	}
 
 	public WebElement checkNextButton() {
@@ -99,6 +144,7 @@ public class MemberLoginPage extends BasePage {
 	}
 	
 	public void tapNextButton() {
+		dismissKeyboard();
 		tapElement(nextButton);
 	}
 
@@ -108,6 +154,19 @@ public class MemberLoginPage extends BasePage {
 
 	public WebElement checkNoCredentialsButton() {
 		return find(noCredentialsButton);
+	}
+	
+	public Boolean getPasswordFieldMaskedVal(String maskedValue) {
+		Boolean status;
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			status = getText(passwordTextField).equals(maskedValue);
+		}
+		else { 
+			status = getText(passwordTextField).equals(""); 
+		}
+		return status;
 	}
 
 	public String getPasswordFieldValue() {
@@ -190,21 +249,108 @@ public class MemberLoginPage extends BasePage {
 		return isKeyboardPresent();
 	}
 	
+	public void tapMobileNumberCancelButton() {
+		tapElement(mobileNumberCancelButton);
+	}
+	
 	public void tapBackBtn() {
 		tapDeviceBackButton();
 	}
 	
 	public WebElement checkSnackbarDisplayed() {
-		return find(incorrectEmailSnackbar);
+		return find(incorrectEmailSnackbarText, 30);
 	}
 	
 	public String getSnackbarText() {
-		find(incorrectEmailSnackbarText);
 		return getText(incorrectEmailSnackbarText);
 	}
 	
 	public void tapSnackbarOkButton() {
 		find(incorrectEmailSnackBarButton);
 		tapElement(incorrectEmailSnackBarButton);
+	}
+	
+	public WebElement checkMobileNumberTip() {
+		return find(mobileNumberTip);
+	}
+	
+	public String getMobileNumberTipText() {
+		return getText(mobileNumberTip);
+	}
+	
+	public void tapForgotPassword() {
+		tapElement(forgotPasswordButton);
+	}
+	
+	public WebElement checkResetPasswordTitle() {
+		return find(resetPasswordTitle);
+	}
+	
+	public String getResetPasswordTitle() {
+		return getText(resetPasswordTitle);
+	}
+	
+	public WebElement checkResetPasswordDescription() {
+		return find(resetPasswordDescription);
+	}
+	
+	public String getResetPasswordDescription() {
+		return getText(resetPasswordDescription);
+	}
+	
+	public WebElement checkResetPasswordEmailField() {
+		return find(resetPasswordEmailField);
+	}
+	
+	public void enterResetPasswordEmail(String email) {
+		typeValue(email, resetPasswordEmailField);
+	}
+	
+	public String getResetPasswordEmailValue() {
+		return getText(resetPasswordEmailField);
+	}
+	
+	public void tapResetPasswordEmailField() {
+		tapElement(resetPasswordEmailField);
+	}
+	
+	public WebElement checkResetPasswordEmailError() {
+		return find(resetPasswordEmailFieldError);
+	}
+	
+	public String getResetPasswordEmailErrorVal() {
+		return getText(resetPasswordEmailFieldError);
+	}
+	
+	public WebElement checkResetLinkButton() {
+		return find(resetLinkButton);
+	}
+	
+	public void tapResetLinkButton() {
+		tapElement(resetLinkButton);
+	}
+	
+	public void tapResetPasswordBackButton() {
+		tapElement(resetPasswordBackButton);
+	}
+	
+	public WebElement checkResetPasswordSuccessSnackbar() {
+		return find(resetPasswordSuccessSnackbar, 30);
+	}
+	
+	public String getResetPasswordSuccessSnackbarText() {
+		return getText(resetPasswordSuccessSnackbar);
+	}
+	
+	public String getResetPasswordSuccessSnackbarBtn() {
+		return getText(resetPasswordSuccessSnackbarButton);
+	}
+	
+	public WebElement checkSuncorpBankLoginTitle() {
+		return find(suncorpBankLoginTitle);
+	}
+	
+	public void tapSuncorpBankLoginBackButton() {
+		tapElement(suncorpBankLoginBackButton);
 	}
 }

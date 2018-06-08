@@ -35,6 +35,14 @@ public class PropertyExplorerPage  extends BasePage{
 		return find(miniMapLocationPin);
 	}
 	
+	public void tapMiniMapWhatsNearByButton() {
+		tapElement(miniMapWhatsNearByButton);
+	}
+	
+	public void tapMiniMap() {
+		tapElement(miniMap);
+	}
+	
 	public void scrollToWhatsNearButton() {
 		scrollToElement(miniMapWhatsNearByButton, "true");
 	}
@@ -83,6 +91,13 @@ public class PropertyExplorerPage  extends BasePage{
 	public void tapSuburbInsight() {
 		tapElement(suburbInsightTab);
 	}
+	
+	public void tapAndroidDeviceBackButton(){
+		for(int i=0;i<2;i++){
+			tapDeviceBackButton();
+		}
+		
+	}
 
 	public String getHomeJourneyTitle() {
 		return getText(homeJourneyPageTitle);
@@ -103,6 +118,10 @@ public class PropertyExplorerPage  extends BasePage{
 	
 	public WebElement checkPropertyExplorerSearchHint() {
 		return find(propertyExplorerSearchHintText);
+	}
+	
+	public WebElement checkPropertyHubSearchbox() {
+		return find(propertyExplorerSearchbox);
 	}
 
 }
