@@ -19,20 +19,22 @@ public class LandingPage extends BasePage {
 	private String propertyTitle = "PROPERTY";
 	private String vehiclesTitle = "Vehicles";
 	private String naviScrollableId = "au.com.suncorp.marketplace:id/navigationTabLayout";
+/*
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='ONE SUNCORP']");
 	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLES']");
 	private By financeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='FINANCE']");
 	private By healthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='HEALTH']");
-
+*/
 	private String vehiclesTabTitle = "Vehicles";
-	/*
+	
 	private By suncorpTab = By.xpath("//android.widget.TextView[@text='ONE SUNCORP']");
-	private By homeTab = By.xpath("//android.widget.TextView[@text='HOME']");
+	private By homeTab = By.xpath("//android.widget.TextView[@text='PROPERTY']");
 	private By vehiclesTab = By.xpath("//android.widget.TextView[@text='VEHICLES']");
-	private By wealthTab = By.xpath("//android.widget.TextView[@text='WEALTH']");
-	private By healthTab = By.xpath("//android.widget.TextView[@text='HEALTH']");
-	 */
+	private By financeTab = By.xpath("//android.widget.TextView[@text='MONEY']");
+	private By financeTabSmallLetters = By.xpath("//android.widget.TextView[@text='Money']");
+	private By healthTab = By.xpath("//android.widget.TextView[@text='WELLBEING']");
+	 
 
 	public WebElement checkLandingPageTitle() {
 		return find(landingPageTitle, 20);
@@ -103,15 +105,24 @@ public class LandingPage extends BasePage {
 
 
 	public WebElement checkFinanceTab() {
-		return find(financeTab);
+		if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
+			return find(financeTabSmallLetters);
+		}else
+			return find(financeTab);
 	}
 
 	public void tapFinanceTab() {
-		tapElement(financeTab);
+		if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
+			tapElement(financeTabSmallLetters);
+		}else
+			tapElement(financeTab);
 	}
 
 	public boolean isFinanceTabSelected() {
-		return isSelected(financeTab);
+		if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
+			return isSelected(financeTabSmallLetters);
+		}else
+			return isSelected(financeTab);
 	}
 
 	public WebElement checkHealthTab() {

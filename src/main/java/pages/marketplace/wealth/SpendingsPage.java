@@ -54,7 +54,7 @@ public class SpendingsPage extends BasePage {
 
 	
 	private By categoriesTab = By.xpath("//android.widget.TextView[@text='CATEGORIES']");
-	private By vendorTab = By.xpath("//android.widget.TextView[@text='VENDOR']");
+	private By vendorTab = By.xpath("//android.widget.TextView[@text='VENDORS']");
 
 	private By categoriesCell = By.id("au.com.suncorp.marketplace:id/spendingItem");
 	private By categoriesImage = By.id("au.com.suncorp.marketplace:id/categoryImage");
@@ -288,6 +288,11 @@ public class SpendingsPage extends BasePage {
 	
 	public String getSnackBarText() {
 		return getText(snackBar);
+	}
+	
+	public void waitForLoadingIndicatorToDisappear() {
+		
+		waitForElementToDisappear(loadingIndicator,5);
 	}
 }
 

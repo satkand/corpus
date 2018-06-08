@@ -924,9 +924,9 @@
 		"pwd": "Password1"
 	},
 	"hasSuncorpBankAccounts" :{
-		"login": "digi@v.com",
-		"pwd": "Password1",
-		"netWorthAmount": "$11,675.63",
+		"login": "irina.marketplace@suncorp.com.au",
+		"pwd": "Passw0rd",
+		"netWorthAmount": "$99,617.16",
 		"bankAccounts": "",
 		"currentMonth": "May 2018",
 		"spendingsAmountPerMonth": [
@@ -936,22 +936,22 @@
 			},
 			{
 				"month": "February 2018",
-				"amount": "$3,525.67"
+				"amount": "$29,090.58"
 			},
 			{
 				"month": "March 2018",
-				"amount": "$2,000.00"
+				"amount": "$29,298.43"
 			},
 			{
 				"month": "April 2018",
-				"amount": "$0.00"
+				"amount": "$28,816.13"
 			},
 			{
 				"month": "May 2018",
-				"amount": "$0.00"
+				"amount": "$28,667.34"
 			},
 			{
-				"month": "June 2017",
+				"month": "June 2018",
 				"amount": "$0.00"
 			},
 			{
@@ -960,23 +960,23 @@
 			},
 			{
 				"month": "August 2017",
-				"amount": "$200.21"
+				"amount": "$0.00"
 			},
 			{
 				"month": "September 2017",
-				"amount": "$4,550.34"
+				"amount": "$0.00"
 			},
 			{
 				"month": "October 2017",
-				"amount": "$400.00"
+				"amount": "$0.00"
 			},
 			{
 				"month": "November 2017",
-				"amount": "$500.00"
+				"amount": "$0.00"
 			},
 			{
 				"month": "December 2017",
-				"amount": "$600.00"
+				"amount": "$0.00"
 			}
 		],
 		"spendingsByCategories": [
@@ -985,62 +985,18 @@
 				"categoriesList": [
 					{
 					"name": "Groceries",
-					"amount": "$1,193.89",
-					"transactionCount": 5
+					"amount": "$4,999.87",
+					"transactionCount": 108
+					},
+					{
+					"name": "Shopping",
+					"amount": "$4,296.73",
+					"transactionCount": 93
 					},
 					{
 						"name": "Food & drink",
-						"amount": "$784.82",
-						"transactionCount": 4
-					}
-				]
-			},
-			{
-				"month": "December 2017",
-				"categoriesList": [
-					{
-						"name": "Transport",
-						"amount": "$600.00",
-						"transactionCount": 1
-					}
-				]
-			},
-			{
-				"month": "October 2017",
-				"categoriesList": [
-					{
-						"name": "Transport",
-						"amount": "$400.00",
-						"transactionCount": 1
-					}
-				]
-			},
-			{
-				"month": "September 2017",
-				"categoriesList": [
-				{
-					"id": 6,
-					"name": "Groceries",
-					"amount": "$2,551.53",
-					"currency": "AUD",
-					"transactionCount": 73 
-				},
-				{
-					"id": 13,
-					"name": "Transport",
-					"amount": "$1,998.81",
-					"currency": "AUD",
-					"transactionCount": 25
-				},
-				]
-			},
-			{
-				"month": "August 2017",
-				"categoriesList": [
-					{
-						"name": "Transport",
-						"amount": "$200.22",
-						"transactionCount": 1
+						"amount": "$4147.81",
+						"transactionCount": 84
 					}
 				]
 			},
@@ -1048,17 +1004,22 @@
 			{
 				"month": "March 2018",
 				"categoriesList": [
-					
-					{
-						"name": "Bills & utilities",
-						"amount": "$500.00",
-						"transactionCount": 5
-					},
 					{
 						"name": "Groceries",
-						"amount": "$500.00",
-						"transactionCount": 5
+						"amount": "$5347.95",
+						"transactionCount": 108
+					},	
+					{
+					"name": "Shopping",
+					"amount": "$4,402.81",
+					"transactionCount": 93
 					},
+					{
+						"name": "Food & drink",
+						"amount": "$4026.17",
+						"transactionCount": 84
+					}
+
 				]
 			}
 		],
@@ -1067,104 +1028,63 @@
 				"month": "February 2018",
 				"vendorsList": [
 					{
-						"name": "IGA",
-						"amount": "$890.79",
-						"transactionCount": 1
+						"name": "Other",
+						"amount": "$10,964.46",
+						"transactionCount": 237
 					},
 					{
-						"name": "Myer",
-						"amount": "$700.00",
-						"transactionCount": 1
+						"name": "Woolworths",
+						"amount": "$1,625.13",
+						"transactionCount": 33
 					}
 				]
 			},
-			{
-				"month": "December 2017",
-				"vendorsList": [
-					{
-					"name": "Coles",
-					"amount": "$600.00",
-					"transactionCount": 1
-					}
-				]
-			},
-			{
-				"month": "November 2017",
-				"vendorsList": [
-					{
-					"name": "Coles",
-					"amount": "$500.00",
-					"transactionCount": 1
-					}
-				]
-			},
-			{
-				"month": "October 2017",
-				"vendorsList": [
-					{
-					"name": "Coles",
-					"amount": "$400.00",
-					"transactionCount": 1
-					}
-				]
-			},
-			{
-				"month": "September 2017",
-				"vendorsList": [
-					{
-					"name": "Woolworths",
-					"amount": "$2,551.53",
-					"transactionCount": 90
-					},
-					{
-					"name": "Telstra",
-					"amount": "$1,798.59",
-					"transactionCount": 25
-					},
-					{
-					"name": "Coles",
-					"amount": "$200.22",
-					"transactionCount": 35
-					},
-				]
-			},
-			{
-				"month": "August 2017",
-				"vendorsList": [
-					{
-						"name": "Coles",
-						"amount": "$200.22",
-			            "transactionCount": 3
-					}
-				]
-			},
+
 
 			{
 				"month": "March 2018",
 				"vendorsList": [
 					{
-						"name": "ALDI",
-						"amount": "$100.00",
-			            "transactionCount": 1
+						"name": "Other",
+						"amount": "$11,086.67",
+			            "transactionCount": 237
 					},
 					{
-						"name": "Big W",
-						"amount": "$100.00",
-			            "transactionCount": 1
+						"name": "Woolworths",
+						"amount": "$1,707.20",
+			            "transactionCount": 33
 					},
 				]
 			}
 		],
 		"emptyCategoryMonths": [
-			"November 2017",
+			"January 2018",
+			"June 2018",
 			"July 2017",
-			"April 2017"
+			"August 2017"
 		],
 		"emptyVendorMonths": [
 			"January 2018",
-			"October 2017",
-			"May 2017"
+			"June 2018",
+			"July 2017",
+			"August 2017"
 		]
+	},
+	"ffi" : {
+		"hasData" :{
+			"login" : "digi@v.com",
+			"pwd" : "Password1",
+			"month" : "February 2018",
+			"zeroSpending" : "$0.00",
+			"searchString" : "sto",
+			"resultString1" : "Store abc",
+			"resultString2" : "Housing store",
+			"resultString3" : "Stowed",
+
+		},
+		"hasNoData" : {
+			"month" : "January 2018"
+		}
 	},
 	"hasVehicles" :{
 		"login": "a@b.c",
@@ -1182,7 +1102,7 @@
 	},
 	"digivault" : {
 		"hasItems" : {
-			"login" : "a@b.c",
+			"login" : "digi@v.com",
 			"pwd" : "Password1",
 			"newname" : "NewName",
 			"folderName" : "ab",
@@ -1193,22 +1113,7 @@
 			"images" : ["File A", "File B" , "File C"]
 		}
 	},
-	"ffi" : {
-		"hasData" :{
-			"login" : "digi@v.com",
-			"pwd" : "Password1",
-			"month" : "February 2018",
-			"zeroSpending" : "$0.00",
-			"searchString" : "sto",
-			"resultString1" : "Store abc",
-			"resultString2" : "Housing store",
-			"resultString3" : "Stowed",
 
-		},
-		"hasNoData" : {
-			"month" : "April 2018"
-		}
-	},
 	"registration" : {
 		"success":{
 			"firstName" : "Abc",

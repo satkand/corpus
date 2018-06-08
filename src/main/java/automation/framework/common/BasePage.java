@@ -266,10 +266,10 @@ public class BasePage {
 			case "UP":
 				// when navigating up, its opening the notifications bar. so
 				// changing the startY value from 10 to 300
-				swipeAction(x - 50, y - 250, x - 50, y - 80);
+				swipeAction(50, y - 650, 50, y - 80);
 				break;
 			case "DOWN":
-				swipeAction(100, y - 80, 80, y - 700);
+				swipeAction(100, y - 80, 80, y - 650);
 				break;
 			case "DEEPDOWN":
 				swipeAction(100, y - 80, 80, y - 1200);
@@ -444,8 +444,8 @@ public class BasePage {
 		String firstElementOnScreen = ((WebElement)  driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
 		String topElement = "";
 		WebElement element = null;
-		swipeScreen("down");
-		do{					
+//		swipeScreen("down");
+		/*		do{					
 			try {			
 				if(driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ))!= null) {
 					element = driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ));
@@ -454,13 +454,41 @@ public class BasePage {
 			}catch(Exception e) {	
 				element = driver.findElementByXPath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
 				break;
-			}
+			}*/
+		if(findByXpath(String.format( "//*[@text=\"%s\"]", elementName )) != null) {
+			element = findByXpath(String.format( "//*[@text=\"%s\"]", elementName ));
+			return element;
+		}
+		else if(findByXpath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0])) != null){
+			element = findByXpath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
+			return element;
+		}
+		swipeScreen("down");
+		do {
+				if(findByXpath(String.format( "//*[@text=\"%s\"]", elementName )) != null) {
+					element = findByXpath(String.format( "//*[@text=\"%s\"]", elementName ));
+					break;
+				}
+				else if(findByXpath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0])) != null){
+					element = findByXpath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
+					break;
+				}
+							
 			swipeScreen("down");
 			topElement = ((WebElement) driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
 		}while (!firstElementOnScreen.contentEquals(topElement));	
 		return element;
 	}
 
+		
+		protected WebElement findByXpath(String xpath) {
+			try {
+				return driver.findElementByXPath( xpath);
+			}catch(Exception e) {
+				return null;
+			}			
+			
+		}
 	//	/**
 	//	 * This method is used to get the weburl in a webview
 	//	 * @author Sushmitha
@@ -708,8 +736,16 @@ public class BasePage {
 	}
 
 	public WebElement getScreenTitle(String title) {
-
-		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		WebElement titleElement = null;
+		try {
+			titleElement = findByUIAutomator(title, "text");
+		}catch(Exception e) {
+			title = title.toUpperCase();
+			titleElement = findByUIAutomator(title, "text");
+		}
+		return titleElement;
+		
+/*		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
 		if (osVersion >= 7.0) {
 
@@ -717,7 +753,7 @@ public class BasePage {
 		}
 
 		return findByUIAutomator(title, "text");
-
+*/
 	}
 
 	public String scrollAndGetElementText(By locator,int maxSwipes,int... args ) {

@@ -16,7 +16,7 @@ public class DigitalVaultPage extends BasePage {
 
 	DigiVaultCommonPage digiCommonPage = new DigiVaultCommonPage(driver);
 	
-	private By digiVaultTitle = By.xpath("//android.widget.TextView[@text='Digital Vault']");
+	private By digiVaultTitle = By.xpath("//android.widget.TextView[@text='DigitalSafe']");
 	private By chatbotButton = By.id("au.com.suncorp.marketplace:id/chatbotOption");
 	private By digiVaultEmptyImage = By.id("au.com.suncorp.marketplace:id/emptyDigitalVaultImage");
 	private By digiVaultEmptyImageTitle = By.id("au.com.suncorp.marketplace:id/emptyDigitalVaultTitle");

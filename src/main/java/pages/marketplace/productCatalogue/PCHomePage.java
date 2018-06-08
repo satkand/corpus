@@ -22,7 +22,7 @@ public class PCHomePage extends BasePage {
 	private By apiaTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/brandTabLayout']//android.widget.TextView[@text='APIA']");
 	private By bingleTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/brandTabLayout']//android.widget.TextView[@text='BINGLE']");
 	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/brandTabLayout']//android.widget.TextView[@text='SUNCORP']");
-	private By pcHomePageTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']/android.widget.TextView[@text='Product catalogue']");
+	private By pcHomePageTitle = By.xpath("//*[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']/android.widget.TextView[@text='Product Catalogue']");
 	
 	private By productQuoteButton = By.id("au.com.suncorp.marketplace:id/productQuoteButton");
 	private By detailsButton = By.id("au.com.suncorp.marketplace:id/productDetailsButton");
@@ -45,7 +45,7 @@ public class PCHomePage extends BasePage {
 	public boolean verifyDescription(Object brand) {
 		JSONObject brandJSON = (JSONObject)brand;
 		String description =  brandJSON.get("description").toString();
-		if(readValue(descriptonLabel).contentEquals(description)){
+		if(getText(descriptonLabel).contentEquals(description)){
 			return true;
 		}else
 			return false;
@@ -63,7 +63,7 @@ public class PCHomePage extends BasePage {
 
 	public boolean checkDisclaimer(JSONObject subCategoryJson) {
 		String disclaimerJSON = (String) subCategoryJson.get("disclaimer");
-		if(readValue(disclaimer).contentEquals(disclaimerJSON)) {
+		if(getText(disclaimer).contentEquals(disclaimerJSON)) {
 			return true;
 		}else
 			return false;	
@@ -83,6 +83,7 @@ public class PCHomePage extends BasePage {
 		return verified;
 	}
 	
+
 	public void tapObject(WebElement object) {	
 		tapElement(object);
 		try {
@@ -102,6 +103,7 @@ public class PCHomePage extends BasePage {
 	}
 	
 	public WebElement findCategory(String elementName) {
+		scrollDown();
 		return findElementInAListView(elementName, "au.com.suncorp.marketplace:id/categoryList");
 	}
 	
@@ -202,17 +204,24 @@ public class PCHomePage extends BasePage {
 	}
 	
 	public void swipeToBingleTab() {
-		swipeHorizontally(apiaTab, aamiTab);
-		swipeHorizontally(bingleTab, gioTab);
+		swipeHorizontally(apiaTab, gioTab);
+		swipeHorizontally(shannonsTab, apiaTab);
 	}
 	
 	public void swipeToShannonsTab() {
-		swipeHorizontally(apiaTab, aamiTab);
-		swipeHorizontally(shannonsTab, gioTab);
+		swipeHorizontally(apiaTab, gioTab);
+		swipeHorizontally(shannonsTab, apiaTab);
 	}
 	
 	public WebElement checkQuoteButton() {
-		return find(productQuoteButton);
+		if(find(productQuoteButton) != null) {
+			return find(productQuoteButton);
+		}else {
+			swipeScreen("down");
+			WebElement button = find(productQuoteButton);
+			swipeScreen("Up");
+			return button;
+		}
 	}
 	
 	public void tapQuoteButton() {
@@ -220,7 +229,19 @@ public class PCHomePage extends BasePage {
 	}
 	
 	public WebElement checkDetailsButton() {
-		return find(detailsButton);
+		if(find(detailsButton) != null) {
+			return find(detailsButton);
+		}else {
+			swipeScreen("down");
+			WebElement button = find(detailsButton);
+			if(button == null) {
+				swipeScreen("down");
+				button = find(detailsButton, 5);
+				swipeScreen("Up");
+			}
+			swipeScreen("Up");
+			return button;
+		}
 	}
 	
 	public void tapDetailsButton() {

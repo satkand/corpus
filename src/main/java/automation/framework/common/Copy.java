@@ -158,9 +158,13 @@ public interface Copy {
 
 	
 	//FFI
-	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you dont have any transactions yet.";
+	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you don't have any\n" + "transactions yet.";
 	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
 
+	//DIGIVAULT
+	public static final String DIGI_EMPTYIMAGE_TITLE = "Your safe is empty";
+	public static final String DIGI_EMPTYIMAGE_DESC = "Your digital safe is a depository to keep track of any files or photos you may need later";
+	
 
 	//RESET PASSWORD
 
