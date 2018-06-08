@@ -10,6 +10,7 @@ import io.appium.java_client.MobileBy;
 public class ImagePreviewPage extends BasePage {
 
 	DigiVaultCommonPage digiVaultCommonPage = new DigiVaultCommonPage(driver);
+	//TODO: id to be added
 	private By nextButton = By.xpath("//android.widget.TextView[@content-desc='NEXT button']");
 	private By previousButton = MobileBy.AccessibilityId("Navigate up");
 	

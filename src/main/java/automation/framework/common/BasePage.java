@@ -271,15 +271,16 @@ public class BasePage {
 		int y = driver.manage().window().getSize().getHeight();
 		int x = driver.manage().window().getSize().getWidth();
 
+		
 		try {
 			switch (direction.toUpperCase()) {
 			case "UP":
 				// when navigating up, its opening the notifications bar. so
 				// changing the startY value from 10 to 300
-				swipeAction(50, y - 650, 50, y - 80);
+				swipeAction(x - 50, y - 250, x - 50, y - 80);
 				break;
 			case "DOWN":
-				swipeAction(100, y - 80, 80, y - 650);
+				swipeAction(100, y - 80, 80, y - 700);
 				break;
 			case "DEEPDOWN":
 				swipeAction(100, y - 80, 80, y - 1200);
