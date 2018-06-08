@@ -116,11 +116,11 @@ public class CategoryDetailsPage extends BasePage {
 	public String getTransactionErrorMsg() {
 		return getText(transactionErrorMsg);
 	}
-	
+
 	public boolean checkIfVendorsAreSorted() {
 		List<WebElement> vendorAmountList = finds(vendorAmount);
-		if(Float.parseFloat(vendorAmountList.get(0).getText().substring(1)) > Float.parseFloat(vendorAmountList.get(1).getText().substring(1)) && 
-				Float.parseFloat(vendorAmountList.get(1).getText().substring(1)) > Float.parseFloat(vendorAmountList.get(2).getText().substring(1))) {
+		if(Float.parseFloat(vendorAmountList.get(0).getText().substring(1).replace(",", "")) > Float.parseFloat(vendorAmountList.get(1).getText().substring(1).replace(",", "")) && 
+				Float.parseFloat(vendorAmountList.get(1).getText().substring(1).replace(",", "")) > Float.parseFloat(vendorAmountList.get(2).getText().substring(1).replace(",", ""))) {
 			return true;
 		}else
 			return false;

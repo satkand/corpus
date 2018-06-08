@@ -156,7 +156,19 @@ public interface Copy {
 	//MEMBER LOGIN PAGE
 	String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
 
+
+	
+	//FFI
+	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you don't have any\n" + "transactions yet.";
+	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
+
+	//DIGIVAULT
+	public static final String DIGI_EMPTYIMAGE_TITLE = "Your safe is empty";
+	public static final String DIGI_EMPTYIMAGE_DESC = "Your digital safe is a depository to keep track of any files or photos you may need later";
+	
+
 	//RESET PASSWORD
+
 	public String RESET_PASSWORD_TITLE_TEXT = "Reset password";
 	public String RESET_PASSWORD_DESCRIPTION_TEXT = "Enter the email associated with your Suncorp account. We'll email you a link to a page where you can easily create a new password.";
 	public String RESET_PASSWORD_SHORT_EMAIL_ERROR = "Must be between 2 and 100 characters Please enter a valid email address";
@@ -173,8 +185,4 @@ public interface Copy {
 	//REGISTRATION PAGE
 	public String DUPLICTE_EMAIL_POPUP_USE_ANOTHER_EMAIL_BUTTON_TEXT = "LOG IN WITH THIS EMAIL";
 
-	
-	//FFI
-	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you dont have any transactions yet.";
-	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
 }
