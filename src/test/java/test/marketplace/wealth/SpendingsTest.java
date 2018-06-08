@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automation.framework.common.Copy;
+import automation.framework.common.TestDetails;
 import pages.App;
 
 public class SpendingsTest extends App {
@@ -230,8 +231,8 @@ public class SpendingsTest extends App {
 	//2480 - Scenario 1
 	//2905 - Scenario 1
 	//2260 - Scenario 1
-	@Test (groups = {"DMPM-4034", "DMPM-5818", "DMPM-5819","DMPM-5820","DMPM-5821","DMPM-5822","DMPM-5823","DMPM-5921", "DMPM-2480", 
-			"DMPM-2905", "DMPM-2260","marketplace", "FFI", "priority-minor"})
+	@TestDetails(story1 = "DMPM-4034" , story2="DMPM-5818", story3="DMPM-2480",story4="DMPM-2905",story5="DMPM-2260")
+	@Test (groups = "marketplace", "FFI", "priority-minor"})
 	public void testDatePickerInCategoryDetailsScreen() {
 		
 		navigateToCategoryDetailScreen();	
@@ -277,7 +278,9 @@ public class SpendingsTest extends App {
 	//5922 - Scenario 1-6
 	//6311 - Scenario 1
 	//182 - Scenario 1
-	@Test (groups = {"DMPM-3980", "DMPM-5809", "DMPM-5810","DMPM-5811","DMPM-5812","DMPM-5815","DMPM-5816","DMPM-5922", "DMPM-6311", "DMPM-182", "marketplace", "FFI", "priority-minor"})
+	@TestDetails(story1 = "DMPM-3980: DMPM-5809,DMPM-5810,DMPM-5811,DMPM-5812,DMPM-5815,DMPM-5816" , story2 = "DMPM-5922: DMPM-6806,DMPM-6808,DMPM-6807,DMPM-6809,DMPM-6810,DMPM-6805",
+			story3 = "DMPM-6311: DMPM-6606", story4 = "DMPM-182")
+	@Test (groups = {"marketplace", "FFI", "priority-minor"})
 	public void testDatePickerInVendorDetailsScreen() {
 		
 		String vendorNavigatedTo = navigateToVendorDetailScreen();	
@@ -320,14 +323,16 @@ public class SpendingsTest extends App {
 	}
 	
 	//DMPM-496
-	@Test (groups = {"DMPM-496",  "marketplace", "FFI", "priority-minor"})
+	 @TestDetails(story1 = "496")
+	@Test (groups = {"marketplace", "FFI", "priority-minor"})
 	public void testDisclaimer() {
 		navigateToSpendingsScreen();
 		Assert.assertEquals(spendingsPage.getSnackBarText(), Copy.FFI_DISCLAIMER);
 	}
 	
 	//DMPM-2520 - Scneario 1-6
-		@Test (groups = {"DMPM-2520", "DMPM-6653","DMPM-6657","DMPM-6658","DMPM-6659","DMPM-6660","DMPM-6661", "marketplace", "FFI", "priority-minor"})
+	    @TestDetails(story1 = "DMPM-2520: DMPM-6653,DMPM-6657,DMPM-6658,DMPM-6659,DMPM-6660,DMPM-6661")
+		@Test (groups = {"marketplace", "FFI", "priority-minor"})
 		public void testSearchThroughVendorList() {
 			navigateToSpendingsScreen();
 			categoryDetailsPage.selectMonth(utils.readTestData("ffi", "hasData", "month"));
@@ -361,7 +366,8 @@ public class SpendingsTest extends App {
 		}
 
 			//DMPM-4645 - Scneario 1-6
-			@Test (groups = {"DMPM-4645", "marketplace", "FFI", "priority-minor"})
+			@TestDetails(story1 = "DMPM-4645: DMPM-6797,DMPM-6800,DMPM-6799,DMPM-6794,DMPM-6796,DMPM-6798")
+			@Test (groups = { "marketplace", "FFI", "priority-minor"})
 			public void testSearchThroughCategoryDetailsList() {
 				navigateToCategoryDetailScreen();
 				vendorDetailPage.tapSearchField();
@@ -370,7 +376,7 @@ public class SpendingsTest extends App {
 				Assert.assertNotNull(categoryDetailsPage.checkVendorSearchList(), "No vendor list seen");
 				categoryDetailsPage.tapCloseButton();
 				Assert.assertNotNull(categoryDetailsPage.checkTop3VendorTitle(), "Did not navigate back to category screen");
-				
+			
 				vendorDetailPage.tapSearchField();
 				vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString"));
 				Assert.assertTrue(vendorDetailPage.verifySearch(utils.readTestData("ffi", "hasData", "resultString1"),
@@ -393,7 +399,8 @@ public class SpendingsTest extends App {
 			
 		
 		//DMPM-4023 - Scneario 2
-		@Test (groups = {"DMPM-4023", "DMPM-6801","marketplace", "FFI", "priority-minor"})
+		@TestDetails(story1 = "DMPM-4023: DMPM-6801")
+		@Test (groups = {"marketplace", "FFI", "priority-minor"})
 		public void testNavigateToConnectedScreens() {
 			navigateToCategoryDetailScreen();
 			Assert.assertNotNull(categoryDetailsPage.checkConnectedAccountsButton(), "Connected accounts button not present");
