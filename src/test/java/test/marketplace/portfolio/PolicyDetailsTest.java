@@ -33,7 +33,7 @@ public class PolicyDetailsTest extends App {
 		navigateToMyProductsScreen(userName, pwd);
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.scrollToProductAndTap(car);
-		Assert.assertNotNull(common.checkLoadingIndicator(), "Loading Indicator is not displayed");
+		Assert.assertNotNull(policyDetailsPage.checkloadingIndicator(), "Loading Indicator is not displayed");
 		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNull(common.checkLoadingIndicator(), "Loading Indicator is displayed");
 		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.POLICY_DETAILS_SCREEN_TITLE),
