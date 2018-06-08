@@ -14,12 +14,12 @@ public class LandingPage extends BasePage {
 		super(driver);
 	}
 
-	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='One Suncorp']");
+	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='Overview']");
 	private By chatbotOption = By.id("au.com.suncorp.marketplace:id/chatbotOption");
 	private String propertyTitle = "Property";
 	private String vehiclesTitle = "Vehicle";
 	private String naviScrollableId = "au.com.suncorp.marketplace:id/navigationTabLayout";
-	private By suncorpTab = By.xpath("//android.widget.TextView[@text='One Suncorp']");
+	private By overviewTab = By.xpath("//android.widget.TextView[@text='Overview']");
 	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLES']");
 	private By financeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='MONEY']");
@@ -47,15 +47,15 @@ public class LandingPage extends BasePage {
 	}
 
 	public WebElement checkSuncorpTab() {
-		return find(suncorpTab, 30);
+		return find(overviewTab, 30);
 	}
 
 	public void tapSuncorpTab() {
-		tapElement(suncorpTab);
+		tapElement(overviewTab);
 	}
 
 	public boolean isSuncorpTabSelected() {
-		return isSelected(suncorpTab);
+		return isSelected(overviewTab);
 	}
 
 	public WebElement checkHomeTab() {
@@ -117,7 +117,7 @@ public class LandingPage extends BasePage {
 	}
 
 	public void swipeToHealthTab() {
-		swipeHorizontally(vehiclesTab, suncorpTab);
+		swipeHorizontally(vehiclesTab, overviewTab);
 		swipeHorizontally(healthTab, vehiclesTab);
 	}	
 

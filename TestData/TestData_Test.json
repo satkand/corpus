@@ -81,9 +81,9 @@
 			"userName": ""
 		},
 		"validLoginCredentials": {
-			"login": "test@account.com",
-			"login1": "test1@account.com",
-			"login2": "sb@sb.sb",
+			"login": "testacc10@acc.com",
+			"login1": "testacc9@acc.com",
+			"login2": "testacc8@acc.com",
 			"memberLoginEmail" : "a@b.c",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
@@ -1403,6 +1403,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "AAMI member login",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
@@ -1411,6 +1412,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "GIO member login",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
@@ -1419,6 +1421,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "Shannons member login",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}

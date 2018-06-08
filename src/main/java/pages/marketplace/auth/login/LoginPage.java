@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.MobileBy;
 
 public class LoginPage extends BasePage{
@@ -27,6 +25,9 @@ public class LoginPage extends BasePage{
 	//TODO Both have same id -> need to differentiate them
 	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	//Different android class on older devices
+	private By emailFieldErrorOldDevice = By.xpath("//android.widget.LinearLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By passwordFieldErrorOldDevice = By.xpath("//android.widget.LinearLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
 	//Error scenario
 	private By errorSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
@@ -118,19 +119,60 @@ public class LoginPage extends BasePage{
 	}
 		
 	public WebElement checkEmailFieldError(){
-		return find(emailFieldError,30);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(emailFieldError,30);
+		}
+		else { 
+			return find(emailFieldErrorOldDevice,30);
+		}
 	}
 	
 	public String getEmailFieldErrorValue() {
-		return getText(emailFieldError);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(emailFieldError);
+		}
+		else { 
+			return getText(emailFieldErrorOldDevice);
+		}	
 	}
 	
 	public WebElement checkPasswordFieldError(){
-		return find(passwordFieldError);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(passwordFieldError,30);
+		}
+		else { 
+			return find(passwordFieldErrorOldDevice,30);
+		}
 	}
 	
 	public String getPasswordFieldErrorValue() {
-		return getText(passwordFieldError);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(passwordFieldError);
+		}
+		else { 
+			return getText(passwordFieldErrorOldDevice);
+		}
+	}
+	
+	public Boolean getPasswordFieldMaskedVal(String maskedValue) {
+		Boolean status;
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if (osVersion >= 6.0) {
+			status = getText(passwordField).equals(maskedValue);
+		}
+		else { 
+			status = getText(passwordField).equals("");
+		}
+		
+		return status;
 	}
 	
 	public String getPasswordFieldValue() {
@@ -262,5 +304,4 @@ public class LoginPage extends BasePage{
 	public void restartApp() {
 		closeAndLaunchApp();
 	}
-
 }
