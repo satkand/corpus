@@ -25,7 +25,7 @@ public class SpendingsTest extends App {
 		Assert.assertNotNull(spendingsPage.checkVendorTab(), "Spendings Page - Vendor tab not shown");
 		Assert.assertFalse(spendingsPage.isVendorTabSelected(), "Spendings Page - Vendor tab shown selected by default");
 		Assert.assertNotNull(spendingsPage.checkSpendingsTotalAmount(), "Spendings Page - Spendings amount not shown");
-		Assert.assertNotNull(spendingsPage.checkInfoIcon(), "Spendings Page - Spendings amount info icon not shown");
+//		Assert.assertNotNull(spendingsPage.checkInfoIcon(), "Spendings Page - Spendings amount info icon not shown");
 		//TODO -> This is present on iOS not on Android. Check later, if still not present, remove this
 		//Assert.assertNotNull(spendingsPage.checkUpdatedInfoText(), "Spendings Page - Spendings updated once per month text not shown");
 	}
@@ -145,7 +145,7 @@ public class SpendingsTest extends App {
 	}
 	
 	private void compareCategoryTransactionsForaMonth(List categories, boolean isTransactionCountShown) {
-		
+		spendingsPage.swipeUp();
 		// fetch the actual transactions shown on the current page
 		List categoriesNameList = spendingsPage.fetchCategoriesNameList();
 		List categoriesTransactionsList = spendingsPage.fetchCategoriesTransactionsTextList();
@@ -159,7 +159,7 @@ public class SpendingsTest extends App {
 				Assert.assertEquals(categoriesNameList.get(0), category.get("name"), categoriesNameList.get(0)+ " name is not shown as expected");
 				categoriesNameList.remove(0);
 
-				Assert.assertEquals(categoriesSpendingAmountList.get(0), category.get("amount"), categoriesSpendingAmountList.get(0)+" amount is not shown as expected");
+				Assert.assertEquals(categoriesSpendingAmountList.get(0).toString().replace(",",""), category.get("amount"), categoriesSpendingAmountList.get(0)+" amount is not shown as expected");
 				categoriesSpendingAmountList.remove(0);
 
 				// If this month is present in the list of "monthsPriorToLast3Months. Then the flag is enabled, so that we will not check transactions count for such months
@@ -176,7 +176,7 @@ public class SpendingsTest extends App {
 	}
 	
 	private void compareVendorTransactionsForaMonth(List vendors, boolean isTransactionCountShown) {
-		
+		spendingsPage.swipeUp();
 		// fetch actual the transactions shown on the current page
 		List vendorsNameList = spendingsPage.fetchVendorsTransactionsNameList();
 		List vendorsTransactionsList = spendingsPage.fetchVendorsTransactionsTextList();
@@ -324,7 +324,7 @@ public class SpendingsTest extends App {
 		
 		
 	}
-	
+/*This feature has been removed from the app.	
 	//DMPM-496
 	 @TestDetails(story1 = "496")
 	@Test (groups = {"marketplace", "FFI", "priority-minor"})
@@ -332,6 +332,7 @@ public class SpendingsTest extends App {
 		navigateToSpendingsScreen();
 		Assert.assertEquals(spendingsPage.getSnackBarText(), Copy.FFI_DISCLAIMER);
 	}
+	*/
 	
 	//DMPM-2520 - Scneario 1-6
 	    @TestDetails(story1 = "DMPM-2520: DMPM-6653,DMPM-6657,DMPM-6658,DMPM-6659,DMPM-6660,DMPM-6661")
@@ -428,9 +429,10 @@ public class SpendingsTest extends App {
 			spendingsPage.selectMonth(month.toString());
 			Assert.assertEquals(spendingsPage.getSelectedMonthValue(), month.toString().toUpperCase(), "Wealth Spendings Page - Not able to select month from dropdown");
 			//TODO: Defect raised for this
-			//Assert.assertNotNull(spendingsPage.checkEmptyTransactionsImage(), "Wealth Spending Page - empty transactions image not shown");
-			Assert.assertEquals(spendingsPage.getEmptyTransactionsMessage(), utils.readTestData("copy", "spendingsPage", "emptyTransactionsMessage"), "Wealth Spendings Page - empty transactions message not shown");
-			Assert.assertEquals(spendingsPage.getEmptyTransactionsHintMessage(), utils.readTestData("copy", "spendingsPage", "emptyTransactionsHintMessage"), "Wealth Spendings Page - empty transactions hint message not shown");
+			Assert.assertEquals(spendingsPage.getEmptyTransactionsMessage(), Copy.FFI_EMPTY_TRANSACTIONS, "Wealth Spendings Page - empty transactions message not shown");
+		//There is no empty transaction hint message anymore
+		//Assert.assertNotNull(spendingsPage.checkEmptyTransactionsImage(), "Wealth Spending Page - empty transactions image not shown");
+		//Assert.assertEquals(spendingsPage.getEmptyTransactionsHintMessage(), utils.readTestData("copy", "spendingsPage", "emptyTransactionsHintMessage"), "Wealth Spendings Page - empty transactions hint message not shown");
 		}
 	}
 
@@ -461,16 +463,20 @@ public class SpendingsTest extends App {
 		landingPage.tapFinanceTab();
 		Assert.assertTrue(landingPage.isFinanceTabSelected(), "Wealth tab is not selected on landing page");
 		
+
+		
 		// TODO This logic is for enabling the bank accounts option in settings, This needs to be removed, when the logic for fetching the the bank accounts from api is implemented
-		navigationMenu.tapSplitMenuIcon();
+/*		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.scrollToDevSettings();
 		navigationMenu.tapDevSettings();
 		configPage.enableHasBankAccountsToggle(); 
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
 		landingPage.tapFinanceTab();
-		
+	*/	
 		// Actual logic
+		financePage.checkViewSpendingThisMonthButton();
 		financePage.tapviewSpendingThisMonthButton();
+		spendingsPage.waitForLoadingIndicatorToDisappear();
 	}
 }

@@ -229,7 +229,9 @@ public class App extends BaseTest {
 
 	}
 	
+
 	@Parameters({ "endPoint" })
+
 	@BeforeMethod(alwaysRun = true)
 	public void beforeEachTest(@Optional("SYST") String endPoint) throws Exception {
 		
