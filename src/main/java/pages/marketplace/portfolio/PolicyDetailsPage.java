@@ -81,6 +81,7 @@ public class PolicyDetailsPage extends BasePage {
 	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
 	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
 	private String coverPeriodEndId = "au.com.suncorp.marketplace:id/coverPeriodEnd";
+	private By policyDetailsLoadingIndicator = By.id("au.com.suncorp.marketplace:id/loadingIndicator");
 	
 	public WebElement checkPolicyRiskDescription() {
 		return find(riskDescription);
@@ -516,6 +517,12 @@ public class PolicyDetailsPage extends BasePage {
 	public String getPolicyRenewalStatus() {
 
 		return getText(policyrenewalStatus);
+	}
+
+	public WebElement checkloadingIndicator() {
+		// TODO Auto-generated method stub
+		return 	find(policyDetailsLoadingIndicator);
+		
 	}
 
 
