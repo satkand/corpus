@@ -22,15 +22,15 @@ public class ArticlesPage extends BasePage{
 
 	private String articleCarouselId = "au.com.suncorp.marketplace:id/articleCarouselTitle";
 	private String articleReadMoreBtnId = "au.com.suncorp.marketplace:id/articleReadMoreAction";
-	private String articleTitleId = "au.com.suncorp.marketplace:id/articleTitle";
 	private String articleCarouselScrollableViewId = "au.com.suncorp.marketplace:id/articleViewPager";
+	private By loadingIndicator = By.id("au.com.suncorp.marketplace:id/propertyLoadingIndicator");
 
 	public WebElement checkArticleImage() {
 		return find(articleImage);
 	}
 
 	public WebElement checkArticleReadMoreBtn() {
-		return find(articleReadMoreBtn);
+		return find(articleReadMoreBtn,2);
 	}
 
 	public void tapArticleReadMoreBtn() {
@@ -83,13 +83,31 @@ public class ArticlesPage extends BasePage{
 		return find(articleCarouselDesc).getText();
 	}
 
-	public void scrollToArticlesCarousel() {
-		scrollToElement(articleCarouselId,"id", 10);
-		
+	public void scrollToArticlesCarousel(String screenHeight) {
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
+			scrollToElement(articleCarouselId, "id",10);
+		}
+		else {
+			scrollToElement(articleCarousel);
+		}
 	}
 	
-	public void scrollToArticlesReadMoreBtn() {
-		scrollToElement(articleReadMoreBtnId,"id", 10);
+	public void scrollToArticlesReadMoreBtn(String screenHeight) {
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
+			scrollToElement(articleReadMoreBtnId, "id",10);
+		}
+		else {
+			scrollToElement(articleReadMoreBtn);
+		}
+	}
+	
+	public WebElement checkLoadingIndicator() {
+		return find(loadingIndicator ,5);
+	}
+	
+	public void waitForLoadingIndicatorToDisappear() {
+		
+		waitForElementToDisappear(loadingIndicator,30);
 		
 	}
 }

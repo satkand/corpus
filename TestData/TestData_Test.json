@@ -150,7 +150,7 @@
 		},
 		"propertyProducts":{
 			"withProducts": {
-					"login": "a@b.c",
+					"login": "articles@sun.com",
 					"pwd": "Password1",
 					"addressLineText": "123 New Street, Brighton",
          			"suburbText":"NSW 3186",
@@ -170,21 +170,24 @@
 		"articleCarouselText":"Articles",
 		"articleReadMoreButton": "READ MORE",
 		"property": { 
+			"carouselTitle" : "How can we help you?",
+			"screenHeight" : "1920",
 			"articleViewPager": [
+			    
 				{ 
-					"articleTitle" : "The 5 Steps to Master Renting",
-					"articleDescription" : "Whatever it is that has you scanning the “TO LET” listings, there are a number of important things to consider before you sign a rental lease.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/master-renting.html"
+					"articleTitle" : "UAT - First home buyers grants in your state",
+					"articleDescription" : "If you're buying your first home, you may be entitled to a little help. Find out here.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				},
 				{ 
-					"articleTitle" : "What are landlord responsibilities?",
-					"articleDescription" : "Landlords need to keep a property in a livable condition.Find out what you should expect here.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/landlord-responsibilities.html"
+					"articleTitle" : "UAT - What influences how much I can borrow?",
+					"articleDescription" : "There are a lot of variables that determine how much you can borrow. Knowing what they are can help put you in the best position.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				},
 				{ 
-					"articleTitle" : "How can I estimate the total costs involved in buying a home?",
-					"articleDescription" : "The price you see in the ads or at aunction is rarely the full price of buyign a house. We detail here some of the 'hidden' costs you need to watch out for.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/buying-a-home/estimating-costs-of-buying-a-home.html"
+					"articleTitle" : "UAT - Estimating the costs of buying a property",
+					"articleDescription" : "Stamp duty, LMI and other borrowing costs are all part of the process. Make sure you're confident and work with your advisor to get the right deal for your lifestyle.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				}
 			]
 		}
@@ -1292,7 +1295,7 @@
 			"searchString" : "sto",
 			"resultString1" : "Store abc",
 			"resultString2" : "Housing store",
-			"resultString3" : "Stowed",
+			"resultString3" : "Stowed"
 
 		},
 		"hasNoData" : {
@@ -1345,7 +1348,7 @@
 			"pwd": "Password1",
 			"input" : "suncorp",
 			"websiteText" : "Suncorp Group website",
-			"websiteURL" : "https://www.suncorp.com.au/",
+			"websiteURL" : "https://www.suncorp.com.au/"
 		},
 		"phNo": {
 			"login": "a@b.c",
@@ -1374,20 +1377,20 @@
 		},
 		"horizontal_selectable_List_suggestedQuestions": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_readOnly_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options_singleItem": {
 			"login": "a@b.c",
-			"pwd": "Password1",
-		},
+			"pwd": "Password1"
+		}
 	},
 	 "brands": [
 		{
