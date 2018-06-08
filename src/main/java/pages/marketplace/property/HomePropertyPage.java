@@ -43,7 +43,8 @@ public class HomePropertyPage extends BasePage {
 	
 	private By propertyItem = By.id("au.com.suncorp.marketplace:id/propertyItemLayout");
 	private String startYourJourneyButtonID = "au.com.suncorp.marketplace:id/startHomeJourneyButton";
-	private By emptyStatePropertyAsset = By.xpath("//android.widget.TextView[@text='456 Sesame St, Melbourne']");
+	//TODO - update the property asset address to empty state asset
+	
 	private By featureLockedMsgTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By featureLockedTextCopy = By.id("android:id/message");
 	private By featureLockedMsgSignUpButton = By.id("android:id/button2");
@@ -62,7 +63,7 @@ public class HomePropertyPage extends BasePage {
 	private By virtualAssetBedroomIcon = By.id("au.com.suncorp.marketplace:id/bedroomIcon");
 	private By virtualAssetNoOFBedrooms = By.id("au.com.suncorp.marketplace:id/bedroomCountText");
 	private By virtualAssetNoOFBathrooms = By.id("au.com.suncorp.marketplace:id/bathroomCountText");
-	private By virtualAssetNoOFCarParks = By.id("au.com.suncorp.marketplace:id/carparkCountText");
+	private By virtualAssetNoOFCarParks = By.id("au.com.suncorp.marketplace:id/carParkCountText");
 	private By virtualAssetLandSize= By.id("au.com.suncorp.marketplace:id/landSizeText");
 	private By virtualAssetViewDetailsButton = By.id("au.com.suncorp.marketplace:id/propertyDetailsButton");
 	
@@ -336,6 +337,10 @@ public class HomePropertyPage extends BasePage {
 	public WebElement checkAddAPropertyOrPolicyImage() {
 		return find(addAPropertyOrPolicyImage);
 	}
+	
+	public void scrollToAddPropertyButton(){
+		scrollToElement(accessProfessionalInfo,"true");
+	}
 
 	public WebElement checkPropertyInsightInfo() {
 		return find(propertyInsightInfo);
@@ -375,11 +380,12 @@ public class HomePropertyPage extends BasePage {
 	}
 
 	public void scrollToJourneyBanner(){
-		scrollToElement("START YOUR JOURNEY", "text");
+		scrollToElement(startYourJourneyButton, "true");
 	}
 
-	public void scrollToSuppliedAsset(){
-		scrollToElement(emptyStatePropertyAsset, "true");
+	public void scrollToSuppliedAsset(String text){
+		scrollToElement(findElementUsingXpathText(text), "true");
+		
 	}
 	
 	public WebElement checkHomeJourneyBannerImage() {
@@ -402,9 +408,8 @@ public class HomePropertyPage extends BasePage {
 		tapElement(startYourJourneyButton);
 	}
 
-	public void scrollToEmptyStatePropertyAsset() {
-		scrollToElement(emptyStatePropertyAsset, "true");
-
+	public void scrollToEmptyStatePropertyAsset(String text) {
+		scrollToElement(findElementUsingXpathText(text));
 	}
 	
 	public void swipePropertyCarouselLeft() {

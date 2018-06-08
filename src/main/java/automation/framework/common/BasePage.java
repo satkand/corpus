@@ -242,6 +242,18 @@ public class BasePage {
 		TouchAction ta = new TouchAction(driver);
 		ta.press(startX,startY).waitAction(Duration.ofMillis(4000)).moveTo(endX,endY).release().perform();
 	}
+	
+	protected boolean isTabSelected(By tabName) {
+		if (readValue(tabName) == null)
+			return false;
+		else
+			return true;
+	}
+	
+	protected List<WebElement> getItemCountbyID(By id){
+		List<WebElement> count = driver.findElements(id);
+		return count;
+	}
 
 	//	protected void swipeDown(){
 	//		int screenHeight = driver.manage().window().getSize().getHeight();
@@ -548,13 +560,7 @@ public class BasePage {
 
 
 	public void tapDeviceBackButton(){
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_BACK);
 	}
 
 	public void tapEnterOnTheKeyboard(){
@@ -781,6 +787,12 @@ public class BasePage {
 			WebElement element = find(locator);
 			String text = element.getAttribute(attribute);
 			return text;
+		}
+	
+	protected By findElementUsingXpathText(String text) {
+			String xpath = "//android.widget.RadioButton[@text='" + text + "']";
+			By locator = By.xpath(xpath);
+			return locator;
 		}
 
 //	/**

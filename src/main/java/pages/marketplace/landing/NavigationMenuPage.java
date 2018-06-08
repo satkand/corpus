@@ -13,6 +13,7 @@ public class NavigationMenuPage extends BasePage {
 
 	private By welcomeMessage = By.id("au.com.suncorp.marketplace:id/profileName");
 	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
+	private By homeJourneyMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Home Journey']");
 	private By bankingHome = By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
 	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Policies & Accounts']");
 	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Vault']");
@@ -92,6 +93,16 @@ public class NavigationMenuPage extends BasePage {
 
 	}
 	
+	public WebElement checkHomeJourneyMenuItem() {
+		 return find(homeJourneyMenuItem,3);
+	}
+	
+public void tapHomeJourneyMenuItem() {
+	find(homeJourneyMenuItem, 30);
+	 tapElement(homeJourneyMenuItem);
+	
+}
+
 	public WebElement checkBackToStartMenuItem() {
 		 return find(backToStartMenuItem);
 	}

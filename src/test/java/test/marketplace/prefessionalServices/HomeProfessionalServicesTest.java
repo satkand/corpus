@@ -48,6 +48,60 @@ public class HomeProfessionalServicesTest extends App{
 		
 		
 	}
+	
+	@TestDetails(story1 = "DMPM-6102:DMPM-7073,DMPM-4707", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
+	public void testProfessionalServicesUpdatedURL() {
+		
+		navigateToProfessionalServices();
+		homeServicesPage.tapProfessionalServicesIntroGotItButton();
+		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "Home Professtional services page - Title is not present");
+		
+		homeServicesPage.tapViewServicesButton();
+		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "home Services Page - View services button is not present");
+		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+		
+		webviewPage.tapWebviewChromeCloseButton();
+		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesPageTitle(), "home Services Page - home Services Page title is not present");
+		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.tapSuncorpMenuItem();
+		
+		landingPage.tapPropertyTab();
+		Assert.assertTrue(landingPage.ispropertyTabSelected(), "Home tab is not selected on landing page");
+		
+		homePropertyPage.scrollToJourneyBanner();
+		homePropertyPage.tapStartYourJourneyButton();
+		Assert.assertNotNull(homeJourneyPage.checkJourneyTitleText(), "home Journey Page - home Journey Page title is not present");
+		
+		homeJourneyPage.scrollToViewServiceVendorsButton();
+		homeJourneyPage.tapViewServiceVendorsButton();
+		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "home Services Page - View services button is not present");
+		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+		
+		webviewPage.tapWebviewChromeCloseButton();
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "home Journey Page - home Journey Page title is not present");
+		
+		homeJourneyPage.tapBackButton();
+		homePropertyPage.scrollToJourneyBanner();
+		homePropertyPage.tapStartYourJourneyButton();
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
+		
+		propertyExplorerPage.tapSearch();
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
+			
+		propertyDetailsPage.scrollToProfessionaServicesButton();
+		propertyDetailsPage.tapProfessionaServicesButton();
+		Assert.assertNotNull(webviewPage.checkWebViewLocationBarr(), "Web View Page - Web View location bar is not present");
+		
+		Assert.assertNotNull(webviewPage.checkViewToolbarOptions(), "Web View Page - Web View toolbar options is not present");
+		webviewPage.tapWebViewToolbarOprions();
+		
+		Assert.assertNotNull(webviewPage.checkWebViewAddToBookMarkButton(), "Web View Page - Web View add to bookmark button is not present");
+		webviewPage.tapWebViewAddToBookMarkButton();
+		
+		Assert.assertEquals(webviewPage.getWebViewWebAddress(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Property Details page - Home professional services URL is not matching");	
+		
+	}
 
 	private void navigateToProfessionalServices() {
 		loginToApp(utils.readTestData("loginCredentials","validLoginCredentials","login"), utils.readTestData("loginCredentials","validLoginCredentials","pwd"));

@@ -99,20 +99,20 @@
 	},
 	"propertyDimension" :{
 		"propertyDetails":{
-					"address": "1018/40 Rossana Road",
-					"stateAndSuburb": "North Heidelberg VIC 3084",
-					"bedRooms": "2",
-					"bathrooms": "1",
-					"parkingSpaces": "1",
-					"landSize": "289 m²",
-					"propertyType": "House - Duplex",
+					"address": "1 LYONS RISE ",
+					"stateAndSuburb": "ELTHAM, VIC 3095",
+					"bedRooms": "4",
+					"bathrooms": "2",
+					"parkingSpaces": "4",
+					"landSize": "780 m²",
+					"propertyType": "Land: Res House",
 					"roofType": "Tiled (Terra Cotta or Cement)",
 					"wallMaterial": "Brick",
-					"salePrice": "$1,000,000",
-					"saleDate": "30 Feb 2018",
-					"confidenceLevel":"Medium confidence",
-					"estimatedMarketValue": "$1,100,000 - $1,275,000",
-					"numberOfImages":"7",
+					"salePrice": "$600,000",
+					"saleDate": "2013-12-13",
+					"confidenceLevel":"High confidence",
+					"estimatedMarketValue": "$870,000 - $1,100,000",
+					"numberOfImages":"26",
 					"buildYear": "1966"
 					
 		},
@@ -122,7 +122,7 @@
 					"nearbySchool1":"Eltham Woods Preschool (694m)",
 					"nearbySchool2":"Little Scooters Early Learning Centre & Kindergarten (703m)",
 					"nearbySchool3":"Research Primary School (843m)",
-					"estimatedMarketValue": "$1,456,100,000 - $1,895,275,000"
+					"estimatedMarketValue": "$870,000 - $1,100,000"
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
@@ -135,9 +135,9 @@
 					"login":"a@b.c",
 					"pwd":"Password1",
 					"suburbSearchText":"3978",
-					"floodRiskValue" : "Low",
-					"bushFireValue" : "Medium",
-					"theifRiskValue" : "High"
+					"floodRiskValue" : "Very Low",
+					"bushFireValue" : "Very Low",
+					"theifRiskValue" : "Low"
 		},
 		"propertyHub":{
 					"login":"a@b.c",
@@ -154,13 +154,13 @@
 					"pwd": "Password1",
 					"addressLineText": "123 New Street, Brighton",
          			"suburbText":"NSW 3186",
-          			"productDescriptionText1": "Home and Contents protected until 10 October 2018",
-         			"productDescriptionText2": "Home loan next payment due 10 October 2018"
+          			"productDescriptionText1": "Home and Contents protected with Suncorp",
+         			"productDescriptionText2": "Landlord protected with APIA"
 			},
 			"withOutProducts": {
 					"login": "a@b.c",
 					"pwd": "Password1",
-					"addressLineText": "201/64-66 Sahi Crescent, Roxburgh Park",
+					"addressLineText": "45 Super Long Long Name Street, Brighton",
          			"suburbText":"VIC 3064",
           			"productDescriptionText1": "Home and Contents protected until 10 October 2019",
          			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
@@ -1471,7 +1471,7 @@
 		},
 		"propertyExplorer":{
 			"propertyInsightSearchHintText": "Enter address",
-			"estimatedMarketValue": "Estimated market value",
+			"estimatedMarketValue": "Estimated property value",
 			"suburbInsightSearchHintText": "Enter suburb's name"
 		},
 		"spendingsPage": {

@@ -1,5 +1,7 @@
 package pages.marketplace.property;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -22,7 +24,7 @@ public class WhatsNearbyPage extends BasePage{
 	private By fullScreenMapCloseButton = MobileBy.AccessibilityId("Navigate up");
 	private By fullScreenMapTitle= By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']//android.widget.TextView");
 	private By fullScreenMap= MobileBy.AccessibilityId("Google Map");
-	private By fullScreenMapPropertyPin= MobileBy.AccessibilityId("PROPERTY. ");
+	private By fullScreenMapPropertyPin= MobileBy.AccessibilityId("property_title. ");
 	
 	
 	private By propertyTab = By.xpath("//android.widget.TextView[@text='PROPERTY']");
@@ -37,8 +39,8 @@ public class WhatsNearbyPage extends BasePage{
 	//Map location indicators
 	private By educationCentreIndicator = MobileBy.AccessibilityId("NorthanMelbourneInstituteOfTAFE. ");
 	private By shoppingAmenityIndicator = MobileBy.AccessibilityId("Penny Blue. ");
-	private By transportAmenityIndicator = MobileBy.AccessibilityId("Elizabeth St. ");
-	private By entertainmentOutletIndicator = MobileBy.AccessibilityId("Federal Coffee Palace. ");
+	private By transportAmenityIndicator = MobileBy.AccessibilityId("Reynolds Rd. ");
+	private By entertainmentOutletIndicator = MobileBy.AccessibilityId("Rodder Reserve. ");
 	private By healthCentreIndicator = MobileBy.AccessibilityId("Derma Tech Centre. ");
 	private By diningCentreIndicator = MobileBy.AccessibilityId("secret garden restraunt. ");
 	private By otherAmenityIndicator = MobileBy.AccessibilityId("Coomonwealth bank Niddrie. ");
@@ -48,6 +50,19 @@ public class WhatsNearbyPage extends BasePage{
 	private By propertyCardTitle = By.id("au.com.suncorp.marketplace:id/propertyCardTitle");
 	private By propertyCardDetails = By.id("au.com.suncorp.marketplace:id/propertyCardDetail");
 	
+	//POI categories
+	private By placesListCountLabel = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListTitleText");
+	private By showListLabelButton = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListButtonText");
+	private By itemListdistance = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	private By listID = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	private By POIexpandableListButton = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListButtonText");
+	private By POIname = By.name("au.com.suncorp.marketplace:id/educationNameText");
+		
+	//route card
+	private By routeCardNameLabel = By.id("Research Primary School");
+	private By drivingButtonLabel = By.id("Driving 4 mins");
+	private By walkingButtonLabel = By.id("Walking 25 mins");
+		
 	private String tabBarID = "au.com.suncorp.marketplace:id/nearbyCategoryAppBarLayout";
 	
 	public String getPropertyCardTitle() {
@@ -83,6 +98,7 @@ public class WhatsNearbyPage extends BasePage{
 	}
 	
 	public void tapFullScreenMapPropertyPin() {
+		find(fullScreenMapPropertyPin,15);
 		tapElement(fullScreenMapPropertyPin);
 	}
 	
@@ -141,10 +157,6 @@ public class WhatsNearbyPage extends BasePage{
 		tapElement(propertyTab);
 	}
 	
-	public WebElement checkEducationTab() {
-		return find(educationTab);
-	}
-	
 	public void tapEducationTab() {
 		tapElement(educationTab);
 	}
@@ -157,12 +169,36 @@ public class WhatsNearbyPage extends BasePage{
 		tapElement(shoppingTab);
 	}
 	
-	public WebElement checkTransportTab() {
-		return find(transportTab);
+	public String getPlacesListCountLabel() {
+		return getText(placesListCountLabel);
 	}
 	
-	public void tapTransportTab() {
-		tapElement(transportTab);
+	public boolean isShoppingTabSelected() {
+		return isTabSelected(shoppingTab);
+	}
+	
+	public boolean isTransportTabSelected() {
+		return isTabSelected(transportTab);
+	}
+	
+	public boolean isEntertainmentTabSelected() {
+		return isTabSelected(entertainmentTab);
+	}
+	
+	public boolean isHealthTabSelected() {
+		return isTabSelected(healthTab);
+	}
+	
+	public boolean isDiningTabSelected() {
+		return isTabSelected(diningTab);
+	}
+	
+	public boolean isOtherTabSelected() {
+		return isTabSelected(otherTab);
+	}
+	
+	public WebElement checkEducationTab() {
+		return find(educationTab);
 	}
 	
 	public WebElement checkEntertainmentTab() {
@@ -190,13 +226,68 @@ public class WhatsNearbyPage extends BasePage{
 	}
 	
 	public WebElement checkOtherTab() {
-		return find(otherTab,5);
+		return find(otherTab);
 	}
 	
 	public void tapOtherTab() {
 		tapElement(otherTab);
 	}
 	
+	public WebElement checkTransportTab() {
+		return find(transportTab);
+	}
+	
+	public void tapTransportTab() {
+		tapElement(transportTab);
+	}
+	
+	public WebElement checkPlacesListCountLabel() {
+		return find(placesListCountLabel,3);
+	}
+	
+	public WebElement checkPOIname() {
+		return find(POIname,3);
+	}
+	
+	public void tapPOIname() {
+		tapElement(POIname);
+	}
+
+	public void tapPOIexpandableListButton() {
+		tapElement(POIexpandableListButton);
+	}
+	
+	public WebElement checkShowListLabelButton() {
+		return find(showListLabelButton);
+	}
+	
+	public String getShowListLabelButton() {
+		return getText(showListLabelButton);
+	}
+	
+	public List<String> getItemsList() {
+		String convertDistance = null;
+		List<String> names = new ArrayList<String>();
+		List<WebElement> itemListElements = finds(itemListdistance);
+		for(int i=0;i<itemListElements.size();i++) {
+			if(itemListElements.get(i).getText().contains("km")) {
+				String POIDistance = itemListElements.get(i).getText().replace("(", "").replace(")", "");
+				convertDistance = POIDistance.substring(0, (itemListElements.get(i).getText().length()-4));
+				convertDistance = convertDistance.replace(".", "")+"00";
+				names.add(convertDistance.substring(convertDistance.length()-4, convertDistance.length()));
+			}
+			else if(itemListElements.get(i).getText().contains("m")){
+				String POIDistance = itemListElements.get(i).getText().replace("(", "").replace(")", "");
+				convertDistance = POIDistance.substring(0, (itemListElements.get(i).getText().length()-3));
+				names.add(convertDistance.substring(convertDistance.length()-3, convertDistance.length()));
+			}else{
+				String POIDistance = itemListElements.get(i).getText().replace("(", "").replace(")", "");
+				names.add(POIDistance);
+			}
+		}
+		return names;
+	}
+
 	public WebElement checkFullScreenMapCloseButton() {
 		return find(fullScreenMapCloseButton);
 	}
@@ -227,4 +318,11 @@ public class WhatsNearbyPage extends BasePage{
 		tapElement(fullScreenGoogleLabel);
 	}
 	
+	public void swipeTabsLeft() {
+		scrollHorizontallyToElement("OTHER","text","au.com.suncorp.marketplace:id/nearbyCategoryLayout",2);
+	}
+	
+	public void swipeTabsRight() {
+		scrollHorizontallyToElement("EDUCATION","text","au.com.suncorp.marketplace:id/nearbyCategoryLayout",2);
+	}
 }
