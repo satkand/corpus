@@ -25,10 +25,13 @@ public class CategoryDetailsPage extends BasePage {
 	private By updateMonthButton = By.id("au.com.suncorp.marketplace:id/changeMonth");
 	private By monthsOptionInPicker = By.id("au.com.suncorp.marketplace:id/monthItem");
 	private By loadingIndicator = By.id("loadingIndicator");
-	private By closeButton =MobileBy.AccessibilityId("Navigate up");
+	private By closeButton = MobileBy.AccessibilityId("Navigate up");
 	private By transactionErrorMsg = By.id("au.com.suncorp.marketplace:id/missingTransactionsHeading");
 	private By vendorAmount = By.id("au.com.suncorp.marketplace:id/vendorAmount");
 	private By vendorName = By.id("au.com.suncorp.marketplace:id/vendorName");
+	private By vendorSearchList = By.id("au.com.suncorp.marketplace:id/transactionFilteredList");
+	private By connectedAccountsButton = By.id("au.com.suncorp.marketplace:id/connectedAccounts");
+	
 	
 	public WebElement checkMonthPicker() {
 		return find(monthPicker);
@@ -97,6 +100,15 @@ public class CategoryDetailsPage extends BasePage {
 		tapElement(closeButton);
 	}
 	
+	public WebElement checkConnectedAccountsButton() {
+		return find(connectedAccountsButton);
+	}
+	
+	public void tapConnectedAccountsButton() {
+		tapElement(connectedAccountsButton);
+	}
+	
+	
 	public WebElement checkTransactionErrorMsg() {
 		return find(transactionErrorMsg);
 	}
@@ -132,4 +144,9 @@ public class CategoryDetailsPage extends BasePage {
 			return false;
 	}
 	
+	public WebElement checkVendorSearchList() {
+		return find(vendorSearchList);
+	}
+	
+
 }

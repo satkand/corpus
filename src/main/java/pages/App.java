@@ -65,6 +65,7 @@ import pages.marketplace.portfolio.AddProductPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
+import pages.marketplace.wealth.ConnectedAccountsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 import pages.marketplace.wealth.VendorDetailPage;
@@ -125,6 +126,7 @@ public class App extends BaseTest {
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 	public VendorDetailPage vendorDetailPage = null;
+	public ConnectedAccountsPage connectedAccountsPage = null;
 	public WhatsNearbyPage whatsNearbyPage = null;
 	public ForceUpdatePage forceUpdatePage = null;
 	public SuburbDetailsPage suburbDetailsPage = null;
@@ -220,6 +222,7 @@ public class App extends BaseTest {
 		makeAClaimPage = new MakeAClaimPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
 		vendorDetailPage = new VendorDetailPage(driver);
+		connectedAccountsPage = new ConnectedAccountsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		termsAndConditionsPage = new TermsAndConditionsPage(driver);
 		addProductPage = new AddProductPage(driver);
