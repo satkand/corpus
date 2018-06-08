@@ -31,7 +31,7 @@ public class ArticlesPropertyTest extends App{
 		String screenHeight = utils.readTestData("articlesCarousel", "property", "screenHeight");
 		//Preconditions
 		//1. Navigate to Home Property dimension and then to articles carousel.
-		navigateToHomePropertyTab("withProducts");
+		navigateToHomePropertyTab("articles");
 		articlesPage.waitForLoadingIndicatorToDisappear();
 		articlesPage.scrollToArticlesCarousel(screenHeight);
 		if(articlesPage.checkArticleReadMoreBtn()==null) {
@@ -64,7 +64,7 @@ public class ArticlesPropertyTest extends App{
 		    String screenHeight = utils.readTestData("articlesCarousel", "property", "screenHeight");
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
-			navigateToHomePropertyTab("withProducts");
+			navigateToHomePropertyTab("articles");
 			articlesPage.waitForLoadingIndicatorToDisappear();
 			articlesPage.scrollToArticlesCarousel(screenHeight);
 			if(articlesPage.checkArticleReadMoreBtn()==null) {
@@ -88,7 +88,7 @@ public class ArticlesPropertyTest extends App{
 			String screenHeight = utils.readTestData("articlesCarousel", "property", "screenHeight");
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
-			navigateToHomePropertyTab("withProducts");
+			navigateToHomePropertyTab("articles");
 			articlesPage.scrollToArticlesCarousel(screenHeight);
 			if(articlesPage.checkArticleReadMoreBtn()==null) {
 				articlesPage.scrollToArticlesReadMoreBtn(screenHeight);
@@ -117,7 +117,7 @@ public class ArticlesPropertyTest extends App{
 			String screenHeight = utils.readTestData("articlesCarousel", "property", "screenHeight");
 			//Preconditions
 			//1. Navigate to Home Property dimension and then to articles carousel.
-			navigateToHomePropertyTab("withProducts");
+			navigateToHomePropertyTab("articles");
 			articlesPage.checkArticleCarousel();
 			if(articlesPage.checkArticleReadMoreBtn()==null) {
 				articlesPage.scrollToArticlesReadMoreBtn(screenHeight);
@@ -128,8 +128,8 @@ public class ArticlesPropertyTest extends App{
 			}
 	
 	private void navigateToHomePropertyTab(String loginType) {
-		if(loginType.equals("withProducts")) {
-			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
+		if(loginType.equals("articles")) {
+			loginToApp(utils.readTestData("articlesCarousel", "login"), utils.readTestData("articlesCarousel","pwd"));
 		}else if(loginType.equals("noProperties")){
 			loginToApp(utils.readTestData("propertyDimension","NoProperties", "login"), utils.readTestData("propertyDimension","NoProperties", "pwd"));
 		}else if(loginType.equals("withOutProducts")){
