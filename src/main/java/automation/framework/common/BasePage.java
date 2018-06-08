@@ -26,7 +26,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.base.Function;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-
+import io.appium.java_client.MobileElement;
 //import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.TouchAction;
 
@@ -153,10 +153,10 @@ public class BasePage {
 		driver.runAppInBackground(duration);
 	}
 
-	protected void longPressOnAnElement(By locator) {
+	protected void longPressOnAnElement(WebElement element) {
 
 		TouchAction ta = new TouchAction(driver);
-		ta.longPress(find(locator)).release().perform();
+		ta.longPress(element).release().perform();
 
 		/* [OR]
 		TouchAction ta = new TouchAction(driver);
@@ -168,8 +168,7 @@ public class BasePage {
 		 */
 	}
 
-	protected void tapByOffsetFromStart(By locator, int offsetX, int offsetY) {
-		WebElement element = find(locator);
+	protected void tapByOffsetFromStart(WebElement element, int offsetX, int offsetY) {
 		Point location = element.getLocation();
 
 		final int finalXLocation = location.getX() + offsetX;
@@ -183,9 +182,8 @@ public class BasePage {
 		// offsetY).waitAction(Duration.ofMillis(4000)).release().perform();
 	}
 
-	protected void tapByOffsetFromEnd(By locator, int offsetX, int offsetY) {
+	protected void tapByOffsetFromEnd(WebElement element, int offsetX, int offsetY) {
 
-		WebElement element = find(locator);
 		Point location = element.getLocation();
 		int width = element.getSize().getWidth();
 
@@ -677,7 +675,6 @@ public class BasePage {
 	}
 
 	public Map<String,Object> getAppiumSessionDetails() {
-
 		return driver.getSessionDetails();
 	}
 
@@ -1627,8 +1624,21 @@ public class BasePage {
 		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 	}
 	
+	// Added by Gitin George
 	protected void closeAndLaunchApp() {
 		driver.closeApp();
 		driver.launchApp();
+	}
+	
+	/**
+	* This method to get the current activity on the device
+	* can be used when user is navigating out of the app
+	* 
+	* @author Gitin George
+	* @param
+	* @return String
+	*/
+	public String getActivityValue(){
+		return ((AndroidDriver<MobileElement>) driver).currentActivity();
 	}
 }

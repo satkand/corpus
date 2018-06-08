@@ -69,17 +69,12 @@
 			"validPINEntry2" : "2580"
 		}
 	},
-
-	"_comment": "The login and login1 values have to be changed before run",
 	"screenSize" : {
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "test@account.com",
-			"login1": "test1@account.com",
-			"login2": "sb@sb.sb",
-			"memberLoginEmail" : "a@b.c",
+			"login": "test5@test.com",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
 			"userName": ""
@@ -727,7 +722,7 @@
 						"brand":"AAMI",
 						"productType":"Car Insurance",
 						"policyNumber":"MPA123456313",
-						"policyDescription":"Car Insurance",
+						"policyDescription":"Car insurance",
           				"periodOfCover": 
             			{
              				 "startDate": "01 October",
@@ -756,7 +751,7 @@
 						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
 						"discounts":"Multi-Policy, Staff",
 						"rewardsTitle":"AAMI Safe driver rewards",
-						"rewards":"Sapphire with $45.50 credit",
+						"rewards":"Sapphire with $45.50 credit available for your next renewal",
 						"riskCoverPeriod": 
             			 {
              				 "startDate": "01 October",
@@ -779,17 +774,17 @@
             			{
             			        "login": "policystatusvehicles@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "Policy active",
-             				 "cancellationPending":"Policy cancellation pending",
-             				 "futureActive": "Policy future activation",
+             				 "active": "Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy commencing",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			"myVehiclePolicyStatus": 
             			{
-             				"active": "Policy active",
-             				 "cancellationPending":"Policy cancellation pending",
-             				 "futureActive": "Policy future activation",
+             				"active": "Policy Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy Future Activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -858,7 +853,7 @@
             			},
             			"riskDetails":{
 						"rewardsTitle":"Round the world reward",
-						"rewards":"Platinum with $1,000.01 credit"}
+						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
 				},
 				"homePolicy": 
 				{
@@ -868,7 +863,7 @@
 						"brand":"SUNCORP",
 						"productType":"Home And Contents Insurance",
 						"policyNumber":"HPS123457790",
-						"policyDescription":"Home Insurance",
+						"policyDescription":"Home insurance",
 							"instalmentDetails":
             			{
             			 "instalmentAmount":"$88.88"
@@ -886,18 +881,18 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "Policy active",
-             				 "cancellationPending":"Policy cancellation pending",
-             				 "futureActive": "Policy future activation",
+             				 "active": "ACTIVE",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy commencing",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			
             				"myProductPolicyStatus": 
             			{
-             				"active": "Policy active",
-             				 "cancellationPending":"Policy cancellation pending",
-             				 "futureActive": "Policy future activation",
+             				"active": "Policy Active",
+             				 "cancellationPending":"Cancellation pending",
+             				 "futureActive": "Policy Future Activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -1292,7 +1287,7 @@
 			"searchString" : "sto",
 			"resultString1" : "Store abc",
 			"resultString2" : "Housing store",
-			"resultString3" : "Stowed"
+			"resultString3" : "Stowed",
 
 		},
 		"hasNoData" : {
@@ -1393,7 +1388,6 @@
 		{
 			"brandName": "AAMI",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "AAMI member login",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
@@ -1401,7 +1395,6 @@
 		{
 			"brandName": "GIO",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "GIO member login",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
@@ -1409,7 +1402,6 @@
 		{
 			"brandName": "Shannons",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "Shannons member login",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
