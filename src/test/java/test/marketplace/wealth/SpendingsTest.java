@@ -231,8 +231,11 @@ public class SpendingsTest extends App {
 	//2480 - Scenario 1
 	//2905 - Scenario 1
 	//2260 - Scenario 1
-	@TestDetails(story1 = "DMPM-4034" , story2="DMPM-5818", story3="DMPM-2480",story4="DMPM-2905",story5="DMPM-2260")
-	@Test (groups = "marketplace", "FFI", "priority-minor"})
+
+	@TestDetails(story1 = "DMPM-4034:DMPM-5818,DMPM-5819,DMPM-5820,DMPM-5821,DMPM-5822,DMPM-5823", story2 = "DMPM-5921", story3 = "DMPM-2480",
+			story4 = "DMPM-2905",story5 = "DMPM-2260:DMPM-4959,DMPM-5273")
+	@Test (groups = { "marketplace", "FFI", "priority-minor"})
+
 	public void testDatePickerInCategoryDetailsScreen() {
 		
 		navigateToCategoryDetailScreen();	
@@ -452,11 +455,11 @@ public class SpendingsTest extends App {
 	
 	private void navigateToSpendingsScreen(){
 		loginToApp(utils.readTestData("hasSuncorpBankAccounts", "login"), utils.readTestData("hasSuncorpBankAccounts", "pwd"));
-		if(landingPage.checkWealthTab() == null) {
+		if(landingPage.checkFinanceTab() == null) {
 			landingPage.swipeToHealthTab();
 		}
-		landingPage.tapWealthTab();
-		Assert.assertTrue(landingPage.isWealthTabSelected(), "Wealth tab is not selected on landing page");
+		landingPage.tapFinanceTab();
+		Assert.assertTrue(landingPage.isFinanceTabSelected(), "Wealth tab is not selected on landing page");
 		
 		// TODO This logic is for enabling the bank accounts option in settings, This needs to be removed, when the logic for fetching the the bank accounts from api is implemented
 		navigationMenu.tapSplitMenuIcon();
@@ -465,7 +468,7 @@ public class SpendingsTest extends App {
 		configPage.enableHasBankAccountsToggle(); 
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
-		landingPage.tapWealthTab();
+		landingPage.tapFinanceTab();
 		
 		// Actual logic
 		financePage.tapviewSpendingThisMonthButton();

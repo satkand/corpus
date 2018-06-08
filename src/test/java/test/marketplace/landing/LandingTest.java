@@ -18,7 +18,7 @@ public class LandingTest extends App {
 		Assert.assertNotNull(landingPage.checkHomeTab(), "Landing page - Home tab not shown");
 		Assert.assertNotNull(landingPage.checkVehiclesTab(), "Landing page - Vehicles tab not shown");
 		landingPage.swipeToHealthTab();
-		Assert.assertNotNull(landingPage.checkWealthTab(), "Landing page - Wealth tab not shown");
+		Assert.assertNotNull(landingPage.checkFinanceTab(), "Landing page - Wealth tab not shown");
 		Assert.assertNotNull(landingPage.checkHealthTab(), "Landing page - Health tab not shown");
 		//Suncorp tab selected by default
 		landingPage.swipeToSuncorpTab();
@@ -35,8 +35,8 @@ public class LandingTest extends App {
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Landing Page - Home tab is not selected");
 		landingPage.tapVehiclesTab();
 		Assert.assertTrue(landingPage.isVehiclesTabSelected(), "Landing Page - Vehicles tab is not selected");
-		landingPage.tapWealthTab();
-		Assert.assertTrue(landingPage.isWealthTabSelected(), "Landing Page - Wealth tab is not selected");
+		landingPage.tapFinanceTab();
+		Assert.assertTrue(landingPage.isFinanceTabSelected(), "Landing Page - Wealth tab is not selected");
 		landingPage.tapHealthTab();
 		Assert.assertTrue(landingPage.isHealthTabSelected(), "Landing Page - Health tab is not selected");
 		landingPage.swipeToSuncorpTab();
@@ -45,6 +45,10 @@ public class LandingTest extends App {
 	}
 	
 	private void navigateToLandingPage() {
+		// TODO: R3 Release
+		/*
 		welcomePage.tapGuestAccessButton();
+		*/
+		loginToApp(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 	}
 }

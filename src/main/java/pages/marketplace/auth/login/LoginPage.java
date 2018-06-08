@@ -2,16 +2,16 @@ package pages.marketplace.auth.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Keyboard;
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.MobileBy;
 
 public class LoginPage extends BasePage{
 	
 	public LoginPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	private By loadingIndicator = By.id("au.com.suncorp.marketplace:id/loadingIndicator");
@@ -20,19 +20,30 @@ public class LoginPage extends BasePage{
 	private By passwordField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By loginButton = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By forgotPasswordButton = By.id("au.com.suncorp.marketplace:id/forgotPasswordButton");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By backButton = MobileBy.AccessibilityId("Back");
 	private By noCredentialsButton = By.id("au.com.suncorp.marketplace:id/noCredentialsButton");
 
 	
 	//TODO Both have same id -> need to differentiate them
-//	private By emailFieldError =  By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-//	private By passwordFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
 	//Error scenario
 	private By errorSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By errorSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
+	
+	//Reset Password
+	private By resetPasswordTitle = By.id("au.com.suncorp.marketplace:id/resetPasswordTitleText");
+	private By resetPasswordDescription = By.id("au.com.suncorp.marketplace:id/resetPasswordSubtitleText");
+	private By resetPasswordEmailField = By.id("au.com.suncorp.marketplace:id/emailAddressField");
+	private By resetLinkButton = By.id("au.com.suncorp.marketplace:id/sendResetLinkButton");
+	private By resetPasswordBackButton = MobileBy.AccessibilityId("Back");
+	private By resetPasswordEmailFieldError = By.id("au.com.suncorp.marketplace:id/textinput_error");
+	private By resetPasswordSuccessSnackbar = By.id("au.com.suncorp.marketplace:id/snackbar_text");
+	private By resetPasswordSuccessSnackbarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
+	
+	private By emailPanel = By.id("android:id/titlePanel_default");
+	private By emailPanelOptions = By.id("android:id/icon");
 	
 	public WebElement checkLoginPageTitle(){
 		return find(loginPageTitle,20);
@@ -150,7 +161,106 @@ public class LoginPage extends BasePage{
 		return find(loadingIndicator, 30);
 	}
 	
+	public void waitForLoadingIndicatorToDismiss() {
+		waitForElementToDisappear(loadingIndicator, 30);;
+	}
+	
 	public String getEmailFieldData() {
 		return getText(emailField);
 	}
+	
+	public void tapForgotPassword() {
+		tapElement(forgotPasswordButton);
+	}
+	
+	public WebElement checkResetPasswordTitle() {
+		return find(resetPasswordTitle);
+	}
+	
+	public String getResetPasswordTitle() {
+		return getText(resetPasswordTitle);
+	}
+	
+	public WebElement checkResetPasswordDescription() {
+		return find(resetPasswordDescription);
+	}
+	
+	public String getResetPasswordDescription() {
+		return getText(resetPasswordDescription);
+	}
+	
+	public WebElement checkResetPasswordEmailField() {
+		return find(resetPasswordEmailField,5);
+	}
+	
+	public void enterResetPasswordEmail(String email) {
+		typeValue(email, resetPasswordEmailField);
+	}
+	
+	public String getResetPasswordEmailValue() {
+		return getText(resetPasswordEmailField);
+	}
+	
+	public void tapResetPasswordEmailField() {
+		tapElement(resetPasswordEmailField);
+	}
+	
+	public WebElement checkResetPasswordEmailError() {
+		return find(resetPasswordEmailFieldError);
+	}
+	
+	public String getResetPasswordEmailErrorVal() {
+		return getText(resetPasswordEmailFieldError);
+	}
+	
+	public WebElement checkResetLinkButton() {
+		return find(resetLinkButton);
+	}
+	
+	public void tapResetLinkButton() {
+		tapElement(resetLinkButton);
+	}
+	
+	public void tapResetPasswordBackButton() {
+		tapElement(resetPasswordBackButton);
+	}
+	
+	public WebElement checkResetPasswordSuccessSnackbar() {
+		return find(resetPasswordSuccessSnackbar, 5);
+	}
+	
+	public String getResetPasswordSuccessSnackbarText() {
+		return getText(resetPasswordSuccessSnackbar);
+	}
+	
+	public String getResetPasswordSuccessSnackbarBtn() {
+		return getText(resetPasswordSuccessSnackbarButton);
+	}
+	
+	public void tapResetPasswordSuccessSnackbarButton() {
+		tapElement(resetPasswordSuccessSnackbarButton);
+	}
+	
+	public WebElement checkEmailOptionPanel() {
+		return find(emailPanel);
+	}
+	
+	public WebElement checkFirstEmailPanelOption () {
+		 WebElement firstOption = finds(emailPanelOptions).get(0);
+		 return firstOption;
+	}
+	
+	public void tapFirstEmailOption() {
+		 WebElement firstOption = finds(emailPanelOptions).get(0);
+		 tapElement(firstOption);
+	}
+	
+	public String getSuncorpActivityValue(){
+		return getActivityValue();
+	}
+	
+	public void restartApp() {
+		closeAndLaunchApp();
+	}
+
 }

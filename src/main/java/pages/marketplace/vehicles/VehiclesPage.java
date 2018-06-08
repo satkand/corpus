@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import automation.framework.common.BasePage;
-import automation.framework.common.Copy;
 import io.appium.java_client.AppiumDriver;
 
 public class VehiclesPage extends BasePage {
@@ -32,10 +29,100 @@ public class VehiclesPage extends BasePage {
 	private By vehicleServicesBtn = By.id("au.com.suncorp.marketplace:id/vehicleServicesButton");
 	private String vehicleServicesBtnId = "au.com.suncorp.marketplace:id/vehicleServicesButton";
 	private String scrollableId = "au.com.suncorp.marketplace:id/navigationViewPager";
+	
+	//Vehicles Dimension background Image
+	private By vehicleDimensionBkgrndImg = By.id("au.com.suncorp.marketplace:id/vehiclePillarBackground");
+	private String vehicleDimensionBkgrndImgId = "au.com.suncorp.marketplace:id/vehiclePillarBackground";
 
+	//Vehicles dimensions asset summary
+	private By policyViewDocumentsBtn = By.id("au.com.suncorp.marketplace:id/viewDetailsButton");
+	
+	//Vehicles Dimension asset details
+	private String policyVehicleItemLayoutId = "au.com.suncorp.marketplace:id/vehicleItemLayout";
+	private By policyVehicleItemLayout = By.id("au.com.suncorp.marketplace:id/vehicleItemLayout");
+	private By policyVehicleImage = By.id("au.com.suncorp.marketplace:id/vehicleImage");
+	private By vehicleTakePhotoImage = By.id("au.com.suncorp.marketplace:id/takePhotoImage");
+	private By vehicleRegistrationNumberText = By.id("au.com.suncorp.marketplace:id/registrationNumberText");
+	private By vehicleDescriptionText = By.id("au.com.suncorp.marketplace:id/vehicleDescriptionText");
+	private By vehicleMakeClaimBtn = By.id("au.com.suncorp.marketplace:id/makeClaimButton");
+	private By vehicleAddDocumentsBtn = By.id("au.com.suncorp.marketplace:id/addDocumentsButton");
+	
+	//Vehicle asset details elements utilization
+	public WebElement scrollToDerivedAsset() {
+		if (getScreenHeight()>1920) {
+			scrollToElement(policyVehicleItemLayoutId, "id", scrollableId, 10);
+		}
+		else {
+			scrollToElement(policyVehicleItemLayout );
+		}
+		return checkPolicyVehicleItemLayout();
+	}
+	
+	public WebElement checkPolicyVehicleItemLayout() {
+		return find(policyVehicleItemLayout);
+	}
+	
+	public WebElement checkVehicleDescriptionText() {
+		return find(vehicleDescriptionText);
+	}
+	
+	public String getVehicleDescriptionText() {
+		return find(vehicleDescriptionText).getText();
+	}
+	
+	public WebElement checkPolicyRegistrationNumberText() {
+		return find(vehicleRegistrationNumberText);
+	}
+	
+	public String getRegistrationNumberText() {
+		return find(vehicleRegistrationNumberText).getText();
+	}
+	
+	
+	public WebElement checkPolicyVehicleTypeImage() {
+		return find(policyVehicleImage);
+	}
+	
+	public WebElement checkVehicleTakePhotoImage() {
+		return find(vehicleTakePhotoImage);
+	}
+	
+	public WebElement checkVehicleMakeClaimBtn() {
+		return find(vehicleMakeClaimBtn);
+	}
+	
+	public String getVehicleMakeClaimBtn() {
+		return find(vehicleMakeClaimBtn).getText();
+	}
+	
+	public WebElement checkVehicleAddDocumentsBtn() {
+		return find(vehicleAddDocumentsBtn);
+	}
+	
+	public String getVehicleAddDocumentsBtn() {
+		return find(vehicleAddDocumentsBtn).getText();
+	}
+	
+	public WebElement checkPolicyViewDocumentsBtn() {
+		return find(policyViewDocumentsBtn);
+	}
+	
+	public void tapPolicyViewDocumentsBtn() {
+		 tapElement(policyViewDocumentsBtn);
+	}
+	
+	
 	// TODO -> Cannot find this in ANdroid. But its there on iOS
 	private By checkClaimStatusButton = By.id("VehicleCell.ClaimLabel");
-
+	
+	//check vehicle dimension background image element
+	public WebElement checkVehicleDimensionBkgrndImg() {
+		return find(vehicleDimensionBkgrndImg);
+	}
+	
+	public void scrollToVehicleDimensionBkgrndImg() {
+		scrollToElement(vehicleDimensionBkgrndImgId, "id", 20);
+	}
 
 	//Vehicle tile common elements utilization
 	public WebElement checkVehicleServicesImage() {
@@ -157,7 +244,7 @@ public class VehiclesPage extends BasePage {
 	}
 
 	public void waitForDataToLoad() {
-		waitForElementToDisappear(loadingIndicator);
+		waitForElementToDisappear(loadingIndicator,30);
 	}
 
 

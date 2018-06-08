@@ -5,18 +5,18 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class RegistrationPage extends BasePage {
 	
 	public RegistrationPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	
 	private By registrationPageTitle = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
 			+ "android.widget.TextView[1]");
-	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+	private By cancelButton = MobileBy.AccessibilityId("Cancel");
 	private By firstNameField = By.id("au.com.suncorp.marketplace:id/firstNameField");
 	private By surnameField = By.id("au.com.suncorp.marketplace:id/surnameField");
 	private By dateField = By.id("au.com.suncorp.marketplace:id/dateOfBirthField");
@@ -32,7 +32,7 @@ public class RegistrationPage extends BasePage {
 	private By confirmPasswordField = By.id("au.com.suncorp.marketplace:id/confirmPasswordField");
 	private By registerButton = By.id("au.com.suncorp.marketplace:id/registerButton");
 	private By accountCreatedMsg = By.id("au.com.suncorp.marketplace:id/dialogMessage");
-	private By pinSetupScreenTitle = By.id("au.com.suncorp.marketplace:id/enterPinMessage");
+//	private By pinSetupScreenTitle = By.id("au.com.suncorp.marketplace:id/enterPinMessage");
 	
 	private By firstNameErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/firstNameInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
@@ -59,6 +59,7 @@ public class RegistrationPage extends BasePage {
 
 	private By registerPage1Title = By.xpath("//android.widget.TextView[@text='Step 1 of 3']");
 	private By registerPage2Title = By.id("au.com.suncorp.marketplace:id/pageDescriptionText");
+	private By registerPage3Title = By.id("au.com.suncorp.marketplace:id/registrationStep3Label");
 	private By backButton = By.id("BackButton");
 	
 	private By firstNameUserTip = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
@@ -77,7 +78,7 @@ public class RegistrationPage extends BasePage {
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By okButtonDuplicateEmailPopUp = By.id("android:id/button2");
-	private By anotherEmailButtonDuplicateEmailPopUp = By.id("android:id/button1");
+	private By loginWithThisEmailButton = By.id("android:id/button1");
 	private By duplicateEmailPopUpTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By duplicateEmailPopUpText = By.id("android:id/message");
 
@@ -444,15 +445,18 @@ public class RegistrationPage extends BasePage {
 	}
 	
 	public String getDuplicateEmailPopUpAnotherLoginButtonLabel() {
-		return getText(anotherEmailButtonDuplicateEmailPopUp);
+		return getText(loginWithThisEmailButton);
 	}
 	
 	public void tapOkButton() {
 		tapElement(okButtonDuplicateEmailPopUp);
 	}
 	
-	public void tapAnotherLoginButton() {
-		tapElement(anotherEmailButtonDuplicateEmailPopUp);
+	public void tapLoginWithThisEmailButton() {
+		tapElement(loginWithThisEmailButton);
 	}
 	
+	public WebElement checkRegisterPage3Title() {
+		return find(registerPage3Title);
+	}
 }

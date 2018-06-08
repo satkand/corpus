@@ -1,10 +1,11 @@
 package test.marketplace.auth.registration;
 
+import java.util.HashMap;
 import java.util.List;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.Copy;
 import pages.App;
 
 public class RegistrationTest extends App{
@@ -22,7 +23,8 @@ public class RegistrationTest extends App{
 					utils.readTestData("registration", "success", "mobile"));
 			registrationPage.tapNextButton();
 			registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
-			Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(),"Pin enable screen is not displayed");	
+			common.waitForLoadingIndicatorToDisappear();
+			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(),"Pin enable screen is not displayed");
 	}
 	
 	@Test(groups = {"DMPM-185", "DMPM-375", "marketplace", "Registration", "priority-major"})
@@ -81,7 +83,7 @@ public class RegistrationTest extends App{
 		
 	}
 	
-	/*	
+	
 	@Test(groups = {"DMPM-184", "DMPM-435", "marketplace", "Registration", "priority-major"})
 	public void inlineErrorValidationOnTapout() {
 		navigateToRegistrationPage();
@@ -91,17 +93,18 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getDOBErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		registrationPage.tapFirstNameField();
+		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"), "Reg Page 1 - Error not displayed for the First Name field");
 		registrationPage.tapSurnameField();
 		registrationPage.enterSurname(utils.readTestData("registration", "failure", "1letterSurname"));
+		registrationPage.tapFirstNameField();
 		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "shortSurnameErrorMsg"));
 		registrationPage.enterSurname(utils.readTestData("registration", "failure", "longSurname"));
+		registrationPage.tapFirstNameField();
 		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "shortSurnameErrorMsg"));
-		registrationPage.enterSurname(utils.readTestData("registration", "failure", "40charSurname"));
+		registrationPage.enterSurname(utils.readTestData("registration", "failure", "30charFirstname"));
 		Assert.assertNull(registrationPage.checkSurnameErrorMsg());
-		//TODO: Date picker not automated
-		
 	}
-*/
+
 	@Test(groups = {"DMPM-185", "DMPM-377","marketplace", "Registration", "priority-major"})
 	public void testInlineErrorValidations() {
 		navigateToRegistrationPage();
@@ -178,7 +181,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(), utils.readTestData("copy", "registrationPage", "invalidMobileErrorMsg"));
 	}
 	
-	/*	
+	
 	@Test(groups = {"DMPM-188", "DMPM-423", "marketplace", "Registration", "priority-minor"})
 	public void inlineMessageBehaviour() {
 		navigateToRegistrationPage();
@@ -189,11 +192,13 @@ public class RegistrationTest extends App{
 		registrationPage.tapNextButton();
 		registrationPage.enterEmail(utils.readTestData("registration", "failure", "emailLong"));
 		registrationPage.tapMobileNumberField();
-		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "invalidEmailErrorMsg"));
+		String errorVal = registrationPage.getInvalidEmailErrorMsg().replace("\n\n", " ");
+		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg2"));
 		registrationPage.tapEmailField();
-		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "invalidEmailErrorMsg"));		
+		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg2"));
 	}
-	*/
+	
+	
 	@Test(groups = {"DMPM-189", "DMPM-491", "marketplace", "Registration", "priority-minor"})
 	public void testCorrectingInvalidData() {
 		navigateToRegistrationPage();
@@ -251,6 +256,7 @@ public class RegistrationTest extends App{
 		Assert.assertNotNull(registrationPage.checkRegisterPage2Title(), "Did not navigate to screen 2");
 		Assert.assertTrue(registrationPage.checkScreen2Entries(mailId, mobileNumber));
 		registrationPage.tapNextButton();
+		Assert.assertNotNull(registrationPage.checkRegisterPage3Title(), "Registration Page 3 - User is naviageted back Registration page 3");
 		registrationPage.tapCancelButton(); 
 	}
 	
@@ -423,36 +429,30 @@ public class RegistrationTest extends App{
 	// DMPM-2730 : I don't have any credentials
 	@Test( groups = { "DMPM-2730","DMPM-2922","DMPM-2925","marketplace", "Registration", "priority-major" })
 	public void testNoCredentialsSupportedBrand() {
-
 		navigateToGetStartedPage();
+		
+		List brandElements = utils.readTestDataList("brands");
+		for(Object brandIcons : brandElements) {
+			if(welcomePage.checkWelcomeSuncorpImage() != null) {
+				navigateToGetStartedPage();
+			}
 			
-		// read supported groups from the test data
-		List supportedGroupList = (List)utils.readTestDataList("copy", "registration", "supportedGroup");
-		for(Object supportedGroup : (List)supportedGroupList) {
+			HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
+			getStartedPage.tapBrandSelectDropDown();
+			Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
+			Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
+			getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
+			getStartedPage.tapNextButton();
+
+			if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+				termsAndConditionsPage.tapAcceptButton();
+			}
+			Assert.assertNotNull(memberLoginPage.checkNoCredentialsButton(), "Member Login - No Credentials button not displayed");
 			
-		String supportedGroupName = 	supportedGroup.toString();
-	
-		// check supported group icon is displayed
-		Assert.assertNotNull(getStartedPage.checkRegisterWithSupportedGroupButton(supportedGroupName),"Get registered with supported group button is not displayed");
-		
-		// check the registration screen for supported group
-		getStartedPage.tapRegisterWithSupportedGroupButton(supportedGroupName);
-		Assert.assertEquals(loginPage.getLoginPageTitle().toLowerCase(),supportedGroupName+ utils.readTestData("copy", "registration", "supportedGroupLoginTitleSuffix"),
-						supportedGroupName+ "Supported group login page title is not shown as expected");
-		
-		Assert.assertNotNull(loginPage.checkNoCredentialsButton(),"I don't have any credentials button is not displayed");
-		loginPage.tapNoCredentialsButton();
-		
-		// check if first page of registration is displayed on tapping - I don't have credentials button
-		Assert.assertNotNull(registrationPage.checkRegisterPage1Title(), "First Page of registration is not displayed");
-		
-		registrationPage.tapCancelButton();
-		Assert.assertEquals(loginPage.getLoginPageTitle().toLowerCase(),supportedGroupName+ utils.readTestData("copy", "registration", "supportedGroupLoginTitleSuffix"),
-						supportedGroupName+ "Supported group login page title is not shown as expected");
-		
-		registrationPage.tapCancelButton();
+			memberLoginPage.tapNoCredentialsButton();
+			Assert.assertNotNull(registrationPage.checkRegisterPage1Title(), "Registration Page - User is not navigated to the Registration page 1");
+			registrationPage.tapCancelButton();
 		}
-		
 	}
 	
 	// DMPM-213 : Check if post code is valid
@@ -532,7 +532,9 @@ public class RegistrationTest extends App{
 		// check error message is displayed for long email ID
 		registrationPage.enterEmail(utils.readTestData("registration", "failure", "emailLong"));
 		Assert.assertNotNull(registrationPage.checkEmailErrorMsg(), "Email inline message is not displayed.");
-		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(),utils.readTestData("copy", "registrationPage", "longEmailErrorMsg"),
+		String errorVal = registrationPage.getInvalidEmailErrorMsg().replace("\n\n", " ");
+		//Validation as user enters value
+		Assert.assertEquals(errorVal, utils.readTestData("copy", "registrationPage", "longEmailErrorMsg"),
 				"Maximum length error message for email is not displayed");
 
 		registrationPage.clearField("emailField");
@@ -640,7 +642,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpOkButtonLabel(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpOkButtonText"),
 				"Duplicate email alert pop up title is not correct");
 
-		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpAnotherLoginButtonLabel(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpUseAnotherEmailButtonText"),
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpAnotherLoginButtonLabel().toUpperCase(), Copy.DUPLICTE_EMAIL_POPUP_USE_ANOTHER_EMAIL_BUTTON_TEXT,
 				"Duplicate email alert pop up title is not correct");
 
 		registrationPage.tapOkButton();
@@ -652,27 +654,28 @@ public class RegistrationTest extends App{
 
 		Assert.assertNotNull(registrationPage.checkDuplicateEmailPopUpTitle(),"Duplicate email alert pop up is not displayed on registration.");
 
-		registrationPage.tapAnotherLoginButton();
+		registrationPage.tapLoginWithThisEmailButton();
 
 		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"),
 				"Login page title is not shown as expected");
-
-		Assert.assertEquals(loginPage.getEmailFieldData(), utils.readTestData("loginCredentials", "validLoginCredentials","login"),
-				"Email field is not pre populated with email as expected");
-
+		
+		Assert.assertNotNull(loginPage.getEmailFieldData().contains(utils.readTestData("loginCredentials", "validLoginCredentials","login")), "Email field is not pre populated with email as expected");
 	}
-	
-
 
 	private void navigateToRegistrationPage() {
+		// To check if the user is already logged in
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
 		welcomePage.tapRegisterButton();
 		if(getStartedPage.checkSetupNewAccountButton() != null) {
 			getStartedPage.tapSetupNewAccount();
 		}
+		Assert.assertNotNull(termsAndConditionsPage.checkTermsAndConditionsTitle(), "Terms and Condition - Terms and Condition page is not displayed");
+		termsAndConditionsPage.tapAcceptButton();
 		Assert.assertNotNull(registrationPage.checkRegistrationPageTitle(), "Registration page not loaded");
-		
 	}
 	
 	private void navigateToGetStartedPage() {
