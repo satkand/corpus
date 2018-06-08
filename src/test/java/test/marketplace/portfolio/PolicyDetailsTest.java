@@ -207,9 +207,9 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
-		policyDetailsPage.scrollToRiskViewDetailsButton(screenHeight);
-		//Assert.assertNotNull(policyDetailsPage.scrollToRiskViewDetailsButton(), "View details button is not displayed");
-		policyDetailsPage.tapRiskViewDetails();
+		policyDetailsPage.scrollToRiskViewOnlyButton(screenHeight);
+		Assert.assertNotNull(policyDetailsPage.checkRiskViewOnlyDetails(), "View details button is not displayed");
+		policyDetailsPage.tapRiskViewOnlyDetails();
 		assertRiskDetailsScreen(riskDetails);
 		riskDetailsPage.tapNavigateBackButton();
 		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.POLICY_DETAILS_SCREEN_TITLE),
@@ -242,9 +242,9 @@ public class PolicyDetailsTest extends App {
 		//DMPM-5751:DMPM-7544
 		assertRiskTileElements(riskDetails);
 		//DMPM-6151:DMPM-7074 Continued
-		policyDetailsPage.scrollToRiskViewDetailsButton(screenHeight);
-		Assert.assertNotNull(policyDetailsPage.checkRiskViewDetails(), "View details button is not displayed");
-		policyDetailsPage.tapRiskViewDetails();
+		policyDetailsPage.scrollToRiskViewOnlyButton(screenHeight);
+		Assert.assertNotNull(policyDetailsPage.checkRiskViewOnlyDetails(), "View details button is not displayed");
+		policyDetailsPage.tapRiskViewOnlyDetails();;
 		assertRiskDetails(riskDetails,CoverTypeTitle);
 		riskDetailsPage.tapNavigateBackButton();
 		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.POLICY_DETAILS_SCREEN_TITLE),
@@ -385,8 +385,8 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
-		policyDetailsPage.scrollToRiskViewDetailsButton(screenHeight);
-		policyDetailsPage.tapRiskViewDetails();
+		policyDetailsPage.scrollToRiskViewOnlyButton(screenHeight);
+		policyDetailsPage.tapRiskViewOnlyDetails();
 		Assert.assertEquals(riskDetailsPage.getExcessType(), excessType, "Standard excess type label is not displayed");
 		Assert.assertEquals(riskDetailsPage.getExcessAmount(), excessAmount,
 				"Standard amount type label is not displayed");
@@ -414,9 +414,9 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
-		policyDetailsPage.scrollToRiskViewDetailsButton(screenHeight);
-		Assert.assertNotNull(policyDetailsPage.checkRiskViewDetails(), "Risk tile in policy details do not show risk view button!");
-		policyDetailsPage.tapRiskViewDetails();
+		policyDetailsPage.scrollToRiskViewOnlyButton(screenHeight);
+		Assert.assertNotNull(policyDetailsPage.checkRiskViewOnlyDetails(), "Risk tile in policy details do not show risk view button!");
+		policyDetailsPage.tapRiskViewOnlyDetails();
 		Assert.assertEquals(riskDetailsPage.getAdditionalExcessesTabText(), Copy.ADDITIONAL_EXCESSES_DETAILS_LABEL,
 				"Additional Excess Details label is not displayed");
 		riskDetailsPage.tapAdditionalExcessesTab();
@@ -686,8 +686,8 @@ public class PolicyDetailsTest extends App {
 
 	private void assertRiskRenewalStatus(String myProductStatus, String policy,String coverPeriodStartDate, String coverPeriodEndDate, String screenHeight) {
 		myProductsPage.tapProductByPolicyStatus(myProductStatus);
-		policyDetailsPage.scrollToRiskViewDetailsButton(screenHeight);
-		policyDetailsPage.tapRiskViewDetails();
+		policyDetailsPage.scrollToRiskViewOnlyButton(screenHeight);
+		policyDetailsPage.tapRiskViewOnlyDetails();
 		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNotNull(riskDetailsPage.checkCoverPeriodLabel(),"Risk details, period of cover title is not shown");
 		assertRiskDetailsCoverPeriodDates(coverPeriodStartDate, coverPeriodEndDate);

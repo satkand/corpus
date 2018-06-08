@@ -152,7 +152,6 @@ public interface Copy {
 	
 
 	//MEMBER LOGIN PAGE
-
 	String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
 
 
@@ -180,5 +179,8 @@ public interface Copy {
 
 	//LOGIN PAGE
 	public String LOGIN_INVALID_CREDENTIALS_SNACKBAR_TEXT = "Wrong email or password. Please check and retry.";
+	
+	//REGISTRATION PAGE
+	public String DUPLICTE_EMAIL_POPUP_USE_ANOTHER_EMAIL_BUTTON_TEXT = "LOG IN WITH THIS EMAIL";
 
 }

@@ -14,9 +14,9 @@ public class NavigationMenuPage extends BasePage {
 	private By welcomeMessage = By.id("au.com.suncorp.marketplace:id/profileName");
 	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
 	private By bankingHome = By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
-	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='My Products']");
 	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Safe']");
 	private By productsCatalogueItem = By.xpath("//android.widget.CheckedTextView[@text='Apply online']");
+	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Policies & Accounts']");
 	private By rewardsForYou = By.xpath("//android.widget.CheckedTextView[@text='Rewards for you']");
 	private By proffessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
 

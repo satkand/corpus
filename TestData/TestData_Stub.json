@@ -69,17 +69,12 @@
 			"validPINEntry2" : "2580"
 		}
 	},
-
-	"_comment": "The login and login1 values have to be changed before run",
 	"screenSize" : {
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
 		"validLoginCredentials": {
-			"login": "test@account.com",
-			"login1": "test1@account.com",
-			"login2": "sb@sb.sb",
-			"memberLoginEmail" : "a@b.c",
+			"login": "test5@test.com",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
 			"userName": ""
@@ -928,59 +923,59 @@
 		"pwd": "Password1"
 	},
 	"hasSuncorpBankAccounts" :{
-		"login": "irina.marketplace@suncorp.com.au",
-		"pwd": "Passw0rd",
-		"netWorthAmount": "$99,617.16",
+		"login": "digi@v.com",
+		"pwd": "Password1",
+		"netWorthAmount": "$7,550.35",
 		"bankAccounts": "",
-		"currentMonth": "May 2018",
+		"currentMonth": "March 2018",
 		"spendingsAmountPerMonth": [
 			{
 				"month": "January 2018",
-				"amount": "$0.00"
+				"amount": "$23.54"
 			},
 			{
 				"month": "February 2018",
-				"amount": "$29,090.58"
+				"amount": "$23.54"
 			},
 			{
 				"month": "March 2018",
-				"amount": "$29,298.43"
+				"amount": "$23.54"
 			},
 			{
-				"month": "April 2018",
-				"amount": "$28,816.13"
+				"month": "April 2017",
+				"amount": "$23.54"
 			},
 			{
-				"month": "May 2018",
-				"amount": "$28,667.34"
+				"month": "May 2017",
+				"amount": "$23.54"
 			},
 			{
-				"month": "June 2018",
-				"amount": "$0.00"
+				"month": "June 2017",
+				"amount": "$23.54"
 			},
 			{
 				"month": "July 2017",
-				"amount": "$0.00"
+				"amount": "$23.54"
 			},
 			{
 				"month": "August 2017",
-				"amount": "$0.00"
+				"amount": "$23.54"
 			},
 			{
 				"month": "September 2017",
-				"amount": "$0.00"
+				"amount": "$37,223.35"
 			},
 			{
 				"month": "October 2017",
-				"amount": "$0.00"
+				"amount": "$23.54"
 			},
 			{
 				"month": "November 2017",
-				"amount": "$0.00"
+				"amount": "$23.54"
 			},
 			{
 				"month": "December 2017",
-				"amount": "$0.00"
+				"amount": "$3,789.32"
 			}
 		],
 		"spendingsByCategories": [
@@ -988,42 +983,136 @@
 				"month": "February 2018",
 				"categoriesList": [
 					{
-					"name": "Groceries",
-					"amount": "$4,999.87",
-					"transactionCount": 108
-					},
-					{
-					"name": "Shopping",
-					"amount": "$4,296.73",
-					"transactionCount": 93
-					},
-					{
-						"name": "Food & drink",
-						"amount": "$4147.81",
-						"transactionCount": 84
+					"name": "Food & drink",
+					"amount": "$23.54",
+					"transactionCount": 3
 					}
 				]
 			},
-
+			{
+				"month": "January 2018",
+				"categoriesList": [
+					{
+					"name": "Food & drink",
+					"amount": "$23.54",
+					"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "December 2017",
+				"categoriesList": [
+					{
+					"id": 7,
+					"name": "Health & fitness",
+					"amount": "$1,999.99",
+					"currency": "AUD",
+					"transactionCount": 2
+					},
+					{
+					"id": 0,
+					"name": "Bills & utilities",
+					"amount": "$1,987.00",
+					"currency": "AUD",
+					"transactionCount": 1
+					},
+					{
+					"id": 3,
+					"name": "Entertainment",
+					"amount": "$98.21",
+					"currency": "AUD",
+					"transactionCount": 5
+					},
+					{
+					"id": 2,
+					"name": "Education & family",
+					"amount": "$38.22",
+					"currency": "AUD",
+					"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "October 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "September 2017",
+				"categoriesList": [
+				{
+					"id": 13,
+					"name": "Transport",
+					"amount": "$17,584.25",
+					"currency": "AUD",
+					"transactionCount": 25
+				},
+				{
+					"id": 4,
+					"name": "Financial",
+					"amount": "$5,533.20",
+					"currency": "AUD",
+					"transactionCount": 55
+				},
+				{
+					"id": 6,
+					"name": "Groceries",
+					"amount": "$4,961.55",
+					"currency": "AUD",
+					"transactionCount": 85
+				},
+				{
+					"id": 12,
+					"name": "Shopping",
+					"amount": "$2,304.25",
+					"currency": "AUD",
+					"transactionCount": 35
+				}
+				]
+			},
+			{
+				"month": "August 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "June 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "May 2017",
+				"categoriesList": [
+					{
+						"name": "Food & drink",
+						"amount": "$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
 			{
 				"month": "March 2018",
 				"categoriesList": [
 					{
-						"name": "Groceries",
-						"amount": "$5347.95",
-						"transactionCount": 108
-					},	
-					{
-					"name": "Shopping",
-					"amount": "$4,402.81",
-					"transactionCount": 93
-					},
-					{
 						"name": "Food & drink",
-						"amount": "$4026.17",
-						"transactionCount": 84
+						"amount": "$23.54",
+						"transactionCount": 3
 					}
-
 				]
 			}
 		],
@@ -1032,63 +1121,135 @@
 				"month": "February 2018",
 				"vendorsList": [
 					{
-						"name": "Other",
-						"amount": "$10,964.46",
-						"transactionCount": 237
-					},
-					{
-						"name": "Woolworths",
-						"amount": "$1,625.13",
-						"transactionCount": 33
+						"name": "Phil's diner",
+						"amount": "$23.54",
+						"transactionCount": 3
 					}
 				]
 			},
+			{
+				"month": "December 2017",
+				"vendorsList": [
+					{
+					"name": "Suncorp Home Loan",
+					"amount": "$2,789.65",
+					"transactionCount": 3
+					},
+					{
+					"name": "Clinton's Cafe",
+					"amount": "$198.65",
+					"transactionCount": 3
+					},
+					{
+					"name": "Jimmy Bloggs Barber",
+					"amount": "$128.43",
+					"transactionCount": 1
+					},
+					{
+					"name": "Phil's diner",
+					"amount": "$38.21",
+					"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "November 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "$23.54",
+						"transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "September 2017",
+				"vendorsList": [
+					{
+					"name": "Other",
+					"amount": "$24,262.30",
+					"transactionCount": 90
+					},
+					{
+					"name": "Coles",
+					"amount": "$2,265.45",
+					"transactionCount": 25
+					},
+					{
+					"name": "Woolworths",
+					"amount": "$1,787.40",
+					"transactionCount": 35
+					},
+					{
+					"name": "BUPA",
+					"amount": "$1,599.50",
+					"transactionCount": 5
+					}
+				]
+			},
+			{
+				"month": "August 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "$23.54",
+			            "transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "July 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "$23.54",
+			            "transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "June 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "$23.54",
+			            "transactionCount": 3
+					}
+				]
+			},
+			{
+				"month": "April 2017",
+				"vendorsList": [
+					{
+						"name": "Phil's diner",
+						"amount": "$23.54",
+			            "transactionCount": 3
 
-
+					}
+				]
+			},
 			{
 				"month": "March 2018",
 				"vendorsList": [
 					{
-						"name": "Other",
-						"amount": "$11,086.67",
-			            "transactionCount": 237
-					},
-					{
-						"name": "Woolworths",
-						"amount": "$1,707.20",
-			            "transactionCount": 33
-					},
+						"name": "Phil's diner",
+						"amount": "$23.54",
+			            "transactionCount": 3
+
+					}
 				]
 			}
 		],
 		"emptyCategoryMonths": [
-			"January 2018",
-			"June 2018",
+			"November 2017",
 			"July 2017",
-			"August 2017"
+			"April 2017"
 		],
 		"emptyVendorMonths": [
 			"January 2018",
-			"June 2018",
-			"July 2017",
-			"August 2017"
+			"October 2017",
+			"May 2017"
 		]
-	},
-	"ffi" : {
-		"hasData" :{
-			"login" : "digi@v.com",
-			"pwd" : "Password1",
-			"month" : "February 2018",
-			"zeroSpending" : "$0.00",
-			"searchString" : "sto",
-			"resultString1" : "Store abc",
-			"resultString2" : "Housing store",
-			"resultString3" : "Stowed",
-
-		},
-		"hasNoData" : {
-			"month" : "January 2018"
-		}
 	},
 	"hasVehicles" :{
 		"login": "a@b.c",
@@ -1106,7 +1267,7 @@
 	},
 	"digivault" : {
 		"hasItems" : {
-			"login" : "digi@v.com",
+			"login" : "a@b.c",
 			"pwd" : "Password1",
 			"newname" : "NewName",
 			"folderName" : "ab",
@@ -1117,7 +1278,22 @@
 			"images" : ["File A", "File B" , "File C"]
 		}
 	},
+	"ffi" : {
+		"hasData" :{
+			"login" : "digi@v.com",
+			"pwd" : "Password1",
+			"month" : "February 2018",
+			"zeroSpending" : "$0.00",
+			"searchString" : "sto",
+			"resultString1" : "Store abc",
+			"resultString2" : "Housing store",
+			"resultString3" : "Stowed",
 
+		},
+		"hasNoData" : {
+			"month" : "April 2018"
+		}
+	},
 	"registration" : {
 		"success":{
 			"firstName" : "Abc",
@@ -1212,7 +1388,6 @@
 		{
 			"brandName": "AAMI",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "AAMI member login",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
@@ -1220,7 +1395,6 @@
 		{
 			"brandName": "GIO",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "GIO member login",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
@@ -1228,7 +1402,6 @@
 		{
 			"brandName": "Shannons",
 			"email": "x@y.z",
-			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"brandIcon": "Shannons member login",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."

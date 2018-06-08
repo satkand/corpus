@@ -142,7 +142,7 @@ public class GalleryPage extends BasePage {
 
 	public void tapFirstPictureSamsung() {
 
-		tapByOffsetFromStart(galleryView, 120, 630);
+		tapByOffsetFromStart(find(galleryView), 120, 630);
 
 	}
 

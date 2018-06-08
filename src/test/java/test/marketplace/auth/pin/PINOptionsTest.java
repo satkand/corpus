@@ -51,6 +51,14 @@ public class PINOptionsTest extends App{
 		Assert.assertNotNull(landingPage.checkVehiclesTab(),"Landing page not loaded");
 	}
 	
+	// DMPM-5071 Scenario 1
+	@Test (groups = {"DMPM-5071", "marketplace", "pin", "priority-minor"})
+	public void testPinOptionsPageImage() {
+		navigateToPINOptionsPageFromWelcomeScreen();
+		
+		Assert.assertNotNull(pinOptionsPage.checkPinPromptImage(), "PIN Options Page - PIN prompt image is not displayed");
+	}
+	
 	
 	private void navigationToPinOptionsPageFromRegisration() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
@@ -76,6 +84,17 @@ public class PINOptionsTest extends App{
 	private void navigationToPinOptionsPageFrom_LoginWithPIn() {
 		loginToApp(utils.readTestData("PIN", "loginWithExistingPin", "login"), 
 				utils.readTestData("PIN", "loginWithExistingPin", "pwd"), "DoNotTapMayBeLaterOption");
+	}
+	
+	private void navigateToPINOptionsPageFromWelcomeScreen() {
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - Suncorp image is not shown");
+		welcomePage.tapLoginButton();
+		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
+		loginPage.tapLoginButton();
+		Assert.assertNotNull(pinOptionsPage.checkMaybeLaterButton(), "PIN Options Page - User is not navigated to the PIN options page");
 	}
 
 }
