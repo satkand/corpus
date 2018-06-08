@@ -88,12 +88,12 @@ public class PolicyDetailsTest extends App {
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		assertInstalmentDetails(Copy.INSTALMENT_FREUENCY_MONTHLY_LABEL, monthlyInstallmentAmnt, screenHeight);
-		Assert.assertEquals(policyDetailsPage.getInstalmentDebitDayLabel(), debitDayDescription,
-				"Debit day description is incorrect");
-		Assert.assertEquals(policyDetailsPage.getPaymentMethodText(), Copy.PAYMENT_METHOD_LABEL,
-				"Payment method label is incorrect");
-		Assert.assertEquals(policyDetailsPage.getPaymentMethodAccountText(), creditCardDetails,
-				"Credit card details are incorrect");
+		Assert.assertEquals(policyDetailsPage.getInstalmentDebitDayLabel(), debitDayDescription,"Debit day description is incorrect");
+		if (policyDetailsPage.checkPaymentMethodLabel()==null) {
+			policyDetailsPage.scrollToPaymentMethodText(screenHeight);
+		}
+		Assert.assertEquals(policyDetailsPage.getPaymentMethodText(), Copy.PAYMENT_METHOD_LABEL,"Payment method label is incorrect");
+		Assert.assertEquals(policyDetailsPage.getPaymentMethodAccountText(), creditCardDetails,"Credit card details are incorrect");
 
 		policyDetailsPage.tapNavigateBackButton();
 		myProductsPage.scrollToProductAndTap(home);
@@ -489,7 +489,7 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.tapProductByPolicyStatus(myProductActivePolicy);
 		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus().toUpperCase(), activePolicy,
+		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus(), activePolicy,
 				"Policy active status is incorrect");
 		assertPolicyRenewalStatus(myProductCancellationPending, cancellationPending);
 		assertPolicyRenewalStatus(myProductFutureActive, futureActive);

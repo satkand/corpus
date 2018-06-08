@@ -735,7 +735,7 @@
 						"brand":"AAMI",
 						"productType":"Car Insurance",
 						"policyNumber":"MPA123456313",
-						"policyDescription":"Car insurance",
+						"policyDescription":"Car Insurance",
           				"periodOfCover": 
             			{
              				 "startDate": "01 October",
@@ -764,7 +764,7 @@
 						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
 						"discounts":"Multi-Policy, Staff",
 						"rewardsTitle":"AAMI Safe driver rewards",
-						"rewards":"Sapphire with $45.50 credit available for your next renewal",
+						"rewards":"Sapphire with $45.50 credit",
 						"riskCoverPeriod": 
             			 {
              				 "startDate": "01 October",
@@ -787,17 +787,17 @@
             			{
             			        "login": "policystatusvehicles@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			"myVehiclePolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -866,7 +866,7 @@
             			},
             			"riskDetails":{
 						"rewardsTitle":"Round the world reward",
-						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
+						"rewards":"Platinum with $1,000.01 credit"}
 				},
 				"homePolicy": 
 				{
@@ -876,7 +876,7 @@
 						"brand":"SUNCORP",
 						"productType":"Home And Contents Insurance",
 						"policyNumber":"HPS123457790",
-						"policyDescription":"Home insurance",
+						"policyDescription":"Home Insurance",
 							"instalmentDetails":
             			{
             			 "instalmentAmount":"$88.88"
@@ -894,18 +894,18 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "ACTIVE",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			
             				"myProductPolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
