@@ -13,6 +13,7 @@ public class NavigationMenuPage extends BasePage {
 
 	private By welcomeMessage = By.id("au.com.suncorp.marketplace:id/profileName");
 	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
+	private By homeJourneyMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Home Journey']");
 	private By bankingHome = By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
 	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Safe']");
 	private By productsCatalogueItem = By.xpath("//android.widget.CheckedTextView[@text='Apply online']");
@@ -25,8 +26,9 @@ public class NavigationMenuPage extends BasePage {
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By devSettings = By.xpath("//android.widget.CheckedTextView[@text='Dev Settings']");
     private String devSettingsText ="Dev Settings";
-	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Lock']");
-
+	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Log out']");
+	private String lockMenuOptionText="Log out";
+	
 	public void tapProffessionalServicesMenuItem() {
 		 tapElement(proffessionalServicesMenuItem);
 	}
@@ -92,6 +94,16 @@ public class NavigationMenuPage extends BasePage {
 
 	}
 	
+	public WebElement checkHomeJourneyMenuItem() {
+		 return find(homeJourneyMenuItem,3);
+	}
+	
+public void tapHomeJourneyMenuItem() {
+	find(homeJourneyMenuItem, 30);
+	 tapElement(homeJourneyMenuItem);
+	
+}
+
 	public WebElement checkBackToStartMenuItem() {
 		 return find(backToStartMenuItem);
 	}
@@ -102,7 +114,7 @@ public class NavigationMenuPage extends BasePage {
 	}
 	
 	public WebElement checkLockMenuOption() {
-		 return find(lockMenuOption);
+		 return scrollToElement(lockMenuOptionText, "text");
 	}
 	
 	public void tapLockMenuOption() {

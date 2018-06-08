@@ -22,7 +22,7 @@ public class MyProductsPage extends BasePage {
 	private By emptyStateDescription = By.id("au.com.suncorp.marketplace:id/emptyStateMessageDescription");
 	private By findProductButton = By.id("au.com.suncorp.marketplace:id/browseProductCatalogueButton");
 
-	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='My products']");
+	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='Policies & Accounts']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	//Newly added to operate on disclaimer page shown
 	private By productDisclaimer = By.id("au.com.suncorp.marketplace:id/productDisclaimerText");
@@ -87,7 +87,7 @@ public class MyProductsPage extends BasePage {
 	}
 	
 	public WebElement checkProductDisclaimerTitle() {
-		return find(disclaimerTitle);
+		return find(disclaimerTitle,2);
 	}
 	
 	public void tapProductDisclaimer() {

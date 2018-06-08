@@ -40,6 +40,20 @@ public class HomeJourneyPage extends BasePage {
 	private By movingInDescriptionText = By.id("au.com.suncorp.marketplace:id/movingInDescriptionText");
 	private By movingInReadMoreButton = By.id("au.com.suncorp.marketplace:id/movingInReadMoreButton");
 	
+	//professional Services
+	private By viewServiceVendorsButton = By.id("au.com.suncorp.marketplace:id/propertyViewProfessionalServicesButton");
+	private By homeServiceDesc = By.id("au.com.suncorp.marketplace:id/propertyProfessionalServicesBodyText");
+	private By homeServicesTitile = By.id("au.com.suncorp.marketplace:id/propertyProfessionalServicesTitle");
+	private By homeServicesImage = By.id("au.com.suncorp.marketplace:id/professionalServicesImage");
+	
+	public void scrollToViewServiceVendorsButton(){
+		scrollToElement(viewServiceVendorsButton);
+	}
+	
+	public void tapViewServiceVendorsButton() {
+		tapElement(viewServiceVendorsButton);
+	}
+	
 	public WebElement checkHomeJourneyPageTitle() {
 		return find(homeJourneyPageTitle);
 	}

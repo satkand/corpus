@@ -19,23 +19,21 @@ public class LandingPage extends BasePage {
 	private String propertyTitle = "PROPERTY";
 	private String vehiclesTitle = "Vehicles";
 	private String naviScrollableId = "au.com.suncorp.marketplace:id/navigationTabLayout";
-/*
-	private By suncorpTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='ONE SUNCORP']");
 	private By suncorpTab = By.xpath("//android.widget.TextView[@text='One Suncorp']");
 	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLES']");
-	private By financeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='MONEY']");
+	private By financeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='FINANCE']");
+
 	private By healthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='HEALTH']");
-*/
+
 	private String vehiclesTabTitle = "Vehicles";
-	
+	/*
 	private By suncorpTab = By.xpath("//android.widget.TextView[@text='ONE SUNCORP']");
-	private By homeTab = By.xpath("//android.widget.TextView[@text='PROPERTY']");
+	private By homeTab = By.xpath("//android.widget.TextView[@text='HOME']");
 	private By vehiclesTab = By.xpath("//android.widget.TextView[@text='VEHICLES']");
-	private By financeTab = By.xpath("//android.widget.TextView[@text='MONEY']");
-	private By financeTabSmallLetters = By.xpath("//android.widget.TextView[@text='Money']");
-	private By healthTab = By.xpath("//android.widget.TextView[@text='WELLBEING']");
-	 
+	private By wealthTab = By.xpath("//android.widget.TextView[@text='WEALTH']");
+	private By healthTab = By.xpath("//android.widget.TextView[@text='HEALTH']");
+	 */
 
 	public WebElement checkLandingPageTitle() {
 		return find(landingPageTitle, 20);
@@ -95,7 +93,6 @@ public class LandingPage extends BasePage {
 		
 	}
 
-
 	public WebElement checkWealthTab() {
 		return find(financeTab);
 	}
@@ -104,26 +101,16 @@ public class LandingPage extends BasePage {
 		tapElement(financeTab);
 	}
 
-
 	public WebElement checkFinanceTab() {
-		if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
-			return find(financeTabSmallLetters);
-		}else
-			return find(financeTab);
+		return find(financeTab);
 	}
 
 	public void tapFinanceTab() {
-		if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
-			tapElement(financeTabSmallLetters);
-		}else
-			tapElement(financeTab);
+		tapElement(financeTab);
 	}
 
 	public boolean isFinanceTabSelected() {
-		if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
-			return isSelected(financeTabSmallLetters);
-		}else
-			return isSelected(financeTab);
+		return isSelected(financeTab);
 	}
 
 	public WebElement checkHealthTab() {

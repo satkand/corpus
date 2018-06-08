@@ -30,12 +30,13 @@ public interface Copy {
 	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
-	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/mpa/home.html";
 	
 	//PROFESSIONAL SERVICES FROM NAVIGATION MENU
 	public String HOME_PROFESSIONAL_SERVICES_INTRO_TITLE ="Professional services";
 	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property.";
-	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	//public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/mpa/home.html";
 	
 	//FORCE UPDATE SCREEN
 	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
@@ -70,7 +71,8 @@ public interface Copy {
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 	
 	//WEB VIEW
-	public static final String LOCATION_BAR_TEXT = "www.suncorp.com.au";
+	public static final String LOCATION_BAR_TEXT = "‎‎‎‎www.suncorp.com.au";
+	
 
 	//SUBURB DETAILS PAGE
 	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
@@ -84,7 +86,7 @@ public interface Copy {
 
 	
 	//POLICY DETAILS PAGE
-	String POLICY_DETAILS_SCREEN_TITLE = "Policy Details";
+	String POLICY_DETAILS_SCREEN_TITLE = "Policy details";
 	String INSTALMENT_FREUENCY_MONTHLY_LABEL ="Monthly instalment";
 	String INSTALMENT_FREUENCY_QUARTERLY_LABEL ="Quarterly instalment";
 	String INSTALMENT_FREUENCY_HALF_YEARLY_LABEL ="Half-yearly instalment";
@@ -98,10 +100,10 @@ public interface Copy {
 	String DISCOUNTS_LABEL="Discounts";
 	//Risk Details Page
 	String PARKING_ADDRESS_LABEL="Parking address";
-	String ADDITIONAL_EXCESSES_DETAILS_LABEL="ADDITIONAL EXCESS DETAILS MAY APPLY";
-	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE ADDITIONAL EXCESSES";
-	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please come back and try again later.";
-	String POLICY_MAINTAINCE_TITLE="Policy under maintenance";
+	String ADDITIONAL_EXCESSES_DETAILS_LABEL="OTHER EXCESSES MAY ALSO APPLY";
+	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE OTHER EXCESSES";
+	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please try again later.";
+	String POLICY_MAINTAINCE_TITLE="Policy details is undergoing maintenance";
 	//RENEW POLICY
 	String RENEW_POLICY_SCREEN_TITLE = "Renew Policy";
 	

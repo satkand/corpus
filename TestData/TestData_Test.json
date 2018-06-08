@@ -75,10 +75,15 @@
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
+		"defaultLoginCredentials": {
+			"login": "tub@tub.com",
+			"pwd": "Password1",
+			"userName": ""
+		},
 		"validLoginCredentials": {
-			"login": "test@account.com",
-			"login1": "test1@account.com",
-			"login2": "sb@sb.sb",
+			"login": "testacc10@acc.com",
+			"login1": "testacc9@acc.com",
+			"login2": "testacc8@acc.com",
 			"memberLoginEmail" : "a@b.c",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
@@ -99,20 +104,20 @@
 	},
 	"propertyDimension" :{
 		"propertyDetails":{
-					"address": "1018/40 Rossana Road",
-					"stateAndSuburb": "North Heidelberg VIC 3084",
-					"bedRooms": "2",
-					"bathrooms": "1",
-					"parkingSpaces": "1",
-					"landSize": "289 m²",
-					"propertyType": "House - Duplex",
+					"address": "1 LYONS RISE ",
+					"stateAndSuburb": "ELTHAM, VIC 3095",
+					"bedRooms": "4",
+					"bathrooms": "2",
+					"parkingSpaces": "4",
+					"landSize": "780 m²",
+					"propertyType": "Land: Res House",
 					"roofType": "Tiled (Terra Cotta or Cement)",
 					"wallMaterial": "Brick",
-					"salePrice": "$1,000,000",
-					"saleDate": "30 Feb 2018",
-					"confidenceLevel":"Medium confidence",
-					"estimatedMarketValue": "$1,100,000 - $1,275,000",
-					"numberOfImages":"7",
+					"salePrice": "$600,000",
+					"saleDate": "2013-12-13",
+					"confidenceLevel":"High confidence",
+					"estimatedMarketValue": "$870,000 - $1,100,000",
+					"numberOfImages":"26",
 					"buildYear": "1966"
 					
 		},
@@ -122,7 +127,7 @@
 					"nearbySchool1":"Eltham Woods Preschool (694m)",
 					"nearbySchool2":"Little Scooters Early Learning Centre & Kindergarten (703m)",
 					"nearbySchool3":"Research Primary School (843m)",
-					"estimatedMarketValue": "$1,456,100,000 - $1,895,275,000"
+					"estimatedMarketValue": "$870,000 - $1,100,000"
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
@@ -135,9 +140,9 @@
 					"login":"a@b.c",
 					"pwd":"Password1",
 					"suburbSearchText":"3978",
-					"floodRiskValue" : "Low",
-					"bushFireValue" : "Medium",
-					"theifRiskValue" : "High"
+					"floodRiskValue" : "Very Low",
+					"bushFireValue" : "Very Low",
+					"theifRiskValue" : "Low"
 		},
 		"propertyHub":{
 					"login":"a@b.c",
@@ -150,17 +155,17 @@
 		},
 		"propertyProducts":{
 			"withProducts": {
-					"login": "a@b.c",
+					"login": "articles@sun.com",
 					"pwd": "Password1",
 					"addressLineText": "123 New Street, Brighton",
          			"suburbText":"NSW 3186",
-          			"productDescriptionText1": "Home and Contents protected until 10 October 2018",
-         			"productDescriptionText2": "Home loan next payment due 10 October 2018"
+          			"productDescriptionText1": "Home and Contents protected with Suncorp",
+         			"productDescriptionText2": "Landlord protected with APIA"
 			},
 			"withOutProducts": {
 					"login": "a@b.c",
 					"pwd": "Password1",
-					"addressLineText": "201/64-66 Sahi Crescent, Roxburgh Park",
+					"addressLineText": "45 Super Long Long Name Street, Brighton",
          			"suburbText":"VIC 3064",
           			"productDescriptionText1": "Home and Contents protected until 10 October 2019",
          			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
@@ -170,21 +175,24 @@
 		"articleCarouselText":"Articles",
 		"articleReadMoreButton": "READ MORE",
 		"property": { 
+			"carouselTitle" : "How can we help you?",
+			"screenHeight" : "1920",
 			"articleViewPager": [
+			    
 				{ 
-					"articleTitle" : "The 5 Steps to Master Renting",
-					"articleDescription" : "Whatever it is that has you scanning the “TO LET” listings, there are a number of important things to consider before you sign a rental lease.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/master-renting.html"
+					"articleTitle" : "UAT - First home buyers grants in your state",
+					"articleDescription" : "If you're buying your first home, you may be entitled to a little help. Find out here.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				},
 				{ 
-					"articleTitle" : "What are landlord responsibilities?",
-					"articleDescription" : "Landlords need to keep a property in a livable condition.Find out what you should expect here.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/landlord-responsibilities.html"
+					"articleTitle" : "UAT - What influences how much I can borrow?",
+					"articleDescription" : "There are a lot of variables that determine how much you can borrow. Knowing what they are can help put you in the best position.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				},
 				{ 
-					"articleTitle" : "How can I estimate the total costs involved in buying a home?",
-					"articleDescription" : "The price you see in the ads or at aunction is rarely the full price of buyign a house. We detail here some of the 'hidden' costs you need to watch out for.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/buying-a-home/estimating-costs-of-buying-a-home.html"
+					"articleTitle" : "UAT - Estimating the costs of buying a property",
+					"articleDescription" : "Stamp duty, LMI and other borrowing costs are all part of the process. Make sure you're confident and work with your advisor to get the right deal for your lifestyle.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				}
 			]
 		}
@@ -727,7 +735,7 @@
 						"brand":"AAMI",
 						"productType":"Car Insurance",
 						"policyNumber":"MPA123456313",
-						"policyDescription":"Car insurance",
+						"policyDescription":"Car Insurance",
           				"periodOfCover": 
             			{
              				 "startDate": "01 October",
@@ -756,7 +764,7 @@
 						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
 						"discounts":"Multi-Policy, Staff",
 						"rewardsTitle":"AAMI Safe driver rewards",
-						"rewards":"Sapphire with $45.50 credit available for your next renewal",
+						"rewards":"Sapphire with $45.50 credit",
 						"riskCoverPeriod": 
             			 {
              				 "startDate": "01 October",
@@ -779,17 +787,17 @@
             			{
             			        "login": "policystatusvehicles@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			"myVehiclePolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -858,7 +866,7 @@
             			},
             			"riskDetails":{
 						"rewardsTitle":"Round the world reward",
-						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
+						"rewards":"Platinum with $1,000.01 credit"}
 				},
 				"homePolicy": 
 				{
@@ -868,7 +876,7 @@
 						"brand":"SUNCORP",
 						"productType":"Home And Contents Insurance",
 						"policyNumber":"HPS123457790",
-						"policyDescription":"Home insurance",
+						"policyDescription":"Home Insurance",
 							"instalmentDetails":
             			{
             			 "instalmentAmount":"$88.88"
@@ -886,18 +894,18 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "ACTIVE",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			
             				"myProductPolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -1057,7 +1065,7 @@
 						"name": "Woolworths",
 						"amount": "$1,707.20",
 			            "transactionCount": 33
-					},
+					}
 				]
 			}
 		],
@@ -1083,7 +1091,7 @@
 			"searchString" : "sto",
 			"resultString1" : "Store abc",
 			"resultString2" : "Housing store",
-			"resultString3" : "Stowed",
+			"resultString3" : "Stowed"
 
 		},
 		"hasNoData" : {
@@ -1164,7 +1172,7 @@
 			"pwd": "Password1",
 			"input" : "suncorp",
 			"websiteText" : "Suncorp Group website",
-			"websiteURL" : "https://www.suncorp.com.au/",
+			"websiteURL" : "https://www.suncorp.com.au/"
 		},
 		"phNo": {
 			"login": "a@b.c",
@@ -1193,20 +1201,20 @@
 		},
 		"horizontal_selectable_List_suggestedQuestions": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_readOnly_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options_singleItem": {
 			"login": "a@b.c",
-			"pwd": "Password1",
-		},
+			"pwd": "Password1"
+		}
 	},
 	 "brands": [
 		{
@@ -1214,6 +1222,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "AAMI member login",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
@@ -1222,6 +1231,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "GIO member login",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
@@ -1230,6 +1240,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "Shannons member login",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}
@@ -1290,7 +1301,7 @@
 		},
 		"propertyExplorer":{
 			"propertyInsightSearchHintText": "Enter address",
-			"estimatedMarketValue": "Estimated market value",
+			"estimatedMarketValue": "Estimated property value",
 			"suburbInsightSearchHintText": "Enter suburb's name"
 		},
 		"spendingsPage": {

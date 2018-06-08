@@ -2,8 +2,6 @@ package test.marketplace.auth.login;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import automation.framework.common.BasePage;
 import pages.App;
 
 public class LoginAuthTest extends App{
@@ -129,8 +127,7 @@ public class LoginAuthTest extends App{
 		loginAuthPage.tapPasswordField();
 		Assert.assertTrue(common.isKeyboardShown(), "keyboard not shown");
 		loginAuthPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
-		
-		Assert.assertEquals(loginAuthPage.getPasswordFieldVal(), utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd"), "Reauth With Password - Password value is not masked");
+		Assert.assertTrue(loginAuthPage.getPasswordFieldMaskedVal(utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd")), "Reauth With Password - Password value is not masked");
 		
 		// Relaunch the app after backgrounding
 		loginAuthPage.relaunchApp(-1, "Config");
