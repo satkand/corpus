@@ -108,8 +108,8 @@ def search_for_version(all_app_versions, jenkins_build_number):
 	# if we find one whos 'shortversion' string contains the build
 	# and stream name we were passed on the CLI, then we should display that result
 	for version in all_app_versions['app_versions']:
-		if version['shortversion'].find(jenkins_build_number) != -1: 
-		# -1 will be returned if jenkins_build_number is not in version['shortversion']
+		if version[version_key].find(jenkins_build_number) != -1: 
+		# -1 will be returned if jenkins_build_number is not in version['version_key']
 			matched_version = version
 			break
 	# if we have gone through every returned result but haven't broken out of the loop
@@ -120,7 +120,7 @@ def search_for_version(all_app_versions, jenkins_build_number):
 		log(json.dumps(version, indent=4, sort_keys=True)) 
 		return matched_version
 	else:
-		print ("[ERROR] - Unable to locate an app whose 'shortversion' matches search string: %s") % jenkins_build_number
+		print ("[ERROR] - Unable to locate an app whose %s matches search string: %s") % (version_key,jenkins_build_number)
 		print ("[ERROR] - This could be because you are searching for a build that is very old, we search through the last 500 builds")
 		sys.exit(1)
 
@@ -168,8 +168,10 @@ log(("[DEBUG] - Proxy server address: %s") % proxy)
 # I did not choose this qa vs uat thing.
 if build_stream.lower() == 'qa':
 	platform = 'Android'
+	version_key = 'shortversion'
 elif build_stream.lower() == 'uat':
 	platform = 'iOS'
+	version_key = 'version'
 
 log(("[DEBUG] Platform: %s") % platform)
 log(("[DEBUG] Build Stream: %s") % build_stream)
@@ -202,7 +204,6 @@ else:
 	version_result = search_for_version(all_app_versions, jenkins_build_number)
 
 log(("[OK] - Jenkins Build: %s") % jenkins_build_number)
-log(("[OK] - App ID (build): %s") % version_result['id'])
 log(("[OK] - Stream Name: %s") % build_stream)
 log(("[OK] - App Name: %s") % version_result['app_owner'])
 log(("[OK] - Uploaded at: %s") % version_result['created_at'])
