@@ -282,6 +282,7 @@ public class DigiVaultCommonPage extends BasePage {
 		}		
 	}
 	
+	
 	public void addAPhotoThroughGallery() {
 		checkAddButton();
 		tapAddButton();
@@ -294,4 +295,7 @@ public class DigiVaultCommonPage extends BasePage {
 		waitForElementToDisappear(addButton,5);
 	}
 	
+	public void dismissDisclaimer() {
+		tapElement(backNavigationButton);
+	}
 }

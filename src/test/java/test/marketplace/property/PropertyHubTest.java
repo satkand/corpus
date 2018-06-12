@@ -101,7 +101,7 @@ public class PropertyHubTest  extends App{
 		
 		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(), "Suburb details page - Suburb name is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyeButton(), "Suburb details page - Whats nearby button is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyButton(), "Suburb details page - Whats nearby button is not present");
 		
 		suburbDetailsPage.tapBackButton();
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyInsightTab(), "Property Explorer page - Property Insight tab is not present");
@@ -114,7 +114,7 @@ public class PropertyHubTest  extends App{
 		propertyDetailsPage.tapShowMeInsightButton();
 		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(), "Suburb details page - Suburb name is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyeButton(), "Suburb details page - Whats nearby button is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyButton(), "Suburb details page - Whats nearby button is not present");
 		
 	}
 	

@@ -25,7 +25,7 @@ public class SpendingsTest extends App {
 		Assert.assertNotNull(spendingsPage.checkVendorTab(), "Spendings Page - Vendor tab not shown");
 		Assert.assertFalse(spendingsPage.isVendorTabSelected(), "Spendings Page - Vendor tab shown selected by default");
 		Assert.assertNotNull(spendingsPage.checkSpendingsTotalAmount(), "Spendings Page - Spendings amount not shown");
-		Assert.assertNotNull(spendingsPage.checkInfoIcon(), "Spendings Page - Spendings amount info icon not shown");
+//		Assert.assertNotNull(spendingsPage.checkInfoIcon(), "Spendings Page - Spendings amount info icon not shown");
 		//TODO -> This is present on iOS not on Android. Check later, if still not present, remove this
 		//Assert.assertNotNull(spendingsPage.checkUpdatedInfoText(), "Spendings Page - Spendings updated once per month text not shown");
 	}
@@ -145,7 +145,7 @@ public class SpendingsTest extends App {
 	}
 	
 	private void compareCategoryTransactionsForaMonth(List categories, boolean isTransactionCountShown) {
-		
+		spendingsPage.swipeUp();
 		// fetch the actual transactions shown on the current page
 		List categoriesNameList = spendingsPage.fetchCategoriesNameList();
 		List categoriesTransactionsList = spendingsPage.fetchCategoriesTransactionsTextList();
@@ -159,7 +159,7 @@ public class SpendingsTest extends App {
 				Assert.assertEquals(categoriesNameList.get(0), category.get("name"), categoriesNameList.get(0)+ " name is not shown as expected");
 				categoriesNameList.remove(0);
 
-				Assert.assertEquals(categoriesSpendingAmountList.get(0), category.get("amount"), categoriesSpendingAmountList.get(0)+" amount is not shown as expected");
+				Assert.assertEquals(categoriesSpendingAmountList.get(0).toString().replace(",",""), category.get("amount"), categoriesSpendingAmountList.get(0)+" amount is not shown as expected");
 				categoriesSpendingAmountList.remove(0);
 
 				// If this month is present in the list of "monthsPriorToLast3Months. Then the flag is enabled, so that we will not check transactions count for such months
@@ -176,7 +176,7 @@ public class SpendingsTest extends App {
 	}
 	
 	private void compareVendorTransactionsForaMonth(List vendors, boolean isTransactionCountShown) {
-		
+		spendingsPage.swipeUp();
 		// fetch actual the transactions shown on the current page
 		List vendorsNameList = spendingsPage.fetchVendorsTransactionsNameList();
 		List vendorsTransactionsList = spendingsPage.fetchVendorsTransactionsTextList();
@@ -231,9 +231,11 @@ public class SpendingsTest extends App {
 	//2480 - Scenario 1
 	//2905 - Scenario 1
 	//2260 - Scenario 1
+
 	@TestDetails(story1 = "DMPM-4034:DMPM-5818,DMPM-5819,DMPM-5820,DMPM-5821,DMPM-5822,DMPM-5823", story2 = "DMPM-5921", story3 = "DMPM-2480",
 			story4 = "DMPM-2905",story5 = "DMPM-2260:DMPM-4959,DMPM-5273")
 	@Test (groups = { "marketplace", "FFI", "priority-minor"})
+
 	public void testDatePickerInCategoryDetailsScreen() {
 		
 		navigateToCategoryDetailScreen();	
@@ -279,7 +281,9 @@ public class SpendingsTest extends App {
 	//5922 - Scenario 1-6
 	//6311 - Scenario 1
 	//182 - Scenario 1
-	@Test (groups = {"DMPM-3980", "DMPM-5809", "DMPM-5810","DMPM-5811","DMPM-5812","DMPM-5815","DMPM-5816","DMPM-5922", "DMPM-6311", "DMPM-182", "marketplace", "FFI", "priority-minor"})
+	@TestDetails(story1 = "DMPM-3980: DMPM-5809,DMPM-5810,DMPM-5811,DMPM-5812,DMPM-5815,DMPM-5816" , story2 = "DMPM-5922: DMPM-6806,DMPM-6808,DMPM-6807,DMPM-6809,DMPM-6810,DMPM-6805",
+			story3 = "DMPM-6311: DMPM-6606", story4 = "DMPM-182")
+	@Test (groups = {"marketplace", "FFI", "priority-minor"})
 	public void testDatePickerInVendorDetailsScreen() {
 		
 		String vendorNavigatedTo = navigateToVendorDetailScreen();	
@@ -320,16 +324,19 @@ public class SpendingsTest extends App {
 		
 		
 	}
-	
+/*This feature has been removed from the app.	
 	//DMPM-496
-	@Test (groups = {"DMPM-496",  "marketplace", "FFI", "priority-minor"})
+	 @TestDetails(story1 = "496")
+	@Test (groups = {"marketplace", "FFI", "priority-minor"})
 	public void testDisclaimer() {
 		navigateToSpendingsScreen();
 		Assert.assertEquals(spendingsPage.getSnackBarText(), Copy.FFI_DISCLAIMER);
 	}
+	*/
 	
 	//DMPM-2520 - Scneario 1-6
-		@Test (groups = {"DMPM-2520", "DMPM-6653","DMPM-6657","DMPM-6658","DMPM-6659","DMPM-6660","DMPM-6661", "marketplace", "FFI", "priority-minor"})
+	    @TestDetails(story1 = "DMPM-2520: DMPM-6653,DMPM-6657,DMPM-6658,DMPM-6659,DMPM-6660,DMPM-6661")
+		@Test (groups = {"marketplace", "FFI", "priority-minor"})
 		public void testSearchThroughVendorList() {
 			navigateToSpendingsScreen();
 			categoryDetailsPage.selectMonth(utils.readTestData("ffi", "hasData", "month"));
@@ -362,15 +369,70 @@ public class SpendingsTest extends App {
 			Assert.assertTrue(vendorDetailPage.verifySearchItems(), "Search list did not unfilter");
 		}
 
-	
+			//DMPM-4645 - Scneario 1-6
+			@TestDetails(story1 = "DMPM-4645: DMPM-6797,DMPM-6800,DMPM-6799,DMPM-6794,DMPM-6796,DMPM-6798")
+			@Test (groups = { "marketplace", "FFI", "priority-minor"})
+			public void testSearchThroughCategoryDetailsList() {
+				navigateToCategoryDetailScreen();
+				vendorDetailPage.tapSearchField();
+				Assert.assertTrue(common.isKeyboardShown(), "Keyboard not seen");
+				Assert.assertNotNull(vendorDetailPage.checkCloseButton(), "Close button not present");
+				Assert.assertNotNull(categoryDetailsPage.checkVendorSearchList(), "No vendor list seen");
+				categoryDetailsPage.tapCloseButton();
+				Assert.assertNotNull(categoryDetailsPage.checkTop3VendorTitle(), "Did not navigate back to category screen");
+			
+				vendorDetailPage.tapSearchField();
+				vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString"));
+				Assert.assertTrue(vendorDetailPage.verifySearch(utils.readTestData("ffi", "hasData", "resultString1"),
+						utils.readTestData("ffi", "hasData", "resultString2"), utils.readTestData("ffi", "hasData", "resultString3")), "Search not as expected");
+				vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString4Letter"));
+				Assert.assertTrue(vendorDetailPage.verifySearch4Letter(utils.readTestData("ffi", "hasData", "resultString1"),
+						utils.readTestData("ffi", "hasData", "resultString2"), utils.readTestData("ffi", "hasData", "resultString3")), "Search not as expected");
+				vendorDetailPage.enterSearchText(utils.readTestData("ffi", "hasData", "searchString5Letter"));
+				Assert.assertNotNull(vendorDetailPage.checkSearchErrorMsg(), "Error msg not seen");
+				
+				//3 times backspace to remove 3 characters and unfilter list
+				vendorDetailPage.tapBackspace();
+				vendorDetailPage.tapBackspace();
+				vendorDetailPage.tapBackspace();
+				
+				Assert.assertTrue(vendorDetailPage.verifySearchItems(), "Search list did not unfilter");
+						
+				
+			}
+			
+		
+		//DMPM-4023 - Scneario 2
+		@TestDetails(story1 = "DMPM-4023: DMPM-6801")
+		@Test (groups = {"marketplace", "FFI", "priority-minor"})
+		public void testNavigateToConnectedScreens() {
+			navigateToCategoryDetailScreen();
+			Assert.assertNotNull(categoryDetailsPage.checkConnectedAccountsButton(), "Connected accounts button not present");
+			categoryDetailsPage.tapConnectedAccountsButton();
+			Assert.assertNotNull(connectedAccountsPage.checkTitle(), "Connected accounts title not present");
+			connectedAccountsPage.tapCloseButton();
+			Assert.assertNotNull(categoryDetailsPage.checkTop3VendorTitle(), "Vendor details page  not present");
+			categoryDetailsPage.tapCloseButton();
+			spendingsPage.checkSpendingPageTitle();
+			spendingsPage.tapVendorTab();
+			
+			Assert.assertNotNull(categoryDetailsPage.checkConnectedAccountsButton(), "Connected accounts button not present");
+			categoryDetailsPage.tapConnectedAccountsButton();
+			Assert.assertNotNull(connectedAccountsPage.checkTitle(), "Connected accounts title not present");
+			connectedAccountsPage.tapCloseButton();
+			
+		}
+		
+		
 	private void verifyEmptyTransactionsMessage(List months) {
 		for (Object month : months) {
 			spendingsPage.selectMonth(month.toString());
 			Assert.assertEquals(spendingsPage.getSelectedMonthValue(), month.toString().toUpperCase(), "Wealth Spendings Page - Not able to select month from dropdown");
 			//TODO: Defect raised for this
-			//Assert.assertNotNull(spendingsPage.checkEmptyTransactionsImage(), "Wealth Spending Page - empty transactions image not shown");
-			Assert.assertEquals(spendingsPage.getEmptyTransactionsMessage(), utils.readTestData("copy", "spendingsPage", "emptyTransactionsMessage"), "Wealth Spendings Page - empty transactions message not shown");
-			Assert.assertEquals(spendingsPage.getEmptyTransactionsHintMessage(), utils.readTestData("copy", "spendingsPage", "emptyTransactionsHintMessage"), "Wealth Spendings Page - empty transactions hint message not shown");
+			Assert.assertEquals(spendingsPage.getEmptyTransactionsMessage(), Copy.FFI_EMPTY_TRANSACTIONS, "Wealth Spendings Page - empty transactions message not shown");
+		//There is no empty transaction hint message anymore
+		//Assert.assertNotNull(spendingsPage.checkEmptyTransactionsImage(), "Wealth Spending Page - empty transactions image not shown");
+		//Assert.assertEquals(spendingsPage.getEmptyTransactionsHintMessage(), utils.readTestData("copy", "spendingsPage", "emptyTransactionsHintMessage"), "Wealth Spendings Page - empty transactions hint message not shown");
 		}
 	}
 
@@ -401,16 +463,20 @@ public class SpendingsTest extends App {
 		landingPage.tapFinanceTab();
 		Assert.assertTrue(landingPage.isFinanceTabSelected(), "Wealth tab is not selected on landing page");
 		
+
+		
 		// TODO This logic is for enabling the bank accounts option in settings, This needs to be removed, when the logic for fetching the the bank accounts from api is implemented
-		navigationMenu.tapSplitMenuIcon();
+/*		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.scrollToDevSettings();
 		navigationMenu.tapDevSettings();
 		configPage.enableHasBankAccountsToggle(); 
 		navigationMenu.tapSplitMenuIcon();
 		navigationMenu.tapSuncorpMenuItem();
 		landingPage.tapFinanceTab();
-		
+	*/	
 		// Actual logic
+		financePage.checkViewSpendingThisMonthButton();
 		financePage.tapviewSpendingThisMonthButton();
+		spendingsPage.waitForLoadingIndicatorToDisappear();
 	}
 }

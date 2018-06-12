@@ -17,15 +17,16 @@ public class FolderViewTest extends App {
 		folderViewPage.addAPhotoFromVault();
 		Assert.assertNotNull(selectItemsPage.checkMoveButton(), "Cancel button not present");
 		Assert.assertFalse(selectItemsPage.isMoveButtonEnabled(), "Move button is enabled");
-		selectItemsPage.selectAllFolders();
-		Assert.assertTrue(selectItemsPage.areAllFoldersSelected(), "All items not selected");
+		selectItemsPage.selectAllItems();;
+		Assert.assertTrue(selectItemsPage.areAllItemsSelected(), "All items not selected");
 		selectItemsPage.tapSelectAllButton();
-		Assert.assertFalse(selectItemsPage.areAllFoldersSelected(), "All items not deselected");
+		Assert.assertFalse(selectItemsPage.areAllItemsSelected(), "All items not deselected");
 		selectItemsPage.tapSelectAllButton();
-		Assert.assertTrue(selectItemsPage.areAllFoldersSelected(), "All items not selected");
+		Assert.assertTrue(selectItemsPage.areAllItemsSelected(), "All items not selected");
 	    selectItemsPage.checkMoveButton();
 		Assert.assertTrue(selectItemsPage.isMoveButtonEnabled(), "Move button is disabled");
 		selectItemsPage.tapMoveButton();
+		digitalVaultPage.checkDigiVaultTitle();
 		Assert.assertEquals(digiVaultCommonPage.findNumberOfItems(),2,"Items not moved");
 		
 	}
@@ -163,7 +164,7 @@ public class FolderViewTest extends App {
 			navigateToFolderView();
 			digiVaultCommonPage.addAPhotoThroughGallery();
 			Assert.assertNotNull(galleryPage.checkGalleryTitle(), "Gallery not loaded");
-			galleryPage.choosePicture();
+			galleryPage.selectPicture();
 			imagePreviewPage.finishSavingImage(utils.readTestData("digivault", "hasItems", "file1"));
 			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to folder");
 			
@@ -224,8 +225,7 @@ public class FolderViewTest extends App {
 			selectItemsPage.tapMoveButton();
 			Assert.assertNotNull(chooseFolderPage.checkBackButton(), "Back button not present");
 			chooseFolderPage.tapBackButton();
-			//To be modified to check folder once bug is fixed
-			Assert.assertNotNull(digitalVaultPage.checkDigiVaultTitle(), "Did not navigate to digi root folder");
+			Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Did not navigate to  folder");
 		}
 		//DMPM-2135 - Scenario 1,2,3,4,5,6,8,9,10
 		@Test(groups = { "DMPM-2135", "DMPM-2527", "DMPM-2528", "DMPM-2529", "DMPM-2530", "DMPM-2531", "DMPM-2532", "DMPM-2533", "DMPM-2534", "DMPM-2536", "DMPM-2537","marketplace", "Document Storage", "priority-minor" })
@@ -283,6 +283,7 @@ public class FolderViewTest extends App {
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkDigitalVaultMenuItem(), "DigiVault Menu button is not displayed");
 		navigationMenu.tapDigitalVaultMenuItem();
+		digiVaultCommonPage.dismissDisclaimer();
 		if(digitalVaultPage.checkDigiVaultEmptyImage() != null) {
 			createDummyData();
 		}

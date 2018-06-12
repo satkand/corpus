@@ -36,6 +36,7 @@ public class PolicyDetailsPage extends BasePage {
 	private String instalmentFrequencyId = "au.com.suncorp.marketplace:id/instalmentFrequency";
 	private By instalmentAmount = By.id("au.com.suncorp.marketplace:id/instalmentAmount");
 	private By paymentMethodLabel = By.id("au.com.suncorp.marketplace:id/paymentMethodTitle");
+	private String paymentMethodLabelId ="au.com.suncorp.marketplace:id/paymentMethodTitle";
 	private By paymentMethodAccount = By.id("au.com.suncorp.marketplace:id/paymentMethodAccount");
 	private By policyDetailsBanner = By.id("au.com.suncorp.marketplace:id/policyDetailsBanner");
 	private By insuredAmount = MobileBy.AndroidUIAutomator(
@@ -80,6 +81,7 @@ public class PolicyDetailsPage extends BasePage {
 	private By coverPeriodStart = By.id("au.com.suncorp.marketplace:id/coverPeriodStart");
 	private By coverPeriodEnd = By.id("au.com.suncorp.marketplace:id/coverPeriodEnd");
 	private String coverPeriodEndId = "au.com.suncorp.marketplace:id/coverPeriodEnd";
+	private By policyDetailsLoadingIndicator = By.id("au.com.suncorp.marketplace:id/loadingIndicator");
 	
 	public WebElement checkPolicyRiskDescription() {
 		return find(riskDescription);
@@ -295,12 +297,26 @@ public class PolicyDetailsPage extends BasePage {
 		
 		return scrollAndGetElementText(debitDayLabel, 1);
 	}
-
+	
+	public WebElement checkPaymentMethodLabel() {
+		return find(paymentMethodLabel,2);
+	}
+	
 	public String getPaymentMethodText() {
 
 		return getText(paymentMethodLabel);
 	}
-
+	
+	public void scrollToPaymentMethodText(String screenHeight) {
+		if (getScreenHeight()>Integer.parseInt(screenHeight)) {
+			scrollToElement(paymentMethodLabelId, "id");
+		}
+		else {
+			scrollToElement(paymentMethodLabel);
+		}
+	
+}
+	
 	public WebElement checkRiskDescriptionText(String text) {
 	return scrollToElementByText(text, 3);
 
@@ -501,6 +517,12 @@ public class PolicyDetailsPage extends BasePage {
 	public String getPolicyRenewalStatus() {
 
 		return getText(policyrenewalStatus);
+	}
+
+	public WebElement checkloadingIndicator() {
+		// TODO Auto-generated method stub
+		return 	find(policyDetailsLoadingIndicator);
+		
 	}
 
 

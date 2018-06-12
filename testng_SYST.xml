@@ -3,7 +3,7 @@
 <suite name="Suite2" verbose="50" configfailurepolicy="continue" >
 	<test name="Test">
 	
- 		<parameter name="stub" value="false"></parameter>
+ 		<parameter name="endPoint" value="SYST"/>
  		
  		<packages> 		
    			<package name="test.marketplace.auth.registration"/>
@@ -12,7 +12,6 @@
  			<package name="test.marketplace.digitalVault"/>
  			
  			<package name="test.marketplace.landing"/>
- 			
  			
   			<package name="test.marketplace.professionalServices"/>
   			
@@ -34,10 +33,6 @@
 			<class name="test.marketplace.auth.registration.GetStartedPageTest"/>
 			<class name="test.marketplace.auth.registration.RegistrationTest"/>
 		</classes>
-		
-		<packages>
-
- 		</packages>
 	</test>
 
 </suite>

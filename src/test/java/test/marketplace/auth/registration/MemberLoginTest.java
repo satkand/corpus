@@ -87,7 +87,7 @@ public class MemberLoginTest extends App {
 		
 		Assert.assertNotNull(memberLoginPage.checkPasswordField(), "Member Login Page - Password field is not displayed");
 		memberLoginPage.enterPassword(brandIcon.get("password"));
-		Assert.assertEquals(memberLoginPage.getPasswordFieldValue(), utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd"), "Member Login Page - Data is not masked");
+		Assert.assertTrue(memberLoginPage.getPasswordFieldMaskedVal(utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd")), "Reauth With Password - Password value is not masked");
 		memberLoginPage.relaunchApp(-1, "Config");
 		Assert.assertEquals(memberLoginPage.getPasswordFieldValue(), "", "Member Login Page - Password field is not empty");
 		memberLoginPage.tapCancelButton();
@@ -190,8 +190,8 @@ public class MemberLoginTest extends App {
 		memberLoginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "invalidCredentials", "emailMinLength"), "");
 		memberLoginPage.tapNextButton();
 		errorVal = memberLoginPage.getEmailFieldErrorValue().replace("\n\n", " ");
-		Assert.assertEquals(errorVal, utils.readTestData("copy", "loginPage", "shortEmailError"));
-		Assert.assertEquals(memberLoginPage.getPasswordFieldErrorValue(),utils.readTestData("copy", "loginPage", "emptyPasswordError"));
+		Assert.assertTrue(errorVal.contains(utils.readTestData("copy", "loginPage", "shortEmailError")), brandIcon.get("brandName")+" - Email value is incorrect");
+		Assert.assertTrue(memberLoginPage.getPasswordFieldErrorValue().contains(utils.readTestData("copy", "loginPage", "emptyPasswordError")), brandIcon.get("brandName")+" - Password value is incorrect");
 
 		//Check inline errors exist when field is highlighted
 		memberLoginPage.tapEmailField();
@@ -247,9 +247,11 @@ public class MemberLoginTest extends App {
 
 		memberLoginPage.enterMobileNumber(utils.readTestData("registration", "success", "mobile"));
 		memberLoginPage.tapRegisterButton();
-
-		Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
-		pinOptionsPage.tapMaybeLater();
+		
+		if(pinOptionsPage.checkPinPromptUserWelcome() != null){
+			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
+			pinOptionsPage.tapMaybeLater();
+		}
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
