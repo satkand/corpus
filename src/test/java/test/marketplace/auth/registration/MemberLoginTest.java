@@ -254,8 +254,8 @@ public class MemberLoginTest extends App {
 		}
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
-		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+		navigationMenu.tapLogOutMenuOption();
 
 		if(loginAuthPage.checkChangeAccountButton() != null) {
 			loginAuthPage.tapChangeAccountButton();
@@ -456,8 +456,8 @@ public class MemberLoginTest extends App {
 			pinOptionsPage.tapMaybeLater();
 			Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
 			navigationMenu.tapSplitMenuIcon();
-			Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
-			navigationMenu.tapLockMenuOption();
+			Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+			navigationMenu.tapLogOutMenuOption();
 
 			// Test with invalid credentials
 			navigateToWelcomeToSuncorpPage();
@@ -506,8 +506,8 @@ public class MemberLoginTest extends App {
 		pinOptionsPage.tapMaybeLater();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
-		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+		navigationMenu.tapLogOutMenuOption();
 	}
 
 	//TODO: Test cases are not written for DMPM-4115 yet

@@ -401,8 +401,8 @@ public class LoginTest extends App {
 		pinOptionsPage.tapMaybeLater();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - User is not navigated to Landing Page");
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Nav Menu - Lock item is not diplayed");
-		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Nav Menu - Lock item is not diplayed");
+		navigationMenu.tapLogOutMenuOption();
 		Assert.assertNotNull(loginAuthPage.checkChangeAccountButton(), "Reauth Welcome Screen - User is not navigated back to reauth screen");
 		
 		//Soft log out by killing and relaunching the app

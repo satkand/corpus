@@ -13,9 +13,8 @@ public class RegistrationPage extends BasePage {
 		super(driver);
 	}
 
-	
-	private By registrationPageTitle = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
-			+ "android.widget.TextView[1]");
+	private By registrationPageTitle = By.xpath("//android.widget.TextView[@text='New user']");
+	//private By registrationPageTitle = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/android.widget.TextView[1]");
 	private By cancelButton = MobileBy.AccessibilityId("Cancel");
 	private By firstNameField = By.id("au.com.suncorp.marketplace:id/firstNameField");
 	private By surnameField = By.id("au.com.suncorp.marketplace:id/surnameField");
