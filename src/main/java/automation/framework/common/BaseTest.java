@@ -51,7 +51,7 @@ public class BaseTest {
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("appPackage", "au.com.suncorp.marketplace");
 		capabilities.setCapability("appWaitActivity", "*");
-		capabilities.setCapability("udid", "FA79X1A02210");
+	//	capabilities.setCapability("udid", "FA79X1A02210");
 		capabilities.setCapability("fullReset", false);
 		capabilities.setCapability("noReset", true);
 		//capabilities.setCapability("newCommandTimeout", 300);

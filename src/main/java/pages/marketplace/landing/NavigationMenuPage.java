@@ -28,7 +28,6 @@ public class NavigationMenuPage extends BasePage {
     private String devSettingsText ="Dev Settings";
 	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Log out']");
 	private String lockMenuOptionText="Log out";
-	
 	public void tapProffessionalServicesMenuItem() {
 		 tapElement(proffessionalServicesMenuItem);
 	}

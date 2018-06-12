@@ -204,7 +204,7 @@ public class LoginPage extends BasePage{
 	}
 	
 	public void waitForLoadingIndicatorToDismiss() {
-		waitForElementToDisappear(loadingIndicator, 30);;
+		waitForElementToDisappear(loadingIndicator, 50);;
 	}
 	
 	public String getEmailFieldData() {

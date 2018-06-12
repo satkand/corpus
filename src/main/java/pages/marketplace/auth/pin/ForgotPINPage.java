@@ -44,7 +44,9 @@ public class ForgotPINPage extends BasePage {
 	public void enterPassword(String password){
 		typeValue(password, passwordField);
 	}
-	
+	public void relaunchApp(int time, String appName) {
+		selectSuncorpApp(time, appName);
+	}
 	public String getPasswordValue() {
 		return getText(passwordField);
 	}
@@ -73,7 +75,7 @@ public class ForgotPINPage extends BasePage {
 		tapElement(backButton);
 	}
 	public WebElement checkPasswordRequiredError(){
-		return find(passwordRequiredError);
+		return find(passwordRequiredError,5);
 	}
 	
 	public String getPasswordRequiredErrorMessage() {

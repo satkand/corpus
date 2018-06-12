@@ -6,8 +6,10 @@
 	"PIN" :{
 		"loginWithExistingPin" : {
 			"login": "pinenabled@sun.com",
+			"login1": "validlogin@sun.com",
 			"pwd": "Password1",
-			"pin": "1357"
+			"pin": "1357",
+			"pin1": "2580"
 		},
 							"backup_loginWithExistingPin" : {
 								"login": "b@b.com",
@@ -27,6 +29,10 @@
 		"_comment": "CHANGE",
 		"loginWithoutExistingPin_usedToDoPINSetup" : {
 			"login": "a1@a.com",
+			"pwd": "Password1"
+		},
+		"loginNoPin" : {
+			"login": "nopinlogin@sun.com",
 			"pwd": "Password1"
 		},
 		"loginWithPinLocked" : {
@@ -84,6 +90,7 @@
 			"login": "a@b.c",
 			"login1": "test1@account.com",
 			"login2": "testacc8@acc.com",
+			"login3": "validlogin@sun.com",
 			"memberLoginEmail" : "a@b.c",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
@@ -1127,7 +1134,7 @@
 			"images" : ["File A", "File B" , "File C"]
 		}
 	},
-
+	
 	"registration" : {
 		"success":{
 			"firstName" : "Abc",
@@ -1289,8 +1296,8 @@
 			"enterPINLabel": "Enter a new 4-digit PIN",
 			"reEnterPINLabel": "Re-enter your new 4-digit PIN",
 			"invalidPINAlertMessage": "This PIN might be easily guessed. Please use a combination without repeated or consecutive numbers.",
-			"pinsDonotMatchErrorMessage": "PINs don’t match. Please try again.",
-			"pinSuccessfullySetMessage": "PIN set up"
+			"pinsDonotMatchErrorMessage": "PINs don't match. Please try again.",
+			"pinSuccessfullySetMessage": "Setting up PIN"
 		},		
 		"pinReAuthPasswordPage" : {
 			"forgottenPINPageTitle": "Forgotten PIN",

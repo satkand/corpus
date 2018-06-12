@@ -14,7 +14,7 @@ public class LandingPage extends BasePage {
 		super(driver);
 	}
 
-	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='One Suncorp']");
+	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='Suncorp App']");
 	private By chatbotOption = By.id("au.com.suncorp.marketplace:id/chatbotOption");
 	private String naviScrollableId = "au.com.suncorp.marketplace:id/navigationTabLayout";
 	private By overViewTab = By.xpath("//android.widget.TextView[@text='Overview']");
@@ -25,6 +25,7 @@ public class LandingPage extends BasePage {
 	private String propertyTitle = "Property";
 	private String vehiclesTitle = "Vehicle";
 	private By healthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='HEALTH']");
+	private String vehiclesTabTitle = "Vehicles";
 
 	/*
 	private By suncorpTab = By.xpath("//android.widget.TextView[@text='ONE SUNCORP']");
@@ -37,7 +38,7 @@ public class LandingPage extends BasePage {
 	public WebElement checkLandingPageTitle() {
 		return find(landingPageTitle, 20);
 	}
-
+	
 	public WebElement checkChatbotOption() {
 		return find(chatbotOption, 20);
 	}
@@ -98,7 +99,7 @@ public class LandingPage extends BasePage {
 	public void tapVehiclesTab() {
 		tapElement(getScreenTitle(vehiclesTitle));
 	}
-
+   
 	public boolean isVehiclesTabSelected() {
 		return isSelected(vehiclesTitle);
 		
