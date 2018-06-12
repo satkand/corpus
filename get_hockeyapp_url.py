@@ -28,7 +28,7 @@ Version : 0.1.0
 '''
 
 # Global Variables
-debug = True
+debug = False
 hockeyapp_api_url = "https://rink.hockeyapp.net/api"
 hockeyapp_title = "Marketplace"
 hockeyapp_api_version = "2"
