@@ -104,7 +104,7 @@ public class PropertyHubTest  extends App{
 		
 		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(utils.readTestData("propertyDimension","propertyDetails","stateAndSuburb")), "Suburb details page - Suburb name is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyeButton(), "Suburb details page - Whats nearby button is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyButton(), "Suburb details page - Whats nearby button is not present");
 		
 		suburbDetailsPage.tapBackButton();
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyInsightTab(), "Property Explorer page - Property Insight tab is not present");
@@ -120,7 +120,7 @@ public class PropertyHubTest  extends App{
 		// Failing due to bug DMPM-8875 TODO
 		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(utils.readTestData("propertyDimension","propertyDetails","stateAndSuburb")), "Suburb details page - Suburb name is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
-		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyeButton(), "Suburb details page - Whats nearby button is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyButton(), "Suburb details page - Whats nearby button is not present");
 		
 	}
 	

@@ -55,7 +55,7 @@ public class SuburbDetailsPage extends BasePage{
 		return find(staticMap);
 	}
 	
-	public WebElement checkWhatsNearbyeButton() {
+	public WebElement checkWhatsNearbyButton() {
 		return find(whatsNearbyeButton);
 	}
 	

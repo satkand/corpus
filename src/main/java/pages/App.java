@@ -65,6 +65,7 @@ import pages.marketplace.portfolio.AddProductPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
+import pages.marketplace.wealth.ConnectedAccountsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
 import pages.marketplace.wealth.VendorDetailPage;
@@ -125,6 +126,7 @@ public class App extends BaseTest {
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
 	public VendorDetailPage vendorDetailPage = null;
+	public ConnectedAccountsPage connectedAccountsPage = null;
 	public WhatsNearbyPage whatsNearbyPage = null;
 	public ForceUpdatePage forceUpdatePage = null;
 	public SuburbDetailsPage suburbDetailsPage = null;
@@ -140,21 +142,19 @@ public class App extends BaseTest {
 
 	String CONFIG_FILE=null;
 
-	@Parameters({ "stub" })
+	@Parameters({ "endPoint" })
 	@BeforeClass
-	public void initializeApp(@Optional("false") String stub) {
+	public void initializeApp(@Optional("SYST") String endPoint) {
 	
 		 utils = new AutoUtilities();
 		 String JSONFilePath = null;
 		 
-		 if(stub.equalsIgnoreCase("true")) {
+		 if(endPoint.equalsIgnoreCase("stub")) {
 				// Autoutilites file path
 				JSONFilePath = "/TestData/TestData_Stub.json";
 		 } else {
 				JSONFilePath = "/TestData/TestData_Test.json";
 		 }
-
-		 System.out.println(":::::::::::::::::::"+JSONFilePath);
 		 
 		CONFIG_FILE = System.getProperty("user.dir")+"/Config/config.properties";
 		utils.loadTestData(JSONFilePath);
@@ -211,7 +211,6 @@ public class App extends BaseTest {
 		memberLoginPage = new MemberLoginPage(driver);
 		whatsNearbyPage = new WhatsNearbyPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
-		articlesPage = new ArticlesPage(driver);
 		forceUpdatePage = new ForceUpdatePage(driver);
 		suburbDetailsPage = new SuburbDetailsPage(driver);
 		articlesPage = new ArticlesPage(driver);
@@ -223,19 +222,22 @@ public class App extends BaseTest {
 		makeAClaimPage = new MakeAClaimPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
 		vendorDetailPage = new VendorDetailPage(driver);
+		connectedAccountsPage = new ConnectedAccountsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		termsAndConditionsPage = new TermsAndConditionsPage(driver);
 		addProductPage = new AddProductPage(driver);
 
 	}
 	
-	@Parameters({ "stub" })
+
+	@Parameters({ "endPoint" })
+
 	@BeforeMethod(alwaysRun = true)
-	public void beforeEachTest(@Optional("false") String stub) throws Exception {
+	public void beforeEachTest(@Optional("SYST") String endPoint) throws Exception {
 		
 		welcomePage.launchApp();
 		
-		configPage.dismissConfigPage(stub,CONFIG_FILE);
+		configPage.dismissConfigPage(endPoint,CONFIG_FILE);
 	}
 	
 	@AfterMethod(alwaysRun = true)

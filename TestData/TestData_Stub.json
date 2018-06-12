@@ -73,8 +73,16 @@
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
+		"defaultLoginCredentials": {
+			"login": "a@b.c",
+			"pwd": "Password1",
+			"userName": ""
+		},
 		"validLoginCredentials": {
-			"login": "test5@test.com",
+			"login": "testacc10@acc.com",
+			"login1": "testacc9@acc.com",
+			"login2": "testacc8@acc.com",
+			"memberLoginEmail" : "a@b.c",
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
 			"userName": ""
@@ -722,7 +730,7 @@
 						"brand":"AAMI",
 						"productType":"Car Insurance",
 						"policyNumber":"MPA123456313",
-						"policyDescription":"Car insurance",
+						"policyDescription":"Car Insurance",
           				"periodOfCover": 
             			{
              				 "startDate": "01 October",
@@ -751,7 +759,7 @@
 						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
 						"discounts":"Multi-Policy, Staff",
 						"rewardsTitle":"AAMI Safe driver rewards",
-						"rewards":"Sapphire with $45.50 credit available for your next renewal",
+						"rewards":"Sapphire with $45.50 credit",
 						"riskCoverPeriod": 
             			 {
              				 "startDate": "01 October",
@@ -774,17 +782,17 @@
             			{
             			        "login": "policystatusvehicles@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			"myVehiclePolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -853,7 +861,7 @@
             			},
             			"riskDetails":{
 						"rewardsTitle":"Round the world reward",
-						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
+						"rewards":"Platinum with $1,000.01 credit"}
 				},
 				"homePolicy": 
 				{
@@ -863,7 +871,7 @@
 						"brand":"SUNCORP",
 						"productType":"Home And Contents Insurance",
 						"policyNumber":"HPS123457790",
-						"policyDescription":"Home insurance",
+						"policyDescription":"Home Insurance",
 							"instalmentDetails":
             			{
             			 "instalmentAmount":"$88.88"
@@ -881,18 +889,18 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "ACTIVE",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "POLICY ACTIVE",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			
             				"myProductPolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -1287,7 +1295,7 @@
 			"searchString" : "sto",
 			"resultString1" : "Store abc",
 			"resultString2" : "Housing store",
-			"resultString3" : "Stowed",
+			"resultString3" : "Stowed"
 
 		},
 		"hasNoData" : {
@@ -1340,7 +1348,7 @@
 			"pwd": "Password1",
 			"input" : "suncorp",
 			"websiteText" : "Suncorp Group website",
-			"websiteURL" : "https://www.suncorp.com.au/",
+			"websiteURL" : "https://www.suncorp.com.au/"
 		},
 		"phNo": {
 			"login": "a@b.c",
@@ -1369,40 +1377,46 @@
 		},
 		"horizontal_selectable_List_suggestedQuestions": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_readOnly_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options_singleItem": {
 			"login": "a@b.c",
-			"pwd": "Password1",
-		},
+			"pwd": "Password1"
+		}
 	},
 	 "brands": [
 		{
 			"brandName": "AAMI",
 			"email": "x@y.z",
+			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "AAMI member login",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
 			"brandName": "GIO",
 			"email": "x@y.z",
+			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "GIO member login",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
 			"brandName": "Shannons",
 			"email": "x@y.z",
+			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "Shannons member login",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}

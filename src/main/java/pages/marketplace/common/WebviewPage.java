@@ -27,6 +27,7 @@ public class WebviewPage extends BasePage {
 	private By webviewBrowserUrl_samsung = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
 	private By webviewBrowserUrl_google= By.id("com.android.chrome:id/url_bar");
 	private By webviewRefreshButton = MobileBy.AccessibilityId("Refresh page");
+
 	
 	public void tapWebViewToolbarOprions() {
 		tapElement(webViewToolbarOprions);
@@ -60,7 +61,6 @@ public class WebviewPage extends BasePage {
 	
 	public WebElement checkUrlBar() {
 		return find(urlBar);
-
 	}
 	
 	public String getTextUrlBar() {
@@ -88,6 +88,7 @@ public class WebviewPage extends BasePage {
 				browserUrl = find(webviewBrowserUrl_samsung);
 			}
 		
+		browserUrl = find(webviewBrowserUrl_samsung);
 		}
 		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
 		|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
@@ -102,6 +103,7 @@ public class WebviewPage extends BasePage {
 
 		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
 			browserUrl = find(webviewBrowserUrl_samsung);
+
 		}
 		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
 				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
@@ -110,6 +112,7 @@ public class WebviewPage extends BasePage {
 			browserUrl = find(webviewBrowserUrl_samsung);
 
 		}
+
 		}
 		return browserUrl;
 	}
@@ -141,6 +144,7 @@ public class WebviewPage extends BasePage {
 				browserUrlText = getText(webviewBrowserUrl_google);
 			}
 		
+		browserUrlText = getText(webviewBrowserUrl_google);
 		}
 
 		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){

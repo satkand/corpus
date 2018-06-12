@@ -75,15 +75,16 @@
 			"deviceScreenHeight": "1920"
 		},
 	"loginCredentials": {
+		"defaultLoginCredentials": {
+			"login": "tub@tub.com",
+			"pwd": "Password1",
+			"userName": ""
+		},
 		"validLoginCredentials": {
-<<<<<<< HEAD
 			"login": "a@b.c",
-=======
-			"login": "test@account.com",
 			"login1": "test1@account.com",
-			"login2": "sb@sb.sb",
+			"login2": "testacc8@acc.com",
 			"memberLoginEmail" : "a@b.c",
->>>>>>> develop
 			"pwd": "Password1",
 			"maskedValidPwd": "•••••••••",
 			"userName": ""
@@ -164,7 +165,7 @@
 			"withOutProducts": {
 					"login": "a@b.c",
 					"pwd": "Password1",
-					"addressLineText": "201/64-66 Sahi Crescent, Roxburgh Park",
+					"addressLineText": "45 Super Long Long Name Street, Brighton",
          			"suburbText":"VIC 3064",
           			"productDescriptionText1": "Home and Contents protected until 10 October 2019",
          			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
@@ -173,22 +174,27 @@
 	"articlesCarousel": {
 		"articleCarouselText":"Articles",
 		"articleReadMoreButton": "READ MORE",
+		"login": "articles@sun.com",
+		"pwd": "Password1",
 		"property": { 
+			"carouselTitle" : "How can we help you?",
+			"screenHeight" : "1920",
 			"articleViewPager": [
+			    
 				{ 
-					"articleTitle" : "The 5 Steps to Master Renting",
-					"articleDescription" : "Whatever it is that has you scanning the “TO LET” listings, there are a number of important things to consider before you sign a rental lease.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/master-renting.html"
+					"articleTitle" : "UAT - First home buyers grants in your state",
+					"articleDescription" : "If you're buying your first home, you may be entitled to a little help. Find out here.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				},
 				{ 
-					"articleTitle" : "What are landlord responsibilities?",
-					"articleDescription" : "Landlords need to keep a property in a livable condition.Find out what you should expect here.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/renting/landlord-responsibilities.html"
+					"articleTitle" : "UAT - What influences how much I can borrow?",
+					"articleDescription" : "There are a lot of variables that determine how much you can borrow. Knowing what they are can help put you in the best position.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				},
 				{ 
-					"articleTitle" : "How can I estimate the total costs involved in buying a home?",
-					"articleDescription" : "The price you see in the ads or at aunction is rarely the full price of buyign a house. We detail here some of the 'hidden' costs you need to watch out for.",
-					"webViewUrl" : "https://www.suncorp.com.au/learn-about/buying-a-home/estimating-costs-of-buying-a-home.html"
+					"articleTitle" : "UAT - Estimating the costs of buying a property",
+					"articleDescription" : "Stamp duty, LMI and other borrowing costs are all part of the process. Make sure you're confident and work with your advisor to get the right deal for your lifestyle.",
+					"webViewUrl" : "https://www.suncorp.com.au"
 				}
 			]
 		}
@@ -731,7 +737,7 @@
 						"brand":"AAMI",
 						"productType":"Car Insurance",
 						"policyNumber":"MPA123456313",
-						"policyDescription":"Car insurance",
+						"policyDescription":"Car Insurance",
           				"periodOfCover": 
             			{
              				 "startDate": "01 October",
@@ -760,7 +766,7 @@
 						"parkingAddress":"45 CAMBEWARRA DR HOPETOUN 6348",
 						"discounts":"Multi-Policy, Staff",
 						"rewardsTitle":"AAMI Safe driver rewards",
-						"rewards":"Sapphire with $45.50 credit available for your next renewal",
+						"rewards":"Sapphire with $45.50 credit",
 						"riskCoverPeriod": 
             			 {
              				 "startDate": "01 October",
@@ -783,17 +789,17 @@
             			{
             			        "login": "policystatusvehicles@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			"myVehiclePolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -862,7 +868,7 @@
             			},
             			"riskDetails":{
 						"rewardsTitle":"Round the world reward",
-						"rewards":"Platinum with $1,000.01 credit available for your next renewal"}
+						"rewards":"Platinum with $1,000.01 credit"}
 				},
 				"homePolicy": 
 				{
@@ -872,7 +878,7 @@
 						"brand":"SUNCORP",
 						"productType":"Home And Contents Insurance",
 						"policyNumber":"HPS123457790",
-						"policyDescription":"Home insurance",
+						"policyDescription":"Home Insurance",
 							"instalmentDetails":
             			{
             			 "instalmentAmount":"$88.88"
@@ -890,18 +896,18 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "ACTIVE",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy commencing",
+             				 "active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
             			
             				"myProductPolicyStatus": 
             			{
-             				"active": "Policy Active",
-             				 "cancellationPending":"Cancellation pending",
-             				 "futureActive": "Policy Future Activation",
+             				"active": "Policy active",
+             				 "cancellationPending":"Policy cancellation pending",
+             				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
              				 "renewalOverDue":"Renewal overdue"
             			},
@@ -932,59 +938,59 @@
 		"pwd": "Password1"
 	},
 	"hasSuncorpBankAccounts" :{
-		"login": "digi@v.com",
-		"pwd": "Password1",
-		"netWorthAmount": "$7,550.35",
+		"login": "irina.marketplace@suncorp.com.au",
+		"pwd": "Passw0rd",
+		"netWorthAmount": "$99,617.16",
 		"bankAccounts": "",
-		"currentMonth": "March 2018",
+		"currentMonth": "May 2018",
 		"spendingsAmountPerMonth": [
 			{
 				"month": "January 2018",
-				"amount": "$23.54"
+				"amount": "$0.00"
 			},
 			{
 				"month": "February 2018",
-				"amount": "$23.54"
+				"amount": "$29,090.58"
 			},
 			{
 				"month": "March 2018",
-				"amount": "$23.54"
+				"amount": "$29,298.43"
 			},
 			{
-				"month": "April 2017",
-				"amount": "$23.54"
+				"month": "April 2018",
+				"amount": "$28,816.13"
 			},
 			{
-				"month": "May 2017",
-				"amount": "$23.54"
+				"month": "May 2018",
+				"amount": "$28,667.34"
 			},
 			{
-				"month": "June 2017",
-				"amount": "$23.54"
+				"month": "June 2018",
+				"amount": "$0.00"
 			},
 			{
 				"month": "July 2017",
-				"amount": "$23.54"
+				"amount": "$0.00"
 			},
 			{
 				"month": "August 2017",
-				"amount": "$23.54"
+				"amount": "$0.00"
 			},
 			{
 				"month": "September 2017",
-				"amount": "$37,223.35"
+				"amount": "$0.00"
 			},
 			{
 				"month": "October 2017",
-				"amount": "$23.54"
+				"amount": "$0.00"
 			},
 			{
 				"month": "November 2017",
-				"amount": "$23.54"
+				"amount": "$0.00"
 			},
 			{
 				"month": "December 2017",
-				"amount": "$3,789.32"
+				"amount": "$0.00"
 			}
 		],
 		"spendingsByCategories": [
@@ -992,136 +998,42 @@
 				"month": "February 2018",
 				"categoriesList": [
 					{
-					"name": "Food & drink",
-					"amount": "$23.54",
-					"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "January 2018",
-				"categoriesList": [
-					{
-					"name": "Food & drink",
-					"amount": "$23.54",
-					"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "December 2017",
-				"categoriesList": [
-					{
-					"id": 7,
-					"name": "Health & fitness",
-					"amount": "$1,999.99",
-					"currency": "AUD",
-					"transactionCount": 2
-					},
-					{
-					"id": 0,
-					"name": "Bills & utilities",
-					"amount": "$1,987.00",
-					"currency": "AUD",
-					"transactionCount": 1
-					},
-					{
-					"id": 3,
-					"name": "Entertainment",
-					"amount": "$98.21",
-					"currency": "AUD",
-					"transactionCount": 5
-					},
-					{
-					"id": 2,
-					"name": "Education & family",
-					"amount": "$38.22",
-					"currency": "AUD",
-					"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "October 2017",
-				"categoriesList": [
-					{
-						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "September 2017",
-				"categoriesList": [
-				{
-					"id": 13,
-					"name": "Transport",
-					"amount": "$17,584.25",
-					"currency": "AUD",
-					"transactionCount": 25
-				},
-				{
-					"id": 4,
-					"name": "Financial",
-					"amount": "$5,533.20",
-					"currency": "AUD",
-					"transactionCount": 55
-				},
-				{
-					"id": 6,
 					"name": "Groceries",
-					"amount": "$4,961.55",
-					"currency": "AUD",
-					"transactionCount": 85
-				},
-				{
-					"id": 12,
+					"amount": "$4,999.87",
+					"transactionCount": 108
+					},
+					{
 					"name": "Shopping",
-					"amount": "$2,304.25",
-					"currency": "AUD",
-					"transactionCount": 35
-				}
-				]
-			},
-			{
-				"month": "August 2017",
-				"categoriesList": [
+					"amount": "$4,296.73",
+					"transactionCount": 93
+					},
 					{
 						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
+						"amount": "$4147.81",
+						"transactionCount": 84
 					}
 				]
 			},
-			{
-				"month": "June 2017",
-				"categoriesList": [
-					{
-						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "May 2017",
-				"categoriesList": [
-					{
-						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
+
 			{
 				"month": "March 2018",
 				"categoriesList": [
 					{
+						"name": "Groceries",
+						"amount": "$5347.95",
+						"transactionCount": 108
+					},	
+					{
+					"name": "Shopping",
+					"amount": "$4,402.81",
+					"transactionCount": 93
+					},
+					{
 						"name": "Food & drink",
-						"amount": "$23.54",
-						"transactionCount": 3
+						"amount": "$4026.17",
+						"transactionCount": 84
 					}
+
 				]
 			}
 		],
@@ -1130,135 +1042,63 @@
 				"month": "February 2018",
 				"vendorsList": [
 					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "December 2017",
-				"vendorsList": [
-					{
-					"name": "Suncorp Home Loan",
-					"amount": "$2,789.65",
-					"transactionCount": 3
+						"name": "Other",
+						"amount": "$10,964.46",
+						"transactionCount": 237
 					},
 					{
-					"name": "Clinton's Cafe",
-					"amount": "$198.65",
-					"transactionCount": 3
-					},
-					{
-					"name": "Jimmy Bloggs Barber",
-					"amount": "$128.43",
-					"transactionCount": 1
-					},
-					{
-					"name": "Phil's diner",
-					"amount": "$38.21",
-					"transactionCount": 3
+						"name": "Woolworths",
+						"amount": "$1,625.13",
+						"transactionCount": 33
 					}
 				]
 			},
-			{
-				"month": "November 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-						"transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "September 2017",
-				"vendorsList": [
-					{
-					"name": "Other",
-					"amount": "$24,262.30",
-					"transactionCount": 90
-					},
-					{
-					"name": "Coles",
-					"amount": "$2,265.45",
-					"transactionCount": 25
-					},
-					{
-					"name": "Woolworths",
-					"amount": "$1,787.40",
-					"transactionCount": 35
-					},
-					{
-					"name": "BUPA",
-					"amount": "$1,599.50",
-					"transactionCount": 5
-					}
-				]
-			},
-			{
-				"month": "August 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "July 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "June 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-					}
-				]
-			},
-			{
-				"month": "April 2017",
-				"vendorsList": [
-					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
 
-					}
-				]
-			},
+
 			{
 				"month": "March 2018",
 				"vendorsList": [
 					{
-						"name": "Phil's diner",
-						"amount": "$23.54",
-			            "transactionCount": 3
-
+						"name": "Other",
+						"amount": "$11,086.67",
+			            "transactionCount": 237
+					},
+					{
+						"name": "Woolworths",
+						"amount": "$1,707.20",
+			            "transactionCount": 33
 					}
 				]
 			}
 		],
 		"emptyCategoryMonths": [
-			"November 2017",
+			"January 2018",
+			"June 2018",
 			"July 2017",
-			"April 2017"
+			"August 2017"
 		],
 		"emptyVendorMonths": [
 			"January 2018",
-			"October 2017",
-			"May 2017"
+			"June 2018",
+			"July 2017",
+			"August 2017"
 		]
+	},
+	"ffi" : {
+		"hasData" :{
+			"login" : "digi@v.com",
+			"pwd" : "Password1",
+			"month" : "February 2018",
+			"zeroSpending" : "$0.00",
+			"searchString" : "sto",
+			"resultString1" : "Store abc",
+			"resultString2" : "Housing store",
+			"resultString3" : "Stowed"
+
+		},
+		"hasNoData" : {
+			"month" : "January 2018"
+		}
 	},
 	"hasVehicles" :{
 		"login": "a@b.c",
@@ -1276,7 +1116,7 @@
 	},
 	"digivault" : {
 		"hasItems" : {
-			"login" : "a@b.c",
+			"login" : "digi@v.com",
 			"pwd" : "Password1",
 			"newname" : "NewName",
 			"folderName" : "ab",
@@ -1287,22 +1127,7 @@
 			"images" : ["File A", "File B" , "File C"]
 		}
 	},
-	"ffi" : {
-		"hasData" :{
-			"login" : "digi@v.com",
-			"pwd" : "Password1",
-			"month" : "February 2018",
-			"zeroSpending" : "$0.00",
-			"searchString" : "sto",
-			"resultString1" : "Store abc",
-			"resultString2" : "Housing store",
-			"resultString3" : "Stowed",
 
-		},
-		"hasNoData" : {
-			"month" : "April 2018"
-		}
-	},
 	"registration" : {
 		"success":{
 			"firstName" : "Abc",
@@ -1349,7 +1174,7 @@
 			"pwd": "Password1",
 			"input" : "suncorp",
 			"websiteText" : "Suncorp Group website",
-			"websiteURL" : "https://www.suncorp.com.au/",
+			"websiteURL" : "https://www.suncorp.com.au/"
 		},
 		"phNo": {
 			"login": "a@b.c",
@@ -1378,20 +1203,20 @@
 		},
 		"horizontal_selectable_List_suggestedQuestions": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_readOnly_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options": {
 			"login": "a@b.c",
-			"pwd": "Password1",
+			"pwd": "Password1"
 		},
 		"vertical_selectable_List_options_singleItem": {
 			"login": "a@b.c",
-			"pwd": "Password1",
-		},
+			"pwd": "Password1"
+		}
 	},
 	 "brands": [
 		{
@@ -1399,6 +1224,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "AAMI member login",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
@@ -1407,6 +1233,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "GIO member login",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
@@ -1415,6 +1242,7 @@
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
+			"invalidPassword" : "password",
 			"brandIcon": "Shannons member login",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}

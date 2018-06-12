@@ -17,7 +17,7 @@ public class ChatbotTest extends App {
 	@TestDetails(story1 = "DMPM-191:DMPM-4993,DMPM-4998")
 	@Test (groups = {"DMPM-51", "DMPM-477", "DMPM-478", "marketplace", "Chatbot", "priority-minor"})
 	public void testChatbotPageElements() {
-		navigateToChatbotScreenAsLoggedInUser(utils.readTestData("loginCredentials","validLoginCredentials", "login"), utils.readTestData("loginCredentials","validLoginCredentials", "pwd"));
+		navigateToChatbotScreenAsLoggedInUser(utils.readTestData("loginCredentials","defaultLoginCredentials", "login"), utils.readTestData("loginCredentials","defaultLoginCredentials", "pwd"));
 		
 		// Before the initial welcome messages are shown, response indicator is shown.
 		chatbotPage.waitForResponseIndicatorToDisappear();
@@ -42,11 +42,10 @@ public class ChatbotTest extends App {
 		} 
 	}
 	
-	// 51 - Scenario 3
-	// 51 - Scenario 4
-	@Test (groups = {"DMPM-51", "DMPM-479", "DMPM-51", "DMPM-480", "marketplace", "Chatbot", "priority-minor"})
+	// 51 - Scenario 3, 4
+	@Test (groups = {"DMPM-51", "DMPM-479", "DMPM-480", "marketplace", "Chatbot", "priority-minor"})
 	public void testDismissingKeyboardAndSendButtonBehaviour() {
-		navigateToChatbotScreenAsLoggedInUser(utils.readTestData("loginCredentials","validLoginCredentials", "login"), utils.readTestData("loginCredentials","validLoginCredentials", "pwd"));
+		navigateToChatbotScreenAsLoggedInUser(utils.readTestData("loginCredentials","defaultLoginCredentials", "login"), utils.readTestData("loginCredentials","defaultLoginCredentials", "pwd"));
 		chatbotPage.tapUserInputField();
 		Assert.assertTrue(common.isKeyboardShown(), "Chatbot page - keyboard not shown");
 		// As the keyboard is already dismissed in the above step, we need to launch the keyboard again by tapping on userInputField
@@ -69,7 +68,7 @@ public class ChatbotTest extends App {
 	// 619 - Scenario 1
 	// 1200 - Scenario 1
 	@Test (groups = {"DMPM-51", "DMPM-481", "DMPM-237", "DMPM-918", "DMPM-919", "DMPM-297", "DMPM-916", "DMPM-917", "DMPM-619", "DMPM-1343", "DMPM-1200", "DMPM-1330", "marketplace", "Chatbot", "priority-minor"})
-	public void testChatbotResponseWithParagraphs() throws InterruptedException {
+	public void testChatbotResponseWithParagraphs() {
 		navigateToChatbotScreenAsLoggedInUser(utils.readTestData("chatbot","paragraph", "login"), utils.readTestData("chatbot","paragraph", "pwd"));
 		
 		// Wait for loading indicator to dismiss and welcome messages to be shown
@@ -150,8 +149,10 @@ public class ChatbotTest extends App {
 		String userInput = utils.readTestData("chatbot","phNo", "input");
 		chatbotPage.enterUserInput(userInput);
 		chatbotPage.tapSendButton();
+		
 		// Once chatbot has processed the query, loading indicator disappears and response message from chatbot is shown
 		chatbotPage.waitForResponseIndicatorToDisappear();
+		
 		common.dismissKeyboardShown();
 		Assert.assertEquals(chatbotPage.getUserInputQueryValue(), userInput, "Chatbot page - Message bubble not shown");
 		//Assert.assertNotNull(chatbotPage.checkResponseMessage(), "Chatbot page - Response message bubble from chatbot not shown");
@@ -243,6 +244,7 @@ public class ChatbotTest extends App {
 		landingPage.tapChatbotOption();
 	}
 	
+	// TODO R3.0 Release
 	private void navigateToChatbotScreenAsGuestUser() {
 		welcomePage.tapGuestAccessButton();
 		Assert.assertNotNull(landingPage.checkChatbotOption(), "Landing Page - Chatbot option is not shown");
