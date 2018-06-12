@@ -27,8 +27,8 @@ public class LoginAuthTest extends App{
 
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
-		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+		navigationMenu.tapLogOutMenuOption();
 	}
 	
 	private void checkForTermsAndConditions() {
@@ -79,7 +79,7 @@ public class LoginAuthTest extends App{
 		
 		Assert.assertNotNull(landingPage.checkSuncorpTab(), "User is not navigated to the Landing screen");
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
 		navigationMenu.tapSettingsMenuItem();
 		//Wait for loading spinner to finish
 		common.waitForLoadingIndicatorToDisappear();
@@ -106,8 +106,8 @@ public class LoginAuthTest extends App{
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "User is not navigated back to Settings page");
 
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
-		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+		navigationMenu.tapLogOutMenuOption();
 		
 		// PIN Enabled
 		loginAuthPage.tapReloginButton();

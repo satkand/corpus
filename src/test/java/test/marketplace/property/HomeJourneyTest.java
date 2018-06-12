@@ -101,7 +101,7 @@ public class HomeJourneyTest extends App {
 	public void testHomeJourneyviaMenu()
 	{
 		navigateToHomeJourneyviaMenu();
-		Assert.assertNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
+		//Assert.assertNull(navigationMenu.checkHomeJourneyMenuItem(), " Navigation Draw - Home Journey menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), " Navigation Draw - One suncorp menu option not shown");
 		
 		navigationMenu.tapSuncorpMenuItem();

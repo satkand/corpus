@@ -140,8 +140,8 @@ public class ForgotPINTest extends App {
 			enterCurrentPINPage.tapOkButton();
 		}
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Settings menu item is not shown");
-		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Log out menu item is not shown");
+		navigationMenu.tapLogOutMenuOption();
 		Assert.assertNotNull(loginAuthPage.checkReloginButton(), "Login button not present");
 		loginAuthPage.tapReloginButton();
 	}

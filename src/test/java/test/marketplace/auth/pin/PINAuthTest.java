@@ -108,8 +108,8 @@ public class PINAuthTest extends App{
 		pinOptionsPage.tapEnablePinButton();
 		enterPIN(pin);
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Settings menu item is not shown");
-		navigationMenu.tapLockMenuOption();	
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Settings menu item is not shown");
+		navigationMenu.tapLogOutMenuOption();	
 		Assert.assertNotNull(loginAuthPage.checkReloginButton(),"Login button not present");
 		loginAuthPage.tapReloginButton();
 	}	
@@ -128,8 +128,8 @@ public class PINAuthTest extends App{
 		pinSetupPage.checkPINSuccessfullySetMessage();
 		landingPage.checkLandingPageTitle();
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Settings menu item is not shown");
-		navigationMenu.tapLockMenuOption();	
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Settings menu item is not shown");
+		navigationMenu.tapLogOutMenuOption();	
 		Assert.assertNotNull(loginAuthPage.checkReloginButton(),"Login button not present");
 		loginAuthPage.tapReloginButton();
 		
