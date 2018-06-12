@@ -1,5 +1,7 @@
 package pages.marketplace.property;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -14,7 +16,6 @@ public class SuburbDetailsPage extends BasePage{
 	}
 	
 	private By disclaimerLabelText = By.xpath("//android.widget.TextView[@text='Disclaimer']");
-	private By suburbName = By.xpath("//android.widget.TextView[@text='Sunnydale, SA 5353']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private By riskAndHazardTitleText = By.id("au.com.suncorp.marketplace:id/risksAndHazardsTitle");
@@ -34,6 +35,42 @@ public class SuburbDetailsPage extends BasePage{
 	private By travelButton= By.id("au.com.suncorp.marketplace:id/travelButton");
 	private By weeklyIncomeButton = By.id("au.com.suncorp.marketplace:id/weeklyIncomeButton");
 	
+	//disclaimer
+	private By disclaimerPageTitle = By.xpath("//android.widget.TextView[@text='Disclaimer']");
+	private By disclaimerBackButton = MobileBy.AccessibilityId("Navigate up");
+	
+	//google Map
+	private By staticMap=  MobileBy.AccessibilityId("Google Map");
+	private By whatsNearbyeButton = By.id("au.com.suncorp.marketplace:id/nearbyButton");
+	
+	public WebElement checkDisclaimerBackButton() {
+		return find(disclaimerBackButton);
+	}
+	
+	public void tapDisclaimerBackButton() {
+		tapElement(disclaimerBackButton);
+	}
+	
+	public WebElement checkStaticMap() {
+		return find(staticMap);
+	}
+	
+	public WebElement checkWhatsNearbyButton() {
+		return find(whatsNearbyeButton);
+	}
+	
+	public WebElement checkDisclaimerPageTitle() {
+		return find(disclaimerPageTitle);
+	}
+	
+	public String getDisclaimerPageTitleText() {
+		return getText(disclaimerPageTitle);
+	}
+	
+	public void tapWhatsNearbyeButton() {
+		tapElement(whatsNearbyeButton);
+	}
+	
 	public boolean checkScreenTitleWithSuburbName(String text) {
 		String t = "//android.widget.TextView[@text='"+text+"']";
 		By titleName = By.xpath(t);
@@ -49,20 +86,31 @@ public class SuburbDetailsPage extends BasePage{
 		scrollToElement("Disclaimer","text");
 	}
 	
+	public void scrollUpToRiskAndHazardTitleText(){
+		for(int i=0;i<5;i++) {
+			swipeScreen("up");
+		}
+	}
+	
 	public WebElement checkDisclaimerLabelText() {
 		return find(disclaimerLabelText);
+	}
+	
+	public void tapDisclaimerButton() {
+		tapElement(disclaimerLabelText);
 	}
 	
 	public String getDisclaimerLabelText() {
 		return getText(disclaimerLabelText);
 	}
 	
-	public WebElement checkSuburbNameText() {
-		return find(suburbName);
+	public WebElement checkSuburbNameText(String XpathText) {
+		return find(findElementUsingXpathText(XpathText));
+		
 	}
 	
-	public String getSuburbNameText() {
-		return getText(suburbName);
+	public String getSuburbNameText(String XpathText) {
+		return getText(findElementUsingXpathText(XpathText));
 	}
 	
 	public WebElement checkBackButton() {
@@ -71,6 +119,11 @@ public class SuburbDetailsPage extends BasePage{
 
 	public void tapBackButton() {
 		tapElement(backButton);
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public WebElement checkRiskAndHazardTitleText() {
@@ -146,6 +199,7 @@ public class SuburbDetailsPage extends BasePage{
 	}
 	
 	public WebElement checkDemographicsText() {
+		scrollToElement(demographicsText);
 		return find(demographicsText);
 	}
 	

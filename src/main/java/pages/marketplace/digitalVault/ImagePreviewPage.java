@@ -10,7 +10,8 @@ import io.appium.java_client.MobileBy;
 public class ImagePreviewPage extends BasePage {
 
 	DigiVaultCommonPage digiVaultCommonPage = new DigiVaultCommonPage(driver);
-	private By nextButton = By.id("au.com.suncorp.marketplace:id/nextDocumentOption");
+	//TODO: id to be added
+	private By nextButton = By.xpath("//android.widget.TextView[@content-desc='NEXT button']");
 	private By previousButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private ChooseFolderPage choosefolderPage = new ChooseFolderPage(driver);
@@ -28,11 +29,16 @@ public class ImagePreviewPage extends BasePage {
 		tapElement(previousButton);
 	}
 	
+	public WebElement checkNextButton() {
+		return find(nextButton);
+	}
+	
 	public void tapNextButton() {
 		tapElement(nextButton);
 	}
 	
 	public void finishSavingImageByChoosingFolder() {
+		checkNextButton();
 		tapNextButton();
 		digiVaultCommonPage.checkPositiveButton();
 		digiVaultCommonPage.tapPositiveButton();
@@ -41,6 +47,7 @@ public class ImagePreviewPage extends BasePage {
 	}
 	
 	public void finishSavingImageByChoosingFolder(String fileName) {
+		checkNextButton();
 		tapNextButton();
 		digiVaultCommonPage.checkPositiveButton();
 		digiVaultCommonPage.enterName(fileName);

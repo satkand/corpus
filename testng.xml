@@ -5,6 +5,8 @@
   <suite-files>
 <!--     <suite-file path="testng_STUB.xml" /> -->
     <suite-file path="testng_SYST.xml" />
+    <!--  <suite-file path="testng_withstub.xml" /> -->
+    <suite-file path="testng_withoutstub.xml" />
   </suite-files>
   
 </suite>

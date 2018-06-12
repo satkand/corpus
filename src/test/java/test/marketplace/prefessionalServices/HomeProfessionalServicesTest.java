@@ -23,11 +23,8 @@ public class HomeProfessionalServicesTest extends App{
 	
 		checkProfessionalServicesScreenElements();
 
-		homeServicesPage.tapViewServicesButton();			
-		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "home Services Page - View services button is not present");
-		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
-				
-		webviewPage.tapWebviewChromeCloseButton();
+		homeServicesPage.tapViewServicesButton();	
+		verifyWebviewBrowserUrl();
 		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesPageTitle(), "home Services Page - home Services Page title is not present");
 		
 	}
@@ -43,10 +40,66 @@ public class HomeProfessionalServicesTest extends App{
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "Home Professtional services page - Title is not present");
 		
 		homeServicesPage.tapViewServicesButton();			
-		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "home Services Page - View services button is not present");
-		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+		verifyWebviewBrowserUrl();
 		
+	}
+	
+	@TestDetails(story1 = "DMPM-6102:DMPM-7073,DMPM-4707", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
+	public void testProfessionalServicesUpdatedURL() {
 		
+		navigateToProfessionalServices();
+		homeServicesPage.tapProfessionalServicesIntroGotItButton();
+		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "Home Professtional services page - Title is not present");
+		
+		homeServicesPage.tapViewServicesButton();
+		verifyWebviewBrowserUrl();
+		
+		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesPageTitle(), "home Services Page - home Services Page title is not present");
+		navigationMenu.tapSplitMenuIcon();
+		navigationMenu.tapSuncorpMenuItem();
+		
+		landingPage.tapHomeTab();
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home tab is not selected on landing page");
+		
+		homePropertyPage.scrollToJourneyBanner();
+		homePropertyPage.tapStartYourJourneyButton();
+		Assert.assertNotNull(homeJourneyPage.checkJourneyTitleText(), "home Journey Page - home Journey Page title is not present");
+		
+		homeJourneyPage.scrollToViewServiceVendorsButton();
+		homeJourneyPage.tapViewServiceVendorsButton();
+		
+		verifyWebviewBrowserUrl();
+		
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "home Journey Page - home Journey Page title is not present");
+		
+		homeJourneyPage.tapBackButton();
+		homePropertyPage.scrollToJourneyBanner();
+		homePropertyPage.tapStartYourJourneyButton();
+		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
+		
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
+			
+		propertyDetailsPage.scrollToProfessionaServicesButton();
+		propertyDetailsPage.tapProfessionaServicesButton();
+		
+		if(webviewPage.checkWebviewBrowserUrl()!=null) {
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+			webviewPage.tapWebviewChromeCloseButton();
+			
+		}else if(webviewPage.checkUrlBar()!=null) {
+			Assert.assertEquals(webviewPage.getTextUrlBar().replaceAll("[^a-zA-Z0-9]", "").toString(), Copy.LOCATION_BAR_TEXT_S5, "home Services Page - View Services web view URL is different to the expected URL");
+			webviewPage.tapDeviceBackButton();
+			
+		}else {
+			Assert.assertEquals(webviewPage.getWebViewLocationBar(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+			
+		}
 	}
 
 	private void navigateToProfessionalServices() {
@@ -76,6 +129,29 @@ public class HomeProfessionalServicesTest extends App{
 		Assert.assertNotNull(homeServicesPage.checkProfessionalServicesIntroGotItButton(), "Home Professtional services page - intro GOT IT button is not present");
 		Assert.assertEquals(homeServicesPage.getProfessionalServicesIntroTitle(), Copy.HOME_PROFESSIONAL_SERVICES_INTRO_TITLE,"Home Professtional services intro pop up -Title is not matching");
 		Assert.assertEquals(homeServicesPage.getProfessionalServicesIntroDesc(), Copy.HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION,"Home Professtional services intro pop up -description is not matching");
+		
+	}
+	
+	private void verifyWebviewBrowserUrl() {
+		if(webviewPage.checkWebviewBrowserUrl()!=null) {
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+			webviewPage.tapWebviewChromeCloseButton();
+		}else if(webviewPage.checkUrlBar()!=null) {
+			Assert.assertNotNull(webviewPage.checkUrlBar(), "Web View Page - Web View URL bar is not present");
+			
+			if(!(whatsNearbyPage.getDeviceModel().equalsIgnoreCase("SM-G900F"))) {
+				webviewPage.tapWebViewToolbarOprions();
+				Assert.assertNotNull(webviewPage.checkWebViewOpenInChromeButton(), "Home Journey Page - Home Journey page title is not shown");
+				webviewPage.tapWebViewOpenInChromeButton();
+				Assert.assertEquals(webviewPage.getTextUrlBar(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Home professional services URL is not matching");
+			}else {
+				Assert.assertEquals(webviewPage.getTextUrlBar().replaceAll("[^a-zA-Z0-9]", "").toString(), Copy.LOCATION_BAR_TEXT_S5,"Home professional services URL is not matching");
+			}
+			webviewPage.tapDeviceBackButton();
+
+		}else {
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+		}
 		
 	}
 		

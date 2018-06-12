@@ -33,12 +33,13 @@ public interface Copy {
 	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
-	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/buying-selling-owning/home.html?cmpid=SUN:BK:PI:NPS:DIS:20180630:6775";
 	
 	//PROFESSIONAL SERVICES FROM NAVIGATION MENU
 	public String HOME_PROFESSIONAL_SERVICES_INTRO_TITLE ="Professional services";
 	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property.";
-	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	//public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
+	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/buying-selling-owning/home.html?cmpid=SUN:BK:PI:NPS:DIS:20180630:6775";
 	
 	//FORCE UPDATE SCREEN
 	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
@@ -73,7 +74,8 @@ public interface Copy {
 	public static final String ARTICLE_CAROUSEL_DESC = "Learn more about how to make the most out of your property with these insightful articles.";
 	
 	//WEB VIEW
-	public static final String LOCATION_BAR_TEXT = "www.suncorp.com.au";
+	public static final String LOCATION_BAR_TEXT = "‎‎‎‎www.suncorp.com.au";
+	public static final String LOCATION_BAR_TEXT_S5 = "httpswwwsuncorpcomau";
 
 	//SUBURB DETAILS PAGE
 	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
@@ -87,7 +89,7 @@ public interface Copy {
 
 	
 	//POLICY DETAILS PAGE
-	String POLICY_DETAILS_SCREEN_TITLE = "Policy Details";
+	String POLICY_DETAILS_SCREEN_TITLE = "Policy details";
 	String INSTALMENT_FREUENCY_MONTHLY_LABEL ="Monthly instalment";
 	String INSTALMENT_FREUENCY_QUARTERLY_LABEL ="Quarterly instalment";
 	String INSTALMENT_FREUENCY_HALF_YEARLY_LABEL ="Half-yearly instalment";
@@ -101,10 +103,10 @@ public interface Copy {
 	String DISCOUNTS_LABEL="Discounts";
 	//Risk Details Page
 	String PARKING_ADDRESS_LABEL="Parking address";
-	String ADDITIONAL_EXCESSES_DETAILS_LABEL="ADDITIONAL EXCESS DETAILS MAY APPLY";
-	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE ADDITIONAL EXCESSES";
-	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please come back and try again later.";
-	String POLICY_MAINTAINCE_TITLE="Policy under maintenance";
+	String ADDITIONAL_EXCESSES_DETAILS_LABEL="OTHER EXCESSES MAY ALSO APPLY";
+	String HIDE_ADDITIONAL_EXCESSES_LABEL="HIDE OTHER EXCESSES";
+	String POLICY_MAINTAINCE_ERROR_MESSAGE="Please try again later.";
+	String POLICY_MAINTAINCE_TITLE="Policy details is undergoing maintenance";
 	//RENEW POLICY
 	String RENEW_POLICY_SCREEN_TITLE = "Renew Policy";
 	
@@ -157,7 +159,19 @@ public interface Copy {
 	//MEMBER LOGIN PAGE
 	String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";
 
+
+	
+	//FFI
+	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you don't have any\n" + "transactions yet.";
+	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
+
+	//DIGIVAULT
+	public static final String DIGI_EMPTYIMAGE_TITLE = "Your safe is empty";
+	public static final String DIGI_EMPTYIMAGE_DESC = "Your digital safe is a depository to keep track of any files or photos you may need later";
+	
+
 	//RESET PASSWORD
+
 	public String RESET_PASSWORD_TITLE_TEXT = "Reset password";
 	public String RESET_PASSWORD_DESCRIPTION_TEXT = "Enter the email associated with your Suncorp account. We'll email you a link to a page where you can easily create a new password.";
 	public String RESET_PASSWORD_SHORT_EMAIL_ERROR = "Must be between 2 and 100 characters Please enter a valid email address";
@@ -173,13 +187,9 @@ public interface Copy {
 	
 	//REGISTRATION PAGE
 	public String DUPLICTE_EMAIL_POPUP_USE_ANOTHER_EMAIL_BUTTON_TEXT = "LOG IN WITH THIS EMAIL";
-
-	
-	//FFI
-	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you dont have any transactions yet.";
-	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
 	
 	//Forgot Pin Page
 	String PASSWORD_REQUIRED_ERROR = "Field is required";
 	String FORGOTTEN_PIN_PAGE_TITLE= "Forgot PIN?";
+
 }

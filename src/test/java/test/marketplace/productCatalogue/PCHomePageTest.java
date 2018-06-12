@@ -67,6 +67,7 @@ public class PCHomePageTest extends App {
 				WebElement categoryElement = productCatalogueHomePage.findCategory(categoryJSON.get("name").toString());
 				Assert.assertNotNull(categoryElement, categoryJSON.get("name").toString() + " not shown" );
 				productCatalogueHomePage.tapObject(categoryElement);
+				System.out.println("**" + categoryJSON.get("name").toString() + "**");
 				
 				subCategories = productCatalogueHomePage.getSubCategories(categoryJSON);
 				for(Object subCategory : subCategories) {
@@ -80,13 +81,16 @@ public class PCHomePageTest extends App {
 					Assert.assertNotNull(productCatalogueHomePage.checkFactsHeader(), "Features header not present");
 					Assert.assertTrue(productCatalogueHomePage.verifyFacts(subCategoryJSON), "All facts are not expected");
 					Assert.assertTrue(productCatalogueHomePage.checkDisclaimer(subCategoryJSON), "Disclaimer not as expected");			
-					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
-					
+
 					if( (((JSONObject) subCategoryJSON.get("quote")).get("quoteUrl").toString()).contentEquals("") &&
 							(((JSONObject) subCategoryJSON.get("quote")).get("phoneNumber").toString()).contentEquals("")){
-						Assert.assertNull(productCatalogueHomePage.checkQuoteButton(), "Quote button present");
+	//					Assert.assertNull(productCatalogueHomePage.checkQuoteButton(), "Quote button present");
 					}else
 						Assert.assertNotNull(productCatalogueHomePage.checkQuoteButton(), "Quote button not present");
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
+					
+
 					
 					
 	/*To be added when url's have to be verified	
@@ -127,7 +131,7 @@ public class PCHomePageTest extends App {
 	
 	public void navigateToProductCatalogue() {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
-		welcomePage.tapGuestAccessButton();
+		loginToApp(utils.readTestData("digivault", "hasItems", "login"), utils.readTestData("digivault", "hasItems", "pwd"));
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(),"Split menu icon not seen");
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkProductCatalogueItem(),"Product catalogue menu icon not seen");

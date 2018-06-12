@@ -22,6 +22,7 @@ public class RegistrationPage extends BasePage {
 	private By dateField = By.id("au.com.suncorp.marketplace:id/dateOfBirthField");
 	private By postcodeField = By.id("au.com.suncorp.marketplace:id/postcodeField");
 	private By yearPicker = By.id("android:id/date_picker_year_picker");
+	private By yearPickerOldDevice = By.id("android:id/month_text_view");
 	private By okButton = By.id("android:id/button1");
 	private By nextButton = By.id("au.com.suncorp.marketplace:id/nextButton");
 	
@@ -36,24 +37,29 @@ public class RegistrationPage extends BasePage {
 	
 	private By firstNameErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/firstNameInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By firstNameErrorMsgOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/firstNameInputLayout']"
+			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By surnameErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/surnameInputLayout']"
+			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By surnameErrorMsgOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/surnameInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By dobErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/dateOfBirthInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By dobErrorMsgOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/dateOfBirthInputLayout']"
+			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By postcodeErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/postcodeInputLayout']"
+			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By postcodeErrorMsgOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/postcodeInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
 	private By invalidEmailErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/emailAddressInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	private By invalidMobileErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/mobileInputLayout']"
+	private By invalidEmailErrorMsgOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/emailAddressInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
-	private By invalidTextErrorMsg = By.id("au.com.suncorp.marketplace:id/textinput_error");
-	private By firstNameInvalidErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/firstNameInputLayout']"
+	private By invalidMobileErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/mobileInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	private By surnameInvalidErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/surnameInputLayout']"
-			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	private By postcodeInvalidErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/postcodeInputLayout']"
+	private By invalidMobileErrorMsgOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/mobileInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	
 
@@ -64,8 +70,10 @@ public class RegistrationPage extends BasePage {
 	
 	private By firstNameUserTip = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
 			+ "TextInputLayout[1]/android.widget.TextView");
+	private By firstNameUserTipOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/firstNameInputLayout']/android.widget.TextView");
 	private By mobileNumberUserTip = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
 			+ "TextInputLayout[2]/android.widget.TextView");
+	private By mobileNumberUserTipOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/mobileInputLayout']/android.widget.TextView");
 	
 	
 	private By passwordLengthRequirementsField = By.id("au.com.suncorp.marketplace:id/lengthStatusLabel");
@@ -75,7 +83,11 @@ public class RegistrationPage extends BasePage {
 	private By passwordNameRequirementsField = By.id("au.com.suncorp.marketplace:id/containsNameStatusLabel");
 	private By passwordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/passwordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By passwordErrorMsgOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/passwordInputLayout']"
+			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By confirmPasswordErrorMsg = By.xpath("//TextInputLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
+			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By confirmPasswordErrorMsgOldDevice = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/confirmPasswordInputLayout']"
 			+ "//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By okButtonDuplicateEmailPopUp = By.id("android:id/button2");
 	private By loginWithThisEmailButton = By.id("android:id/button1");
@@ -195,48 +207,180 @@ public class RegistrationPage extends BasePage {
 		return getText(accountCreatedMsg);
 	}
 	
-	public WebElement checkFirstNameErrorMsg() {
-		return find(firstNameErrorMsg);
+	public WebElement checkFirstNameErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(firstNameErrorMsg,30);
+		}
+		else { 
+			return find(firstNameErrorMsgOldDevice,30);
+		}
 	}
 	
-	public WebElement checkSurnameErrorMsg() {
-		return find(surnameErrorMsg);
+	public String getFirstNameErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(firstNameErrorMsg);
+		}
+		else { 
+			return getText(firstNameErrorMsgOldDevice);
+		}
 	}
 	
-	public WebElement checkDOBErrorMsg() {
-		return find(dobErrorMsg);
+	public WebElement checkSurnameErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(surnameErrorMsg,30);
+		}
+		else { 
+			return find(surnameErrorMsgOldDevice,30);
+		}
 	}
 	
-	public WebElement checkPostCodeErrorMsg() {
-		return find(postcodeErrorMsg);
+	public String getSurnameErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(surnameErrorMsg);
+		}
+		else { 
+			return getText(surnameErrorMsgOldDevice);
+		}
 	}
 	
-	public String getFirstNameErrorMsg() {
-		return getText(firstNameErrorMsg);
+	public WebElement checkDOBErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(dobErrorMsg,30);
+		}
+		else { 
+			return find(dobErrorMsgOldDevice,30);
+		}
 	}
 	
-	public String getFirstNameUserTip() {
-		return getText(firstNameUserTip);
+	public String getDOBErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(dobErrorMsg);
+		}
+		else { 
+			return getText(dobErrorMsgOldDevice);
+		}
 	}
 	
-	public WebElement checkFirstNameUserTip() {
-		return find(firstNameUserTip);
+	public WebElement checkPostCodeErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(postcodeErrorMsg,30);
+		}
+		else { 
+			return find(postcodeErrorMsgOldDevice,30);
+		}
 	}
 	
-	public String getMobileNumberUserTip() {
-		return getText(mobileNumberUserTip);
+	public String getPostCodeErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(postcodeErrorMsg);
+		}
+		else { 
+			return getText(postcodeErrorMsgOldDevice);
+		}
 	}
 	
-	public WebElement checkMobileNumberUserTip() {
-		return find(mobileNumberUserTip);
+	public WebElement checkFirstNameUserTip(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(firstNameUserTip,30);
+		}
+		else { 
+			return find(firstNameUserTipOldDevice,30);
+		}
 	}
 	
-	public WebElement checkEmailErrorMsg() {
-		return find(invalidEmailErrorMsg);
+	public String getFirstNameUserTip(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(firstNameUserTip);
+		}
+		else { 
+			return getText(firstNameUserTipOldDevice);
+		}
 	}
 	
-	public WebElement checkMobileErrorMsg() {
-		return find(invalidMobileErrorMsg);
+	public WebElement checkMobileNumberUserTip(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(mobileNumberUserTip,30);
+		}
+		else { 
+			return find(mobileNumberUserTipOldDevice,30);
+		}
+	}
+	
+	public String getMobileNumberUserTip(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(mobileNumberUserTip);
+		}
+		else { 
+			return getText(mobileNumberUserTipOldDevice);
+		}
+	}
+	
+	public WebElement checkEmailErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(invalidEmailErrorMsg,30);
+		}
+		else { 
+			return find(invalidEmailErrorMsgOldDevice,30);
+		}
+	}
+	
+	public String getInvalidEmailErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(invalidEmailErrorMsg);
+		}
+		else { 
+			return getText(invalidEmailErrorMsgOldDevice);
+		}
+	}
+	
+	public WebElement checkMobileErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(invalidMobileErrorMsg,30);
+		}
+		else { 
+			return find(invalidMobileErrorMsgOldDevice,30);
+		}
+	}
+	
+	public String getInvalidMobileErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(invalidMobileErrorMsg);
+		}
+		else { 
+			return getText(invalidMobileErrorMsgOldDevice);
+		}
 	}
 	
 	public WebElement checkPasswordField() {
@@ -252,14 +396,59 @@ public class RegistrationPage extends BasePage {
 	}
 	
 	public boolean checkPasswordRequirements(String errorMsg) {
-		if(getText(passwordErrorMsg).contains(errorMsg)) {
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0 && getText(passwordErrorMsg).contains(errorMsg)) {
 			return true;
-		}else
-			return false;
+		}
+		else if (osVersion <= 6.0 && getText(passwordErrorMsgOldDevice).contains(errorMsg)){ 
+			return true;
+		}
+		else return false;
 	}
 	
-	public WebElement checkPasswordErrorMsg() {
-		return find(passwordErrorMsg);
+	public WebElement checkPasswordErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(passwordErrorMsg,30);
+		}
+		else { 
+			return find(passwordErrorMsgOldDevice,30);
+		}
+	}
+	
+	public String getPasswordErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(passwordErrorMsg);
+		}
+		else { 
+			return getText(passwordErrorMsgOldDevice);
+		}
+	}
+	
+	public WebElement checkConfirmPasswordErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(confirmPasswordErrorMsg,30);
+		}
+		else { 
+			return find(confirmPasswordErrorMsgOldDevice,30);
+		}
+	}
+	
+	public String getConfirmPasswordErrorMsg(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(confirmPasswordErrorMsg);
+		}
+		else { 
+			return getText(confirmPasswordErrorMsgOldDevice);
+		}
 	}
 	
 	public boolean checkPasswordCharRequirements() {
@@ -297,57 +486,9 @@ public class RegistrationPage extends BasePage {
 			return false;		
 	}
 	
-	public String getSurnameErrorMsg() {
-		return getText(surnameErrorMsg);
-	}
-	
 	public String getPasswordNameRequirementsText()
 	{
 		return getText(passwordNameRequirementsField);
-	}
-	
-	public String getDOBErrorMsg() {
-		return getText(dobErrorMsg);
-	}
-	
-	public String getPostcodeErrorMsg() {
-		return getText(postcodeErrorMsg);
-	}
-	
-	public String getInvalidEmailErrorMsg() {
-		return getText(invalidEmailErrorMsg);
-	}
-	
-	public String getInvalidMobileErrorMsg() {
-		return getText(invalidMobileErrorMsg);
-	}
-	
-	public String getFirstNameInvalidErrorMsg() {
-		return getText(firstNameInvalidErrorMsg);
-	}
-	
-	public WebElement checkFirstNameInvalidErrorMsg() {
-		return find(firstNameInvalidErrorMsg);
-	}
-	
-	public String getSurnameInvalidErrorMsg() {
-		return getText(surnameInvalidErrorMsg);
-	}
-	
-	public WebElement checkSurnameInvalidErrorMsg() {
-		return find(surnameInvalidErrorMsg);
-	}
-	
-	public String getPostcodeInvalidErrorMsg() {
-		return getText(postcodeInvalidErrorMsg);
-	}
-	
-	public WebElement checkPostcodeInvalidErrorMsg() {
-		return find(postcodeInvalidErrorMsg);
-	}
-	
-	public String getInvalidTextErrorMsg() {
-		return getText(invalidTextErrorMsg);
 	}
 	
 	public WebElement checkRegisterPage2Title() {
@@ -371,8 +512,15 @@ public class RegistrationPage extends BasePage {
 		tapElement(dateField);
 	}
 	
-	public WebElement checkYearPicker() {
-		return find(yearPicker);
+	public WebElement checkYearPicker(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(yearPicker,30);
+		}
+		else { 
+			return find(yearPickerOldDevice,30);
+		}
 	}
 	
 	public void tapConfirmPasswordField() {
@@ -382,18 +530,6 @@ public class RegistrationPage extends BasePage {
 	public void enterConfirmPassword(String password) {
 		typeValue(password, confirmPasswordField);
 		dismissKeyboard();
-	}
-	
-	public String getPasswordErrorMsg() {
-		return getText(passwordErrorMsg);
-	}
-	
-	public String getConfirmPasswordErrorMsg() {
-		return getText(confirmPasswordErrorMsg);
-	}
-	
-	public WebElement checkConfirmPasswordErrorMsg() {
-		return find(confirmPasswordErrorMsg);
 	}
 	
 	public WebElement checkFirstNameField() {

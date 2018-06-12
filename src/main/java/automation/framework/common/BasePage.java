@@ -242,6 +242,18 @@ public class BasePage {
 		TouchAction ta = new TouchAction(driver);
 		ta.press(startX,startY).waitAction(Duration.ofMillis(4000)).moveTo(endX,endY).release().perform();
 	}
+	
+	protected boolean isTabSelected(By tabName) {
+		if (readValue(tabName) == null)
+			return false;
+		else
+			return true;
+	}
+	
+	protected List<WebElement> getItemCountbyID(By id){
+		List<WebElement> count = driver.findElements(id);
+		return count;
+	}
 
 	//	protected void swipeDown(){
 	//		int screenHeight = driver.manage().window().getSize().getHeight();
@@ -259,6 +271,7 @@ public class BasePage {
 		int y = driver.manage().window().getSize().getHeight();
 		int x = driver.manage().window().getSize().getWidth();
 
+		
 		try {
 			switch (direction.toUpperCase()) {
 			case "UP":
@@ -442,8 +455,8 @@ public class BasePage {
 		String firstElementOnScreen = ((WebElement)  driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
 		String topElement = "";
 		WebElement element = null;
-		swipeScreen("down");
-		do{					
+//		swipeScreen("down");
+		/*		do{					
 			try {			
 				if(driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ))!= null) {
 					element = driver.findElementByXPath( String.format( "//*[@text=\"%s\"]", elementName ));
@@ -452,13 +465,41 @@ public class BasePage {
 			}catch(Exception e) {	
 				element = driver.findElementByXPath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
 				break;
-			}
+			}*/
+		if(findByXpath(String.format( "//*[@text=\"%s\"]", elementName )) != null) {
+			element = findByXpath(String.format( "//*[@text=\"%s\"]", elementName ));
+			return element;
+		}
+		else if(findByXpath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0])) != null){
+			element = findByXpath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
+			return element;
+		}
+		swipeScreen("down");
+		do {
+				if(findByXpath(String.format( "//*[@text=\"%s\"]", elementName )) != null) {
+					element = findByXpath(String.format( "//*[@text=\"%s\"]", elementName ));
+					break;
+				}
+				else if(findByXpath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0])) != null){
+					element = findByXpath(String.format("//*[contains(@text, \"%s\")]", elementName.split(" ")[0]));
+					break;
+				}
+							
 			swipeScreen("down");
 			topElement = ((WebElement) driver.findElementsByXPath( String.format( "//*[@resource-id=\"%s\"]//android.widget.TextView",listViewName)).get(0)).getText();
 		}while (!firstElementOnScreen.contentEquals(topElement));	
 		return element;
 	}
 
+		
+		protected WebElement findByXpath(String xpath) {
+			try {
+				return driver.findElementByXPath( xpath);
+			}catch(Exception e) {
+				return null;
+			}			
+			
+		}
 	//	/**
 	//	 * This method is used to get the weburl in a webview
 	//	 * @author Sushmitha
@@ -548,13 +589,7 @@ public class BasePage {
 
 
 	public void tapDeviceBackButton(){
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_BACK);
 	}
 
 	public void tapEnterOnTheKeyboard(){
@@ -705,8 +740,16 @@ public class BasePage {
 	}
 
 	public WebElement getScreenTitle(String title) {
-
-		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		WebElement titleElement = null;
+		try {
+			titleElement = findByUIAutomator(title, "text");
+		}catch(Exception e) {
+			title = title.toUpperCase();
+			titleElement = findByUIAutomator(title, "text");
+		}
+		return titleElement;
+		
+/*		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
 		if (osVersion >= 7.0) {
 
@@ -714,7 +757,7 @@ public class BasePage {
 		}
 
 		return findByUIAutomator(title, "text");
-
+*/
 	}
 
 	public String scrollAndGetElementText(By locator,int maxSwipes,int... args ) {
@@ -781,6 +824,19 @@ public class BasePage {
 			WebElement element = find(locator);
 			String text = element.getAttribute(attribute);
 			return text;
+		}
+	
+	public By findElementUsingXpathTextView(String text) {
+		String t = "//android.widget.TextView[@text='"+text+"']";
+		By locator = By.xpath(t);
+		return locator;
+		
+	}
+
+	protected By findElementUsingXpathText(String text) {
+			String xpath = "//android.widget.RadioButton[@text='" + text + "']";
+			By locator = By.xpath(xpath);
+			return locator;
 		}
 
 //	/**
