@@ -10,7 +10,8 @@ import automation.framework.common.TestDetails.Priority;
 import pages.App;
 
 public class ChangePINTest extends App {
-/*
+	
+	//Defect on Kumara(AOS 5.1):DMPM-9839
 	@TestDetails(story1 = "DMPM-3724:DMPM-4348,DMPM-4337", story2 = "DMPM-1339:DMPM-2285,DMPM-2291", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "pin", "priority-minor" })
 	public void testChangePinScreenDetails() {
@@ -77,7 +78,6 @@ public class ChangePINTest extends App {
 		enterCurrentPINPage.tapOkButton();
 		
 		Assert.assertNotNull(forgotPINPage.checkForgottenPINPageTitle(), "Not on forgotten pin page");
-
 	}
 
 	@TestDetails(story1 = "DMPM-3724:DMPM-4528", priority = Priority.LOW)
@@ -126,9 +126,9 @@ public class ChangePINTest extends App {
 		Assert.assertFalse(settingsPage.isPinToggleEnabled(), "Pin toggle is enabled");
 
 	}
-*/
+   //Defect on Kumara(AOS 5.1):DMPM-9839
 	@TestDetails(story1 = "DMPM-3724:DMPM-4527,DMPM-4343", priority = Priority.LOW)
-	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "pin", "priority-minor" })
+	@Test(groups = { "marketplace", "pin", "priority-minor" })
 	public void testPINSetupSuccessForPinLocked() {
 
 		String username = utils.readTestData("PIN", "loginForPinLockedSetupFlow", "login");

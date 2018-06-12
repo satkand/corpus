@@ -32,7 +32,7 @@
 			"pwd": "Password1"
 		},
 		"loginNoPin" : {
-			"login": "loginopin@sun.com",
+			"login": "nopinlogin@sun.com",
 			"pwd": "Password1"
 		},
 		"loginWithPinLocked" : {

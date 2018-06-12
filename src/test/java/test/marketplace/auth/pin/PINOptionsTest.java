@@ -10,7 +10,7 @@ public class PINOptionsTest extends App{
 	
 	// 52 - Scenario 5
 	// 439 - Scenario 1
-	@Test (retryAnalyzer = CustomRetryListener.class,groups = {"DMPM-439", "DMPM-52", "DMPM-2581", "DMPM-2583", "DMPM-1154", "marketplace", "pin", "priority-minor"})
+	@Test (groups = {"DMPM-439", "DMPM-52", "DMPM-2581", "DMPM-2583", "DMPM-1154", "marketplace", "pin", "priority-minor"})
 	public void testElementsOnPinOptionsPage() {
 		navigationToPinOptionsPageFromRegisration();
 		Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(),"Pin setup button is not displayed");
@@ -27,7 +27,7 @@ public class PINOptionsTest extends App{
 		pinSetupPage.tapCancelButton();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(),"Landing page not loaded");
 	}
-/*	
+	
 	// 439 - scenario 3
 	@Test (groups = {"DMPM-439", "DMPM-2583", "marketplace", "pin", "priority-minor"})
 	public void testPinMaybeLaterOptionFromLogin() {
@@ -69,8 +69,13 @@ public class PINOptionsTest extends App{
 		Assert.assertNotNull(pinOptionsPage.checkPinPromptImage(), "PIN Options Page - PIN prompt image is not displayed");
 	}
 	
-	*/
+
 	private void navigationToPinOptionsPageFromRegisration() {
+		
+		if(loginAuthPage.checkChangeAccountButton()!=null) {
+			
+			loginAuthPage.tapChangeAccountButton();
+		}
 		
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		

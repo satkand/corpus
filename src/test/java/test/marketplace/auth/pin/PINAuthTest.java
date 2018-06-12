@@ -8,8 +8,8 @@ import automation.framework.common.TestDetails;
 import pages.App;
 
 public class PINAuthTest extends App{
-	
-    @TestDetails(story1 = "DMPM-58:DMPM-2286,DMPM-2288,DMPM-2292",story2 = "DMPM-3503:4532,4533,4534")
+	//Defect on Kumara(AOS 5.1):DMPM-9839
+  @TestDetails(story1 = "DMPM-58:DMPM-2286,DMPM-2288,DMPM-2292",story2 = "DMPM-3503:4532,4533,4534")
 	@Test (groups = { "marketplace", "pin", "priority-minor"})
 	public void testLoginUsingPin() {
 		
@@ -22,9 +22,10 @@ public class PINAuthTest extends App{
 		Assert.assertNotNull(pinAuthPage.checkPinField(), "Pin field - is not shown");
 		Assert.assertNotNull(pinAuthPage.checkBackButton(), "Pin field - is not shown");
 		enterPIN(validpin);
+		loginPage.waitForLoadingIndicatorToDismiss();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing page - is not shown");
 	}
-	
+//Defect on Kumara(AOS 5.1):DMPM-9839
    @TestDetails(story1 = "DMPM-58:DMPM-2304")
 	@Test (groups = {"marketplace", "pin", "priority-minor"})
 	public void cancelReauthUsingPin() {
@@ -36,7 +37,7 @@ public class PINAuthTest extends App{
 		pinAuthPage.tapBackButton();
 		Assert.assertNotNull(loginAuthPage.checkReloginButton(),"Did not navigate back to reauth page");
 	}
-	
+ //Defect on Kumara(AOS 5.1):DMPM-9839
 	@TestDetails(story1 = "DMPM-3503:DMPM-4535,DMPM-4545,DMPM-4547",story2="DMPM-4963:no testID yet")
 	@Test (groups = { "marketplace", "pin", "priority-minor"})
 	public void testLoginUsingWhenPinLocked() {
@@ -62,7 +63,7 @@ public class PINAuthTest extends App{
 		
 	}
 	
-	
+	//Defect on Kumara(AOS 5.1):DMPM-9839
 	@TestDetails(story1 = "DMPM-3503:DMPM-4546")
 	@Test (groups = { "marketplace", "pin", "priority-minor"})
 	public void testCancellingForgotPin() {
@@ -80,7 +81,7 @@ public class PINAuthTest extends App{
 		
 	}
 
-
+	//Defect on Kumara(AOS 5.1):DMPM-9839
 	@TestDetails(story1 = "DMPM-3503:DMPM-4535,DMPM-4545,DMPM-4547")
 	@Test (groups = { "marketplace", "pin", "priority-minor"})
 	public void testCancellingPinLockedSetup() {

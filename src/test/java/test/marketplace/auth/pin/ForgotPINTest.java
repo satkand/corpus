@@ -8,7 +8,8 @@ import automation.framework.common.TestDetails;
 import pages.App;
 
 public class ForgotPINTest extends App {
-
+	
+	//Defect on Kumara(AOS 5.1):DMPM-9839
 	//Scenario 1
 	@TestDetails(story1 = "DMPM-67:DMPM-504")
 	@Test (groups = {"marketplace", "pin", "priority-major"})
@@ -21,7 +22,7 @@ public class ForgotPINTest extends App {
 		pinAuthPage.tapForgottenPINButton();
 		//Verifying the elements present on the screen
 		Assert.assertNotNull(forgotPINPage.checkForgottenPINPageTitle(), "PIN Reauthenticate Password screen - 'Forgotten PIN page title is not shown");
-		Assert.assertEquals(forgotPINPage.getForgottenPINPageTitle(), utils.readTestData("copy", "pinReAuthPasswordPage", "forgottenPINPageTitle"), "PIN Reauthenticate Password screen - page title copy not shown as expected");
+		Assert.assertEquals(forgotPINPage.getForgottenPINPageTitle(), Copy.FORGOTTEN_PIN_PAGE_TITLE, "PIN Reauthenticate Password screen - page title copy not shown as expected");
 		Assert.assertNotNull(forgotPINPage.checkPINReAuthPasswordLabe(), "PIN Reauthenticate Password screen - 'enter pwd to reset pin' label is not shown");
 		Assert.assertEquals(forgotPINPage.getPINReAuthPasswordLabe(), utils.readTestData("copy", "pinReAuthPasswordPage", "pinReAuthPasswordLabel"), "PIN Reauthenticate Password screen - Please enter your pwd to reset ur pin copy is not valid");
 		Assert.assertNotNull(forgotPINPage.checkPasswordField(), "PIN Reauthenticate Password screen - password field is not shown");
@@ -29,7 +30,7 @@ public class ForgotPINTest extends App {
 		Assert.assertNotNull(forgotPINPage.checkForgotPasswordButton(), "PIN Reauthenticate Password screen - Forgot password button is not shown");
 		Assert.assertNotNull(forgotPINPage.checkBackButton(), "PIN Reauthenticate Password screen - Back button is not shown");
 	}
-
+	//Defect on Kumara(AOS 5.1):DMPM-9839
 	//Scenario 3
 	@TestDetails(story1 = "DMPM-67:DMPM-504")
 	@Test (groups = {"marketplace", "pin", "priority-major"})
@@ -46,7 +47,7 @@ public class ForgotPINTest extends App {
 		forgotPINPage.relaunchApp(-1, "Config");
 		Assert.assertEquals(forgotPINPage.getPasswordValue(), "", "password value still shown even after app is moved to background and launched back");
 	}
-	
+	//Defect on Kumara(AOS 5.1):DMPM-9839
 	//Scenario 2 and Scenario 4 and Scenario 5
 	@TestDetails(story1 = "DMPM-67:DMPM-504,DMPM-505")
 	@Test (groups = {"marketplace", "pin", "priority-major"})
@@ -71,7 +72,7 @@ public class ForgotPINTest extends App {
 		Assert.assertFalse(common.isKeyboardShown(), "PIN Reauthenticate Password page - keybaord is not shown");
 	}
 	
-	
+	//Defect on Kumara(AOS 5.1):DMPM-9839
 	// TODO Scenario 6
 	// If in case there are invalid password values in future, then we need to modify the methods (uncomment the TODO statements), so that they can enter some invalid data
 	// Scenario 6
@@ -99,7 +100,7 @@ public class ForgotPINTest extends App {
 		forgotPINPage.enterPassword(pwd);
 		Assert.assertNull(forgotPINPage.checkPasswordRequiredError(), "PIN Reauthenticate Password screen - password required error shown");
 	}
-	
+	//Defect on Kumara(AOS 5.1):DMPM-9839
 	//Scenario 8
 	@TestDetails(story1 = "DMPM-67:DMPM-505")
 	@Test (groups = {"marketplace", "pin", "priority-major"})

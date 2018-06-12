@@ -5,6 +5,7 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.Copy;
 import pages.App;
 
 public class PINSetupTest extends App {
@@ -17,7 +18,7 @@ public class PINSetupTest extends App {
 		
 		navigateToPINSetupPage(userName,pwd);
 		Assert.assertNotNull(pinSetupPage.checkEnterPINLabel(), "PIN Setup Page - Enter 4 digit pin message not shown");
-		Assert.assertEquals(pinSetupPage.getEnterPINLabel(), utils.readTestData("copy", "pinSetupPage", "enterPINLabel"),"PIN Setup Page - Enter 4 digit pin copy is not valid");
+		Assert.assertEquals(pinSetupPage.getEnterPINLabel(), Copy.ENTER_PIN_LABEL,"PIN Setup Page - Enter 4 digit pin copy is not valid");
 		Assert.assertNotNull(pinSetupPage.checkCancelButton(), "PIN Setup page - Close option not shown");
 		Assert.assertNotNull(pinCustomKeypad.checkDeletePinEntry(), "PIN Setup page - Delete pin option not shown");
 	}
@@ -48,7 +49,7 @@ public class PINSetupTest extends App {
 		navigateToPINSetupPage(userName,pwd);
 		enterPIN(utils.readTestData("PIN","pinEntries", "validPINEntry1"));
 		Assert.assertNotNull(pinSetupPage.checkReEnterPINLabel(), "Reenter PIN Page - is not shown");
-		Assert.assertEquals(pinSetupPage.getReEnterPINLabel(), utils.readTestData("copy", "pinSetupPage", "reEnterPINLabel"),"Reenter PIN Page - ReEnter 4 digit pin copy is not valid");
+		Assert.assertEquals(pinSetupPage.getReEnterPINLabel(),Copy.RE_ENTER_PIN_LABEL,"Reenter PIN Page - ReEnter 4 digit pin copy is not valid");
 		enterPIN(utils.readTestData("PIN","pinEntries", "validPINEntry2"));
 		Assert.assertNotNull(pinSetupPage.checkPINsDonotMatchErrorMessage(), "pins do not match error message not shown");
 		Assert.assertEquals(pinSetupPage.getPINsDonotMatchErrorMessage(), utils.readTestData("copy", "pinSetupPage", "pinsDonotMatchErrorMessage"),"pins do not match error copy is not valid");

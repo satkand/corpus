@@ -14,7 +14,7 @@ public class LandingPage extends BasePage {
 		super(driver);
 	}
 
-	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='Overview']");
+	private By landingPageTitle = By.xpath("//android.widget.TextView[@text='Suncorp App']");
 	private By chatbotOption = By.id("au.com.suncorp.marketplace:id/chatbotOption");
 	private String propertyTitle = "PROPERTY";
 	private String vehiclesTitle = "Vehicles";
