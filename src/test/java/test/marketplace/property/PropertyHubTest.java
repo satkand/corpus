@@ -97,9 +97,12 @@ public class PropertyHubTest  extends App{
 		
 		propertyExplorerPage.tapSuburbInsight();
 		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		
-		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(), "Suburb details page - Suburb name is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(utils.readTestData("propertyDimension","propertyDetails","stateAndSuburb")), "Suburb details page - Suburb name is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyButton(), "Suburb details page - Whats nearby button is not present");
 		
@@ -107,12 +110,15 @@ public class PropertyHubTest  extends App{
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyInsightTab(), "Property Explorer page - Property Insight tab is not present");
 		propertyExplorerPage.tapPropertyInsight();
 		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
-		propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property details page - Property Address is not present");
 		
 		propertyDetailsPage.scrollToShowMeInsightButton();
 		propertyDetailsPage.tapShowMeInsightButton();
-		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(), "Suburb details page - Suburb name is not present");
+		// Failing due to bug DMPM-8875 TODO
+		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(utils.readTestData("propertyDimension","propertyDetails","stateAndSuburb")), "Suburb details page - Suburb name is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyButton(), "Suburb details page - Whats nearby button is not present");
 		
@@ -173,7 +179,8 @@ public class PropertyHubTest  extends App{
 		verifySortedList(tabName);
 	}	
 	
-	@TestDetails(story1 = "DMPM-1251", priority = Priority.LOW)
+	//TODO: R3 Release
+/*	@TestDetails(story1 = "DMPM-1251", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Feature Access Control ", "priority-minor" })
 	public void testGuestExperienceForPropertyHub() {
 		
@@ -182,7 +189,10 @@ public class PropertyHubTest  extends App{
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		
 		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgTitle(), "Home Property Page - Feature Locked Title is not present");
 		Assert.assertEquals(homePropertyPage.getFeatureLockedMsgTitle(), utils.readTestData("copy", "homePropertyPage","featureLockedMsgTitle"), "Home Property Page - Feature Locked message title is different to the expected title");
@@ -198,7 +208,10 @@ public class PropertyHubTest  extends App{
 		
 		propertyExplorerPage.tapSuburbInsight();
 		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgTitle(), "Home Property Page - Feature Locked Title is not present");
 		Assert.assertEquals(homePropertyPage.getFeatureLockedMsgTitle(), utils.readTestData("copy", "homePropertyPage","featureLockedMsgTitle"), "Home Property Page - Feature Locked message title is different to the expected title");
@@ -209,7 +222,7 @@ public class PropertyHubTest  extends App{
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgSignUpButton(), "Home Property Page - Sign Up button is not present");
 		Assert.assertNotNull(homePropertyPage.checkFeatureLockedMsgLogInButton(), "Home Property Page - Log in button is not present");
 	
-	}
+	}*/
 	
 	private void navigateToPropertyHub() {
 		navigateToPropertyDimension("NotAGuest");
@@ -247,7 +260,10 @@ public class PropertyHubTest  extends App{
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyHubSearchbox(), "Property Explorer Page - search box not present");
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","clearSearchText"));
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		propertyDetailsPage.scrollToWhatsNearButton();
 		Assert.assertNotNull(propertyDetailsPage.checkMiniMapWhatsNewButton(), "Home Property Page - Property action sheet button is not present");
 		propertyDetailsPage.tapMiniMapWhatsNearbyButton();			

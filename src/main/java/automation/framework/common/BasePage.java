@@ -826,6 +826,13 @@ public class BasePage {
 			return text;
 		}
 	
+	public By findElementUsingXpathTextView(String text) {
+		String t = "//android.widget.TextView[@text='"+text+"']";
+		By locator = By.xpath(t);
+		return locator;
+		
+	}
+
 	protected By findElementUsingXpathText(String text) {
 			String xpath = "//android.widget.RadioButton[@text='" + text + "']";
 			By locator = By.xpath(xpath);

@@ -26,6 +26,8 @@ public class WebviewPage extends BasePage {
 	private By urlBar = By.id("com.android.chrome:id/url_bar");
 	private By webviewBrowserUrl_samsung = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
 	private By webviewBrowserUrl_google= By.id("com.android.chrome:id/url_bar");
+	private By webviewRefreshButton = MobileBy.AccessibilityId("Refresh page");
+
 	
 	public void tapWebViewToolbarOprions() {
 		tapElement(webViewToolbarOprions);
@@ -37,6 +39,10 @@ public class WebviewPage extends BasePage {
 	
 	public void tapWebViewOpenInChromeButton() {
 		tapElement(webViewOpenInChromeButton);
+	}
+	
+	public void tapWebviewRefreshButton() {
+		tapElement(webviewRefreshButton);
 	}
 	
 	public WebElement checkWebViewOpenInChromeButton() {
@@ -75,15 +81,28 @@ public class WebviewPage extends BasePage {
 	
 	public WebElement checkWebviewBrowserUrl() {
 		WebElement browserUrl = null;
-		System.out.println("DEVICE IS :::"+getDeviceAttribute("deviceManufacturer"));
 		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			if(getDeviceAttribute("deviceModel").equalsIgnoreCase("SM-G935F")) {
+				browserUrl = find(webviewBrowserUrl);
+			}else {
+				browserUrl = find(webviewBrowserUrl_samsung);
+			}
+		
 		browserUrl = find(webviewBrowserUrl_samsung);
 		}
 		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
 		|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+			if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+				browserUrl = find(urlBar);
+			}else {
 			tapWebViewToolbarOprions();
 			tapWebViewOpenInChromeButton();
 			browserUrl = find(webviewBrowserUrl_google);
+			}
+
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			browserUrl = find(webviewBrowserUrl_samsung);
 
 		}
 		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
@@ -93,16 +112,38 @@ public class WebviewPage extends BasePage {
 			browserUrl = find(webviewBrowserUrl_samsung);
 
 		}
+
+		}
 		return browserUrl;
 	}
 	
 	public String getWebviewBrowserUrl() {
 		String browserUrlText = null;
 		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
-		browserUrlText = getText(webviewBrowserUrl_samsung);
+			if(getDeviceAttribute("deviceModel").equalsIgnoreCase("SM-G935F")) {
+				browserUrlText = getText(webviewBrowserUrl);
+			}else {
+				browserUrlText = getText(webViewLocationBar);
+			}
+		
 		}
 		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
 		|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+			if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+				//browserUrlText = getText(urlBar);
+				tapWebViewToolbarOprions();
+				if(find(webViewOpenInChromeButton)!=null) {
+					tapWebViewOpenInChromeButton();
+					browserUrlText = getText(webviewBrowserUrl_google);
+				}else {
+					tapWebviewRefreshButton();
+					browserUrlText = getText(urlBar);
+				}
+			}else {
+				browserUrlText = getText(webviewBrowserUrl_google);
+			}
+		
 		browserUrlText = getText(webviewBrowserUrl_google);
 		}
 
@@ -136,7 +177,13 @@ public class WebviewPage extends BasePage {
 	}
 	
 	public void tapWebviewChromeCloseButton() {
-		tapElement(webviewChromeCloseButton);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			tapDeviceBackButton();
+		}else {
+			tapElement(webviewChromeCloseButton);
+		}
+		
 	}
 	
 	public WebElement checkWebview() {

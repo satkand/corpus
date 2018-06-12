@@ -99,8 +99,14 @@ public class WhatsNearbyPage extends BasePage{
 	}
 	
 	public void tapFullScreenMapPropertyPin() {
-		find(fullScreenMapPropertyPin,15);
-		tapElement(fullScreenMapPropertyPin);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			find(fullScreenMapPin,15);
+			tapElement(fullScreenMapPin);
+		}else {
+			find(fullScreenMapPropertyPin,15);
+			tapElement(fullScreenMapPropertyPin);
+		}
 	}
 	
 	public boolean checkElementWithAccessibilityID(String text) {

@@ -26,9 +26,18 @@ public class PropertyExplorerPage  extends BasePage{
 	private By propertyInsightTab = By.id("au.com.suncorp.marketplace:id/propertySearchButton");
 	private By suburbInsightTab = By.id("au.com.suncorp.marketplace:id/suburbSearchButton");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
+	private By firstItemIntheSearchDropdown = By.id("au.com.suncorp.marketplace:id/buttonText");
 	
 	public WebElement checkPropertyExplorerSearchbox() {
 		return find(propertyExplorerSearchbox);
+	}
+	
+	public WebElement checkFirstItemIntheSearchDropdown() {
+		return find(firstItemIntheSearchDropdown);
+	}
+	
+	public void tapFirstItemIntheSearchDropdown() {
+		tapElement(firstItemIntheSearchDropdown);
 	}
 	
 	public WebElement checkMiniMapLocationPin() {
@@ -92,8 +101,8 @@ public class PropertyExplorerPage  extends BasePage{
 		tapElement(suburbInsightTab);
 	}
 	
-	public void tapAndroidDeviceBackButton(){
-		for(int i=0;i<2;i++){
+	public void tapAndroidDeviceBackButton(int count){
+		for(int i=0;i<count;i++){
 			tapDeviceBackButton();
 		}
 		

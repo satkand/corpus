@@ -81,13 +81,8 @@
 			"userName": ""
 		},
 		"validLoginCredentials": {
-
 			"login": "a@b.c",
-			"login": "test@account.com",
 			"login1": "test1@account.com",
-			"login2": "sb@sb.sb",
-			"login": "testacc10@acc.com",
-			"login1": "testacc9@acc.com",
 			"login2": "testacc8@acc.com",
 			"memberLoginEmail" : "a@b.c",
 			"pwd": "Password1",
@@ -129,22 +124,22 @@
 		"propertyDetailsHighConfidence":{
 					"confidenceLevel":"High confidence",
 					"numberOfImages":"2",
-					"nearbySchool1":"Research Preschool (683m)",
-					"nearbySchool2":"Eltham Woods Preschool (694m)",
-					"nearbySchool3":"Little Scooters Early Learning Centre & Kindergarten (703m)",
+					"nearbySchool1":"Research Preschool",
+					"nearbySchool2":"Eltham Woods Preschool",
+					"nearbySchool3":"Little Scooters Early Learning Centre & Kindergarten",
 					"estimatedMarketValue": "$870,000 - $1,100,000"
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
 					"pwd": "Password1",
 					"clearSearchText":"1234567890ABCD#$%^",
-					"enterAdress":"1",
-					"highConfidenceAddress":"2"
+					"enterAdress":"26, Morison Road Clyde",
+					"highConfidenceAddress":"38, Macumba Drive Clyde North"
 		},
 		"suburbInsight":{
 					"login":"a@b.c",
 					"pwd":"Password1",
-					"suburbSearchText":"3978",
+					"suburbSearchText":"Eltha",
 					"floodRiskValue" : "Very Low",
 					"bushFireValue" : "Very Low",
 					"theifRiskValue" : "Low"
@@ -152,7 +147,7 @@
 		"propertyHub":{
 					"login":"a@b.c",
 					"pwd":"Password1",
-					"searchText":"1"
+					"searchText":"Eltha"
 		},
 		"NoProperties":{
 					"login": "a@b.c",

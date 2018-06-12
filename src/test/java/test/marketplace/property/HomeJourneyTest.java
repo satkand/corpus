@@ -93,24 +93,6 @@ public class HomeJourneyTest extends App {
 		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "movingInReadMoreButtonLink"),"Moving In");
 	}
 	
-	private void verifyBrowserURL(String expectedStr, String card) {
-		if(webviewPage.checkWebviewBrowserUrl()!=null) {
-			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), expectedStr, card+" page - browser url is not valid");
-
-		}
-		if(webviewPage.checkUrlBar()!=null) {
-			if(!(whatsNearbyPage.getDeviceModel().equalsIgnoreCase("SM-G900F"))) {
-				Assert.assertEquals(webviewPage.getTextUrlBar(), expectedStr, card+" page - browser url is not valid");
-			}else {
-				Assert.assertEquals(webviewPage.getTextUrlBar().replaceAll("[^a-zA-Z0-9]", "").toString(), Copy.LOCATION_BAR_TEXT_S5,"Home professional services URL is not matching");
-			}
-					
-		}
-		webviewPage.tapDeviceBackButton();
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
-	}
-	
-	
 	@Test (groups = {"DMPM-797", "DMPM-855", "DMPM-856","DMPM-6057","DMPM-6762", "marketplace", "Home buying journey", "priority-minor"})
 	
 	//DMPM-797 - Scenario 1 & 2
@@ -130,14 +112,36 @@ public class HomeJourneyTest extends App {
 		
 	}
 	
+	private void verifyBrowserURL(String expectedStr, String card) {
+		if(webviewPage.checkWebviewBrowserUrl()!=null) {
+			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), expectedStr, card+" page - browser url is not valid");
+
+		}
+		if(webviewPage.checkUrlBar()!=null) {
+			if(!(whatsNearbyPage.getDeviceModel().equalsIgnoreCase("SM-G900F"))) {
+				Assert.assertEquals(webviewPage.getTextUrlBar(), expectedStr, card+" page - browser url is not valid");
+			}else {
+				Assert.assertEquals(webviewPage.getTextUrlBar().replaceAll("[^a-zA-Z0-9]", "").toString(), Copy.LOCATION_BAR_TEXT_S5,"Home professional services URL is not matching");
+			}
+					
+		}
+		webviewPage.tapDeviceBackButton();
+		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - Home Journey page title is not shown");
+	}
+	
 	private void navigateToHomeJourneyviaMenu() {
-		welcomePage.tapGuestAccessButton();
+		//TODO: R3 Release (just remove the login and uncomment tapGuestAccessButton().
+		//welcomePage.tapGuestAccessButton();
+		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
 		navigationMenu.tapSplitMenuIcon();
 	
 }
 
 	private void navigateToHomePropertyTab() {
-		welcomePage.tapGuestAccessButton();
+		//TODO: R3 Release (just remove the login and uncomment tapGuestAccessButton().
+		//welcomePage.tapGuestAccessButton();
+		loginToApp(utils.readTestData("propertyDimension","propertyHub","login"), utils.readTestData("propertyDimension", "propertyHub","pwd"));
+		
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		homePropertyPage.scrollToJourneyBanner();

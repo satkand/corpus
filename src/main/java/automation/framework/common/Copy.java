@@ -30,13 +30,13 @@ public interface Copy {
 	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
-	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/mpa/home.html";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/buying-selling-owning/home.html?cmpid=SUN:BK:PI:NPS:DIS:20180630:6775";
 	
 	//PROFESSIONAL SERVICES FROM NAVIGATION MENU
 	public String HOME_PROFESSIONAL_SERVICES_INTRO_TITLE ="Professional services";
 	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property.";
 	//public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
-	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/mpa/home.html";
+	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/buying-selling-owning/home.html?cmpid=SUN:BK:PI:NPS:DIS:20180630:6775";
 	
 	//FORCE UPDATE SCREEN
 	public String FORCEUPDATE_INTRO_HEADING_TEXT ="New app version available";
