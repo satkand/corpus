@@ -77,7 +77,7 @@ public class PropertyExplorerPage  extends BasePage{
 	}
 	
 	public WebElement checkPropertyInsightTab() {
-		return find(propertyInsightTab);
+		return find(propertyInsightTab,20);
 	}
 	
 	public void tapPropertyInsight() {

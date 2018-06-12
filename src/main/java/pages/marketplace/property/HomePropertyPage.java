@@ -199,6 +199,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public WebElement checkPropertyDetailsButton() {
+		scrollToElement(propertyDetailsButton);
 		return find(propertyDetailsButton);
 	}
 	
@@ -207,6 +208,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public WebElement checkPropertyDocumentsButton() {
+		scrollToElement(propertyDocumentsButton);
 		return find(propertyDocumentsButton);
 	}
 	

@@ -280,10 +280,10 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(homePropertyPage.checkPropertyDocumentsButton(), "Home Property page - property document button is not present");
 		
 		homePropertyPage.tapPropertyDocumentsButton();
-		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder View page - Folder Title label is not present");
+		Assert.assertNotNull(folderViewPage.checkFolderTitleXPath(propertyAddress), "Folder View page - Folder Title label is not present");
 		Assert.assertNotNull(folderViewPage.checkEditButton(), "Folder View page - Edit button is not present");
-		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder View page - Edit button is not present");
-		Assert.assertEquals(propertyAddress, folderViewPage.getTitle(),"Folder View Page - folder name is not matching with the property address");
+		Assert.assertNotNull(folderViewPage.checkFolderTitleXPath(propertyAddress), "Folder View page - Edit button is not present");
+		Assert.assertEquals(propertyAddress, folderViewPage.getTitleXPath(propertyAddress),"Folder View Page - folder name is not matching with the property address");
 		
 		verifyDocumentsFolderName(propertyAddress);
 
@@ -294,7 +294,7 @@ public class HomePropertyTest extends App {
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Landing page - Home tab is not selected on landing page");
 		
 		homePropertyPage.tapPropertyDocumentsButton();
-		Assert.assertEquals(propertyAddress, folderViewPage.getTitle(),"Folder View Page - folder name is not matching with the property address");
+		Assert.assertEquals(propertyAddress, folderViewPage.getTitleXPath(propertyAddress),"Folder View Page - folder name is not matching with the property address");
 		
 		verifyDocumentsFolderName(propertyAddress);
 	
@@ -311,6 +311,8 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetViewDetailsButton(), "Property Dimention Page - Virtual assets title is not present");
 		
 		homePropertyPage.tapVirtualAssetViewDetailsButton();*/
+		
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home tab is not selected on landing page");
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
@@ -406,8 +408,9 @@ public class HomePropertyTest extends App {
 			welcomePage.tapGuestAccessButton();
 		}
 		
-		landingPage.tapPropertyTab();
-		Assert.assertTrue(landingPage.ispropertyTabSelected(), "Home tab is not selected on landing page");
+		landingPage.tapHomeTab();
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		
 	}
 	
 

@@ -229,6 +229,9 @@ public class PropertyDetailsTest extends App{
 		Assert.assertEquals(propertyDetailsPage.getConfidenceLevelLabel(), utils.readTestData("propertyDimension","propertyDetails","confidenceLevel"),"property confidence labe is not matching");
 		
 		propertyDetailsPage.tapBackButton();
+		if(propertyDetailsPage.checkConfidenceLevelLabel()!=null) {
+			propertyDetailsPage.tapBackButton();
+		}
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
 		propertyExplorerPage.tapSearch();
@@ -263,7 +266,6 @@ public class PropertyDetailsTest extends App{
 		
 		propertyExplorerPage.tapMiniMap();
 		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
-		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
 		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map pin is not present");
 		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapCloseButton(), "Property Explorer Page - Full screen map pin is not present");
 		
@@ -274,7 +276,7 @@ public class PropertyDetailsTest extends App{
 	
 	@TestDetails(story1 = "DMPM-3988:DMPM-4470,DMPM-4471", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Property Hub", "priority-minor" })
-	public void testDoubleTapToZoominAndOutPropertyImages() {
+	public void testDoubleTapToZoominAndOutPropertyImages() throws InterruptedException {
 						
 		navigateToPropertyDetails("StartYourJourney","MeduimConfident");
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyImage(), "Property Details Page - Property image is not present");
@@ -288,6 +290,8 @@ public class PropertyDetailsTest extends App{
 		int countContinue = 0;
 		 	for(int i=1;i<3;i++) {
 				Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
+				Assert.assertNotNull(propertyDetailsPage.checkFullScreenImageCounter(), "Property Details Page - Full screen image counter is not present");
+				
 				propertyDetailsPage.doubleTapOnPropertyImage();
 				Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
 				propertyDetailsPage.swipeFullScreenImageCarouselLeftMultipleTimes();
@@ -298,6 +302,7 @@ public class PropertyDetailsTest extends App{
 			for(int i=countContinue;i>1;i--) {	
 				propertyDetailsPage.swipeFullScreenImageCarouselRight();
 				Assert.assertNotNull(propertyDetailsPage.checkFullScreenPropertyImage(), "Property Details Page - Full screen view propertyimage is not present");
+				Assert.assertNotNull(propertyDetailsPage.checkFullScreenImageCounter(), "Property Details Page - Full screen image counter is not present");
 				propertyDetailsPage.doubleTapOnPropertyImage();
 				Assert.assertEquals(propertyDetailsPage.getfullScreenImageCounter(), i+"/"+imageCount);
 				propertyDetailsPage.swipeFullScreenImageCarouselRight();
@@ -402,8 +407,7 @@ public class PropertyDetailsTest extends App{
 		if(webviewPage.checkPopUp()!=null) {
 			webviewPage.tapWebViewPopup();
 		}
-		Assert.assertNotNull(webviewPage.checkWebViewLocationBarr(), "Web View Page - Web View location bar is not present");
-	
+		if(webviewPage.checkWebViewLocationBarr()!=null) {
 		Assert.assertNotNull(webviewPage.checkViewToolbarOptions(), "Web View Page - Web View toolbar options is not present");
 		webviewPage.tapWebViewToolbarOprions();
 		
@@ -411,6 +415,15 @@ public class PropertyDetailsTest extends App{
 		webviewPage.tapWebViewAddToBookMarkButton();
 		
 		Assert.assertEquals(webviewPage.getWebViewWebAddress(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Property Details page - Home professional services URL is not matching");	
+		
+		}
+		
+		if(webviewPage.checkUrlBar()!=null) {
+			Assert.assertEquals(webviewPage.getTextUrlBar(), Copy.PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL,"Property Details page - Home professional services URL is not matching");	
+			
+		}
+		
+		
 	}
 	
 	@TestDetails(story1 = "DMPM-4844:DMPM-5915,DMPM-5926", priority = Priority.LOW)

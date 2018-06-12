@@ -17,6 +17,10 @@ public class SuburbDetailsTest extends App {
 		navigateToSuburbDetails("Property Hub","NotAGuest");
 		verifyScreenContents();
 		suburbDetailsPage.tapBackButton();
+		
+		if(suburbDetailsPage.checkDemographicsTitleText()!=null) {
+			suburbDetailsPage.tapBackButton();
+		}
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Property Hub page - page title is not present when coming back from suburb insight");
 
@@ -96,6 +100,7 @@ public class SuburbDetailsTest extends App {
 		}
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home tab is not selected on landing page");
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(propertyHubPage.checkSearchBar(), "Property Hub Page - Search bar is not present");

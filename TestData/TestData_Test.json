@@ -81,6 +81,11 @@
 			"userName": ""
 		},
 		"validLoginCredentials": {
+
+			"login": "a@b.c",
+			"login": "test@account.com",
+			"login1": "test1@account.com",
+			"login2": "sb@sb.sb",
 			"login": "testacc10@acc.com",
 			"login1": "testacc9@acc.com",
 			"login2": "testacc8@acc.com",
@@ -124,9 +129,9 @@
 		"propertyDetailsHighConfidence":{
 					"confidenceLevel":"High confidence",
 					"numberOfImages":"2",
-					"nearbySchool1":"Eltham Woods Preschool (694m)",
-					"nearbySchool2":"Little Scooters Early Learning Centre & Kindergarten (703m)",
-					"nearbySchool3":"Research Primary School (843m)",
+					"nearbySchool1":"Research Preschool (683m)",
+					"nearbySchool2":"Eltham Woods Preschool (694m)",
+					"nearbySchool3":"Little Scooters Early Learning Centre & Kindergarten (703m)",
 					"estimatedMarketValue": "$870,000 - $1,100,000"
 		},
 		"propertyExplorer":{

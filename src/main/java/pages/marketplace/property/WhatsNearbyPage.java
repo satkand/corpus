@@ -22,7 +22,8 @@ public class WhatsNearbyPage extends BasePage{
 	private By fullScreenGoogleLabel = By.xpath("//android.widget.FrameLayout[@resource-id='au.com.suncorp.marketplace:id/whatsNearbyMapView']//android.widget.FrameLayout//android.widget.RelativeLayout//android.widget.ImageView");
 	
 	private By fullScreenMapCloseButton = MobileBy.AccessibilityId("Navigate up");
-	private By fullScreenMapTitle= By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']//android.widget.TextView");
+	private By fullScreenMapTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']//android.widget.TextView");
+	
 	private By fullScreenMap= MobileBy.AccessibilityId("Google Map");
 	private By fullScreenMapPropertyPin= MobileBy.AccessibilityId("property_title. ");
 	
@@ -257,12 +258,24 @@ public class WhatsNearbyPage extends BasePage{
 		tapElement(POIexpandableListButton);
 	}
 	
+	public double getDeviceVersion() {
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		return osVersion;
+		
+	}
+	
+	public String getDeviceModel() {
+		String deviceModel = getDeviceAttribute("deviceModel");
+		return deviceModel;
+		
+	}
+	
 	public WebElement checkShowListLabelButton() {
 		return find(showListLabelButton);
 	}
 	
 	public String getShowListLabelButton() {
-		return getText(showListLabelButton);
+		return getText(showListLabelButton).toUpperCase();
 	}
 	
 	public List<String> getItemsList() {
@@ -293,7 +306,12 @@ public class WhatsNearbyPage extends BasePage{
 	}
 	
 	public WebElement checkFullScreenMapTitle() {
-		return find(fullScreenMapTitle);
+		if(getDeviceModel().equalsIgnoreCase("SM-G900F")) {
+			return find(propertyCardTitle);
+		}else {
+			return find(fullScreenMapTitle);
+		}
+		
 	}
 	
 	public void tapFullScreenMapCloseButton() {

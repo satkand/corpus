@@ -72,7 +72,7 @@ public interface Copy {
 	
 	//WEB VIEW
 	public static final String LOCATION_BAR_TEXT = "‎‎‎‎www.suncorp.com.au";
-	
+	public static final String LOCATION_BAR_TEXT_S5 = "httpswwwsuncorpcomau";
 
 	//SUBURB DETAILS PAGE
 	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
