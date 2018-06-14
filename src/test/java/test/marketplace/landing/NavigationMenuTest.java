@@ -1,6 +1,7 @@
 package test.marketplace.landing;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,20 +17,30 @@ public class NavigationMenuTest extends App {
 	public void testDisplayingNavigationMenu() {
 		navigateToLandingPage();
 		navigationMenu.tapSplitMenuIcon();
-
-		Assert.assertEquals(navigationMenu.getWelcomeMessageText(), Copy.NAV_MENU_WELCOME_MESSAGE, "Navigation Draw - Welcome Message not shown");
+		
+		// TODO: R3.0 Release
+		// Assert.assertEquals(navigationMenu.getWelcomeMessageText(), Copy.NAV_MENU_WELCOME_MESSAGE, "Navigation Draw - Welcome Message not shown");
 		Assert.assertNotNull(navigationMenu.checkSuncorpMenuItem(), "Navigation Draw - Suncorp menu option not shown");
-		Assert.assertNotNull(navigationMenu.checkBankingHomeMenuItem(), "Navigation Draw - Banking Home menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkRewardsForYouMenuItem(), "Navigation Draw - Rewards For You menu option not shown");
+		// TODO: R3.0 Release
+		//Assert.assertNotNull(navigationMenu.checkBankingHomeMenuItem(), "Navigation Draw - Banking Home menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkProductsMenuItem(), " Navigation Draw - Products menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkClaimsMenuItem(), " Navigation Draw - claims menu option not shown");
+
 		Assert.assertNotNull(navigationMenu.checkDigitalVaultMenuItem(), " Navigation Draw - Products menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkProffessionalServicesMenuItem(), " Navigation Draw - Propfessional Services menu option not shown");
 		Assert.assertNotNull(navigationMenu.checkProductCatalogueItem(), "Navigation Draw - Product Catalogue menu option not shown");
-		Assert.assertNotNull(navigationMenu.checkRewardsForYouMenuItem(), "Navigation Draw - Rewards For You menu option not shown");
 
 		Assert.assertNotNull(navigationMenu.checkSettingsMenuItem(), " Navigation Draw - Propfessional Services menu option not shown");
-		Assert.assertNotNull(navigationMenu.checkBackToStartMenuItem(), " Navigation Draw - Back To Start menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkSupportAndInformationMenuItem(), " Navigation Draw - Support & Information menu option not shown");
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), " Navigation Draw - Log out menu option not shown");
+
+		// TODO: R3 Release
+		// Assert.assertNotNull(navigationMenu.checkBackToStartMenuItem(), " Navigation Draw - Back To Start menu option not shown");
 	}	
 	
+	// TODO: R3 Release
+	/*
 	//Scenario 4
 	// Verifying Back To Start option
 	@Test (groups = {"DMPM-78", "DMPM-311", "marketplace", "Guest User", "priority-minor"})
@@ -40,6 +51,7 @@ public class NavigationMenuTest extends App {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 		Assert.assertNotNull(welcomePage.checkGuestAccessButton(), "Welcome screen - Guest Access button is not shown");
 	}
+	*/
 	
 	//Scenario 5
 	// Dismissing Navigation Menu
@@ -62,7 +74,10 @@ public class NavigationMenuTest extends App {
 	}
 	
 	private void navigateToLandingPage() {
+		// TODO: R3 Release
+		/*
 		welcomePage.tapGuestAccessButton();
-		
+		*/
+		loginToApp(utils.readTestData("loginCredentials", "defaultLoginCredentials", "login"), utils.readTestData("loginCredentials", "defaultLoginCredentials", "pwd"));		
 	}
 }

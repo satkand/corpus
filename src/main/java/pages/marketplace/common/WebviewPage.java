@@ -18,9 +18,16 @@ public class WebviewPage extends BasePage {
 	private By webViewLocationBar = By.id("com.sec.android.app.sbrowser:id/location_bar_edit_text");
 	private By webViewPopup = MobileBy.AccessibilityId("Close");
 	private By webViewToolbarOprions = MobileBy.AccessibilityId("More options");
+	private By webViewOpenInChromeButton = MobileBy.AccessibilityId("Open in Chrome");
 	private By webViewAddToBookMark = By.xpath("//android.widget.TextView[@text='Add to Bookmarks']");
 	private By webViewWebAddress = By.id("com.sec.android.app.sbrowser:id/add_bookmark_page_url_input");
-	
+	private By webview = By.id("au.com.suncorp.marketplace:id/webview");
+	private By webviewCloseButton = MobileBy.AccessibilityId("Navigate up");
+	private By urlBar = By.id("com.android.chrome:id/url_bar");
+	private By webviewBrowserUrl_samsung = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
+	private By webviewBrowserUrl_google= By.id("com.android.chrome:id/url_bar");
+	private By webviewRefreshButton = MobileBy.AccessibilityId("Refresh page");
+
 	
 	public void tapWebViewToolbarOprions() {
 		tapElement(webViewToolbarOprions);
@@ -30,6 +37,19 @@ public class WebviewPage extends BasePage {
 		return find(webViewToolbarOprions);
 	}
 	
+	public void tapWebViewOpenInChromeButton() {
+		tapElement(webViewOpenInChromeButton);
+	}
+	
+	public void tapWebviewRefreshButton() {
+		tapElement(webviewRefreshButton);
+	}
+	
+	public WebElement checkWebViewOpenInChromeButton() {
+		return find(webViewOpenInChromeButton);
+	}
+	
+	
 	public String getWebViewWebAddress() {
 		find(webViewWebAddress);
 		return getText(webViewWebAddress);
@@ -37,14 +57,14 @@ public class WebviewPage extends BasePage {
 	
 	public WebElement checkWebViewAddToBookMarkButton() {
 		return find(webViewAddToBookMark);
-		}
-	private By webview = By.id("au.com.suncorp.marketplace:id/webview");
-	private By webviewCloseButton = MobileBy.AccessibilityId("Navigate up");
-
-	private By urlBar = By.id("com.android.chrome:id/url_bar");
+	}
 	
 	public WebElement checkUrlBar() {
 		return find(urlBar);
+	}
+	
+	public String getTextUrlBar() {
+		return getText(urlBar);
 	}
 	
 	public void tapWebViewAddToBookMarkButton() {
@@ -52,7 +72,7 @@ public class WebviewPage extends BasePage {
 	}
 	
 	public WebElement checkWebViewLocationBarr() {
-		return find(webViewLocationBar);
+		return find(webViewLocationBar,10);
 	}
 	
 	public String getWebViewLocationBar() {
@@ -60,15 +80,110 @@ public class WebviewPage extends BasePage {
 	}
 	
 	public WebElement checkWebviewBrowserUrl() {
-		return find(webviewBrowserUrl);
+		WebElement browserUrl = null;
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			if(getDeviceAttribute("deviceModel").equalsIgnoreCase("SM-G935F")) {
+				browserUrl = find(webviewBrowserUrl);
+			}else {
+				browserUrl = find(webviewBrowserUrl_samsung);
+			}
+		
+		browserUrl = find(webviewBrowserUrl_samsung);
+		}
+		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+		|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+			if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+				browserUrl = find(urlBar);
+			}else {
+			tapWebViewToolbarOprions();
+			tapWebViewOpenInChromeButton();
+			browserUrl = find(webviewBrowserUrl_google);
+			}
+
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			browserUrl = find(webviewBrowserUrl_samsung);
+
+		}
+		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			browserUrl = find(webviewBrowserUrl_google);
+		} else {
+			browserUrl = find(webviewBrowserUrl_samsung);
+
+		}
+
+		}
+		return browserUrl;
 	}
 	
 	public String getWebviewBrowserUrl() {
-		return getText(webviewBrowserUrl);
+		String browserUrlText = null;
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			if(getDeviceAttribute("deviceModel").equalsIgnoreCase("SM-G935F")) {
+				browserUrlText = getText(webviewBrowserUrl);
+			}else {
+				browserUrlText = getText(webViewLocationBar);
+			}
+		
+		}
+		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+		|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+			if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+				//browserUrlText = getText(urlBar);
+				tapWebViewToolbarOprions();
+				if(find(webViewOpenInChromeButton)!=null) {
+					tapWebViewOpenInChromeButton();
+					browserUrlText = getText(webviewBrowserUrl_google);
+				}else {
+					tapWebviewRefreshButton();
+					browserUrlText = getText(urlBar);
+				}
+			}else {
+				browserUrlText = getText(webviewBrowserUrl_google);
+			}
+		
+		browserUrlText = getText(webviewBrowserUrl_google);
+		}
+
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
+			browserUrlText = getText(webviewBrowserUrl_samsung);
+		}
+		else if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			browserUrlText = getText(webviewBrowserUrl_google);
+		} else {
+			browserUrlText = getText(webviewBrowserUrl_samsung);
+		}
+		return browserUrlText;
+	}
+	
+	public String getExpectedBrowserUrl(String expectedValue) {
+
+		if (getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")){
+			if(expectedValue.endsWith("/")) {
+				expectedValue = expectedValue.substring(0, expectedValue.length()-1);
+			}
+		}
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")) {
+			if(!expectedValue.endsWith("/")) {
+				expectedValue = expectedValue+"/";
+			}
+		}
+		return expectedValue;
+
 	}
 	
 	public void tapWebviewChromeCloseButton() {
-		tapElement(webviewChromeCloseButton);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			tapDeviceBackButton();
+		}else {
+			tapElement(webviewChromeCloseButton);
+		}
+		
 	}
 	
 	public WebElement checkWebview() {
@@ -83,7 +198,7 @@ public class WebviewPage extends BasePage {
 	}
 
 	public WebElement checkPopUp() {
-		return find(webViewPopup);
+		return find(webViewPopup,5);
 	}
 	
 	public void tapWebViewPopup() {

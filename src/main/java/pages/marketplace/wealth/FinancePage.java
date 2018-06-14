@@ -14,7 +14,9 @@ public class FinancePage extends BasePage {
 
 	private By netWorthLabel = By.id("au.com.suncorp.marketplace:id/netWorthTitle");
 	private By netWorthAmount = By.id("au.com.suncorp.marketplace:id/netWorthAmount");
-	private By viewSpendingThisMonthButton = By.id("au.com.suncorp.marketplace:id/viewSpendingButton");
+	
+	private By viewSpendingThisMonthButton = By.id("au.com.suncorp.marketplace:id/spendingInsightsLastMonthCardLayout");	
+//	private By viewSpendingThisMonthButton = By.id("au.com.suncorp.marketplace:id/spendingInsightsViewAllButton");
 	private By netWorthDisclaimerMessage = By.id("au.com.suncorp.marketplace:id/netWorthDisclaimer");
 	
 	public String getNetWorthLabel() {
@@ -22,6 +24,7 @@ public class FinancePage extends BasePage {
 	}
 	
 	public WebElement checkNetWorthAmount() {
+		scrollToElement(netWorthAmount);
 		return find(netWorthAmount);
 	}
 	

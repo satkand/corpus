@@ -25,9 +25,13 @@ public class CategoryDetailsPage extends BasePage {
 	private By updateMonthButton = By.id("au.com.suncorp.marketplace:id/changeMonth");
 	private By monthsOptionInPicker = By.id("au.com.suncorp.marketplace:id/monthItem");
 	private By loadingIndicator = By.id("loadingIndicator");
-	private By closeButton =MobileBy.AccessibilityId("Navigate up");
+	private By closeButton = MobileBy.AccessibilityId("Navigate up");
 	private By transactionErrorMsg = By.id("au.com.suncorp.marketplace:id/missingTransactionsHeading");
-	private By vendorAmount = By.xpath("//android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/vendorAmount']");
+	private By vendorAmount = By.id("au.com.suncorp.marketplace:id/vendorAmount");
+	private By vendorName = By.id("au.com.suncorp.marketplace:id/vendorName");
+	private By vendorSearchList = By.id("au.com.suncorp.marketplace:id/transactionFilteredList");
+	private By connectedAccountsButton = By.id("au.com.suncorp.marketplace:id/connectedAccounts");
+	
 	
 	public WebElement checkMonthPicker() {
 		return find(monthPicker);
@@ -96,18 +100,53 @@ public class CategoryDetailsPage extends BasePage {
 		tapElement(closeButton);
 	}
 	
+	public WebElement checkConnectedAccountsButton() {
+		return find(connectedAccountsButton);
+	}
+	
+	public void tapConnectedAccountsButton() {
+		tapElement(connectedAccountsButton);
+	}
+	
+	
 	public WebElement checkTransactionErrorMsg() {
 		return find(transactionErrorMsg);
 	}
 	
+	public String getTransactionErrorMsg() {
+		return getText(transactionErrorMsg);
+	}
+
 	public boolean checkIfVendorsAreSorted() {
 		List<WebElement> vendorAmountList = finds(vendorAmount);
-		System.out.println(vendorAmountList.get(1).getText().substring(1));
-		System.out.println(Float.parseFloat(vendorAmountList.get(0).getText().substring(1)));
-		if(Float.parseFloat(vendorAmountList.get(0).getText().substring(1)) > Float.parseFloat(vendorAmountList.get(1).getText().substring(1)) && 
-				Float.parseFloat(vendorAmountList.get(1).getText().substring(1)) > Float.parseFloat(vendorAmountList.get(2).getText().substring(1))) {
+		if(Float.parseFloat(vendorAmountList.get(0).getText().substring(1).replace(",", "")) > Float.parseFloat(vendorAmountList.get(1).getText().substring(1).replace(",", "")) && 
+				Float.parseFloat(vendorAmountList.get(1).getText().substring(1).replace(",", "")) > Float.parseFloat(vendorAmountList.get(2).getText().substring(1).replace(",", ""))) {
 			return true;
 		}else
 			return false;
 	}
+	
+	public boolean checkVendorNames() {
+		scrollToElement(transactionList);
+		if(finds(vendorName).size() > 0) {
+			return true;
+		}else
+			return false;
+	}
+	
+	
+	
+	public boolean checkVendorAmount() {
+		scrollToElement(transactionList);
+		if(finds(vendorAmount).size() > 0) {
+			return true;
+		}else
+			return false;
+	}
+	
+	public WebElement checkVendorSearchList() {
+		return find(vendorSearchList);
+	}
+	
+
 }

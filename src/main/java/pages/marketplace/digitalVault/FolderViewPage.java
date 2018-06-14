@@ -37,6 +37,15 @@ public class FolderViewPage extends BasePage {
 		return find(folderTitle);
 	}
 	
+	public WebElement checkFolderTitleXPath(String str) {
+		return find(findElementUsingXpathText(str));
+	}
+	
+	public String getTitleXPath(String str) {
+		return getText(findElementUsingXpathText(str));
+		
+	}
+	
 	public WebElement checkMoveDocumentToFolderButton() {
 		return find(moveDocumentToFolderButton);
 	}

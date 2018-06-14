@@ -1,6 +1,7 @@
 package pages.marketplace.property;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,12 +19,12 @@ public class PropertyDetailsPage   extends BasePage{
 	private By propertyAddress = By.id("au.com.suncorp.marketplace:id/propertyAddressLine1Text");
 	private By propertyStatePostCode = By.id("au.com.suncorp.marketplace:id/propertyAddressLine2Text");
 	private By propertyNumberOfBedrooms = By.id("au.com.suncorp.marketplace:id/bedroomNumberText");
-	private By propertyNumberOfBedroomsImage = By.id("au.com.suncorp.marketplace:id/bedroomImage");
+	private By propertyNumberOfBedroomsImage = By.id("au.com.suncorp.marketplace:id/bedroomNumberText");
 	
 	private By thisIsMyPropertyLabel = By.id("au.com.suncorp.marketplace:id/thisIsMineText");
 	private By thisIsMyPropertyInfo = By.id("au.com.suncorp.marketplace:id/thisIsMineInfoButton");
 	private By thisIsMyPropertyToggleButton = By.id("au.com.suncorp.marketplace:id/propertyIsMineSwitch");
-	
+		
 	//my Property bottom sheet
 	private By myPropertyBottomSheetTitleLabel = By.id("au.com.suncorp.marketplace:id/productSelectionQuestionText");
 	private By myPropertyBottomSheetOwnerOccupierButton = By.id("au.com.suncorp.marketplace:id/ownerTypeButton");
@@ -33,9 +34,9 @@ public class PropertyDetailsPage   extends BasePage{
 	private By attributeBar = By.id("au.com.suncorp.marketplace:id/attributesView");
 	
 	private By propertyNumberOfBathrooms = By.id("au.com.suncorp.marketplace:id/bathNumberText");
-	private By propertyNumberOfBathroomsImage = By.id("au.com.suncorp.marketplace:id/bathImage");
+	private By propertyNumberOfBathroomsImage = By.id("au.com.suncorp.marketplace:id/bathNumberText");
 	private By propertyNumberOfParkingSpaces = By.id("au.com.suncorp.marketplace:id/parkingNumberText");
-	private By propertyNumberOfParkingSpacesImage = By.id("au.com.suncorp.marketplace:id/parkingImage");
+	private By propertyNumberOfParkingSpacesImage = By.id("au.com.suncorp.marketplace:id/parkingNumberText");
 	private By propertyLandSize = By.id("au.com.suncorp.marketplace:id/landSizeNumberText");
 	private By propertyLandSizeImage = By.id("au.com.suncorp.marketplace:id/landSizeImage");
 	
@@ -85,12 +86,112 @@ public class PropertyDetailsPage   extends BasePage{
 	private By imageLoadingIndicator = By.xpath("au.com.suncorp.marketplace:id/loadingIndicator");
 	
 	private By professionalServicesImage = By.id("au.com.suncorp.marketplace:id/professionalServicesImage");
-	
+	private By professionaServicesButton = By.id("au.com.suncorp.marketplace:id/propertyViewProfessionalServicesButton");
 	
 	//EDUCATION CENTRES
 	private By nearbyEducationTitle = By.id("au.com.suncorp.marketplace:id/nearbyEducationText");
 	private By nearbyEducationViewAllButton = By.id("au.com.suncorp.marketplace:id/nearbyEducationViewAllText");
 	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	private By nearbyEducationCentresS5andPixel = By.id("au.com.suncorp.marketplace:id/nearbyEducationName");
+	
+	//disclaimers
+	private By estimatedPropertyValueDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Value disclaimer");
+	private By confidenceLevelDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Valuation Confidence disclaimer");
+	private By coreLogicDisclaimer = MobileBy.AccessibilityId("Open the Core Logic services disclaimer");
+	private By lastSaleDisclaimer = MobileBy.AccessibilityId("Open the property Last Sale information disclaimer");
+	private By confidenceLevelDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Confidence Indicator']");
+	private By confidenceLevelDisclaimerClose	= MobileBy.AccessibilityId("Navigate up");
+	private By coreLogicDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='CoreLogic']");
+	private By estimatedPropertyValueDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='Estimated property value']");
+	private By lastSaleDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Last sale']");
+	
+	public WebElement checkLastSaleDisclaimerScreenTitle() {
+		return find(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkThisIsMyPropertyDisclaimerScreenTitle() {
+		return find(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public String getLastSaleDisclaimerScreenTitle() {
+		return getText(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public String getThisIsMyPropertyDisclaimerScreenTitle() {
+		return getText(lastSaleDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkEstimatedPropertyValueDisclaimerScreenTitle() {
+		return find(estimatedPropertyValueDisclaimerScreenTitle);
+	}
+	
+	public String getEstimatedPropertyValueDisclaimerScreenTitle() {
+		return getText(estimatedPropertyValueDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkConfidenceLevelDisclaimerScreenTitle() {
+		return find(confidenceLevelDisclaimerScreenTitle);
+	}
+	
+	public String getConfidenceLevelDisclaimerScreenTitle() {
+		return getText(confidenceLevelDisclaimerScreenTitle);
+	}
+	
+	public WebElement checkDisclaimerClose() {
+		return find(confidenceLevelDisclaimerClose);
+	}
+	
+	public void tapDisclaimerClose(){
+		tapElement(confidenceLevelDisclaimerClose);
+	}
+	
+	public void tapEstimatedPropertyValueDisclaimer(){
+		tapElement(estimatedPropertyValueDisclaimer);
+	}
+	
+	public WebElement checkEstimatedPropertyValueDisclaimer() {
+		return find(estimatedPropertyValueDisclaimer);
+	}
+	
+	public void tapConfidenceLevelDisclaimer(){
+		tapElement(confidenceLevelDisclaimer);
+	}
+	
+	public WebElement checkConfidenceLevelDisclaimer() {
+		return find(confidenceLevelDisclaimer);
+	}
+	
+	public void tapCoreLogicDisclaimer(){
+		tapElement(coreLogicDisclaimer);
+	}
+	
+	public WebElement checkCoreLogicDisclaimerScreenTitle() {
+		return find(coreLogicDisclaimerScreenTitle);
+	}
+	
+	public String getCoreLogicDisclaimer() {
+		return getText(coreLogicDisclaimerScreenTitle);
+	}
+
+	public WebElement checkCoreLogicDisclaimer() {
+		return find(coreLogicDisclaimer);
+	}
+	
+	public void tapLastSaleDisclaimer(){
+		tapElement(lastSaleDisclaimer);
+	}
+	
+	public WebElement checkLastSaleDisclaimer() {
+		return find(lastSaleDisclaimer);
+	}
+	
+	public void scrollToProfessionaServicesButton(){
+		scrollToElement(professionaServicesButton, "true");
+	}
+	
+	public void tapProfessionaServicesButton(){
+		tapElement(professionaServicesButton);
+	}
 	
 	public WebElement checkNearbyEducationTitle() {
 		return find(nearbyEducationTitle);
@@ -113,11 +214,22 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkNearbyEducationCentres() {
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			return find(nearbyEducationCentresS5andPixel);
+		}
 		return find(nearbyEducationCentres);
 	}
 	
 	public List<WebElement> fetchNearbyEducationCentres() {
-		List<WebElement> elements = finds(nearbyEducationCentres);
+		List<WebElement> elements;
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			elements = finds(nearbyEducationCentresS5andPixel);
+		}else {
+			elements = finds(nearbyEducationCentres);
+		}
+		
 		return elements;
 	}
 	
@@ -175,6 +287,10 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	public WebElement checkThisIsMyPropertyInfo() {
 		return find(thisIsMyPropertyInfo);
+	}
+	
+	public void tapThisIsMyPropertyInfo(){
+		tapElement(thisIsMyPropertyInfo);
 	}
 	
 	public WebElement checkThisIsMyPropertyToggleButton() {
@@ -278,7 +394,7 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	//Swiping image carousel left in property details
 	public void swipeImageCarouselLeft() {
-		swipeHorizontally(favouriteButton,backButton);
+		swipeHorizontally(imageNumberText,backButton);
 	}
 	
 	public void swipeFullScreenImageCarouselLeft() {
@@ -408,10 +524,12 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public String getPropertyAddress() {
+		find(propertyImage);
 		return getText(propertyAddress);
 	}
 	
 	public String getPropertyStatePostCode() {
+		find(propertyImage);
 		return getText(propertyStatePostCode);
 	}
 	
@@ -433,6 +551,10 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	public String getPropertyType() {
 		return getText(propertyType);
+	}
+	
+	public void scrollToPropertyType() {
+		scrollToElement(propertyType, "true");
 	}
 	
 	public String getPropertyShowMoreInfo() {
@@ -472,7 +594,7 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkPropertyNumberOfBedroomsImage() {
-		return find(propertyNumberOfBedroomsImage,5);
+		return find(propertyNumberOfBedroomsImage,10);
 	}
 	
 	public WebElement checkPropertyNumberOfBathrooms() {
@@ -511,7 +633,6 @@ public class PropertyDetailsPage   extends BasePage{
 		tapElement(miniMap);
 	}
 	
-	
 	public WebElement checkMiniMapWhatsNewButton() {
 		return find(miniMapWhatsNearButton);
 	}
@@ -533,11 +654,11 @@ public class PropertyDetailsPage   extends BasePage{
 		swipeHorizontallyToRight();
 	}
 	
-	public void doubleTapOnPropertyImage() {
-		doubleTapOnAnElement(fullScreenPropertyImage);
+	public void doubleTapOnPropertyImage() throws InterruptedException {
+		TimeUnit.SECONDS.sleep(3);
+		tapElement(fullScreenPropertyImage);
+		tapElement(fullScreenPropertyImage);
+		
 	}
-	
-	
-	
 	
 }

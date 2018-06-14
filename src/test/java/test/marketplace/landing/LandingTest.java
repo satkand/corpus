@@ -45,6 +45,10 @@ public class LandingTest extends App {
 	}
 	
 	private void navigateToLandingPage() {
+		// TODO: R3 Release
+		/*
 		welcomePage.tapGuestAccessButton();
+		*/
+		loginToApp(utils.readTestData("loginCredentials", "defaultLoginCredentials", "login"), utils.readTestData("loginCredentials", "defaultLoginCredentials", "pwd"));
 	}
 }

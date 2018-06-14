@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class ChatbotPage extends BasePage {
 
@@ -16,8 +17,8 @@ public class ChatbotPage extends BasePage {
 	}
 		
 	private By chatIcon = By.id("au.com.suncorp.marketplace:id/chatbotToolbarImage");
-	private By chatbotPageTitle = By.xpath("//android.widget.TextView[@text='Sunny']");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By chatbotPageTitle = By.xpath("//android.widget.TextView[@text='Scout']");
+	private By backButton = MobileBy.AccessibilityId("Back");
 	private By chatView = By.id("au.com.suncorp.marketplace:id/chatView");
 	private By userInputField = By.id("au.com.suncorp.marketplace:id/userInput");
 	private By sendButton = By.id("au.com.suncorp.marketplace:id/sendMessageButton");
@@ -27,6 +28,7 @@ public class ChatbotPage extends BasePage {
 	private By responseIndicator = By.id("au.com.suncorp.marketplace:id/responseIndicator");
 	
 	private By callNowButton = By.xpath("//android.widget.Button[@text='CALL NOW']");
+	private By phNo_dailpad = By.id("com.google.android.dialer:id/digits");
 
 	public WebElement checkChatIcon() {
 		return find(chatIcon);
@@ -38,6 +40,10 @@ public class ChatbotPage extends BasePage {
 	
 	public WebElement checkBackButton() {
 		return find(backButton);
+	}
+	
+	public void tapBackButton() {
+		tapElement(backButton);
 	}
 	
 	public WebElement checkChatView() {
@@ -102,6 +108,10 @@ public class ChatbotPage extends BasePage {
 		return find(responseIndicator);
 	}
 	
+	public void waitForResponseIndicatorToDisappear() {
+		waitForElementToDisappear(responseIndicator, 20);
+	}
+	
 	public WebElement checkCallNowButton() {
 		return find(callNowButton);
 	}
@@ -117,8 +127,20 @@ public class ChatbotPage extends BasePage {
 		return phNumInDialPad;
 	}
 	
-	public WebElement checkPhNumInDialPad(String phNo) {
-		return find(By.xpath(constructPhNumInDialPadXpath(phNo)));
+	public WebElement checkPhNumInDialPad(String phNo_samsung, String phNo_google) {
+		String phNo = null;
+		WebElement phNoElement = null;
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("LGE")) {
+			phNo = getText(phNo_dailpad).replace(" ", "").replace("-", "");
+			if(phNo.equalsIgnoreCase(phNo_google)) {
+				phNoElement = find(phNo_dailpad);
+			}
+			
+		} else {
+			phNoElement = find(By.xpath(constructPhNumInDialPadXpath(phNo_samsung)));
+		}		
+		return phNoElement;
 	}
 	
 	public String constructexternalUrlXpath(String externalURLText) {
@@ -136,25 +158,48 @@ public class ChatbotPage extends BasePage {
 	
 	public void copyTextContentInUserInputQuery() {
 		tapElement(userInputQuery);
-		longPressOnAnElement(userInputQuery);
+		longPressOnAnElement(find(userInputQuery));
 		
 		//tap on Copy Option
-		tapByOffsetFromStart(userInputQuery, -250, -30);
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("LGE")) {
+			tapByOffsetFromStart(find(userInputQuery), -150, -30);
+			
+		} else {
+			tapByOffsetFromStart(find(userInputQuery), -250, -30);
+		}
 	}
 	
-	public void copyTextContentInResponseMessage() {
-		tapElement(responseMessage);
-		longPressOnAnElement(responseMessage);
+	public String copyTextContentInResponseMessage() {
+		List<WebElement> responseMessagesList = finds(responseMessage);
+		int count = responseMessagesList.size();
+		WebElement  lastResponseMessage = responseMessagesList.get(count-1);
+		tapElement(lastResponseMessage);
+		longPressOnAnElement(lastResponseMessage);
 		
-		// tap on Select All
-		tapByOffsetFromEnd(responseMessage, 0, -30);
+		//tap on Copy Option
+		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")
+				|| getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("LGE")) {
+			// tap on Select All
+			tapByOffsetFromEnd(lastResponseMessage, -200, -30);
+			
+			//tap on Copy
+			tapByOffsetFromStart(lastResponseMessage, +250, -50);
+			
+		} else {
+			// tap on Select All
+			tapByOffsetFromEnd(lastResponseMessage, 0, -30);
+			
+			//tap on Copy
+			tapByOffsetFromStart(lastResponseMessage, +250, -50);
+		}
 		
-		//tap on Copy
-		tapByOffsetFromStart(responseMessage, +250, -50);
+		return getText(responseMessage);
 	}
 	
 	public void pasteInuserInputField() {
-		longPressOnAnElement(userInputField);
-		tapByOffsetFromStart(userInputField, +200, -30);
+		WebElement element = find(userInputField);
+		longPressOnAnElement(element);
+		tapByOffsetFromStart(element, +200, -30);
 	}
 }

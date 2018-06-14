@@ -2,14 +2,11 @@ package test.marketplace.auth.login;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import automation.framework.common.BasePage;
 import pages.App;
 
 public class LoginAuthTest extends App{
 
 	private void navigateToReauthWelcomeScreen() {
-		// To make sure this method does not fail
 		if(loginAuthPage.checkChangeAccountButton() != null) {
 			loginAuthPage.tapChangeAccountButton();
 		}
@@ -21,27 +18,24 @@ public class LoginAuthTest extends App{
 		loginPage.enterLoginCredentials(utils.readTestData("loginCredentials", "validLoginCredentials", "login"), utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginPage.tapLoginButton();
 		
-		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null) {
+		if(termsAndConditionsPage.checkAcceptButton() != null) {
 			termsAndConditionsPage.tapAcceptButton();
 		}
 
 		Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
-		
-		if(pinOptionsPage.checkPinPromptImage() != null){
-			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
-			pinOptionsPage.tapMaybeLater();
-		} else
-		{
-			Assert.assertNotNull(pinOptionsPage.checkPromptUserWelcome(), "PIN Option Page - Pin Enable option not displayed");
-			pinOptionsPage.tapPromptMaybeLater();
-		}
+		pinOptionsPage.tapMaybeLater();
 
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - Landing page title not displayed");
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
-		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+		navigationMenu.tapLogOutMenuOption();
 	}
 	
+	private void checkForTermsAndConditions() {
+		if(termsAndConditionsPage.checkAcceptButton() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
+	}
 	
 	//DMPM-1972 Scenario 1
 	@Test(groups = {"DMPM-1972", "DMPM-2668", "marketplace", "login", "priority-high"})
@@ -57,9 +51,7 @@ public class LoginAuthTest extends App{
 		Assert.assertNotNull(loginAuthPage.checkPasswordReauthField(), "Password Reauth - User is not navigated to the Password Reauth Screen");
 		loginAuthPage.tapReauthPasswordLoginBtn();
 		
-		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null) {
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 		
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - User is not navigated to the Landing Page");
 		loginAuthPage.restartApp();
@@ -83,13 +75,11 @@ public class LoginAuthTest extends App{
 		loginAuthPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginAuthPage.tapReloginButton();
 		
-		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null) {
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 		
 		Assert.assertNotNull(landingPage.checkSuncorpTab(), "User is not navigated to the Landing screen");
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
 		navigationMenu.tapSettingsMenuItem();
 		//Wait for loading spinner to finish
 		common.waitForLoadingIndicatorToDisappear();
@@ -116,8 +106,8 @@ public class LoginAuthTest extends App{
 		Assert.assertNotNull(settingsPage.checkSettingsTitle(), "User is not navigated back to Settings page");
 
 		navigationMenu.tapSplitMenuIcon();
-		Assert.assertNotNull(navigationMenu.checkLockMenuOption(), "Navigation Menu - Nav menu not loaded properly");
-		navigationMenu.tapLockMenuOption();
+		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
+		navigationMenu.tapLogOutMenuOption();
 		
 		// PIN Enabled
 		loginAuthPage.tapReloginButton();
@@ -137,7 +127,7 @@ public class LoginAuthTest extends App{
 		loginAuthPage.tapPasswordField();
 		Assert.assertTrue(common.isKeyboardShown(), "keyboard not shown");
 		loginAuthPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
-		Assert.assertEquals(loginAuthPage.getPasswordFieldVal(), utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd"), "Reauth With Password - Password value is not masked");
+		Assert.assertTrue(loginAuthPage.getPasswordFieldMaskedVal(utils.readTestData("loginCredentials", "validLoginCredentials", "maskedValidPwd")), "Reauth With Password - Password value is not masked");
 		
 		// Relaunch the app after backgrounding
 		loginAuthPage.relaunchApp(-1, "Config");
@@ -172,9 +162,7 @@ public class LoginAuthTest extends App{
 		loginAuthPage.enterPassword(utils.readTestData("loginCredentials", "validLoginCredentials", "pwd"));
 		loginAuthPage.tapReauthPasswordLoginBtn();
 		
-		if(termsAndConditionsPage.checkLoginTermsAndConditionsTitle() != null) {
-			termsAndConditionsPage.tapAcceptButton();
-		}
+		checkForTermsAndConditions();
 		
 		common.waitForLoadingIndicatorToDisappear();
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Landing Page - User is not navigated to the landing page");

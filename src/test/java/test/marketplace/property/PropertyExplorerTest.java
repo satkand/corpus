@@ -24,7 +24,10 @@ public class PropertyExplorerTest extends App{
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchText(), "","Search text has not been cleared");
 		
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
 		propertyDetailsPage.scrollToWhatsNearButton();
@@ -54,11 +57,19 @@ public class PropertyExplorerTest extends App{
 		propertyExplorerPage.tapClearSerchButton();
 		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchText(), "","Search text has not been cleared");
 	
+		propertyExplorerPage.tapPropertyInsight();
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","enterAdress"));
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		
 		propertyDetailsPage.tapDeviceBackButton();
+		if(propertyDetailsPage.checkPropertyAddress()!=null) {
+			propertyDetailsPage.tapDeviceBackButton();
+		}
+		
 		Assert.assertEquals(propertyExplorerPage.getHomeJourneyTitle(), utils.readTestData("copy","propertyDetailsPage","HomeJourneyTitle"));
 		
 		propertyExplorerPage.tapBackButton();
@@ -94,6 +105,7 @@ public class PropertyExplorerTest extends App{
 		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Start your journey button is not shown");
 		homePropertyPage.scrollToJourneyBanner();
 		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");

@@ -60,7 +60,16 @@ public class GalleryPage extends BasePage {
 	}
 
 	public WebElement checkGalleryTitle() {
+		if (getDeviceAttribute("deviceManufacturer").equals("samsung")) {
 
+			return checkGalleryTitleSamsung();
+
+		} else if (getDeviceAttribute("deviceManufacturer").equals("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")) {
+
+			return checkGalleryTitleGoogleLG();
+		}
+		
 		return find(galleryTitle);
 	}
 
@@ -122,13 +131,18 @@ public class GalleryPage extends BasePage {
 
 	
 	public void tapGalleryCancelButton() {
-		tapElement(galleryCancelButton);
+		if (getDeviceAttribute("deviceManufacturer").equals("samsung")) {
+			navigateBack();
+		} else if (getDeviceAttribute("deviceManufacturer").equals("Google")
+				|| getDeviceAttribute("deviceManufacturer").equals("LGE")) {
+			tapElement(galleryCancelButton);
+		}		
 	}
 	
 
 	public void tapFirstPictureSamsung() {
 
-		tapByOffsetFromStart(galleryView, 120, 630);
+		tapByOffsetFromStart(find(galleryView), 120, 630);
 
 	}
 
@@ -138,7 +152,13 @@ public class GalleryPage extends BasePage {
 
 	public void choosePictureFromGallerySamsung() {
 
-		if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
+		if (getDeviceAttribute("deviceModel").equals("SM-G900F")) {
+			checkGalleryTitleSamsung();
+			tapPictureFolderGoogleLG();
+			tapFirstPictureSamsung();
+
+		}
+		else if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
 			checkGalleryTitleSamsung();
 			tapThumbnailSamsung();
 			checkCameraFolderTitle();

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -64,11 +65,14 @@ import pages.marketplace.portfolio.AddProductPage;
 import pages.marketplace.portfolio.AccountDetailsPage;
 import pages.marketplace.portfolio.AddBankAccountPage;
 import pages.marketplace.wealth.CategoryDetailsPage;
+import pages.marketplace.wealth.ConnectedAccountsPage;
 import pages.marketplace.wealth.FinancePage;
 import pages.marketplace.wealth.SpendingsPage;
+import pages.marketplace.wealth.VendorDetailPage;
 import pages.marketplace.property.WhatsNearbyPage;
 import pages.marketplace.property.PropertyHubPage;
 import pages.marketplace.property.SuburbDetailsPage;
+
 
 public class App extends BaseTest {
 	public AutoUtilities utils = null;
@@ -121,6 +125,8 @@ public class App extends BaseTest {
 	public CategoryDetailsPage categoryDetailsPage = null;
 	public WebviewPage webviewPage = null;
 	public MemberLoginPage memberLoginPage = null;
+	public VendorDetailPage vendorDetailPage = null;
+	public ConnectedAccountsPage connectedAccountsPage = null;
 	public WhatsNearbyPage whatsNearbyPage = null;
 	public ForceUpdatePage forceUpdatePage = null;
 	public SuburbDetailsPage suburbDetailsPage = null;
@@ -133,14 +139,23 @@ public class App extends BaseTest {
 	public TermsAndConditionsPage termsAndConditionsPage = null;
 	public AddProductPage addProductPage = null;
 
+
 	String CONFIG_FILE=null;
 
+	@Parameters({ "endPoint" })
 	@BeforeClass
-	public void initializeApp() {
+	public void initializeApp(@Optional("SYST") String endPoint) {
 	
 		 utils = new AutoUtilities();
-		// Autoutilites file path
-		String JSONFilePath = "/TestData/TestData_Test.json";
+		 String JSONFilePath = null;
+		 
+		 if(endPoint.equalsIgnoreCase("stub")) {
+				// Autoutilites file path
+				JSONFilePath = "/TestData/TestData_Stub.json";
+		 } else {
+				JSONFilePath = "/TestData/TestData_Test.json";
+		 }
+		 
 		CONFIG_FILE = System.getProperty("user.dir")+"/Config/config.properties";
 		utils.loadTestData(JSONFilePath);
 		
@@ -196,7 +211,6 @@ public class App extends BaseTest {
 		memberLoginPage = new MemberLoginPage(driver);
 		whatsNearbyPage = new WhatsNearbyPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
-		articlesPage = new ArticlesPage(driver);
 		forceUpdatePage = new ForceUpdatePage(driver);
 		suburbDetailsPage = new SuburbDetailsPage(driver);
 		articlesPage = new ArticlesPage(driver);
@@ -207,18 +221,23 @@ public class App extends BaseTest {
 		claimIntroPage = new ClaimIntroPage(driver);
 		makeAClaimPage = new MakeAClaimPage(driver);
 		categoryDetailsPage = new CategoryDetailsPage(driver);
+		vendorDetailPage = new VendorDetailPage(driver);
+		connectedAccountsPage = new ConnectedAccountsPage(driver);
 		propertyHubPage = new PropertyHubPage(driver);
 		termsAndConditionsPage = new TermsAndConditionsPage(driver);
 		addProductPage = new AddProductPage(driver);
+
 	}
 	
-	@Parameters({ "stub" })
+
+	@Parameters({ "endPoint" })
+
 	@BeforeMethod(alwaysRun = true)
-	public void beforeEachTest(@Optional("false") String stub) throws Exception {
+	public void beforeEachTest(@Optional("SYST") String endPoint) throws Exception {
 		
 		welcomePage.launchApp();
 		
-		configPage.dismissConfigPage(stub,CONFIG_FILE);
+		configPage.dismissConfigPage(endPoint,CONFIG_FILE);
 	}
 	
 	@AfterMethod(alwaysRun = true)
@@ -236,13 +255,18 @@ public class App extends BaseTest {
 		loginPage.enterLoginCredentials(login, pwd);
 		
 		loginPage.tapLoginButton();
+		loginPage.waitForLoadingIndicatorToDismiss();
 		
 		if(termsAndConditionsPage.checkAcceptButton() != null) {
 			termsAndConditionsPage.tapAcceptButton();
 		}
 		
-		if(pinOptionsPage.checkEnablePinButton() != null && args.length < 1) {
+		if(pinOptionsPage.checkMaybeLaterButton() != null && args.length < 1) {
 			pinOptionsPage.tapMaybeLater();
+		} else if(pinOptionsPage.checkMaybeLaterPromptButton() != null && args.length < 1) {
+			pinOptionsPage.tapPromptMaybeLater();
+		} else if (pinOptionsPage.checkEnableFingerprintBtn() != null && args.length < 1) {
+			pinOptionsPage.tapPromptMaybeLater();
 		}
 	}
 	

@@ -3,10 +3,13 @@ package pages.marketplace.auth.registration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import automation.framework.common.BasePage;
+import automation.framework.utils.AutoUtilities;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 
 public class MemberLoginPage extends BasePage {
+	
+	AutoUtilities utils = new AutoUtilities();
 
 	public MemberLoginPage(AppiumDriver driver) {
 		super(driver);
@@ -20,8 +23,9 @@ public class MemberLoginPage extends BasePage {
 	private By forgotPasswordButton = By.id("au.com.suncorp.marketplace:id/forgotPasswordButton");
 	private By noCredentialsButton = By.id("au.com.suncorp.marketplace:id/noCredentialsButton");
 	private By emailFieldError = By.xpath("//TextInputLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
+	private By emailFieldErrorOldDevice = By.xpath("//android.widget.LinearLayout[@text='Email']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By passwordFieldError = By.xpath("//TextInputLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
-	private By incorrectEmailSnackbar = By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.FrameLayout");
+	private By passwordFieldErrorOldDevice = By.xpath("//android.widget.LinearLayout[@text='Password']//android.widget.LinearLayout/android.widget.TextView[@resource-id='au.com.suncorp.marketplace:id/textinput_error']");
 	private By incorrectEmailSnackbarText = By.id("au.com.suncorp.marketplace:id/snackbar_text");
 	private By incorrectEmailSnackBarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
 	
@@ -78,13 +82,27 @@ public class MemberLoginPage extends BasePage {
 	public String getEmailFieldValue() {
 		return getText(emailTextField);
 	}
-
-	public String getEmailFieldErrorValue() {
-		return getText(emailFieldError);
-	}
 	
 	public WebElement checkEmailFieldError(){
-		return find(emailFieldError, 5);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(emailFieldError,30);
+		}
+		else { 
+			return find(emailFieldErrorOldDevice,30);
+		}
+	}
+	
+	public String getEmailFieldErrorValue(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(emailFieldError);
+		}
+		else { 
+			return getText(emailFieldErrorOldDevice);
+		}
 	}
 	
 	public WebElement checkPasswordField() {
@@ -100,11 +118,25 @@ public class MemberLoginPage extends BasePage {
 	}
 	
 	public WebElement checkPasswordFieldError(){
-		return find(passwordFieldError, 5);
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return find(passwordFieldError,30);
+		}
+		else { 
+			return find(passwordFieldErrorOldDevice,30);
+		}
 	}
 	
-	public String getPasswordFieldErrorValue() {
-		return getText(passwordFieldError);
+	public String getPasswordFieldErrorValue(){
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			return getText(passwordFieldError);
+		}
+		else { 
+			return getText(passwordFieldErrorOldDevice);
+		}
 	}
 
 	public WebElement checkNextButton() {
@@ -112,6 +144,7 @@ public class MemberLoginPage extends BasePage {
 	}
 	
 	public void tapNextButton() {
+		dismissKeyboard();
 		tapElement(nextButton);
 	}
 
@@ -121,6 +154,19 @@ public class MemberLoginPage extends BasePage {
 
 	public WebElement checkNoCredentialsButton() {
 		return find(noCredentialsButton);
+	}
+	
+	public Boolean getPasswordFieldMaskedVal(String maskedValue) {
+		Boolean status;
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+
+		if (osVersion >= 6.0) {
+			status = getText(passwordTextField).equals(maskedValue);
+		}
+		else { 
+			status = getText(passwordTextField).equals(""); 
+		}
+		return status;
 	}
 
 	public String getPasswordFieldValue() {
@@ -212,11 +258,10 @@ public class MemberLoginPage extends BasePage {
 	}
 	
 	public WebElement checkSnackbarDisplayed() {
-		return find(incorrectEmailSnackbar);
+		return find(incorrectEmailSnackbarText, 30);
 	}
 	
 	public String getSnackbarText() {
-		find(incorrectEmailSnackbarText);
 		return getText(incorrectEmailSnackbarText);
 	}
 	

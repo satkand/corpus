@@ -2,10 +2,8 @@ package pages.marketplace.auth.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 
 public class LoginAuthPage extends BasePage{
 
@@ -14,17 +12,17 @@ public class LoginAuthPage extends BasePage{
 	private By changeAccountButton = By.id("au.com.suncorp.marketplace:id/changeUserButton");
 	
 	//Reauth with password
-	private By userImagePasswordReauth = By.id("au.com.suncorp.marketplace:id/profilePicture");
-	private By userNamePasswordReauth = By.id("au.com.suncorp.marketplace:id/userNameText");
+//	private By userImagePasswordReauth = By.id("au.com.suncorp.marketplace:id/profilePicture");
+//	private By userNamePasswordReauth = By.id("au.com.suncorp.marketplace:id/userNameText");
 	private By passwordReauthField = By.id("au.com.suncorp.marketplace:id/passwordField");
 	private By forgotPasswordReauthButton = By.id("au.com.suncorp.marketplace:id/forgotPasswordButton");
 	private By backButtonReauthPassword = By.id("au.com.suncorp.marketplace:id/backButton");
-	private By reauthPasswordLogin = By.id("au.com.suncorp.marketplace:id/loginButton");
+	private By reauthPasswordLoginBtn = By.id("au.com.suncorp.marketplace:id/loginButton");
+//	private By reauthPasswordLogin = By.id("au.com.suncorp.marketplace:id/loginButton");
 	private By passwordInlineError = By.id("au.com.suncorp.marketplace:id/textinput_error");
 	
 	public LoginAuthPage(AppiumDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	public WebElement checkChangeAccountButton(){
@@ -71,12 +69,21 @@ public class LoginAuthPage extends BasePage{
 		return getText(passwordReauthField);
 	}
 	
-	public void tapPasswordField() {
-		tapElement(passwordReauthField);
+	public Boolean getPasswordFieldMaskedVal(String maskedValue) {
+		Boolean status;
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if (osVersion >= 6.0) {
+			status = getText(passwordReauthField).equals(maskedValue);
+		}
+		else { 
+			status = getText(passwordReauthField).equals("");
+		}
+		
+		return status;
 	}
 	
-	public void tapReauthPasswordLoginBtn() {
-		tapElement(reauthPasswordLogin);
+	public void tapPasswordField() {
+		tapElement(passwordReauthField);
 	}
 	
 	public WebElement checkPasswordInlineError() {
@@ -85,6 +92,10 @@ public class LoginAuthPage extends BasePage{
 	
 	public String getPasswordInlineErrorVal() {
 		return getText(passwordInlineError);
+	}
+	
+	public void tapReauthPasswordLoginBtn() {
+		tapElement(reauthPasswordLoginBtn);
 	}
 	
 	public void restartApp() {

@@ -14,7 +14,8 @@ public class WelcomeTest extends App {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
 		Assert.assertNotNull(welcomePage.checkLoginButton(), "Welcome screen - Login button is not shown");
-		Assert.assertNotNull(welcomePage.checkGuestAccessButton(), "Welcome screen - Guest Access button is not shown");
+		// TODO: R3 Release
+		// Assert.assertNotNull(welcomePage.checkGuestAccessButton(), "Welcome screen - Guest Access button is not shown");
 	}
 	
 	@Test (groups = {"DMPM-42", "DMPM-217", "marketplace", "welcome", "priority-minor"})
@@ -40,6 +41,8 @@ public class WelcomeTest extends App {
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 	}
 	
+	// TODO: R3 Release
+	/*
 	@Test (groups = {"DMPM-77", "DMPM-303", "marketplace", "Guest user", "priority-minor"})
 	public void testNavigatingToGuestAccessScreen(){
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
@@ -47,4 +50,5 @@ public class WelcomeTest extends App {
 		Assert.assertNotNull(navigationMenu.checkSplitMenuIcon(), "Guest Landing Page - menu icon not shown");
 		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "Guest Landing page - Page Title not shown");
 	}
+	*/
 }

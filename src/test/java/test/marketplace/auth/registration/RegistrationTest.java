@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import automation.framework.common.Copy;
 import pages.App;
 
 public class RegistrationTest extends App{
@@ -21,7 +23,8 @@ public class RegistrationTest extends App{
 					utils.readTestData("registration", "success", "mobile"));
 			registrationPage.tapNextButton();
 			registrationPage.fill3rdPageFields(utils.readTestData("registration", "success", "password"));
-			Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(),"Pin enable screen is not displayed");	
+			common.waitForLoadingIndicatorToDisappear();
+			Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(),"Pin enable screen is not displayed");
 	}
 	
 	@Test(groups = {"DMPM-185", "DMPM-375", "marketplace", "Registration", "priority-major"})
@@ -37,7 +40,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		registrationPage.tapFirstNameField();
 		common.dismissKeyboardShown();
-		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getPostCodeErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 	}
 		
 	@Test(groups = {"DMPM-185", "DMPM-413", "marketplace", "Registration", "priority-major"})
@@ -47,7 +50,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		Assert.assertEquals(registrationPage.getDOBErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
-		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getPostCodeErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		registrationPage.fill1stPageFieldsWithoutPostcode(utils.readTestData("registration", "success", "firstName"),
 				utils.readTestData("registration", "success", "surname"),
 				utils.readTestData("registration", "success", "date"));
@@ -55,7 +58,7 @@ public class RegistrationTest extends App{
 		Assert.assertNull(registrationPage.checkFirstNameErrorMsg());
 		Assert.assertNull(registrationPage.checkSurnameErrorMsg());
 		Assert.assertNull(registrationPage.checkDOBErrorMsg());
-		Assert.assertNotNull(registrationPage.getPostcodeErrorMsg());
+		Assert.assertNotNull(registrationPage.getPostCodeErrorMsg());
 		registrationPage.enterPostcode(utils.readTestData("registration", "success", "postcode"));
 		registrationPage.tapNextButton();
 		Assert.assertNotNull(registrationPage.checkRegisterPage2Title());	
@@ -88,7 +91,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		Assert.assertEquals(registrationPage.getDOBErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
-		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getPostCodeErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		registrationPage.tapFirstNameField();
 		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"), "Reg Page 1 - Error not displayed for the First Name field");
 		registrationPage.tapSurnameField();
@@ -108,20 +111,20 @@ public class RegistrationTest extends App{
 		registrationPage.tapFirstNameField();
 
 		registrationPage.enterFirstName(utils.readTestData("registration", "failure", "specialCharFirstname"));
-		Assert.assertEquals(registrationPage.getFirstNameInvalidErrorMsg(), utils.readTestData("copy", "registrationPage", "specialCharErrorMsg"));
+		Assert.assertEquals(registrationPage.getFirstNameErrorMsg(), utils.readTestData("copy", "registrationPage", "specialCharErrorMsg"));
 		registrationPage.tapSurnameField();
 		registrationPage.tapFirstNameField();
-		Assert.assertEquals(registrationPage.getSurnameInvalidErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 		registrationPage.enterFirstName(utils.readTestData("registration", "failure", "noSpecialCharName"));
-		Assert.assertNull(registrationPage.checkFirstNameInvalidErrorMsg());
+		Assert.assertNull(registrationPage.checkFirstNameErrorMsg());
 		
 		registrationPage.enterSurname(utils.readTestData("registration", "failure", "specialCharSurname"));
-		Assert.assertEquals(registrationPage.getSurnameInvalidErrorMsg(), utils.readTestData("copy", "registrationPage", "specialCharErrorMsg"));
+		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "specialCharErrorMsg"));
 		registrationPage.tapPostcodeField();
 		registrationPage.tapSurnameField();
-		Assert.assertEquals(registrationPage.getSurnameInvalidErrorMsg(), utils.readTestData("copy", "registrationPage", "specialCharErrorMsg"));
+		Assert.assertEquals(registrationPage.getSurnameErrorMsg(), utils.readTestData("copy", "registrationPage", "specialCharErrorMsg"));
 		registrationPage.enterSurname(utils.readTestData("registration", "failure", "noSpecialCharName"));
-		Assert.assertNull(registrationPage.checkSurnameInvalidErrorMsg());
+		Assert.assertNull(registrationPage.checkSurnameErrorMsg());
 		
 	}
 	
@@ -461,27 +464,27 @@ public class RegistrationTest extends App{
 		// check post code field is mandatory error message is displayed on tapping outside the post code field
 		registrationPage.enterPostcode("");
 		registrationPage.enterSurname("");
-		Assert.assertNotNull(registrationPage.checkPostcodeInvalidErrorMsg(),"Postcode tooltip inline message is not displayed.");
-		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(),utils.readTestData("copy", "registrationPage", "fieldErrorMsg"),
+		Assert.assertNotNull(registrationPage.checkPostCodeErrorMsg(),"Postcode tooltip inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getPostCodeErrorMsg(),utils.readTestData("copy", "registrationPage", "fieldErrorMsg"),
 				"Incorrect postcode inline message is displayed");
 
 		// check post code field is mandatory error message is displayed on tapping Next button
 		registrationPage.enterPostcode("");
 		registrationPage.tapNextButton();
-		Assert.assertNotNull(registrationPage.checkPostcodeInvalidErrorMsg(),"Postcode tooltip inline message is not displayed.");
-		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(),utils.readTestData("copy", "registrationPage", "fieldErrorMsg"),
+		Assert.assertNotNull(registrationPage.checkPostCodeErrorMsg(),"Postcode tooltip inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getPostCodeErrorMsg(),utils.readTestData("copy", "registrationPage", "fieldErrorMsg"),
 				"Incorrect postcode inline message is displayed");
 
 		// check invalid post code error message is displayed on tapping Next button
 		registrationPage.enterPostcode(utils.readTestData("registration", "failure", "invalidPostcode"));
 		registrationPage.tapNextButton();
-		Assert.assertNotNull(registrationPage.checkPostcodeInvalidErrorMsg(),"Postcode tooltip inline message is not displayed.");
-		Assert.assertEquals(registrationPage.getPostcodeErrorMsg(),utils.readTestData("copy", "registration", "invalidPostcodeMessage"),
+		Assert.assertNotNull(registrationPage.checkPostCodeErrorMsg(),"Postcode tooltip inline message is not displayed.");
+		Assert.assertEquals(registrationPage.getPostCodeErrorMsg(),utils.readTestData("copy", "registration", "invalidPostcodeMessage"),
 				"Incorrect postcode inline message is displayed");
 
 		registrationPage.enterPostcode(utils.readTestData("registration", "success", "postcode"));
 		registrationPage.tapNextButton();
-		Assert.assertNull(registrationPage.checkPostcodeInvalidErrorMsg(),"Postcode tooltip inline message is displayed.");
+		Assert.assertNull(registrationPage.checkPostCodeErrorMsg(),"Postcode tooltip inline message is displayed.");
 
 	}
 
@@ -639,7 +642,7 @@ public class RegistrationTest extends App{
 		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpOkButtonLabel(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpOkButtonText"),
 				"Duplicate email alert pop up title is not correct");
 
-		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpAnotherLoginButtonLabel(),utils.readTestData("copy", "registrationPage", "duplicateEmailPopUpUseAnotherEmailButtonText"),
+		Assert.assertEquals(registrationPage.getDuplicateEmailPopUpAnotherLoginButtonLabel().toUpperCase(), Copy.DUPLICTE_EMAIL_POPUP_USE_ANOTHER_EMAIL_BUTTON_TEXT,
 				"Duplicate email alert pop up title is not correct");
 
 		registrationPage.tapOkButton();
@@ -651,14 +654,12 @@ public class RegistrationTest extends App{
 
 		Assert.assertNotNull(registrationPage.checkDuplicateEmailPopUpTitle(),"Duplicate email alert pop up is not displayed on registration.");
 
-		registrationPage.tapAnotherLoginButton();
+		registrationPage.tapLoginWithThisEmailButton();
 
 		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"),
 				"Login page title is not shown as expected");
-
-		Assert.assertEquals(loginPage.getEmailFieldData(), utils.readTestData("loginCredentials", "validLoginCredentials","login"),
-				"Email field is not pre populated with email as expected");
-
+		
+		Assert.assertNotNull(loginPage.getEmailFieldData().contains(utils.readTestData("loginCredentials", "validLoginCredentials","login")), "Email field is not pre populated with email as expected");
 	}
 
 	private void navigateToRegistrationPage() {

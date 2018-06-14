@@ -26,9 +26,18 @@ public class PropertyExplorerPage  extends BasePage{
 	private By propertyInsightTab = By.id("au.com.suncorp.marketplace:id/propertySearchButton");
 	private By suburbInsightTab = By.id("au.com.suncorp.marketplace:id/suburbSearchButton");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
+	private By firstItemIntheSearchDropdown = By.id("au.com.suncorp.marketplace:id/buttonText");
 	
 	public WebElement checkPropertyExplorerSearchbox() {
 		return find(propertyExplorerSearchbox);
+	}
+	
+	public WebElement checkFirstItemIntheSearchDropdown() {
+		return find(firstItemIntheSearchDropdown);
+	}
+	
+	public void tapFirstItemIntheSearchDropdown() {
+		tapElement(firstItemIntheSearchDropdown);
 	}
 	
 	public WebElement checkMiniMapLocationPin() {
@@ -77,7 +86,7 @@ public class PropertyExplorerPage  extends BasePage{
 	}
 	
 	public WebElement checkPropertyInsightTab() {
-		return find(propertyInsightTab);
+		return find(propertyInsightTab,20);
 	}
 	
 	public void tapPropertyInsight() {
@@ -90,6 +99,13 @@ public class PropertyExplorerPage  extends BasePage{
 	
 	public void tapSuburbInsight() {
 		tapElement(suburbInsightTab);
+	}
+	
+	public void tapAndroidDeviceBackButton(int count){
+		for(int i=0;i<count;i++){
+			tapDeviceBackButton();
+		}
+		
 	}
 
 	public String getHomeJourneyTitle() {
@@ -111,6 +127,10 @@ public class PropertyExplorerPage  extends BasePage{
 	
 	public WebElement checkPropertyExplorerSearchHint() {
 		return find(propertyExplorerSearchHintText);
+	}
+	
+	public WebElement checkPropertyHubSearchbox() {
+		return find(propertyExplorerSearchbox);
 	}
 
 }
