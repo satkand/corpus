@@ -17,7 +17,6 @@ public class AddProductTest extends App{
 	addProductPage.tapAddInsurancePolicyButton();
 	
 	Assert.assertNotNull(addPolicyPage.checkAddPolicyPageTitle(), "Add policy screen - Add policy title is not present");
-	
 	Assert.assertNotNull(addPolicyPage.checkForgotMyDetailsButton(),"Add policy screen - Forgotten my details button is not present");
 
 	addPolicyPage.tapPolicyNumberTextBox();
@@ -98,75 +97,75 @@ public class AddProductTest extends App{
 		
 		
 	}
-	
-	// This test case checks the error validations on adding Superannuation accounts
-		// DMPM-3420 Add superannuation product
-		@Test(groups = { "DMPM-3420", "DMPM-6854", "DMPM-6855", "DMPM-6856", "DMPM-6857", "DMPM-6858", "DMPM-6859", "DMPM-6860",
-				"DMPM-6861", "DMPM-6862", "DMPM-6863","marketplace", "portfolio", "priority-major" })
-		public void testErrorValidationsOnAddSuperAccount() {
-
-			navigateToAddProductsScreen("emptylist", "loginEmptyProdList");
-			
-			addProductPage.tapAddSuperAccountButton();
-			Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
-
-			
-			addBankAccountPage.tapSuperAccountNumberField();
-			Assert.assertTrue(common.isKeyboardShown(),"Keyboard is not displayed after tapping on Account Number field");
-			
-			// Check mandatory field error message on Account Number
-			addBankAccountPage.tapAddSuperAccount();
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(), Copy.ADD_SUPER_ACC_MANDATORY_ERROR,"My Products: Add Super Account screen: Account Number field is mandatory error message is not displayed");
-			
-			// Check inline error message for invalid character while typing
-			addBankAccountPage.enterSuperAccountNumber(utils.readTestData("portfolio","loginProdList","addSuperAccount","inValidCharacterAccountNumber"));
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
-			
-			//Check inline error message for invalid character after tapping on Add Account button
-			addBankAccountPage.tapAddSuperAccount();
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
-
-			// check the inline error message for invalid character is still displayed when the user taps in the field
-			addBankAccountPage.tapSuperAccountNumberField();
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
-
-			
-			addBankAccountPage.clearSuperAccountNumber();
-			
-			// Check inline error message for field length while typing
-			addBankAccountPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "moreThanMaxAccountNumber"));
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
-			
-			// Check inline error message for field length is displayed on tapping Add Account button
-			addBankAccountPage.tapAddSuperAccount();
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
-
-			// check the inline error message is still displayed when the user taps in the field
-			addBankAccountPage.tapSuperAccountNumberField();
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
-
-			addBankAccountPage.clearSuperAccountNumber();
-			
-			// Check inline error message for field length while typing
-			addBankAccountPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "lessThanMinAccountNumber"));
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
-					
-			// Check inline error message for field length is displayed on tapping Add Account button
-			addBankAccountPage.tapAddSuperAccount();
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
-
-			// check the inline error message is still displayed when the user taps in the field
-			addBankAccountPage.tapSuperAccountNumberField();
-			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
-
-			addBankAccountPage.clearSuperAccountNumber();
-
-			// check the inline error message disappears when user types correct Account number
-			addBankAccountPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "validAccountNumber"));
-			Assert.assertNull(addBankAccountPage.checkAccountNumberError(),"My Products: Add Super Account screen: Error message is still displayed");
-			
-
-		}
+	// TODO: Use below method post R3.0 release
+//	// This test case checks the error validations on adding Superannuation accounts
+//		// DMPM-3420 Add superannuation product
+//		@Test(groups = { "DMPM-3420", "DMPM-6854", "DMPM-6855", "DMPM-6856", "DMPM-6857", "DMPM-6858", "DMPM-6859", "DMPM-6860",
+//				"DMPM-6861", "DMPM-6862", "DMPM-6863","marketplace", "portfolio", "priority-major" })
+//		public void testErrorValidationsOnAddSuperAccount() {
+//
+//			navigateToAddProductsScreen("emptylist", "loginEmptyProdList");
+//			
+//			addProductPage.tapAddSuperAccountButton();
+//			Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
+//
+//			
+//			addBankAccountPage.tapSuperAccountNumberField();
+//			Assert.assertTrue(common.isKeyboardShown(),"Keyboard is not displayed after tapping on Account Number field");
+//			
+//			// Check mandatory field error message on Account Number
+//			addBankAccountPage.tapAddSuperAccount();
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(), Copy.ADD_SUPER_ACC_MANDATORY_ERROR,"My Products: Add Super Account screen: Account Number field is mandatory error message is not displayed");
+//			
+//			// Check inline error message for invalid character while typing
+//			addBankAccountPage.enterSuperAccountNumber(utils.readTestData("portfolio","loginProdList","addSuperAccount","inValidCharacterAccountNumber"));
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
+//			
+//			//Check inline error message for invalid character after tapping on Add Account button
+//			addBankAccountPage.tapAddSuperAccount();
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
+//
+//			// check the inline error message for invalid character is still displayed when the user taps in the field
+//			addBankAccountPage.tapSuperAccountNumberField();
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_SPECIAL_CHARS_ERROR,"My Products: Add Super Account screen: Invalid characters error message not displayed");
+//
+//			
+//			addBankAccountPage.clearSuperAccountNumber();
+//			
+//			// Check inline error message for field length while typing
+//			addBankAccountPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "moreThanMaxAccountNumber"));
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
+//			
+//			// Check inline error message for field length is displayed on tapping Add Account button
+//			addBankAccountPage.tapAddSuperAccount();
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
+//
+//			// check the inline error message is still displayed when the user taps in the field
+//			addBankAccountPage.tapSuperAccountNumberField();
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field max length error message not displayed.");
+//
+//			addBankAccountPage.clearSuperAccountNumber();
+//			
+//			// Check inline error message for field length while typing
+//			addBankAccountPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "lessThanMinAccountNumber"));
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
+//					
+//			// Check inline error message for field length is displayed on tapping Add Account button
+//			addBankAccountPage.tapAddSuperAccount();
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
+//
+//			// check the inline error message is still displayed when the user taps in the field
+//			addBankAccountPage.tapSuperAccountNumberField();
+//			Assert.assertEquals(addBankAccountPage.getAccountNumberError(),Copy.ADD_SUPER_ACC_LENGTH_ERROR,"My Products: Add Super Account screen: Account Number field min length error message not displayed.");
+//
+//			addBankAccountPage.clearSuperAccountNumber();
+//
+//			// check the inline error message disappears when user types correct Account number
+//			addBankAccountPage.enterSuperAccountNumber(utils.readTestData("portfolio", "loginProdList", "addSuperAccount", "validAccountNumber"));
+//			Assert.assertNull(addBankAccountPage.checkAccountNumberError(),"My Products: Add Super Account screen: Error message is still displayed");
+//			
+//
+//		}
 	
 		// This function verifies adding bank account with inline validations
 		// DMPM-112 Android - Add Bank Account and Inline Validations

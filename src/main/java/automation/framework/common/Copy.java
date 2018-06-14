@@ -145,12 +145,23 @@ public interface Copy {
 
 
 	// PORTFOLIO
-	String AVAILABLE_BALANCE_LABEL = "Available balance";	
-	String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
+	String AVAILABLE_BALANCE_LABEL = "Available";	
 	String ADD_SUPER_ACC_SPECIAL_CHARS_ERROR = "Can only contain numerical digits  Must be between 7 – 9 characters";
 	String ADD_SUPER_ACC_MANDATORY_ERROR = "Field is required";
 	String ADD_SUPER_ACC_LENGTH_ERROR = "Must be between 7 – 9 characters";
-	
+	String EMPTY_STATE_LABEL = "You have not added any policies or accounts yet.";
+	String ADD_EXISTING_PRODUCT_SCREEN_LABEL = "Add existing product";
+	String CURRENT_BALANCE_LABEL = "Current";
+	String ACCOUNT_DETAILS_LABEL = "Account Details";
+	String POLICY_ADDED_SUCCESSFUL_MSG = "Policy added";
+	String MAX_LIMIT_ERROR = "Exceeding the max limit of 30";
+	String FIELD_VALIDATION_ERROR = "Field is required";
+	String INVALID_CHARACTER_ERROR = "Please enter a valid policy number";
+	String INVALID_ACCOUNT_NUMBER_ERROR = "Must be 9 characters  Can only contain numerical digits";
+	String ACCOUNT_LENGTH_ERROR = "Must be 9 characters";
+	String MANDATORY_FIELD_ERROR = "Field is required";
+	String ADD_EXISTING_PRODUCT_BUTTON_LABEL = "ADD A POLICY OR ACCOUNT";
+	String VIEW_DETAILS_BUTTON_LABEL = "VIEW DETAILS";
 
 	//MEMBER LOGIN PAGE
 

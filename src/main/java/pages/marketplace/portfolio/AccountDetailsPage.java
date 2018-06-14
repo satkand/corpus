@@ -13,7 +13,7 @@ public class AccountDetailsPage   extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 	
-	private By accountDetailsTitle = By.xpath("//android.widget.TextView[@text='Account details']");
+	private By accountDetailsTitle = By.xpath("//android.widget.TextView[@text='Transactions']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 
 		
