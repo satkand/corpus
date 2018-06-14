@@ -22,8 +22,6 @@ public class MyProductsTest extends App {
 	String coverDateDescription;
 	String coverEndDate;
 	
-	SoftAssert softAssert = new SoftAssert();
-	
 	// This method verifies the elements on products screen without any policies or accounts
 	// DMPM-240 Scenario 4
 	//106 - Scenario 1 (DMPM-389 and DMPM-411)
@@ -457,6 +455,7 @@ public class MyProductsTest extends App {
 	@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-5555", "DMPM-6043","marketplace", "portfolio", "priority-minor"})
 	public void testTransactionBankAccountDetails(){
 	
+		SoftAssert softAssert = new SoftAssert();
 		navigateToMyProductsScreen("bankingProduct", "everyDayAccount");
 
 		// fetch the actual banking products shown on the current page
@@ -502,6 +501,7 @@ public class MyProductsTest extends App {
 		@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-3700", "DMPM-6009","marketplace", "portfolio", "priority-minor"})
 		public void testTermDepositsBankAccountDetails(){
 		
+			SoftAssert softAssert = new SoftAssert();
 			navigateToMyProductsScreen("bankingProduct", "termDepositAccount");
 
 			// fetch the actual banking products shown on the current page
@@ -545,6 +545,7 @@ public class MyProductsTest extends App {
 	@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2607", "DMPM-6008", "marketplace", "portfolio", "priority-minor" })
 	public void testLineOfCreditLoanBankAccountDetails() {
 
+		SoftAssert softAssert = new SoftAssert();
 		navigateToMyProductsScreen("bankingProduct", "lineOfCreditAccount");
 
 		// fetch the actual banking products shown on the current page
@@ -594,6 +595,7 @@ public class MyProductsTest extends App {
 		@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2605", "DMPM-6044", "marketplace", "portfolio", "priority-minor" })
 		public void testLoanBankAccountDetails() {
 
+			SoftAssert softAssert = new SoftAssert();
 			navigateToMyProductsScreen("bankingProduct", "loanAccount");
 
 			// fetch the actual banking products shown on the current page
@@ -672,7 +674,7 @@ public class MyProductsTest extends App {
 		
 	// DMPM-1460 UI updates on the Products Portfolio screen
 		@Test(groups = { "DMPM-6127","DMPM-7151","DMPM-7153","DMPM-7154", "marketplace", "portfolio", "priority-major" })
-		public void testDisclaimerPortfolioScreen() {
+		public void testADisclaimerPortfolioScreen() {
 			
 			loginToApp(utils.readTestData("portfolio","bankingProducts","lifeProductAccount", "login"), utils.readTestData("portfolio","bankingProducts", "lifeProductAccount", "pwd"));
 

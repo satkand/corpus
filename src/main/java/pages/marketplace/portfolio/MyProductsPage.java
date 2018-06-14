@@ -94,11 +94,11 @@ public class MyProductsPage extends BasePage {
 	}
 
 	// portfolio disclaimer
-	private By portfolioScreenDisclaimerTitle = By.xpath("//android.widget.TextView[@text = 'Disclaimer']");
+	private By portfolioScreenDisclaimerTitle = By.xpath("//android.widget.TextView[@text ='Disclaimer']");
 	private By acceptButton = By.id("au.com.suncorp.marketplace:id/acceptButton");
 	
 	public WebElement checkPortfolioDisclaimerScreenTitle() {
-		return find(portfolioScreenDisclaimerTitle);
+		return find(portfolioScreenDisclaimerTitle,30);
 	}
 
 	public WebElement checkAcceptButton() {
@@ -329,6 +329,7 @@ public class MyProductsPage extends BasePage {
 			swipeScreen("down");
 			return policyRiskFound;
 		} else {
+			swipeScreen("down");
 			policyRiskFound = true;
 			return policyRiskFound;
 		}
