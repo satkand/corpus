@@ -33,16 +33,16 @@ public class MyProductsTest extends App {
 		
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My Products screen - My Products Title is not shown on My Products screen");
 		Assert.assertNotNull(myProductsPage.checkAddExistingProductButton(), "My Products screen - Add existing product button is not shown");
-		Assert.assertEquals(myProductsPage.getAddExistingProductButtonLabel(), Copy.ADD_EXISTING_PRODUCT_BUTTON_LABEL);
+		Assert.assertEquals(myProductsPage.getAddExistingProductButtonLabel(), Copy.ADD_EXISTING_PRODUCT_BUTTON_LABEL,"Add existing product button is not displayed");
 		Assert.assertNotNull(myProductsPage.checkEmptyStateImage(), "My Products screen - image is not shown");
 		Assert.assertNotNull(myProductsPage.checkEmptyStateLabel(), "My Products screen - empty state label is not shown");
-		Assert.assertEquals(myProductsPage.getEmptyStateLabelText(),  Copy.EMPTY_STATE_LABEL);
+		Assert.assertEquals(myProductsPage.getEmptyStateLabelText(),  Copy.EMPTY_STATE_LABEL,"Empty state label is not displayed on My products screen");
 		Assert.assertNotNull(myProductsPage.checkFindProductButton(), "My Products screen - Find Product button in My Products screen is not shown");
 		
 		myProductsPage.tapAddExistingProductButton();
 		
 		Assert.assertNotNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Bottom sheet label is not present");
-		Assert.assertEquals(addProductPage.getaddExistingProductScreenTitleText(), Copy.ADD_EXISTING_PRODUCT_SCREEN_LABEL);
+		Assert.assertEquals(addProductPage.getaddExistingProductScreenTitleText(), Copy.ADD_EXISTING_PRODUCT_SCREEN_LABEL,"Add existing product screen title is incorrect");
 		Assert.assertNotNull(addProductPage.checkAddInsurancePolicyButton(), "My Products screen - Insurance policy button on Bottom sheet label is not present");
 		Assert.assertNotNull(addProductPage.checkAddBankAccountButton(), "My Products screen - Bank Account button is not present");
 		//TODO: Removed for Release R3
@@ -336,7 +336,7 @@ public class MyProductsTest extends App {
 		Assert.assertNotNull(myProductsPage.checkAddExistingProductButton(), "My Products screen - Add existing product button is not shown");
 		Assert.assertNotNull(myProductsPage.checkEmptyStateImage(), "My Products screen - image is not shown");
 		Assert.assertNotNull(myProductsPage.checkEmptyStateLabel(), "My Products screen - empty state label is not shown");
-		Assert.assertEquals(myProductsPage.getEmptyStateLabelText(),  Copy.EMPTY_STATE_LABEL);
+		Assert.assertEquals(myProductsPage.getEmptyStateLabelText(),  Copy.EMPTY_STATE_LABEL,"Empty screen label not displayed on My products screen");
 			//TODO: Remove above code post R3.0 release
 		
 		// TODO: Use below code post R3.0 release 
