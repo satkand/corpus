@@ -9,18 +9,17 @@ from dotenv import load_dotenv
 
 '''
 Author	: Calum Hunter
-Date	: 12-06-2018
-Version : 0.1.0
+Date	: 15-06-2018
+Version : 0.1.1
 
  This script gives you the build_url from hockeyapp with the "build_number-environment" version tag.
    It is designed to be run within Jenkins build environment.
    Usage example: 
      ./get_hockeyapp_url.py PipeLine(A/B) Platform(iOS/Android) JenkinsBuildNumber
+     ./get_hockeyapp_url.py a ios 1549
    The arguments are what hockeyapp appends to the end of the build version.
-   In the example above, the build URL would be returned for Jenkins Build number 302
-   of the QA (Android) stream
-   For iOS, use UAT instead of QA
-
+   In the example above, the build URL would be returned for iOS build 1549 from the iOS-app-QA jenkins pipeline
+   
    If you wish to retrieve the 'latest' or top most build from hockey app, use 'top' instead of a build number
    ie:
    ./get_hockeyapp_url.py QA top
@@ -105,8 +104,9 @@ def get_all_versions(token, api_url, api_version, proxy_var, public_id):
 def search_for_version(all_app_versions, jenkins_build_number, version_key, stream_tag):
 	# define the matched_version var and make it none, it'll get populated later if we have a match
 	matched_version = None
-	# log debug
 	search_term = jenkins_build_number + '-' + stream_tag
+	#search_term = jenkins_build_number
+	# log for debug
 	log(("[DEBUG] - Searching for: %s") % search_term)
 	# Loop through all the returned app builds/versions
 	# if we find one whos 'shortversion' string contains the build
@@ -122,15 +122,16 @@ def search_for_version(all_app_versions, jenkins_build_number, version_key, stre
 	if matched_version is not None:
 		# Prettify the output for debug
 		#if debug == True:
-		#	log(json.dumps(version, indent=4, sort_keys=True)) 
+		#log(json.dumps(version, indent=4, sort_keys=True)) 
 		return matched_version
 	else:
 		print ("[ERROR] - Unable to locate an app whose %s matches search string: %s") % (version_key,search_term)
 		print ("[ERROR] - This could be because you are searching for a build that is very old, we search through the last 500 builds")
 		sys.exit(1)
 
-def return_top_result(all_app_versions):
-	return all_app_versions['app_versions'][0]
+# This is disabled for now, the use of a top is unlikely to be required and provides inconsistent reults
+#def return_top_result(all_app_versions, stream_tag):
+#	return all_app_versions['app_versions'][1]
 
 # ============= Start Script ================= #
 # Sanity check the passed in arguments
@@ -147,12 +148,22 @@ if platform == 'android':
 	version_key = 'shortversion'
 	if pipeline == 'a':
 		stream_tag = 'QA'
+		hockey_app_token_key = 'HOCKEYAPP_QA_API_TOKEN'
+		jenkins_pipeline_name = 'Android-app-QA'
 	elif pipeline == 'b':
 		stream_tag = 'UAT'
+		hockey_app_token_key = 'HOCKEYAPP_REL_API_TOKEN'
+		jenkins_pipeline_name = 'Android-app-release'
 elif platform == 'ios':
 	version_key = 'version'
-
-
+	if pipeline == 'a':
+		stream_tag = 'QA'
+		hockey_app_token_key = 'HOCKEYAPP_IOS_QA_API_TOKEN'
+		jenkins_pipeline_name = 'iOS-app-QA'
+	elif pipeline == 'b':
+		stream_tag = 'UAT'
+		hockey_app_token_key = 'HOCKEYAPP_IOS_REL_API_TOKEN'
+		jenkins_pipeline_name = 'iOS-app-release'
 
 # Set the workspace folder
 # Use the environmental variable if it exists
@@ -182,28 +193,19 @@ else:
 	proxy = default_proxy
 log(("[DEBUG] - Proxy server found from: %s") % proxy_var_loaded)
 log(("[DEBUG] - Proxy server address: %s") % proxy)
-log(("[DEBUG] Platform: %s") % platform)
-log(("[DEBUG] Build pipeline: %s") % pipeline)
-log(("[DEBUG] Build Number: %s") % jenkins_build_number)
+log(("[DEBUG] - Platform: %s") % platform)
+log(("[DEBUG] - Jenkins Build Pipeline Name: %s") % jenkins_pipeline_name)
+log(("[DEBUG] - Build Number: %s") % jenkins_build_number)
 
 # Get the hockey app token
-# Yes for some reason even the iOS (UAT) .env file uses the same 'HOCKEYAPP_QA_API_TOKEN' variable name.
-# The joys of OPC
 log(("[DEBUG] - Retrieving HockeyApp token for stream: %s") % pipeline)
-if pipeline == 'a':
-	if os.getenv("HOCKEYAPP_QA_API_TOKEN") is not None:
-		hockeyapp_token = os.getenv("HOCKEYAPP_QA_API_TOKEN")
-		log(("[DEBUG] - Hockey App Token: %s") % hockeyapp_token)
-	else:
-		print ("[ERROR] - Unable to locate value for key: HOCKEYAPP_QA_API_TOKEN")
-		print ("[ERROR] - Ensure that it is being provided as an ENV var through the use of the .env file or a globally accessible ENV variable.")   		
-elif pipeline == 'b':
-	if os.getenv("HOCKEYAPP_REL_API_TOKEN") is not None:
-		hockeyapp_token = os.getenv("HOCKEYAPP_REL_API_TOKEN")
-		log(("[DEBUG] - Hockey App Token: %s") % hockeyapp_token)
-	else:
-		print ("[ERROR] - Unable to locate value for key: HOCKEYAPP_REL_API_TOKEN")
-		print ("[ERROR] - Ensure that it is being provided as an ENV var through the use of the .env file or a globally accessible ENV variable.")
+
+if os.getenv(hockey_app_token_key) is not None:
+	hockeyapp_token = os.getenv(hockey_app_token_key)
+	log(("[DEBUG] - Hockey App Token: %s") % hockeyapp_token)
+else:
+	print (("[ERROR] - Unable to locate value for key: %s") % hockey_app_token_key)
+	print ("[ERROR] - Ensure that it is being provided as an ENV var through the use of the .env file or a globally accessible ENV variable.")   		
 
 # Get a list of all apps on hockey app - there should be just one 'Marketplace'
 apps = get_all_apps(hockeyapp_token, hockeyapp_api_url, hockeyapp_api_version, proxy)
@@ -214,21 +216,23 @@ all_app_versions = get_all_versions(hockeyapp_token, hockeyapp_api_url, hockeyap
 
 log(("[DEBUG] - Version Key: %s") % version_key)
 
+### Disabled as need for  top is unlikely.
 # If we were asked to get the 'top' (as the jenkins build number) result then we should just return the top
 # result, and not actually bother to search
-top = "top"
-if top.find(jenkins_build_number.lower()) != -1:
-	log("[DEBUG] - Request for the 'top' result.")
-	version_result = return_top_result(all_app_versions)
-else:
-	version_result = search_for_version(all_app_versions, jenkins_build_number, version_key, stream_tag)
+#top = "top"
+#if top.find(jenkins_build_number.lower()) != -1:
+#	log("[DEBUG] - Request for the 'top' result.")
+#	version_result = return_top_result(all_app_versions)
+#else:
+#	version_result = search_for_version(all_app_versions, jenkins_build_number, version_key, stream_tag)
 
-log(("[OK] - Jenkins Build: %s") % jenkins_build_number)
-#log(("[OK] - Returned Build: %s") % version_result[version_key])
-log(("[OK] - Pipeline: %s") % pipeline)
-log(("[OK] - App Name: %s") % version_result['app_owner'])
-log(("[OK] - Uploaded at: %s") % version_result['created_at'])
-log(("[OK] - Build URL: %s") % version_result['build_url'])
+version_result = search_for_version(all_app_versions, jenkins_build_number, version_key, stream_tag)
+log(("[OK] - Jenkins Build Requested: %s") % jenkins_build_number)
+log(("[OK] - API Returned Build Version: %s") % version_result[version_key])
+log(("[OK] - Pipeline: %s") % jenkins_pipeline_name)
+log(("[OK] - Hockey App Name: %s") % version_result['title'])
+log(("[OK] - Uploaded date: %s") % version_result['created_at'])
+log(("[OK] - Hockey App Build URL: %s") % version_result['build_url'])
 
 # finally just return the build url as thats all we care about
 #print version_result['build_url']
