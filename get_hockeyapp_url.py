@@ -20,14 +20,10 @@ Version : 0.1.1
    The arguments are what hockeyapp appends to the end of the build version.
    In the example above, the build URL would be returned for iOS build 1549 from the iOS-app-QA jenkins pipeline
    
-   If you wish to retrieve the 'latest' or top most build from hockey app, use 'top' instead of a build number
-   ie:
-   ./get_hockeyapp_url.py QA top
-
 '''
 
 # Global Variables
-debug = True
+debug = False
 hockeyapp_api_url = "https://rink.hockeyapp.net/api"
 hockeyapp_title = "Marketplace"
 hockeyapp_api_version = "2"
@@ -41,17 +37,16 @@ def log(message):
 
 def handle_arguments(arguments):
 	if len(arguments) < 4:
-		print "[ERROR] - Insufficient arguments supplied. You must supply both the stream name and the build number"
+		print "[ERROR] - Insufficient arguments supplied."
 		useage_help()
 	elif len(arguments) > 4:
-		print "[ERROR] - Too many arguments supplied. You must supply the stream name and build number only"
+		print "[ERROR] - Too many arguments supplied."
 		useage_help()
 
 def useage_help():
 	print ""
 	print "Useage:"
-	print "Provide the stream name ie: 'QA' or 'UAT' and the build number ie: '302' as arguments."
-	print "you may also use the word 'top' instead of the build number if you wish to return the latest build"
+	print "Provide the release stream 'a' or 'b' then the platform name 'android' or 'ios' then the build number ie: '302' as arguments."
 	exit(1)
 
 def get_all_apps(token, api_url, api_version, proxy_var):
@@ -149,21 +144,21 @@ if platform == 'android':
 	if pipeline == 'a':
 		stream_tag = 'QA'
 		hockey_app_token_key = 'HOCKEYAPP_QA_API_TOKEN'
-		jenkins_pipeline_name = 'Android-app-QA'
+		jenkins_pipeline_name = 'Suncorp-Android-app-QA'
 	elif pipeline == 'b':
 		stream_tag = 'UAT'
 		hockey_app_token_key = 'HOCKEYAPP_REL_API_TOKEN'
-		jenkins_pipeline_name = 'Android-app-release'
+		jenkins_pipeline_name = 'Suncorp-Android-app-release'
 elif platform == 'ios':
 	version_key = 'version'
 	if pipeline == 'a':
 		stream_tag = 'QA'
 		hockey_app_token_key = 'HOCKEYAPP_IOS_QA_API_TOKEN'
-		jenkins_pipeline_name = 'iOS-app-QA'
+		jenkins_pipeline_name = 'Suncorp-iOS-app-QA'
 	elif pipeline == 'b':
 		stream_tag = 'UAT'
 		hockey_app_token_key = 'HOCKEYAPP_IOS_REL_API_TOKEN'
-		jenkins_pipeline_name = 'iOS-app-release'
+		jenkins_pipeline_name = 'Suncorp-iOS-app-release'
 
 # Set the workspace folder
 # Use the environmental variable if it exists
@@ -235,64 +230,6 @@ log(("[OK] - Uploaded date: %s") % version_result['created_at'])
 log(("[OK] - Hockey App Build URL: %s") % version_result['build_url'])
 
 # finally just return the build url as thats all we care about
-#print version_result['build_url']
-print(json.dumps(version_result, indent=4, sort_keys=True))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print version_result['build_url']
+#print(json.dumps(version_result, indent=4, sort_keys=True))
 
