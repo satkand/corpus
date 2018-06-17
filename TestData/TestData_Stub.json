@@ -889,7 +889,7 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "POLICY ACTIVE",
+             				 "active": "Policy active",
              				 "cancellationPending":"Policy cancellation pending",
              				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
