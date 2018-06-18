@@ -31,13 +31,13 @@ public interface Copy {
 	String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
 	
 	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
-	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
-	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home services";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Discover a range of services to help you buy, sell and maintain your home - all in one place.";
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/buying-selling-owning/home.html?cmpid=SUN:BK:PI:NPS:DIS:20180630:6775";
 	
 	//PROFESSIONAL SERVICES FROM NAVIGATION MENU
 	public String HOME_PROFESSIONAL_SERVICES_INTRO_TITLE ="Professional services";
-	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property.";
+	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property or vehicle.";
 	//public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
 	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/buying-selling-owning/home.html?cmpid=SUN:BK:PI:NPS:DIS:20180630:6775";
 	
@@ -78,13 +78,13 @@ public interface Copy {
 	public static final String LOCATION_BAR_TEXT_S5 = "httpswwwsuncorpcomau";
 
 	//SUBURB DETAILS PAGE
-	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
-	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
-	public static final String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood Risk";
-	public static final String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush Fire Risk";
-	public static final String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft Risk";
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & hazards";
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only.";//////////remove full stop.
+	public static final String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood risk";
+	public static final String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush fire risk";
+	public static final String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft risk";
 	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
-	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
+	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of Statistics. Data pack 2011.";
 	public static final String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
 
 	

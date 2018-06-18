@@ -122,6 +122,8 @@ public class WebviewPage extends BasePage {
 		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
 			if(getDeviceAttribute("deviceModel").equalsIgnoreCase("SM-G935F")) {
 				browserUrlText = getText(webviewBrowserUrl);
+			}else if(getDeviceAttribute("deviceModel").equalsIgnoreCase("SM-G950F")){
+				browserUrlText = getText(webviewBrowserUrl_samsung);
 			}else {
 				browserUrlText = getText(webViewLocationBar);
 			}
@@ -203,6 +205,10 @@ public class WebviewPage extends BasePage {
 	
 	public void tapWebViewPopup() {
 		tapElement(webViewPopup);
+	}
+	
+	public String getDeviceModel() {
+		return getDeviceAttribute("deviceModel");
 	}
 
 
