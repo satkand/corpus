@@ -20,8 +20,8 @@ public class HomeJourneyTest extends App {
 		
 		Assert.assertNotNull(homeJourneyPage.checkJourneyTitleText(), "Home Journey Page - Journey title text is not shown");
 		Assert.assertEquals(homeJourneyPage.getJourneyTitleText(), utils.readTestData("copy", "homeJourneyPage", "journeyTitleText"), "Home Journey Page -Journey title copy is not shown as expected");
-		Assert.assertNotNull(homeJourneyPage.checkJourneySubtitleText(), "Home Journey Page - Journey subtitle text is not shown");
-		Assert.assertEquals(homeJourneyPage.getJourneySubtitleText(), utils.readTestData("copy", "homeJourneyPage", "journeySubtitleText"), "Home Journey Page - Journey subtitle text copy is not shown as expected");
+		//Assert.assertNotNull(homeJourneyPage.checkJourneySubtitleText(), "Home Journey Page - Journey subtitle text is not shown");
+		//Assert.assertEquals(homeJourneyPage.getJourneySubtitleText(), utils.readTestData("copy", "homeJourneyPage", "journeySubtitleText"), "Home Journey Page - Journey subtitle text copy is not shown as expected");
 		Assert.assertNotNull(homeJourneyPage.checkJourneyDescriptionText(), "Home Journey Page - Journey description text is not shown");
 		Assert.assertEquals(homeJourneyPage.getJourneyDescriptionText(), utils.readTestData("copy", "homeJourneyPage", "journeyDescriptionText"), "Home Journey Page - Journey description text copy is not shown as expected");
 		
@@ -71,26 +71,26 @@ public class HomeJourneyTest extends App {
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapPlanningReadMoreButton();
 		
-		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "planningReadMoreButtonLink"),"Planning");
+		verifyBrowserURL(webviewPage.getDeviceModel(),utils.readTestData("copy", "homeJourneyPage", "planningReadMoreButtonLink_Full"),"Planning");
 		
 		
 		// swipe to the next card
 		common.swipeLeft();
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapHouseHuntingReadMoreButton();
-		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "houseHuntingReadMoreButtonLink"),"House Hunting");
+		verifyBrowserURL(webviewPage.getDeviceModel(),utils.readTestData("copy", "homeJourneyPage", "houseHuntingReadMoreButtonLink_Full"),"House Hunting");
 		
 		// swipe to the next card
 		common.swipeLeft();
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapGettingReadyReadMoreButton();
-		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "gettingReadyReadMoreButtonLink"),"Getting Ready");
+		verifyBrowserURL(webviewPage.getDeviceModel(),utils.readTestData("copy", "homeJourneyPage", "gettingReadyReadMoreButtonLink_Full"),"Getting Ready");
 
 		// swipe to the next card
 		common.swipeLeft();
 		// Tapping on read more button and verifying that the correct page(url) is opened
 		homeJourneyPage.tapMovingInReadMoreButton();
-		verifyBrowserURL(utils.readTestData("copy", "homeJourneyPage", "movingInReadMoreButtonLink"),"Moving In");
+		verifyBrowserURL(webviewPage.getDeviceModel(),utils.readTestData("copy", "homeJourneyPage", "movingInReadMoreButtonLink_Full"),"Moving In");
 	}
 	
 	@Test (groups = {"DMPM-797", "DMPM-855", "DMPM-856","DMPM-6057","DMPM-6762", "marketplace", "Home buying journey", "priority-minor"})
@@ -112,7 +112,7 @@ public class HomeJourneyTest extends App {
 		
 	}
 	
-	private void verifyBrowserURL(String expectedStr, String card) {
+	private void verifyBrowserURL(String deviceModel,String expectedStr, String card) {
 		if(webviewPage.checkWebviewBrowserUrl()!=null) {
 			Assert.assertEquals(webviewPage.getWebviewBrowserUrl(), expectedStr, card+" page - browser url is not valid");
 
@@ -144,7 +144,9 @@ public class HomeJourneyTest extends App {
 		
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
-		homePropertyPage.scrollToJourneyBanner();
-		homePropertyPage.tapStartYourJourneyButton();
+		//homePropertyPage.scrollToJourneyBanner();
+		//homePropertyPage.tapStartYourJourneyButton();
+		homePropertyPage.scrollToLaunchPropertyExplorer();
+		homePropertyPage.taplaunchPropertyExplorer();
 	}
 }

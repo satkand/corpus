@@ -30,7 +30,7 @@ public class MemberLoginPage extends BasePage {
 	private By incorrectEmailSnackBarButton = By.id("au.com.suncorp.marketplace:id/snackbar_action");
 	
 	//Mobile registration page elements
-	private By mobileRegisterPageTitle = By.xpath("//android.widget.TextView[@text='Almost there!']");
+	private By mobileRegisterPageTitle = By.xpath("//android.widget.TextView[@text='Last step!']");
 	private By mobileRegisterPageDescription = By.id("au.com.suncorp.marketplace:id/registrationMobileText");
 	private By mobileTextField = By.id("au.com.suncorp.marketplace:id/mobileField");
 	private By regiterWithMobileButton = By.id("au.com.suncorp.marketplace:id/registerButton");
@@ -160,7 +160,7 @@ public class MemberLoginPage extends BasePage {
 		Boolean status;
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
-		if (osVersion >= 6.0) {
+		if (osVersion > 6.0) {
 			status = getText(passwordTextField).equals(maskedValue);
 		}
 		else { 

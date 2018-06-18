@@ -102,14 +102,14 @@ public class PropertyHubTest  extends App{
 		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
 				
 		
-		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(utils.readTestData("propertyDimension","propertyDetails","stateAndSuburb")), "Suburb details page - Suburb name is not present");
+		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(utils.readTestData("propertyDimension","propertyDetails","stateAndSuburb2")), "Suburb details page - Suburb name is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkStaticMap(), "Suburb details page - Static map is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkWhatsNearbyButton(), "Suburb details page - Whats nearby button is not present");
 		
 		suburbDetailsPage.tapBackButton();
 		Assert.assertNotNull(propertyExplorerPage.checkPropertyInsightTab(), "Property Explorer page - Property Insight tab is not present");
 		propertyExplorerPage.tapPropertyInsight();
-		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText"));
+		propertyExplorerPage.enterTextInPropertyExplorerSearchbox(utils.readTestData("propertyDimension","propertyHub","searchText2"));
 		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
 		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
 				
@@ -226,9 +226,11 @@ public class PropertyHubTest  extends App{
 	
 	private void navigateToPropertyHub() {
 		navigateToPropertyDimension("NotAGuest");
-		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Property address line text is not present");
-		homePropertyPage.scrollToJourneyBanner();
-		homePropertyPage.tapStartYourJourneyButton();
+		//Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Property address line text is not present");
+		//homePropertyPage.scrollToJourneyBanner();
+		//homePropertyPage.tapStartYourJourneyButton();
+		homePropertyPage.scrollToLaunchPropertyExplorer();
+		homePropertyPage.taplaunchPropertyExplorer();
 	}
 
 	public void navigateToAddProperty() {

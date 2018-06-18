@@ -57,7 +57,7 @@ public class AddPolicyPage extends BasePage {
 	}
 	
 	public WebElement checkAddPolicyPageTitle(){
-		return find(addPolicyPageTitle);
+		return find(addPolicyPageTitle,20);
 	}
 	public WebElement checkPolicyNumberTextBox(){
 		return find(policyNumberTextBox);

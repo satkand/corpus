@@ -31,13 +31,13 @@ public interface Copy {
 	String PROPERTY_DETAILS_LANDLORD_BUTTON_TEXT = "Landlord";
 	
 	//HOME PROFESSIONAL SERVICES IN PROPERTY HUB
-	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home maintenance services";
-	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Access Suncorp accredited list of vendors for regular home maintenance jobs.";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_TITLE ="Home services";
+	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_DESCRIPTION ="Discover a range of services to help you buy, sell and maintain your home - all in one place.";
 	public String PROPERTY_HUB_HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/buying-selling-owning/home.html?cmpid=SUN:BK:PI:NPS:DIS:20180630:6775";
 	
 	//PROFESSIONAL SERVICES FROM NAVIGATION MENU
 	public String HOME_PROFESSIONAL_SERVICES_INTRO_TITLE ="Professional services";
-	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property.";
+	public String HOME_PROFESSIONAL_SERVICES_INTRO_DESCRIPTION ="Access a range of professional services for your property or vehicle.";
 	//public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/home-inspection-plus.html";
 	public String HOME_PROFESSIONAL_SERVICES_URL ="https://www.suncorp.com.au/buying-selling-owning/home.html?cmpid=SUN:BK:PI:NPS:DIS:20180630:6775";
 	
@@ -78,13 +78,13 @@ public interface Copy {
 	public static final String LOCATION_BAR_TEXT_S5 = "httpswwwsuncorpcomau";
 
 	//SUBURB DETAILS PAGE
-	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & Hazards";
-	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only and are based on national data";
-	public static final String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood Risk";
-	public static final String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush Fire Risk";
-	public static final String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft Risk";
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TITLE ="Risks & hazards";
+	public static final String SUBURB_DETAILS_RISK_AND_HAZARD_TEXT ="Ratings are indicative only.";//////////remove full stop.
+	public static final String SUBURB_DETAILS_FLOOD_RISK_LABEL_TEXT ="Flood risk";
+	public static final String SUBURB_DETAILS_BUSH_FIRE_LABEL_TEXT="Bush fire risk";
+	public static final String SUBURB_DETAILS_THIEF_RISK_LABEL_TAXT ="Theft risk";
 	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TITLE_TEXT ="Demographics";
-	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of statistics. Data pack 2011";
+	public static final String SUBURB_DETAILS_DEMOGRAPHICS_TEXT ="Sourced from Australia Bureau of Statistics. Data pack 2011.";
 	public static final String SUBURB_DETAILS_DISCLAIMER_LABEL_TEXT ="Disclaimer";
 
 	
@@ -149,12 +149,23 @@ public interface Copy {
 
 
 	// PORTFOLIO
-	String AVAILABLE_BALANCE_LABEL = "Available balance";	
-	String EMPTY_PORTFOLIO_SCREEN_DESCRIPTION = "Start adding your Suncorp products by tapping the button below";
+	String AVAILABLE_BALANCE_LABEL = "Available";	
 	String ADD_SUPER_ACC_SPECIAL_CHARS_ERROR = "Can only contain numerical digits  Must be between 7 – 9 characters";
 	String ADD_SUPER_ACC_MANDATORY_ERROR = "Field is required";
 	String ADD_SUPER_ACC_LENGTH_ERROR = "Must be between 7 – 9 characters";
-	
+	String EMPTY_STATE_LABEL = "You have not added any policies or accounts yet.";
+	String ADD_EXISTING_PRODUCT_SCREEN_LABEL = "Add existing product";
+	String CURRENT_BALANCE_LABEL = "Current";
+	String ACCOUNT_DETAILS_LABEL = "Account Details";
+	String POLICY_ADDED_SUCCESSFUL_MSG = "Policy added";
+	String MAX_LIMIT_ERROR = "Exceeding the max limit of 30";
+	String FIELD_VALIDATION_ERROR = "Field is required";
+	String INVALID_CHARACTER_ERROR = "Please enter a valid policy number";
+	String INVALID_ACCOUNT_NUMBER_ERROR = "Must be 9 characters  Can only contain numerical digits";
+	String ACCOUNT_LENGTH_ERROR = "Must be 9 characters";
+	String MANDATORY_FIELD_ERROR = "Field is required";
+	String ADD_EXISTING_PRODUCT_BUTTON_LABEL = "ADD A POLICY OR ACCOUNT";
+	String VIEW_DETAILS_BUTTON_LABEL = "VIEW DETAILS";
 
 	//MEMBER LOGIN PAGE
 	String MOBILE_NUMBER_TIP ="Use 04XXXXXXXX format";

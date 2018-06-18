@@ -338,7 +338,7 @@
 					{
 						"bsb": "484-799",
 						"accountNumber": "111111111",
-						"description": "Everyday options",
+						"description": "Everyday Options",
 						"availableBalance": "$12,345.00"
 					}
 				]
@@ -350,13 +350,13 @@
 					{
 						"bsb": "484-799",
 						"accountNumber": "222222222",
-						"description": "Savings account",
+						"description": "Savings Account",
 						"currentBalance": "$100,000.25"
 					},
 					{
 						"bsb": "484-799",
 						"accountNumber": "333333333",
-						"description": "Term deposit",
+						"description": "Term Deposit",
 						"currentBalance": "$187,000.25"
 					}
 				]
@@ -367,14 +367,14 @@
 				"products": [
 					{
 						"accountNumber": "M374298342",
-						"description": "Life insurance",
+						"description": "Life Insurance",
 						"insuredPersonsname1": "Bob Smith",
 						"policyStatus":"Policy Active",
 						"insuredPersonsname2": "Andy Smith"		
 					},
 					{
           				"accountNumber": "038492834",
-          				"description": "Accidental death insurance",
+          				"description": "Accidental Death Insurance",
           				"insuredPersonsname1": "John Doe",
           				"policyStatus":"Policy Active",
 						"insuredPersonsname2": ""	
@@ -388,7 +388,7 @@
 					{
 						"bsb": "484-799",
 						"accountNumber": "111111111",
-						"description": "Small business line of credit",
+						"description": "Small Business Line Of Credit",
 						"currentBalance": "$10,000.00",
 						"availableBalance": "$12,345.00"
 					}
@@ -403,7 +403,7 @@
 						"type": "Home Loan",
 						"bsb": "484-799",
 						"accountNumber": "444444444",
-						"description": "Standard home loan",
+						"description": "Standard Home Loan",
 						"currentBalance": "-$123,456.25",
 						"arrearsAmount": "$513.00"
 					},
@@ -412,7 +412,7 @@
 						"type": "Personal Loan",
 						"bsb": "484-799",
 						"accountNumber": "555555555",
-						"description": "Secured personal loan",
+						"description": "Secured Personal Loan",
 						"currentBalance": "-$123,456.25",
 						"nextPaymentdate": "30 Jun 2018",
 						"nextPaymentamount": "$256.50",
@@ -428,14 +428,14 @@
 				{
 						"brand": "Suncorp",
           				"accountNumber": "123456789",
-          				"description": "Sun super",
+          				"description": "Sun Super",
           				"accountBalance": "$3,141,592.65",
           				"status": "Active"
 				},
 				{
 						"brand": "Apia",
           				"accountNumber": "564738291",
-          				"description": "Australian everyday customer sunny super",
+          				"description": "Australian Everyday Customer Sunny Super",
           				"accountBalance": "$4.20",
           				"status": "Active"
 				}]
@@ -445,9 +445,11 @@
 				{
 						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
+						"_comment":"policy level status comes from API and some front end logic",
 						"status":"Renewal due",
           				"risks": 
             			{
+            					 "_comment" : "description - comes from Portfolio API, end Date, end Date Description : calculated by Front end",
              				 "description1": "Single Risk, Single Cover Policy 1",
              				 "endDate1":"10 Dec 2017",
              				 "endDateDescription1":"Renewal due"
@@ -463,7 +465,7 @@
             			{
              				 "description1": "Single Risk, Single Cover Policy 2",
              				 "endDate1":"13 Nov 2017",
-             				 "endDateDescription1":"Expiry date"
+             				 "endDateDescription1":"Expired"
             			}
 				},
 				"policy3": 
@@ -486,14 +488,14 @@
             			{
              				 "description1": "Single Risk, Single Cover Policy 4",
              				 "endDate1":"13 Nov 2017",
-             				 "endDateDescription1":"Expiry date"
+             				 "endDateDescription1":"Expired"
             			}
 				},
 				"policy5": 
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             					"description1": "Multi Risk, Multi Cover 1",
@@ -501,14 +503,14 @@
              				"endDateDescription1":"Amendment date",
              				"description2": "Multi Risk, Multi Cover 2",
              				"endDate2":"25 Jul 2018",
-             				"endDateDescription2":"Expires"
+             				"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy6": 
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             				{
             					"description1": "Multi Risk, Multi Cover 3",
@@ -516,14 +518,14 @@
              				"endDateDescription1":"Amendment date",
             					"description2": "Multi Risk, Multi Cover 4",
             					"endDate2":"25 Jul 2018",
-             				"endDateDescription2":"Expires"
+             				"endDateDescription2":"Expiry date"
             				}
 				},
 				"policy7": 
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 5",
@@ -538,7 +540,7 @@
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 7",
@@ -553,79 +555,79 @@
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 1",
             				"endDate1":"10 Nov 2017",
-             			"endDateDescription1":"Cancellation Date",
+             			"endDateDescription1":"Cancellation date",
             				"description2": "Multi Risk, Single Cover 2",
             				"endDate2":"25 Jul 2018",
-             			"endDateDescription2":"Expires"
+             			"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy10": 
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 3",
             				"endDate1":"10 Oct 2017",
-             			"endDateDescription1":"Cancellation Date",            			
+             			"endDateDescription1":"Cancellation date",            			
             				"description2": "Multi Risk, Single Cover 4",
             				"endDate2":"10 Mar 2017",
-             			"endDateDescription2":"Cancellation Date"
+             			"endDateDescription2":"Cancellation date"
             			}
 				},
 				"policy11": 
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Cancellation pending",
+						"status":"Policy cancellation pending",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 1",
             				"endDate1":"10 Oct 2017",
-             			"endDateDescription1":"Cancellation Date"
+             			"endDateDescription1":"Cancellation date"
             			}
 				},
 				"policy12": 
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Cancellation pending",
+						"status":"Policy cancellation pending",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 9",
             				"endDate1":"10 Oct 2017",
-             			"endDateDescription1":"Cancellation Date",
+             			"endDateDescription1":"Cancellation date",
             				"description2": "Multi Risk, Multi Cover 10",
             				"endDate2":"25 Jul 2018",
-             			"endDateDescription2":"Expires"
+             			"endDateDescription2":"Cancellation date"
             			}
 				},
 				"policy13": 
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Cancellation pending",
+						"status": "Policy cancellation pending",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 11",
             				"endDate1":"10 Oct 2017",
-             			"endDateDescription1":"Cancellation Date",
+             			"endDateDescription1":"Cancellation date",
             				"description2": "Multi Risk, Multi Cover 12",
             				"endDate2":"10 Jan 2017",
-             			"endDateDescription2":"Cancellation Date"
+             			"endDateDescription2":"Cancellation date"
             			}
 				},
 				"policy14": 
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 5",
@@ -633,14 +635,14 @@
              			"endDateDescription1":"Start date",	
             				"description2": "Multi Risk, Single Cover 6",
             				"endDate2":"25 Jul 2018",
-             			"endDateDescription2":"Expires"
+             			"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy15": 
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 7",
@@ -655,7 +657,7 @@
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 2",
@@ -667,7 +669,7 @@
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 13",
@@ -675,14 +677,14 @@
              			"endDateDescription1":"Start date",
             				"description2": "Multi Risk, Multi Cover 14",
             				"endDate2":"25 Jul 2018",
-             			"endDateDescription2":"Expires"
+             			"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy18": 
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 15",
@@ -697,7 +699,7 @@
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Active",
+						"status": "Policy active",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 3",
@@ -709,7 +711,7 @@
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Active",
+						"status": "Policy active",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 4",
@@ -1399,7 +1401,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "AAMI member login",
+			"brandIcon": "Sign up via your AAMI account",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
@@ -1408,7 +1410,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "GIO member login",
+			"brandIcon": "Sign up via your GIO account",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
@@ -1417,7 +1419,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "Shannons member login",
+			"brandIcon": "Sign up via your Shannons account",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}
 	],
@@ -1430,8 +1432,8 @@
 			"loginPageTitle": "Log in",
 			"shortEmailError" : "Please enter a valid email address Must be between 2 and 100 characters",
 			"invalidEmailError" : "Please enter a valid email address",
-			"emptyPasswordError" : "Field is required",
-			"emptyEmailError" : "Field is required",
+			"emptyPasswordError" : "Please enter your password",
+			"emptyEmailError" : "Please enter a valid email address",
 			"longEmailError" : "Must be between 2 and 100 characters",
 			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
 		},
@@ -1456,7 +1458,7 @@
 			"policyAddedSuccessfulMsg": "Policy added",
 			"maxLimitError": "Exceeding the max limit of 30",
 			"feildValidationError": "Field is required",
-			"invalidCharactor": "Please enter a valid insurance policy number",
+			"invalidCharactor": "Please enter a valid policy number",
 			"":""
 		},
 		"pinSetupPage": {
@@ -1525,6 +1527,10 @@
 			"shortSurnameErrorMsg" : "Must be between 2 and 40 characters",
 			"accountCreatingMsg" : "Registering details",
 			"fieldErrorMsg" : "Field is required",
+			"emailFieldErrorMsg" : "Please enter a valid email address",
+			"passwordFieldErrorMsg" : "Please enter your password",
+			"confirmPasswordFieldErrorMsg" : "Please confirm your password",
+			"mobileFieldErrorMsg" : "Please enter your mobile number",
 			"registerPage1Title" : "Step 1 of 3",
 			"registerPage2Title" : "Step 2 of 3",
 			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
@@ -1542,10 +1548,10 @@
 			"firstNamePasswordErrorMsg" : "Must not contain your first name",
 			"lastNamePasswordErrorMsg" : "Must not contain your last name",
 			"emailPasswordErrorMsg":"Must not contain your email",
-			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
+			"onlycharPasswordErrorMsg" : "Must contain at least one uppercase letter Must contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
-			"passwordNotMatch" : "Password do not match",
-			"passwordNameRequirement":"not contain your first name, surname or email",
+			"passwordNotMatch" : "Passwords do not match",
+			"passwordNameRequirement":"NOT contain your first name, last name or email",
 			"duplicateEmailPopUpTitle":"Email already in use",
 			"duplicateEmailPopUpText":"Please log in with this email address, or use a different one to register for a new account.",
 			"duplicateEmailPopUpOkButtonText":"OK",
@@ -1585,11 +1591,11 @@
 		"memberLogin" : {
 			"shortMobileNumberError" : "Must be 10 digits",
 			"invalidMobileNumberError" : "Must use 04XXXXXXXX format",
-			"emptyMobileNumberError" : "Field is required",
+			"emptyMobileNumberError" : "Please enter your mobile number",
 			"incorrectCredentialsSnackbarText" : "Wrong email or password. Please check and retry."
 		},
 		"getStartedPage" : {
-			"getStartedPageTitle" : "Welcome to the Suncorp family"
+			"getStartedPageTitle" : "Get started"
 		}
 	}
 }
