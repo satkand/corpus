@@ -77,7 +77,7 @@ public class LoginAuthTest extends App{
 		
 		checkForTermsAndConditions();
 		
-		Assert.assertNotNull(landingPage.checkSuncorpTab(), "User is not navigated to the Landing screen");
+		Assert.assertNotNull(landingPage.checkLandingPageTitle(), "User is not navigated to the Landing screen");
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkLogOutMenuOption(), "Navigation Menu - Nav menu not loaded properly");
 		navigationMenu.tapSettingsMenuItem();

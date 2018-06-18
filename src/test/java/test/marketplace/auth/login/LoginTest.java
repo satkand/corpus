@@ -162,11 +162,10 @@ public class LoginTest extends App {
 		if(termsAndConditionsPage.checkAcceptButton() != null){
 			termsAndConditionsPage.tapAcceptButton();
 		}
-		Assert.assertNotNull(pinOptionsPage.checkEnablePinButton(), "PIN Options Page - Title message not displayed");
+		Assert.assertNotNull(pinOptionsPage.checkPinPromptUserWelcome(), "PIN Options Page - Title message not displayed");
 	}
 
 	//DMPM-163 - Scenario-3  - incorrect credentials: 401 Bad Username or Password
-
 	@Test (groups = {"DMPM-163", "DMPM-1137", "marketplace", "login", "priority-high"})
 	public void testInvalidCredentials() {
 		navigateToLoginScreen();
@@ -180,8 +179,9 @@ public class LoginTest extends App {
 		Assert.assertNull(loginPage.checkSnackbarText(), "Login Screen - The snackbar still displayed");
 	}
 
+	//TODO: After R3.0 release
 	// DMMPM-3729 Scenario 1, 2
-	@Test (groups = {"DMPM-3729", "DMPM-4767", "DMPM-4770", "marketplace", "login", "priority-high"}, priority = 9)
+	//@Test (groups = {"DMPM-3729", "DMPM-4767", "DMPM-4770", "marketplace", "login", "priority-high"}, priority = 9)
 	public void testForgotSuncorpLoginPassword() {
 		navigateToLoginScreen();
 
@@ -248,8 +248,9 @@ public class LoginTest extends App {
 		Assert.assertNotNull(loginPage.checkResetLinkButton(), "Reset Password - Send Reset Link button is not displayed");
 	}
 
+	//TODO: After R3.0 release
 	// DMPM-3729 Scenario 3, 4, 5, 6, 7
-	@Test (groups = {"DMPM-3729", "DMPM-4773", "DMPM-4774", "DMPM-4776", "DMPM-4777", "DMPM-4778 ", "marketplace", "login", "priority-medium"}, priority = 10)
+	//@Test (groups = {"DMPM-3729", "DMPM-4773", "DMPM-4774", "DMPM-4776", "DMPM-4777", "DMPM-4778 ", "marketplace", "login", "priority-medium"}, priority = 10)
 	public void testResetPasswordEmailValidations() {
 		String errorVal = "";
 		navigateToLoginScreen();
@@ -310,9 +311,11 @@ public class LoginTest extends App {
 		Assert.assertEquals(loginPage.getResetPasswordEmailErrorVal(), Copy.RESET_PASSWORD_INVALID_EMAIL_ERROR, "Reset Password - Inline error is incorrect");
 	}
 
+	
+	//TODO: After R3.0 release
 	// DMPM-3729 Scenario 8
 	// DMPM-3827 Scenario 1, 2
-	@Test (groups = {"DMPM-3729", "DMPM-4785", "DMPM-3827", "DMPM-6109", "DMPM-6110", "marketplace", "login", "priority-high"}, priority = 12)
+	//@Test (groups = {"DMPM-3729", "DMPM-4785", "DMPM-3827", "DMPM-6109", "DMPM-6110", "marketplace", "login", "priority-high"}, priority = 12)
 	public void testSuccessfulSendEmailLink() {
 		navigateToLoginScreen();
 
@@ -357,8 +360,9 @@ public class LoginTest extends App {
 		Assert.assertEquals(loginPage.getLoginPageTitle(), utils.readTestData("copy", "loginPage", "loginPageTitle"), "Login Page - User is not navigated to the Log in page");
 	}
 
+	//TODO: After R3.0 release
 	// DMPM-3827 Scenario 3
-	@Test (groups = {"DMPM-3729", "DMPM-6111", "marketplace", "login", "priority-high"}, priority = 11)
+	//@Test (groups = {"DMPM-3729", "DMPM-6111", "marketplace", "login", "priority-high"}, priority = 11)
 	public void testTapOpenMailButton(){
 		navigateToLoginScreen();
 

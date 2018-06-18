@@ -165,7 +165,7 @@ public class LoginPage extends BasePage{
 	public Boolean getPasswordFieldMaskedVal(String maskedValue) {
 		Boolean status;
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
-		if (osVersion >= 6.0) {
+		if (osVersion > 6.0) {
 			status = getText(passwordField).equals(maskedValue);
 		}
 		else { 

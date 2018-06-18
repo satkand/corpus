@@ -102,6 +102,10 @@ public class GetStartedPageTest extends App{
 
 		//Check Suncorp Banking button
 		getStartedPage.tapSuncorpBankingButton();
+		if(termsAndConditionsPage.checkAcceptButton() != null){
+			termsAndConditionsPage.tapAcceptButton();
+		}
+		
 		Assert.assertNotNull(memberLoginPage.checkSuncorpBankLoginTitle(), "Suncorp bank Login - User is not naviagetd to the Suncorp bank Login page");
 		memberLoginPage.tapSuncorpBankLoginBackButton();
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started -  User is not navigated back to the Get Started page");
@@ -114,7 +118,7 @@ public class GetStartedPageTest extends App{
 		getStartedPage.tapNextButton();
 		
 		getStartedPage.tapSuncorpInsuranceButton();
-		if(termsAndConditionsPage.checkTermsAndConditionsTitle() != null){
+		if(termsAndConditionsPage.checkAcceptButton() != null){
 			termsAndConditionsPage.tapAcceptButton();
 		}
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login Page - User is not navigated to the Login Page");

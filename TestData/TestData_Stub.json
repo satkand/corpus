@@ -1401,7 +1401,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "AAMI member login",
+			"brandIcon": "Sign up via your AAMI account",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
@@ -1410,7 +1410,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "GIO member login",
+			"brandIcon": "Sign up via your GIO account",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
@@ -1419,7 +1419,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "Shannons member login",
+			"brandIcon": "Sign up via your Shannons account",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}
 	],
@@ -1432,8 +1432,8 @@
 			"loginPageTitle": "Log in",
 			"shortEmailError" : "Please enter a valid email address Must be between 2 and 100 characters",
 			"invalidEmailError" : "Please enter a valid email address",
-			"emptyPasswordError" : "Field is required",
-			"emptyEmailError" : "Field is required",
+			"emptyPasswordError" : "Please enter your password",
+			"emptyEmailError" : "Please enter a valid email address",
 			"longEmailError" : "Must be between 2 and 100 characters",
 			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
 		},
@@ -1527,6 +1527,10 @@
 			"shortSurnameErrorMsg" : "Must be between 2 and 40 characters",
 			"accountCreatingMsg" : "Registering details",
 			"fieldErrorMsg" : "Field is required",
+			"emailFieldErrorMsg" : "Please enter a valid email address",
+			"passwordFieldErrorMsg" : "Please enter your password",
+			"confirmPasswordFieldErrorMsg" : "Please confirm your password",
+			"mobileFieldErrorMsg" : "Please enter your mobile number",
 			"registerPage1Title" : "Step 1 of 3",
 			"registerPage2Title" : "Step 2 of 3",
 			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
@@ -1544,10 +1548,10 @@
 			"firstNamePasswordErrorMsg" : "Must not contain your first name",
 			"lastNamePasswordErrorMsg" : "Must not contain your last name",
 			"emailPasswordErrorMsg":"Must not contain your email",
-			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
+			"onlycharPasswordErrorMsg" : "Must contain at least one uppercase letter Must contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
-			"passwordNotMatch" : "Password do not match",
-			"passwordNameRequirement":"not contain your first name, surname or email",
+			"passwordNotMatch" : "Passwords do not match",
+			"passwordNameRequirement":"NOT contain your first name, last name or email",
 			"duplicateEmailPopUpTitle":"Email already in use",
 			"duplicateEmailPopUpText":"Please log in with this email address, or use a different one to register for a new account.",
 			"duplicateEmailPopUpOkButtonText":"OK",
@@ -1587,11 +1591,11 @@
 		"memberLogin" : {
 			"shortMobileNumberError" : "Must be 10 digits",
 			"invalidMobileNumberError" : "Must use 04XXXXXXXX format",
-			"emptyMobileNumberError" : "Field is required",
+			"emptyMobileNumberError" : "Please enter your mobile number",
 			"incorrectCredentialsSnackbarText" : "Wrong email or password. Please check and retry."
 		},
 		"getStartedPage" : {
-			"getStartedPageTitle" : "Welcome to the Suncorp family"
+			"getStartedPageTitle" : "Get started"
 		}
 	}
 }
