@@ -15,7 +15,6 @@ public class RegistrationTest extends App{
 		navigateToRegistrationPage();	
 			registrationPage.fill1stPageFields(utils.readTestData("registration", "success", "firstName"),
 					utils.readTestData("registration", "success", "surname"),
-		
 					utils.readTestData("registration", "success", "date"),
 					utils.readTestData("registration", "success", "postcode"));
 			registrationPage.tapNextButton();
@@ -29,7 +28,6 @@ public class RegistrationTest extends App{
 	
 	@Test(groups = {"DMPM-185", "DMPM-375", "marketplace", "Registration", "priority-major"})
 	public void testInlineErrorFields() {
-
 		navigateToRegistrationPage();
 		registrationPage.tapFirstNameField();
 		Assert.assertTrue(common.isKeyboardShown(),"Registration - Keypad is not shown");
@@ -126,6 +124,10 @@ public class RegistrationTest extends App{
 		registrationPage.enterSurname(utils.readTestData("registration", "failure", "noSpecialCharName"));
 		Assert.assertNull(registrationPage.checkSurnameErrorMsg());
 		
+		registrationPage.tapDOBField();
+		Assert.assertNotNull(registrationPage.checkYearPicker(), "Year picker is not displayed");
+		registrationPage.tapYearPickerCancelButton();
+		Assert.assertEquals(registrationPage.getDOBErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 	}
 	
 	@Test(groups = {"DMPM-45", "DMPM-460", "marketplace", "Registration", "priority-minor"})
@@ -156,9 +158,9 @@ public class RegistrationTest extends App{
 		registrationPage.tapNextButton();
 		registrationPage.tapEmailField();
 		registrationPage.tapMobileNumberField();
-		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "emailFieldErrorMsg"));
 		registrationPage.tapEmailField();
-		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(), utils.readTestData("copy", "registrationPage", "mobileFieldErrorMsg"));
 		
 	}
 	
@@ -210,8 +212,8 @@ public class RegistrationTest extends App{
 		registrationPage.tapEmailField();
 		registrationPage.tapMobileNumberField();
 		registrationPage.tapEmailField();
-		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
-		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getInvalidEmailErrorMsg(), utils.readTestData("copy", "registrationPage", "emailFieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getInvalidMobileErrorMsg(), utils.readTestData("copy", "registrationPage", "mobileFieldErrorMsg"));
 		registrationPage.enterEmail(utils.readTestData("registration", "success", "email"));
 		Assert.assertNull(registrationPage.checkEmailErrorMsg());
 		registrationPage.enterMobile(utils.readTestData("registration", "success", "mobile"));
@@ -274,7 +276,7 @@ public class RegistrationTest extends App{
 		registrationPage.tapNextButton();
 		registrationPage.tapPasswordField();
 		registrationPage.tapConfirmPasswordField();
-		Assert.assertEquals(registrationPage.getPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "passwordFieldErrorMsg"));
 		registrationPage.tapPasswordField();
 		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
 	
@@ -330,17 +332,17 @@ public class RegistrationTest extends App{
 		
 		registrationPage.enterPassword(utils.readTestData("registration", "failure", "onlyCharPassword"));
 		registrationPage.tapConfirmPasswordField();
-		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "onlycharPasswordErrorMsg")),
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "onlycharPasswordErrorMsg")),
 				"Error msg not displayed");
 		
 		registrationPage.enterPassword(utils.readTestData("registration", "failure", "onlyCharUpperCasePassword"));
 		registrationPage.tapConfirmPasswordField();
-		Assert.assertTrue(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "onlyCharUpperCasePasswordErrorMsg")),
+		Assert.assertNotNull(registrationPage.checkPasswordRequirements(utils.readTestData("copy", "registrationPage", "onlyCharUpperCasePasswordErrorMsg")),
 				"Error msg not displayed");
 		
 		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
 		registrationPage.tapRegisterButton();
-		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "confirmPasswordFieldErrorMsg"));
 		
 		registrationPage.enterConfirmPassword(utils.readTestData("registration", "failure", "shortPassword"));
 		registrationPage.tapRegisterButton();
@@ -408,7 +410,7 @@ public class RegistrationTest extends App{
 		
 		registrationPage.enterPassword(utils.readTestData("registration", "success", "password"));
 		registrationPage.tapRegisterButton();
-		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "fieldErrorMsg"));
+		Assert.assertEquals(registrationPage.getConfirmPasswordErrorMsg(), utils.readTestData("copy", "registrationPage", "confirmPasswordFieldErrorMsg"));
 		
 		registrationPage.enterConfirmPassword(utils.readTestData("registration", "failure", "shortPassword"));
 		registrationPage.tapRegisterButton();
