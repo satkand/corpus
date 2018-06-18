@@ -33,8 +33,9 @@ public class HomePropertyTest extends App {
 	//@Test (groups = {"DMPM-86", "DMPM-893", "DMPM-503", "DMPM-971", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToHomeJourneyScreen() {
 		navigateToHomePropertyTab("guest");
-		homePropertyPage.scrollToJourneyBanner();
-		homePropertyPage.tapStartYourJourneyButton();
+		//homePropertyPage.scrollToJourneyBanner();
+		//homePropertyPage.tapStartYourJourneyButton();
+		homePropertyPage.taplaunchPropertyExplorer();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		homeJourneyPage.tapBackButton();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
@@ -101,16 +102,17 @@ public class HomePropertyTest extends App {
 		
 		String addressLine = utils.readTestData("propertyDimension","propertyProducts","withProducts","addressLineText");
 		String description1 = utils.readTestData("propertyDimension","propertyProducts","withProducts","productDescriptionText1");
-		String description2 = utils.readTestData("propertyDimension","propertyProducts","withProducts","productDescriptionText2");
+		//String description2 = utils.readTestData("propertyDimension","propertyProducts","withProducts","productDescriptionText2");
 		String suburb = utils.readTestData("propertyDimension","propertyProducts","withProducts","suburbText");
 					
 		Assert.assertEquals(homePropertyPage.getaddressLineText(), addressLine, "Home Property Page - Address line is not shown as expected");
 		Assert.assertEquals(homePropertyPage.getsuburbText(), suburb, "Home Property Page - Property suburb is not displayed as expected");
 		Assert.assertEquals(descriptionList.get(0), description1, "Home Property Page - Property description1 is not displayed as expected");
-		Assert.assertEquals(descriptionList.get(1), description2, "Home Property Page - Property description 2 is not displayed as expected");
+		//Assert.assertEquals(descriptionList.get(1), description2, "Home Property Page - Property description 2 is not displayed as expected");
 				
-		Assert.assertNotNull(homePropertyPage.checkactiveClaimTitle(), "Home Property Page - Active Claim status is not displaying");
-		Assert.assertEquals(homePropertyPage.getactiveClaimTitle(),utils.readTestData("copy","homePropertyPage","activeClaim") , "Home Property Page - Active CLaim title is not displayed as expected");
+		//TODO : R3 Release
+		//Assert.assertNotNull(homePropertyPage.checkactiveClaimTitle(), "Home Property Page - Active Claim status is not displaying");
+		//Assert.assertEquals(homePropertyPage.getactiveClaimTitle(),utils.readTestData("copy","homePropertyPage","activeClaim") , "Home Property Page - Active CLaim title is not displayed as expected");
 		
 	}
 		
@@ -118,25 +120,26 @@ public class HomePropertyTest extends App {
 	//2997 - scenario 2
 	//3001 - scenario 5
 	// navigating to Property tab and verify empty state for products
-	@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017","DMPM-4461", "marketplace", "Home buying journey", "priority-minor"})
+	//TODO : R3 Release
+/*	@Test (groups = {"DMPM-2627","DMPM-4038","DMPM-2997","DMPM-4017","DMPM-4461", "marketplace", "Home buying journey", "priority-minor"})
 		public void testDisplayEmptyStateForPropertyAsset() {
 		
- 		navigateToHomePropertyTab("withOutProducts");
- 		
-		homePropertyPage.scrollToEmptyStatePropertyAsset(utils.readTestData("propertyDimension", "propertyProducts","withOutProducts","addressLineText"));
+ 		navigateToHomePropertyTab("withProducts");
+		//homePropertyPage.scrollToEmptyStatePropertyAsset(utils.readTestData("propertyDimension", "propertyProducts","withOutProducts","addressLineText"));
 		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Address Line is not present");
 		Assert.assertNotNull(homePropertyPage.checksuburbText(), "Home Property Page - Suburb is not present");
 	
-		//TODO- uncomment below lined when api is integrated and correct property is mapped
+	
+		//TODO : R3 Release
 		//Assert.assertNull(homePropertyPage.checkproductDescriptionText(), "Home Property Page - Product Description is present");
 		//Assert.assertNull(homePropertyPage.checkactiveClaimTitle(), "Home Property Page - Active CLaime title is present");
 		
-		/*TODO (3001 - scenario 5) below code needs to be run in API. In Stubs this will fail*/
+		/*TODO (3001 - scenario 5) TODO : R3 Release*/
 		//homePropertyPage.scrollToVirtualAssetsCarousel();
 		//Assert.assertNull(homePropertyPage.checkVirtualAssetsTitleTxt(), "Property Dimention Page - Virtual assets title is not present");
 		//Assert.assertNull(homePropertyPage.checkVirtualAssetImage(), "Property Dimention Page - Virtual asset image is not present");
 		
-	}
+//	}
 	
 	//3799 - scenario 1 (TC-DMPM-3506)
 	//2620 - scenario 3 (TC-DMPM-3549)
@@ -169,20 +172,20 @@ public class HomePropertyTest extends App {
 		navigateToHomePropertyTab("withProducts");
 		Assert.assertNotNull(homePropertyPage.checkPropertyDetailsButton(), "Home Property Page - Property details button is not present");
 		
-		//stubs data needs to be updated to pass this test 
 		homePropertyPage.tapPropertyDetailsButton();
-		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkDigitalSafe(), "Derived Property Details Page - Digital safe button is not displayed");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 		
 		homePropertyPage.tapPropertyImage();
-		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkDigitalSafe(), "Derived Property Details Page - Digital safe button is not displayed");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 		
 		homePropertyPage.tapAddressLineText();
-		Assert.assertNotNull(propertyDetailsPage.checkDerivedAssetText(), "Property Details Page - Temporary screen for derived assets is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkDigitalSafe(), "Derived Property Details Page - Digital safe button is not displayed");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 		
-		homePropertyPage.scrollToSuppliedAsset(utils.readTestData("propertyDimension", "propertyProducts","withOutProducts","addressLineText"));;
+		//TODO : R3 Release
+/*		homePropertyPage.scrollToSuppliedAsset(utils.readTestData("propertyDimension", "propertyProducts","withOutProducts","addressLineText"));;
 		homePropertyPage.tapPropertyDetailsButton();
 		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
@@ -192,7 +195,7 @@ public class HomePropertyTest extends App {
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 		
 		homePropertyPage.tapAddressLineText();
-		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkSuppliedAssetText(), "Property Details Page - Temporary screen for Supplied assets is not present");*/
 
 	}
 	
@@ -304,7 +307,9 @@ public class HomePropertyTest extends App {
 	@TestDetails(story1 = "DMPM-1263:DMPM-6016,DMPM-6017,DMPM-6018,DMPM-6019", priority = Priority.LOW)
 	@Test(/*retryAnalyzer = CustomRetryListener.class,*/ groups = { "marketplace", "Property Hub", "priority-minor" })
 	public void testVirtualAssetsPropertyCardInFullscreenMapView() {
-		navigateToHomePropertyTab("noProperties");
+		navigateToHomePropertyTab("withProducts");
+		homePropertyPage.scrollToLaunchPropertyExplorer();
+		homePropertyPage.taplaunchPropertyExplorer();
 		//TODO : R3 Release
 /*		homePropertyPage.scrollToVirtualAssetsCarousel();
 		Assert.assertNotNull(homePropertyPage.checkVirtualAssetsTitleTxt(), "Property Dimention Page - Virtual assets title is not present");
@@ -313,9 +318,6 @@ public class HomePropertyTest extends App {
 		
 		homePropertyPage.tapVirtualAssetViewDetailsButton();*/
 		
-		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home tab is not selected on landing page");
-		homePropertyPage.scrollToJourneyBanner();
-		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
 		//propertyExplorerPage.tapSearch();
@@ -344,7 +346,7 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardThumbnail(), "Whats nearby page - Property Card Thumbnail is not displayed");
 		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardTitle(), "Whats nearby page - Property card title is not displayed");
 		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardDetails(), "Whats nearby page - Property card details is not displayed");
-		Assert.assertEquals(whatsNearbyPage.getPropertyCardTitle(), propertyAddress, "Whats nearby page - Title is different to the property address");
+		Assert.assertEquals(whatsNearbyPage.getPropertyCardTitle(), propertyAddress.toUpperCase(), "Whats nearby page - Title is different to the property address");
 		Assert.assertEquals(whatsNearbyPage.getPropertyCardDetails(), propertyType, "Whats nearby page - Property type is different to the property address");
 		
 		whatsNearbyPage.tapFullScreenGoogleLabel();
@@ -357,7 +359,7 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardThumbnail(), "Whats nearby page - Property Card Thumbnail is not displayed");
 		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardTitle(), "Whats nearby page - Property card title is not displayed");
 		Assert.assertNotNull(whatsNearbyPage.checkPropertyCardDetails(), "Whats nearby page - Property card details is not displayed");
-		Assert.assertEquals(whatsNearbyPage.getPropertyCardTitle(), propertyAddress, "Whats nearby page - Title is different to the property address");
+		Assert.assertEquals(whatsNearbyPage.getPropertyCardTitle(), propertyAddress.toUpperCase(), "Whats nearby page - Title is different to the property address");
 		Assert.assertEquals(whatsNearbyPage.getPropertyCardDetails(), propertyType, "Whats nearby page - Property type is different to the property address");
 		
 		whatsNearbyPage.tapPropertyCardThumbnail();
@@ -405,11 +407,13 @@ public class HomePropertyTest extends App {
 		if(loginType.equals("withProducts")) {
 			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts", "login"), utils.readTestData("propertyDimension", "propertyProducts","withProducts","pwd"));
 		}else if(loginType.equals("noProperties")){
-			loginToApp(utils.readTestData("propertyDimension","NoProperties", "login"), utils.readTestData("propertyDimension","NoProperties", "pwd"));
+			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "login"), utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "pwd"));
 		}else if(loginType.equals("withOutProducts")){
 			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "login"), utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "pwd"));
 		}else {
-			welcomePage.tapGuestAccessButton();
+			//TODO : R3 Release
+			//welcomePage.tapGuestAccessButton();
+			loginToApp(utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "login"), utils.readTestData("propertyDimension","propertyProducts","withOutProducts", "pwd"));
 		}
 		
 		landingPage.tapHomeTab();

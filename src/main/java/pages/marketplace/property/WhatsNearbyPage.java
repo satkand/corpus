@@ -25,7 +25,7 @@ public class WhatsNearbyPage extends BasePage{
 	private By fullScreenMapTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']//android.widget.TextView");
 	
 	private By fullScreenMap= MobileBy.AccessibilityId("Google Map");
-	private By fullScreenMapPropertyPin= MobileBy.AccessibilityId("property_title. ");
+	private By fullScreenMapPropertyPin= By.xpath("//android.view.View[@content-desc=\"Google Map\"]//android.view.View");
 	
 	
 	private By propertyTab = By.xpath("//android.widget.TextView[@text='PROPERTY']");
