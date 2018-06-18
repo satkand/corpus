@@ -19,7 +19,6 @@ public class MyProductsPage extends BasePage {
 	private By addExistingProductButton = By.id("au.com.suncorp.marketplace:id/addProductButton");
 	private By emptyStateImage = By.id("au.com.suncorp.marketplace:id/emptyStateImage");
 	private By emptyStateLabel = By.id("au.com.suncorp.marketplace:id/emptyStateMessageTitle");
-	private By emptyStateDescription = By.id("au.com.suncorp.marketplace:id/emptyStateMessageDescription");
 	private By findProductButton = By.id("au.com.suncorp.marketplace:id/browseProductCatalogueButton");
 
 	private By myProductsLabel = By.xpath("//android.widget.TextView[@text='Policies & Accounts']");
@@ -29,8 +28,8 @@ public class MyProductsPage extends BasePage {
 	private By disclaimerTitle = By.xpath("//android.widget.TextView[@text='Disclaimer']");
 	private By closeDisclaimerBtn = By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']");
 	//TODO DMPM-3713
-	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current balance']");
-    private By availableBalanceLable = By.xpath("//android.widget.TextView[@text='Available balance']");
+	private By currentBalanceLabel = By.xpath("//android.widget.TextView[@text='Current']");
+    private By availableBalanceLable = By.xpath("//android.widget.TextView[@text='Available']");
 
     private By bsbText = By.id("au.com.suncorp.marketplace:id/accountBsbText");
 	private By accountNumber = By.id("au.com.suncorp.marketplace:id/accountNumberText");
@@ -95,11 +94,11 @@ public class MyProductsPage extends BasePage {
 	}
 
 	// portfolio disclaimer
-	private By portfolioScreenDisclaimerTitle = By.xpath("//android.widget.TextView[@text = 'Disclaimer title']");
+	private By portfolioScreenDisclaimerTitle = By.xpath("//android.widget.TextView[@text ='Disclaimer']");
 	private By acceptButton = By.id("au.com.suncorp.marketplace:id/acceptButton");
 	
 	public WebElement checkPortfolioDisclaimerScreenTitle() {
-		return find(portfolioScreenDisclaimerTitle);
+		return find(portfolioScreenDisclaimerTitle,30);
 	}
 
 	public WebElement checkAcceptButton() {
@@ -203,10 +202,6 @@ public class MyProductsPage extends BasePage {
 		return find(availableBalance);
 	}
 	
-	public WebElement checkAvailableBalanceLabel(){
-		return find(availableBalanceLabel);
-	}
-	
 	public String getAvailableBalanceLabel(){
 		return getText(availableBalanceLabel);
 	}
@@ -219,7 +214,7 @@ public class MyProductsPage extends BasePage {
 		return find(accountNumber);
 	}
 	
-	public WebElement checkAvailableBalanceLable(){
+	public WebElement checkAvailableBalanceLabel(){
 		return find(availableBalanceLable);
 	}
 	
@@ -261,9 +256,6 @@ public class MyProductsPage extends BasePage {
 		return getText(emptyStateLabel);
 	}
 	
-	public String getEmptyStateDescriptionText() {
-		return getText(emptyStateDescription);
-	}
 	
 	public void tapBackButton(){
 		tapElement(backButton);
@@ -279,12 +271,20 @@ public class MyProductsPage extends BasePage {
 		return find(viewDetailsButton);
 	}
 	
+	public String getViewDetailsButtonLabel(){
+		return getText(viewDetailsButton);
+	}
+	
 	public WebElement checkMyProductsTitle(){
 		return find(myProductsLabel);
 	}
 	
 	public WebElement checkAddExistingProductButton(){
 		return find(addExistingProductButton);
+	}
+	
+	public String getAddExistingProductButtonLabel(){
+		return getText(addExistingProductButton);
 	}
 	
 	public WebElement checkEmptyStateImage(){
@@ -295,10 +295,6 @@ public class MyProductsPage extends BasePage {
 		return find(emptyStateLabel);
 	}
 	
-	public WebElement checkEmptyStateDescription(){
-		return find(emptyStateDescription);
-	}
-
 	public WebElement checkFindProductButton(){
 		return find(findProductButton);
 	}
@@ -333,6 +329,7 @@ public class MyProductsPage extends BasePage {
 			swipeScreen("down");
 			return policyRiskFound;
 		} else {
+			swipeScreen("down");
 			policyRiskFound = true;
 			return policyRiskFound;
 		}
