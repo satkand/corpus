@@ -740,16 +740,16 @@ public class BasePage {
 	}
 
 	public WebElement getScreenTitle(String title) {
-		WebElement titleElement = null;
-		try {
-			titleElement = findByUIAutomator(title, "text");
-		}catch(Exception e) {
-			title = title.toUpperCase();
-			titleElement = findByUIAutomator(title, "text");
-		}
-		return titleElement;
+//		WebElement titleElement = null;
+//		try {
+//			titleElement = findByUIAutomator(title, "text");
+//		}catch(Exception e) {
+//			title = title.toUpperCase();
+//			titleElement = findByUIAutomator(title, "text");
+//		}
+//		return titleElement;
 		
-/*		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+	double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
 		if (osVersion >= 7.0) {
 
@@ -757,7 +757,7 @@ public class BasePage {
 		}
 
 		return findByUIAutomator(title, "text");
-*/
+
 	}
 
 	public String scrollAndGetElementText(By locator,int maxSwipes,int... args ) {

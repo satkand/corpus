@@ -191,5 +191,16 @@ public interface Copy {
 	//Forgot Pin Page
 	String PASSWORD_REQUIRED_ERROR = "Field is required";
 	String FORGOTTEN_PIN_PAGE_TITLE= "Forgot PIN?";
+	
+	
+	
+	/*********************************************    Banking**************************************************************/
+	//Money Dimension Page
+	String ADD_EXISTING_PRODUCT_TITLE ="Add existing product";
+	String MONEY_TRACKER_TITLE ="Dollar Tracker";
+	
+	//Add Bank Account Page
+	String ADD_BANK_ACCOUNT_TITLE ="Add Bank or Loan Account";
+	
 
 }
