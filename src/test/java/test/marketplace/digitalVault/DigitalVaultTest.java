@@ -551,8 +551,8 @@ public class DigitalVaultTest extends App {
 	public void testViewItemsAddedByMe() {
 		navigateToDigiVaultPage();
 		navigationMenu.tapSplitMenuIcon();
-		navigationMenu.checkLockMenuOption();
-		navigationMenu.tapLockMenuOption();
+		navigationMenu.checkLogOutMenuOption();
+		navigationMenu.tapLogOutMenuOption();
 		loginAuthPage.checkChangeAccountButton();
 		loginAuthPage.tapChangeAccountButton();
 		

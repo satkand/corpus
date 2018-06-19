@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class ChatbotPage extends BasePage {
 
@@ -17,7 +18,7 @@ public class ChatbotPage extends BasePage {
 		
 	private By chatIcon = By.id("au.com.suncorp.marketplace:id/chatbotToolbarImage");
 	private By chatbotPageTitle = By.xpath("//android.widget.TextView[@text='Scout']");
-	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
+	private By backButton = MobileBy.AccessibilityId("Back");
 	private By chatView = By.id("au.com.suncorp.marketplace:id/chatView");
 	private By userInputField = By.id("au.com.suncorp.marketplace:id/userInput");
 	private By sendButton = By.id("au.com.suncorp.marketplace:id/sendMessageButton");

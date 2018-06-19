@@ -17,7 +17,10 @@ public class SuburbDetailsTest extends App {
 		navigateToSuburbDetails("Property Hub","NotAGuest");
 		verifyScreenContents();
 		suburbDetailsPage.tapBackButton();
-		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
+		
+		if(suburbDetailsPage.checkDemographicsTitleText()!=null) {
+			suburbDetailsPage.tapBackButton();
+		}
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Property Hub page - page title is not present when coming back from suburb insight");
 
 	}
@@ -96,15 +99,20 @@ public class SuburbDetailsTest extends App {
 		}
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
-		homePropertyPage.scrollToJourneyBanner();
-		homePropertyPage.tapStartYourJourneyButton();
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home tab is not selected on landing page");
+		//homePropertyPage.scrollToJourneyBanner();
+		//homePropertyPage.tapStartYourJourneyButton();
+		homePropertyPage.scrollToLaunchPropertyExplorer();
+		homePropertyPage.taplaunchPropertyExplorer();
 		Assert.assertNotNull(propertyHubPage.checkSearchBar(), "Property Hub Page - Search bar is not present");
 		propertyExplorerPage.tapSuburbInsight();
 		
-		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchHintText(), "Enter suburb's name", "Suburb search hint is not matching");
+		Assert.assertEquals(propertyExplorerPage.getPropertyExplorerSearchHintText(), "Enter suburb", "Suburb search hint is not matching");
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","suburbInsight","suburbSearchText"));
-		propertyExplorerPage.tapSearch();
-		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(), "Suburb Details Page - Suburb details title is not present");
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+		Assert.assertNotNull(suburbDetailsPage.checkSuburbNameText(utils.readTestData("propertyDimension","propertyDetails","stateAndSuburb")), "Suburb Details Page - Suburb details title is not present");
 		
 	}
 	
@@ -119,12 +127,17 @@ public class SuburbDetailsTest extends App {
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Journey Page - Property Address is not shown");
-		homePropertyPage.scrollToJourneyBanner();
-		homePropertyPage.tapStartYourJourneyButton();
+		//homePropertyPage.scrollToJourneyBanner();
+		//homePropertyPage.tapStartYourJourneyButton();
+		homePropertyPage.scrollToLaunchPropertyExplorer();
+		homePropertyPage.taplaunchPropertyExplorer();
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "Home Journey Page - page title not shown");
 		
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
-		propertyExplorerPage.tapSearch();
+		//propertyExplorerPage.tapSearch();
+		propertyExplorerPage.checkFirstItemIntheSearchDropdown();
+		propertyExplorerPage.tapFirstItemIntheSearchDropdown();
+				
 		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Property address is not present");
 		String suburbName = propertyDetailsPage.getPropertyStatePostCode();
 		

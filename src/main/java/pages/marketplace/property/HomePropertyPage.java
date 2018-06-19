@@ -73,6 +73,17 @@ public class HomePropertyPage extends BasePage {
 	private By homeProfessionalServicesDescription= By.id("au.com.suncorp.marketplace:id/propertyProfessionalServicesBodyText");
 	private By homeProfessionalServicesButton = By.id("au.com.suncorp.marketplace:id/propertyViewProfessionalServicesButton");
 	
+	//PropertyExplorer
+	private By launchPropertyExplorer = By.id("au.com.suncorp.marketplace:id/startHomeJourneyButton");
+	
+	public WebElement checklaunchPropertyExplorer() {
+		return find(launchPropertyExplorer);
+	}
+	
+	public void taplaunchPropertyExplorer() {
+		tapElement(launchPropertyExplorer);
+	}
+	
 	public void scrollToHomeProfessionalServicesButton(){
 		scrollToElement(homeProfessionalServicesButton);
 	}
@@ -199,6 +210,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public WebElement checkPropertyDetailsButton() {
+		scrollToElement(propertyDetailsButton);
 		return find(propertyDetailsButton);
 	}
 	
@@ -207,6 +219,7 @@ public class HomePropertyPage extends BasePage {
 	}
 	
 	public WebElement checkPropertyDocumentsButton() {
+		scrollToElement(propertyDocumentsButton);
 		return find(propertyDocumentsButton);
 	}
 	
@@ -383,6 +396,10 @@ public class HomePropertyPage extends BasePage {
 		scrollToElement(startYourJourneyButton, "true");
 	}
 
+	public void scrollToLaunchPropertyExplorer(){
+		scrollToElement(launchPropertyExplorer, "true");
+	}
+	
 	public void scrollToSuppliedAsset(String text){
 		scrollToElement(findElementUsingXpathText(text), "true");
 		

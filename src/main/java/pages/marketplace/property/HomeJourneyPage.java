@@ -13,7 +13,8 @@ public class HomeJourneyPage extends BasePage {
 		super(driver);
 	}
 	
-	private By homeJourneyPageTitle = By.xpath("//android.widget.TextView[@text='Home journey']");
+	private By homeJourneyPageTitle = By.xpath("//android.widget.TextView[@text='Property Explorer']");
+	private By homeJourneyPageTitleS5 = By.xpath("//android.widget.TextView[@text='PROPERTY EXPLORER']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	
 	private By journeyTitleText = By.id("au.com.suncorp.marketplace:id/journeyTitleText");
@@ -55,7 +56,12 @@ public class HomeJourneyPage extends BasePage {
 	}
 	
 	public WebElement checkHomeJourneyPageTitle() {
-		return find(homeJourneyPageTitle);
+		if(find(homeJourneyPageTitle)!=null) {
+			return find(homeJourneyPageTitle);
+		}else {
+			return find(homeJourneyPageTitleS5);
+		}
+		
 	}
 	
 	public WebElement checkBackButton() {

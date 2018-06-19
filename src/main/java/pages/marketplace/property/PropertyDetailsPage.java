@@ -1,6 +1,7 @@
 package pages.marketplace.property;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -90,18 +91,26 @@ public class PropertyDetailsPage   extends BasePage{
 	//EDUCATION CENTRES
 	private By nearbyEducationTitle = By.id("au.com.suncorp.marketplace:id/nearbyEducationText");
 	private By nearbyEducationViewAllButton = By.id("au.com.suncorp.marketplace:id/nearbyEducationViewAllText");
-	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/nearbyEducationName");
+	private By nearbyEducationCentresS5andPixel = By.id("au.com.suncorp.marketplace:id/nearbyEducationName");
 	
 	//disclaimers
 	private By estimatedPropertyValueDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Value disclaimer");
 	private By confidenceLevelDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Valuation Confidence disclaimer");
 	private By coreLogicDisclaimer = MobileBy.AccessibilityId("Open the Core Logic services disclaimer");
 	private By lastSaleDisclaimer = MobileBy.AccessibilityId("Open the property Last Sale information disclaimer");
-	private By confidenceLevelDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Confidence Indicator']");
+	private By confidenceLevelDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Estimated property value/AVM confidence measures']");
 	private By confidenceLevelDisclaimerClose	= MobileBy.AccessibilityId("Navigate up");
-	private By coreLogicDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='CoreLogic']");
+	private By coreLogicDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='Data provided by CoreLogic']");
 	private By estimatedPropertyValueDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='Estimated property value']");
 	private By lastSaleDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Last sale']");
+	
+	//Derived Assets
+	private By digitalSafe = By.id("au.com.suncorp.marketplace:id/documentTile");
+	
+	public WebElement checkDigitalSafe() {
+		return find(digitalSafe);
+	}
 	
 	public WebElement checkLastSaleDisclaimerScreenTitle() {
 		return find(lastSaleDisclaimerScreenTitle);
@@ -212,11 +221,22 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public WebElement checkNearbyEducationCentres() {
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			return find(nearbyEducationCentresS5andPixel);
+		}
 		return find(nearbyEducationCentres);
 	}
 	
 	public List<WebElement> fetchNearbyEducationCentres() {
-		List<WebElement> elements = finds(nearbyEducationCentres);
+		List<WebElement> elements;
+		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
+		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
+			elements = finds(nearbyEducationCentresS5andPixel);
+		}else {
+			elements = finds(nearbyEducationCentres);
+		}
+		
 		return elements;
 	}
 	
@@ -620,7 +640,6 @@ public class PropertyDetailsPage   extends BasePage{
 		tapElement(miniMap);
 	}
 	
-	
 	public WebElement checkMiniMapWhatsNewButton() {
 		return find(miniMapWhatsNearButton);
 	}
@@ -642,12 +661,11 @@ public class PropertyDetailsPage   extends BasePage{
 		swipeHorizontallyToRight();
 	}
 	
-	public void doubleTapOnPropertyImage() {
+	public void doubleTapOnPropertyImage() throws InterruptedException {
+		TimeUnit.SECONDS.sleep(3);
 		tapElement(fullScreenPropertyImage);
 		tapElement(fullScreenPropertyImage);
+		
 	}
-	
-	
-	
 	
 }

@@ -13,9 +13,8 @@ public class RegistrationPage extends BasePage {
 		super(driver);
 	}
 
-	
-	private By registrationPageTitle = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/"
-			+ "android.widget.TextView[1]");
+	private By registrationPageTitle = By.xpath("//android.widget.TextView[@text='New user']");
+	//private By registrationPageTitle = By.xpath("//android.widget.ScrollView/android.widget.LinearLayout/android.widget.TextView[1]");
 	private By cancelButton = MobileBy.AccessibilityId("Cancel");
 	private By firstNameField = By.id("au.com.suncorp.marketplace:id/firstNameField");
 	private By surnameField = By.id("au.com.suncorp.marketplace:id/surnameField");
@@ -93,6 +92,7 @@ public class RegistrationPage extends BasePage {
 	private By loginWithThisEmailButton = By.id("android:id/button1");
 	private By duplicateEmailPopUpTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By duplicateEmailPopUpText = By.id("android:id/message");
+	private By yearPickerCancelButton = By.id("android:id/button2");
 
 	public WebElement checkRegistrationPageTitle(){
 		return find(registrationPageTitle,20);
@@ -113,6 +113,10 @@ public class RegistrationPage extends BasePage {
 	
 	public void tapDOBField(){
 		tapElement(dateField);
+	}
+	
+	public void tapYearPickerCancelButton(){
+		tapElement(yearPickerCancelButton);
 	}
 	
 	public void tapPostcodeField(){
@@ -396,12 +400,14 @@ public class RegistrationPage extends BasePage {
 	}
 	
 	public boolean checkPasswordRequirements(String errorMsg) {
+		
+		
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 
 		if (osVersion >= 6.0 && getText(passwordErrorMsg).contains(errorMsg)) {
 			return true;
 		}
-		else if (osVersion <= 6.0 && getText(passwordErrorMsgOldDevice).contains(errorMsg)){ 
+		else if (osVersion < 6.0 && getText(passwordErrorMsgOldDevice).contains(errorMsg)){ 
 			return true;
 		}
 		else return false;
@@ -467,6 +473,9 @@ public class RegistrationPage extends BasePage {
 	}
 	
 	public void tapRegisterButton() {
+		if(isKeyboardDisplayed()){
+			dismissKeyboard();
+		}
 		tapElement(registerButton);
 	}
 	
