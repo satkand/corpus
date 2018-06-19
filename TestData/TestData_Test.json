@@ -87,7 +87,7 @@
 			"userName": ""
 		},
 		"validLoginCredentials": {
-			"login": "a@b.c",
+			"login": "testthu@test.com",
 			"login1": "test1@account.com",
 			"login2": "testacc8@acc.com",
 			"login3": "validlogin@sun.com",
@@ -1245,7 +1245,7 @@
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
-			"brandName": "Shannons",
+			"brandName": "SHANNONS",
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
@@ -1293,8 +1293,8 @@
 			"":""
 		},
 		"pinSetupPage": {
-			"enterPINLabel": "Enter a new 4-digit PIN",
-			"reEnterPINLabel": "Re-enter your new 4-digit PIN",
+			"enterPINLabel": "Enter a 4-digit PIN",
+			"reEnterPINLabel": "Re-Enter the 4-digit PIN",
 			"invalidPINAlertMessage": "This PIN might be easily guessed. Please use a combination without repeated or consecutive numbers.",
 			"pinsDonotMatchErrorMessage": "PINs don't match. Please try again.",
 			"pinSuccessfullySetMessage": "Setting up PIN"
