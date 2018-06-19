@@ -191,5 +191,7 @@ public interface Copy {
 	//Forgot Pin Page
 	String PASSWORD_REQUIRED_ERROR = "Field is required";
 	String FORGOTTEN_PIN_PAGE_TITLE= "Forgot PIN?";
+	
+	String getStartedPageTitle = "Get started";
 
 }

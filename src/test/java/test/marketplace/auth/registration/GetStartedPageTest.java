@@ -5,6 +5,8 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import automation.framework.common.Copy;
+import automation.framework.common.TestDetails;
 import pages.App;
 
 public class GetStartedPageTest extends App{
@@ -20,6 +22,8 @@ public class GetStartedPageTest extends App{
 		welcomePage.tapRegisterButton();
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started Page - User is not navigated to the get started screen");
 	}
+	
+	
 
 	//DMPM-1420 - Scenario 1, 2, 3
 	@Test(groups = {"DMPM-1420", "DMPM-2656", "DMPM-2658", "DMPM-2659", "marketplace", "Registration", "priority-medium"})
@@ -27,7 +31,8 @@ public class GetStartedPageTest extends App{
 		navigateToWelcomeToSuncorpPage();
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Welcome to Suncorp family - Welcome title not displayed");
 		titleValue = getStartedPage.getGetStartedPageTitleValue().replace("\n", " ");
-		Assert.assertEquals(titleValue, utils.readTestData("copy", "getStartedPage", "getStartedPageTitle") ,"Welcome to Suncorp family - Welcome title not correct");
+		//Assert.assertEquals(titleValue, utils.readTestData("copy", "getStartedPage", "getStartedPageTitle") ,"Welcome to Suncorp family - Welcome title not correct");
+		Assert.assertEquals(titleValue, Copy.getStartedPageTitle ,"Welcome to Suncorp family - Welcome title not correct");
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageSubheader(), "Welcome to Suncorp family - Welcome page subheader not displayed");
 		Assert.assertNotNull(getStartedPage.checkBrandSelectDropDown(), "Welcome to Suncorp family - Select brand drop down is not displayed");
 

@@ -26,6 +26,7 @@ public class GetStartedPage extends BasePage {
 	private By seletBrand = null;
 	private By suncorpBrand = By.xpath("//android.widget.TextView[@text='Suncorp']");
 	
+	
 	private By backButton = MobileBy.AccessibilityId("Back");
 	private By setupNewAccountButton = By.id("au.com.suncorp.marketplace:id/newAccountButton");	
 	private String registerWithSupportedGroupButtonsuffix = "au.com.suncorp.marketplace:id/";
