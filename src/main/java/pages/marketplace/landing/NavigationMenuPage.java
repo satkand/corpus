@@ -19,6 +19,7 @@ public class NavigationMenuPage extends BasePage {
 	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Policies & accounts']");
 	private By rewardsForYou = By.xpath("//android.widget.CheckedTextView[@text='Rewards']");
 	private By claimsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Active claims']");
+
 	private By proffessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
 	
 	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");

@@ -17,7 +17,7 @@ public class HomeProfessionalServicesTest extends App{
 	@Test (groups = {"marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigatingToProfessionalServicesScreen() {
 		navigateToProfessionalServices();
-		homeServicesPage.tapProfessionalServicesIntroCloseButton();
+		//homeServicesPage.tapProfessionalServicesIntroCloseButton();
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "home Services Page - Home Services subtitle is not present");
 		Assert.assertEquals(homeServicesPage.getHomeServicesTitle(), utils.readTestData("copy", "professionalServices","homeServicesHeading"), "home Services Page - Home Services Description text is different to the expected text");
 	
@@ -31,7 +31,7 @@ public class HomeProfessionalServicesTest extends App{
 	
 	@TestDetails(story1 = "DMPM-4416:DMPM-4706,DMPM-4707,DMPM-4708", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
-	public void testProfessionalServicesIntroScreen() {
+	public void testAProfessionalServicesIntroScreen() {
 		navigateToProfessionalServices();
 		
 		checkProfessionalServicesIntroScreenElements();
@@ -49,7 +49,7 @@ public class HomeProfessionalServicesTest extends App{
 	public void testProfessionalServicesUpdatedURL() {
 		
 		navigateToProfessionalServices();
-		homeServicesPage.tapProfessionalServicesIntroGotItButton();
+		//homeServicesPage.tapProfessionalServicesIntroGotItButton();
 		Assert.assertNotNull(homeServicesPage.checkHomeServicesTitle(), "Home Professtional services page - Title is not present");
 		
 		homeServicesPage.tapViewServicesButton();
@@ -61,10 +61,13 @@ public class HomeProfessionalServicesTest extends App{
 		
 		landingPage.tapHomeTab();
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
-		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home tab is not selected on landing page");
+		//TODO : R3 Release
+		//Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home tab is not selected on landing page");
+		//homePropertyPage.scrollToJourneyBanner();
+		//homePropertyPage.tapStartYourJourneyButton();
+		homePropertyPage.checklaunchPropertyExplorer();
+		homePropertyPage.taplaunchPropertyExplorer();
 		
-		homePropertyPage.scrollToJourneyBanner();
-		homePropertyPage.tapStartYourJourneyButton();
 		Assert.assertNotNull(homeJourneyPage.checkJourneyTitleText(), "home Journey Page - home Journey Page title is not present");
 		
 		homeJourneyPage.scrollToViewServiceVendorsButton();
@@ -75,8 +78,12 @@ public class HomeProfessionalServicesTest extends App{
 		Assert.assertNotNull(homeJourneyPage.checkHomeJourneyPageTitle(), "home Journey Page - home Journey Page title is not present");
 		
 		homeJourneyPage.tapBackButton();
-		homePropertyPage.scrollToJourneyBanner();
-		homePropertyPage.tapStartYourJourneyButton();
+		
+		homePropertyPage.checklaunchPropertyExplorer();
+		homePropertyPage.taplaunchPropertyExplorer();
+		
+//		homePropertyPage.scrollToJourneyBanner();
+//		homePropertyPage.tapStartYourJourneyButton();
 		propertyExplorerPage.enterTextInPropertyHubSearchbox(utils.readTestData("propertyDimension","propertyExplorer","highConfidenceAddress"));
 		
 		//propertyExplorerPage.tapSearch();
@@ -107,7 +114,7 @@ public class HomeProfessionalServicesTest extends App{
 		navigationMenu.tapSplitMenuIcon();
 		Assert.assertNotNull(navigationMenu.checkProffessionalServicesMenuItem(), "Navigation Menu - home Servicesmenu item is not present");
 		navigationMenu.tapProffessionalServicesMenuItem();
-		Assert.assertNotNull(homeServicesPage.getProfessionalServicesIntroTitle(), "home Services Page - home Services Page title is not present");
+		//Assert.assertNotNull(homeServicesPage.getProfessionalServicesIntroTitle(), "home Services Page - home Services Page title is not present");
 		//TODO make sure to close the intro popup by device back button in atleast 1 test method (DMPM-4707)
 			
 	}

@@ -834,7 +834,7 @@ public class BasePage {
 	}
 
 	protected By findElementUsingXpathText(String text) {
-			String xpath = "//android.widget.RadioButton[@text='" + text + "']";
+			String xpath = "//android.widget.TextView[@text='" + text + "']";
 			By locator = By.xpath(xpath);
 			return locator;
 		}

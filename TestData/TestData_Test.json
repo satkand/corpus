@@ -118,7 +118,7 @@
 			"userName": ""
 		},
 		"validLoginCredentials": {
-			"login": "a@b.c",
+			"login": "gitin.george@suncorp.com.au",
 			"login1": "test1@account.com",
 			"login2": "testacc8@acc.com",
 			"login3": "validlogin@sun.com",
@@ -142,50 +142,52 @@
 	},
 	"propertyDimension" :{
 		"propertyDetails":{
-					"address": "1 LYONS RISE ",
-					"stateAndSuburb": "ELTHAM, VIC 3095",
-					"bedRooms": "4",
+					"address": "6 Clayton Court",
+					"stateAndSuburb": "Springvale South, VIC 3172",
+					"stateAndSuburb2": "Clyde North, VIC 3978",
+					"bedRooms": "3",
 					"bathrooms": "2",
-					"parkingSpaces": "4",
-					"landSize": "780 m²",
-					"propertyType": "Land: Res House",
+					"parkingSpaces": "2",
+					"landSize": "616 m²",
+					"propertyType": "House: Standard",
 					"roofType": "Tiled (Terra Cotta or Cement)",
 					"wallMaterial": "Brick",
-					"salePrice": "$600,000",
-					"saleDate": "2013-12-13",
-					"confidenceLevel":"High confidence",
-					"estimatedMarketValue": "$870,000 - $1,100,000",
-					"numberOfImages":"26",
+					"salePrice": "$700,000",
+					"saleDate": "6 Dec 2017",
+					"confidenceLevel":"High Confidence",
+					"estimatedMarketValue": "$690,000 - $870,000",
+					"numberOfImages":"12",
 					"buildYear": "1966"
 					
 		},
 		"propertyDetailsHighConfidence":{
-					"confidenceLevel":"High confidence",
+					"confidenceLevel":"High Confidence",
 					"numberOfImages":"2",
-					"nearbySchool1":"Research Preschool",
-					"nearbySchool2":"Eltham Woods Preschool",
-					"nearbySchool3":"Little Scooters Early Learning Centre & Kindergarten",
-					"estimatedMarketValue": "$870,000 - $1,100,000"
+					"nearbySchool1":"Hillcrest Terra Australis VEX Robotics",
+					"nearbySchool2":"Hillcrest Christian College",
+					"nearbySchool3":"Hillcrest Chaplaincy Centre",
+					"estimatedMarketValue": "$690,000 - $870,000"
 		},
 		"propertyExplorer":{
 					"login": "a@b.c",
 					"pwd": "Password1",
-					"clearSearchText":"1234567890ABCD#$%^",
-					"enterAdress":"26, Morison Road Clyde",
+					"clearSearchText":"6 Clayton Court",
+					"enterAdress":"6 Clayton Court",
 					"highConfidenceAddress":"38, Macumba Drive Clyde North"
 		},
 		"suburbInsight":{
-					"login":"a@b.c",
+					"login":"vivek.moorthi@suncorp.com.au",
 					"pwd":"Password1",
-					"suburbSearchText":"Eltha",
-					"floodRiskValue" : "Very Low",
-					"bushFireValue" : "Very Low",
+					"suburbSearchText":"Springvale South",
+					"floodRiskValue" : "Very low",
+					"bushFireValue" : "Very low",
 					"theifRiskValue" : "Low"
 		},
 		"propertyHub":{
-					"login":"a@b.c",
+					"login":"vivek.moorthi@suncorp.com.au",
 					"pwd":"Password1",
-					"searchText":"Eltha"
+					"searchText2":"6 Clayton Court",
+					"searchText":"Clyde"
 		},
 		"NoProperties":{
 					"login": "a@b.c",
@@ -193,15 +195,15 @@
 		},
 		"propertyProducts":{
 			"withProducts": {
-					"login": "a@b.c",
+					"login": "vivek.moorthi@suncorp.com.au",
 					"pwd": "Password1",
-					"addressLineText": "123 New Street, Brighton",
-         			"suburbText":"NSW 3186",
-          			"productDescriptionText1": "Home and Contents protected with Suncorp",
+					"addressLineText": "1/60 Siddeley Street, Docklands",
+         			"suburbText":"VIC, 3008",
+          			"productDescriptionText1": "Landlord Insurance",
          			"productDescriptionText2": "Landlord protected with APIA"
 			},
 			"withOutProducts": {
-					"login": "a@b.c",
+					"login": "gitin.george@suncorp.com.au",
 					"pwd": "Password1",
 					"addressLineText": "45 Super Long Long Name Street, Brighton",
          			"suburbText":"VIC 3064",
@@ -414,14 +416,14 @@
 						"accountNumber": "M374298342",
 						"description": "Life insurance",
 						"insuredPersonsname1": "Bob Smith",
-						"policyStatus":"Policy Active",
+						"policyStatus":"Policy active",
 						"insuredPersonsname2": "Andy Smith"		
 					},
 					{
           				"accountNumber": "038492834",
           				"description": "Accidental death insurance",
           				"insuredPersonsname1": "John Doe",
-          				"policyStatus":"Policy Active",
+          				"policyStatus":"Policy active",
 						"insuredPersonsname2": ""	
 					}
 				]
@@ -490,9 +492,11 @@
 				{
 						"login": "renewalDueOverdue@sun.com",
 						"pwd": "Password1",
+						"_comment":"policy level status comes from API and some front end logic",
 						"status":"Renewal due",
           				"risks": 
             			{
+            					 "_comment" : "description - comes from Portfolio API, end Date, end Date Description : calculated by Front end",
              				 "description1": "Single Risk, Single Cover Policy 1",
              				 "endDate1":"10 Dec 2017",
              				 "endDateDescription1":"Renewal due"
@@ -508,7 +512,7 @@
             			{
              				 "description1": "Single Risk, Single Cover Policy 2",
              				 "endDate1":"13 Nov 2017",
-             				 "endDateDescription1":"Expiry date"
+             				 "endDateDescription1":"Expired"
             			}
 				},
 				"policy3": 
@@ -531,14 +535,14 @@
             			{
              				 "description1": "Single Risk, Single Cover Policy 4",
              				 "endDate1":"13 Nov 2017",
-             				 "endDateDescription1":"Expiry date"
+             				 "endDateDescription1":"Expired"
             			}
 				},
 				"policy5": 
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             					"description1": "Multi Risk, Multi Cover 1",
@@ -546,14 +550,14 @@
              				"endDateDescription1":"Amendment date",
              				"description2": "Multi Risk, Multi Cover 2",
              				"endDate2":"25 Jul 2018",
-             				"endDateDescription2":"Expires"
+             				"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy6": 
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             				{
             					"description1": "Multi Risk, Multi Cover 3",
@@ -561,14 +565,14 @@
              				"endDateDescription1":"Amendment date",
             					"description2": "Multi Risk, Multi Cover 4",
             					"endDate2":"25 Jul 2018",
-             				"endDateDescription2":"Expires"
+             				"endDateDescription2":"Expiry date"
             				}
 				},
 				"policy7": 
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 5",
@@ -583,7 +587,7 @@
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 7",
@@ -598,79 +602,79 @@
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 1",
             				"endDate1":"10 Nov 2017",
-             			"endDateDescription1":"Cancellation Date",
+             			"endDateDescription1":"Cancellation date",
             				"description2": "Multi Risk, Single Cover 2",
             				"endDate2":"25 Jul 2018",
-             			"endDateDescription2":"Expires"
+             			"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy10": 
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Policy Active",
+						"status":"Policy active",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 3",
             				"endDate1":"10 Oct 2017",
-             			"endDateDescription1":"Cancellation Date",            			
+             			"endDateDescription1":"Cancellation date",            			
             				"description2": "Multi Risk, Single Cover 4",
             				"endDate2":"10 Mar 2017",
-             			"endDateDescription2":"Cancellation Date"
+             			"endDateDescription2":"Cancellation date"
             			}
 				},
 				"policy11": 
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Cancellation pending",
+						"status":"Policy cancellation pending",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 1",
             				"endDate1":"10 Oct 2017",
-             			"endDateDescription1":"Cancellation Date"
+             			"endDateDescription1":"Cancellation date"
             			}
 				},
 				"policy12": 
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status":"Cancellation pending",
+						"status":"Policy cancellation pending",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 9",
             				"endDate1":"10 Oct 2017",
-             			"endDateDescription1":"Cancellation Date",
+             			"endDateDescription1":"Cancellation date",
             				"description2": "Multi Risk, Multi Cover 10",
             				"endDate2":"25 Jul 2018",
-             			"endDateDescription2":"Expires"
+             			"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy13": 
 				{
 						"login": "cancellationDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Cancellation pending",
+						"status": "Policy cancellation pending",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 11",
             				"endDate1":"10 Oct 2017",
-             			"endDateDescription1":"Cancellation Date",
+             			"endDateDescription1":"Cancellation date",
             				"description2": "Multi Risk, Multi Cover 12",
             				"endDate2":"10 Jan 2017",
-             			"endDateDescription2":"Cancellation Date"
+             			"endDateDescription2":"Cancellation date"
             			}
 				},
 				"policy14": 
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 5",
@@ -678,14 +682,14 @@
              			"endDateDescription1":"Start date",	
             				"description2": "Multi Risk, Single Cover 6",
             				"endDate2":"25 Jul 2018",
-             			"endDateDescription2":"Expires"
+             			"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy15": 
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Single Cover 7",
@@ -700,7 +704,7 @@
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 2",
@@ -712,7 +716,7 @@
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 13",
@@ -720,14 +724,14 @@
              			"endDateDescription1":"Start date",
             				"description2": "Multi Risk, Multi Cover 14",
             				"endDate2":"25 Jul 2018",
-             			"endDateDescription2":"Expires"
+             			"endDateDescription2":"Expiry date"
             			}
 				},
 				"policy18": 
 				{
 						"login": "futureDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Future Activation",
+						"status": "Policy future activation",
           				"risks": 
             			{
             				"description1": "Multi Risk, Multi Cover 15",
@@ -742,7 +746,7 @@
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Active",
+						"status": "Policy active",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 3",
@@ -754,7 +758,7 @@
 				{
 						"login": "amendmentDatePolicies@sun.com",
 						"pwd": "Password1",
-						"status": "Policy Active",
+						"status": "Policy active",
           				"risks": 
             			{
             				"description1": "Single Risk Multi Cover 4",
@@ -1263,7 +1267,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "AAMI member login",
+			"brandIcon": "Sign up via your AAMI account",
 			"resetPasswordDescription": "Enter the email associated with your AAMI account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
@@ -1272,7 +1276,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "GIO member login",
+			"brandIcon": "Sign up via your GIO account",
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
@@ -1281,7 +1285,7 @@
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
 			"invalidPassword" : "password",
-			"brandIcon": "Shannons member login",
+			"brandIcon": "Sign up via your Shannons account",
 			"resetPasswordDescription": "Enter the email associated with your Shannons account. We'll email you a link to a page where you can easily create a new password."
 		}
 	],
@@ -1294,22 +1298,22 @@
 			"loginPageTitle": "Log in",
 			"shortEmailError" : "Please enter a valid email address Must be between 2 and 100 characters",
 			"invalidEmailError" : "Please enter a valid email address",
-			"emptyPasswordError" : "Field is required",
-			"emptyEmailError" : "Field is required",
+			"emptyPasswordError" : "Please enter your password",
+			"emptyEmailError" : "Please enter a valid email address",
 			"longEmailError" : "Must be between 2 and 100 characters",
 			"snackbarTextIncorrectLogin" : "Wrong email or password. Please check and retry."
 		},
 		"professionalServices": {
-			"chooseServiceLabel": "Choose a service that suits you:",
+			"chooseServiceLabel": "Select for Home or Vehicle below",
 			"urlBarText": "https://www.suncorp.com.au",
 			"professionalServicesPageTitle": "Professional Services",
 			"homeServicesHeading":"Home services",
-			"homeServicesDescription": "With the support of IBM and the natural language capabilities of Watson – IBM's artificial intelligence platform"
+			"homeServicesDescription": "Discover a range of services to help you buy, sell and maintain your home - all in one place."
 		},
 		"registration": {
 			"supportedGroup":["aami","apia","gio","shannons"],
-			"supportedGroupLoginTitleSuffix": " member login",
-			"invalidPostcodeMessage":"Please enter a valid australian postcode"
+			"supportedGroupLoginTitleSuffix": "member login",
+			"invalidPostcodeMessage":"Please enter a valid Australian postcode"
 		},
 		"portfolio": {
 			"emptyStateLabel": "No products listed here yet",
@@ -1320,8 +1324,7 @@
 			"policyAddedSuccessfulMsg": "Policy added",
 			"maxLimitError": "Exceeding the max limit of 30",
 			"feildValidationError": "Field is required",
-			"invalidCharactor": "Please enter a valid insurance policy number",
-			"":""
+			"invalidCharactor": "Please enter a valid insurance policy number"
 		},
 		"pinSetupPage": {
 			"enterPINLabel": "Enter a new 4-digit PIN",
@@ -1342,7 +1345,7 @@
 		"propertyExplorer":{
 			"propertyInsightSearchHintText": "Enter address",
 			"estimatedMarketValue": "Estimated property value",
-			"suburbInsightSearchHintText": "Enter suburb's name"
+			"suburbInsightSearchHintText": "Enter suburb"
 		},
 		"spendingsPage": {
 			"emptyTransactionsMessage": "Sorry, you don't have any transactions yet",
@@ -1362,33 +1365,41 @@
 		"propertyDetailsPage": {
 			"showMoreInfoLabel": "VIEW MORE INFO",
 			"showLessInfoLabel": "VIEW LESS INFO",
-			"HomeJourneyTitle": "Home journey"
+			"HomeJourneyTitle": "Property Explorer"
 		},
 		"homeJourneyPage": {
-			"journeyTitleText": "Our guide to\nbuying a home",
+			"journeyTitleText": "Suncorp Home Buying Guide",
 			"journeySubtitleText": "Buying a home can feel overwhelming.",
-			"journeyDescriptionText": "We've put together some helpful tips & ideas to guide you through each stage of the process - from the decision to buy a home to picking up the keys.",
+			"journeyDescriptionText": "Our step-by-step guide makes buying a property simple.",
 			
 			"planningTitleText": "Planning",
 			"planningDescriptionText": "The decision to buy a home is one of the biggest you're likely to ever make. Getting your planning right from the start, can help to save you more than just money in the end.",
-			"planningReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/planning.html",
+			"planningReadMoreButtonLink_Full": "‎https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/planning.html",
+			"planningReadMoreButtonLink": "https://www.suncorp.com.au",
 
 			"houseHuntingTitleText": "House hunting",
-			"houseHuntingDescriptionText": "It's easy to get lost in the excitement of searching for your dream home when it comes to the house hunting stage. These steps will help to keep you focused on the things that matter…",
-			"houseHuntingReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/house-hunting.html",
+			"houseHuntingDescriptionText": "It's easy to get lost in the excitement of searching for your dream home when it comes to the house hunting stage. These steps will help to keep you focused on the things that matter.",
+			"houseHuntingReadMoreButtonLink_Full": "‎https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/houseHunting.html",
+			"houseHuntingReadMoreButtonLink": "https://www.suncorp.com.au",
 
 			"gettingReadyTitleText": "Getting ready to buy",
-			"gettingReadyDescriptionText": "You're almost at the finish line, you've found the home and your offer was accepted, but there's still a lot left to do before you can get those keys. Knowing the steps for getting ready to buy your…",
-			"gettingReadyReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/ready-to-buy.html",
+			"gettingReadyDescriptionText": "You're almost at the finish line, you've found the home and your offer was accepted, but there's still a lot left to do before you can get those keys. Know the steps for getting ready to buy your new home, which could make all the difference.",
+			"gettingReadyReadMoreButtonLink_Full": "‎https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/gettingReady.html",
+			"gettingReadyReadMoreButtonLink": "https://www.suncorp.com.au",
 
 			"movingInTitleText": "Moving in",
-			"movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything…",
-			"movingInReadMoreButtonLink": "https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/moving-into-your-home.html"
+			"movingInDescriptionText": "Moving into your new home is as exciting as it is stressful. There are lots of things to think about and manage to make sure it all goes smoothly. Use these tips to help you get everything in order.",
+			"movingInReadMoreButtonLink_Full": "‎https://www.suncorp.com.au/banking/loans/home-loans/home-buying-guide/movingIn.html",
+			"movingInReadMoreButtonLink": "https://www.suncorp.com.au"
 		},
 		"registrationPage" : {
 			"shortSurnameErrorMsg" : "Must be between 2 and 40 characters",
 			"accountCreatingMsg" : "Registering details",
 			"fieldErrorMsg" : "Field is required",
+			"emailFieldErrorMsg" : "Please enter a valid email address",
+			"passwordFieldErrorMsg" : "Please enter your password",
+			"confirmPasswordFieldErrorMsg" : "Please confirm your password",
+			"mobileFieldErrorMsg" : "Please enter your mobile number",
 			"registerPage1Title" : "Step 1 of 3",
 			"registerPage2Title" : "Step 2 of 3",
 			"specialCharErrorMsg" : "Can contain only letters and the following special characters ' -",
@@ -1406,10 +1417,10 @@
 			"firstNamePasswordErrorMsg" : "Must not contain your first name",
 			"lastNamePasswordErrorMsg" : "Must not contain your last name",
 			"emailPasswordErrorMsg":"Must not contain your email",
-			"onlycharPasswordErrorMsg" : "Must contain at least one capital letter\n\nMust contain at least one number",
+			"onlycharPasswordErrorMsg" : "Must contain at least one uppercase letter\n\nMust contain at least one number",
 			"onlyCharUpperCasePasswordErrorMsg" : "Must contain at least one lowercase letter\n\nMust contain at least one number",
-			"passwordNotMatch" : "Password do not match",
-			"passwordNameRequirement":"not contain your first name, surname or email",
+			"passwordNotMatch" : "Passwords do not match",
+			"passwordNameRequirement":"NOT contain your first name, last name or email",
 			"duplicateEmailPopUpTitle":"Email already in use",
 			"duplicateEmailPopUpText":"Please log in with this email address, or use a different one to register for a new account.",
 			"duplicateEmailPopUpOkButtonText":"OK",
@@ -1442,18 +1453,18 @@
 			"digiVaultEmptyImageDescription" : "It looks like you haven't added any photos or documents here yet."
 		},
 		"portfolioError":{
-			"invalidAccountNumber":"Must be 9 characters  Can only contain numerical digits",
+			"invalidAccountNumber":"Please enter a valid account number",
 			"lengthError":"Must be 9 characters",
 			"mandatoryError":"Field is required"
 			},
 		"memberLogin" : {
 			"shortMobileNumberError" : "Must be 10 digits",
 			"invalidMobileNumberError" : "Must use 04XXXXXXXX format",
-			"emptyMobileNumberError" : "Field is required",
+			"emptyMobileNumberError" : "Please enter your mobile number",
 			"incorrectCredentialsSnackbarText" : "Wrong email or password. Please check and retry."
 		},
 		"getStartedPage" : {
-			"getStartedPageTitle" : "Welcome to the Suncorp family"
+			"getStartedPageTitle" : "Get started"
 		}
 	}
 }
