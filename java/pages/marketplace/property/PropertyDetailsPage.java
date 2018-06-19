@@ -91,7 +91,7 @@ public class PropertyDetailsPage   extends BasePage{
 	//EDUCATION CENTRES
 	private By nearbyEducationTitle = By.id("au.com.suncorp.marketplace:id/nearbyEducationText");
 	private By nearbyEducationViewAllButton = By.id("au.com.suncorp.marketplace:id/nearbyEducationViewAllText");
-	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/educationNameText");
+	private By nearbyEducationCentres = By.id("au.com.suncorp.marketplace:id/nearbyEducationName");
 	private By nearbyEducationCentresS5andPixel = By.id("au.com.suncorp.marketplace:id/nearbyEducationName");
 	
 	//disclaimers
@@ -99,11 +99,18 @@ public class PropertyDetailsPage   extends BasePage{
 	private By confidenceLevelDisclaimer = MobileBy.AccessibilityId("Open the Estimated Property Valuation Confidence disclaimer");
 	private By coreLogicDisclaimer = MobileBy.AccessibilityId("Open the Core Logic services disclaimer");
 	private By lastSaleDisclaimer = MobileBy.AccessibilityId("Open the property Last Sale information disclaimer");
-	private By confidenceLevelDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Confidence Indicator']");
+	private By confidenceLevelDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Estimated property value/AVM confidence measures']");
 	private By confidenceLevelDisclaimerClose	= MobileBy.AccessibilityId("Navigate up");
-	private By coreLogicDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='CoreLogic']");
+	private By coreLogicDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='Data provided by CoreLogic']");
 	private By estimatedPropertyValueDisclaimerScreenTitle = By.xpath("//android.widget.TextView[@text='Estimated property value']");
 	private By lastSaleDisclaimerScreenTitle	= By.xpath("//android.widget.TextView[@text='Last sale']");
+	
+	//Derived Assets
+	private By digitalSafe = By.id("au.com.suncorp.marketplace:id/documentTile");
+	
+	public WebElement checkDigitalSafe() {
+		return find(digitalSafe);
+	}
 	
 	public WebElement checkLastSaleDisclaimerScreenTitle() {
 		return find(lastSaleDisclaimerScreenTitle);

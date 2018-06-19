@@ -31,7 +31,6 @@ public class TermsAndConditionsPage extends BasePage {
 	
 	public WebElement checkCancelButton() {
 		return find(cancelButton,2);
-
 	}
 	
 	public void tapAcceptButton() {

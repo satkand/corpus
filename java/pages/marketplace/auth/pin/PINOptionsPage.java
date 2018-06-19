@@ -39,7 +39,12 @@ public class PINOptionsPage extends BasePage{
 	}
 	
 	public WebElement checkMaybeLaterButton(){
-		return find(maybeLaterButton);
+//		return find(maybeLaterButton);
+		if (find(pinPromptImage) != null) {
+			return find(maybeLaterButton, 50);
+		}
+		else 
+			return find(maybeLaterPromptButton, 50);
 	}
 	
 	public WebElement checkPinPromptImage(){
@@ -48,10 +53,10 @@ public class PINOptionsPage extends BasePage{
 	
 	public WebElement checkPinPromptUserWelcome(){
 		if (find(pinPromptImage) != null) {
-			return find(pinPromptUserWelcome, 40);
+			return find(pinPromptUserWelcome, 50);
 		}
 		else 
-			return find(promptUserWelcome, 40);
+			return find(promptUserWelcome, 50);
 	}
 	
 	public WebElement checkPinPromptDescription(){

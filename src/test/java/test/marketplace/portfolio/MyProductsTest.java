@@ -22,33 +22,32 @@ public class MyProductsTest extends App {
 	String coverDateDescription;
 	String coverEndDate;
 	
-	SoftAssert softAssert = new SoftAssert();
-	
 	// This method verifies the elements on products screen without any policies or accounts
 	// DMPM-240 Scenario 4
 	//106 - Scenario 1 (DMPM-389 and DMPM-411)
 	// 215 - Scenario 1 (DMPM-476)
-	@Test (groups = {"DMPM-106", "DMPM-389","DMPM-411","DMPM-215","DMPM-476","DMPM-240","DMPM-1327", "marketplace", "portfolio", "priority-minor"})
+	@Test (groups = {"DMPM-8435", "DMPM-8601","DMPM-106", "DMPM-389","DMPM-411","DMPM-215","DMPM-476","DMPM-240","DMPM-1327", "marketplace", "portfolio", "priority-minor"})
 	public void testElementsOnMyProductsPageWithEmptyState(){
 
 		navigateToMyProductsScreen("emptylist","loginEmptyProdList");
 		
 		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My Products screen - My Products Title is not shown on My Products screen");
 		Assert.assertNotNull(myProductsPage.checkAddExistingProductButton(), "My Products screen - Add existing product button is not shown");
+		Assert.assertEquals(myProductsPage.getAddExistingProductButtonLabel(), Copy.ADD_EXISTING_PRODUCT_BUTTON_LABEL,"Add existing product button is not displayed");
 		Assert.assertNotNull(myProductsPage.checkEmptyStateImage(), "My Products screen - image is not shown");
 		Assert.assertNotNull(myProductsPage.checkEmptyStateLabel(), "My Products screen - empty state label is not shown");
-		Assert.assertEquals(myProductsPage.getEmptyStateLabelText(),  utils.readTestData("copy", "portfolio","emptyStateLabel"));
-		Assert.assertNotNull(myProductsPage.checkEmptyStateDescription(), "My Products screen - empty state description is not shown");
-		Assert.assertEquals(myProductsPage.getEmptyStateDescriptionText(),  Copy.EMPTY_PORTFOLIO_SCREEN_DESCRIPTION);
+		Assert.assertEquals(myProductsPage.getEmptyStateLabelText(),  Copy.EMPTY_STATE_LABEL,"Empty state label is not displayed on My products screen");
 		Assert.assertNotNull(myProductsPage.checkFindProductButton(), "My Products screen - Find Product button in My Products screen is not shown");
 		
 		myProductsPage.tapAddExistingProductButton();
 		
 		Assert.assertNotNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Bottom sheet label is not present");
-		Assert.assertEquals(addProductPage.getaddExistingProductScreenTitleText(), utils.readTestData("copy", "portfolio","addExistingProductScreenLabel"));
+		Assert.assertEquals(addProductPage.getaddExistingProductScreenTitleText(), Copy.ADD_EXISTING_PRODUCT_SCREEN_LABEL,"Add existing product screen title is incorrect");
 		Assert.assertNotNull(addProductPage.checkAddInsurancePolicyButton(), "My Products screen - Insurance policy button on Bottom sheet label is not present");
 		Assert.assertNotNull(addProductPage.checkAddBankAccountButton(), "My Products screen - Bank Account button is not present");
-		Assert.assertNotNull(addProductPage.checkAddSuperAccountButton(), "My Products screen - Super Account button is not present");
+		//TODO: Removed for Release R3
+		//Assert.assertNotNull(addProductPage.checkAddSuperAccountButton(), "My Products screen - Super Account button is not present");
+		Assert.assertNull(addProductPage.checkAddSuperAccountButton(), "My Products screen - Super Account button is present");
 
 	}
 	
@@ -77,9 +76,9 @@ public class MyProductsTest extends App {
 		myProductsPage.tapAddExistingProductButton();
 	
 		Assert.assertNotNull(addProductPage.checkAddExistingProductScreenLabel(), "My Products screen - Add existing product screen title is not present");
-		addProductPage.tapAddSuperAccountButton();
-		Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
-	
+//		addProductPage.tapAddSuperAccountButton();
+//		Assert.assertNotNull(addBankAccountPage.checkAddSuperAccountPageTitle(), "My Products screen - Add Super Account page title is not present");
+//	
 	
 	}
 	
@@ -102,7 +101,8 @@ public class MyProductsTest extends App {
 		
 		navigateToMyProductsScreen("bankingProduct","termDepositAccount");
 	
-		Assert.assertNotNull(myProductsPage.checkViewDetailsButton(), "My Products Page - View details button is not present");		
+		Assert.assertNotNull(myProductsPage.checkViewDetailsButton(), "My Products Page - View details button is not present");	
+		Assert.assertEquals(myProductsPage.getViewDetailsButtonLabel(),Copy.VIEW_DETAILS_BUTTON_LABEL, "My Products Page - View details button is not present");		
 		myProductsPage.tapViewDetails();
 		Assert.assertNotNull(accountDetailsPage.checkAccountDetailsTitle(), "Account Details page - Account details title is not present");
 		accountDetailsPage.tapBackButton();
@@ -321,88 +321,99 @@ public class MyProductsTest extends App {
 		Assert.assertNotNull(myProductsPage.checkExpiryDate(coverDescription, coverEndDate),"My Products Page: Insurance products: Cover Date is incorrect, expected:"+coverEndDate);
 	
 	}
-	
+
+	// TODO: Removed for Release R3
 	// This function verifies the super accounts
 	// DMPM-2599 Display superannuation products
-	@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2599", "DMPM-3118", "marketplace", "portfolio", "priority-major" })
+	@Test(groups = {"DMPM-8435", "DMPM-8599","DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2599", "DMPM-3118", "marketplace", "portfolio", "priority-major" })
 	public void testWealthProducts()
 	{
 		
 		navigateToMyProductsScreen("wealthProduct","user1");	
 		
-		// Get the list of wealth / super accounts displayed for the user on the screen.
-		List<String> descriptionList = myProductsPage.fetchWealthProductTypeTextList();
-		List<String> accountNumberList = myProductsPage.fetchWealthProductAccountNumberTextList();
-		List<String> currentBalanceList = myProductsPage.fetchWealthProductCurrentBalanceTextList();
+		//TODO: remove below code post R3.0 release
+		Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My Products screen - My Products Title is not shown on My Products screen");
+		Assert.assertNotNull(myProductsPage.checkAddExistingProductButton(), "My Products screen - Add existing product button is not shown");
+		Assert.assertNotNull(myProductsPage.checkEmptyStateImage(), "My Products screen - image is not shown");
+		Assert.assertNotNull(myProductsPage.checkEmptyStateLabel(), "My Products screen - empty state label is not shown");
+		Assert.assertEquals(myProductsPage.getEmptyStateLabelText(),  Copy.EMPTY_STATE_LABEL,"Empty screen label not displayed on My products screen");
+			//TODO: Remove above code post R3.0 release
 		
-		// Loading expected data from data sheet.
-		List<Object> wealthProducts = utils.readTestDataList("portfolio","wealthProducts","user1","products");
-		for (Object wealthProduct : wealthProducts) {
-			HashMap<String, String> wealthProductItem = (HashMap<String, String>)wealthProduct;
-			String accountType = wealthProductItem.get("description");
-			String accNumber = wealthProductItem.get("accountNumber");
-			String currentBalance = wealthProductItem.get("accountBalance");
-			
-			// Compare the actual and expected values for wealth products.
-			Assert.assertEquals(descriptionList.get(0), accountType, "My Products Page: Wealth Products - Account Description is not matching, exptected"+accountType);
-			descriptionList.remove(0);
-			Assert.assertEquals(accountNumberList.get(0), accNumber, "My Products Page: Wealth Products - Account Number is not matching, exptected"+accNumber);
-			accountNumberList.remove(0);
-			Assert.assertEquals(currentBalanceList.get(0), currentBalance, "My Products Page: Wealth Products - Current Balance is not matching, exptected"+currentBalance);
-			currentBalanceList.remove(0);
-			
-			
-		}
+		// TODO: Use below code post R3.0 release 
+		// Get the list of wealth / super accounts displayed for the user on the screen.
+//		List<String> descriptionList = myProductsPage.fetchWealthProductTypeTextList();
+//		List<String> accountNumberList = myProductsPage.fetchWealthProductAccountNumberTextList();
+//		List<String> currentBalanceList = myProductsPage.fetchWealthProductCurrentBalanceTextList();
+//		
+//		// Loading expected data from data sheet.
+//		List<Object> wealthProducts = utils.readTestDataList("portfolio","wealthProducts","user1","products");
+//		for (Object wealthProduct : wealthProducts) {
+//			HashMap<String, String> wealthProductItem = (HashMap<String, String>)wealthProduct;
+//			String accountType = wealthProductItem.get("description");
+//			String accNumber = wealthProductItem.get("accountNumber");
+//			String currentBalance = wealthProductItem.get("accountBalance");
+//			
+//			// Compare the actual and expected values for wealth products.
+//			Assert.assertEquals(descriptionList.get(0), accountType, "My Products Page: Wealth Products - Account Description is not matching, exptected"+accountType);
+//			descriptionList.remove(0);
+//			Assert.assertEquals(accountNumberList.get(0), accNumber, "My Products Page: Wealth Products - Account Number is not matching, exptected"+accNumber);
+//			accountNumberList.remove(0);
+//			Assert.assertEquals(currentBalanceList.get(0), currentBalance, "My Products Page: Wealth Products - Current Balance is not matching, exptected"+currentBalance);
+//			currentBalanceList.remove(0);
+//		
+//			
+//		}
 	}
 	
+	// TODO: Removed for R3 Release
 	// This function verifies the life insurance accounts
 	// DMPM-2599 Display life insurance products
 	// DMPM-5799
 	// DMPM-5103 Append "insurance" to my product type
 	// DMPM-5901 Enforce sentence case for all product descriptions
-	@Test(groups = { "DMPM-2599", "DMPM-3118", "DMPM-5799","DMPM-5103","DMPM-6048","marketplace", "portfolio", "priority-major" })
-		public void testLifeProducts()
-		{
-			
-			navigateToMyProductsScreen("lifeProduct","lifeProductAccount");	
-			Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
-			
-			// Get the list of wealth / super accounts displayed for the user on the screen.
-			List<String> descriptionList = myProductsPage.fetchLifeProductTypeTextList();
-			List<String> policyStatusList = myProductsPage.fetchLifePolicyStatusList();
-			List<String> insuredNameList = myProductsPage.fetchLifePolicyInsuredNamesList();
-			
-			// Loading expected data from data sheet.
-			List<Object> lifeProducts = utils.readTestDataList("portfolio","bankingProducts","lifeProductAccount","products");
-			for (Object lifeProduct : lifeProducts) {
-				HashMap<String, String> lifeProductItem = (HashMap<String, String>)lifeProduct;
-				
-				String accountType = lifeProductItem.get("description");
-				String policyStatus = lifeProductItem.get("policyStatus");
-				String firstInsured = lifeProductItem.get("insuredPersonsname1");
-				String secondInsured = lifeProductItem.get("insuredPersonsname2");
-			
-				// Compare the actual and expected values for wealth products.
-				Assert.assertEquals(descriptionList.get(0), accountType, "My Products Page: Wealth Products - Account Description is not matching, exptected"+accountType);
-				descriptionList.remove(0);
-				Assert.assertEquals(policyStatusList.get(0), policyStatus, "My Products Page: Wealth Products - Policy Status is not matching, exptected"+policyStatus);
-				policyStatusList.remove(0);
-				
-				if((secondInsured.isEmpty()))
-				{
-					Assert.assertEquals(insuredNameList.get(0), firstInsured, "My Products Page: Wealth Products - Insured persons name is not matching, exptected"+firstInsured);
-					insuredNameList.remove(0);
-				}
-				else
-				{
-					Assert.assertEquals(insuredNameList.get(0), firstInsured+", "+secondInsured, "My Products Page: Wealth Products - Insured persons name is not matching, exptected"+firstInsured+","+secondInsured);
-					insuredNameList.remove(0);
-					
-				}
-								
-			}
-			
-		}
+//	@Test(groups = { "DMPM-2599", "DMPM-3118", "DMPM-5799","DMPM-5103","DMPM-6048","marketplace", "portfolio", "priority-major" })
+//		public void testLifeProducts()
+//		{
+//			
+//			navigateToMyProductsScreen("lifeProduct","lifeProductAccount");	
+//			Assert.assertNotNull(myProductsPage.checkMyProductsTitle(), "My products page - title is not present");
+//			
+//			// Get the list of wealth / super accounts displayed for the user on the screen.
+//			List<String> descriptionList = myProductsPage.fetchLifeProductTypeTextList();
+//			List<String> policyStatusList = myProductsPage.fetchLifePolicyStatusList();
+//			List<String> insuredNameList = myProductsPage.fetchLifePolicyInsuredNamesList();
+//			
+//			// Loading expected data from data sheet.
+//			List<Object> lifeProducts = utils.readTestDataList("portfolio","bankingProducts","lifeProductAccount","products");
+//			for (Object lifeProduct : lifeProducts) {
+//				HashMap<String, String> lifeProductItem = (HashMap<String, String>)lifeProduct;
+//				
+//				String accountType = lifeProductItem.get("description");
+//				String policyStatus = lifeProductItem.get("policyStatus");
+//				String firstInsured = lifeProductItem.get("insuredPersonsname1");
+//				String secondInsured = lifeProductItem.get("insuredPersonsname2");
+//			
+//				// Compare the actual and expected values for wealth products.
+//				Assert.assertEquals(descriptionList.get(0), accountType, "My Products Page: Wealth Products - Account Description is not matching, exptected"+accountType);
+//				descriptionList.remove(0);
+//				Assert.assertEquals(policyStatusList.get(0), policyStatus, "My Products Page: Wealth Products - Policy Status is not matching, exptected"+policyStatus);
+//				policyStatusList.remove(0);
+//				
+//				if((secondInsured.isEmpty()))
+//				{
+//					Assert.assertEquals(insuredNameList.get(0), firstInsured, "My Products Page: Wealth Products - Insured persons name is not matching, exptected"+firstInsured);
+//					insuredNameList.remove(0);
+//				}
+//				else
+//				{
+//					Assert.assertEquals(insuredNameList.get(0), firstInsured+", "+secondInsured, "My Products Page: Wealth Products - Insured persons name is not matching, exptected"+firstInsured+","+secondInsured);
+//					insuredNameList.remove(0);
+//					
+//				}
+//								
+//			}
+//			
+//		}
 		
 	// This function verifies the Insurance accounts		
 	// DMPM-105 View Insurance Policies - Scenario 4	
@@ -444,6 +455,7 @@ public class MyProductsTest extends App {
 	@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-5555", "DMPM-6043","marketplace", "portfolio", "priority-minor"})
 	public void testTransactionBankAccountDetails(){
 	
+		SoftAssert softAssert = new SoftAssert();
 		navigateToMyProductsScreen("bankingProduct", "everyDayAccount");
 
 		// fetch the actual banking products shown on the current page
@@ -476,7 +488,7 @@ public class MyProductsTest extends App {
 		Assert.assertNotNull(myProductsPage.checkProductTypeImage(), "My products screen - Product Type image is not present");
 		
 		
-		Assert.assertNotNull(myProductsPage.checkAvailableBalanceLable(), "My products screen - Available balance lable is not present");
+		Assert.assertNotNull(myProductsPage.checkAvailableBalanceLabel(), "My products screen - Available balance lable is not present");
 		Assert.assertNotNull(myProductsPage.checkViewDetailsButton(), "My Products Page - View details button is not present");
 		
 	}
@@ -489,6 +501,7 @@ public class MyProductsTest extends App {
 		@Test (groups = {"DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-3700", "DMPM-6009","marketplace", "portfolio", "priority-minor"})
 		public void testTermDepositsBankAccountDetails(){
 		
+			SoftAssert softAssert = new SoftAssert();
 			navigateToMyProductsScreen("bankingProduct", "termDepositAccount");
 
 			// fetch the actual banking products shown on the current page
@@ -532,6 +545,7 @@ public class MyProductsTest extends App {
 	@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2607", "DMPM-6008", "marketplace", "portfolio", "priority-minor" })
 	public void testLineOfCreditLoanBankAccountDetails() {
 
+		SoftAssert softAssert = new SoftAssert();
 		navigateToMyProductsScreen("bankingProduct", "lineOfCreditAccount");
 
 		// fetch the actual banking products shown on the current page
@@ -581,6 +595,7 @@ public class MyProductsTest extends App {
 		@Test(groups = { "DMPM-167", "DMPM-466","DMPM-2988","DMPM-3124","DMPM-1325","DMPM-240","DMPM-1325","DMPM-2605", "DMPM-6044", "marketplace", "portfolio", "priority-minor" })
 		public void testLoanBankAccountDetails() {
 
+			SoftAssert softAssert = new SoftAssert();
 			navigateToMyProductsScreen("bankingProduct", "loanAccount");
 
 			// fetch the actual banking products shown on the current page
@@ -659,7 +674,7 @@ public class MyProductsTest extends App {
 		
 	// DMPM-1460 UI updates on the Products Portfolio screen
 		@Test(groups = { "DMPM-6127","DMPM-7151","DMPM-7153","DMPM-7154", "marketplace", "portfolio", "priority-major" })
-		public void testDisclaimerPortfolioScreen() {
+		public void testADisclaimerPortfolioScreen() {
 			
 			loginToApp(utils.readTestData("portfolio","bankingProducts","lifeProductAccount", "login"), utils.readTestData("portfolio","bankingProducts", "lifeProductAccount", "pwd"));
 

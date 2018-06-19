@@ -24,7 +24,7 @@ public class GetStartedPage extends BasePage {
 	private By brandSelectListTitle = By.id("au.com.suncorp.marketplace:id/alertTitle");
 	private By getStartedNextButton = By.id("au.com.suncorp.marketplace:id/nextButton");
 	private By seletBrand = null;
-	private By suncorpBrand = By.xpath("//android.widget.TextView[@text='Suncorp']");
+	private By suncorpBrand = By.xpath("//android.widget.TextView[@text='SUNCORP']");
 	
 	
 	private By backButton = MobileBy.AccessibilityId("Back");
