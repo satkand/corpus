@@ -415,8 +415,11 @@ public class PolicyDetailsTest extends App {
 		myProductsPage.scrollToProductAndTap(carProduct);
 		common.waitForLoadingIndicatorToDisappear();
 		policyDetailsPage.scrollToRiskViewOnlyButton(screenHeight);
+		Assert.assertNotNull(policyDetailsPage.checkPolicyRiskDescription(), "Risk tile description not shown!");
 		Assert.assertNotNull(policyDetailsPage.checkRiskViewOnlyDetails(), "Risk tile in policy details do not show risk view button!");
-		policyDetailsPage.tapRiskViewOnlyDetails();
+		if (policyDetailsPage.checkRiskViewDetails() == null) {
+			policyDetailsPage.tapRiskViewOnlyDetails();
+		}
 		Assert.assertEquals(riskDetailsPage.getAdditionalExcessesTabText(), Copy.ADDITIONAL_EXCESSES_DETAILS_LABEL,
 				"Additional Excess Details label is not displayed");
 		riskDetailsPage.tapAdditionalExcessesTab();
@@ -511,7 +514,7 @@ public class PolicyDetailsTest extends App {
 	}
 	
 	@TestDetails(story1 = "DMPM-5026:DMPM-6894,DMPM-6895,DMPM-6897")
-	@Test(groups = { "marketplace", "policy details", "priority-minor" })
+	@Test(retryAnalyzer = CustomRetryListener.class, groups = { "marketplace", "policy details", "priority-minor" })
 	public void testRiskCoverPeriod() throws InterruptedException {
 
 		String homePolicy = "homePolicy";
@@ -565,7 +568,7 @@ public class PolicyDetailsTest extends App {
 		common.waitForLoadingIndicatorToDisappear();
 		myProductsPage.tapProductByPolicyStatus(myProductActivePolicy);
 		common.waitForLoadingIndicatorToDisappear();
-		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus().toUpperCase(), activePolicy,
+		Assert.assertEquals(policyDetailsPage.getPolicyActiveStatus(), activePolicy,
 				"Policy active status is incorrect");
 		assertRiskCoverPeriodDates(activeStartDate, activeEndDate, screenHeight);
 		assertPolicyRenewalStatus(myProductCancellationPending, cancellationPending, cancellationPendingStartDate, cancellationPendingEndDate, screenHeight);
