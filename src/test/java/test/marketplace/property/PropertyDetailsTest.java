@@ -234,7 +234,7 @@ public class PropertyDetailsTest extends App{
 		
 		propertyExplorerPage.tapMiniMapWhatsNearByButton();
 		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapPin(), "Property Explorer Page - Full screen map pin is not present");
-		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map pin is not present");
+		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapTitle(), "Property Explorer Page - Full screen map title is not present");
 		Assert.assertNotNull(whatsNearbyPage.checkFullScreenMapCloseButton(), "Property Explorer Page - Full screen map pin is not present");
 		
 		whatsNearbyPage.tapFullScreenMapCloseButton();

@@ -22,7 +22,7 @@ public class WhatsNearbyPage extends BasePage{
 	private By fullScreenGoogleLabel = By.xpath("//android.widget.FrameLayout[@resource-id='au.com.suncorp.marketplace:id/whatsNearbyMapView']//android.widget.FrameLayout//android.widget.RelativeLayout//android.widget.ImageView");
 	
 	private By fullScreenMapCloseButton = MobileBy.AccessibilityId("Navigate up");
-	private By fullScreenMapTitle = By.xpath("//android.view.ViewGroup[@resource-id='au.com.suncorp.marketplace:id/suncorpToolbar']//android.widget.TextView");
+	private By fullScreenMapTitle = By.xpath("//android.widget.TextView[@text='Nearby features']");
 	
 	private By fullScreenMap= MobileBy.AccessibilityId("Google Map");
 	private By fullScreenMapPropertyPin= By.xpath("//android.view.View[@content-desc=\"Google Map\"]//android.view.View");
