@@ -112,7 +112,7 @@ public class PolicyDetailsPage extends BasePage {
 	}
 	
 	public WebElement checkRiskViewDetails() {
-		return find(riskViewDetails);
+		return find(riskViewDetails,3);
 	}
 	
 	public WebElement checkRiskViewOnlyDetails() {

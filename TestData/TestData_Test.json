@@ -180,6 +180,38 @@
          			"productDescriptionText2":"Home and Contents protected until 1 April 2018"
 			}}
 	},
+	"offersPage": {
+			"login":{
+			"email" : "offers@sun.com",
+			"pwd" :"Password1",
+			"screenHeight":"1920"
+			},
+			"healthTab": {
+				"offerTitle": "UAT - Suncorp Travel Insurance",
+				"offerDescription": "Travelling - whether for pleasure or business - can be great, but it's  no without risk. Make sure you're covered. ",
+				"url" : "https://www.suncorp.com.au"
+			},
+			"wealthTab": {
+				"offerTitle": "UAT - Suncorp Everyday Options Account",
+				"offerDescription": "A full-featured transaction account combined with up to 9 interest-earning sub-accounts. Manage your money in one place.",
+				"url" : "https://www.suncorp.com.au"
+			},
+			"propertyTab": {
+				"offerTitle": "UAT - Suncorp Back to Basics Loan",
+				"offerDescription": "A home loan with our lowest variable rate and no monthly account keeping fee. ",
+				"url" : "https://www.suncorp.com.au"
+			},
+			"vehiclesTab": {
+				"offerTitle": "UAT - Suncorp Comprehensive Car Insurance",
+				"offerDescription": "Coverage that takes care of your vehicle - as well as the other parties involved - if the unexpected happens on the road. ",
+				"url" : "https://www.suncorp.com.au"
+			},
+			"overviewTab": {
+				"offerTitle": "UAT - Suncorp Back to Basics Loan",
+				"offerDescription": "A home loan with our lowest variable rate and no monthly account keeping fee. ",
+				"url" : "https://www.suncorp.com.au"
+			}
+	},
 	"articlesCarousel": {
 		"articleCarouselText":"Articles",
 		"articleReadMoreButton": "READ MORE",
@@ -191,18 +223,18 @@
 			"articleViewPager": [
 			    
 				{ 
-					"articleTitle" : "UAT - First home buyers grants in your state",
-					"articleDescription" : "If you're buying your first home, you may be entitled to a little help. Find out here.",
+					"articleTitle" : "UAT - 5 home pool installation tips",
+					"articleDescription" : "Swimming pools are a lot of fun! But installing them is not without is headaches. Learn how to avoid them.",
 					"webViewUrl" : "https://www.suncorp.com.au"
 				},
 				{ 
 					"articleTitle" : "UAT - What influences how much I can borrow?",
-					"articleDescription" : "There are a lot of variables that determine how much you can borrow. Knowing what they are can help put you in the best position.",
+					"articleDescription" : "Your borrowing power is informed by a range of factors. Get to know them so you can take control.",
 					"webViewUrl" : "https://www.suncorp.com.au"
 				},
 				{ 
-					"articleTitle" : "UAT - Estimating the costs of buying a property",
-					"articleDescription" : "Stamp duty, LMI and other borrowing costs are all part of the process. Make sure you're confident and work with your advisor to get the right deal for your lifestyle.",
+					"articleTitle" : "UAT - What it pays to know before building your own home",
+					"articleDescription" : "If you're about to embark on the great home buiding adventure, you'll want to be sure you know where to begin.",
 					"webViewUrl" : "https://www.suncorp.com.au"
 				}
 			]
@@ -1394,28 +1426,6 @@
 			"duplicateEmailPopUpText":"Please log in with this email address, or use a different one to register for a new account.",
 			"duplicateEmailPopUpOkButtonText":"OK",
 			"duplicateEmailPopUpUseAnotherEmailButtonText":"LOG IN WITH THIS EMAIL"
-		},
-		"offersPage": {
-			"healthTab": {
-				"offerTitle": "Health Insurance",
-				"offerDescription": "We're bringing our trusted reputation to health insurance. Cover for you & those that matter most."
-			},
-			"wealthTab": {
-				"offerTitle": "Open a bank account",
-				"offerDescription": "More than 840,000 Australians have a bank account with Suncorp Bank. Stick with the brand you know you can trust."
-			},
-			"propertyTab": {
-				"offerTitle": "Contents Insurance",
-				"offerDescription": "Covers loss of and damage to the contents of your home, garage and shed, caused by fire, break-ins and weather events. Includes storm, flood and bushfire"
-			},
-			"vehiclesTab": {
-				"offerTitle": "CTP Insurance",
-				"offerDescription": "Take out a new CTP policy with Suncorp Insurance & get a $50 gift card. T&Cs apply."
-			},
-			"overviewTab": {
-				"offerTitle": "Building Insurance",
-				"offerDescription": "Save $50 when you buy online. New policies only. Buy Suncorp Home Insurance and keep all your insurance policies in one place."
-			}
 		},
 		"digiVaultPage" : {
 			"digiVaultEmptyImageTitle" : "Your vault is empty",

@@ -98,7 +98,7 @@ public class ArticlesPropertyTest extends App{
 			landingPage.tapVehiclesTab();
 			
 			//Step 1: Navigate back to articles carousel of Home-Property dimension
-			landingPage.tapPropertyTab();
+			landingPage.tapHomeTab();
 			
 			//Step 2: Verify each individual content in the Articles to ascertain that it is not refreshed.
 			articlesPage.scrollToArticles();
@@ -138,8 +138,8 @@ public class ArticlesPropertyTest extends App{
 			welcomePage.tapGuestAccessButton();
 		}
 		
-		landingPage.tapPropertyTab();
-		Assert.assertTrue(landingPage.ispropertyTabSelected(), "Home tab is not selected on landing page");
+		landingPage.tapHomeTab();
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 	}
 	
 	private void verifyCallToAction() throws InterruptedException {
@@ -223,8 +223,8 @@ public class ArticlesPropertyTest extends App{
 			articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
 			Assert.assertNotNull(articlesPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
 			Assert.assertNotNull(articlesPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
-			Assert.assertNotNull(articlesPage.checkArticleDesc(), "Home Proeprty Page - Article description is not shown as expected.");
 			Assert.assertEquals(articlesPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+			Assert.assertNotNull(articlesPage.checkArticleDesc(), "Home Proeprty Page - Article description is not shown as expected.");
 			Assert.assertEquals(articlesPage.getArticleDesc(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
 			Assert.assertNotNull(articlesPage.checkArticleReadMoreBtn(), "Home Proeprty Page - Read More button is MISSING!");
 			
