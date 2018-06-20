@@ -26,7 +26,7 @@ public class LoginAuthPage extends BasePage{
 	}
 
 	public WebElement checkChangeAccountButton(){
-		return find(changeAccountButton,5);
+		return find(changeAccountButton);
 	}
 	
 	public void tapChangeAccountButton() {

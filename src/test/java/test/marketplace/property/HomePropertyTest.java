@@ -176,13 +176,16 @@ public class HomePropertyTest extends App {
 		Assert.assertNotNull(propertyDetailsPage.checkDigitalSafe(), "Derived Property Details Page - Digital safe button is not displayed");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 		
+		Assert.assertNotNull(homePropertyPage.checkpropertyImage(), "Home Property Page - Property image is not present");
 		homePropertyPage.tapPropertyImage();
 		Assert.assertNotNull(propertyDetailsPage.checkDigitalSafe(), "Derived Property Details Page - Digital safe button is not displayed");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
 		
+		Assert.assertNotNull(homePropertyPage.checkaddressLineText(), "Home Property Page - Property image is not present");
 		homePropertyPage.tapAddressLineText();
 		Assert.assertNotNull(propertyDetailsPage.checkDigitalSafe(), "Derived Property Details Page - Digital safe button is not displayed");
 		propertyDetailsPage.tapAndroidDeviceBackButton();
+		Assert.assertNotNull(homePropertyPage.checkPropertyDetailsButton(), "Home Property Page - Property details button is not present");
 		
 		//TODO : R3 Release
 /*		homePropertyPage.scrollToSuppliedAsset(utils.readTestData("propertyDimension", "propertyProducts","withOutProducts","addressLineText"));;

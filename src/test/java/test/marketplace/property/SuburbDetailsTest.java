@@ -66,9 +66,9 @@ public class SuburbDetailsTest extends App {
 		Assert.assertNotNull(suburbDetailsPage.checkBushFireValue(), "Suburb Details page - Bush Fire value is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkTheftRiskLabelText(),"Suburb Details page - Theft Risk label is not matching");
 		Assert.assertNotNull(suburbDetailsPage.checkTheftRiskValue(), "Suburb Details page - Theft RIsk value is not present");
+		suburbDetailsPage.scrollToDisclaimerLabelText();
 		Assert.assertNotNull(suburbDetailsPage.checkDemographicsTitleText(), "Suburb Details page - Demographics title is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkDemographicsText(), "Suburb Details page - Demographics text is not present");
-		suburbDetailsPage.scrollToDisclaimerLabelText();
 		Assert.assertNotNull(suburbDetailsPage.checkFamilyCompositionButton(),"Suburb Details page - Family Composition button is not present");//
 		Assert.assertNotNull(suburbDetailsPage.checkOccupancyTypeButton(), "Suburb Details page - Occupancy Type button is not present");
 		Assert.assertNotNull(suburbDetailsPage.checkAgesButton(),"Suburb Details page - Ages button not present");

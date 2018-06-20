@@ -891,7 +891,7 @@
             			{
             			        "login": "policystatus@sun.com",
 		                     "pwd": "Password1",
-             				 "active": "POLICY ACTIVE",
+             				 "active": "Policy active",
              				 "cancellationPending":"Policy cancellation pending",
              				 "futureActive": "Policy future activation",
              				 "renewalDue":"Renewal due",
@@ -1414,7 +1414,7 @@
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
-			"brandName": "Shannons",
+			"brandName": "SHANNONS",
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",

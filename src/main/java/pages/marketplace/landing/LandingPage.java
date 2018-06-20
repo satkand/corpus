@@ -158,4 +158,7 @@ public class LandingPage extends BasePage {
 		tapElement(checkMoneyTab());
 
 	}
+
+
 }
+

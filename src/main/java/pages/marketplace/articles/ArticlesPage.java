@@ -107,7 +107,7 @@ public class ArticlesPage extends BasePage{
 	
 	public void waitForLoadingIndicatorToDisappear() {
 		
-		waitForElementToDisappear(loadingIndicator,30);
+		waitForElementToDisappear(loadingIndicator);
 		
 	}
 }

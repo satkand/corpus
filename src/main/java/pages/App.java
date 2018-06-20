@@ -236,6 +236,7 @@ public class App extends BaseTest {
 		moneyPage = new MoneyPage(driver);
 		transactionsPage = new TransactionsPage(driver);
 		moneyTrackerPage = new MoneyTrackerPage(driver);
+	    categoryBreakDownPage = new CategoryBreakDownPage(driver); 
 	}
 	
 
@@ -259,7 +260,7 @@ public class App extends BaseTest {
 		if(loginAuthPage.checkChangeAccountButton() != null) {
 			loginAuthPage.tapChangeAccountButton();
 		}
-		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
+		//Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen - background is not shown");
 		welcomePage.tapLoginButton();
 		loginPage.enterLoginCredentials(login, pwd);
 		
