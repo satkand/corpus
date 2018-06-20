@@ -182,6 +182,8 @@ public class WebviewPage extends BasePage {
 		double osVersion = Double.parseDouble(getDeviceAttribute("platformVersion").substring(0, 1));
 		if(getDeviceAttribute("deviceModel").contains("Pixel")&&(osVersion >= 8.0)) {
 			tapDeviceBackButton();
+		}else if(getDeviceAttribute("deviceModel").contains("Nexus")&&(osVersion <= 8.0)){
+			tapDeviceBackButton();
 		}else {
 			tapElement(webviewChromeCloseButton);
 		}
