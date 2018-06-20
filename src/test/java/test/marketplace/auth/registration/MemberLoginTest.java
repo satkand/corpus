@@ -240,7 +240,7 @@ public class MemberLoginTest extends App {
 		Assert.assertNotNull(memberLoginPage.checkMobileRegisterPageTitle(), "Mobile Register - Last step! Page not displayed");
 		Assert.assertNotNull(memberLoginPage.checkMobileRegisterPageDescription(), "Mobile Register - Description to the user not shown");
 		Assert.assertNotNull(memberLoginPage.checkMobileTextField(), "Mobile Register - Mobile number text field");
-		Assert.assertNotNull(memberLoginPage.checkRegiterWithMobileButton(), "Mobile Register - Register button not displayed");
+		Assert.assertNotNull(memberLoginPage.checkRegiterWithMobileButton(), "Mobile Register - Sign Up button not displayed");
 		memberLoginPage.tapMobileTextField();
 		Assert.assertEquals(memberLoginPage.getMobileNumberTipText(), Copy.MOBILE_NUMBER_TIP, "Mobile Register - Mobile number tool tip text is incorrect");
 
