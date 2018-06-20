@@ -12,24 +12,22 @@ public class NavigationMenuPage extends BasePage {
 	private By splitMenuIcon = MobileBy.AccessibilityId("Open navigation menu");
 
 	private By welcomeMessage = By.id("au.com.suncorp.marketplace:id/profileName");
-	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Overview']");
+	private By suncorpMenuItem = By.xpath("//android.widget.CheckedTextView[@text='One Suncorp']");
+	private By homeJourneyMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Home Journey']");
 	private By bankingHome = By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
-	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='DigitalSafe']");
+	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Digital Safe']");
 	private By productsCatalogueItem = By.xpath("//android.widget.CheckedTextView[@text='Apply online']");
 	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Policies & accounts']");
-	private By rewardsForYou = By.xpath("//android.widget.CheckedTextView[@text='Rewards']");
-	private By claimsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Active claims']");
-
+	private By rewardsForYou = By.xpath("//android.widget.CheckedTextView[@text='Rewards for you']");
 	private By proffessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
-	
+
 	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
-	private By supportAndInformationMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Support & information']");
+	
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By devSettings = By.xpath("//android.widget.CheckedTextView[@text='Dev Settings']");
     private String devSettingsText ="Dev Settings";
-
-	private By logOutMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Log out']");
-	private String logOutMenuOptionText="Log out";
+	private By lockMenuOption = By.xpath("//android.widget.CheckedTextView[@text='Log out']");
+	private String lockMenuOptionText="Log out";
 	
 	public void tapProffessionalServicesMenuItem() {
 		 tapElement(proffessionalServicesMenuItem);
@@ -86,14 +84,6 @@ public class NavigationMenuPage extends BasePage {
 		 return find(rewardsForYou);
 	}
 	
-	public WebElement checkClaimsMenuItem() {
-		 return find(claimsMenuItem);
-	}
-	
-	public WebElement checkSupportAndInformationMenuItem() {
-		 return find(supportAndInformationMenuItem);
-	}
-	
 	public WebElement checkDigitalVaultMenuItem() {
 		 return find(digitalVaultMenuItem);
 	}
@@ -103,6 +93,16 @@ public class NavigationMenuPage extends BasePage {
 		 tapElement(productsMenuItem);
 
 	}
+	
+	public WebElement checkHomeJourneyMenuItem() {
+		 return find(homeJourneyMenuItem,3);
+	}
+	
+public void tapHomeJourneyMenuItem() {
+	find(homeJourneyMenuItem, 30);
+	 tapElement(homeJourneyMenuItem);
+	
+}
 
 	public WebElement checkBackToStartMenuItem() {
 		 return find(backToStartMenuItem);
@@ -113,12 +113,12 @@ public class NavigationMenuPage extends BasePage {
 		 tapElement(backToStartMenuItem);
 	}
 	
-	public WebElement checkLogOutMenuOption() {
-		 return scrollToElement(logOutMenuOptionText, "text");
+	public WebElement checkLockMenuOption() {
+		 return scrollToElement(lockMenuOptionText, "text");
 	}
 	
-	public void tapLogOutMenuOption() {
-		 tapElement(logOutMenuOption);
+	public void tapLockMenuOption() {
+		 tapElement(lockMenuOption);
 	}
 	
 	public void tapDigitalVaultMenuItem() {
