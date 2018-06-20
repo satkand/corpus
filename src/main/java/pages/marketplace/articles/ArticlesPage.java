@@ -30,7 +30,7 @@ public class ArticlesPage extends BasePage{
 	}
 
 	public WebElement checkArticleReadMoreBtn() {
-		return find(articleReadMoreBtn,2);
+		return find(articleReadMoreBtn);
 	}
 
 	public void tapArticleReadMoreBtn() {

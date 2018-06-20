@@ -51,12 +51,12 @@ public class BaseTest {
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("appPackage", "au.com.suncorp.marketplace");
 		capabilities.setCapability("appWaitActivity", "*");
-	//	capabilities.setCapability("udid", "FA79X1A02210");
+		capabilities.setCapability("udid", "710KPBF0304877");
 		capabilities.setCapability("fullReset", false);
 		capabilities.setCapability("noReset", true);
 		//capabilities.setCapability("newCommandTimeout", 300);
 		capabilities.setCapability("clearSystemFiles", true);
-		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
+		this.driver = new AndroidDriver(new URL("http://0.0.0.0:4724/wd/hub"), capabilities);
 	}
 	
 	/**

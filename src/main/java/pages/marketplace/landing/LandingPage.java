@@ -99,7 +99,7 @@ public class LandingPage extends BasePage {
 	}
 
 	public void tapVehiclesTab() {
-		tapElement(getScreenTitle(vehiclesTitle));
+		tapElement(vehiclesTab);
 	}
    
 	public boolean isVehiclesTabSelected() {
