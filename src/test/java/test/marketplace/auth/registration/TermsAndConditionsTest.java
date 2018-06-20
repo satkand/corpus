@@ -10,26 +10,64 @@ import automation.framework.common.Copy;
 import automation.framework.common.TestDetails;
 import pages.App;
 
-public class TermsAndConditionsPage extends App {
-	String titleValue;
+public class TermsAndConditionsTest extends App {
+	private String titleValue;
 	
-	
-	
-	
-	//@Test(groups = {"DMPM-845", "DMPM-1315","DMPM-354","DMPM-493","marketplace", "Registration", "priority-minor"})
+	//Registration flow dismiss button from Terms and condition for the Suncorp Accounts
 	@TestDetails(story1 = "DMPM-7121:DMPM-7245")
-	@Test(groups = { "marketplace", "TC", "priority-Critical" })
-	public void testRegistration_Dismiss_button() {
-		
-		
-			/*Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Welcome to Suncorp family - Welcome title not displayed");
-			titleValue = getStartedPage.getGetStartedPageTitleValue().replace("\n", " ");
-			//Assert.assertEquals(titleValue, utils.readTestData("copy", "getStartedPage", "getStartedPageTitle") ,"Welcome to Suncorp family - Welcome title not correct");
-			Assert.assertEquals(titleValue, Copy.getStartedPageTitle ,"Welcome to Suncorp family - Welcome title not correct");
-			*/
+	@Test(groups = { "marketplace", "TC", "priority-Critical" } ,priority=2)
+	public void testTerms_Condition_Dismiss_button_Suncorp() {
+		System.out.println("testTerms_Condition_Dismiss_button_Suncorp");
+		//Registartion flow dismiss button for the Account : Suncorp bank
+		navigateToWelcomeToSuncorpPage();
 
-			
-			List brandElements = utils.readTestDataList("brands");
+		getStartedPage.tapBrandSelectDropDown();
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();
+		
+		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Get Started - Suncorp login options sheet not displayed");
+		getStartedPage.tapSuncorpBankingButton();
+		if(termsAndConditionsPage.checkAcceptButton() != null){
+			termsAndConditionsPage.tapCancelButton();
+		}
+		
+		verifyToWelcomeToSuncorpPage();
+		
+		// Registartion flow dismiss button for the Account : Suncorp Insurance 
+		navigateToWelcomeToSuncorpPage();
+
+		getStartedPage.tapBrandSelectDropDown();
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();
+		// verifying Suncorp Account dialogue box
+		verifySuncorpAccountOption();
+		getStartedPage.tapSuncorpInsuranceButton();
+		if(termsAndConditionsPage.checkAcceptButton() != null){
+			termsAndConditionsPage.tapCancelButton();
+		}
+		
+		verifyToWelcomeToSuncorpPage();
+		
+		//Registartion flow dismiss button for the Account : Both Account
+		navigateToWelcomeToSuncorpPage();
+
+		getStartedPage.tapBrandSelectDropDown();
+		getStartedPage.tapSuncorpBrand();
+		getStartedPage.tapNextButton();
+		verifySuncorpAccountOption();
+		getStartedPage.tapSuncorpBothButton();
+		if(termsAndConditionsPage.checkAcceptButton() != null){
+			termsAndConditionsPage.tapCancelButton();
+		}
+		verifyToWelcomeToSuncorpPage();
+	}
+	
+	//Registration flow dismiss button from Terms and condition for the Brands AAMI,GIO and SHANNONS
+	@TestDetails(story1 = "DMPM-7121:DMPM-7245")
+	@Test(groups = { "marketplace", "TC", "priority-Critical" },priority=1)
+	public void testTerms_Condition_Dismiss_button() {
+		System.out.println("testTerms_Condition_Dismiss_button");
+		List brandElements = utils.readTestDataList("brands");
 			for(Object brandIcons : brandElements) {
 				if(welcomePage.checkWelcomeSuncorpImage() != null) {
 					navigateToWelcomeToSuncorpPage();
@@ -45,24 +83,6 @@ public class TermsAndConditionsPage extends App {
 			getStartedPage.tapSuncorpBrand();
 			getStartedPage.tapNextButton();
 			
-			
-			/*List brandElements = utils.readTestDataList("brands");
-			for(Object brandIcons : brandElements) {
-				HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
-				getStartedPage.tapBrandSelectDropDown();
-				System.out.println(getStartedPage.checkSelectBrandAlert());
-				System.out.println(getStartedPage.checkBrandExists(brandIcon.get("brandName")));
-				Assert.assertNotNull(getStartedPage.checkSelectBrandAlert(), "Select Brand List - The alert is not displayed");
-				Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
-				getStartedPage.dismissDropDownList();
-				getStartedPage.tapNextButton();
-			}*/
-
-
-		//Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login screen - page title is not shown");
-		//welcomeSuncorpImage
-		
-
 	}
 	
 	private void navigateToWelcomeToSuncorpPage() {
@@ -75,6 +95,16 @@ public class TermsAndConditionsPage extends App {
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started Page - User is not navigated to the get started screen");
 	}
 	
+	public void verifyToWelcomeToSuncorpPage() {
+		
+		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome Screen - User is not navigated to the welcome screen");;
+	}
+	
+	public void verifySuncorpAccountOption() {
+		// Verify accounts options sheet 
+		Assert.assertNotNull(getStartedPage.checkSuncorpAccountOptionsSheet(), "Welcome to Suncorp family - Suncorp accounts sheets not displayed");
+	}
+	
 	private void commonMemberLoginCheck(Object brandIcons) {
 		HashMap<String, String> brandIcon = (HashMap<String, String>)brandIcons;
 		getStartedPage.tapBrandSelectDropDown();
@@ -82,14 +112,10 @@ public class TermsAndConditionsPage extends App {
 		Assert.assertNotNull(getStartedPage.checkBrandExists(brandIcon.get("brandName")), "Select Brand List - "+brandIcon.get("brandName")+" not displayed");
 		getStartedPage.tapBrandFromList(brandIcon.get("brandName"));
 		getStartedPage.tapNextButton();
-//		System.out.println(termsAndConditionsPage.checkTermsAndConditionsTitle());
 		if(termsAndConditionsPage.checkAcceptButton() != null){
-			//termsAndConditionsPage.tapAcceptButton();
 			termsAndConditionsPage.tapCancelButton();
 		}
-		//System.out.println(memberLoginPage.getPageTitle());
-		//Assert.assertEquals(memberLoginPage.getPageTitle(), brandIcon.get("brandIcon"), "Member Login Page - Title is not correct");
-		//memberLoginPage.tapCancelButton(); 
+		
 	}
 	
 }

@@ -1249,7 +1249,7 @@
 			"resetPasswordDescription": "Enter the email associated with your GIO account. We'll email you a link to a page where you can easily create a new password."
 		},
 		{
-			"brandName": "SHANNONS",
+			"brandName": "Shannons",
 			"email": "x@y.z",
 			"resetPasswordEmail": "gg@gg.gg",
 			"password" : "Password1",
