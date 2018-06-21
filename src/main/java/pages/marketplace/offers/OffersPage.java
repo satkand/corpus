@@ -27,7 +27,7 @@ public class OffersPage extends BasePage {
 	}
 	
 	public WebElement checkOfferIcon() {
-		return find(offerIcon, 30);
+		return find(offerIcon,10);
 	}
 
 	public WebElement checkOfferTitle() {
