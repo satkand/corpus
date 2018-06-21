@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 
 '''
 Author	: Calum Hunter
-Date	: 15-06-2018
-Version : 0.1.1
+Date	: 21-06-2018
+Version : 0.1.2
 
  This script gives you the build_url from hockeyapp with the "build_number-environment" version tag.
    It is designed to be run within Jenkins build environment.
@@ -19,6 +19,10 @@ Version : 0.1.1
      ./get_hockeyapp_url.py a ios 1549
    The arguments are what hockeyapp appends to the end of the build version.
    In the example above, the build URL would be returned for iOS build 1549 from the iOS-app-QA jenkins pipeline
+
+CHANGES:
+21-06-18: Handle cases where downloads have been disabled for a particular build in hockeyapp
+          display an error indicating the failure mode, as well as the full json output for that build for debug purposes.
    
 '''
 
@@ -222,6 +226,19 @@ log(("[DEBUG] - Version Key: %s") % version_key)
 #	version_result = search_for_version(all_app_versions, jenkins_build_number, version_key, stream_tag)
 
 version_result = search_for_version(all_app_versions, jenkins_build_number, version_key, stream_tag)
+
+# Check that we actual get a build url returned from our JSON
+# otherwise the download for this build is probably disabled in hockeyapp
+if not 'build_url' in version_result:
+	print (("[ERROR] - No BUILD URL returned for this build from hockeyapp." ))
+	print (("[ERROR] - It is most likely that this build has the download disabled." ))
+	print (("[ERROR] - Check that downloads are enabled for this build in hockey app and try again." ))
+	print ((" "))
+	print (("[ERROR] - The returned API response for this build is below:" ))
+	print ((" "))
+	print(json.dumps(version_result, indent=4, sort_keys=True))
+	exit(1)
+
 log(("[OK] - Jenkins Build Requested: %s") % jenkins_build_number)
 log(("[OK] - API Returned Build Version: %s") % version_result[version_key])
 log(("[OK] - Pipeline: %s") % jenkins_pipeline_name)
