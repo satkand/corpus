@@ -86,6 +86,7 @@ public class OffersOverviewTab extends App {
 		else {
 			welcomePage.tapGuestAccessButton();
 		}
+		
 		Assert.assertNotNull(landingPage.isSuncorpTabSelected(),
 				" Offers flow for Overview - Suncorp tab not selected");
 		offersPage.scrollToOffersBanner();

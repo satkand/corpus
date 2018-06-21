@@ -188,7 +188,7 @@
 			},
 			"healthTab": {
 				"offerTitle": "UAT - Suncorp Travel Insurance",
-				"offerDescription": "Travelling - whether for pleasure or business - can be great, but it's  no without risk. Make sure you're covered. ",
+				"offerDescription": "Travelling - whether for pleasure or business - can be great, but it's not without risk. Make sure you're covered. ",
 				"url" : "https://www.suncorp.com.au"
 			},
 			"wealthTab": {
@@ -207,9 +207,9 @@
 				"url" : "https://www.suncorp.com.au"
 			},
 			"overviewTab": {
-				"offerTitle": "UAT - Suncorp Back to Basics Loan",
-				"offerDescription": "A home loan with our lowest variable rate and no monthly account keeping fee. ",
-				"url" : "https://www.suncorp.com.au"
+				"offerTitle": "UAT - Apia Comprehensive Car Insurance",
+				"offerDescription": "You'll want to keep moving while your car is being repaired after an accident. Apia offers optional hire car cover.",
+				"url" : "https://www.apia.com.au"
 			}
 	},
 	"articlesCarousel": {
