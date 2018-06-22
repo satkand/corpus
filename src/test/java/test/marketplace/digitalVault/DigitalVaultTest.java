@@ -92,6 +92,7 @@ public class DigitalVaultTest extends App {
 		digiVaultCommonPage.tapRenameDocumentButton();
 		Assert.assertNotNull(digiVaultCommonPage.checkCancelButton(), "Cancel button is not displayed");
 		Assert.assertNotNull(digiVaultCommonPage.checkPositiveButton(), "Rename button is not displayed");
+		digiVaultCommonPage.clearEditField();
 		Assert.assertFalse(digiVaultCommonPage.isPositiveButtonEnabled(), "Rename button is not disabled");
 		imageViewPage.enterName(utils.readTestData("digivault", "hasItems", "newname"));
 		Assert.assertTrue(digiVaultCommonPage.isPositiveButtonEnabled(), "Rename button is not enabled");
@@ -202,6 +203,7 @@ public class DigitalVaultTest extends App {
 		Assert.assertNotNull(digiVaultCommonPage.checkRenameItem(), "Rename item is not shown");
 		digiVaultCommonPage.tapRenameItem();
 		Assert.assertNotNull(common.isKeyboardShown(), "Keyboard is not shown");
+		digiVaultCommonPage.clearEditField();
 		Assert.assertNotNull(digiVaultCommonPage.checkPositiveButton(), "Rename button is not shown");
 		Assert.assertFalse(digiVaultCommonPage.isPositiveButtonEnabled(), "Rename button is not disabled");
 		digiVaultCommonPage.enterName(utils.readTestData("digivault", "hasItems", "newname"));
@@ -221,12 +223,14 @@ public class DigitalVaultTest extends App {
 		Assert.assertNotNull(digiVaultCommonPage.checkRenameDocumentButton(), "Rename item is not shown");
 		digiVaultCommonPage.tapRenameDocumentButton();
 		Assert.assertNotNull(common.isKeyboardShown(), "Keyboard is not shown");
+		digiVaultCommonPage.clearEditField();
 		Assert.assertNotNull(digiVaultCommonPage.checkPositiveButton(), "Rename button is not shown");
 		Assert.assertFalse(digiVaultCommonPage.isPositiveButtonEnabled(), "Rename button is not disabled");
 		digiVaultCommonPage.enterName(utils.readTestData("digivault", "hasItems", "newname"));
 		Assert.assertTrue(digiVaultCommonPage.isPositiveButtonEnabled(), "Rename button is not enabled");
 		digiVaultCommonPage.tapPositiveButton();
 		folderViewPage.checkFolderTitle();
+		digiVaultCommonPage.checkDocumentMoreOption();
 		Assert.assertNotNull(folderViewPage.findDocumentInPage(utils.readTestData("digivault", "hasItems", "newname")), "Document not found in the folder");
 		Assert.assertNotNull(folderViewPage.checkFolderTitle(), "Folder view is not loaded");
 		Assert.assertNotNull(folderViewPage.verifyFileNameExists(utils.readTestData("digivault", "hasItems", "newname")), "Document not found in the folder");

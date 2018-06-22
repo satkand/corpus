@@ -985,7 +985,7 @@
 		"pwd": "Passw0rd",
 		"netWorthAmount": "$99,617.16",
 		"bankAccounts": "",
-		"currentMonth": "May 2018",
+		"currentMonth": "June 2018",
 		"spendingsAmountPerMonth": [
 			{
 				"month": "January 2018",
@@ -1051,7 +1051,7 @@
 					"transactionCount": 93
 					},
 					{
-						"name": "Food & drink",
+						"name": "Food & Drink",
 						"amount": "$4147.81",
 						"transactionCount": 84
 					}
@@ -1072,7 +1072,7 @@
 					"transactionCount": 93
 					},
 					{
-						"name": "Food & drink",
+						"name": "Food & Drink",
 						"amount": "$4026.17",
 						"transactionCount": 84
 					}
@@ -1140,7 +1140,7 @@
 
 		},
 		"hasNoData" : {
-			"month" : "January 2018"
+			"month" : "June 2018"
 		}
 	},
 	"hasVehicles" :{
@@ -1166,7 +1166,7 @@
 			"file1" : "file 1",
 			"file2" : "file 2",
 			"folder1" : "folder 1",
-			"rootFolder" : "Document storage",
+			"rootFolder" : "DigitalSafe",
 			"images" : ["File A", "File B" , "File C"]
 		}
 	},

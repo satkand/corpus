@@ -19,7 +19,7 @@ public class SpendingsPage extends BasePage {
 		super(driver);
 	}
 
-	private By spendingPageTitle = By.xpath("//android.widget.TextView[@text='Spending']");
+	private By spendingPageTitle = By.xpath("//android.widget.TextView[@text='Dollar Tracker']");
 	private By backButton = MobileBy.AccessibilityId("Navigate up");
 	private By loadingIndicator = By.id("loadingIndicator");
 
@@ -53,8 +53,8 @@ public class SpendingsPage extends BasePage {
 	private By updatedInfoText = By.id("Total updated once per day.");
 
 	
-	private By categoriesTab = By.xpath("//android.widget.TextView[@text='CATEGORIES']");
-	private By vendorTab = By.xpath("//android.widget.TextView[@text='VENDORS']");
+	private By categoriesTab = By.xpath("//android.widget.TextView[@text='Categories']");
+	private By vendorTab = By.xpath("//android.widget.TextView[@text='Vendors']");
 
 	private By categoriesCell = By.id("au.com.suncorp.marketplace:id/spendingItem");
 	private By categoriesImage = By.id("au.com.suncorp.marketplace:id/categoryImage");
@@ -288,6 +288,10 @@ public class SpendingsPage extends BasePage {
 	
 	public String getSnackBarText() {
 		return getText(snackBar);
+	}
+	
+	public WebElement checkSnackBar() {
+		return find(snackBar);
 	}
 	
 	public void waitForLoadingIndicatorToDisappear() {
