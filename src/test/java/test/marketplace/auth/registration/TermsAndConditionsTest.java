@@ -18,7 +18,8 @@ public class TermsAndConditionsTest extends App {
 	@Test(groups = { "marketplace", "TC", "priority-Critical" } ,priority=2)
 	public void testTerms_Condition_Dismiss_button_Suncorp() {
 		System.out.println("testTerms_Condition_Dismiss_button_Suncorp");
-		//Registartion flow dismiss button for the Account : Suncorp bank
+		
+		//Registration flow dismiss button for the Account : Suncorp bank
 		navigateToWelcomeToSuncorpPage();
 
 		getStartedPage.tapBrandSelectDropDown();
@@ -33,7 +34,7 @@ public class TermsAndConditionsTest extends App {
 		
 		verifyToWelcomeToSuncorpPage();
 		
-		// Registartion flow dismiss button for the Account : Suncorp Insurance 
+		// Registration flow dismiss button for the Account : Suncorp Insurance 
 		navigateToWelcomeToSuncorpPage();
 
 		getStartedPage.tapBrandSelectDropDown();
