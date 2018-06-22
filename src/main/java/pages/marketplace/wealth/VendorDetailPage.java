@@ -57,7 +57,7 @@ public class VendorDetailPage extends BasePage{
 	}
 	
 	public boolean checkVendorNames(String vendorNavigatedTo) {
-		scrollToElement(transactionList);
+		scrollToElement(vendorName);
 		boolean match = false;
 		List<WebElement> vendorNames  = finds(vendorName);
 		if(vendorNames.size() > 0) {
