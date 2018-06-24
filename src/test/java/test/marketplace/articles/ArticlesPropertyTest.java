@@ -49,7 +49,7 @@ public class ArticlesPropertyTest extends App{
 		if(articlesPage.checkArticleReadMoreBtn()==null) {
 		articlesPage.scrollToArticlesReadMoreBtn(screenHeight);
 		}
-		verifyArticleCarousel(articlesArray, articleTitle, articleDesc);
+		verifyArticleCarousel(articlesArray, articleTitle, articleDesc, screenHeight);
 		}
 
 	/*
@@ -102,7 +102,7 @@ public class ArticlesPropertyTest extends App{
 			
 			//Step 2: Verify each individual content in the Articles to ascertain that it is not refreshed.
 			articlesPage.scrollToArticles();
-			verifyArtilesNotRefreshed();		
+			verifyArtilesNotRefreshed(screenHeight);		
 			}
 	
 
@@ -119,12 +119,11 @@ public class ArticlesPropertyTest extends App{
 			//1. Navigate to Home Property dimension and then to articles carousel.
 			navigateToHomePropertyTab("articles");
 			articlesPage.checkArticleCarousel();
-			if(articlesPage.checkArticleReadMoreBtn()==null) {
-				articlesPage.scrollToArticlesReadMoreBtn(screenHeight);
+			if(articlesPage.checkArticleTitle()==null) {
+				articlesPage.scrollToArticlesCarousel(screenHeight);
 				}
-			
 			//Step 1: Verify Readmore button click and validate the external URL displayed against the test data json.
-			verifyCallToAction();
+			verifyCallToAction(screenHeight);
 			}
 	
 	private void navigateToHomePropertyTab(String loginType) {
@@ -142,7 +141,7 @@ public class ArticlesPropertyTest extends App{
 		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
 	}
 	
-	private void verifyCallToAction() throws InterruptedException {
+	private void verifyCallToAction(String screenHeight) throws InterruptedException {
 		Assert.assertNotNull(articlesPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
 		List<Object> list =  utils.readTestDataList("articlesCarousel", "property", "articleViewPager");
 		JSONArray articlesArray = (JSONArray)list;
@@ -155,6 +154,9 @@ public class ArticlesPropertyTest extends App{
 			articlesPage.swipeArticlesLeft(articleTitle);
 			webViewUrl = ((JSONObject)articlesArray.get(i)).get("webViewUrl").toString();
 			Assert.assertNotNull(articlesPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
+			if(articlesPage.checkArticleReadMoreBtn()==null) {
+				articlesPage.scrollToArticlesReadMoreBtn(screenHeight);
+			}
 			Assert.assertNotNull(articlesPage.checkArticleReadMoreBtn(), "Home Property Page - Article button is MISSING!");
 			articlesPage.tapArticleReadMoreBtn();
 			Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(),"Home Property Page - Article's webview is not shown as excpected.");
@@ -167,7 +169,7 @@ public class ArticlesPropertyTest extends App{
 			}	
 	}
 	
-	private void verifyArtilesNotRefreshed() {
+	private void verifyArtilesNotRefreshed(String screenHeight) {
 		Assert.assertNotNull(articlesPage.checkArticleCarousel(), "Home Property Page - Articles is NOT Presnet");
 		List<Object> list =  utils.readTestDataList("articlesCarousel", "property", "articleViewPager");
 		JSONArray articlesArray = (JSONArray)list;
@@ -179,6 +181,9 @@ public class ArticlesPropertyTest extends App{
 			articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
 			Assert.assertNotNull(articlesPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
 			Assert.assertEquals(articlesPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");
+			if(articlesPage.checkArticleReadMoreBtn()==null) {
+				articlesPage.scrollToArticlesReadMoreBtn(screenHeight);
+			}
 			Assert.assertNotNull(articlesPage.checkArticleDesc(), "Home Proeprty Page - Article description is not shown as expected.");
 			Assert.assertEquals(articlesPage.getArticleDesc(), articleDesc, "Home Proeprty Page - Article description is not shown as expected.");
 			Assert.assertNotNull(articlesPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
@@ -215,12 +220,15 @@ public class ArticlesPropertyTest extends App{
 		
 	}
 	
-	private void verifyArticleCarousel(JSONArray articlesArray, String articleTitle, String articleDesc) {
+	private void verifyArticleCarousel(JSONArray articlesArray, String articleTitle, String articleDesc, String screenHeight) {
 		
 		for(int i=0; i<articlesArray.size(); i++) {
 			articleTitle = ((JSONObject)articlesArray.get(i)).get("articleTitle").toString();
 			articlesPage.swipeArticlesLeft(articleTitle);
 			articleDesc = ((JSONObject)articlesArray.get(i)).get("articleDescription").toString();
+			if(articlesPage.checkArticleReadMoreBtn()==null) {
+				articlesPage.scrollToArticlesReadMoreBtn(screenHeight);
+			}
 			Assert.assertNotNull(articlesPage.checkArticleImage(), "Home Proeprty Page - Article image is MISSING!");
 			Assert.assertNotNull(articlesPage.checkArticleTitle(), "Home Proeprty Page - Article Title is not shown as excpected.");
 			Assert.assertEquals(articlesPage.getArticleTitle(), articleTitle, "Home Proeprty Page - Article title is not shown as expected.");

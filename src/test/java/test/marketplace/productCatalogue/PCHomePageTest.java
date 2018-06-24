@@ -16,11 +16,356 @@ public class PCHomePageTest extends App {
 		Assert.assertNotNull(productCatalogueHomePage.checkPCHomePageTitle(), "Product catalogue homepage title not shown");		
 		Assert.assertNotNull(productCatalogueHomePage.checkAamiTab(), "AAMI tab not shown");
 		Assert.assertNotNull(productCatalogueHomePage.checkApiaTab(), "APIA tab not shown");
-		Assert.assertNotNull(productCatalogueHomePage.checkBingleTab(), "BINGLE tab not shown");
-		Assert.assertNotNull(productCatalogueHomePage.checkGioTab(), "GIO tab not shown");
-		productCatalogueHomePage.swipeToShannonsTab();	
-		Assert.assertNotNull(productCatalogueHomePage.checkShannonsTab(), "SHANNONS tab not shown");
 		Assert.assertNotNull(productCatalogueHomePage.checkSuncorpTab(), "Suncorp tab not shown");
+		
+		productCatalogueHomePage.swipeToShannonsTab();
+		Assert.assertNotNull(productCatalogueHomePage.checkGioTab(), "GIO tab not shown");
+		Assert.assertNotNull(productCatalogueHomePage.checkShannonsTab(), "SHANNONS tab not shown");
+		productCatalogueHomePage.swipeToBingleTab();
+		Assert.assertNotNull(productCatalogueHomePage.checkBingleTab(), "BINGLE tab not shown");
+		
+	}
+
+	@Test(groups = {"DMPM-1286", "DMPM-2017", "DMPM-2018" ,"DMPM-1283", "DMPM-2016", "DMPM-2043" ,"DMPM-1713",
+			"DMPM-3386", "DMPM-3387" ,"DMPM-1288", "DMPM-3395" ,"marketplace", "product catalogue", "priority-minor"})
+	public void testBrandCategoriesSuncorp() {
+		navigateToProductCatalogue();
+		JSONArray categories = null;
+		JSONArray brandList = productCatalogueHomePage.getBrandList();
+			
+		for(Object brand : brandList.toArray()) {
+
+			switch (((JSONObject)brand).get("name").toString().toUpperCase()) {
+				case "SUNCORP":
+					productCatalogueHomePage.tapSuncorpTab();
+					break;
+				default:
+					continue;
+			}
+			Assert.assertTrue(productCatalogueHomePage.verifyDescription(brand));
+			
+			categories = productCatalogueHomePage.getCategories(brand);
+			
+			for(Object category : categories) {
+				JSONArray subCategories = null;
+				JSONObject categoryJSON = (JSONObject) category;
+				WebElement categoryElement = productCatalogueHomePage.findCategory(categoryJSON.get("name").toString());
+				Assert.assertNotNull(categoryElement, categoryJSON.get("name").toString() + " not shown" );
+				productCatalogueHomePage.tapObject(categoryElement);
+				System.out.println("**" + categoryJSON.get("name").toString() + "**");
+				
+				subCategories = productCatalogueHomePage.getSubCategories(categoryJSON);
+				for(Object subCategory : subCategories) {
+					JSONObject subCategoryJSON = (JSONObject) subCategory;
+					WebElement subCategoryElement = productCatalogueHomePage.findSubCategory(subCategoryJSON.get("type").toString());
+					String subCategoryName = subCategoryJSON.get("type").toString();
+					System.out.println(subCategoryName);
+					Assert.assertNotNull(subCategoryElement, subCategoryJSON.get("type").toString() + " not shown" );
+					productCatalogueHomePage.tapObject(subCategoryElement);
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkFactsHeader(), "Features header not present");
+					Assert.assertTrue(productCatalogueHomePage.verifyFacts(subCategoryJSON), "All facts are not expected");
+					Assert.assertTrue(productCatalogueHomePage.checkDisclaimer(subCategoryJSON), "Disclaimer not as expected");			
+
+					if( (((JSONObject) subCategoryJSON.get("quote")).get("quoteUrl").toString()).contentEquals("") &&
+							(((JSONObject) subCategoryJSON.get("quote")).get("phoneNumber").toString()).contentEquals("")){
+	//					Assert.assertNull(productCatalogueHomePage.checkQuoteButton(), "Quote button present");
+					}else
+						Assert.assertNotNull(productCatalogueHomePage.checkQuoteButton(), "Quote button not present");
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
+					
+					productCatalogueHomePage.tapObject(subCategoryName);
+				}
+				common.goBack();
+			}
+		}
+		
+	}
+	
+	@Test(groups = {"DMPM-1286", "DMPM-2017", "DMPM-2018" ,"DMPM-1283", "DMPM-2016", "DMPM-2043" ,"DMPM-1713",
+			"DMPM-3386", "DMPM-3387" ,"DMPM-1288", "DMPM-3395" ,"marketplace", "product catalogue", "priority-minor"})
+	public void testBrandCategoriesAAMI() {
+		navigateToProductCatalogue();
+		JSONArray categories = null;
+		JSONArray brandList = productCatalogueHomePage.getBrandList();
+			
+		for(Object brand : brandList.toArray()) {
+
+			switch (((JSONObject)brand).get("name").toString().toUpperCase()) {
+				case "AAMI":
+					productCatalogueHomePage.tapAamiTab();
+					break;
+				default:
+					continue;
+			}
+			Assert.assertTrue(productCatalogueHomePage.verifyDescription(brand));
+			
+			categories = productCatalogueHomePage.getCategories(brand);
+			
+			for(Object category : categories) {
+				JSONArray subCategories = null;
+				JSONObject categoryJSON = (JSONObject) category;
+				WebElement categoryElement = productCatalogueHomePage.findCategory(categoryJSON.get("name").toString());
+				Assert.assertNotNull(categoryElement, categoryJSON.get("name").toString() + " not shown" );
+				productCatalogueHomePage.tapObject(categoryElement);
+				System.out.println("**" + categoryJSON.get("name").toString() + "**");
+				
+				subCategories = productCatalogueHomePage.getSubCategories(categoryJSON);
+				for(Object subCategory : subCategories) {
+					JSONObject subCategoryJSON = (JSONObject) subCategory;
+					WebElement subCategoryElement = productCatalogueHomePage.findSubCategory(subCategoryJSON.get("type").toString());
+					String subCategoryName = subCategoryJSON.get("type").toString();
+					System.out.println(subCategoryName);
+					Assert.assertNotNull(subCategoryElement, subCategoryJSON.get("type").toString() + " not shown" );
+					productCatalogueHomePage.tapObject(subCategoryElement);
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkFactsHeader(), "Features header not present");
+					Assert.assertTrue(productCatalogueHomePage.verifyFacts(subCategoryJSON), "All facts are not expected");
+					Assert.assertTrue(productCatalogueHomePage.checkDisclaimer(subCategoryJSON), "Disclaimer not as expected");			
+
+					if( (((JSONObject) subCategoryJSON.get("quote")).get("quoteUrl").toString()).contentEquals("") &&
+							(((JSONObject) subCategoryJSON.get("quote")).get("phoneNumber").toString()).contentEquals("")){
+	//					Assert.assertNull(productCatalogueHomePage.checkQuoteButton(), "Quote button present");
+					}else
+						Assert.assertNotNull(productCatalogueHomePage.checkQuoteButton(), "Quote button not present");
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
+					
+					productCatalogueHomePage.tapObject(subCategoryName);
+				}
+				common.goBack();
+			}
+		}
+		
+	}
+
+	@Test(groups = {"DMPM-1286", "DMPM-2017", "DMPM-2018" ,"DMPM-1283", "DMPM-2016", "DMPM-2043" ,"DMPM-1713",
+			"DMPM-3386", "DMPM-3387" ,"DMPM-1288", "DMPM-3395" ,"marketplace", "product catalogue", "priority-minor"})
+	public void testBrandCategoriesGio() {
+		navigateToProductCatalogue();
+		JSONArray categories = null;
+		JSONArray brandList = productCatalogueHomePage.getBrandList();
+			
+		for(Object brand : brandList.toArray()) {
+
+			switch (((JSONObject)brand).get("name").toString().toUpperCase()) {
+				case "GIO":
+					productCatalogueHomePage.tapGioTab();
+					break;
+				default:
+					continue;
+			}
+			Assert.assertTrue(productCatalogueHomePage.verifyDescription(brand));
+			
+			categories = productCatalogueHomePage.getCategories(brand);
+			
+			for(Object category : categories) {
+				JSONArray subCategories = null;
+				JSONObject categoryJSON = (JSONObject) category;
+				WebElement categoryElement = productCatalogueHomePage.findCategory(categoryJSON.get("name").toString());
+				Assert.assertNotNull(categoryElement, categoryJSON.get("name").toString() + " not shown" );
+				productCatalogueHomePage.tapObject(categoryElement);
+				System.out.println("**" + categoryJSON.get("name").toString() + "**");
+				
+				subCategories = productCatalogueHomePage.getSubCategories(categoryJSON);
+				for(Object subCategory : subCategories) {
+					JSONObject subCategoryJSON = (JSONObject) subCategory;
+					WebElement subCategoryElement = productCatalogueHomePage.findSubCategory(subCategoryJSON.get("type").toString());
+					String subCategoryName = subCategoryJSON.get("type").toString();
+					System.out.println(subCategoryName);
+					Assert.assertNotNull(subCategoryElement, subCategoryJSON.get("type").toString() + " not shown" );
+					productCatalogueHomePage.tapObject(subCategoryElement);
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkFactsHeader(), "Features header not present");
+					Assert.assertTrue(productCatalogueHomePage.verifyFacts(subCategoryJSON), "All facts are not expected");
+					Assert.assertTrue(productCatalogueHomePage.checkDisclaimer(subCategoryJSON), "Disclaimer not as expected");			
+
+					if( (((JSONObject) subCategoryJSON.get("quote")).get("quoteUrl").toString()).contentEquals("") &&
+							(((JSONObject) subCategoryJSON.get("quote")).get("phoneNumber").toString()).contentEquals("")){
+	//					Assert.assertNull(productCatalogueHomePage.checkQuoteButton(), "Quote button present");
+					}else
+						Assert.assertNotNull(productCatalogueHomePage.checkQuoteButton(), "Quote button not present");
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
+					
+					productCatalogueHomePage.tapObject(subCategoryName);
+				}
+				common.goBack();
+			}
+		}
+		
+	}
+	
+	@Test(groups = {"DMPM-1286", "DMPM-2017", "DMPM-2018" ,"DMPM-1283", "DMPM-2016", "DMPM-2043" ,"DMPM-1713",
+			"DMPM-3386", "DMPM-3387" ,"DMPM-1288", "DMPM-3395" ,"marketplace", "product catalogue", "priority-minor"})
+	public void testBrandCategoriesBingle() {
+		navigateToProductCatalogue();
+		JSONArray categories = null;
+		JSONArray brandList = productCatalogueHomePage.getBrandList();
+			
+		for(Object brand : brandList.toArray()) {
+
+			switch (((JSONObject)brand).get("name").toString().toUpperCase()) {
+				case "BINGLE":
+					productCatalogueHomePage.tapBingleTab();
+					break;
+				default:
+					continue;
+			}
+			Assert.assertTrue(productCatalogueHomePage.verifyDescription(brand));
+			
+			categories = productCatalogueHomePage.getCategories(brand);
+			
+			for(Object category : categories) {
+				JSONArray subCategories = null;
+				JSONObject categoryJSON = (JSONObject) category;
+				WebElement categoryElement = productCatalogueHomePage.findCategory(categoryJSON.get("name").toString());
+				Assert.assertNotNull(categoryElement, categoryJSON.get("name").toString() + " not shown" );
+				productCatalogueHomePage.tapObject(categoryElement);
+				System.out.println("**" + categoryJSON.get("name").toString() + "**");
+				
+				subCategories = productCatalogueHomePage.getSubCategories(categoryJSON);
+				for(Object subCategory : subCategories) {
+					JSONObject subCategoryJSON = (JSONObject) subCategory;
+					WebElement subCategoryElement = productCatalogueHomePage.findSubCategory(subCategoryJSON.get("type").toString());
+					String subCategoryName = subCategoryJSON.get("type").toString();
+					System.out.println(subCategoryName);
+					Assert.assertNotNull(subCategoryElement, subCategoryJSON.get("type").toString() + " not shown" );
+					productCatalogueHomePage.tapObject(subCategoryElement);
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkFactsHeader(), "Features header not present");
+					Assert.assertTrue(productCatalogueHomePage.verifyFacts(subCategoryJSON), "All facts are not expected");
+					Assert.assertTrue(productCatalogueHomePage.checkDisclaimer(subCategoryJSON), "Disclaimer not as expected");			
+
+					if( (((JSONObject) subCategoryJSON.get("quote")).get("quoteUrl").toString()).contentEquals("") &&
+							(((JSONObject) subCategoryJSON.get("quote")).get("phoneNumber").toString()).contentEquals("")){
+	//					Assert.assertNull(productCatalogueHomePage.checkQuoteButton(), "Quote button present");
+					}else
+						Assert.assertNotNull(productCatalogueHomePage.checkQuoteButton(), "Quote button not present");
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
+					
+					productCatalogueHomePage.tapObject(subCategoryName);
+				}
+				common.goBack();
+			}
+		}
+		
+	}
+	
+	@Test(groups = {"DMPM-1286", "DMPM-2017", "DMPM-2018" ,"DMPM-1283", "DMPM-2016", "DMPM-2043" ,"DMPM-1713",
+			"DMPM-3386", "DMPM-3387" ,"DMPM-1288", "DMPM-3395" ,"marketplace", "product catalogue", "priority-minor"})
+	public void testBrandCategoriesApia() {
+		navigateToProductCatalogue();
+		JSONArray categories = null;
+		JSONArray brandList = productCatalogueHomePage.getBrandList();
+			
+		for(Object brand : brandList.toArray()) {
+
+			switch (((JSONObject)brand).get("name").toString().toUpperCase()) {
+				case "APIA":
+					productCatalogueHomePage.tapApiaTab();
+					break;
+				default:
+					continue;
+			}
+			Assert.assertTrue(productCatalogueHomePage.verifyDescription(brand));
+			
+			categories = productCatalogueHomePage.getCategories(brand);
+			
+			for(Object category : categories) {
+				JSONArray subCategories = null;
+				JSONObject categoryJSON = (JSONObject) category;
+				WebElement categoryElement = productCatalogueHomePage.findCategory(categoryJSON.get("name").toString());
+				Assert.assertNotNull(categoryElement, categoryJSON.get("name").toString() + " not shown" );
+				productCatalogueHomePage.tapObject(categoryElement);
+				System.out.println("**" + categoryJSON.get("name").toString() + "**");
+				
+				subCategories = productCatalogueHomePage.getSubCategories(categoryJSON);
+				for(Object subCategory : subCategories) {
+					JSONObject subCategoryJSON = (JSONObject) subCategory;
+					WebElement subCategoryElement = productCatalogueHomePage.findSubCategory(subCategoryJSON.get("type").toString());
+					String subCategoryName = subCategoryJSON.get("type").toString();
+					System.out.println(subCategoryName);
+					Assert.assertNotNull(subCategoryElement, subCategoryJSON.get("type").toString() + " not shown" );
+					productCatalogueHomePage.tapObject(subCategoryElement);
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkFactsHeader(), "Features header not present");
+					Assert.assertTrue(productCatalogueHomePage.verifyFacts(subCategoryJSON), "All facts are not expected");
+					Assert.assertTrue(productCatalogueHomePage.checkDisclaimer(subCategoryJSON), "Disclaimer not as expected");			
+
+					if( (((JSONObject) subCategoryJSON.get("quote")).get("quoteUrl").toString()).contentEquals("") &&
+							(((JSONObject) subCategoryJSON.get("quote")).get("phoneNumber").toString()).contentEquals("")){
+	//					Assert.assertNull(productCatalogueHomePage.checkQuoteButton(), "Quote button present");
+					}else
+						Assert.assertNotNull(productCatalogueHomePage.checkQuoteButton(), "Quote button not present");
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
+					
+					productCatalogueHomePage.tapObject(subCategoryName);
+				}
+				common.goBack();
+			}
+		}
+		
+	}
+	
+	@Test(groups = {"DMPM-1286", "DMPM-2017", "DMPM-2018" ,"DMPM-1283", "DMPM-2016", "DMPM-2043" ,"DMPM-1713",
+			"DMPM-3386", "DMPM-3387" ,"DMPM-1288", "DMPM-3395" ,"marketplace", "product catalogue", "priority-minor"})
+	public void testBrandCategoriesShannons() {
+		navigateToProductCatalogue();
+		JSONArray categories = null;
+		JSONArray brandList = productCatalogueHomePage.getBrandList();
+			
+		for(Object brand : brandList.toArray()) {
+
+			switch (((JSONObject)brand).get("name").toString().toUpperCase()) {
+				case "SHANNONS":
+					productCatalogueHomePage.tapShannonsTab();
+					break;
+				default:
+					continue;
+			}
+			Assert.assertTrue(productCatalogueHomePage.verifyDescription(brand));
+			
+			categories = productCatalogueHomePage.getCategories(brand);
+			
+			for(Object category : categories) {
+				JSONArray subCategories = null;
+				JSONObject categoryJSON = (JSONObject) category;
+				WebElement categoryElement = productCatalogueHomePage.findCategory(categoryJSON.get("name").toString());
+				Assert.assertNotNull(categoryElement, categoryJSON.get("name").toString() + " not shown" );
+				productCatalogueHomePage.tapObject(categoryElement);
+				System.out.println("**" + categoryJSON.get("name").toString() + "**");
+				
+				subCategories = productCatalogueHomePage.getSubCategories(categoryJSON);
+				for(Object subCategory : subCategories) {
+					JSONObject subCategoryJSON = (JSONObject) subCategory;
+					WebElement subCategoryElement = productCatalogueHomePage.findSubCategory(subCategoryJSON.get("type").toString());
+					String subCategoryName = subCategoryJSON.get("type").toString();
+					System.out.println(subCategoryName);
+					Assert.assertNotNull(subCategoryElement, subCategoryJSON.get("type").toString() + " not shown" );
+					productCatalogueHomePage.tapObject(subCategoryElement);
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkFactsHeader(), "Features header not present");
+					Assert.assertTrue(productCatalogueHomePage.verifyFacts(subCategoryJSON), "All facts are not expected");
+					Assert.assertTrue(productCatalogueHomePage.checkDisclaimer(subCategoryJSON), "Disclaimer not as expected");			
+
+					if( (((JSONObject) subCategoryJSON.get("quote")).get("quoteUrl").toString()).contentEquals("") &&
+							(((JSONObject) subCategoryJSON.get("quote")).get("phoneNumber").toString()).contentEquals("")){
+	//					Assert.assertNull(productCatalogueHomePage.checkQuoteButton(), "Quote button present");
+					}else
+						Assert.assertNotNull(productCatalogueHomePage.checkQuoteButton(), "Quote button not present");
+					
+					Assert.assertNotNull(productCatalogueHomePage.checkDetailsButton(), "More details button not present");
+					
+					productCatalogueHomePage.tapObject(subCategoryName);
+				}
+				common.goBack();
+			}
+		}
+		
 	}
 	
 	//DMPM-1286 - Scenario 1, 2
@@ -126,6 +471,9 @@ public class PCHomePageTest extends App {
 	public void testBrandInfo(){
 		navigateToProductCatalogue();
 		productCatalogueHomePage.scrollDown();
+		productCatalogueHomePage.scrollDown();
+		productCatalogueHomePage.scrollDown();
+		
 		Assert.assertNull(productCatalogueHomePage.checkBrandInfo(), "Brand info is still shown");
 	}
 	

@@ -526,6 +526,73 @@ public class PropertyDetailsTest extends App{
 		
 	
 	}
+	
+	//@TestDetails(story1 = "DMPM-1264:DMPM-7697,DMPM-7702,DMPM-7703", priority = Priority.LOW)
+		@Test(groups = { "DMPM-1265","DMPM-8243","DMPM-8245","DMPM-8247","marketplace", "Property Hub", "priority-minor" })
+		public void testRouteToPointOfInterest() {	
+			navigateToPropertyDetails("StartYourJourney","HighConfident");
+			propertyDetailsPage.scrollToWhatsNearButton();
+			propertyDetailsPage.tapMiniMapWhatsNearbyButton();
+			Assert.assertTrue(whatsNearbyPage.isPropertyTabSelected(), "Whats nearby Page - Property tab is not selected by default");
+			
+			Assert.assertNotNull(whatsNearbyPage.checkEducationTab(), "Whats nearby Page - Education tab is not present");
+			whatsNearbyPage.tapEducationTab();
+			Assert.assertTrue(whatsNearbyPage.isEducationTabSelected(),"Whats nearby Page - education tab is not selected");
+			verifyRouteCardElements();
+			
+			Assert.assertNotNull(whatsNearbyPage.checkShoppingTab(), "Whats nearby Page - Shopping tab is not present");
+			whatsNearbyPage.tapShoppingTab();
+			Assert.assertTrue(whatsNearbyPage.isShoppingTabSelected(),"Whats nearby Page - Shopping tab is not selected");
+			verifyRouteCardElements();
+			
+			Assert.assertNotNull(whatsNearbyPage.checkTransportTab(), "Whats nearby Page - Transport tab is not present");
+			whatsNearbyPage.tapTransportTab();
+			Assert.assertTrue(whatsNearbyPage.isTransportTabSelected(), "Home tab is not selected on landing page");
+			verifyRouteCardElements();
+			
+			Assert.assertNotNull(whatsNearbyPage.checkEntertainmentTab(), "Whats nearby Page - Entertainment tab is not present");
+			whatsNearbyPage.tapEntertainmentTab();
+			Assert.assertTrue(whatsNearbyPage.isEntertainmentTabSelected(), "Home tab is not selected on landing page");
+			verifyRouteCardElements();
+			
+			Assert.assertNotNull(whatsNearbyPage.checkHealthTab(), "Whats nearby Page - Health tab is not present");
+			whatsNearbyPage.tapHealthTab();
+			Assert.assertTrue(whatsNearbyPage.isHealthTabSelected(), "Home tab is not selected on landing page");
+			verifyRouteCardElements();
+			
+			Assert.assertNotNull(whatsNearbyPage.checkDiningTab(), "Whats nearby Page - Dining tab is not present");
+			whatsNearbyPage.tapDiningTab();
+			Assert.assertTrue(whatsNearbyPage.isDiningTabSelected(), "Home tab is not selected on landing page");
+			verifyRouteCardElements();
+			
+			Assert.assertNotNull(whatsNearbyPage.checkOtherTab(), "Whats nearby Page - Dining tab is not present");
+			whatsNearbyPage.tapOtherTab();
+			Assert.assertTrue(whatsNearbyPage.isOtherTabSelected(), "Home tab is not selected on landing page");
+			verifyRouteCardElements();
+				
+		}
+			
+	public void verifyRouteCardElements() {
+			Assert.assertNotNull(whatsNearbyPage.checkShowListLabelButton(), "Whats nearby Page - Show list is not present");
+			whatsNearbyPage.tapPOIexpandableListButton();
+			Assert.assertNotNull(whatsNearbyPage.checkPOIname(), "Whats nearby Page - POI name is not present in the list");
+			
+			whatsNearbyPage.tapPOIname();
+			Assert.assertNotNull(whatsNearbyPage.checkRouteCardNameLabel(), "Whats nearby Page - Route card walking title is not present");
+			Assert.assertNotNull(whatsNearbyPage.checkDrivingButtonLabel(), "Whats nearby Page - Route card driving button is not present");
+			Assert.assertNotNull(whatsNearbyPage.checkWalkingButtonLabel(), "Whats nearby Page - Route card walking button is not present");
+			Assert.assertNotNull(whatsNearbyPage.checkwalkingButtonTimeLabelLabel(), "Whats nearby Page - Route card walking button is not present");
+			Assert.assertNotNull(whatsNearbyPage.checkDrivingButtonTImeLabel(), "Whats nearby Page - Route card walking button is not present");
+			Assert.assertNotNull(whatsNearbyPage.checkdistanceLabel(), "Whats nearby Page - Route card walking button is not present");
+			
+			//TODO - waiting for this story to finish dev
+			Assert.assertTrue(whatsNearbyPage.isDrivingSelected(), "Whats nearby page - Driving tab is not selected");
+			
+			whatsNearbyPage.tapWalkingButtonLabel();
+			//TODO - waiting for this story to finish dev
+			Assert.assertTrue(whatsNearbyPage.isWalkingSelected(), "Whats nearby page - Driving tab is not selected");
+					
+		}
 			
 	public void navigateToPropertyDetails(String navigationPath, String confidenceLevel) {
 		

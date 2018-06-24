@@ -173,7 +173,10 @@ public interface Copy {
 
 	
 	//FFI
-	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you don't have any\n" + "transactions yet.";
+	public static final String FFI_EMPTY_TRANSACTIONS = "Sorry, you don't have any\n" + 
+			"transactions yet.\n" + 
+			"\n" + 
+			"Despite being updated every 24 hours, Dollar Tracker can only display the latest transaction data available. Some transactions may take longer to process and therefore not be available to view.";
 	public static final String FFI_DISCLAIMER = "There will be a delay in updating to the latest data. Delay can take up to 3–5 business days.";
 
 	//DIGIVAULT

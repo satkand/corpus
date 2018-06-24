@@ -57,14 +57,76 @@ public class WhatsNearbyPage extends BasePage{
 	private By itemListdistance = By.id("au.com.suncorp.marketplace:id/educationNameText");
 	private By listID = By.id("au.com.suncorp.marketplace:id/educationNameText");
 	private By POIexpandableListButton = By.id("au.com.suncorp.marketplace:id/pointsOfInterestListButtonText");
-	private By POIname = By.name("au.com.suncorp.marketplace:id/educationNameText");
+	private By POIname = By.id("au.com.suncorp.marketplace:id/pointOfInterestName");
 		
 	//route card
-	private By routeCardNameLabel = By.id("Research Primary School");
-	private By drivingButtonLabel = By.id("Driving 4 mins");
-	private By walkingButtonLabel = By.id("Walking 25 mins");
-		
+	private By routeCardNameLabel = By.id("au.com.suncorp.marketplace:id/pointOfInterestTitle");
+	private By drivingButtonLabel = By.id("au.com.suncorp.marketplace:id/driveTravelModeText");
+	private By walkingButtonLabel = By.id("au.com.suncorp.marketplace:id/walkTravelModeText");
+	private By walkingButtonTimeLabel = By.id("au.com.suncorp.marketplace:id/walkTravelModeTimeText");
+	private By DrivingButtonTImeLabel = By.id("au.com.suncorp.marketplace:id/driveTravelModeTimeText");
+	
+	private By distanceLabel = By.id("au.com.suncorp.marketplace:id/pointOfInterestDistance");
+	
+	
 	private String tabBarID = "au.com.suncorp.marketplace:id/nearbyCategoryAppBarLayout";
+	
+	public WebElement checkwalkingButtonTimeLabelLabel() {
+		return find(walkingButtonTimeLabel,3);
+	}
+	
+	public WebElement checkDrivingButtonTImeLabel() {
+		return find(DrivingButtonTImeLabel,3);
+	}
+	
+	public WebElement checkdistanceLabel() {
+		return find(distanceLabel,3);
+	}
+	
+	public String getwalkingButtonTimeLabelLabel() {
+		return getText(walkingButtonTimeLabel);
+	}
+	
+	public String getDrivingButtonTImeLabel() {
+		return  getText(DrivingButtonTImeLabel);
+	}
+	
+	public String getdistanceLabel() {
+		return getText(distanceLabel);
+	}
+	
+	public WebElement checkRouteCardNameLabel() {
+		return find(routeCardNameLabel,3);
+	}
+	
+	public String getRouteCardNameLabel() {
+		return getText(routeCardNameLabel);
+	}
+	
+	public WebElement checkDrivingButtonLabel() {
+		return find(drivingButtonLabel,3);
+	}
+	
+	public void tapDrivingButtonLabel() {
+		tapElement(drivingButtonLabel);
+	}
+	
+	public boolean isDrivingSelected() {
+		return isEnabled(drivingButtonLabel);
+	}
+	
+	public boolean isWalkingSelected() {
+		return isEnabled(walkingButtonLabel);
+		
+	}
+	
+	public WebElement checkWalkingButtonLabel() {
+		return find(walkingButtonLabel,3);
+	}
+	
+	public void tapWalkingButtonLabel() {
+		tapElement(walkingButtonLabel);
+	}
 	
 	public String getPropertyCardTitle() {
 		return getText(propertyCardTitle);
@@ -181,27 +243,28 @@ public class WhatsNearbyPage extends BasePage{
 	}
 	
 	public boolean isShoppingTabSelected() {
-		return isTabSelected(shoppingTab);
+		return isEnabled(shoppingTab);
 	}
 	
 	public boolean isTransportTabSelected() {
-		return isTabSelected(transportTab);
+		return isEnabled(transportTab);
 	}
 	
 	public boolean isEntertainmentTabSelected() {
-		return isTabSelected(entertainmentTab);
+		return isEnabled(entertainmentTab);
 	}
 	
 	public boolean isHealthTabSelected() {
-		return isTabSelected(healthTab);
+		return isEnabled(healthTab);
 	}
 	
 	public boolean isDiningTabSelected() {
-		return isTabSelected(diningTab);
+		return isEnabled(diningTab);
+	
 	}
 	
 	public boolean isOtherTabSelected() {
-		return isTabSelected(otherTab);
+		return isEnabled(otherTab);
 	}
 	
 	public WebElement checkEducationTab() {
@@ -253,7 +316,7 @@ public class WhatsNearbyPage extends BasePage{
 	}
 	
 	public WebElement checkPOIname() {
-		return find(POIname,3);
+		return find(POIname);
 	}
 	
 	public void tapPOIname() {

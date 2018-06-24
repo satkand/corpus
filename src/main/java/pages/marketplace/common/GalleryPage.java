@@ -161,8 +161,8 @@ public class GalleryPage extends BasePage {
 		else if (getDeviceAttribute("deviceModel").equals("SM-G935F")) {
 			checkGalleryTitleSamsung();
 			tapThumbnailSamsung();
-			checkCameraFolderTitle();
-			tapThumbnailSamsung();
+/*			checkCameraFolderTitle();
+			tapThumbnailSamsung();*/
 
 		} else {
 			checkGalleryTitleSamsung();
