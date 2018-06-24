@@ -33,6 +33,48 @@
 		 "category2":"Shopping",
 		 "category2Amount":"$4,190.24"	 
 		}
+	},"transferToSelf": {
+		
+		"userAccount1": {
+		
+		    "login": "irina.marketplace@suncorp.com.au",
+		    "pwd": "Passw0rd",
+			"fromAccountdisplayName": "SUNCORP EOPTIONS",
+			"fromAccountdisplayNameOnFromScreen": "Suncorp Eoptions",
+			"toAccountdisplayName": "GROWTH SAVER ACCOUNT",
+			"toAccountdisplayNameOnToScreen": "Growth Saver Account",
+	        "amount":"1.00",
+	        "fromBSB":"484-799",
+	        "toBSB":"484-799",
+	        "fromAccountNumber":"168040133",
+	        "toAccountNumber":"168040141",
+	        "fromAvailable":"$76.90",
+	        "toAvailable":"$4.53",
+	        "amountValidation":{
+	         "zeroAmount":"0",
+	         "greaterAmount":"999999",
+	         "negativeAmount":"-2.00",
+	         "moreThanEightDigitAmount":"123456789",
+	         "moreThanTwoAfterDecimal":"1.234",
+	         "4digitAmount":"1000"
+	        },
+	         "descriptionValidation":{
+	         "19DescriptionCharactors":"aaaaaaaaaaaaaaaaaaa"
+	        }
+	    
+		},
+		"creditCardAccount1":{
+		 "login": "plockton.scotland@example.com",
+		 "pwd": "Suncorp1",
+		 "fromAccountdisplayName": "Standard Credit Card",
+		 "fromAccountdisplayNameOnFromScreen": "Standard Credit Card",
+		 "toAccountdisplayName": "BUSINESS SAVER ACCOUNT",
+		 "toAccountdisplayNameOnToScreen": "Business Saver Account",
+		 "amount":"1.00",
+		  "fromBSBAndAccount":"**** **** **** 1656",
+	      "toBSB":"484-799",
+	      "toAccountNumber":"001617540"
+		}
 	},
 	"PIN" :{
 		"loginWithExistingPin" : {

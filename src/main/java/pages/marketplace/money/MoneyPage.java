@@ -16,7 +16,9 @@ public class MoneyPage extends BasePage{
 	private By spendingInsightsLastMonth = By.id("au.com.suncorp.marketplace:id/spendingInsightsLastMonthCardLayout");
 	private String wealthAddAccountButtonID = "au.com.suncorp.marketplace:id/wealthAddAccountButton";
 	private String offerTitleID = "au.com.suncorp.marketplace:id/offerTitle";
-	
+	private By transferPayButton = By.id("au.com.suncorp.marketplace:id/transferPillButton");
+	private By transferToSelfButton = By.id("au.com.suncorp.marketplace:id/transferToSelfButton");
+	                                      
 
 	public MoneyPage(AppiumDriver driver) {
 		super(driver);
@@ -57,14 +59,14 @@ public class MoneyPage extends BasePage{
     }
     
     public WebElement checkAvailableBalance(String accountName) {
-    	
+    	    scrollToElementByText(accountName,3);
         return find(By.xpath(String.format("//android.widget.TextView[@text=\"%s\"]/ancestor::android.widget.LinearLayout/android.widget.LinearLayout[2]/descendant::android.widget.TextView[2]", accountName)));
         	
         		
         }
     
     public WebElement checkAccountNumber(String accountName) {
-    	
+      	
         return find(MobileBy.AndroidUIAutomator(String.format("new UiSelector().text(\"%s\").fromParent(new UiSelector().className(\"android.widget.LinearLayout\").className(\"android.widget.TextView\").instance(2))", accountName)));
         	
         		
@@ -100,6 +102,32 @@ public class MoneyPage extends BasePage{
     	
     }
     
+	public WebElement checkTransferPayButton() {
+
+		return find(transferPayButton,30);
+
+	}
+    
+	public void tapTransferPayButton() {
+
+		tapElement(transferPayButton);
+
+	}
+	
+	public WebElement checkTransferToSelfButton() {
+
+		return find(transferToSelfButton);
+
+	}
+    
+	public void tapTransferToSelfButton() {
+
+		tapElement(transferToSelfButton);
+
+	}
+    
+	
+	
 	public void tapAccountName(String accountName) {
 
 		tapElement(checkAccountName(accountName));

@@ -594,8 +594,14 @@ public class BasePage {
 
 	public void tapEnterOnTheKeyboard(){
 		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_ENTER);
+		
 	}
-
+    public void inputKeysByKeyboard(int key) {
+    	
+    	((AndroidDriver) driver).pressKeyCode(key);
+    	
+    }
+    
 	public void pressDeviceButton(int keycode){
 		((AndroidDriver) driver).pressKeyCode(keycode);
 	}

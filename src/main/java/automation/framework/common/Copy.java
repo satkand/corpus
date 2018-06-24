@@ -213,5 +213,14 @@ public interface Copy {
 	//Add Bank Account Page
 	String ADD_BANK_ACCOUNT_TITLE ="Add Bank or Loan Account";
 	
+	//Transfer Page
+	
+	String TRANSFER_TITLE ="Transfer";
+	String TRANSFER_SUMMARY_TITLE ="Transfer summary";
+	String PROCESSING_MESSAGE = "Processing…";
+	String WHEN = "Now";
+	String TRANSFER_DISCLAIMER_MESSAGE ="Check payment details correct.\n" + 
+			" Cash advance for Credit Card payments.";
+	
 
 }
