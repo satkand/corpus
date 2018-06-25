@@ -222,10 +222,10 @@ public class PropertyDetailsTest extends App{
 		//Still low confidence property details need to be verified (currently mock data is NOT available for low confidence)
 		
 	}
-		
+	//DMPM-4560
 	// DMPM-1261 - Scenario 1 (DMPM-4716), Scenario 2 (DMPM-4717), Scenario 5 (DMPM-4720)
 	// navigating to Property details and verify the full screen view of the map
-	@Test (groups = {"DMPM-1261","DMPM-4716","DMPM-4717","DMPM-4720", "marketplace", "Property Hub", "priority-minor"})
+	@Test (groups = {"DMPM-1261","DMPM-4716","DMPM-4717","DMPM-4720","DMPM-4560", "marketplace", "Property Hub", "priority-minor"})
 	public void testDisplayOptionToGoToFullScreenMap() {
 			
 		navigateToPropertyDetails("StartYourJourney","MediumConfident");
