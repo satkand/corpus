@@ -35,6 +35,7 @@ import pages.marketplace.common.DummyPageWithLinks;
 import pages.marketplace.common.FAPISettingsPage;
 import pages.marketplace.common.ForceUpdatePage;
 import pages.marketplace.common.GalleryPage;
+import pages.marketplace.common.Keyboard;
 import pages.marketplace.common.WebviewPage;
 import pages.marketplace.digitalVault.ChooseFolderPage;
 import pages.marketplace.digitalVault.DigiVaultCommonPage;
@@ -46,6 +47,14 @@ import pages.marketplace.digitalVault.SelectItemsPage;
 import pages.marketplace.landing.LandingPage;
 import pages.marketplace.landing.NavigationMenuPage;
 import pages.marketplace.landing.WelcomePage;
+import pages.marketplace.money.CategoryBreakDownPage;
+import pages.marketplace.money.FromAccountPage;
+import pages.marketplace.money.MoneyPage;
+import pages.marketplace.money.MoneyTrackerPage;
+import pages.marketplace.money.ToAccountPage;
+import pages.marketplace.money.TransactionsPage;
+import pages.marketplace.money.TransferPage;
+import pages.marketplace.money.TransferSummaryPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
@@ -138,8 +147,16 @@ public class App extends BaseTest {
 	public MakeAClaimPage makeAClaimPage =null;
 	public TermsAndConditionsPage termsAndConditionsPage = null;
 	public AddProductPage addProductPage = null;
-
-
+	public MoneyPage moneyPage = null;
+	public TransactionsPage transactionsPage = null;
+	public MoneyTrackerPage moneyTrackerPage =null;
+	public CategoryBreakDownPage categoryBreakDownPage=null;
+	public TransferPage transferPage=null;
+	public ToAccountPage toAccountPage = null;
+	public FromAccountPage fromAccountPage = null;
+	public TransferSummaryPage transferSummaryPage = null; 
+	public Keyboard keyboard=null;
+	
 	String CONFIG_FILE=null;
 
 	@Parameters({ "endPoint" })
@@ -226,7 +243,15 @@ public class App extends BaseTest {
 		propertyHubPage = new PropertyHubPage(driver);
 		termsAndConditionsPage = new TermsAndConditionsPage(driver);
 		addProductPage = new AddProductPage(driver);
-
+		moneyPage = new MoneyPage(driver);
+		transactionsPage = new TransactionsPage(driver);
+		moneyTrackerPage = new MoneyTrackerPage(driver);
+	    categoryBreakDownPage = new CategoryBreakDownPage(driver); 
+	    transferPage = new TransferPage(driver);
+	    toAccountPage = new ToAccountPage(driver);
+	    fromAccountPage = new FromAccountPage(driver);
+	    transferSummaryPage = new TransferSummaryPage(driver);
+	    keyboard =new Keyboard(driver);
 	}
 	
 

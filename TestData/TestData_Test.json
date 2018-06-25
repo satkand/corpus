@@ -3,6 +3,79 @@
         "packageName": "au.com.suncorp.mobile",
         "platform": "aos"
     },
+	"moneypillar": {
+		
+		"EverydayAccount": {
+		    "login": "ai.law@example.com",
+		    "pwd": "Suncorp1",
+			"displayName": "Ai Lei Law",
+			"bsb": "484-799",
+			"accountNumber": "083677877",
+			"availableBalance": "$32,923.71"
+		},
+		"SaverAccount": {
+		     "login": "irina.marketplace@suncorp.com.au",
+		     "pwd": "Passw0rd",
+			"displayName": "GROWTH SAVER ACCOUNT",
+			"bsb": "484-799",
+			"accountNumber": "168040141",
+			"availableBalance": "$2.00",
+			"offersTitle":"UAT - Suncorp Everyday Options Account",
+			"rewardsTitle":"Discover our rewards",
+			"articlesTitle":"Articles"
+		},
+		"moneyTracker":{
+		"login": "irina.marketplace@suncorp.com.au",
+		 "pwd": "Passw0rd",
+		 "monthLabel":"MAY 2018",
+		 "category1":"Groceries",
+		 "category1Amount":"$5,172.04",
+		 "category2":"Shopping",
+		 "category2Amount":"$4,190.24"	 
+		}
+	},"transferToSelf": {
+		
+		"userAccount1": {
+		
+		    "login": "irina.marketplace@suncorp.com.au",
+		    "pwd": "Passw0rd",
+			"fromAccountdisplayName": "SUNCORP EOPTIONS",
+			"fromAccountdisplayNameOnFromScreen": "Suncorp Eoptions",
+			"toAccountdisplayName": "GROWTH SAVER ACCOUNT",
+			"toAccountdisplayNameOnToScreen": "Growth Saver Account",
+	        "amount":"1.00",
+	        "fromBSB":"484-799",
+	        "toBSB":"484-799",
+	        "fromAccountNumber":"168040133",
+	        "toAccountNumber":"168040141",
+	        "fromAvailable":"$76.90",
+	        "toAvailable":"$4.53",
+	        "amountValidation":{
+	         "zeroAmount":"0",
+	         "greaterAmount":"999999",
+	         "negativeAmount":"-2.00",
+	         "moreThanEightDigitAmount":"123456789",
+	         "moreThanTwoAfterDecimal":"1.234",
+	         "4digitAmount":"1000"
+	        },
+	         "descriptionValidation":{
+	         "19DescriptionCharactors":"aaaaaaaaaaaaaaaaaaa"
+	        }
+	    
+		},
+		"creditCardAccount1":{
+		 "login": "plockton.scotland@example.com",
+		 "pwd": "Suncorp1",
+		 "fromAccountdisplayName": "Standard Credit Card",
+		 "fromAccountdisplayNameOnFromScreen": "Standard Credit Card",
+		 "toAccountdisplayName": "BUSINESS SAVER ACCOUNT",
+		 "toAccountdisplayNameOnToScreen": "Business Saver Account",
+		 "amount":"1.00",
+		  "fromBSBAndAccount":"**** **** **** 1656",
+	      "toBSB":"484-799",
+	      "toAccountNumber":"001617540"
+		}
+	},
 	"PIN" :{
 		"loginWithExistingPin" : {
 			"login": "pinenabled@sun.com",
@@ -188,7 +261,7 @@
 			},
 			"healthTab": {
 				"offerTitle": "UAT - Suncorp Travel Insurance",
-				"offerDescription": "Travelling - whether for pleasure or business - can be great, but it's  no without risk. Make sure you're covered. ",
+				"offerDescription": "Travelling - whether for pleasure or business - can be great, but it's not without risk. Make sure you're covered. ",
 				"url" : "https://www.suncorp.com.au"
 			},
 			"wealthTab": {
@@ -207,9 +280,9 @@
 				"url" : "https://www.suncorp.com.au"
 			},
 			"overviewTab": {
-				"offerTitle": "UAT - Suncorp Back to Basics Loan",
-				"offerDescription": "A home loan with our lowest variable rate and no monthly account keeping fee. ",
-				"url" : "https://www.suncorp.com.au"
+				"offerTitle": "UAT - Apia Comprehensive Car Insurance",
+				"offerDescription": "You'll want to keep moving while your car is being repaired after an accident. Apia offers optional hire car cover.",
+				"url" : "https://www.apia.com.au"
 			}
 	},
 	"articlesCarousel": {
@@ -985,7 +1058,7 @@
 		"pwd": "Passw0rd",
 		"netWorthAmount": "$99,617.16",
 		"bankAccounts": "",
-		"currentMonth": "May 2018",
+		"currentMonth": "June 2018",
 		"spendingsAmountPerMonth": [
 			{
 				"month": "January 2018",
@@ -1051,7 +1124,7 @@
 					"transactionCount": 93
 					},
 					{
-						"name": "Food & drink",
+						"name": "Food & Drink",
 						"amount": "$4147.81",
 						"transactionCount": 84
 					}
@@ -1072,7 +1145,7 @@
 					"transactionCount": 93
 					},
 					{
-						"name": "Food & drink",
+						"name": "Food & Drink",
 						"amount": "$4026.17",
 						"transactionCount": 84
 					}
@@ -1140,7 +1213,7 @@
 
 		},
 		"hasNoData" : {
-			"month" : "January 2018"
+			"month" : "June 2018"
 		}
 	},
 	"hasVehicles" :{
@@ -1166,7 +1239,7 @@
 			"file1" : "file 1",
 			"file2" : "file 2",
 			"folder1" : "folder 1",
-			"rootFolder" : "Document storage",
+			"rootFolder" : "DigitalSafe",
 			"images" : ["File A", "File B" , "File C"]
 		}
 	},
