@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
+import automation.framework.common.Copy;
 import io.appium.java_client.AppiumDriver;
 
 public class AddBankAccountPage  extends BasePage  {
@@ -23,6 +24,13 @@ public class AddBankAccountPage  extends BasePage  {
 	private By addAccountButton = By.id("au.com.suncorp.marketplace:id/addAccountButton");
 	private By addSuperAccButton = By.id("au.com.suncorp.marketplace:id/addSuperButton");
 	private By superAccountNumberField = By.id("au.com.suncorp.marketplace:id/superNumberField");
+	
+	
+public WebElement checkAddBankAccountTitle() {
+		
+		return findByUIAutomator(Copy.ADD_BANK_ACCOUNT_TITLE, "text");
+		
+	}
 	
 	public void tapAccountNumberField(){
 		tapElement(accountNumberField);

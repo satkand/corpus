@@ -3,6 +3,7 @@ package pages.marketplace.portfolio;
 import org.openqa.selenium.By;
 
 import automation.framework.common.BasePage;
+import automation.framework.common.Copy;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import io.appium.java_client.AppiumDriver;
@@ -19,7 +20,11 @@ public class AddProductPage extends BasePage{
 	private By addBankAccountButton = By.id("au.com.suncorp.marketplace:id/bankingTypeLabel");
 	private By addSuperAccountButton = By.id("au.com.suncorp.marketplace:id/superTypeLabel");
 
-	
+	public WebElement checkAddExistingProductTitle() {
+		
+		return findByUIAutomator(Copy.ADD_EXISTING_PRODUCT_TITLE, "text");
+		
+	}
 	public String getaddExistingProductScreenTitleText() {
 		return getText(addExistingProductScreenTitle);
 	}

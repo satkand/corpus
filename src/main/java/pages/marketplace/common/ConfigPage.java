@@ -25,6 +25,7 @@ public class ConfigPage extends BasePage {
 	private By portfolioBaseUrl = By.id("au.com.suncorp.marketplace:id/portfolioBaseUrlEditText");
 	private By mockSpendingToggle = By.id("au.com.suncorp.marketplace:id/mockSpendingAccountsToggle");
 	private By continueButton = By.id("au.com.suncorp.marketplace:id/configContinueButton");
+	private By transferToggle = By.id("au.com.suncorp.marketplace:id/transfersToggle");
 	
 	//FAPI Settings page
 	private By hasBankAccountsToggle = By.id("au.com.suncorp.marketplace:id/hasAccountsToggle");
@@ -67,7 +68,11 @@ public class ConfigPage extends BasePage {
 			// for(int i=0; i<=2; i++) {
 			// swipeScreen("down");
 			// }
-
+            if(getAttribute(transferToggle,"checked").equals("false")) {
+            	
+            	tapElement(transferToggle);
+            	
+            }
 			scrollToElement(continueBtnID, "id");
 			if (find(continueButton, 30) != null) {
 				tapElement(continueButton);
