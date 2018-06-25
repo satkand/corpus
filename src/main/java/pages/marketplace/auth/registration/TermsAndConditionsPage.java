@@ -16,6 +16,8 @@ public class TermsAndConditionsPage extends BasePage {
 	private By termsAndConditionsTitle = By.id("au.com.suncorp.marketplace:id/registrationTermsAndConditionsTitle");
 	private By loginTermsAndConditionsTitle = By.id("au.com.suncorp.marketplace:id/loginTermsAndConditionsTitle");
 	private By acceptButton = By.id("au.com.suncorp.marketplace:id/acceptButton");
+	private By cancelButton = By.id("au.com.suncorp.marketplace:id/cancelButton");
+
 	
 	public WebElement checkTermsAndConditionsTitle() {
 		return find(termsAndConditionsTitle);
@@ -32,4 +34,12 @@ public class TermsAndConditionsPage extends BasePage {
 	public WebElement checkLoginTermsAndConditionsTitle() {
 		return find(loginTermsAndConditionsTitle);
 	}
+	public WebElement checkCancelButton() {
+		return find(acceptButton);
+	}
+	
+	public void tapCancelButton() {
+		tapElement(cancelButton);
+	}
+	
 }
