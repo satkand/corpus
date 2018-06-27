@@ -76,6 +76,72 @@
 	      "toAccountNumber":"001617540"
 		}
 	},
+	"transferToOthers": {
+			"userAccount1": {
+				"login": "donna.schroder@example.com",
+				"pwd": "Suncorp1"
+			},
+			"accountOne": {
+				"accountName": "Agent Trust Account 2",
+				"bsb": "484-799",
+				"accountNumber" : "034368924",
+				"availableBalance":"$11,401.77"
+			},
+			"accountTwo": {
+				"accountName": "Donna's Account",
+				"bsb": "484-799",
+				"accountNumber" : "031555243",
+				"availableBalance":"$1,100,039.31"
+			},
+			"toAccount": {
+				"toAccountTitle": "Collings Communications",
+				"bsb": "124-001",
+				"accountNumber" : "020995664"
+			},
+			"keyboardInputErrors" :{
+			"minimumAmount":"0.01",
+			"minimumAmountError":"A minimum amount of $1.00 is required",
+			"InsufficientFunds":"12000",
+			"InsufficientFundsError":"Insufficient funds"
+			},
+			"amount" : {
+			    "equalToMinimumAmount": "1",
+				"equalToMaximumAmount": "1100039.31",
+				"TwoDecimalAmount": "2.32",
+				"OneDecimalAmount": "100.1",
+				"lessThanMinimumAmount": "0.01",
+				"negativeAmount": "-100.01",
+				"moreThanAvailableBalance": "15202020",
+				"moreThanEightDigitAmount": "1000,01123",
+				"moreThanTwoDecimalAmount": "10.378",
+				"OnlyDecimal" : ".",
+				"verifyEqualToMinimumAmount": "$1.00",
+				"verifyEqualToMaximumAmount": "$1,100,039.31",
+				"verifyTwoDecimalAmount": "$2.32",
+				"verifyOneDecimalAmount": "$100.10",
+				"verifyLessThanMinimumAmount": "A minimum amount of $1.00 is required",
+				"verifyNegativeAmount": "$100.01",
+				"verifyMoreThanAvailableBalance": "Insufficient funds",
+				"verifyMoreThanEightDigitAmount": "$10,000,112.00",
+				"verifyMoreThanTwoDecimalAmount": "$10.37",
+				"verifyOnlyDecimal" : "A minimum amount of $1.00 is required",
+				"validAmount" :"1729"
+				},
+			"description" : {
+				"validDescription" : "MortgageJun26th",
+				"specialCharDescriptionOne" : "@#-+(special1",
+				"specialCharDescriptionTwo" : ")/;'*special2",
+				"oneCharDescription" : "Y",
+				"eighteenCharDescription" :"HouseMortgageJun26",
+				"moreThanEighteenCharDescription" : "HouseMortgageJun26th",
+				"alphaNumericDescriptionOne" : "HMortgageJun26th18",
+				"alphaNumericDescriptionTwo": "Jun26th18HMortgage",
+				"expectedEighteenCharDescription" : "HouseMortgageJun26",
+				"expectedSpecialCharDescriptionOne" : "special1",
+				"expectedSpecialCharDescriptionTwo" : "special2",
+				"expectedMoreThanEighteenCharDescription" : "HouseMortgageJun26"
+			}
+		},
 	"PIN" :{
 		"loginWithExistingPin" : {
 			"login": "pinenabled@sun.com",

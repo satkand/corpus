@@ -596,12 +596,14 @@ public class BasePage {
 		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_ENTER);
 		
 	}
-    public void inputKeysByKeyboard(int key) {
-    	
-    	((AndroidDriver) driver).pressKeyCode(key);
-    	
+    public void inputKeysByKeyboard(int key, int... args) {
+    	if (args.length>0) {
+    		((AndroidDriver) driver).pressKeyCode(key, args[0]);
+    	}
+    	else {
+    		((AndroidDriver) driver).pressKeyCode(key);
+    	}
     }
-    
 	public void pressDeviceButton(int keycode){
 		((AndroidDriver) driver).pressKeyCode(keycode);
 	}

@@ -225,5 +225,15 @@ public interface Copy {
 	String TRANSFER_DISCLAIMER_MESSAGE ="Check payment details correct.\n" + 
 			" Cash advance for Credit Card payments.";
 	
+	//Transfer to someone.
+	public String MONEYDIMENSIONHEADER = "Your accounts";
+	public String PAYTRANSFERPILLTITLE = "Pay/Transfer";
+	public String TRANSFERTOSOMEONETITLE = "Pay someone";
+	public String FROMACCOUNTTITLE = "From account";
+	public String FROMACCOUNTBUTTONTEXT = "SELECT ACCOUNT";
+	public String TOMACCOUNTTITLE = "To account";
+	public String AMOUNTDEFAULT = "Amount";
+	public String DESCRIPTIONDEFASULTTEXT = "Description (optional)";
+	public String NEXTBUTTONTEXT = "NEXT";
 
 }

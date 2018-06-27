@@ -1,7 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -55,6 +53,7 @@ import pages.marketplace.money.ToAccountPage;
 import pages.marketplace.money.TransactionsPage;
 import pages.marketplace.money.TransferPage;
 import pages.marketplace.money.TransferSummaryPage;
+import pages.marketplace.money.TransferToSomeonePage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
 import pages.marketplace.offers.OffersPage;
@@ -156,7 +155,8 @@ public class App extends BaseTest {
 	public FromAccountPage fromAccountPage = null;
 	public TransferSummaryPage transferSummaryPage = null; 
 	public Keyboard keyboard=null;
-	
+	public TransferToSomeonePage transferToSomeonePage = null;
+
 	String CONFIG_FILE=null;
 
 	@Parameters({ "endPoint" })
@@ -252,6 +252,8 @@ public class App extends BaseTest {
 	    fromAccountPage = new FromAccountPage(driver);
 	    transferSummaryPage = new TransferSummaryPage(driver);
 	    keyboard =new Keyboard(driver);
+		transferToSomeonePage = new TransferToSomeonePage(driver);
+
 	}
 	
 
