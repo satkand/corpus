@@ -53,6 +53,7 @@ import pages.marketplace.money.MoneyTrackerPage;
 import pages.marketplace.money.ToAccountPage;
 import pages.marketplace.money.TransactionsPage;
 import pages.marketplace.money.TransferPage;
+import pages.marketplace.money.TransferRecieptPage;
 import pages.marketplace.money.TransferSummaryPage;
 import pages.marketplace.money.TransferToSomeonePage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
@@ -158,6 +159,7 @@ public class App extends BaseTest {
 	public Keyboard keyboard=null;
 	public TransferToSomeonePage transferToSomeonePage = null;
 	public AddNewPayeePage addNewPayeePage = null;
+	public TransferRecieptPage transferRecieptPage =null;
 	String CONFIG_FILE=null;
 
 	@Parameters({ "endPoint" })
@@ -255,6 +257,7 @@ public class App extends BaseTest {
 	    keyboard =new Keyboard(driver);
 		transferToSomeonePage = new TransferToSomeonePage(driver);
 		addNewPayeePage = new AddNewPayeePage(driver);
+	    transferRecieptPage = new TransferRecieptPage(driver);
 	}
 	
 

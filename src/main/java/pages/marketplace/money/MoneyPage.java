@@ -18,6 +18,14 @@ public class MoneyPage extends BasePage{
 	private String offerTitleID = "au.com.suncorp.marketplace:id/offerTitle";
 	private By transferPayButton = By.id("au.com.suncorp.marketplace:id/transferPillButton");
 	private By transferToSelfButton = By.id("au.com.suncorp.marketplace:id/transferToSelfButton");
+	private By moneyDimensionHeader = By.id("au.com.suncorp.marketplace:id/moneyDimensionHeader");
+	
+	private By transferPillButton = By.id("au.com.suncorp.marketplace:id/transferPillButton");
+	//private By transferPillBtnIcon = By.xpath("//android.widget.LinearLayout[@resource-id='au.com.suncorp.marketplace:id/transferPillButton']//android.widget.ImageView");
+	//private By transferFabTitle = By.id("au.com.suncorp.marketplace:id/transferFabTitle");
+	private By startTransferSheetHeading = By.id("au.com.suncorp.marketplace:id/startTransferSheetHeading");
+	private By transferToOthersButton = By.id("au.com.suncorp.marketplace:id/transferToOthersButton");
+	
 	                                      
 
 	public MoneyPage(AppiumDriver driver) {
@@ -143,6 +151,30 @@ public class MoneyPage extends BasePage{
 		
 		tapElement(spendingInsightsLastMonth);
 	}
-
+	
+	public WebElement checkMoneyDimensionHeader() {
+		return find(moneyDimensionHeader);
+	}
+	
+	public String getMoneyDimensionHeader() {
+		return getText(moneyDimensionHeader);
+	}
+	
+	public WebElement checkTransferPillButton() {
+		return find(transferPillButton);
+	}
+	
+	public WebElement checkStartTransferSheetHeading() {
+		return find(startTransferSheetHeading);
+	}
+	public void tapTransferPillBtn() {
+		tapElement(transferPillButton);
+	}
+	
+	public void tapTransferToOthersButton() {
+		tapElement(transferToOthersButton );
+		
+	}
+	
 
 }

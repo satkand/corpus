@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import automation.framework.common.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 public class AddNewPayeePage extends BasePage{
 
@@ -93,12 +94,11 @@ public class AddNewPayeePage extends BasePage{
 	}
 
 	public void tapAccontNumberField() {
-		tapElement(accountNumberField );
+		tapElement(accountNumberField);
 		
 	}
 
 	public String getBsbFiledValue() {
-		
 		return getText(bsbField);
 	}
 	
@@ -108,8 +108,30 @@ public class AddNewPayeePage extends BasePage{
 	}
 
 	public String getTextinputError() {
-		// TODO Auto-generated method stub
 		return getText(textinputError );
+	}
+
+	public void clearAccountName() {
+		clearValue(accountNameField);
+		
+	}
+
+	public void clearAccountNumberField() {
+		clearValue(accountNumberField);
+	}
+
+	public void clearBSBField() {
+		clearValue(bsbField);
+	}
+
+	public WebElement getExpectedInstitutionName(String institutionName) {
+		
+		
+		return scrollToElement(institutionName, "text");
+	}
+
+	public boolean isAddPayeeEnabled() {
+		return isEnabled(addPayeeButton);
 	}
 	
 	

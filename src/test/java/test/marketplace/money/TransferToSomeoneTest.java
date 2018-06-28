@@ -6,9 +6,10 @@ import org.testng.annotations.Test;
 import automation.framework.common.Copy;
 import automation.framework.common.TestDetails;
 import pages.App;
-import pages.marketplace.common.Keyboard;
 
 public class TransferToSomeoneTest extends App {
+
+	
 
 	@TestDetails(story1 = "DMPM-5127:DMPM-9915,DMPM-9920")
 	@Test(groups = {"marketplace", "Money pillar", "priority-minor"})
@@ -26,15 +27,16 @@ public class TransferToSomeoneTest extends App {
 				toAccountName = utils.readTestData("transferToOthers","toAccount","toAccountTitle");
 
 		navigateToMoney(userName,pwd);
-		Assert.assertNotNull(financePage.checkMoneyDimensionHeader(),"Finances- Your Accounts header is not shown");
-		Assert.assertEquals(financePage.getMoneyDimensionHeader(),
-				Copy.MONEYDIMENSIONHEADER,"Finances- Your Accounts header is not shown");
-		Assert.assertNotNull(financePage.checkTransferPillButton(),
+		Assert.assertNotNull(moneyPage.checkMoneyDimensionHeader(),
+				"Money Pages- Your Accounts header is not shown");
+		Assert.assertEquals(moneyPage.getMoneyDimensionHeader(),
+				Copy.MONEYDIMENSIONHEADER,"Money Page- Your Accounts header is not shown");
+		Assert.assertNotNull(moneyPage.checkTransferPillButton(),
 				"Pay/Transfer button is not displayed");		
-		financePage.tapTransferPillBtn();
-		Assert.assertNotNull(financePage.checkStartTransferSheetHeading(),
+		moneyPage.tapTransferPillBtn();
+		Assert.assertNotNull(moneyPage.checkStartTransferSheetHeading(),
 				"Pay/Transfer Sheet title is not displayed");
-		financePage.tapTransferToOthersButton();
+		moneyPage.tapTransferToOthersButton();
 		assertTransferToOthersScreen();
 		transferToSomeonePage.tapFromAccountBtn();
 		common.waitForLoadingIndicatorToDisappear();
@@ -54,8 +56,8 @@ public class TransferToSomeoneTest extends App {
 		verifyDescriptionValues();
 		transferToSomeonePage.dissmissKeyBoard();
 		transferToSomeonePage.tapNext();
-		Assert.assertNotNull(transferSummaryPage.checkTransferSummaryTtile(Copy.TRANSFER_SUMMARY_TITLE),"");
-		Assert.assertNotNull(transferSummaryPage.checkTransferNowButton(),"");
+		Assert.assertNotNull(transferSummaryPage.checkTransferSummaryTtile(Copy.TRANSFER_SUMMARY_TITLE),"Transfer Summary page title not shown");
+		Assert.assertNotNull(transferSummaryPage.checkTransferNowButton(),"Transfer Summary page \"Transfer Now\" button not shown");
 	}
 
 
@@ -64,18 +66,43 @@ public class TransferToSomeoneTest extends App {
 	public void TestAddNewPayee() {
 		String userName = utils.readTestData("addNewPayee","userAccount1","login"),
 				pwd = utils.readTestData("addNewPayee","userAccount1", "pwd"),
-				fromAccountName= utils.readTestData("addNewPayee","fromAccount", "fromAccountName");
+				fromAccountName= utils.readTestData("addNewPayee","fromAccount", 
+						"fromAccountName"),
+				InvalidBSBNumber = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"InvalidBSBNumber"),
+				InvalidBSBError = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"InvalidBSBError"),
+				lessThanSixBSBNumber = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"lessThanSixBSBNumber"),
+				lessThanSixBSBError = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"lessThanSixBSBError"),
+				suncropMetwayBSBNumber = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"suncropMetwayBSBNumber"),
+				suncropMetwayName = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"suncropMetwayName"),
+				commbankBSBNumber = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"commbankBSBNumber"),
+				commbankName = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"commbankName"),
+				ANZBSBNumber = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"ANZBSBNumber"),
+				ANZName = utils.readTestData("addNewPayee", "BSBErrorFiled", 
+						"ANZName"),
+				validAccountName = utils.readTestData("addNewPayee", "AddPayeeFields", 
+						"validAccountName"),
+				validAccountNumber = utils.readTestData("addNewPayee", "AddPayeeFields", 
+						"validAccountNumber");
 		navigateToMoney(userName,pwd);
-		Assert.assertNotNull(financePage.checkMoneyDimensionHeader(),"Finances- Your Accounts header is not shown");
-		Assert.assertEquals(financePage.getMoneyDimensionHeader(),
-				Copy.MONEYDIMENSIONHEADER,"Finances- Your Accounts header is not shown");
-		Assert.assertNotNull(financePage.checkTransferPillButton(),
+		Assert.assertNotNull(moneyPage.checkMoneyDimensionHeader(),
+				"Money Page- Your Accounts header is not shown");
+		Assert.assertEquals(moneyPage.getMoneyDimensionHeader(),
+				Copy.MONEYDIMENSIONHEADER,"Money Page- Your Accounts header is not shown");
+		Assert.assertNotNull(moneyPage.checkTransferPillButton(),
 				"Pay/Transfer button is not displayed");		
-		financePage.tapTransferPillBtn();
-		Assert.assertNotNull(financePage.checkStartTransferSheetHeading(),
+		moneyPage.tapTransferPillBtn();
+		Assert.assertNotNull(moneyPage.checkStartTransferSheetHeading(),
 				"Pay/Transfer Sheet title is not displayed");
-		financePage.tapTransferToOthersButton();
-		//assertTransferToOthersScreen();
+		moneyPage.tapTransferToOthersButton();
 		transferToSomeonePage.tapFromAccountBtn();
 		common.waitForLoadingIndicatorToDisappear();
 		fromAccountPage.chooseFromAccount(fromAccountName);
@@ -89,38 +116,29 @@ public class TransferToSomeoneTest extends App {
 				Copy.ADDNEWPAYEEBUTTONTEXT,"Add new payee- ADD PAYEE button not shown");
 		assertAddNewPayeeFields();
 		assertAddNewPayeeFiedInputValues();
-		assertBSBfieldForInstitutionName();
-
-	}
-	private void assertBSBfieldForInstitutionName() {
-		String suncropMetwayBSBNumber = utils.readTestData("addNewPayee", "BSBField", "suncropMetwayBSBNumber"),
-				suncropMetwayName = utils.readTestData("addNewPayee", "BSBField", "suncropMetwayName"),
-				commbankBSBNumber = utils.readTestData("addNewPayee", "BSBField", 
-						"commbankBSBNumber"),
-				commbankName = utils.readTestData("addNewPayee", "BSBField", 
-						"commbankName"),
-				ANZBSBNumber = utils.readTestData("addNewPayee", "BSBField", 
-						"ANZBSBNumber"),
-				ANZName = utils.readTestData("addNewPayee", "BSBField", 
-						"ANZName"),
-				InvalidBSBNumber = utils.readTestData("addNewPayee", "BSBField", 
-						"InvalidBSBNumber"),
-				InvalidBSBError = utils.readTestData("addNewPayee", "BSBField", 
-						"InvalidBSBError");
 		assertInstitutionValue(suncropMetwayBSBNumber, suncropMetwayName);
 		assertInstitutionValue(commbankBSBNumber, commbankName);
 		assertInstitutionValue(ANZBSBNumber, ANZName);
 		assertInstitutionValue(InvalidBSBNumber, InvalidBSBError);
+		assertInstitutionValue(lessThanSixBSBNumber, lessThanSixBSBError);
+		
+		//Enter a valid Add Payee fields to check "Add Payee" button status
+		assertAccountNameField(validAccountName, validAccountName);
+		assertAccountNumberField(validAccountNumber,validAccountNumber);
+		assertBSBField(suncropMetwayBSBNumber, suncropMetwayBSBNumber);
+		Assert.assertTrue(addNewPayeePage.isAddPayeeEnabled(),
+				"Add New Payee page, add payee button is not activated");
+		
 	}
 
 	private void assertInstitutionValue(String BSBNumber, String expectedInstitutionName) {
 		addNewPayeePage.tapBsbField();
+		addNewPayeePage.clearBSBField();
 		keyboard.sendCharsToKeyboard(BSBNumber);
 		addNewPayeePage.tapAccountName();
 		common.dismissKeyboardShown();
-		Assert.assertEquals(addNewPayeePage.getTextinputError(),expectedInstitutionName,
-				"Transfer to someone- BSB error field is not as expected");
-
+		Assert.assertNotNull(addNewPayeePage.getExpectedInstitutionName(expectedInstitutionName),
+				"Transfer to someone- BSB insititution name is not as expected");
 	}
 
 	private void assertAddNewPayeeFiedInputValues() {
@@ -155,6 +173,7 @@ public class TransferToSomeoneTest extends App {
 
 		assertAccountNameField(maxAccountName, maxAccountName);
 		assertAccountNameField(moreThanMaxAccountName, maxAccountName);
+		//MACC-3148 for below three assertions
 		assertAccountNameField(startingSpacesInAccountName, expectedStartingSpacesInAccountName);
 		assertAccountNameField(trailingSpacesInAccountName, expectedTrailingSpacesInAccountName);
 		assertAccountNameField(startingAndTrailingSpacesInAccountName, expectedStartingAndTrailingSpacesInAccountName);
@@ -162,13 +181,15 @@ public class TransferToSomeoneTest extends App {
 		assertBSBField(bsbWithoutHyphen,bsbWithHyphen);
 		assertAccountNumberField(maxAccountNumber,maxAccountNumber);
 		assertAccountNumberField(moreThanMaxAccountNumber,maxAccountNumber);
+		//MACC-3148 for below assertion
 		assertAccountNumberField(startingSpaceInAccountNumber,expectedStartingSpaceInAccountNumber);
 	}
 
 	private void assertBSBField(String inputBSB, String expectedBSB) {
 		addNewPayeePage.tapBsbField();
+		addNewPayeePage.clearBSBField();
 		keyboard.sendCharsToKeyboard(inputBSB);
-		addNewPayeePage.tapBsbField();
+		addNewPayeePage.tapAccontNumberField();
 		common.dismissKeyboardShown();
 		Assert.assertEquals(addNewPayeePage.getBsbFiledValue(),expectedBSB,
 				"Transfer to someone- BSB field value is not as expected");
@@ -177,6 +198,7 @@ public class TransferToSomeoneTest extends App {
 
 	private void assertAccountNumberField(String inputAccountNumber, String expectedAccountNumber) {
 		addNewPayeePage.tapAccontNumberField();
+		addNewPayeePage.clearAccountNumberField();
 		keyboard.sendCharsToKeyboard(inputAccountNumber);
 		addNewPayeePage.tapBsbField();
 		common.dismissKeyboardShown();
@@ -186,6 +208,7 @@ public class TransferToSomeoneTest extends App {
 
 	private void assertAccountNameField(String accountName, String expectedAccountName) {
 		addNewPayeePage.tapAccountName();
+		addNewPayeePage.clearAccountName();
 		keyboard.sendCharsToKeyboard(accountName);
 		addNewPayeePage.tapBsbField();
 		Assert.assertTrue(addNewPayeePage.getAccountFiledValue().length()<=26,
@@ -260,7 +283,7 @@ public class TransferToSomeoneTest extends App {
 		common.dismissKeyboardShown();
 	}
 
-	private void assertDescriptionField(String inputDescription, String expectedDescription ) {
+	private void assertDescriptionField(String inputDescription, String expectedDescription) {
 		transferToSomeonePage.enterDescription();
 		keyboard.sendCharsToKeyboard(inputDescription);
 		transferToSomeonePage.tapAmount();
@@ -349,7 +372,7 @@ public class TransferToSomeoneTest extends App {
 		Assert.assertEquals(transferToSomeonePage.getAvailableBalance(), availableBalance,
 				"Transfer money to other, pay From account title not shown");
 	}
-	
+
 	private void assertFormAccountsUIScreen(String accountName, String bsb, String accountNumber, 
 			String availableBalance) {
 
@@ -373,7 +396,7 @@ public class TransferToSomeoneTest extends App {
 				"Transfer money to other, pay From account title not shown");
 
 	}
-	
+
 	private void assertTransferToOthersScreen() {
 		Assert.assertNotNull(transferToSomeonePage.checkFromAccountTitle(),
 				"Transfer money to other, pay From account title not shown");
@@ -383,8 +406,8 @@ public class TransferToSomeoneTest extends App {
 				"Transfer money to other, FROM account button not shown");
 		Assert.assertNotNull(transferToSomeonePage.checkFromAccountButtonIcon(),
 				"Transfer money to other, FROM accoutnbutton Icon not shown");
-		Assert.assertNotNull(policyDetailsPage.checkPolicyDetailsScreenTitle(Copy.FROMACCOUNTBUTTONTEXT),
-				"Transfer money to other, pay From account title is not as expected");
+		Assert.assertEquals(transferToSomeonePage.getFromAccountTitle(),Copy.FROMACCOUNTBUTTONTEXT,
+				"Transfer money to others, pay From account title is not as expected");
 		Assert.assertEquals(transferToSomeonePage.getFromAccountBtnText(),
 				Copy.FROMACCOUNTBUTTONTEXT,"Transfer money to other,  FROM account button text is not as expected");
 		Assert.assertTrue(transferToSomeonePage.isFromAccountBtnEnabled(),
@@ -419,7 +442,7 @@ public class TransferToSomeoneTest extends App {
 		Assert.assertFalse(transferToSomeonePage.isTransferSummaryButtonEnabled(),
 				"Transfer money to other, Next button is enabled");
 	}
-	
+
 	private void navigateToMoney(String userName, String pwd) {
 		loginToApp(userName,pwd);
 		landingPage.tapMoneyTab();

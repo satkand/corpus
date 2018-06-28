@@ -235,6 +235,10 @@ public class Keyboard extends BasePage{
 		case 'z':
 			inputKeysByKeyboard(AndroidKeyCode.KEYCODE_Z);
 			break;
+			
+		case ' ':
+			inputKeysByKeyboard(AndroidKeyCode.KEYCODE_SPACE);
+			break;
 
 		}
 	}
