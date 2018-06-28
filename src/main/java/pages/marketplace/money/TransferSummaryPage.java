@@ -22,7 +22,8 @@ public class TransferSummaryPage extends BasePage {
 	private By toAccountBalance = MobileBy.AndroidUIAutomator(
 			"new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/toAccountContainer\").childSelector(new UiSelector().resourceId(\"au.com.suncorp.marketplace:id/accountBalanceText\"))");
 	private By transferAmount = By.id("au.com.suncorp.marketplace:id/amountValue");
-	private By disclaimerLabel = By.id("au.com.suncorp.marketplace:id/transferDisclaimerLabel");
+	private By disclaimerLabel = By.id("au.com.suncorp.marketplace:id/transfersDisclaimerLabel");
+	private By creditCardTransferDisclaimerLabel = By.id("au.com.suncorp.marketplace:id/creditCardTransferDisclaimer");
 	private By transferNowButton = By.id("au.com.suncorp.marketplace:id/transferNowButton");
 	private By whenValue = By.id("au.com.suncorp.marketplace:id/whenValue");
 	private By processingMessage = By.id("au.com.suncorp.marketplace:id/dialogMessage");
@@ -120,5 +121,10 @@ public class TransferSummaryPage extends BasePage {
 
 		return getText(disclaimerLabel);
 	}
+	public String getCreditCardTransferDisclaimerLabel() {
+
+		return getText(creditCardTransferDisclaimerLabel);
+	}
+	
 	
 }

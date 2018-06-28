@@ -15,7 +15,7 @@ public class TransferToSelfTest extends App{
 	@DataProvider(name = "TransferPayEntryPoint")
 	public static Object[][] Data_PolicyMaintainceError() {
 
-		return new Object[][] { { "moneyFlow" }, { "transactionsFlow" } };
+		return new Object[][] {{ "moneyFlow" }, { "transactionsFlow" } };
 
 	}
 	
@@ -55,10 +55,10 @@ public class TransferToSelfTest extends App{
 		Assert.assertEquals(Copy.PROCESSING_MESSAGE,transferSummaryPage.getProcessingMessage(),"Processing message not displayed on pressing back button");
 		
 	}
-	
+	//Defect :-MACC-3063 for "transactionsFlow"
 	@TestDetails(story1 = "DMPM-4368:DMPM-11083,DMPM-11080",priority = Priority.LOW)
-	@Test (groups = {"marketplace", "Transfer to self", "priority-minor"})
-	public void testTransferFromCreditCardDisclaimer() {
+	@Test (dataProvider = "TransferPayEntryPoint",groups = {"marketplace", "Transfer to self", "priority-minor"})
+	public void testTransferFromCreditCardDisclaimer(String entryPoint) {
 
 		String userName = utils.readTestData("transferToSelf","creditCardAccount1","login");
 		String pwd = utils.readTestData("transferToSelf","creditCardAccount1","pwd");
@@ -67,7 +67,7 @@ public class TransferToSelfTest extends App{
 		String amount = utils.readTestData("transferToSelf","creditCardAccount1","amount");
 		String fromAccountBSBAndAccountNum = utils.readTestData("transferToSelf","creditCardAccount1","fromBSBAndAccount");
 		
-		navigateToTransferScreen(userName,pwd,"moneyFlow");
+		navigateToTransferScreen(userName,pwd,entryPoint,fromAccountName);
 		transferPage.tapSelectFromAccount();
 		common.waitForLoadingIndicatorToDisappear();
 		fromAccountPage.chooseFromAccount(fromAccountName);
@@ -78,6 +78,7 @@ public class TransferToSelfTest extends App{
 		common.dismissKeyboardShown();
 		transferPage.tapNextButton();
 		Assert.assertEquals(transferSummaryPage.getFromAccountAndBsbNumber(),fromAccountBSBAndAccountNum,"From Account BSB and Account number is incorrect");
+		Assert.assertEquals(transferSummaryPage.getCreditCardTransferDisclaimerLabel(),Copy.CREDIT_CARD_TRANSFER_DISCLAIMER_MESSAGE,"Credit card Transfer disclaimer message is incorrect");
 		Assert.assertEquals(transferSummaryPage.getDisclaimerLabel(),Copy.TRANSFER_DISCLAIMER_MESSAGE,"Transfer disclaimer message is incorrect");
 		
 	}
@@ -95,7 +96,6 @@ public class TransferToSelfTest extends App{
 		String toAccountBSB = utils.readTestData("transferToSelf","userAccount1","toBSB");
 		String fromAccountNumber = utils.readTestData("transferToSelf","userAccount1","fromAccountNumber");
 		String toAccountNumber = utils.readTestData("transferToSelf","userAccount1","toAccountNumber");
-		String amount = utils.readTestData("transferToSelf","userAccount1","amount");
 		
 		navigateToTransferScreen(userName,pwd,entryPoint,fromAccountNameOnMoney);
 		transferPage.tapSelectFromAccount();
@@ -124,13 +124,14 @@ public class TransferToSelfTest extends App{
 		Assert.assertFalse(transferPage.isNextButtonEnabled(),"Next button is enabled");
 	}
 	
-	@TestDetails(story1 = "DMPM-4356:DMPM-9851",priority = Priority.LOW)
-	@Test (groups = {"marketplace","Transfer to self", "priority-minor"})
-	public void testAmountAndDescriptionFieldValidation() {
+	@TestDetails(story1 = "DMPM-4356:DMPM-9851",story2="DMPM-9971:DMPM-11324,DMPM-11581",story3="DMPM-4356:DMPM-9853",priority = Priority.LOW)
+	@Test (dataProvider = "TransferPayEntryPoint",groups = {"marketplace","Transfer to self", "priority-minor"})
+	public void testAmountAndDescriptionFieldValidation(String entryPoint) {
 
 		String userName = utils.readTestData("transferToSelf","userAccount1","login");
 		String pwd = utils.readTestData("transferToSelf","userAccount1","pwd");
 		String fromAccountName = utils.readTestData("transferToSelf","userAccount1","fromAccountdisplayNameOnFromScreen");
+		String fromAccountNameOnMoney = utils.readTestData("transferToSelf","userAccount1","fromAccountdisplayName");
 		String toAccountName = utils.readTestData("transferToSelf","userAccount1","toAccountdisplayNameOnToScreen");
 		String zeroAmount = utils.readTestData("transferToSelf","userAccount1","amountValidation","zeroAmount");
 		String greaterAmount = utils.readTestData("transferToSelf","userAccount1","amountValidation","greaterAmount");
@@ -141,7 +142,7 @@ public class TransferToSelfTest extends App{
 		String maxDescriptionCharactors = utils.readTestData("transferToSelf","userAccount1","descriptionValidation","19DescriptionCharactors");
 		
 		
-		navigateToTransferScreen(userName,pwd,"moneyFlow");
+		navigateToTransferScreen(userName,pwd,entryPoint,fromAccountNameOnMoney);
 		transferPage.tapSelectFromAccount();
 		common.waitForLoadingIndicatorToDisappear();
 		fromAccountPage.chooseFromAccount(fromAccountName);
@@ -151,13 +152,12 @@ public class TransferToSelfTest extends App{
 		toAccountPage.chooseToAccount(toAccountName);
 		transferPage.enterAmount(zeroAmount);
 		common.dismissKeyboardShown();
-		//change copy once DMPM-9971 is implemented
-		Assert.assertEquals(transferPage.getAmountInlineError(), "You cannot enter an Amount equal to or lower than zero (0)!");
+		Assert.assertEquals(transferPage.getAmountInlineError(), Copy.MINIMUM_AMOUNT_INLINE_ERROR,"Minimum amount error is incorrect");
 		transferPage.clearAmountField();
 		transferPage.enterAmount(greaterAmount);
 		common.dismissKeyboardShown();
-		//change copy once DMPM-9971 is implemented
-		Assert.assertEquals(transferPage.getAmountInlineError(), "You have insufficient funds to transfer this Amount!");
+		Assert.assertEquals(transferPage.getAmountInlineError(), Copy.INSUFFICIENT_FUNDS_INLINE_ERROR,"Insufficient funds error is not correct");
+		Assert.assertFalse(transferPage.isNextButtonEnabled(),"Next button is enabled");
 		transferPage.clearAmountField();
 		transferPage.enterAmount(negativeAmount);
 		common.dismissKeyboardShown();
@@ -177,13 +177,143 @@ public class TransferToSelfTest extends App{
 		Assert.assertTrue(transferPage.getAmountFieldValue().matches("^\\$[0-9],[0-9]{3}\\.[0-9][0-9]$"),"Amount format is incorrect");
 		
 	}
+	
+	@TestDetails(story1 = "DMPM-4371:DMPM-11151,DMPM-11154",story2="DMPM-10946:DMPM-11185",priority = Priority.LOW)
+	@Test (dataProvider = "TransferPayEntryPoint",groups = {"marketplace", "Transfer to self", "priority-minor"})
+	public void testSelfTransferRecieptScreen(String entryPoint) {
+
+		String userName = utils.readTestData("transferToSelf","userAccount1","login");
+		String pwd = utils.readTestData("transferToSelf","userAccount1","pwd");
+		String fromAccountNameOnMoney = utils.readTestData("transferToSelf","userAccount1","fromAccountdisplayName");
+		String fromAccountName = utils.readTestData("transferToSelf","userAccount1","fromAccountdisplayNameOnFromScreen");
+		String toAccountName = utils.readTestData("transferToSelf","userAccount1","toAccountdisplayNameOnToScreen");
+		String amount = utils.readTestData("transferToSelf","userAccount1","amount");
+		String fromAccountBSB = utils.readTestData("transferToSelf","userAccount1","fromBSB");
+		String toAccountBSB = utils.readTestData("transferToSelf","userAccount1","toBSB");
+		String fromAccountNumber = utils.readTestData("transferToSelf","userAccount1","fromAccountNumber");
+		String toAccountNumber = utils.readTestData("transferToSelf","userAccount1","toAccountNumber");
+		
+		navigateToTransferScreen(userName,pwd,entryPoint,fromAccountNameOnMoney);
+		transferPage.tapSelectFromAccount();
+		common.waitForLoadingIndicatorToDisappear();
+		fromAccountPage.chooseFromAccount(fromAccountName);
+		transferPage.tapSelectToAccount();
+		common.waitForLoadingIndicatorToDisappear();
+		toAccountPage.chooseToAccount(toAccountName);
+		transferPage.enterAmount(amount);
+		common.dismissKeyboardShown();
+		transferPage.tapNextButton();
+		Assert.assertEquals(transferSummaryPage.getDisclaimerLabel(),Copy.TRANSFER_DISCLAIMER_MESSAGE,"Transfer disclaimer message is incorrect");
+		transferSummaryPage.tapTransferNowButton();
+		Assert.assertEquals(Copy.TRANSFER_COMPLETE_SUCCESS_MESSAGE,transferRecieptPage.getReceiptMessage(),"Success Message is not displayed");
+		Assert.assertTrue(transferRecieptPage.getReceiptNumber().matches("\\b\\d{10}\\b"),"Reciept number not displayed");
+		Assert.assertEquals(transferRecieptPage.getFromAccountName(),fromAccountName,"From Account Name is not displayed");
+		Assert.assertEquals(transferRecieptPage.getfromAccountNumberAndBSB(),fromAccountBSB+" "+fromAccountNumber,"From Account number and BSB are incorrect");
+		Assert.assertEquals(transferRecieptPage.getToAccountName(),toAccountName,"To Account Name is not displayed");
+		Assert.assertEquals(transferRecieptPage.getToAccountNumberAndBSB(),toAccountBSB+" "+toAccountNumber,"To Account number and BSB are incorrect");
+		Assert.assertEquals(transferRecieptPage.getWhenDate(),utils.getDate("dd MMM yyyy"),"Date is incorrect");
+		Assert.assertEquals(transferRecieptPage.getAmount(),"$"+amount,"Amount is not displayed correctly");
+		transferRecieptPage.tapBackToAccountsButton();
+		Assert.assertNotNull(moneyPage.checkTransferPayButton(), "Not Money Dimension Page");
+		
+	}
+	
+	@TestDetails(story1 = "DMPM-4371:DMPM-11153,",priority = Priority.LOW)
+	@Test (dataProvider = "TransferPayEntryPoint",groups = {"marketplace", "Transfer to self", "priority-minor"})
+	public void testMakeAnotherPaymentFromRecieptScreen(String entryPoint) {
+
+		String userName = utils.readTestData("transferToSelf","userAccount1","login");
+		String pwd = utils.readTestData("transferToSelf","userAccount1","pwd");
+		String fromAccountName = utils.readTestData("transferToSelf","userAccount1","fromAccountdisplayNameOnFromScreen");
+		String fromAccountNameOnMoney = utils.readTestData("transferToSelf","userAccount1","fromAccountdisplayName");
+		String toAccountName = utils.readTestData("transferToSelf","userAccount1","toAccountdisplayNameOnToScreen");
+		String amount = utils.readTestData("transferToSelf","userAccount1","amount");
+		
+		navigateToTransferScreen(userName,pwd,entryPoint,fromAccountNameOnMoney);
+		transferPage.tapSelectFromAccount();
+		common.waitForLoadingIndicatorToDisappear();
+		fromAccountPage.chooseFromAccount(fromAccountName);
+		transferPage.tapSelectToAccount();
+		common.waitForLoadingIndicatorToDisappear();
+		toAccountPage.chooseToAccount(toAccountName);
+		transferPage.enterAmount(amount);
+		common.dismissKeyboardShown();
+		transferPage.tapNextButton();
+		transferSummaryPage.tapTransferNowButton();
+		Assert.assertEquals(Copy.TRANSFER_COMPLETE_SUCCESS_MESSAGE,transferRecieptPage.getReceiptMessage(),"Success Message is not displayed");
+		transferRecieptPage.tapMakeAnotherPaymentButton();
+		Assert.assertNotNull(transferPage.checkTransferPageTtile(Copy.TRANSFER_TITLE), "Not on transfer page");
+		Assert.assertNotNull(transferPage.checkSelectFromAccountButton(),"Select From Account Button is not displayed");
+		Assert.assertNotNull(transferPage.checkSelectToAccountButton(),"Select To Account Button is not displayed");
+		Assert.assertEquals(transferPage.getAmountFieldValue(),"","Amount field is not empty");
+		Assert.assertEquals(transferPage.getDescriptionFieldValue(),"","Description field is not empty");
+		
+	}
+	
+	@TestDetails(story1 = "DMPM-4371:DMPM-11155",priority = Priority.LOW)
+	@Test (groups = {"marketplace", "Transfer to self", "priority-minor"})
+	public void testNavigateFromRecieptByDeviceBackButton() {
+
+		String userName = utils.readTestData("transferToSelf","userAccount1","login");
+		String pwd = utils.readTestData("transferToSelf","userAccount1","pwd");
+		String fromAccountName = utils.readTestData("transferToSelf","userAccount1","fromAccountdisplayNameOnFromScreen");
+		String toAccountName = utils.readTestData("transferToSelf","userAccount1","toAccountdisplayNameOnToScreen");
+		String amount = utils.readTestData("transferToSelf","userAccount1","amount");
+		
+		navigateToTransferScreen(userName,pwd,"moneyFlow");
+		transferPage.tapSelectFromAccount();
+		common.waitForLoadingIndicatorToDisappear();
+		fromAccountPage.chooseFromAccount(fromAccountName);
+		transferPage.tapSelectToAccount();
+		common.waitForLoadingIndicatorToDisappear();
+		toAccountPage.chooseToAccount(toAccountName);
+		transferPage.enterAmount(amount);
+		common.dismissKeyboardShown();
+		transferPage.tapNextButton();
+		transferSummaryPage.tapTransferNowButton();
+		Assert.assertEquals(Copy.TRANSFER_COMPLETE_SUCCESS_MESSAGE,transferRecieptPage.getReceiptMessage(),"Success Message is not displayed");
+		common.tapDeviceBackButton();
+		Assert.assertNotNull(moneyPage.checkTransferPayButton(), "Not MoneyDimension Page");
+		
+	}
+
+	@TestDetails(story1 = "DMPM-4356:DMPM-9857", priority = Priority.LOW)
+	@Test(groups = { "marketplace", "Transfer to self", "priority-minor" })
+	public void testAmountAndDescriptionFocus() {
+
+		String userName = utils.readTestData("transferToSelf", "userAccount1", "login");
+		String pwd = utils.readTestData("transferToSelf", "userAccount1", "pwd");
+		String fromAccountName = utils.readTestData("transferToSelf", "userAccount1",
+				"fromAccountdisplayNameOnFromScreen");
+		String toAccountName = utils.readTestData("transferToSelf", "userAccount1", "toAccountdisplayNameOnToScreen");
+		String amount = utils.readTestData("transferToSelf", "userAccount1", "amount");
+		String description = utils.readTestData("transferToSelf","userAccount1","description");
+
+		navigateToTransferScreen(userName, pwd, "moneyFlow");
+		transferPage.tapSelectFromAccount();
+		common.waitForLoadingIndicatorToDisappear();
+		fromAccountPage.chooseFromAccount(fromAccountName);
+		transferPage.tapSelectToAccount();
+		common.waitForLoadingIndicatorToDisappear();
+		toAccountPage.chooseToAccount(toAccountName);
+		transferPage.checkAmountField();
+		common.dismissKeyboardShown();
+		transferPage.tapDescriptionField();
+		transferPage.enterDescriptionField(description);
+		common.dismissKeyboardShown();
+		Assert.assertFalse(transferPage.isNextButtonEnabled(), "Next button is enabled");
+		transferPage.tapAmountField();
+		transferPage.enterAmount(amount);
+		common.dismissKeyboardShown();
+		Assert.assertTrue(transferPage.isNextButtonEnabled(), "Next button is disabled");
+
+	}
+	
 
 	private void navigateToTransferScreen(String userName, String pwd, String flow, String... accountName) {
 
 		loginToApp(userName, pwd);
 		landingPage.tapMoneyTab();
-		//common.checkLoadingIndicator();
-		//common.waitForLoadingIndicatorToDisappear();
 		moneyPage.checkTransferPayButton();
 		if (flow.equalsIgnoreCase("moneyFlow")) {
 			moneyPage.tapTransferPayButton();

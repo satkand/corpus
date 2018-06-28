@@ -31,16 +31,16 @@ public class TransferPage extends BasePage {
 		return findByUIAutomator(title, "text");
 	}
 
-	public WebElement selectFromAccount() {
+	public WebElement checkSelectFromAccountButton() {
 
 		return find(fromAccountButton);
 	}
 
-	public WebElement selectToAccount() {
+	public WebElement checkSelectToAccountButton() {
 
 		return find(toAccountButton);
 	}
-
+	
 	public void tapSelectFromAccount() {
 
 		tapElement(fromAccountButton);
@@ -101,6 +101,11 @@ public class TransferPage extends BasePage {
 	public boolean isAmountFieldEnabled() {
 
 		return isEnabled(amountField);
+
+	}
+	public WebElement checkAmountField() {
+
+		return find(amountField);
 
 	}
 
@@ -197,6 +202,14 @@ public class TransferPage extends BasePage {
 		tapElement(descriptionField);
 			
 	}
-	
-	
+	public void  tapAmountField() {
+
+		tapElement(amountField);
+			
+	}
+	public String getDescriptionFieldValue() {
+
+		return getText(descriptionField);
+
+	}
 }
