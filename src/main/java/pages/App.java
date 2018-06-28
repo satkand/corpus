@@ -54,6 +54,7 @@ import pages.marketplace.money.MoneyTrackerPage;
 import pages.marketplace.money.ToAccountPage;
 import pages.marketplace.money.TransactionsPage;
 import pages.marketplace.money.TransferPage;
+import pages.marketplace.money.TransferRecieptPage;
 import pages.marketplace.money.TransferSummaryPage;
 import pages.marketplace.vehicles.VehicleDetailsPage;
 import pages.marketplace.vehicles.VehiclesPage;
@@ -156,6 +157,7 @@ public class App extends BaseTest {
 	public FromAccountPage fromAccountPage = null;
 	public TransferSummaryPage transferSummaryPage = null; 
 	public Keyboard keyboard=null;
+	public TransferRecieptPage transferRecieptPage =null;
 	
 	String CONFIG_FILE=null;
 
@@ -252,6 +254,7 @@ public class App extends BaseTest {
 	    fromAccountPage = new FromAccountPage(driver);
 	    transferSummaryPage = new TransferSummaryPage(driver);
 	    keyboard =new Keyboard(driver);
+	    transferRecieptPage = new TransferRecieptPage(driver);
 	}
 	
 

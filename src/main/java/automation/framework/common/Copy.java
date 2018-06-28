@@ -222,8 +222,14 @@ public interface Copy {
 	String TRANSFER_SUMMARY_TITLE ="Transfer summary";
 	String PROCESSING_MESSAGE = "Processing…";
 	String WHEN = "Now";
-	String TRANSFER_DISCLAIMER_MESSAGE ="Check payment details correct.\n" + 
-			" Cash advance for Credit Card payments.";
+	String TRANSFER_DISCLAIMER_MESSAGE ="Please check payment details, as incorrect payments are difficult to recover.";
+	String CREDIT_CARD_TRANSFER_DISCLAIMER_MESSAGE="Transfers using a Clear Options Credit Card is treated as a cash advance. Relevant Fees and Charges apply.";
+	String INSUFFICIENT_FUNDS_INLINE_ERROR = "Insufficient funds";
+	String MINIMUM_AMOUNT_INLINE_ERROR = "A minimum amount of $1.00 is required";
+	
+	//RECIEPT SCREEN
+	String TRANSFER_COMPLETE_SUCCESS_MESSAGE = "Your transfer has been successfully processed";
+	
 	
 
 }
