@@ -236,4 +236,19 @@ public interface Copy {
 	public String DESCRIPTIONDEFASULTTEXT = "Description (optional)";
 	public String NEXTBUTTONTEXT = "NEXT";
 
+	public String ADDNEWPAYEE = "Add new payee";
+
+	public String ADDNEWPAYEEBUTTONTEXT = "ADD PAYEE";
+
+	String ADDPAYEEACCOUNTNAME = "Account name";
+
+	String ADDPAYEEBSB = "BSB";
+
+	String ADDPAYEEACCOUNTNUMBER = "Account number";
+
+	String ADDPAYEESWITCHON = "Save to address book ON";
+	String ADDPAYEESWITCHOFF = "Save to address book OFF";
+
+	String ADDPAYEEBUTTON = "ADD PAYEE";
+
 }

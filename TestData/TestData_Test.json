@@ -142,6 +142,46 @@
 				"expectedMoreThanEighteenCharDescription" : "HouseMortgageJun26"
 			}
 		},
+	"addNewPayee": {
+			"userAccount1": {
+				"login": "donna.schroder@example.com",
+				"pwd": "Suncorp1"
+			},
+			"fromAccount": {
+			"fromAccountName" :"Agent Trust Account 2",
+			"fromAccountNumber" :"800086550",
+			"fromAccountBsb" :"484-799",
+			"availableBalance": "$1,006,125,316.11"
+			},
+			"AddPayeeFields" : {
+				"maxAccountName" : "ThisAccountBelongsToSam123",
+				"moreThanMaxAccountName" : "ThisAccountBelongsToSam1234",
+				"startingSpacesInAccountName" : "   ThisAccountBelongsToSam1",
+				"trailingSpacesInAccountName" : "ThisAccountBelongsToSam   ",
+				"startingAndTrailingSpacesInAccountName" : "  ThisAccountBelongsToS   ",
+				"bsbWithHyphen" : "123-456",
+				"bsbWithoutHyphen" : "123456",
+				"inValidBSB" : "01233",
+				"expectedBSBError" : "BSB must be 6 numbers",
+				"maxAccountNumber" : "123456789101245",
+				"moreThanMaxAccountNumber" :"1234567891012456",
+				"startingSpaceInAccountNumber" : "   1234567891012",
+				"expectedStartingSpacesInAccountName" : "ThisAccountBelongsToSam1",
+				"expectedTrailingSpacesInAccountName" : "ThisAccountBelongsToSam",
+				"expectedStartingAndTrailingSpacesInAccountName" : "ThisAccountBelongsToS",
+				"expectedStartingSpaceInAccountNumber" : "   1234567891012"
+			},
+			"BSBErrorFiled" : {
+				"suncropMetwayBSBNumber" : "",
+				"suncropMetwayName":"",
+				"commbankBSBNumber":"", 
+				"commbankName" :"",
+				"ANZBSBNumber":"",
+				"ANZName": "",
+				"InvalidBSBNumber" :"",
+				"InvalidBSBError":""
+			}
+		},
 	"PIN" :{
 		"loginWithExistingPin" : {
 			"login": "pinenabled@sun.com",

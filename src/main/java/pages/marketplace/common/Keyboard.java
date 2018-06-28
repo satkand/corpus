@@ -11,7 +11,10 @@ public class Keyboard extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	public void sendCharsToKeyboard(String string) {
+		for(int i=0;i<string.length();i++) {
+			enterKeyUsingKeyboard(string.charAt(i));}
+	}
 	public void enterKeyUsingKeyboard(char key) {
 
 		switch (key) {

@@ -45,6 +45,7 @@ import pages.marketplace.digitalVault.SelectItemsPage;
 import pages.marketplace.landing.LandingPage;
 import pages.marketplace.landing.NavigationMenuPage;
 import pages.marketplace.landing.WelcomePage;
+import pages.marketplace.money.AddNewPayeePage;
 import pages.marketplace.money.CategoryBreakDownPage;
 import pages.marketplace.money.FromAccountPage;
 import pages.marketplace.money.MoneyPage;
@@ -156,7 +157,7 @@ public class App extends BaseTest {
 	public TransferSummaryPage transferSummaryPage = null; 
 	public Keyboard keyboard=null;
 	public TransferToSomeonePage transferToSomeonePage = null;
-
+	public AddNewPayeePage addNewPayeePage = null;
 	String CONFIG_FILE=null;
 
 	@Parameters({ "endPoint" })
@@ -253,7 +254,7 @@ public class App extends BaseTest {
 	    transferSummaryPage = new TransferSummaryPage(driver);
 	    keyboard =new Keyboard(driver);
 		transferToSomeonePage = new TransferToSomeonePage(driver);
-
+		addNewPayeePage = new AddNewPayeePage(driver);
 	}
 	
 
