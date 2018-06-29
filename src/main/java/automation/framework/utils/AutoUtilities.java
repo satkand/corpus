@@ -109,5 +109,12 @@ public class AutoUtilities extends BaseTest{
         Date timeStamp = new Date(yourmilliseconds);
         return sdf.format(timeStamp);
     }
+    
+	public String getDate(String dateFormat) {
+		SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+		Date date = new Date();
+		System.out.println(formatter.format(date));
+		return formatter.format(date);
+	}
 
 }
