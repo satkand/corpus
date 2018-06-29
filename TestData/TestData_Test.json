@@ -203,6 +203,14 @@
 					"buildYear": "1966"
 					
 		},
+		"FeatureAccessControl":{
+					"login": "amila.bandara@outware.com.au",
+					"pwd": "Password1"
+		},
+		"SuppliedAssetPropertyDetails":{
+					"address": "19 Brighton Street",
+					"landSize": "651 m²"
+		},
 		"propertyDetailsHighConfidence":{
 					"confidenceLevel":"High Confidence",
 					"numberOfImages":"2",
@@ -219,7 +227,7 @@
 					"highConfidenceAddress":"38, Macumba Drive Clyde North"
 		},
 		"suburbInsight":{
-					"login":"vivek.moorthi@suncorp.com.au",
+					"login":"gitin.george@suncorp.com.au",
 					"pwd":"Password1",
 					"suburbSearchText":"Springvale South",
 					"floodRiskValue" : "Very low",

@@ -44,7 +44,7 @@ public class HomeProfessionalServicesTest extends App{
 		
 	}
 	
-	@TestDetails(story1 = "DMPM-6102:DMPM-7073,DMPM-4707", priority = Priority.LOW)
+	@TestDetails(story1 = "DMPM-6102:DMPM-7073,DMPM-4707",story2 = "DMPM-7960:DMPM-8198", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Home buying journey", "priority-minor" })
 	public void testProfessionalServicesUpdatedURL() {
 		
@@ -107,6 +107,41 @@ public class HomeProfessionalServicesTest extends App{
 			Assert.assertEquals(webviewPage.getWebViewLocationBar(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
 			
 		}
+	}
+	
+	//9231 - 
+	@Test(groups = {"DMPM-5956","DMPM-11412", "DMPM-11414", "marketplace", "Home buying journey", "priority-minor" })
+	public void testViewPropertyProfessionalServicesFromSuppliedAndDerivedPropertyDetails() {
+		loginToApp(utils.readTestData("propertyDimension","propertyProducts","withProducts","login"), utils.readTestData("propertyDimension","propertyProducts","withProducts","pwd"));
+		
+		landingPage.tapHomeTab();
+		Assert.assertTrue(landingPage.isHomeTabSelected(), "Home tab is not selected on landing page");
+		Assert.assertNotNull(homePropertyPage.checkPropertyDetailsButton(), "Home Property Page - Property details button is not present");
+		
+		homePropertyPage.tapPropertyDetailsButton();
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Supplied assets address is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkhomeServicesButton(), "Property Details Page - Supplied assets Home Services button is not present");
+		propertyDetailsPage.taphomeServicesButton();
+		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "home Services Page - View services button is not present");
+		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+		
+		webviewPage.tapWebviewCloseButton();
+		Assert.assertNotNull(propertyDetailsPage.checkBackButton(), "Property Details Page - derived assets details back button is not present");
+		propertyDetailsPage.tapBackButton();
+		
+		homePropertyPage.scrollToLaunchPropertyExplorer();
+		homePropertyPage.checkPropertyDetailsButton();
+		homePropertyPage.tapPropertyDetailsButton();
+		
+		Assert.assertNotNull(propertyDetailsPage.checkPropertyAddress(), "Property Details Page - Supplied assets address is not present");
+		Assert.assertNotNull(propertyDetailsPage.checkhomeServicesButton(), "Property Details Page - Supplied assets Home Services button is not present");
+		propertyDetailsPage.taphomeServicesButton();
+		Assert.assertNotNull(webviewPage.checkWebviewBrowserUrl(), "home Services Page - View services button is not present");
+		Assert.assertEquals(webviewPage.getWebviewBrowserUrl(),Copy.HOME_PROFESSIONAL_SERVICES_URL, "home Services Page - View Services web view URL is different to the expected URL");
+		
+		webviewPage.tapWebviewCloseButton();
+		Assert.assertNotNull(propertyDetailsPage.checkBackButton(), "Property Details Page - derived assets details back button is not present");
+	
 	}
 
 	private void navigateToProfessionalServices() {

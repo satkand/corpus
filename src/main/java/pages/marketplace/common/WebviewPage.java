@@ -197,9 +197,11 @@ public class WebviewPage extends BasePage {
 	}	
 	
 	public void tapWebviewCloseButton() {
-
-		tapElement(webviewCloseButton);
-	
+		if(!getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("Google")) {
+			tapElement(webviewCloseButton);
+		}else {
+			tapDeviceBackButton();
+		}	
 	}
 
 	public WebElement checkPopUp() {

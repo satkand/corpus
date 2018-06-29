@@ -13,7 +13,7 @@ public class PropertyDetailsTest extends App{
 	// DMPM-1126 - Scenario 1
 	//DMPM-4822
 	// navigating to Property Details and Verify property details
-	@Test (groups = {"DMPM-1126", "DMPM-4312", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-1126", "DMPM-4312","DMPM-9200", "marketplace", "Home buying journey", "priority-minor"})
 	public void testNavigateToPropertyDetailsScreen() {
 		navigateToPropertyDetails("StartYourJourney","MediumConfident");
 		
@@ -50,7 +50,7 @@ public class PropertyDetailsTest extends App{
 	//DMPM-1267 - Scenario 1
 	//DMPM-4822
 	// navigating to Property Details and Verify show more information
-	@Test (groups = {"DMPM-1126", "DMPM-4310","DMPM-4315","DMPM-1267","DMPM-3536","DMPM-4822", "marketplace", "Home buying journey", "priority-minor"})
+	@Test (groups = {"DMPM-1126", "DMPM-4310","DMPM-4315","DMPM-1267","DMPM-3536","DMPM-4822","DMPM-9200", "marketplace", "Home buying journey", "priority-minor"})
 	public void testShowMoreInfoOnPropertyDetailsScreen() {
 		
 		navigateToPropertyDetails("StartYourJourney","MediumConfident");
@@ -136,9 +136,10 @@ public class PropertyDetailsTest extends App{
 	}
 	
 	//DMPM-3794 - Scenario 1 (TC DMPM-4478), Scenario 3(TC DMPM-4480), Scenario 5 (TC DMPM-4483), Scenario 6 (TC DMPM-4484)
+	//DMPM-4087 - Scenario 1 (TC DMPM-9301), Scenario 2(TC DMPM-9302), Scenario 3 (TC DMPM-9303), Scenario 4 (TC DMPM-9304), Scenario 6 (TC DMPM-9305)
 	//DMPM-4788 - Scenario 1 (TC DMPM-5530)
 	//Navigate to property details, tap on image and see the full screen view
-	@Test (groups = {"DMPM-3794", "DMPM-4478","DMPM-4480","DMPM-4483","DMPM-4484","DMPM-4788","DMPM-5530","marketplace", "Property Hub", "priority-minor"})
+	@Test (groups = {"DMPM-3794", "DMPM-4478","DMPM-4480","DMPM-4483","DMPM-4484","DMPM-4788","DMPM-5530","DMPM-4087","DMPM-9301","DMPM-9302","DMPM-9303","DMPM-9304","DMPM-9305","marketplace", "Property Hub", "priority-minor"})
 	public void testDisplayPropertyImagesFullScreenView() {
 				
 		
@@ -182,10 +183,9 @@ public class PropertyDetailsTest extends App{
 		
 	}
 	
-	
 	// DMPM-3116 - Scenario 1 (DMPM-5245)
 	// navigating to Property details and verify the estimated property value section
-	@Test (groups = {"DMPM-3116","DMPM-5245", "marketplace", "Property Hub", "priority-minor"})
+	@Test (groups = {"DMPM-3116","DMPM-5245","DMPM-9211","DMPM-52451","DMPM-8509", "marketplace", "Property Hub", "priority-minor"})
 	public void testEstimatedPropertyValue() {
 		
 		navigateToPropertyDetails("StartYourJourney","MediumConfident");
@@ -222,10 +222,11 @@ public class PropertyDetailsTest extends App{
 		//Still low confidence property details need to be verified (currently mock data is NOT available for low confidence)
 		
 	}
-		
+	//DMPM-4560
 	// DMPM-1261 - Scenario 1 (DMPM-4716), Scenario 2 (DMPM-4717), Scenario 5 (DMPM-4720)
+	// DMPM-4562 - Scenario 1 (DMPM-9203), Scenario 2 (DMPM-9204), Scenario 5 (DMPM-9207)
 	// navigating to Property details and verify the full screen view of the map
-	@Test (groups = {"DMPM-1261","DMPM-4716","DMPM-4717","DMPM-4720", "marketplace", "Property Hub", "priority-minor"})
+	@Test (groups = {"DMPM-1261","DMPM-4716","DMPM-4717","DMPM-4720","DMPM-4560","DMPM-9306", "marketplace", "Property Hub", "priority-minor"})
 	public void testDisplayOptionToGoToFullScreenMap() {
 			
 		navigateToPropertyDetails("StartYourJourney","MediumConfident");
@@ -482,7 +483,7 @@ public class PropertyDetailsTest extends App{
 		
 	}
 	
-	@TestDetails(story1 = "DMPM-3702:DMPM-7931,DMPM-7933,DMPM-7953", priority = Priority.LOW)
+	@TestDetails(story1 = "DMPM-3702:DMPM-7931,DMPM-7933,DMPM-7953",story2 = "DMPM-7725:DMPM-9349,DMPM-9351,DMPM-9353", priority = Priority.LOW)
 	@Test(groups = { "marketplace", "Property hub", "priority-minor" })
 	public void testViewVirtualPropertyScreenDisclaimers() {
 		

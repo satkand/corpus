@@ -132,5 +132,9 @@ public class PropertyExplorerPage  extends BasePage{
 	public WebElement checkPropertyHubSearchbox() {
 		return find(propertyExplorerSearchbox);
 	}
+	
+	public void tapPropertyExplorerSearchbox() {
+		tapElement(propertyExplorerSearchbox);
+	}
 
 }

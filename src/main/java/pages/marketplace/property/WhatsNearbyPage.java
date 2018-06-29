@@ -38,13 +38,13 @@ public class WhatsNearbyPage extends BasePage{
 	private By otherTab = By.xpath("//android.widget.TextView[@text='OTHER']");
 	
 	//Map location indicators
-	private By educationCentreIndicator = MobileBy.AccessibilityId("NorthanMelbourneInstituteOfTAFE. ");
-	private By shoppingAmenityIndicator = MobileBy.AccessibilityId("Penny Blue. ");
-	private By transportAmenityIndicator = MobileBy.AccessibilityId("Reynolds Rd. ");
-	private By entertainmentOutletIndicator = MobileBy.AccessibilityId("Rodder Reserve. ");
-	private By healthCentreIndicator = MobileBy.AccessibilityId("Derma Tech Centre. ");
-	private By diningCentreIndicator = MobileBy.AccessibilityId("secret garden restraunt. ");
-	private By otherAmenityIndicator = MobileBy.AccessibilityId("Coomonwealth bank Niddrie. ");
+	private By educationCentreIndicator = By.xpath("//android.view.View[@content-desc='Google Map']/android.view.View[20]");
+	private By shoppingAmenityIndicator = By.xpath("//android.view.View[@content-desc='Google Map']/android.view.View[7]");
+	private By transportAmenityIndicator = By.xpath("//android.view.View[@content-desc='Google Map']/android.view.View[3]");
+	private By entertainmentOutletIndicator = By.xpath("//android.view.View[@content-desc='Google Map']/android.view.View[0]");
+	private By healthCentreIndicator = By.xpath("//android.view.View[@content-desc='Google Map']/android.view.View[10]");
+	private By diningCentreIndicator = By.xpath("//android.view.View[@content-desc='Google Map']/android.view.View[6]");
+	private By otherAmenityIndicator = By.xpath("//android.view.View[@content-desc='Google Map']/android.view.View[6]");
 	
 	//Property card details
 	private By propertyCardThumbnail = By.id("au.com.suncorp.marketplace:id/propertyCardThumbnail");

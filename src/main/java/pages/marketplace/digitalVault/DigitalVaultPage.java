@@ -242,5 +242,7 @@ public class DigitalVaultPage extends BasePage {
 		return find(deleteFolderConfirmationMsg);
 	}
 
-	
+	public WebElement checkFolderTitleXPath(String str) {
+		return find(findElementUsingXpathText(str));
+	}
 }

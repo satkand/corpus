@@ -289,7 +289,6 @@ public class HomePropertyTest extends App {
 		homePropertyPage.tapPropertyDocumentsButton();
 		Assert.assertNotNull(folderViewPage.checkFolderTitleXPath(propertyAddress), "Folder View page - Folder Title label is not present");
 		Assert.assertNotNull(folderViewPage.checkEditButton(), "Folder View page - Edit button is not present");
-		Assert.assertNotNull(folderViewPage.checkFolderTitleXPath(propertyAddress), "Folder View page - Edit button is not present");
 		Assert.assertEquals(propertyAddress, folderViewPage.getTitleXPath(propertyAddress),"Folder View Page - folder name is not matching with the property address");
 		
 		verifyDocumentsFolderName(propertyAddress);
