@@ -64,6 +64,8 @@ import pages.marketplace.portfolio.PolicyDetailsPage;
 import pages.marketplace.portfolio.RenewPolicyPage;
 import pages.marketplace.portfolio.RiskDetailsPage;
 import pages.marketplace.professionalServices.HomeProfessionalServicesPage;
+import pages.marketplace.property.DemographicsPage;
+import pages.marketplace.property.FeatureAccessControlPage;
 import pages.marketplace.property.HomeJourneyPage;
 import pages.marketplace.property.HomePropertyPage;
 import pages.marketplace.property.PropertyDetailsPage;
@@ -156,6 +158,8 @@ public class App extends BaseTest {
 	public FromAccountPage fromAccountPage = null;
 	public TransferSummaryPage transferSummaryPage = null; 
 	public Keyboard keyboard=null;
+	public FeatureAccessControlPage featureAccessControlPage =null;
+	public DemographicsPage demographicsPage = null;
 	
 	String CONFIG_FILE=null;
 
@@ -252,6 +256,8 @@ public class App extends BaseTest {
 	    fromAccountPage = new FromAccountPage(driver);
 	    transferSummaryPage = new TransferSummaryPage(driver);
 	    keyboard =new Keyboard(driver);
+	    featureAccessControlPage = new FeatureAccessControlPage(driver);
+	    demographicsPage = new DemographicsPage(driver);
 	}
 	
 

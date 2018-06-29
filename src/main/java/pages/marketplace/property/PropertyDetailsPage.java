@@ -68,6 +68,7 @@ public class PropertyDetailsPage   extends BasePage{
 	private By favouriteButton = By.id("au.com.suncorp.marketplace:id/addToFavouriteButton");
 	private By backButton = By.id("au.com.suncorp.marketplace:id/backButton");
 	private By imageNumberText = By.id("au.com.suncorp.marketplace:id/imageNumberText");
+	private By homeServicesButton = By.id("au.com.suncorp.marketplace:id/professionalServicesTile");
 	
 	private By fullScreenPropertyImage = By.id("au.com.suncorp.marketplace:id/propertyFullImage");
 	private By fullScreenPropertyAddress = By.id("au.com.suncorp.marketplace:id/addressText");
@@ -107,6 +108,14 @@ public class PropertyDetailsPage   extends BasePage{
 	
 	//Derived Assets
 	private By digitalSafe = By.id("au.com.suncorp.marketplace:id/documentTile");
+	
+	public WebElement checkhomeServicesButton() {
+		return find(homeServicesButton);
+	}
+	
+	public void taphomeServicesButton(){
+		tapElement(homeServicesButton);
+	}
 	
 	public WebElement checkDigitalSafe() {
 		return find(digitalSafe);
@@ -536,7 +545,7 @@ public class PropertyDetailsPage   extends BasePage{
 	}
 	
 	public String getPropertyStatePostCode() {
-		find(propertyImage);
+		find(propertyImage,20);
 		return getText(propertyStatePostCode);
 	}
 	
