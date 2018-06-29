@@ -73,6 +73,7 @@ public class SuburbDetailsTest extends App {
 		verifyDemographics();
 	}
 	
+	//verifing POI Categories
 	public void verifyPOICategoriesOnFulllScreenMap() {
 		Assert.assertNotNull(whatsNearbyPage.checkEducationTab(), "Whats nearby Page - Education tab is not present");
 		whatsNearbyPage.tapEducationTab();
