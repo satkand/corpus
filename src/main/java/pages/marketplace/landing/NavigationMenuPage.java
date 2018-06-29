@@ -16,14 +16,17 @@ public class NavigationMenuPage extends BasePage {
 	private By bankingHome = By.xpath("//android.widget.CheckedTextView[@text='Banking Home']");
 	private By digitalVaultMenuItem = By.xpath("//android.widget.CheckedTextView[@text='DigitalSafe']");
 	private By productsCatalogueItem = By.xpath("//android.widget.CheckedTextView[@text='Apply online']");
+	private String productsCatalogueItemText = "Apply online";
 	private By productsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Policies & accounts']");
 	private By rewardsForYou = By.xpath("//android.widget.CheckedTextView[@text='Rewards']");
 	private By claimsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Active claims']");
 
 	private By proffessionalServicesMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Professional services']");
-	
+
 	private By settingsMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Settings']");
+	private String settingsMenuItemText = "Settings";
 	private By supportAndInformationMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Support & information']");
+	private String supportAndInformationMenuItemText = "Support & information";
 	private By backToStartMenuItem = By.xpath("//android.widget.CheckedTextView[@text='Back to start']");
 	private By devSettings = By.xpath("//android.widget.CheckedTextView[@text='Dev Settings']");
     private String devSettingsText ="Dev Settings";
@@ -69,12 +72,16 @@ public class NavigationMenuPage extends BasePage {
 		 return find(bankingHome);
 	}
 	
+	public WebElement checkRewardsForYouMenuItem() {
+		 return find(rewardsForYou);
+	}
+
 	public WebElement checkProductsMenuItem() {
 		 return find(productsMenuItem);
 	}
 	
 	public WebElement checkProductCatalogueItem() {
-		 return find(productsCatalogueItem);
+		 return scrollToElement(productsCatalogueItemText, "text");
 	}
 	
 	public void tapProductCatalogueMenuItem() {
@@ -82,16 +89,12 @@ public class NavigationMenuPage extends BasePage {
 		 tapElement(productsCatalogueItem);
 	}
 	
-	public WebElement checkRewardsForYouMenuItem() {
-		 return find(rewardsForYou);
-	}
-	
 	public WebElement checkClaimsMenuItem() {
 		 return find(claimsMenuItem);
 	}
-	
+
 	public WebElement checkSupportAndInformationMenuItem() {
-		 return find(supportAndInformationMenuItem);
+		return scrollToElement(supportAndInformationMenuItemText, "text");
 	}
 	
 	public WebElement checkDigitalVaultMenuItem() {
@@ -139,7 +142,7 @@ public class NavigationMenuPage extends BasePage {
 	}
 	
 	public WebElement checkSettingsMenuItem() {
-		return find(settingsMenuItem);
+		return scrollToElement(settingsMenuItemText, "text");
 	}
 	
 	public void tapSettingsMenuItem() {
@@ -159,8 +162,6 @@ public class NavigationMenuPage extends BasePage {
 	}
 	
 	public void scrollToDevSettings() {
-		
 		scrollToElement(devSettingsText,"text");
-		 
 	}
 }

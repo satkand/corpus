@@ -13,7 +13,8 @@ public class WebviewPage extends BasePage {
 		super(driver);
 	}
 		
-	private By webviewChromeCloseButton = MobileBy.AccessibilityId("Close tab");
+	//private By webviewChromeCloseButton = MobileBy.AccessibilityId("Close tab");
+	private By webviewChromeCloseButton = MobileBy.AccessibilityId("Close web view");
 	private By webviewBrowserUrl = By.id("com.sec.android.app.sbrowser:id/url_bar_text");
 	private By webViewLocationBar = By.id("com.sec.android.app.sbrowser:id/location_bar_edit_text");
 	private By webViewPopup = MobileBy.AccessibilityId("Close");
@@ -83,7 +84,7 @@ public class WebviewPage extends BasePage {
 		WebElement browserUrl = null;
 		if(getDeviceAttribute("deviceManufacturer").equalsIgnoreCase("samsung")){
 			if(getDeviceAttribute("deviceModel").equalsIgnoreCase("SM-G935F")) {
-				browserUrl = find(webviewBrowserUrl);
+				browserUrl = find(urlBar, 60);
 			}else {
 				browserUrl = find(webviewBrowserUrl_samsung);
 			}

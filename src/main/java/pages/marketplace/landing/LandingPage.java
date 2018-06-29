@@ -20,17 +20,26 @@ public class LandingPage extends BasePage {
 	//private By overViewTab = By.xpath("//android.widget.TextView[@text='Overview']");
 	//private By overViewTab = By.xpath("//android.widget.TextView[@text='Overview']");
 	private By overViewTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='OVERVIEW']");
-	private By overViewTabSmallDevices = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='Overview']");
-    private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
+	private By overViewTabSmallCase = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='Overview']");
+    
+	private By homeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='PROPERTY']");
 	private By homeTabSmallSamsung = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='Property']");
+	
 	private By vehiclesTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='VEHICLE']");
-	private By vehiclesTabSmallDevices = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='Vehicle']");
+	private By vehiclesTabSmallCase = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='Vehicle']");
+	
 	private By financeTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='MONEY']");
+	private By financeTabSmallCase = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='Money']");
+
+	private By healthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='WELLBEING']");
+	private By healthTabSmallCase = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='Wellbeing']");
+
+	private String overviewTitle = "Overview";
 	private String propertyTitle = "Property";
 	private String vehiclesTitle = "Vehicle";
+	private String financeTitle = "Money";
 	private String moneyTitle = "Money";
-	private String overViewTitle = "Overview";
-	private By healthTab = By.xpath("//android.widget.HorizontalScrollView[@resource-id='au.com.suncorp.marketplace:id/navigationTabLayout']//android.widget.TextView[@text='WELLBEING']");
+	private String healthTitle = "Wellbeing";
 
 	/*
 	private By suncorpTab = By.xpath("//android.widget.TextView[@text='ONE SUNCORP']");
@@ -53,30 +62,43 @@ public class LandingPage extends BasePage {
 	}
 
 	public WebElement checkSuncorpTab() {
-		return find(overViewTab, 30);
+		if(find(overViewTabSmallCase)!=null) {
+			return find(overViewTabSmallCase);
+		}else {
+			return find(overViewTab);
+		}
 	}
 
 	public void tapSuncorpTab() {
-		tapElement(overViewTab);
+		if(find(overViewTabSmallCase)!=null) {
+			tapElement(overViewTabSmallCase);
+		}else {
+			tapElement(overViewTab);
+		}
 	}
 
 	public boolean isSuncorpTabSelected() {
-		By element = overViewTabSmallDevices;
+		/*
+		By element = overViewTabSmallCase;
 		if(find(element)!=null) {
-			return isSelected(overViewTabSmallDevices);
+			return isSelected(overViewTabSmallCase);
 		}else {
 			return isSelected(overViewTab);
 		}
+		*/
+		String text = getScreenTitle(overviewTitle).getAttribute("selected");
+		return Boolean.parseBoolean(text);
 	}
 	
 	public WebElement checkOverViewTab() {
-		WebElement element = find(overViewTabSmallDevices);
+		WebElement element = find(overViewTabSmallCase);
 		if(element!=null) {
 			return element;
 		}else {
 			return find(overViewTab);
 		}
 	}
+		
 	public WebElement checkHomeTab() {
 		if(find(homeTabSmallSamsung)!=null) {
 			return find(homeTabSmallSamsung);
@@ -102,6 +124,7 @@ public class LandingPage extends BasePage {
 		String text = getScreenTitle(propertyTitle).getAttribute("selected");
 		return Boolean.parseBoolean(text);
 	}
+	
 	public boolean isHomeTabSelected() {
 		if(find(homeTabSmallSamsung)!=null) {
 			return isSelected(homeTabSmallSamsung);
@@ -111,70 +134,94 @@ public class LandingPage extends BasePage {
 	}
 
 	public WebElement checkVehiclesTab() {
-		if(find(vehiclesTabSmallDevices)!=null)
-		{
-		return find(vehiclesTabSmallDevices);
-		}
-		else{
-			return find(vehiclesTab);
+		if(find(vehiclesTabSmallCase)!=null) {
+			return find(vehiclesTabSmallCase, 30);
+		}else {
+			return find(vehiclesTab, 30);
 		}
 	}
 
 	public void tapVehiclesTab() {
-		if(find(vehiclesTabSmallDevices)!=null)
-		{
-			tapElement(vehiclesTabSmallDevices);
-		}
-		else {
+		if(find(vehiclesTabSmallCase)!=null) {
+			tapElement(vehiclesTabSmallCase);
+		}else {
 			tapElement(vehiclesTab);
 		}
 	}
    
 	public boolean isVehiclesTabSelected() {
-		
-		if(find(vehiclesTabSmallDevices)!=null) {
-			return isSelected(vehiclesTabSmallDevices);
+		/*
+		if(find(vehiclesTabSmallCase)!=null) {
+			return isSelected(vehiclesTabSmallCase);
 		}
 		else {
 			return isSelected(vehiclesTab);
 		}
-		
-		
+		*/
+		String text = getScreenTitle(vehiclesTitle).getAttribute("selected");
+		return Boolean.parseBoolean(text);		
 	}
 
 	public WebElement checkWealthTab() {
-		return find(financeTab);
+		if(find(financeTabSmallCase)!=null) {
+			return find(financeTabSmallCase);
+		}else {
+			return find(financeTab);
+		}
 	}
 
 	public void tapWealthTab() {
-		tapElement(financeTab);
+		if(find(financeTabSmallCase)!=null) {
+			tapElement(financeTabSmallCase);
+		}else {
+			tapElement(financeTab);
+		}
 	}
 
 	public WebElement checkFinanceTab() {
-		return find(financeTab);
+		if(find(financeTabSmallCase)!=null) {
+			return find(financeTabSmallCase);
+		}else {
+			return find(financeTab);
+		}
 	}
 
 	public void tapFinanceTab() {
-		tapElement(financeTab);
+		if(find(financeTabSmallCase)!=null) {
+			tapElement(financeTabSmallCase);
+		}else {
+			tapElement(financeTab);
+		}
 	}
 
 	public boolean isFinanceTabSelected() {
-		return isSelected(financeTab);
+		String text = getScreenTitle(financeTitle).getAttribute("selected");
+		return Boolean.parseBoolean(text);	
 	}
 
 	public WebElement checkHealthTab() {
-		return find(healthTab);
+		if(find(healthTabSmallCase)!=null) {
+			return find(healthTabSmallCase);
+		}else {
+			return find(healthTab);
+		}
 	}
 
 	public void tapHealthTab() {
-		tapElement(healthTab);
+		if(find(healthTabSmallCase,30)!=null) {
+			tapElement(healthTabSmallCase);
+		}else {
+			tapElement(healthTab);
+		}
 	}
 
 	public boolean isHealthTabSelected() {
-		return isSelected(healthTab);
+		String text = getScreenTitle(healthTitle).getAttribute("selected");
+		return Boolean.parseBoolean(text);	
 	}
 
 	public void swipeToHealthTab() {
+		/*
 		WebElement element = find(overViewTabSmallDevices,10);
 		if(element==null) {
 			swipeHorizontally(vehiclesTab, overViewTab);
@@ -182,25 +229,35 @@ public class LandingPage extends BasePage {
 		else {
 			swipeHorizontally(vehiclesTab, overViewTabSmallDevices);
 		}
-		
 		swipeHorizontally(healthTab, vehiclesTab);
+		*/
+		
+		if(find(vehiclesTabSmallCase, 30)!=null) {
+			swipeHorizontally(vehiclesTabSmallCase, overViewTabSmallCase);
+			swipeHorizontally(healthTabSmallCase, vehiclesTabSmallCase);
+		} else {
+			swipeHorizontally(vehiclesTab, overViewTab);
+			swipeHorizontally(healthTab, vehiclesTab);
+		}
+
 	}	
 
 	public void swipeToSuncorpTab() {
-		swipeHorizontally(vehiclesTab, healthTab);
-		swipeHorizontally(homeTab, vehiclesTab);
+		if(find(vehiclesTabSmallCase, 30)!=null) {
+			swipeHorizontally(vehiclesTabSmallCase, healthTabSmallCase);
+			swipeHorizontally(homeTabSmallSamsung, vehiclesTabSmallCase);
+		} else {
+			swipeHorizontally(vehiclesTab, healthTab);
+			swipeHorizontally(homeTab, vehiclesTab);
+		}
 	}
 
 	public WebElement checkMoneyTab() {
-
 		return getScreenTitle(moneyTitle);
-
 	}
 
 	public void tapMoneyTab() {
-
 		tapElement(checkMoneyTab());
-
 	}
 
 
