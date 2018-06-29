@@ -11,6 +11,9 @@ public class WelcomeTest extends App {
 	// DMPM-1453 - Removing need help link as per designs
 	@Test (groups = {"DMPM-42", "DMPM-216", "DMPM-1453", "marketplace", "welcome", "priority-minor"})
 	public void testWelcomePageElements(){
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 		Assert.assertNotNull(welcomePage.checkRegisterButton(), "Welcome screen - Register button is not shown");
 		Assert.assertNotNull(welcomePage.checkLoginButton(), "Welcome screen - Login button is not shown");
@@ -20,6 +23,9 @@ public class WelcomeTest extends App {
 	
 	@Test (groups = {"DMPM-42", "DMPM-217", "marketplace", "welcome", "priority-minor"})
 	public void testNavigatingToLoginScreen(){
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 		welcomePage.tapLoginButton();
 		Assert.assertNotNull(loginPage.checkLoginPageTitle(), "Login page - Login Title not shown");
@@ -29,6 +35,9 @@ public class WelcomeTest extends App {
 	
 	@Test (groups = {"DMPM-42", "DMPM-218", "marketplace", "welcome", "priority-minor"})
 	public void testNavigatingToRegisterScreen(){
+		if(loginAuthPage.checkChangeAccountButton() != null) {
+			loginAuthPage.tapChangeAccountButton();
+		}
 		Assert.assertNotNull(welcomePage.checkWelcomeSuncorpImage(), "Welcome screen -Suncorp image is not shown");
 		welcomePage.tapRegisterButton();
 		Assert.assertNotNull(getStartedPage.checkGetStartedPageTitle(), "Get Started page - Title not shown");
